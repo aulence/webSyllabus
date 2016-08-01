@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例运行代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        input[type="number"],input[type="text"] {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <form oninput="result.value=(parseInt(rangeVal_1.value)+
+       parseInt(rangeVal_2.value)-parseInt(numVal_1.value)*
+       parseInt(numVal_2.value)/parseInt(numVal_3.value))+txtVal.value">
+        <label>0</label>
+        <input id="rangeVal_1" type="range" min="0" max="100" value="30"/>
+        <label>100</label>
+        <span>+</span>
+        <label>0</label>
+        <input id="rangeVal_2" type="range" min="0" max="100" value="20"/>
+        <label>100</label>
+        <span>-</span>
+        <input id="numVal_1" type="number" value="15">
+        <span>×</span>
+        <input id="numVal_2" type="number" value="3">
+        <span>÷</span>
+        <input id="numVal_3" type="number" value="2">
+        <span>+</span>
+        <input id="txtVal" type="text" value="只羊">
+        <span>=</span>
+        <output name="result" for="rangeVal_1 rangeVal_2
+        numVal_1 numVal_2 txtVal">?</output>
+    </form>
+</body>
+</html>

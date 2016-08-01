@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例运行代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        html,body {
+            line-height: 200%;
+        }
+        label {
+            width: 102px;
+            display: inline-block;
+            text-align: right;
+        }
+        input[type="number"] {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <form oninput="result.value=firstName.value+medialName.value+lastName.value">
+        <label>设置称号：</label>
+        <input id="firstName" type="text" value="已累成狗" /><br>
+        <label>设置姓名：</label>
+        <input id="medialName" type="text" value="魏叶" /><br>
+        <label>设置职业：</label>
+        <input id="lastName" type="text" value="老师" /><br>
+        <label>您是：</label>
+        <output name="result" for="firstName lastName">?</output>
+    </form>
+</body>
+</html>
