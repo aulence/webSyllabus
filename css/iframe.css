@@ -1,0 +1,20 @@
+@charset "utf-8";
+body, html {
+    margin: 0; padding: 0;
+    font-size: 18px;
+}
+label {
+    font-size: 20px;
+}
+input {
+    height: 22px;
+    border: 1px inset #acacac;
+    font-size: 18px;
+}
+input[type="radio"], input[type="checkbox"] {
+    height: auto;
+    border: none;
+}
+input[type="image"] {
+    height: auto;
+}

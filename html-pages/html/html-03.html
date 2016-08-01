@@ -1,0 +1,55 @@
+<root data-root="HTML图片显示">
+    <section class="mt0">
+        <h3>HTML图片显示</h3>
+        <p>要在HTML显示图片是通过&lt;img&gt;引入外部图片实现的，“<em>src</em>”是图片的必要属性，通过将该属性的值设置为硬盘或服务器地址上图片的绝对路径或HTML页面和图片间的相对路径即可显示指定图片。</p>
+        <code class="w60p">
+            <img src="img/code/code-html-09.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-04.html" style="height:520px;"></iframe>
+    </section>
+    <section>
+        <h3>&lt;img&gt;的“alt”和“title”属性</h3>
+        <p>由于网络的不稳定、部分用户的带宽较小或图片体积较大等原因，有的时候网页上的图片不能马上显示出来（路径错误会导致图片不能显示），这个时候一个比较稳妥的做法，就是给予一定的文字说明，这个时候就需要用到&lt;img&gt;标签内的“<em>alt</em>”属性，只需将“alt”的属性值设为需要提示的文本信息即可。</p>
+        <code class="w70p">
+            <img src="img/code/code-html-10.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-05.html" style="height:100px;"></iframe>
+        <p>在对于需要进行说明的图片，或者单纯是为了提升用户体验，我有的时候需要为图片进行一定的简单描述，在特定的条件下，在图片旁边写上一串文本，既影响了布局，又显得突兀，这个时候我们就需要用到&lt;img&gt;标签内的“<em>title</em>”属性.</p>
+        <code class="w70p">
+            <img src="img/code/code-html-11.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-06.html" style="height:520px;"></iframe>
+        <p>在这里需要说明的是，“title”这个属性，最常用的地方虽然是&lt;img&gt;标签，但它在其它几乎任何标签上都可以使用，包括文本标签&lt;span&gt;。现代的网页设计风格趋势是简洁化，导致很多按钮也由以前的文本按钮变成了<em>图标按钮</em>，但图标按钮有时由于个体理解差异，并不能直观的表示该按钮的真实作用，这个时候为它加上一个“title”属性用于说明按钮的功能是个提升用户体验的好办法。</p>
+    </section>
+    <section>
+        <h3>&lt;img&gt;标签的类型</h3>
+        <p>在上一节的课程中，我们讲到过“行内标签”和“块标签”，明白了多个“行内标签”在限定的屏幕宽度内是不会换行的，而“块标签”则不然，每个“块标签”之间都会自动进行换行。</p>
+        <p>除此之外，他们间还有一个比较显著的区别，就是“行内标签”是不能进行大小（宽高）设置的，它的大小是由它里面的内容多少决定的。而“块标签”的大小是可以设置的，我们通过<em>行内样式</em>（文本标签不支持宽和高<em>标签样式</em>的设置）对之前的“&lt;span&gt;”和“&lt;p&gt;”标签设置宽和高进行测试（为了看清效果，我给它们加上了边框，在这里大家暂时可以不予理会）：</p>
+        <code class="w90p">
+            <img src="img/code/code-html-12.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-07.html" style="height:290px;"></iframe>
+        <p>&lt;img&gt;标签和&lt;span&gt;标签、&lt;p&gt;标签这类标签不同，它是一个“<em>行内块标签</em>”或“<em>行内块元素</em>”，这样类型的标签，既不会产生换行，也能调整大小，而且&lt;img&gt;标签还有个特殊的地方，就是它能够设置“标签样式”的大小，即不需通过“行内样式”或其它方式的样式设置来调整大小（但后面CSS学习后，还是需要通过CSS来设置样式的）。</p>
+        <p>我们通过运行下面一段代码来观察显示的效果。</p>
+        <code class="w90p">
+            <img src="img/code/code-html-13.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-08.html" style="height:260px;"></iframe>
+        <h3>思考</h3>
+        <p>通过以上的代码示例，我们发现“width”和“height”的设置有什么样的关系？</p>
+    </section>
+    <!-- 本节练习 -->
+	<section class="unitPractice">
+	    <h3>&lt;本节练习&gt;</h3>
+	    <p>新建一个HTML文件，在页面内显示出五张同样路径的图片：</p>
+	    <p>1、必须要具有“alt”和“title”属性</p>
+	    <p>2、第一张图宽度大于高度，第二张图高度大于宽度，第三张图高度等于宽度，第四张图只设置宽度，第五张图只设置高度</p>
+	    <p>3、第二张图和第四张图后进行换行</p>
+	    <p>4、图片的宽度和高度均需要控制在“200~600”之间</p>
+	</section>
+</root>

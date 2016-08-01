@@ -1,0 +1,45 @@
+<root data-root="HTML超链接">
+    <section class="mt0">
+        <h3>HTML中的超链接</h3>
+        <p>在HTML中，我们点击一段文本(超链接默认情况是一个“行内标签”)，或者一个按钮，当前页面会跳转到另外一个页面，或在一个新的页面中打开，我们将这个文本或按钮叫做“<em>超链接</em>”。超链接的必要属性是“<em>href</em>”（如果没有这个属性，&lt;a&gt;标签相当于一个&lt;span&gt;标签，且不会给文字设置颜色和下划线），它的属性值决定它将跳转到的文件。文件类型可以是一个“http/https”协议的网站，也可以是一个站内网页，甚至还可以是一张图片、一个文本文件等可以显示内容的文件。</p>
+        <code class="w80p">
+            <img src="img/code/code-html-14.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-09.html" style="height:480px;"></iframe>
+        <p>除此之外，超链接&lt;a&gt;标签还有一个比较实用的属性“<em>target</em>”，它规定网页以何种方式行进跳转，他们有以下属性值：</p>
+        <p>1._blank：在一个新的浏览器窗口或标签页中打开新的页面。</p>
+        <p>2._self：在当前浏览器窗口打开页面。</p>
+        <p>3._parent：在框架的父级打开页面。</p>
+        <p>4._top:在框架的最顶层打开新的页面（若包含多个框架的嵌套）。</p>
+        <p>5.“iframe”的“name”属性的值：通过将&lt;a&gt;标签的href属性设置为需要打开的文件，并将“target”的值设为页面中一个嵌入式框架&lt;iframe&gt;的“name”属性的值，使文件内容在这个&lt;iframe&gt;内打开。</p>
+    </section>
+    <section>
+        <h3>利用超链接跳转到本页的<em>锚点</em></h3>
+        <code class="w40p">
+            <img src="img/code/code-html-15.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <a href="html-pages/html/codeEffect/code-10.html" target="_blank">打开新窗口查看</a>
+    </section>
+    <section>
+        <h3>利用超链接下载指定文件</h3>
+        <p>&lt;a&gt;标签除了能跳转到页面、文件，跳转页面位置，指定&lt;iframe&gt;内嵌框架打开指定页面、文件，在HTML5中还能够定义一个文件的下载，并设置下载文件的名字。要具有这个功能，我们需给它加上“<em>download</em>”属性，并指定一个文件下载后的名称。</p>
+        <code>
+            <img src="img/code/code-html-17.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-12.html" style="height:80px;"></iframe>
+    </section>
+    <!-- 本节练习 -->
+	<section class="unitPractice">
+	    <h3>&lt;本节练习&gt;</h3>
+	    <p>新建一个文件目录，根目录包含一个“index.html”文件，一个“img”文件夹，一个“html”文件夹和一个“doc”文件夹。“img”文件夹包含一张任意图片，“html”文件夹包含一个叫做“home.html”的文件，“doc”文件夹包含一个叫做“readme.txt”的文件。具体要求如下：</p>
+        <p>1、“index.html”文件需要具有具有两组超链接标签，每组包含三个超链接文本。每组超链接单独占据一行，并且每组超链接内的超链接文本标签之间需要两个“<em>& nbsp;</em>进行分割”。另外该页面还需包含一个&lt;iframe&gt;标签对，它需要单独占据一行，宽度为100%，高度为560像素；</p>
+	    <p>2、点击第一组中的超链接文本分别跳转到“html”文件夹内的"home.html"文件、“img”文件夹内的那张图片、“doc”文件夹内的“readme.txt”文件。</p>
+	    <p>3、点击第二组中的超链接文本分别让页面内&lt;iframe&gt;内的页面跳转到“html”文件夹内的"home.html"文件、“img”文件夹内的那张图片、“doc”文件夹内的“readme.txt”文件。</p>
+	    <p>4、通过点击第一组超链接跳转到“html”文件夹内的"home.html"文件需从本窗口打开，“img”文件夹和“doc”文件夹内的文件需在一个新窗口打开；</p>
+	    <p>5、“html”文件夹内的"home.html"文件内容包含一个超链接标签，用于在本窗口（无论是单独的页面还是&lt;iframe&gt;框架内的页面）跳转到“index.html”文件</p>
+	    <p>6、“doc”文件夹内的“readme.txt”文件的内容为“我是这个网站的自述文件Readme”。</p>
+	</section>
+</root>

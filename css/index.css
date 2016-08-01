@@ -1,0 +1,138 @@
+/**
+* 功能：索引页的样式设置
+* 日期：2016-7-1
+**/
+/**********************************************/
+/* 共用样式 */
+/**********************************************/
+/* box-sizing */
+header, header .topNav li, .main .leftNav {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* position: absolute */
+header .logo, header .topNav, .main .leftNav { position: absolute; }
+/* position: relative */
+header, .main, .main .content {
+    position: relative;
+}
+/* user-select */
+header {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* display:block*/
+.leftNav li a {
+    display: block;
+}
+/* float: left; */
+.main .leftNav {
+	float: left;
+}
+
+/**********************************************/
+/* 细节设置 */
+/**********************************************/
+body,html {
+    height: 100%;
+    background-color: #f3f3f3;
+    overflow: hidden;
+    position: relative;
+}
+header {
+    width: 100%; height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #e3e3e3;
+}
+header .logo {
+    width: 256px; height: 51px;
+    background: url("../img/bgi/logo.png") no-repeat;
+    left: 10px; top: 4px;
+}
+/* 主导航栏 */
+header .topNav {
+    right: 10px; bottom: 0;
+    overflow: hidden;
+}
+header .topNav li {
+    width: 120px; height: 60px;
+    line-height: 58px;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    display: block;
+    margin-left: 1px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+header .topNav li:hover, header .topNav li.checked {
+    background-color: #11278a;
+    border-top: 2px solid #2a90d1;
+    font-size: 18px;
+    color: #fff;
+}
+header .topNav li.checked {
+    border-top: 6px solid #2a90d1;
+    box-shadow: 0 3px 5px rgba(5, 12, 39, 0.6) inset;
+}
+header .topNav li:active {
+    background-color: #2f4ac1;
+    border-top: 2px solid #5c76e6;
+    color: #fff3ea;
+}
+/* main */
+.main {
+    width: 100%; height: calc(100% - 60px);
+    overflow: hidden;
+}
+/**** 左侧动态导航栏 ****/
+.main .leftNav {
+	width: 220px; height: 100%;
+    background-color: #fff;
+    border-right: 1px solid #e3e3e3;
+    padding-top: 12px; padding-bottom: 12px;
+    margin-left: -215px;
+    transition: all 0.3s;
+    left: 0; top: 0;
+}
+.main .leftNav:hover {
+    margin-left: 0;
+}
+/* 使内容容器水平向右滑动 */
+.main .leftNav:hover+.content {
+    margin-left: 220px;
+}
+.leftNav li {
+    line-height: 42px;
+    padding: 2px 15px;
+}
+.leftNav li a {
+    border-radius: 18px;
+    border-top-right-radius: 90%;
+    border-bottom-right-radius: 90%;
+    border-bottom: 2px solid #ddd;
+    text-decoration: none;
+    text-align: center;
+    text-indent: -1.5em;
+    font-size: 16px;
+    color: #666;
+}
+.leftNav li a:hover, .leftNav li a.checked {
+	background-color: #324ece;
+    border-bottom: 2px solid #536fe8;
+    box-shadow: 2px 2px 4px rgba(3, 7, 28, 0.3);
+    color: #d8d8d8;
+}
+.leftNav li a.checked {
+    background-color: #11278a;
+    color: #fff;
+}
+/* 页面主要内容 */
+.main .content {
+    width: calc(100% - 5px);/*width: calc(100% - 220px);*/ height: 100%;
+    margin-left: 5px;
+   /* margin-left: 220px;*/
+    transition: all 0.3s;
+    overflow-y: auto;
+}

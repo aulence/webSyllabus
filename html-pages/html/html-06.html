@@ -1,0 +1,248 @@
+<root data-root="HTML的表单元素">
+    <section class="mt0">
+        <h3>表单标签&lt;form&gt;</h3>
+        <p>表单标签对&lt;form&gt;是一个“块级元素”。</p>
+        <p>表单标签的内容通常是“<em>表单元素</em>”+“<em>提交按钮</em>”的形式。它虽然和&lt;div&gt;标签一样属于“块级元素”，但它却有自己的实际用处，也就是若不将“表单元素”放置于表单标签&lt;form&gt;中，那某些表单元素将会失效，如：“提交”按钮和“重置”按钮。</p>
+        <p>&lt;form&gt;标签具有以下属性：</p>
+        <dl class="attrExplain">
+            <dt>name</dt>
+            <dd>规定表单的名称。</dd>
+            <dt>action</dt>
+            <dd>规定当提交表单时向何处发送表单数据，它的属性值应该是一个“<em>URL</em>”。</dd>
+            <dt>method</dt>
+            <dd>规定用于发送 form-data 的 HTTP 方法，值为：
+            <ul>
+                <li><em>get</em></li>
+                <li><em>post</em></li>
+            </ul></dd>
+            <dt>target</dt>
+            <dd>规定在何处打开“action”中设定的URL。有以下值：
+            <ul>
+                <li>_blank<br></li>
+                <li>_self<br></li>
+                <li>_parent<br></li>
+                <li>_top<br></li>
+                <li>&lt;iframe&gt;的“name”</li>
+            </ul></dd>
+            <dt>enctype</dt>
+            <dd>规定在发送到服务器之前应该如何对表单数据进行编码，有以下值：
+            <ul>
+                <li>application/x-www-form-urlencoded（默认，在发送前编码所有字符）</li>
+                <li>multipart/form-data（不对字符编码，在使用包含文件上传控件的表单时，必须使用该值</li>
+                <li>text/plain（空格转换为 "+" 加号，但不对特殊字符编码。）</li>
+            </ul>
+            <dt>autocomplete<suph5></suph5></dt>
+            <dd>规定是否启用表单的自动完成功能，有以下值：
+            <ul>
+                <li><em>on</em></li>
+                <li><em>off</em></li>
+            </ul></dd>
+            <dt>novalidate<suph5></suph5></dt>
+            <dd>如果使用该属性，则提交表单时不进行html5自带的验证。</dd>
+            <dt>accept-charset</dt>
+            <dd>规定服务器用哪种字符集处理表单数据，常用的字符集有:
+            <ul>
+                <li><em>UTF-8</em>（Unicode，双字节对字符进行编码，统一的编码标准）</li>
+                <li>ISO-8859-1（拉丁字母表的字符编码）</li>
+                <li>GB2312（简体中文字符集）</li>
+            </ul>
+            当然，还有其它更多字符集的编码标准，这里作为了解即可，如：“ISO-8859-2”（东欧字符编码），“ISO-2022-JP”和“ISO-2022-JP-2”（日语字符编码），“ISO-2022-KR”（韩语字符编码）等。</dd>
+        </dl>
+    </section>
+    <section>
+        <h3>&lt;label&gt;标签</h3>
+        <p>表单中用于显示表单字段的标签，可以让用户知道该行表单元素的作用，它属于“行级元素”。和&lt;span&gt;标签不一样，它配合后面学习的其它表单元素可以实现一些作用上的关联。所以，标准的表单编写都需要在表单元素前加上一对&lt;label&gt;标签，内容需写上标签后表单元素的作用。</p>
+        <code class="w40p">
+            <img src="img/code/code-html-22.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-17.html" style="height:116px;"></iframe>
+    </section>
+    <section>
+        <h3>&lt;input&gt;标签</h3>
+        <p>&lt;input&gt;标签也是一个没有内容的标签，按照布局类型它属于“行内块级元素”，它是通过设置属性及属性值来决定它的显示类型的，除了“id”和“class”这些通用属性，发展到HTML5标准后，它除了拥有“name”、“type”、“maxlength”、“value”等传统属性，它还拥有“autocomplete”、“autofocus”、“form”、“placeholder”等多达近20个的新属性。</p>
+        <p>为了平缓一下学习难度的曲线，我们先从一些常用的简单属性开始。</p>
+        <dl class="attrExplain">
+            <dt>“type”属性</dt>
+            <dd>
+                <ul>
+                    <li>text：默认属性值，规定显示的类型为“文本框”</li>
+                    <code class="w30p mt10">
+                        <img src="img/code/code-html-23.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-20.html" style="height:60px;"></iframe>
+                    <li class="mt15">password：规定显示的类型为“密码框”</li>
+                    <code class="w30p mt10">
+                        <img src="img/code/code-html-24.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-21.html" style="height:60px;"></iframe>
+                    <li class="mt15">radio：规定显示的类型为“单选框”</li>
+                    <code class="w90p mt10">
+                        <img src="img/code/code-html-25.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-22.html" style="height:60px;"></iframe>
+                    <li class="mt15">checkbox：规定显示的类型为“复选框”</li>
+                    <code class="w90p mt10">
+                        <img src="img/code/code-html-26.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-23.html" style="height:60px;"></iframe>
+                    <li class="mt15">file：规定显示的类型为“文件上传”控件</li>
+                    <code class="w30p mt10">
+                        <img src="img/code/code-html-27.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-24.html" style="height:60px;"></iframe>
+                    <li class="mt15">button：规定显示的类型为“按钮”</li>
+                    <code class="w40p mt10">
+                        <img src="img/code/code-html-28.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-25.html" style="height:60px;"></iframe>
+                    <li class="mt15">submit：规定显示的类型为“提交按钮”</li>
+                    <code class="w40p mt10">
+                        <img src="img/code/code-html-29.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-26.html" style="height:60px;"></iframe>
+                    <li class="mt15">reset：规定显示的类型为“重置按钮”</li>
+                    <code class="w50p mt10">
+                        <img src="img/code/code-html-30.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-27.html" style="height:192px;"></iframe>
+                    <li class="mt15">image：规定显示的类型为“图像按钮”</li>
+                    <code class="w50p mt10">
+                        <img src="img/code/code-html-31.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-28.html" style="height:90px;"></iframe>
+                    <li class="mt15">hidden：规定显示的类型为“隐藏域”</li>
+                    <code class="w40p mt10">
+                        <img src="img/code/code-html-32.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/html/codeEffect/code-29.html" style="height:60px;"></iframe>
+                </ul>
+            </dd>
+            <dt>“value”属性</dt>
+            <dd>设置“文本类型”的输入框中，默认显示的值内容。</dd>
+            <code class="w50p mt10">
+                <img src="img/code/code-html-40.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-36.html" style="height:100px;"></iframe>
+            <dt class="mt15">“maxlength”属性</dt>
+            <dd>规定输入字段中的字符的最大长度。</dd>
+            <code class="w40p mt10">
+                <img src="img/code/code-html-38.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-34.html" style="height:100px;"></iframe>
+            <dt class="mt15">“readonly”属性</dt>
+            <dd>使表单元素成为“只读”状态，在这个状态下只能读取元素内容，而不能进行编辑。</dd>
+            <code class="w60p mt10">
+                <img src="img/code/code-html-41.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-37.html" style="height:100px;"></iframe>
+            <dt class="mt15">“disabled”属性</dt>
+            <dd>使表单元素成为“禁用”状态，表单元素将“失效”。</dd>
+            <code class="w70p mt10">
+                <img src="img/code/code-html-42.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-38.html" style="height:212px;"></iframe>
+            <dt class="mt15">“checked”属性</dt>
+            <dd>使“type”属性值为“checkbox”和“radio”的表单元素中的指定项默认成为“选中”状态。</dd>
+            <code class="w70p mt10">
+                <img src="img/code/code-html-43.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-39.html" style="height:100px;"></iframe>
+            <dt class="mt15">“selected”属性</dt>
+            <dd>使&lt;select&gt;标签中的指定的子元素标签&lt;option&gt;默认成为“选中”状态。</dd>
+            <code class="w60p mt10">
+                <img src="img/code/code-html-44.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-40.html" style="height:162px;"></iframe>
+            <dt class="mt15">“size”属性</dt>
+            <dd>规定文本框可见字符显示的宽度，但不同浏览器对此的支持有所不同，我们现在基本都是使用CSS去控制。</dd>
+            <code class="w40p mt10">
+                <img src="img/code/code-html-39.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/html/codeEffect/code-35.html" style="height:140px;"></iframe>
+        </dl>
+    </section>
+    <section>
+        <h3>文本域&lt;textarea&gt;标签</h3>
+        <p>&lt;textarea&gt;标签是一个可以输入多行文本的标签对，它同样是一个“行内块级标签”。</p>
+        <p>和&lt;input&gt;标签不同的是，&lt;textarea&gt;标签是一个标签对，它拥有闭合标签。需要特别加以区分的是，它显示文本内容是通过标签的<em>内容</em>，而非“value”属性。它可以通过“cols”和“rows”属性来设置显示的尺寸，当然,<em>使用CSS去控制尺寸</em>更加利于布局准确性。</p>
+        <code class="w60p mt10">
+            <img src="img/code/code-html-34.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-30.html" style="height:160px;"></iframe>
+        <p>通过上面的代码示例，细心的同学应该可以发现，&lt;textarea&gt;标签的内容会保留文本内容中的<em>空格</em>和<em>换行符</em>，所以在设置默认内容的时候要特别的注意，否则会让用户体验受到一些不好的影响。</p>
+    </section>
+    <section>
+        <h3>下拉框&lt;select&gt;标签</h3>
+        <p>通过&lt;select&gt;标签可以创建单选和多选的下拉菜单。可以通过“size”属性设置该标签在一个选项菜单中可见的选项个数，当它的值设为“1”时，将显示为默认的&lt;select&gt;下拉菜单的样式，<em>&lt;option&gt;</em>是它<em>必须</em>的子菜单，否则将不能提供任何可选项，而&lt;option&gt;标签通常需要具有一个“<em>value</em>”属性，以便于在做数据操作时能准确地通过该属性值取到对应标签的内容。</p>
+        <dl class="attrExplain">
+            <dt>&lt;select&gt;单选下拉菜单：</dt>
+            <dd>
+                <code class="w40p mt10">
+                    <img src="img/code/code-html-35.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/html/codeEffect/code-31.html" style="height:166px;"></iframe>
+            </dd>
+            <dt>&lt;select&gt;多选下拉菜单：</dt>
+            <dd>在“windows操作系统”中按住“Ctrl”按钮，在“mac操作系统”中按住“command”按钮来选择多个选项，选择多个项的操作类似于操作系统中选择文件的操作。</dd>
+            <dd>
+                <code class="w40p mt10">
+                    <img src="img/code/code-html-36.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/html/codeEffect/code-32.html" style="height:166px;"></iframe>
+            </dd>
+        </dl>
+        <dl class="attrExplain">
+            <dt>分组的&lt;select&gt;下拉菜单：</dt>
+            <dd>
+                <code class="w40p mt10">
+                    <img src="img/code/code-html-45.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/html/codeEffect/code-41.html" style="height:60px;"></iframe>
+            </dd>
+        </dl>
+    </section>
+    <section>
+        <h3>按钮&lt;button&gt;标签对</h3>
+        <p>&lt;button&gt;标签对和其它表单元素一样，同是属于“行内块元素”，它的作用和“type”属性为“button/submit/reset”的&lt;input&gt;一样，是在页面内创建一个“按钮”元素，它的“type”属性和&lt;input"&gt;也一样，支持“button”、“submit”和“reset”三个值。它也是一个拥有闭合标签的元素。</p>
+        <p>和使用&lt;input type="button"&gt;相比,使用&lt;button&gt;有以下不同：</p>
+        <ul class="indent">
+            <li>&lt;button&gt;按钮文本是放置于该标签的内容上，而&lt;input&gt;是将按钮文本设置于它的“value”属性上</li>
+            <li>在页面提交时，“IE浏览器”提交的是&lt;button&gt;标签对内的内容，而其它浏览器提交的是&lt;button&gt;的“value”属性值的内容</li>
+            <li>&lt;button&gt;标签对内可以同时显示文本、图片、表格甚至是多媒体，而&lt;input&gt;标签只能显示其中一个</li>
+            <li>&lt;button&gt;标签的“type”属性不进行设置的话，在“IE浏览器”中将默认设为“button”，而在其它浏览器中（包括 W3C 规范）都会默认设为“submit”，所以，为了统一浏览器的行为，我们通常都会为&lt;button&gt;的属性“type”设置一个初始值</li>
+            <li>在外观上&lt;button&gt;标签比&lt;input&gt;标签生成的按钮更加有质感，交互视觉效果也更加出色（大部分浏览器如此）</li>
+        </ul>
+        <code class="w40p mt10">
+            <img src="img/code/code-html-37.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-33.html" style="height:60px;"></iframe>
+    </section>
+    <!-- 本节练习 -->
+	<section class="unitPractice">
+        <h3>&lt;本节练习&gt;</h3>
+	    <p>课堂内练习得已经做得够多了吧？为了大家的心理健康，今天就直接做作业就是。</p>
+	</section>
+</root>

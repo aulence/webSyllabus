@@ -1,0 +1,59 @@
+<root data-root="HTML文档结构">
+    <section class="mt0">
+        <h3>HTML基本的文档示例</h3>
+        <code class="w80p">
+            <img src="img/code/code-html-01.png">
+        </code>
+        <!-- 实际效果 -->
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-01.html" style="height:126px;"></iframe>
+    </section>
+    <!-- 标签的组成 -->
+    <section>
+        <h3>标签的组成</h3>
+        <code>
+            <img src="img/code/code-html-02.jpg">
+        </code>
+        <p>一个HTML（Hyper Text Markup Language）文档是由标签组成的，所以说，html不是一种编程语言，它是一种标记语言，标记语言采用标签(Tag)来描述一个网页，而一个标签是由标签名、属性名、属性值和内容组成。</p>
+    </section>
+	<!-- 文档类型 -->
+	<section>
+	    <h3>&lt;!doctype html&gt;</h3>
+	    <p>Document type HTML，定义文档的类型为HTML。若无该标签，则很多浏览器不能正确识别内容，导致显示出现乱码，页面内的样式不能渲染，功能也会失效。</p>
+	</section>
+	<!-- html标签 -->
+	<section>
+	    <h3>&lt;html&gt;标签</h3>
+	    <p>HTML文件最基本的标签，通常编辑器会将里面的“lang”属性的值设为“en”，这时用带自动翻译的浏览器（如Google Chrome）打开会识别到该属性值，从而询问用户是否翻译。因而，若网站面向的是中国客户，可以将该属性设置为“zh”或“zh-cn”或删除。</p>
+	</section>
+	<!-- head标签 -->
+	<section>
+	    <h3>&lt;head&gt;标签</h3>
+	    <p>用于放置网页基本信息的标签，需要包含&lt;meta&gt;标签和&lt;title&gt;标签对，可包含外部文件引入的标签，如：&lt;style&gt;标签对、&lt;link&gt;标签和&lt;script&gt;标签对。</p>
+	    <p>1.&lt;meta&gt;标签：不包含任何内容，并且没有结束标签。它是通过对应的属性来设置<em>编码格式</em>（必要）、设备显示缩放、搜索引擎关键字、描述、浏览器内核渲染方式等内容。<a href="https://segmentfault.com/a/1190000002407912" target="_blank">&lt;参考文献&gt;</a></p>
+	    <p>2.&lt;title&gt;标签：不需要设置任何属性，只需包含纯文本内容，用于显示网页明显，在浏览器端会将该标签内设置的文本内容显示于浏览器标签页上。</p>
+	    <code class="mt10 w80p">
+	        <img src="img/content/html/browerMarkup.jpg">
+	    </code>
+	    <p>3.&lt;style&gt;标签对：在该标签对内通过选择符设置页面内标签元素的样式。在HTML5规范中已不需要设置属性，若考虑到兼容性，通常需要加上属性“&lt;style type="text/css"&gt;”。</p>
+	    <p>4.&lt;link&gt;标签：该标签没有结束标签，用于导入外部文件。但目前的浏览器主要支持两种文件的引入方式，即<em>外部样式</em>表和浏览器标签上的<em>图标</em>。该标签主要支持两种属性：“rel”和“href”,分别是定义引入<em>文件的类型</em>和引入<em>文件所在的路径</em>。</p>
+	    <code class="mt10">
+	        <img src="img/code/code-html-03.jpg">
+	    </code>
+	    <p>5.&lt;script&gt;标签对：在HTML5的规范中，该标签不需要加上任何属性，默认支持Javascript的执行，老版本的IE浏览器需要加上属性&lt;script type="text/javascript"&gt;。在以前，这个标签通常是放置于&lt;head&gt;标签对以内的，后来很多前端工程师发现，将该标签<em>放置于文档末尾</em>，也就是&lt;/body&gt;结束标签之后（&lt;/html&gt;结束标签之前）更利于提升HTML文档的加载显示速度。到现在，这种做法已经成为了一种主流的做法。</p>
+	    <code class="mt10">
+	        <img src="img/code/code-html-04.jpg">
+	    </code>
+	    <p>需要强调的是，&lt;script&gt;标签对和&lt;style&gt;标签对不同的一点是：&lt;script&gt;标签对内不仅可以直接编写JavaScript的代码，还能引用外部的js文件，而&lt;style&gt;标签对是不能引用外部CSS文件的，要引用外部CSS文件只能通过&lt;link&gt;标签来实现。</p>
+	</section>
+	<section>
+	    <h3>&lt;body&gt;标签对</h3>
+	    <p>该标签为HTML文档在浏览器内显示内容的标签，它定义了内容的显示类型，无论通过什么外部方式去进行控制和设置，最终都是通过&lt;body&gt;标签对将内容交付给浏览器进行渲染，也就是说如果没有&lt;body&gt;标签对内的内容，在浏览器端将是一片“苍白”，见不到任何实质性的内容。</p>
+	    <p>HTML中所有的文本、基本标签、表单标签、&lt;canvas&gt;标签、超链接、图像、音频、视频等有实质内容的标签都赢放置于&lt;body&gt;内，否则浏览器内核将不能正确的渲染并最终显示。</p>
+	</section>
+	<!-- 本节练习 -->
+	<section class="unitPractice">
+	    <h3>&lt;本节练习&gt;</h3>
+	    <p>通过熟记HTML的基本文档结构，然后通过系统提供的Notepad（文本编辑器）将HTML的文档结构默写下来。默写期间不能进行任何参考，写完之后若发现错误，需关掉Notepad，重新写一遍，直到能一字不错的默写出HTML的基本文档结构为止。</p>
+	</section>
+</root>

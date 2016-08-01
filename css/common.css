@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/**
+* 功能：公共的样式设置
+* 日期：2016-7-1
+**/
+/**********************************************/
+/* 共用样式 */
+/**********************************************/
+/* 盒子模型 */
+root[data-root], code, output, .module-welcome, iframe.codeEffect {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* 绝对定位 */
+.module-welcome, .module-welcome p, .content .loading {
+    position: absolute;
+}
+
+/**********************************************/
+/* 细节设置 */
+/**********************************************/
+body,html,input,textarea,a {
+    font-family: "微软雅黑", arial;
+}
+/* 模块欢迎页字体设置 */
+.module-welcome {
+    width: 640px; height: 400px;
+    background-color: #fef9f8;
+    background-position: center;
+    border: 1px solid #fff;
+    border-right-color: #e3e4e5;
+    border-bottom-color: #e3e4e5;
+    border-radius: 3px;
+    border-top-left-radius: 300px;
+    border-bottom-right-radius: 300px;
+    text-align: left;
+    color: #3c4d86;
+    left: 50%; top: 50%;
+    margin-left: -320px; margin-top: -200px;
+    box-shadow: 0 6px 16px rgba(34, 34, 34, 0.34);
+    animation: rotateWelcome 3s linear infinite alternate;
+}
+@keyframes rotateWelcome {
+    0% { transform: rotate(15deg); background-color: #fef9f8;}
+    50% { transform: rotate(0deg); background-color: #f3f9f8;}
+    100% { transform: rotate(-15deg); background-color: #e3f9f1;}
+}
+@-webkit-keyframes rotateWelcome {
+    0% { transform: rotate(15deg); background-color: #fef9f8;}
+    50% { transform: rotate(0deg); background-color: #f3f9f8;}
+    100% { transform: rotate(-15deg); background-color: #e3f9f1;}
+}
+root[data-root] .module-welcome p {
+    width: auto;
+    text-indent: 1em;
+    font: normal 56px/56px "方正舒体";
+    padding: 48px;
+    top: 50%;
+    margin-top: -98px;
+}
+root[data-root] .module-welcome p.longTxt {
+    margin-top: -138px;
+}
+
+/**** 布局常用 ****/
+.mt-1{margin-top: -1px;}
+.mt0 {margin-top: 0;}
+.mt10 {margin-top: 10px;}
+.mt15 {margin-top: 15px;}
+.mt20 {margin-top: 20px;}
+.mt25 {margin-top: 25px;}
+.mt30 {margin-top: 30px;}
+
+/**********************************************/
+/* 组件样式 */
+/**********************************************/
+/**** content页根元素 ****/
+root[data-root] {
+    width: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    padding: 12px; padding-bottom: 150px;
+    display: block;
+}
+/* data-root内的文章块 */
+root[data-root] section {
+    margin-top: 50px;
+}
+root[data-root] section:first-child {
+    margin-top: 0;
+}
+/* data-root内的标题 */
+root[data-root] h3 {
+    line-height: 30px;
+    /*text-indent: 10px;*/
+    font-size: 32px;
+    margin-top: 10px; margin-bottom: 10px;
+    color: #11278a;
+}
+root[data-root] h4 {
+    line-height: 30px;
+    font-size: 22px;
+    margin-top: 14px; margin-bottom: 10px;
+    color: #333;
+}
+/* data-root内的段落标签 */
+root[data-root] p {
+    text-indent: 2em;
+    font-size: 20px;
+    color: #555;
+    margin: 18px 0;
+}
+root[data-root] p em, root[data-root] dl.attrExplain dd em {
+    font-size: 24px;
+    color: #0ac33b;
+}
+/* data-root内的超链接 */
+root[data-root] a {
+    text-decoration: none;
+    color: #136ded;
+}
+root[data-root] section.unitPractice {
+    border: 2px solid #cc6610;
+    background-color: #ef7c1c;
+    border-radius: 15px;
+    padding: 12px 20px;
+    color: #f2ebe7;
+    box-shadow: 0 10px 8px rgba(123, 100, 86, 0.33);
+}
+root[data-root] section.unitPractice h3, root[data-root] section.unitPractice p {
+    color: #f2ebe7;
+}
+root[data-root] section.unitPractice h3 {
+    border-bottom: 1px dotted #fff;
+    font-size: 22px;
+}
+root[data-root] section.unitPractice p {
+    text-indent: 0;
+}
+root[data-root] dl.attrExplain {
+    /*width: 96%;*/
+    margin-left: 4em; margin-right: 4em;
+}
+root[data-root] dl.attrExplain dt {
+    color: #2a90d1;
+    background: url("../img/content/sign-dt.png") no-repeat;
+    background-position: 0 8px;
+    text-indent: 24px;
+    font-size: 24px;
+    margin-left: -24px;
+    margin-bottom: 4px;
+}
+root[data-root] dl.attrExplain dd {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+root[data-root] ul {
+    list-style-position: inside;
+    list-style-image: url("../img/content/sign-dt-ul.png");
+    margin-top: 8px; margin-bottom: 8px;
+}
+root[data-root] ul.indent {
+    margin: 0 2em;
+}
+root[data-root] ul li {
+    line-height: 160%;
+    font-size: 20px;
+}
+/**** 载入中的效果 ****/
+.content .loading {
+    width: 90px; height: 30px;
+    left: 50%; top: 50%;
+    margin-left: -45px; margin-top: -15px;
+}
+.content .loading span {
+    width: 16px; height: 16px;
+    background-color: #11278a;
+    border-radius: 8px;
+    margin-top: 7px; margin-right: 21px;
+    display: block;
+    float: left;
+    /* 值分别代表：动画名、运动速度曲线、执行时间、执行次数（无限）、轮流反相播放 */
+    animation: loadingAnimate linear 0.45s infinite 0s alternate;
+}
+.content .loading span:nth-child(2) {
+    /* 执行延迟 */
+    animation-delay: 0.15s;
+}
+.content .loading span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.content .loading span:last-child {
+    margin-right: 0;
+}
+@keyframes loadingAnimate {
+    0% { transform: scale(1); opacity: 0.5;}
+    100% { transform: scale(1.5);  opacity: 1;}
+}
+@-webkit-keyframes loadingAnimate {
+    0% { transform: scale(1) opacity: 0.5;}
+    100% { transform: scale(1.5);  opacity: 1;}
+}
+/**** 代码展示容器 ****/
+code, code img {
+    width: auto; height: auto;
+    max-width: 100%;
+}
+code {
+    background-color: #1c1d1d;
+    border-radius: 15px;
+    display: block;
+    overflow: hidden;
+    -webkit-box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
+    box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
+}
+code.w90p { width: 90%;}
+code.w80p { width: 80%;}
+code.w70p { width: 70%;}
+code.w60p { width: 60%;}
+code.w50p { width: 50%;}
+code.w40p { width: 40%;}
+code.w30p { width: 30%;}
+code.w20p { width: 20%;}
+
+/**** 实际显示效果 ****/
+output, iframe.codeEffect {
+	width: 100%; height: auto;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+	box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
+	padding: 10px;
+	font-size: 20px;
+	color: #000;
+	display: block;
+}
+output input {
+	font-size: 18px;
+}
+/* iframe代码显示效果容器 */
+iframe.codeEffect {
+}
+/* HTML5支持图标 */
+suph5,unsuph5 {
+    width: 20px; height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+suph5 {
+     background: url("../img/content/h5_support.gif") no-repeat;
+}
+unsuph5 {
+     background: url("../img/content/h5_unSupport.gif") no-repeat;
+}
