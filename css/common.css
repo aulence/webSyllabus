@@ -222,6 +222,15 @@ code.w50p { width: 50%;}
 code.w40p { width: 40%;}
 code.w30p { width: 30%;}
 code.w20p { width: 20%;}
+img.dateImg {
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 10px auto;
+}
+img.dateImg.w80p {
+    width: 80%;
+}
 
 /**** 实际显示效果 ****/
 output, iframe.codeEffect {
