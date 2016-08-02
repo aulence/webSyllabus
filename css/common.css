@@ -111,7 +111,7 @@ root[data-root] p {
     color: #555;
     margin: 18px 0;
 }
-root[data-root] p em, root[data-root] dl.attrExplain dd em {
+root[data-root] p em, root[data-root] dl.attrExplain dd em,  root[data-root] ul li em {
     font-size: 24px;
     color: #0ac33b;
 }
@@ -163,6 +163,9 @@ root[data-root] ul {
 root[data-root] ul.indent {
     margin: 0 2em;
 }
+root[data-root] ul.indent.indent {
+    margin: 0 4em;
+}
 root[data-root] ul li {
     line-height: 160%;
     font-size: 20px;
@@ -211,8 +214,9 @@ code {
     border-radius: 15px;
     display: block;
     overflow: hidden;
-    -webkit-box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
-    box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
+    box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
 }
 code.w90p { width: 90%;}
 code.w80p { width: 80%;}
@@ -251,7 +255,7 @@ output input {
 iframe.codeEffect {
 }
 /* HTML5支持图标 */
-suph5,unsuph5 {
+suph5,unsuph5,supcss3,unsupcss3 {
     width: 20px; height: 20px;
     display: inline-block;
     vertical-align: middle;
@@ -263,4 +267,10 @@ suph5 {
 }
 unsuph5 {
      background: url("../img/content/h5_unSupport.gif") no-repeat;
+}
+supcss3 {
+    background: url("../img/content/css3_support.gif") no-repeat;
+}
+unsupcss3 {
+    background: url("../img/content/css3_unSupport.gif") no-repeat;
 }
