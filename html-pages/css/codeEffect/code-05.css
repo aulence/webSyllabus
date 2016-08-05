@@ -1,0 +1,28 @@
+@charset "utf-8";
+    /* 伪类选择器 */
+    a {
+        font-size: 20px;
+        color: #333;
+        text-decoration: none;
+    }
+    a:hover {
+        background-color: #ff9;
+        text-decoration: underline;
+    }
+    a:active {
+        background-color: #9ff;
+    }
+    input {
+        width: 200px; height: 30px;
+        font-size: 18px;
+    }
+    input:focus {
+        box-shadow: 0 0 15px #0099ff;
+    }
+
+
+
+
+
+
+

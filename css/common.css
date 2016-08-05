@@ -111,6 +111,9 @@ root[data-root] p {
     color: #555;
     margin: 18px 0;
 }
+root[data-root] p.noindent {
+    text-indent: 0;
+}
 root[data-root] p em, root[data-root] dl.attrExplain dd em,  root[data-root] ul li em {
     font-size: 24px;
     color: #0ac33b;
@@ -218,13 +221,21 @@ code {
     -webkit-box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
     box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
 }
+code.w95p { width: 95%;}
 code.w90p { width: 90%;}
+code.w85p { width: 85%;}
 code.w80p { width: 80%;}
+code.w75p { width: 75%;}
 code.w70p { width: 70%;}
+code.w65p { width: 65%;}
 code.w60p { width: 60%;}
+code.w55p { width: 55%;}
 code.w50p { width: 50%;}
+code.w45p { width: 45%;}
 code.w40p { width: 40%;}
+code.w35p { width: 35%;}
 code.w30p { width: 30%;}
+code.w25p { width: 25%;}
 code.w20p { width: 20%;}
 img.dateImg {
     width: auto;

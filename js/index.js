@@ -84,7 +84,7 @@ function navChecked(navBtn) {
             $(".content").html(GLOBAL.loadingAnimate);
             setTimeout(function() {
                 $(".content").html(rqContent);
-            },300);
+            },10);
         });
         var local = location,
             // 服务器名称+端口号
