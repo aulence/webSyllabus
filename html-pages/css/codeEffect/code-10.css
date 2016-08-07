@@ -4,6 +4,67 @@
     .center {text-align: center}
     .right {text-align: right}
 
+    /* 段落首行缩进 */
+    .em2 { text-indent: 2em }
+    .px40 { text-indent: 40px }
+    .pt30 { text-indent: 30pt }
 
+    /* 行高 */
+    .lineHeight { line-height: 1.6 }
+    .customBtn {
+        width: 200px;
+        line-height: 50px;
+    }
+    .mainNav a {
+        width: 108px; 
+        background-color: #9A9A9A;
+        line-height: 42px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        display: inline-block;
+        margin-top: 15px;
+    }
+    .mainNav a.checked {
+	    background-color: #131313;
+    }
+
+    /* 装饰线 */
+    .noneLine a { text-decoration: none }
+    .underLine { text-decoration: underline }
+    .overLine { text-decoration: overline }
+    .lineThrough { text-decoration: line-through }
+
+    /* 英文大小写转换 */
+    .transnone { text-transform: none }
+    .capitalize { text-transform: capitalize }
+    .uppercase { text-transform: uppercase }
+    .lowercase { text-transform: lowercase }
+
+    /* 文本阴影 */
+    .textShadow-1, .textShadow-3 { color: #fff;}
+    .textShadow-1 { text-shadow: -1px 2px 2px purple;}
+    .textShadow-2 { text-shadow: 0 0 2px #0b31d4}
+    .textShadow-3 { text-shadow: 0 -1px 2px rgba(162, 13, 65, 0.9)}
+    .textShadow-4 { text-shadow: 0 0 4px hsla(122, 85%, 36%, 0.8)}
+
+    /* 单词间距 */
+    .wordSpacing-1 { word-spacing: 10px }
+    .wordSpacing-2 { word-spacing: 2em }
+    .wordSpacing-3 { word-spacing: -15px }
+    .wordSpacing-4 { word-spacing: -1em }
+
+    /* 字符间距 */
+    .letterSpacing-1 { letter-spacing: 2px }
+    .letterSpacing-2 { letter-spacing: 0.6em }
+    .letterSpacing-3 { letter-spacing: -3px }
+    .letterSpacing-4 { letter-spacing: -4px }
+
+    /* 空格与换行处理 */
+    .ws-normal span { white-space: normal }
+    .ws-pre span { white-space: pre }
+    .ws-nowrap span { white-space: nowrap }
+    .ws-preWrap span { white-space: pre-wrap }
+    .ws-preLine span { white-space: pre-line }
 
 

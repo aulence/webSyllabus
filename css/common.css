@@ -125,8 +125,10 @@ root[data-root] a {
     color: #136ded;
 }
 root[data-root] section.unitPractice {
-    border: 2px solid #cc6610;
-    background-color: #ef7c1c;
+    background-color: #41280e;
+    border: 2px solid #654523;
+    border-right: 2px solid #1c0f02;
+    border-bottom: 2px solid #1c0f02;
     border-radius: 15px;
     padding: 12px 20px;
     color: #f2ebe7;
@@ -259,7 +261,7 @@ output, iframe.codeEffect {
 	background-color: #fff;
 	border: 1px solid #ddd;
 	border-radius: 15px;
-	box-shadow: 0 10px 8px rgba(123, 123, 123, 0.33);
+	    box-shadow: 0 4px 4px rgba(182, 186, 188, 0.33);
 	padding: 10px;
 	font-size: 20px;
 	color: #000;
@@ -273,7 +275,7 @@ iframe.codeEffect {
 }
 /* HTML5支持图标 */
 suph5,unsuph5,supcss3,unsupcss3 {
-    width: 20px; height: 20px;
+    width: 24px; height: 24px;
     display: inline-block;
     vertical-align: middle;
     position: relative;
