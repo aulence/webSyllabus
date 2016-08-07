@@ -130,15 +130,20 @@ root[data-root] section.unitPractice {
     padding: 12px 20px;
     color: #f2ebe7;
     box-shadow: 0 10px 8px rgba(123, 100, 86, 0.33);
+    margin-top: 100px;
 }
-root[data-root] section.unitPractice h3, root[data-root] section.unitPractice p {
+root[data-root] section.unitPractice h3, root[data-root] section.unitPractice h4, root[data-root] section.unitPractice p {
     color: #f2ebe7;
 }
 root[data-root] section.unitPractice h3 {
     border-bottom: 1px dotted #fff;
     font-size: 22px;
 }
+root[data-root] section.unitPractice h4 {
+    font-size: 22px;
+}
 root[data-root] section.unitPractice p {
+    margin-top: 0.5em; margin-bottom: 0.5em;
     text-indent: 0;
 }
 root[data-root] dl.attrExplain {
@@ -209,7 +214,7 @@ root[data-root] ul li {
 }
 /**** 代码展示容器 ****/
 code, code img {
-    width: auto; height: auto;
+    width: 100%; height: auto;
     max-width: 100%;
 }
 code {

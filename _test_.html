@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <title>HTML标签编写测试</title>
     <style>
-        html,body { margin: 0; padding: 0;}
-        header {
-            height: 150px;
-            background-color: #396;
-            overflow: hidden;
-            padding: 50px;
+        html,body { margin: 0; padding: 0; background-color: #999;}
+        input { 
+            width: calc(50% - 10px); height: 50px;
+            outline: none;
+            box-sizing: border-box;
+            float: left;
         }
-        img {
-            width: 120px;
-        }
+        [type="text"] { background-color: #ff9; margin-right: 10px;}
+        [type="password"] { background-color: #f99; margin-left: 10px;}
     </style>
 </head>
 <body>
-    <header>
-        <img src="img/other/sunny_A.png">
-    </header>
+    <input type="text"><input type="password">
 </body>
 </html>
 

@@ -1,46 +1,10 @@
-<root data-root="CSS盒子模型">
+<root data-root="CSS文本设置">
     <section class="mt0">
-        <h3>CSS盒子模型概述</h3>
-        <p>所谓盒子模型，即是将网页布局中的元素（能设置宽高的元素）进行拟物化的比喻，一个盒子是由“内容--<em>content</em>”（盒子内的物件）、“内间距--<em>padding</em>”（物件和盒子的距离）、“边框--<em>border</em>”（盒子壁）、“外间距--<em>margin</em>”（盒子和其它物体的距离）组成，如下示例图：</p>
-        <code class="w60p">
-            <img src="img/code/csscode/code-css-021.jpg">
-        </code>
-        <p>由于一些“客观”的原因，IE浏览器和标准（W3C，其它主流浏览器）的盒子模型有一定的差异，即IE浏览器的尺寸（“width”和“height”）包含了conent、padding和border；标准的盒子模型只包含content。一方面为为了兼容IE浏览器，另一方面是IE的盒子模型在实际的布局中的确更容易控制。所以我们在实际的开发工作中，都是将标准的盒子模型转换为IE的盒子模型。转换方式是将CSS的样式属性“<em>box-sizing</em>”的值设为“<em>border-box</em>”。当然，如果我们要将IE的盒子模型转化为标准的盒子模型也是可行的，即将“box-sizing”的值设置为“cotent-box”，不过业界并不推崇这样做。我们可以自己动手制作一个简单的页面实例进行对比。</p>
+        <h3>CSS文本概述</h3>
+        <p></p>
     </section>
     <section>
-        <h3>margin</h3>
-        <p>“margin”我们称他为外间距，是一个<em>具有宽高</em>样式属性的元素（即通常的“行内块元素”和“块元素”）相对于<em>同级元素</em>和<em>父级元素</em>的一个距离值，常用单位像素“px”。该属性对文本类元素（即“行内元素”）标签是无效的。</p>
-        <p class="noindent">“margin”属性的值有4种设置方式：</p>
-        <dl class="attrExplain">
-            <dt>margin-top</dt>
-                <dd>距离父级元素上边框的间距，若父元素有内间距“padding-top”,则还需要加上该值。</dd>
-                <dd>距离上方同级元素在垂直方向的位置，若上方元素含有“margin-bottom”，则会<em>重叠该值</em>，并且<em>取较大值</em>作为间距值。</dd>
-            <dt>margin-right</dt>
-                <dd>距离父级元素右边框的位置，若父元素有内间距“padding-right”,则还需要加上该值。</dd>
-                <dd>距离右方同级元素在水平方向的位置，若右方元素含有“margin-left”，则会和该值相加，取两个元素之间间距值的<em>和</em>作为间距值。</dd>
-            <dt>margin-bottom</dt>
-                <dd>距离父级元素下边框的间距，若父元素有内间距“padding-bottom”,则还需要加上该值。</dd>
-                <dd>距离下方同级元素在垂直方向的位置，若下方元素含有“margin-top”，则会<em>重叠该值</em>，并且<em>取较大值</em>作为间距值。</dd>
-            <dt>margin-left</dt>
-                <dd>距离父级元素左边框的位置，若父元素有内间距“padding-left”,则还需要加上该值。</dd>
-                <dd>距离左方同级元素在水平方向的位置，若左方元素含有“margin-right”，则会和该值相加，取两个元素之间间距值的<em>和</em>作为间距值。</dd>
-        </dl>
-        <p>如果我们在一个元素需要在多个方向进行设置外间距的时候，如果将“margin”多个方向的属性都设置一遍，难免会让代码看起来比较繁杂，增加了不少代码量，也增加了维护的难度。这个时候我们可以将“margin”四个方向的值“合四为一”，写法如下：</p>
-        <dl class="attrExplain">
-            <dt>margin: 10px;</dt>
-                <dd>即将“margin”四个方向的值“margin-top”、“margin-right”、“margin-bottom”和“margin-left”都设置为10像素。</dd>
-            <dt>margin: 10px 15px;</dt>
-                <dd>即将“margin”垂直方向的值“margin-top”和“margin-bottom”设置为10像素，水平方向的值“margin-left”和“margin-right”都设置为15像素。</dd>
-            <dt>margin: 10px 15px 20px;</dt>
-                <dd>即将“margin”距离上方“margin-top”的值设为10像素，水平方向的值“margin-left”和“margin-right”都设置为15像素，距离下方的“margin-bottom”的值设为20像素</dd>
-            <dt>margin: 10px 15px 20px 25px;</dt>
-                <dd>即将“margin”分别对应的“margin-top”，“margin-right”，“margin-bottom”，“margin-left”的值设为10像素，15像素，20像素和25像素。</dd>
-        </dl>
-        <p>通过对上面“margin”值的设置我们可以发现，在该属性设置三个值的时候是没有同时设置垂直方向，又分别设置左右方向的写法的，这点在以后使用中要注意。</p>
-        <p>利用“margin”多值设置的方法，我们还产生了一种<em>设计模式</em>，即将“margin”的值设为“<em>0 auto</em>”，可以让一个“块元素”在页面中水平居中。这里也需要注意的是，虽然“margin”属性对“行内块元素”是有效的，但这水平居中的设计模式对于它来说是无效的。要让“行内块元素”执行水平居中就要涉及到我们另外一种设计模式了，即“绝对定位+负外边距”的用法，这在我们以后的课程中还会讲到。</p>
-    </section>
-    <section>
-    </section>
+	</section>
 </root>
 
 

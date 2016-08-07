@@ -1,0 +1,65 @@
+@charset "utf-8";
+    /* 字体风格：normal、italic、oblique */
+    .normal { font-style: normal}
+    .italic { font-style: italic}
+    .oblique { font-style: oblique}
+
+    /* 字体粗细：normal、bold、bolder、lighter */
+    .normal { font-weight: normal}
+    .bold { font-weight: bold}
+    .bolder { font-weight: bolder}
+    .lighter { font-weight: lighter}
+
+
+    /* 字号单位：px、em、百分比 */
+    .px16 {font-size: 16px}
+    .px24 {font-size: 24px}
+    .px32 {font-size: 32px}
+    .em1 {font-size: 1em}
+    .em1d5 {font-size: 1.5em}
+    .em2 {font-size: 2em}
+    .perc100 {font-size: 100%}
+    .perc150 {font-size: 150%}
+    .perc200 {font-size: 200%}
+
+       
+    .songti,.yahei,.heiti,.heiti,.kaiti,.youyuan,.lishu,.fangsong,.Arial,.Helvetica,.Tahoma,.Verdana,.LucidaGrande,.TimesNewRoman,.Georgia { 
+        line-height: 160%; 
+        font-size: 26px
+    }
+    /* 字体系列--中文字体 */ 
+    .songti {font-family: "宋体"}
+    .yahei {font-family: "微软雅黑"}
+    .heiti {font-family: "黑体"}
+    .kaiti {font-family: "楷体"}
+    .youyuan {font-family: "幼圆"}
+    .lishu {font-family: "隶书"}
+    .fangsong {font-family: "仿宋"}
+    /* 字体系列--英文字体 */
+    .Arial {font-family: Arial}
+    .Helvetica {font-family: Helvetica}
+    .Tahoma {font-family: Tahoma}
+    .Verdana {font-family: Verdana}
+    .LucidaGrande {font-family: "Lucida Grande"}
+    .TimesNewRoman {font-family: "Times New Roman"}
+    .Georgia {font-family: Georgia}
+
+    /* 字体的组合值（一） */
+    .setFont1 {font: normal bold 20px "微软雅黑"}
+    .setFont2 {font: italic normal 22px "宋体"}
+
+    /* 字体的组合值（二） */
+    .setFont3 {font: bold 20px "微软雅黑"}
+    .setFont4 {font: italic 22px "黑体"}
+    .setFont5 {font: normal 22px "幼圆"}
+    .setFont6 {font: 18px "宋体"}
+
+    /* 字体的组合值（三） */
+    .setFont7 {font: bold 20px/200% "宋体"}
+    .setFont8 {font: italic 22px/36px "微软雅黑"}
+    .setFont9 {font: normal 22px "幼圆"}
+    .setFont10 {font: italic 20px "宋体"}
+
+
+
+
