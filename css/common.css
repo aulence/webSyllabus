@@ -106,10 +106,11 @@ root[data-root] h4 {
 }
 /* data-root内的段落标签 */
 root[data-root] p {
+    line-height: 1.40;
     text-indent: 2em;
     font-size: 20px;
     color: #555;
-    margin: 18px 0;
+    margin: 24px 0;
 }
 root[data-root] p.noindent {
     text-indent: 0;
@@ -171,7 +172,7 @@ root[data-root] ul {
 root[data-root] ul.indent {
     margin: 0 2em;
 }
-root[data-root] ul.indent.indent {
+root[data-root] ul.indentX2 {
     margin: 0 4em;
 }
 root[data-root] ul li {

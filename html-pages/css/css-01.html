@@ -39,7 +39,7 @@
                 <dd>这里导入的样式和用&lt;link&gt;标签导入的样式是同一个CSS文件，在这里就不再展示。</dd>
         </dl>
         <p>通过&lt;link rel="stylesheet"&gt;链接的CSS文件和用“@import”导入的CSS文件同是外部引用的方式，但他们却有以下区别:</p>
-        <ul class="indent indent">
+        <ul class="indentX2">
             <li>&lt;link&gt;除了加载CSS文件以外，它还能加载其它类型文件，如“icon”、“index”、“rss”等，它还能通过将“rel”的值设置为“prefetch”执行文件的预加载，而“@import”只能加载CSS文件</li>
             <li>&lt;link&gt;在现代的浏览器中是多线程加载的，也就是说在通过该标签加载一个文件的时候&lt;body&gt;标签内的<em>DOM</em>也在执行同步的加载。而“@import”是一种“线性”的加载，加载效率不如&lt;link&gt;的方式</li>
             <li>无论在老版本的浏览器中，或者现在一些非主流的浏览器中，页面都是会首先加载&lt;link&gt;标签引用的样式并渲染，而“@import”在这些浏览器中会最后才去渲染CSS的样式，这样会让用户首先看到一个无样式的HTML界面，等CSS渲染完成之后才能最终看到完整样式的界面</li>
@@ -57,7 +57,7 @@
         <h3>通过&lt;link&gt;标签引用CSS文件</h3>
         <p>在实际的项目开发过程中，我们一般都是将CSS单独存放在一个文件夹中，然后在HTML页面中通过&lt;link rel="stylesheet" href="样式表路径+名称.css"&gt;的方式进行引用。引用后CSS文件仍然是独立的，不会受到包括HTML和JavaScript任何方法和函数的影响，如果CSS文件中涉及到文件路径的相对位置，那么也是以CSS文件所在的文件路径位置为准，而非引用它的HTML文件的文件路径位置。</p>
         <p>相对于“行内样式”和“内嵌样式”而言，“外链样式”即通过&lt;link&gt;标签引用CSS样式有以下好处：</p>
-        <ul class="indent indent">
+        <ul class="indentX2">
             <li>简化了DOM结构，实现了内容和表现的分离，使HTML和CSS文件结构更加清晰，利于维护</li>
             <li>大大减少了CSS代码的编写量。项目越大，这一点体验得越明显</li>
             <li>&lt;link&gt;可以和其它&lt;link&gt;、JS文件以及&lt;body&gt;内的内容进行多线程加载，使得加载速度更快</li>

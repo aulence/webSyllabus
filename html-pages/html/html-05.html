@@ -2,10 +2,12 @@
     <section class="mt0">
         <h3>表格的基本形态</h3>
         <p>HTML中的表格，也就是<em>&lt;table&gt;</em>标签对除了用于显示数据，在CSS出现以前，由于缺乏样式控制，通常是利用&lt;table&gt;标签的布局特性来进行布局的。但CSS出现以后，特别是发展到CSS2以后，基本再也不会考虑采用&lt;table&gt;标签来进行布局了。因为：</p>
-        <p>1、会出现一些不必要的嵌套，且嵌套会很复杂；</p>
-        <p>2、太多无意义的空标签存在；</p>
-        <p>3、布局不够灵活，布局变动几乎要从新进行开发；</p>
-        <p>4、表格需要计算内容的宽度，使加载变慢。</p>
+        <ul class="indent">
+            <li>会出现一些不必要的嵌套，且嵌套会很复杂</li>
+            <li>太多无意义的空标签存在</li>
+            <li>布局不够灵活，布局变动几乎要从新进行开发</li>
+            <li>表格需要计算内容的宽度，使加载变慢</li>
+        </ul>
         <p>在现在看来用&lt;table&gt;标签来布局肯定不是个好主意了，现在的&lt;table&gt;最多的用途也就是用来显示数据了，虽然它的加载渲染速度会偏慢，但比起&lt;div&gt;的新式布局来说，&lt;table&gt;会减少对CSS的使用，实际开发起来会更加快捷。目前很多产品，特别是后台管理系统，很多仍然也是采用&lt;table&gt;标签来显示数据。</p>
         <p>&lt;table&gt;的基本格式如下：</p>
         <code class="w40p">
@@ -43,11 +45,13 @@
         <h3>完整形态的带样式表格</h3>
         <p>表格属于一种比较特殊的元素，虽说它具有“块元素”的大部分特质，但它既不是“行内元素（<em>display:inline</em>）”，不是“行内块元素(<em>display:inline-block</em>)”，也不算是“块元素(<em>display:block</em>)”，它有自己的显示类型“<em>display:table</em>”,&lt;thead&gt;为“display:table-header-group”，&lt;tbody&gt;为“display:table-row-group”，&lt;tfoot&gt;为“display:table-footer-group”，&lt;tr&gt;为“display:table-row”，&lt;th&gt;和&lt;td&gt;为“display:table-cell”，比较繁杂，我们不需要去记忆，只要进行了解即可，平时使用把&lt;table&gt;标签看做一个“块元素”即可。</p>
         <p>设置&lt;table&gt;标签的样式的属性主要有：</p>
-        <p>1、width：用于设置表格宽度</p>
-        <p>2、height：用于设置表格高度</p>
-        <p>3、bgcolor：用于设置表格颜色</p>
-        <p>4、background：用于设置表格的背景图片</p>
-        <p>5、align：用于设置表格对齐方式或单元格内容的对齐方式</p>
+        <ul class="indent">
+            <li>width：用于设置表格宽度</li>
+            <li>height：用于设置表格高度</li>
+            <li>bgcolor：用于设置表格颜色</li>
+            <li>background：用于设置表格的背景图片</li>
+            <li>align：用于设置表格对齐方式或单元格内容的对齐方式</li>
+        </ul>
         <p>以上属性都可以具体到某一行（&lt;tr&gt;，它只能设置“bgcolor”属性）或者某个单元格（&lt;th&gt;和&lt;td&gt;）的样式，具体设置如下：</p>
         <code class="w80p">
             <img src="img/code/htmlcode/code-html-21.jpg">

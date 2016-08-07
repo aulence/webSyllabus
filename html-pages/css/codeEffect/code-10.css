@@ -1,0 +1,9 @@
+@charset "utf-8";
+    /* 文本对齐方式：left、center、right */
+    .left {text-align: left}
+    .center {text-align: center}
+    .right {text-align: right}
+
+
+
+
