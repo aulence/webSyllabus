@@ -216,20 +216,20 @@ root[data-root] ul li {
     100% { transform: scale(1.5);  opacity: 1;}
 }
 /**** 代码展示容器 ****/
-code, code img {
-    width: 100%; height: auto;
-    max-width: 100%;
-}
-code {
-    background-color: #1c1d1d;
-    border-radius: 15px;
-    display: block;
+/*code {
+    width: 100%;
     overflow: hidden;
     margin-bottom: 15px;
+}*/
+code img {
+    width: auto; height: auto;
+    max-width: 100%;
+    border-radius: 15px;
+    display: block;
     -webkit-box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
     box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
 }
-code.w95p { width: 95%;}
+/*code.w95p { width: 95%;}
 code.w90p { width: 90%;}
 code.w85p { width: 85%;}
 code.w80p { width: 80%;}
@@ -244,7 +244,7 @@ code.w40p { width: 40%;}
 code.w35p { width: 35%;}
 code.w30p { width: 30%;}
 code.w25p { width: 25%;}
-code.w20p { width: 20%;}
+code.w20p { width: 20%;}*/
 img.dateImg {
     width: auto;
     max-width: 100%;

@@ -12,7 +12,7 @@
             <dt>center</dt>
                 <dd>文本居中对齐</dd>
             <dt>right</dt>
-                <dd>为本右对齐</dd>
+                <dd>文本右对齐</dd>
         </dl>
         <p class="noindent">HTML代码示例：</p>
         <code class="w40p">
@@ -196,6 +196,49 @@
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/css/codeEffect/code-27.html" style="height:366px;"></iframe>
 	</section>
+	<section>
+	    <h3>设置文本方向“direction”</h3>
+	    <p>改属性是由于控制文本显示方向的，即从左往右，或从右向左。</p>
+	    <p>在有些国家，如：“阿拉伯”、“伊朗”、“以色列”，还有古典的“中日韩”文等等，他们的文字显示方向都是从右向左的，为了适应这些文字方向的需求，如果用手工去设置，耗费的时间成本会过高，也非常容易出错，这个时候“direction”属性会帮你克服这个问题。该属性有两个值：</p>
+	    <dl class="attrExplain">
+	        <dt>ltr</dt>
+	            <dd>默认值,文本方向从左到右</dd>
+	        <dt>rtl</dt>
+	            <dd>文本方向从右向左</dd>
+	    </dl>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w70p">
+            <img src="img/code/csscode/code-css-054.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-055.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-28.html" style="height:170px;"></iframe>
+	</section>
+	<section>
+	    <h3>文本的裁切“text-overflow<supcss3></supcss3>”</h3>
+	    <p>该属性规定当文本溢出包含元素时进行的处理。该属性主要包含两个值：</p>
+	    <dl class="attrExplain">
+	        <dt>clip</dt>
+	            <dd>裁剪文本</dd>
+	        <dt>ellipsis</dt>
+	            <dd>显示省略符号来代表被裁剪的文本</dd>
+	    </dl>
+	    <p>不过该属性不能单独使用，必须要配合文本换行处理属性“white-space”和内容溢出处理属性“overflow”来使用，否则会达不到所期望的效果。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code>
+            <img src="img/code/csscode/code-css-056.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code>
+            <img src="img/code/csscode/code-css-057.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-29.html" style="height:160px;"></iframe>
+	</section>
+	
 </root>
 
 

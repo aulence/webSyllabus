@@ -131,10 +131,114 @@ Element”标签栏下“Style”标签栏中的“<em>:hov</em>”按钮，然�
                 <dd>将标签中的一个属性名名为“title”，属性值等于“this”或以“this”开头的属性名值对作为一个选择器</dd>
         </dl>
     </section>
-    <!--<section>
-        <h3>伪元素选择器</h3>
-    </section>
     <section>
+        <h3>伪元素选择器<supcss3></supcss3></h3>
+        <p>该类选择器主要用于向指定的<em>选择器</em>添加指定的效果，该类选择器会<em>增加“1”的权重</em>，主要有四个伪元素：</p>
+        <dl class="attrExplain">
+            <dt>:first-letter</dt>
+                <dd>选择“块级元素”文本段落中的首个字符，只能对“块级元素”生效。</dd>
+                <dd>该选择器可以设置的值有：</dd>
+                <dd>
+                    <ul>
+                        <li>font属性</li>
+                        <li>color属性</li>
+                        <li>background属性</li>
+                        <li>margin属性</li>
+                        <li>padding属性</li>
+                        <li>border属性</li>
+                        <li>text-decoration属性</li>
+                        <li>vertical-align属性</li>
+                        <li>text-transform属性</li>
+                        <li>line-height属性</li>
+                        <li>float属性</li>
+                        <li>clear属性</li>
+                    </ul>
+                </dd>
+                <dd>
+                    <p class="noindent">HTML代码示例：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-058.jpg">
+                    </code>
+                    <p class="noindent">对应的CSS代码如下：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-059.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-30.html" style="height:92px;"></iframe>
+                </dd>
+            <dt>:first-line</dt>
+                <dd>选择“块级元素”文本段落中的首行文本，只能对“块级元素”生效。</dd>
+                <dd>该选择器可以设置的值有：</dd>
+                <dd>
+                    <ul>
+                        <li>font属性</li>
+                        <li>color属性</li>
+                        <li>background属性</li>
+                        <li>word-spacing属性</li>
+                        <li>letter-spacing属性</li>
+                        <li>text-decoration属性</li>
+                        <li>vertical-align属性</li>
+                        <li>text-transform属性</li>
+                        <li>line-height属性</li>
+                        <li>clear属性</li>
+                    </ul>
+                </dd>
+                <dd>
+                    <p class="noindent">HTML代码示例：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-060.jpg">
+                    </code>
+                    <p class="noindent">对应的CSS代码如下：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-061.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-31.html" style="height:122px;"></iframe>
+                </dd>
+            <dt>:before</dt>
+                <dd>在指定的选择器之前插入一段内容。插入的内容默认为“行内元素”，可以通过“display”强制装换显示类型。</dd>
+                <dd>
+                    <p class="noindent">HTML代码示例：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-062.jpg">
+                    </code>
+                    <p class="noindent">对应的CSS代码如下：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-063.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-32.html" style="height:266px;"></iframe>
+                </dd>
+            <dt>:after</dt>
+                <dd>在指定的选择器之后插入一段内容，使用方式和“:before”一样。插入的内容默认也是为“行内元素”，同样可以通过“display”强制装换显示类型。</dd>
+                <dd>
+                    <p class="noindent">HTML代码示例：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-064.jpg">
+                    </code>
+                    <p class="noindent">对应的CSS代码如下：</p>
+                    <code>
+                        <img src="img/code/csscode/code-css-065.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-33.html" style="height:212px;"></iframe>
+                </dd>
+        </dl>
+        <p>使用“:before”和“:after”伪元素选择器不仅能为指定的元素添加文字、图片和各种利用“width”、“height”、“border”制作出来的形状，甚至还能添加音频、视频这些多媒体文件，而且具有高度自定义性。</p>
+    </section>
+    <!-- 章节练习 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+	    <p>制作任意四个文本文本，具体要求如下：</p>
+	    <p>1、第一个文本段落需大于两行，为首字添加一个效果：字体设为22像素的“微软雅黑”字体，具有一个2像素的边框，字体颜色和边框均为红色，背景色为“#f3d5df”,字体与表框之间的内间距为2像素；</p>
+	    <p>2、第二个文本段落需大于两行，将首行文字的字间距设为“0.8em”24像素的“微软雅黑”字体，字体颜色为“#e910d4”，并且具有下划线；</p>
+	    <p>3、第三个段落文本，字数控制在4~10字内，文本水平居中。为该段落前添加一个宽高均为“32像素”背景色为“#6d2a03”圆角（border-radius）为“16像素”的形状，形状内含有一个水平垂直均居中的“炫”字。设法使该形状和段落文本水平对齐。</p>
+	    <p>4、第四个段落文本，字数控制在4~10字内，文本水平居中。为该段落后添加一张接近圆形的“PNG图片”，图片大小为“32*32”。设法使该图片和和段落文本水平对齐。</p>
+	    <h4>&lt;扩展功能&gt;</h4>
+	    <p>1、使段落三前面的“炫”字形状显示出动态的“外发光效果”（最小发光距离“5像素”，最大发光距离“20像素”，发光颜色“rgba(48, 77, 235, 0.88)”）；</p>
+	    <p>2、使段落四后方的图片以中心为原点进行无限的顺逆时针旋转（旋转速度自定）。</p>
+	</section>
+    <!--<section>
         <h3>结构性伪类选择器</h3>
     </section>
     <section>

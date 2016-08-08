@@ -67,4 +67,28 @@
     .ws-preWrap span { white-space: pre-wrap }
     .ws-preLine span { white-space: pre-line }
 
+    /* 文本显示方向 */
+    .direction-ltr { direction: ltr}
+    .direction-rtl { direction: rtl}
+
+    /* 文本裁切 */
+    .text-inhrit,.text-clip,.text-ellipsis { 
+        width: 720px
+    }
+    .text-inherit {
+        text-overflow: inherit;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .text-clip {
+        text-overflow: clip;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .text-ellipsis {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
 
