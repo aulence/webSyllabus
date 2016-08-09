@@ -1,46 +1,244 @@
-<root data-root="CSS盒子模型">
+<root data-root="CSS文本设置">
     <section class="mt0">
-        <h3>CSS盒子模型概述</h3>
-        <p>所谓盒子模型，即是将网页布局中的元素（能设置宽高的元素）进行拟物化的比喻，一个盒子是由“内容--<em>content</em>”（盒子内的物件）、“内间距--<em>padding</em>”（物件和盒子的距离）、“边框--<em>border</em>”（盒子壁）、“外间距--<em>margin</em>”（盒子和其它物体的距离）组成，如下示例图：</p>
-        <code class="w60p">
-            <img src="img/code/csscode/code-css-021.jpg">
+        <h3>CSS文本概述</h3>
+        <p>在上一节中我们讲到过了“CSS字体样式”，而我们这一节中要讲的文本和字体是有所区别的，字体CSS设置主要是围绕文字本身进行，如文字风格、字体粗细、字体大小、字体系列、字体颜色等，就是说无论进行什么样的设置都是围绕单个文字本身的样式进行设置的，并不会影响到文本的整体布局（“font”组合值写法中的“行高”除外），这一节中所讲的CSS文本设置是对文本布局方面的知识进行的。</p>
+    </section>
+    <section>
+        <h3>文本的居中方式“text-align”</h3>
+        <p>该属性用于控制“行内块元素”或“块元素”内“行内元素”（文本元素）的居中方式的，包含三个值：</p>
+        <dl class="attrExplain">
+            <dt>left（默认）</dt>
+                <dd>文本左对齐</dd>
+            <dt>center</dt>
+                <dd>文本居中对齐</dd>
+            <dt>right</dt>
+                <dd>文本右对齐</dd>
+        </dl>
+        <p class="noindent">HTML代码示例：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-036.jpg">
         </code>
-        <p>由于一些“客观”的原因，IE浏览器和标准（W3C，其它主流浏览器）的盒子模型有一定的差异，即IE浏览器的尺寸（“width”和“height”）包含了conent、padding和border；标准的盒子模型只包含content。一方面为为了兼容IE浏览器，另一方面是IE的盒子模型在实际的布局中的确更容易控制。所以我们在实际的开发工作中，都是将标准的盒子模型转换为IE的盒子模型。转换方式是将CSS的样式属性“<em>box-sizing</em><supcss3></supcss3>”的值设为“<em>border-box</em>”。当然，如果我们要将IE的盒子模型转化为标准的盒子模型也是可行的，即将“box-sizing”的值设置为“cotent-box”，不过业界并不推崇这样做。我们可以自己动手制作一个简单的页面实例进行对比。</p>
-    </section>
-    <section>
-        <h3>margin</h3>
-        <p>“margin”我们称他为外间距，是一个<em>具有宽高</em>样式属性的元素（即通常的“行内块元素”和“块元素”）相对于<em>同级元素</em>和<em>父级元素</em>的一个距离值，常用单位像素“px”。该属性对文本类元素（即“行内元素”）标签是无效的。</p>
-        <p class="noindent">“margin”属性的值有4种设置方式：</p>
-        <dl class="attrExplain">
-            <dt>margin-top</dt>
-                <dd>距离父级元素上边框的间距，若父元素有内间距“padding-top”,则还需要加上该值。</dd>
-                <dd>距离上方同级元素在垂直方向的位置，若上方元素含有“margin-bottom”，则会<em>重叠该值</em>，并且<em>取较大值</em>作为间距值。</dd>
-            <dt>margin-right</dt>
-                <dd>距离父级元素右边框的位置，若父元素有内间距“padding-right”,则还需要加上该值。</dd>
-                <dd>距离右方同级元素在水平方向的位置，若右方元素含有“margin-left”，则会和该值相加，取两个元素之间间距值的<em>和</em>作为间距值。</dd>
-            <dt>margin-bottom</dt>
-                <dd>距离父级元素下边框的间距，若父元素有内间距“padding-bottom”,则还需要加上该值。</dd>
-                <dd>距离下方同级元素在垂直方向的位置，若下方元素含有“margin-top”，则会<em>重叠该值</em>，并且<em>取较大值</em>作为间距值。</dd>
-            <dt>margin-left</dt>
-                <dd>距离父级元素左边框的位置，若父元素有内间距“padding-left”,则还需要加上该值。</dd>
-                <dd>距离左方同级元素在水平方向的位置，若左方元素含有“margin-right”，则会和该值相加，取两个元素之间间距值的<em>和</em>作为间距值。</dd>
-        </dl>
-        <p>如果我们在一个元素需要在多个方向进行设置外间距的时候，如果将“margin”多个方向的属性都设置一遍，难免会让代码看起来比较繁杂，增加了不少代码量，也增加了维护的难度。这个时候我们可以将“margin”四个方向的值“合四为一”，写法如下：</p>
-        <dl class="attrExplain">
-            <dt>margin: 10px;</dt>
-                <dd>即将“margin”四个方向的值“margin-top”、“margin-right”、“margin-bottom”和“margin-left”都设置为10像素。</dd>
-            <dt>margin: 10px 15px;</dt>
-                <dd>即将“margin”垂直方向的值“margin-top”和“margin-bottom”设置为10像素，水平方向的值“margin-left”和“margin-right”都设置为15像素。</dd>
-            <dt>margin: 10px 15px 20px;</dt>
-                <dd>即将“margin”距离上方“margin-top”的值设为10像素，水平方向的值“margin-left”和“margin-right”都设置为15像素，距离下方的“margin-bottom”的值设为20像素</dd>
-            <dt>margin: 10px 15px 20px 25px;</dt>
-                <dd>即将“margin”分别对应的“margin-top”，“margin-right”，“margin-bottom”，“margin-left”的值设为10像素，15像素，20像素和25像素。</dd>
-        </dl>
-        <p>通过对上面“margin”值的设置我们可以发现，在该属性设置三个值的时候是没有同时设置垂直方向，又分别设置左右方向的写法的，这点在以后使用中要注意。</p>
-        <p>利用“margin”多值设置的方法，我们还产生了一种<em>设计模式</em>，即将“margin”的值设为“<em>0 auto</em>”，可以让一个“块元素”在页面中水平居中。这里也需要注意的是，虽然“margin”属性对“行内块元素”是有效的，但这水平居中的设计模式对于它来说是无效的。要让“行内块元素”执行水平居中就要涉及到我们另外一种设计模式了，即“绝对定位+负外边距”的用法，这在我们以后的课程中还会讲到。</p>
-    </section>
-    <section>
-    </section>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-037.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-19.html" style="height:298px;"></iframe>
+	</section>
+	<section>
+	    <h3>段落首行缩进“text-indent”</h3>
+	    <p>该属性是用于“行内元素”设置每个段落首行缩进数量值的属性，CSS字体大小（font-size）可以设置的数值和单位在该属性的值中都可以使用（除了百分比）。如果是用于中文布局，一般会使用“2em”的数值和单位来为每个段落的首行缩进“两个字符”。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w85p">
+            <img src="img/code/csscode/code-css-038.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-039.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-20.html" style="height:286px;"></iframe>
+	</section>
+	<section>
+	    <h3>文本装饰线“text-decoration”</h3>
+	    <p>该属性是为文本上添加一根装饰线，带"href"属性的&lt;a&gt;标签默认会带有一根下划线，就是由该属性的值“underline”设置的。“text-decoration”属性有以下值：</p>
+	    <dl class="attrExplain">
+	        <dt>none（默认）</dt>
+	            <dd>不显示任何装饰线</dd>
+	        <dt>underline</dt>
+	            <dd>在文本下方显示装饰线</dd>
+	        <dt>overline</dt>
+	            <dd>在文本上方显示装饰线</dd>
+	        <dt>line-through</dt>
+	            <dd>在文本中间显示装饰线，相当于删除线</dd>
+	    </dl>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w35p">
+            <img src="img/code/csscode/code-css-042.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-043.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-22.html" style="height:198px;"></iframe>
+	</section>
+	<section>
+	    <h3>英文字母大小写转换“text-transform”</h3>
+	    <p>该属性能将“行内元素”中的英文文本进行大小写转换，以满足网站对规范性的要求。特别在一些对项目产品细节要求至严的跨国企业或合资企业，他们对网站或应用中的文本格式也有相当高的要求，当网站中的绝大部分英文文本都是由其它地方整理粘贴而来的时候，如果要逐一去修改这些文本，不仅时间成本大大地增加，也容易出现一些难以一时发现的疏漏，这个时候“text-transform”属性就有它的“用武之地”了。该属性有以下属性值：</p>
+	    <dl class="attrExplain">
+	        <dt>none（默认）</dt>
+	            <dd>保持文本中英文单词的默认大小写</dd>
+	        <dt>capitalize</dt>
+	            <dd>每个英文单词首字母为大写字母，其它为小写字母</dd>
+	        <dt>uppercase</dt>
+	            <dd>将所有英文单词转换为大写字母</dd>
+	        <dt>lowercase</dt>
+	            <dd>将所有英文单词转换为小写字母</dd>
+	    </dl>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w75p">
+            <img src="img/code/csscode/code-css-044.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-045.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-23.html" style="height:198px;"></iframe>
+	</section>
+	<section>
+	    <h3>文本的阴影“text-shadow<supcss3></supcss3>”</h3>
+	    <p>该属性的作用是给文本添加阴影效果。该属性最初是在CSS2.0中被定义的，但在CSS 2.1被删除了，不知道是出于什么考虑，在CSS3.0中又重新被写进了规范。目前除了IE9及之前版本不支持该属性外，其它主流浏览器钧支持该属性。</p>
+	    <p>该属性有4个值，具体如下：</p>
+	    <dl class="attrExplain">
+	        <dt>水平方向阴影偏移（h-shadow）</dt>
+	            <dd>“0”表示维持原位，正数为向右偏移，负数为向左偏移。单位为像素“px”</dd>
+	        <dt>垂直方向阴影偏移（v-shadow）</dt>
+	            <dd>“0”表示维持原位，正数为向上偏移，负数为向下偏移。单位为像素“px”</dd>
+	        <dt>阴影模糊距离（blur）</dt>
+	            <dd>用正数表示阴影模糊的单位距离，距离越大模糊程度越高，单位为像素“px”</dd>
+	        <dt>阴影的颜色（color）</dt>
+	            <dd>支持Web技术中的常用颜色模式：英文单词定义、HEX、RGBa、HSLa</dd>
+	    </dl>
+	    <p>和“行内块元素”和“块元素”所用的“box-shadow<supcss3></supcss3>”（以后会学习）有所不同，文本阴影的属性值里没有“inset”（设置为内阴影）和“spread”（阴影的扩展，单位像素“px”），以后在使用中需要加以区分。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w40p">
+            <img src="img/code/csscode/code-css-046.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-047.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-24.html" style="height:198px;"></iframe>
+	</section>
+	<section>
+	    <h3>段落文本行高“line-height”</h3>
+	    <p>该属性是用于设置“行内元素”中文本元素在一行中所占据的高度，可以使用的值也和字体大小设置一样，而且同样能够使用百分，或不带单位的浮点数（“1”表示“100%”，“1.5”表示“150%”，以此类推）。该属性除字面上的意思外，很多时候还有一个小妙用，就是当文本元素只有一行时，可以将该行的文本行高设为和父容器元素高度一致，以此到达文本垂直居中的效果。使用场景如：表格、导航按钮、自定义样式按钮、标题栏等。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w85p">
+            <img src="img/code/csscode/code-css-040.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-041.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-21.html" style="height:272px;"></iframe>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习（一）&gt;</h3>
+	    <p>制作任意四个文本段落，具体要求如下：</p>
+	    <p>1、第一个文本段落首行缩进两个中文字符</p>
+	    <p>2、第二个文本段落中应该包含一个名为“百度”的超链接，点击后以浏览器新选项卡（或新窗口）的方式跳转到“https://www.baidu.com”,该超链接标签文本不应包含下划线</p>
+	    <p>3、第三个段落为字体颜色为“#fff”带阴影的文本，阴影水平偏移量“0”,垂直偏移量“2px”,模糊距离“1px”，颜色为“rgba(253,76,233,.96)”</p>
+	    <p>4、第四个段落文本对齐方式为右对齐，字数控制在2~16字内</p>
+	    <p>5、以上段落，除了第四个段落以外，至少要求具有两行任意文本，行高应为文本的140%</p>
+	    <h4>&lt;扩展功能&gt;</h4>
+	    <p>1、四个段落应该包含在一个&lt;article&gt;标签内，且该标签实际宽度为“960像素”，水平居中</p>
+	    <p>2、页面背景色为“#e3e3e3”,&lt;article&gt;背景色为“纯白色”，边框为“#acacac”的1像素实线</p>
+	    <p>3、&lt;article&gt;标签内的段落应该和边框上下保持12像素左右20像素的内间距</p>
+	    <p>4、&lt;article&gt;标签具备一个漂亮但不突兀的阴影</p>
+	</section>
+	<section>
+	    <h3>单词的间距“word-spacing”</h3>
+	    <p>该属性用于设置英文单词之间的间距，中文则是设置文本中空格的距离，单位为Web技术的常用度量单位，如“像素（px）”，“字符（em）”，“点（pt）”等，可以为负数。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w75p">
+            <img src="img/code/csscode/code-css-048.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-049.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-25.html" style="height:198px;"></iframe>
+	</section>
+	<section>
+	    <h3>字符的间距“letter-spacing”</h3>
+	    <p>和“word-spacing”有所不同，该属性是用于控制字符间的间距，即无论单词或词语中含有空格（该属性对空格字符无效），该属性都会生效，单位同样为Web技术的常用度量单位，同样为可以为负数。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w75p">
+            <img src="img/code/csscode/code-css-050.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-051.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-26.html" style="height:198px;"></iframe>
+	</section>
+	<section>
+	    <h3>空格换行处理“white-space”</h3>
+	    <p>该属性设置如何处理元素内的空格符和换行符，它主要有以下值：</p>
+	    <dl class="attrExplain">
+	        <dt>normal（默认）</dt>
+	            <dd>由浏览器处理空格和换行</dd>
+	        <dt>pre</dt>
+	            <dd>段落里所有的空格符和换行符都会被保留（类似于&lt;pre&gt;标签）</dd>
+	        <dt>nowrap</dt>
+	            <dd>段落内的文本不会换行（类似于没有设置过换行的“notepad”）</dd>
+	        <dt>pre-wrap</dt>
+	            <dd>段落里所有的空格符序列和换行符序列都会被保留（除了在某些编码格式下和“pre”有所差距，大多数时候可以说它和“pre”这个值是等价的）</dd>
+            <dt>pre-line</dt>
+            <dd>多空格会合并成一个，但换行符会保留</dd>
+	    </dl>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w40p">
+            <img src="img/code/csscode/code-css-052.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-053.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-27.html" style="height:366px;"></iframe>
+	</section>
+	<section>
+	    <h3>设置文本方向“direction”</h3>
+	    <p>该属性是由于控制文本显示方向的，即从左往右，或从右向左。</p>
+	    <p>在有些国家，如：“阿拉伯”、“伊朗”、“以色列”，还有古典的“中日韩”文等等，他们的文字显示方向都是从右向左的，为了适应这些文字方向的需求，如果用手工去设置，耗费的时间成本会过高，也非常容易出错，这个时候“direction”属性会帮你克服这个问题。该属性有两个值：</p>
+	    <dl class="attrExplain">
+	        <dt>ltr</dt>
+	            <dd>默认值,文本方向从左到右</dd>
+	        <dt>rtl</dt>
+	            <dd>文本方向从右向左</dd>
+	    </dl>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code class="w70p">
+            <img src="img/code/csscode/code-css-054.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-055.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-28.html" style="height:170px;"></iframe>
+	</section>
+	<section>
+	    <h3>文本的裁切“text-overflow<supcss3></supcss3>”</h3>
+	    <p>该属性规定当文本溢出包含元素时进行的处理。该属性主要包含两个值：</p>
+	    <dl class="attrExplain">
+	        <dt>clip</dt>
+	            <dd>裁剪文本</dd>
+	        <dt>ellipsis</dt>
+	            <dd>显示省略符号来代表被裁剪的文本</dd>
+	    </dl>
+	    <p>不过该属性不能单独使用，必须要配合文本换行处理属性“white-space”和内容溢出处理属性“overflow”来使用，否则会达不到所期望的效果。</p>
+	    <p class="noindent">HTML代码示例：</p>
+	    <code>
+            <img src="img/code/csscode/code-css-056.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code>
+            <img src="img/code/csscode/code-css-057.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-29.html" style="height:160px;"></iframe>
+	</section>
+
 </root>
 
 
