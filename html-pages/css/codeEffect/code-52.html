@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        label {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        p > label:first-child {
+            width: 102px;
+            text-align: right;
+        }
+        p:last-child label {
+            vertical-align: top;
+        }
+        select {
+            width: 220px;
+            padding: 6px;
+        }
+        textarea {
+            width: 220px; height: 100px;
+            padding: 6px;
+            box-sizing: border-box;
+            position: relative;
+            top: -4px;
+        }
+        select:disabled,textarea:disabled {
+            border: 2px solid #b2120c;
+            box-shadow: inset 0 0 5px #f47a75;
+        }
+    </style>
+</head>
+<body>
+    <form name="testSelector">
+        <p>
+            <label>职位：</label>
+            <select>
+                <option value="0" selected>请选择...</option>
+                <option value="1">Web前端工程师</option>
+                <option value="2">Java开发工程师</option>
+                <option value="3">.NET开发工程师</option>
+                <option value="4">PHP开发工程师</option>
+            </select>
+        </p>
+        <p>
+            <label>薪资：</label>
+            <select disabled>
+                <option value="0">请选择...</option>
+                <option value="1">2000~4000</option>
+                <option value="2">4000~8000</option>
+                <option value="3">8000~12000</option>
+                <option value="4" selected>12000以上</option>
+            </select>
+        </p>
+        <p>
+            <label>描述：</label>
+            <textarea disabled
+            placeholder="请对该职位进行描述"></textarea>
+        </p>
+    </form>
+</body>
+</html>

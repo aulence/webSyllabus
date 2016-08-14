@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        label, img[src$=".jpg"] {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        label {
+            width: 102px;
+            text-align: right;
+        }
+        p:last-child input:last-of-type {
+            width: 120px;
+        }
+        input {
+            width: 220px;
+            padding: 6px;
+            font-size: 15px;
+        }
+        input:read-write {
+            box-shadow: inset 2px 2px 4px rgba(134, 234, 34, 0.6);
+        }
+        img[src$=".jpg"] {
+            width: 90px; height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form name="testSelector">
+        <p>
+            <label>用户名：</label>
+            <input type="text" placeholder="请输入用户名"
+            value="aulence" readonly>
+        </p>
+        <p>
+            <label>密码：</label>
+            <input type="password" placeholder="请输入密码">
+        </p>
+        <p>
+            <label>验证码：</label>
+            <input type="text" placeholder="请输入验证码">
+            <img src="../../../img/content/html/valiCode.jpg">
+        </p>
+    </form>
+</body>
+</html>

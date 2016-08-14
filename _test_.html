@@ -4,19 +4,30 @@
     <meta charset="UTF-8">
     <title>HTML标签编写测试</title>
     <style>
-        html,body { margin: 0; padding: 0; background-color: #999;}
-        input { 
-            width: calc(50% - 10px); height: 50px;
-            outline: none;
-            box-sizing: border-box;
-            float: left;
+        /* 方法一 */
+        /*input[type="radio"]:not(:checked), input[type="radio"]:not(:checked) + label, input[type="radio"]:checked {
+            display: none;
+        }*/
+        /* 方法二 */
+        input[type="radio"],input[type="radio"] + label {
+            display: none;
         }
-        [type="text"] { background-color: #ff9; margin-right: 10px;}
-        [type="password"] { background-color: #f99; margin-left: 10px;}
+        input[type="radio"]:checked + label {
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <input type="text"><input type="password">
+    <div>
+        <input id="secret" name="gender" type="radio" disabled checked>
+        <label for="secret">保密</label>
+        
+        <input id="male" name="gender" type="radio" disabled>
+        <label for="male">男</label>
+        
+        <input id="female" name="gender" type="radio" disabled>
+        <label for="female">女</label>
+    </div>
 </body>
 </html>
 

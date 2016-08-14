@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        html,body,p {
+            margin: 0; padding: 0;
+            background-color: #e8e59b;
+        }
+        div:first-of-type {
+            height: 100px;
+            background-color: #e20404;
+            margin-top: 0;
+        }
+        div:first-of-type > p {
+            height: 50px;
+            background-color: #0459e2;
+            margin-top: 25px;
+        }
+        div:first-of-type > p > span {
+            height: 20px;
+            background-color: #0bba19;
+            margin-top: 15px;
+            display: block;
+        }
+        div:nth-of-type(2) {
+            height: 100px;
+            background-color: #e204c8;
+            margin-top: 10px;
+        }
+        div:nth-of-type(2) > p:first-child {
+            height: 40px;
+            background-color: #746542;
+            margin-top: 25px;
+        }
+        div:nth-of-type(2) > p:last-child {
+            height: 40px;
+            background-color: #75098e;
+            margin-top: 10px;
+            margin-bottom: 100px;
+        }
+        div:last-of-type {
+            height: 100px;
+            background-color: #378853;
+            margin-top: 10px;
+        }
+        div:last-of-type p:first-child {
+            height: 20px;
+            background-color: #273f65;
+        }
+        div:last-of-type p:last-child {
+            height: 30px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 第一个DIV -->
+    <div>
+        <p>
+            <span></span>
+        </p>
+    </div>
+    <!-- 第二个DIV -->
+    <div>
+        <p></p>
+        <p></p>
+    </div>
+    <!-- 第三个DIV -->
+    <div>
+        <p></p>
+        <p></p>
+    </div>
+</body>
+</html>

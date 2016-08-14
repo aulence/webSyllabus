@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        div {
+            width: 100%; height: 50px;
+        }
+        div:nth-child(2) {
+            background-color: #b71111;
+            margin-bottom: 50px;
+        }
+        div:last-child {
+            background-color: #3044b1;
+            margin-top: 50px;
+        }
+        .ruler, .ruler p {
+            box-sizing: border-box;
+        }
+        .ruler {
+            width: 50px; height: auto;
+            background-color: #ede7a0;
+            border: 1px solid #599f07;
+            float: left;
+        }
+        .ruler p {
+            line-height: 24px;
+            border-bottom: 1px solid #599f07;
+            margin: 0;
+            padding-right: 12px;
+            text-align: right;
+        }
+        .ruler p:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="ruler">
+        <p>25</p>
+        <p>50</p>
+        <p>75</p>
+        <p>100</p>
+        <p>125</p>
+        <p>150</p>
+    </div>
+    <div></div>
+    <div></div>
+</body>
+</html>

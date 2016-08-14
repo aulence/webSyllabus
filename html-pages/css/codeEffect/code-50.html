@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        label {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        p > label:first-child {
+            width: 102px;
+            text-align: right;
+        }
+        label[for] {
+            width: 56px;
+            position: relative;
+        }
+        img[src$=".jpg"] {
+            width: 90px; height: 36px;
+        }
+        input[type="radio"]:checked + label {
+            color: #2397fc;
+            font: x-large "微软雅黑";
+            position: relative;
+            top: -4px;
+        }
+    </style>
+</head>
+<body>
+    <form name="testSelector">
+        <p>
+            <label>性别：</label>
+            <input id="secret" name="gender" checked 
+            type="radio"><label for="secret">保密</label>
+            <input id="male" name="gender" 
+            type="radio"><label for="male">男</label>
+            <input id="female" name="gender" 
+            type="radio"><label for="female">女</label>
+        </p>
+    </form>
+</body>
+</html>

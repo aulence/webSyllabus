@@ -1,4 +1,8 @@
 <root data-root="CSS高级选择器">
+    <style>
+        .selection::selection { background-color: #600; color: #8c8ce8;}
+        .selection::-moz-selection { background-color: #600; color: #8c8ce8;}
+    </style>
     <section class="mt0">
         <h3>CSS高级选择器概述</h3>
         <p>CSS高级选择器区别于CSS普通选择器，它并非是通过HTML页面标签中一些可见的因素进行选择（如标签名，属性名、值，同级关系，嵌套结构等），也不是对一些简单的操作条件进行选择（如鼠标悬浮，鼠标点击，输入框获得焦点等），而是对标签元素的结构、标签元素的索引、标签元素的状态等一些更为复杂的条件下进行的选择，甚至能改变现有标签的状态结构。</p>
@@ -287,9 +291,89 @@
 	    <p>6、除了&lt;table&gt;标签外，其它标签内不能出现任何“Class”和“id”属性。所有表格的字体颜色为“#fff”，并且要求和背景色有区分（即能清楚辨认文本）；</p>
 	    <p>7、所有表格的宽度为960像素，页面水平居中，表格间上下的距离为50像素，所有单元格行高为32像素。顶部的第一个按钮需要和表格的左边缘垂直对齐，并且与页面顶部保持20像素的距离。</p>
 	</section>
-    <!--<section>
+    <section>
         <h3>UI元素状态伪类选择器</h3>
-    </section>-->
+        <p>该类选择器的选择依据主要是页面内标签元素的状态发生改变时所触发的选择状态改变。如：表单元素的“读写状态”、“值状态”，各类元素的“选中状态”等。“UI元素状态伪类选择器”主要有以下内容：</p>
+        <dl class="attrExplain">
+            <dt>:read-only</dt>
+                <dd>当标签元素为只读状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox（火狐）浏览器中的写法为“-moz-read-only”。</dd>
+                <p class="noindent">HTML代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-091.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-092.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-48.html" style="height:204px;"></iframe>
+            <dt class="mt15">:read-write</dt>
+                <dd>当标签元素为可写状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox浏览器中的写法为“-moz-read-write”。</dd>
+                <p class="noindent">HTML代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-093.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-094.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-49.html" style="height:204px;"></iframe>
+            <dt class="mt15">:enabled</dt>
+                <dd>当标签元素为可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。</dd>
+                <p class="noindent">HTML代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-097.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-098.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-51.html" style="height:262px;"></iframe>
+            <dt class="mt15">:disabled</dt>
+                <dd>当标签元素为不可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。</dd>
+                <p class="noindent">HTML代码与上一个例子一致，修改后的CSS代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-099.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-52.html" style="height:262px;"></iframe>
+            <dt class="mt15">:checked</dt>
+                <dd>当表单元素的值处于“checked”（被选中）状态时，触发该选择器，通常用于&lt;input&gt;标签的“type”属性为“checkbox”和“radio”的表单元素。在FireFox浏览器中的写法为“-moz-checked”。</dd>
+                <p class="noindent">HTML代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-095.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code>
+                    <img src="img/code/csscode/code-css-096.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-50.html" style="height:90px;"></iframe>
+            <dt class="mt15">:default</dt>
+                <dd>当表单元素的值处于默认选中状态时，触发该选择器，通常用于&lt;input&gt;标签的“type”属性为“checkbox”和“radio”的表单元素。老版本的webkit和IE（edge）不支持该选择器，其它主流浏览器均支持该选择器。</dd>
+            <dt class="mt15">:indeterminate</dt>
+                <dd>当一个&lt;input&gt;标签的“type”属性为“checkbox”或“radio”的表单元素都处于“半被选中”状态时，触发该选择器。该状态选择器的值目前只能通过JavaScript进行设置。</dd>
+            <dt class="mt15">::selection </dt>
+                <dd class="selection">该选择器是用于当页面内面内的各种元素被选中时所触发的样式。在FireFox浏览器中的写法为“::-moz-selection”，且不能用群组选择器的方式来使用。（用鼠标选择该段查看效果）</dd>
+        </dl>
+    </section>
+    <!-- 章节练习 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习（三）&gt;</h3>
+	    <p>制作一个漂亮的导航栏，具体要求如下：</p>
+	    <p>1、导航栏横跨整个浏览器窗口（宽度100%），高度为60像素，需要6个宽度一致，高度为60像素的导航按钮（文本内容自定），导航按钮均匀分布在一个宽度为960像素的容器元素内，该容器元素水平居中；</p>
+	    <p>2、整个导航栏的背景色及按钮背景色为“#e73030”，导航按钮的默认字体颜色为“#f6e2e2”，鼠标悬浮时和被点选中的导航按钮颜色均为“#ba0505”，字体颜色为“#fff”;</p>
+	    <p>3、当前导航按钮在被点中时添加“选中”效果，其它已经被选中的导航按钮取消“选中”效果。</p>
+	    <p>&lt;扩展练习&gt;</p>
+	    <p>利用该原理，制作出一个效果和导航栏一致，但能实现多选效果的关于“前端攻城狮必备技能”复选按钮组，色彩风格自定（但必须能清晰看到被选中的效果），需要有以下按钮：</p>
+	    <p>1、HTML5</p>
+	    <p>2、CSS3</p>
+	    <p>3、JavaScript</p>
+	    <p>4、jQuery</p>
+	    
+	</section>
 </root>
 
 

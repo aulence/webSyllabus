@@ -1,0 +1,138 @@
+<root data-root="HTML5实用标签">
+    <section class="mt0">
+        <h3>&lt;mark&gt;<suph5></suph5>标签</h3>
+        <p>该标签是一个“行内元素”，它的作用是像一只荧光笔一样突出你标记的文本。</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-50.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-46.html" style="height:44px;"></iframe>
+    </section>
+    <section>
+        <h3>&lt;meter&gt;<suph5></suph5>标签</h3>
+        <p>该标签是一个“行内块级元素”，它是用于度量属性“value”的值的一个标签，通过判断“value”的值是否在一个合适的区间，从而显示出不同级别颜色。如果值在<em>合理区间</em>会显示成一个值内容比例为“绿色”的横条，如果值在<em>不合理区间</em>会显示成一个值内容比例为“黄色”的横条（经过包括“Edge”浏览器在内的所有主流浏览器测试）。</p>
+        <p>&lt;meter&gt;标签具有以下属性值：</p>
+        <dl class="attrExplain">
+            <dt>max</dt>
+            <dd>规定度量的最大值</dd>
+            <dt>min</dt>
+            <dd>规定度量的最小值</dd>
+            <dt>high</dt>
+            <dd>规定高范围的度量值（大于该值）</dd>
+            <dt>low</dt>
+            <dd>规定低范围的度量值（小于该值）</dd>
+            <dt>optimum</dt>
+            <dd>规定最佳的度量值</dd>
+        </dl>
+        <code class="w70p">
+            <img src="img/code/htmlcode/code-html-51.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-47.html" style="height:124px;"></iframe>
+        <p>由于在测试环境中，没有发现“optimum”属性产生任何作用，所以在这里大家只要进行简单记录即可。当然，在实际项目中也可以加上该属性，以迎接“新规范”的支持。</p>
+    </section>
+    <section>
+        <h3>&lt;progress&gt;<suph5></suph5>标签</h3>
+        <p>该标签是一个“行内块级元素”，它是一个用于显示“进度信息”的标签。</p>
+        <p>&lt;progress&gt;标签具有以下属性值：</p>
+        <dl class="attrExplain">
+            <dt>max</dt>
+            <dd>规定总进度量的值</dd>
+            <dt>value</dt>
+            <dd>规定当前进度量的值</dd>
+        </dl>
+        <code class="w50p">
+            <img src="img/code/htmlcode/code-html-52.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-48.html" style="height:124px;"></iframe>
+        <p>由于在测试环境中，没有发现“optimum”属性产生任何作用，所以在这里大家只要进行简单记录即可。当然，在实际项目中也可以加上该属性，以迎接“新规范”的支持。</p>
+    </section>
+    <section>
+        <h3>&lt;audio&gt;<suph5></suph5>标签</h3>
+        <p>该标签是一个“行内块级元素”,它用于在页面中加载<em>音频</em>文件，目前HTML5标准中，&lt;audio&gt;主要支持三种格式的音频文件，即：“ogg”(Ogg Vorbis)、“mp3”和“wav”格式的音频文件，但不同的浏览器支持的情况又有所不同，所以我们通常不会单独使用&lt;audio&gt;标签，而是在该标签内置入一个&lt;source&gt;标签，使浏览器将一个识别到的音频文件进行使用。</p>
+        <p>浏览器支持音频格式的情况如下表：</p>
+        <img src="img/code/htmlcode/code-html-53.jpg" class="dateImg w80p">
+        <p>&lt;audio&gt;标签具有以下属性：</p>
+        <dl class="attrExplain">
+            <dt>autoplay</dt>
+            <dd>如果出现该属性，则音频在就绪后马上播放</dd>
+            <dt>controls</dt>
+            <dd>如果出现该属性，则向用户显示控件，比如播放按钮</dd>
+            <dt>loop</dt>
+            <dd>如果出现该属性，则每当音频结束时重新开始播放</dd>
+            <dt>muted</dt>
+            <dd>规定视频输出应该被静音</dd>
+            <dt>preload</dt>
+            <dd>如果出现该属性，则音频在页面加载时进行加载，并预备播放。若和“autoplay”同时使用，则该属性值会被忽略</dd>
+            <dt>src</dt>
+            <dd>要播放的音频的URL地址</dd>
+        </dl>
+        <p>&lt;source&gt;标签具有以下属性：</p>
+        <dl class="attrExplain">
+            <dt>media</dt>
+            <dd>规定媒体资源的类型，如：“screen and (min-width:320px)”</dd>
+            <dt>src</dt>
+            <dd>规定媒体文件的URL地址</dd>
+            <dt>type</dt>
+            <dd>规定媒体资源的<em>MIME</em>类型（Multipurpose Internet Mail Extensions，它包含文本、图像、音频、视频以及其他应用程序专用的数据）</dd>
+        </dl>
+        <p>&lt;audio&gt;标签要兼容各种浏览器的写法当如下：</p>
+        <code class="w70p">
+            <img src="img/code/htmlcode/code-html-54.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-49.html" style="height:60px;"></iframe>
+    </section>
+    <section>
+        <h3>&lt;video&gt;<suph5></suph5>标签</h3>
+        <p>该标签是一个“行内块级元素”,它用于在页面中加载<em>视频</em>文件，目前HTML5标准中，&lt;audio&gt;主要支持三种格式的视频文件，即：“ogg/ogv”(带有Theora视频编码和Vorbis音频编码的Ogg文件)、“mp4”（带有H.264 视频编码和AAC音频编码的MPEG4文件）和“webm”（带有VP8视频编码和Vorbis音频编码的WebM文件）格式的视频文件，但不同的浏览器支持的情况又有所不同，所以我们通常不会单独使用&lt;video&gt;标签，而是在该标签内置入一个&lt;source&gt;标签，使浏览器将一个识别到的音频文件进行使用。</p>
+        <p>浏览器支持视频格式的情况如下表：</p>
+        <img src="img/code/htmlcode/code-html-55.jpg" class="dateImg w80p">
+        <p>&lt;video&gt;标签具有以下属性：</p>
+        <dl class="attrExplain">
+            <dt>width</dt>
+            <dd>设置视频播放器的宽度</dd>
+            <dt>height</dt>
+            <dd>设置视频播放器的高度</dd>
+            <dt>autoplay</dt>
+            <dd>如果出现该属性，则视频在就绪后马上播放</dd>
+            <dt>controls</dt>
+            <dd>如果出现该属性，则向用户显示控件，比如播放按钮</dd>
+            <dt>loop</dt>
+            <dd>如果出现该属性，则当媒介文件完成播放后再次开始播放</dd>
+            <dt>preload</dt>
+            <dd>如果出现该属性，则音频在页面加载时进行加载，并预备播放。若和“autoplay”同时使用，则该属性值会被忽略</dd>
+            <dt>src</dt>
+            <dd>要播放的视频的URL地址</dd>
+        </dl>
+        <p>&lt;video&gt;标签要兼容各种浏览器的写法当如下：</p>
+        <code class="w70p">
+            <img src="img/code/htmlcode/code-html-56.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-50.html" style="height:348px;"></iframe>
+    </section>
+    <section>
+        <p>除了上述标签，HTML中还提供了一系列语义化的标签来帮助布局，提升检索效率，主要有：</p>
+        <dl class="attrExplain">
+            <dt>&lt;header&gt;标签</dt>
+            <dd>定义页面头部</dd>
+            <dt>&lt;footer&gt;标签</dt>
+            <dd>定义页面脚部</dd>
+            <dt>&lt;nav&gt;标签</dt>
+            <dd>定义导航链接</dd>
+            <dt>&lt;section&gt;标签</dt>
+            <dd>定义页面中的区段</dd>
+            <dt>&lt;article&gt;标签</dt>
+            <dd>定义页面中的文章</dd>
+            <dt>&lt;aside&gt;标签</dt>
+            <dd>定义页面内容之外的内</dd>
+        </dl>
+    </section>
+    <!-- 章节练习 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+	    <p>将本节中学到的新标签自行在电脑上敲一遍。</p>
+	</section>
+</root>

@@ -117,7 +117,7 @@ root[data-root] p.noindent {
 }
 root[data-root] p em, root[data-root] dl.attrExplain dd em,  root[data-root] ul li em {
     font-size: 24px;
-    color: #0ac33b;
+    color: #0b933b;
 }
 /* data-root内的超链接 */
 root[data-root] a {
@@ -229,22 +229,22 @@ code img {
     -webkit-box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
     box-shadow: 0 4px 6px rgba(123, 123, 123, 0.33);
 }
-/*code.w95p { width: 95%;}
-code.w90p { width: 90%;}
-code.w85p { width: 85%;}
-code.w80p { width: 80%;}
-code.w75p { width: 75%;}
-code.w70p { width: 70%;}
-code.w65p { width: 65%;}
-code.w60p { width: 60%;}
-code.w55p { width: 55%;}
-code.w50p { width: 50%;}
-code.w45p { width: 45%;}
-code.w40p { width: 40%;}
-code.w35p { width: 35%;}
-code.w30p { width: 30%;}
-code.w25p { width: 25%;}
-code.w20p { width: 20%;}*/
+code.w95p img { width: 95%;}
+code.w90p img { width: 90%;}
+code.w85p img { width: 85%;}
+code.w80p img { width: 80%;}
+code.w75p img { width: 75%;}
+code.w70p img { width: 70%;}
+code.w65p img { width: 65%;}
+code.w60p img { width: 60%;}
+code.w55p img { width: 55%;}
+code.w50p img { width: 50%;}
+code.w45p img { width: 45%;}
+code.w40p img { width: 40%;}
+code.w35p img { width: 35%;}
+code.w30p img { width: 30%;}
+code.w25p img { width: 25%;}
+code.w20p img { width: 20%;}
 img.dateImg {
     width: auto;
     max-width: 100%;
