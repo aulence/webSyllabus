@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        div:last-child {
+            margin-bottom: 0;
+        }
+        div {
+            width: 200px; height: 100px;
+            background-color: #ff0;
+            border-width: 10px;
+            border-color: #888;
+            margin-right: 50px; margin-bottom: 20px;
+            box-sizing: border-box;
+            font: 22px/80px "微软雅黑";
+            text-align: center;
+            float: left;
+        }
+        div:nth-child(1) {
+            border-style: none;
+            line-height: 100px;
+        }
+        div:nth-child(2) { border-style: solid }
+        div:nth-child(3) { border-style: dotted }
+        div:nth-child(4) { border-style: dashed }
+        div:nth-child(5) { border-style: double }
+        div:nth-child(6) { border-style: groove }
+        div:nth-child(7) { border-style: ridge }
+        div:nth-child(8) { border-style: inset }
+        div:nth-child(9) { border-style: outset }
+    </style>
+</head>
+<body>
+    <div>none</div>
+    <div>solid</div>
+    <div>dotted</div>
+    <div>dashed</div>
+    <div>double</div>
+    <div>groove</div>
+    <div>ridge</div>
+    <div>inset</div>
+    <div>outset</div>
+</body>
+</html>

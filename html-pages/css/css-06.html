@@ -117,8 +117,98 @@
 	<!-- border -->
 	<section>
 	    <h3>元素边框“border”</h3>
-	    <p>该属性的作用是为设定该属性的元素添加边框。在“标准盒子模型”中，该属性的分支属性“border-width”所设置的值会增加元素的实际宽度和高度，而在“IE盒子模型中”该属性的分支属性“border-width”所设置的值会和“padding”（若设置或标签自带该属性）共同占据内容的空间。</p>
+	    <p>该属性的作用是为设定该属性的元素添加边框。在“标准盒子模型”中，该属性的分支属性“border-width”所设置的值会增加元素的实际宽度和高度，而在“IE盒子模型中”该属性的分支属性“border-width”所设置的值会和“padding”（若设置或标签自带该属性）共同占据内容的空间。该属性能对任何显示类型的元素设置，包括“行级元素（inline）”。</p>
 	    <p>“border”属性有三个分支属性：</p>
+	    <dl class="attrExplain">
+	        <dt>border-width</dt>
+	        <dd>设定边框的宽度。可以为Web技术中常用的度量单位，通常为像素“px”。</dd>
+            <p class="noindent">HTML代码部分为3个“&lt;div&gt;”标签，对应的CSS代码如下：</p>
+            <code>
+                <img src="img/code/csscode/code-css-102.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-59.html" style="height:146px;"></iframe>
+	        <dt class="mt15">border-style</dt>
+	        <dd>设置边框的类型，主要有以下可以设定的值：</dd>
+	        <ul>
+	            <li>none，无边框</li>
+	            <li>solid，实现边框</li>
+	            <li>dotted，点线边框</li>
+	            <li>dashed，虚线边框</li>
+	            <li>double，双线边框</li>
+	            <li>groove，3D凹槽边框</li>
+	            <li>ridge，3D凸槽边框</li>
+	            <li>inset，内浮雕边框</li>
+	            <li>outset，外浮雕边框</li>
+	        </ul>
+	        <p class="noindent">HTML代码部分为9个带文本的“&lt;div&gt;”标签，对应的CSS代码如下：</p>
+            <code class="w45p">
+                <img src="img/code/csscode/code-css-103.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-60.html" style="height:364px;"></iframe>
+	        <dt>border-color</dt>
+	        <dd>设置边框的颜色，可以是Web技术中常规的四种颜色值“英文单词”、“HEX”、“RGBa”和“HSLa”。</dd>
+	        <p class="noindent">HTML代码部分为4个带文本的“&lt;div&gt;”标签，对应的CSS代码如下：</p>
+            <code class="w60p">
+                <img src="img/code/csscode/code-css-104.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-61.html" style="height:124px;"></iframe>
+	    </dl>
+	    <p class="noindent">当然“border”属性的各个分支属性也能单独地对某个方向上的值进行设置。HTML代码部分为3个“&lt;div&gt;”标签，对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-105.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-62.html" style="height:166px;"></iframe>
+        <p class="noindent">“border”属性也有组合值的写法，该写法也是最常使用的方式。HTML代码部分为4个“&lt;div&gt;”标签，对应的CSS代码如下：</p>
+        <code class="w50p">
+            <img src="img/code/csscode/code-css-106.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-63.html" style="height:144px;"></iframe>
+        <p>除此之外，“border”还有一个很有趣的“玩”法，就是通过将元素的宽高都设为“0”，然后设置“border”的各分支属性的值将它作为一个“形状”来使用。我们来看这样一个例子：</p>
+        <code class="w65p">
+            <img src="img/code/csscode/code-css-107.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-64.html" style="height:114px;"></iframe>
+	</section>
+	<!-- 章节练习二 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习（二）&gt;</h3>
+        <p>设法用“border”属性将下面的图像在代码编辑器内实现，并在浏览器呈现：</p>
+        <p>1、图形的颜色按照图示设定；</p>
+        <p>2、图形的大小、倾斜角度均不限，只要图形相似即可；</p>
+        <p>3、禁止使用CSS3的“transform”属性。</p>
+        <p>&lt;提示&gt;</p>
+        <p>每个图形可以由多个元素组合，并妥善利用“float”属性及它的值“left”。</p>
+        <code class="w45p">
+            <img src="img/content/html/layout-02.jpg">
+        </code>
+	</section>
+	<!-- border-radius -->
+	<section>
+	    <h3>圆角的盒子“border-radius<supcss3></supcss3>”</h3>
+	    <p>该属性虽然带了一个“border”字样，同样也是用来设置元素的边界，但它和“border”并无太大的关系，它是对元素的“左上”、“右上”、“右下”和“左下”四个角的“圆度”进行设置。该属性能对任何显示类型的元素设置，包括“行级元素（inline）”。</p>
+        <p class="noindent">HTML部分为为4个等宽高的&lt;div&gt;标签，对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-108.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-65.html" style="height:124px;"></iframe>
+        <p>“border-radius”实现的原理是根据该属性所设置的值，在元素内建立一个以该值为半径的“<em>看不见的圆</em>”，并以该圆的边缘形状来设置边角的圆度。</p>
+        <p>上例中“第三个&lt;div&gt;”中有两个值，并用“/”符号进行分割，第一个值表示<em>水平方向</em>圆的半径，第二个表示<em>垂直方向</em>圆的半径。</p>
+        <p>上例中“第四&lt;div&gt;”中采用的是百分比，它表示在“水平方向”设置为“width”属性50%的值，在“垂直方向”也设置为“height”属性50%的值来绘制一个“看不见的圆”来表示四个角的圆度，若对“border-radius”的值用“百分比单位”进行统一设置（即不对四个角分别进行设置的情况，这在后面会讲到），那它的上限值就是“50%”，会呈现出一个“正圆（元素的宽高相等）”或“椭圆（元素的宽高不相等）”，在此基础上再增加这个值不会看到任何变化。</p>
+        <p>“border-radius”属性除了能统一对元素的边角进行设置，还能分别对一个矩形元素的四个角分别进行设置，如：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-109.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-66.html" style="height:124px;"></iframe>
+        <p>但在进行“border-radius”四个角分别设置的时候需要注意一个要点，就是设置方向一定要先是“top”或“bottom”方向，再是“left”或“right”方向，否则不能达到预期的效果。可以使用百分比单位（包括超过“50%”的百分比单位，超过150%后会将不再对选择的边角进行影响，而是对选择边角的“对角”进行影响了，这个值没有最大值，也就是一个无穷大的值，会让“对角”无限趋向一个“直角”，即让“对角”趋向一个没有设置过“border-radius”的边角的样式），但不能使用如“180px/90px”值的形式，否则该段CSS属性无效。</p>
+        <p>关于“border”和“border-radius”属性配合“CSS3”中新属性的更多“有趣”的玩法可以参照<a href="http://jingyan.baidu.com/article/e52e36154226ef40c70c5148.html" target="_blank">这个例子</a>。</p>
 	</section>
 </root>
 
