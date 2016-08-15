@@ -210,6 +210,92 @@
         <p>但在进行“border-radius”四个角分别设置的时候需要注意一个要点，就是设置方向一定要先是“top”或“bottom”方向，再是“left”或“right”方向，否则不能达到预期的效果。可以使用百分比单位（包括超过“50%”的百分比单位，超过150%后会将不再对选择的边角进行影响，而是对选择边角的“对角”进行影响了，这个值没有最大值，也就是一个无穷大的值，会让“对角”无限趋向一个“直角”，即让“对角”趋向一个没有设置过“border-radius”的边角的样式），但不能使用如“180px/90px”值的形式，否则该段CSS属性无效。</p>
         <p>关于“border”和“border-radius”属性配合“CSS3”中新属性的更多“有趣”的玩法可以参照<a href="http://jingyan.baidu.com/article/e52e36154226ef40c70c5148.html" target="_blank">这个例子</a>。</p>
 	</section>
+	<!-- outline -->
+	<section>
+	    <h3>元素的轮廓“outline”</h3>
+	    <p>该属性用于设置一个元素的轮廓线，和“border”不一样，“outline”无论在什么“盒子模型”下，都不会占据页面的空间，并且它不能分别去设置各个方向的值，即不能对“top”、“right”、“bottom”和“left”方向的“outline”进行分别设置，只能进行<em>统一设置</em>。在使用“<em>webkit</em>（老版本Chrome浏览器、Safari浏览器以及iOS和Android系统自带浏览器）”内核或“<em>blink</em>（以新版的Chrome浏览器和Opera浏览器为代表）”内核的浏览器中，该属性会在表单元素在获得焦点后自动出现，本意是让用户获得更好的交互体验，但该设定很多时候反而会影响我们对“Web”页面的风格设置，这个时候我们都是将它的值设置为“none”。另外，“outline”属性并不受圆角属性“border-radius”的影响。</p>
+	    <p>和“border”属性大体一致，“outline”有以下分支属性：</p>
+	    <dl class="attrExplain">
+	        <dt>outline-width</dt>
+	        <dd>设置轮廓线的宽度，能为Web技术中常用的度量单位，最常用的为像素“px”。</dd>
+	        <dt>outline-style</dt>
+	        <dd>设置轮廓线的样式，和“border-style”一致，这里就不在赘述。</dd>
+	        <dt>outline-color</dt>
+	        <dd>设置轮廓线的颜色，和“border-color”一样支持Web的四种“颜色模式”。</dd>
+	        <dt>outline-offset<supcss3></supcss3></dt>
+	        <dd>设置轮廓线相对元素边界的距离，通常以像素“px”为单位。</dd>
+	    </dl>
+	    <p class="noindent">HTML代码内容为：</p>
+	    <code class="w20p">
+            <img src="img/code/csscode/code-css-110.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w50p">
+            <img src="img/code/csscode/code-css-111.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-67.html" style="height:200px;"></iframe>
+	</section>
+	<!-- resize -->
+	<section>
+	    <h3>可调整元素大小的“resize<supcss3></supcss3>”</h3>
+	    <p>该属性是用于定义“块级元素”的大小是否可以调整、以何种方式（水平方向还是垂直方向）调整，该属性需要配合属性值为“auto”、“hidden ”或“scroll”的“<em>overflow</em>”属性使用，但被调整大小的元素的宽和高不能小于它原始的宽和高。另外，“resize”属性有个特别案例，就是能够对表单元素&lt;textarea&gt;使用，并且无需显示的去设置“overflow”属性。</p>
+	    <p>讲到“resize”这个属性，不得不提到四个新的属性，“<em>max-width</em>”和“<em>max-height</em>”，它们分别表示元素允许的“<em>最大宽度</em>”和“<em>最大高度</em>”，与之对应的是“<em>min-width</em>”和“<em>min-height</em>”，它们分别表示元素允许的“<em>最小宽度</em>”和“<em>最小高度</em>”。这四个属性除了在“resize”中运用比较多，在限制&lt;table&gt;单元格的宽高时也非常实用。</p>
+	    <p class="noindent">HTML代码内容为：</p>
+	    <code class="w50p">
+            <img src="img/code/csscode/code-css-112.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-113.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-68.html" style="height:240px;"></iframe>
+	</section>
+	<!-- box-shadow -->
+	<section>
+	    <h3>元素的阴影“box-shadow<supcss3></supcss3>”</h3>
+	    <p>该属性能够让元素获得一个“<em>阴影</em>”效果，根据颜色的不同，有时候也可以叫做“<em>发光</em>”效果。“box-shadow”属性没有分支属性，它的值是以“<em>组合值</em>”的形式设置的，它最多允许<em>6个值</em>的组合，按值的顺序分别代表：</p>
+        <dl class="attrExplain">
+            <dt>h-skewing（必要）</dt>
+            <dd>阴影在水平方向的偏移，负数是向左偏移，正数是向右偏移，单位为“px”。</dd>
+            <dt>v-skewing（必要）</dt>
+            <dd>阴影在垂直方向的偏移，负数是向上偏移，正数是向下偏移，单位为“px”。</dd>
+            <dt>blur（可选）</dt>
+            <dd>阴影的“模糊距离”或“模糊程度”，单位为“px”。</dd>
+            <dt>spread（可选）</dt>
+            <dd>阴影的扩展范围，若将“blur”设为“0”，该值则相当于一个可以进行位置偏移但不具备“outline-offset”的“outline”，单位为“px”。</dd>
+            <dt>color（可选）</dt>
+            <dd>阴影的颜色，支持Web技术中的常用颜色模式：“颜色英文单词”、“HEX”、“RGBa”、“HSLa”。</dd>
+            <dt>inset（可选）</dt>
+            <dd>将默认向外的阴影方向改为<em>向内</em>。</dd>
+        </dl>
+        <p class="noindent">HTML代码内容为4个左浮动的&lt;section&gt;标签，对应的CSS代码如下：</p>
+        <code class="w55p">
+            <img src="img/code/csscode/code-css-114.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-69.html" style="height:212px;"></iframe>
+        <p class="noindent">“box-shadow”还能设置<em>多组值</em>，每组值用英文“,”进行分割，可以让元素发出“多彩的光芒”。对应的CSS代码如下：</p>
+        <code class="w55p">
+            <img src="img/code/csscode/code-css-115.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-70.html" style="height:212px;"></iframe>
+	</section>
+	<!-- 章节练习三 -->
+	<section class="unitPractice">
+        <h3>&lt;章节练习（三）&gt;</h3>
+        <p>用CSS代码制作一个在四个方向发出不同“光芒”的元素，并在浏览器端呈现，要求如下：</p>
+        <p>1、元素的宽为“240像素”，高度为“180像素”；</p>
+        <p>2、四个方向分别是元素的“左上角”、“右上角”、“右下角”和“左下角”；</p>
+        <p>3、无论是水平方向还是在垂直方向偏移值都为30像素；</p>
+        <p>4、颜色分别是“rgba(235, 21, 21, 0.75)”、“rgba(202, 235, 21, 0.75)”、“rgba(21, 235, 103, 0.75)”和“rgba(21, 87, 235, 0.75)”；</p>
+        <p>5、元素内部有个不进行任何方向偏移，模糊距离20像素的“内发光”效果，颜色为“rgba(219, 21, 235, 0.75)”；</p>
+        <p>6、让该元素在浏览器中水平和垂直方向都居中。</p>
+        <p>&lt;友情提示&gt;</p>
+        <p>为了让“box-shadow”的多组值结构更加地清晰，建议在每组值设置完成并加上“,”号之后手动进行一次换行。</p>
+	</section>
 </root>
 
 

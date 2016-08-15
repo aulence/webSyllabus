@@ -95,6 +95,10 @@ header .topNav li:active {
     margin-left: -215px;
     transition: all 0.3s;
     left: 0; top: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .main .leftNav:hover {
     margin-left: 0;
