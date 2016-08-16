@@ -296,6 +296,94 @@
         <p>&lt;友情提示&gt;</p>
         <p>为了让“box-shadow”的多组值结构更加地清晰，建议在每组值设置完成并加上“,”号之后手动进行一次换行。</p>
 	</section>
+	<!-- display -->
+	<section>
+	    <h3>元素的显示方式“diapaly”</h3>
+	    <p>规定元素的“<em>显示类型</em>”，以目前的HTML标准来讲，HTML文档中自带的标签元素的“显示类型”已经被定义，如：</p>
+	    <ul class="indent">
+	        <li>&lt;div&gt;、&lt;p&gt;、&lt;header&gt;、&lt;main&gt;、&lt;footer&gt;、&lt;nav&gt;、&lt;section&gt;、&lt;article&gt;、&lt;ul&gt;、&lt;ol&gt;等为“block”</li>
+	        <li>&lt;input&gt;、&lt;img&gt;、&lt;textarea&gt;、&lt;button&gt;、&lt;meter&gt;、&lt;progress&gt;”等为“line-block”</li>
+	        <li>&lt;span&gt;、&lt;a&gt;、&lt;label&gt;、&lt;em&gt;、&lt;mark&gt;、&lt;audio&gt;、&lt;video&gt;等为“line”</li>
+	        <li>&lt;table&gt;为“table”，&lt;tr&gt;为“table-row”,&lt;th&gt;和&lt;td&gt;为“bable-cell”</li>
+	        <li>&lt;li&gt;为“list-item”等等</li>
+	    </ul>
+	    <p>如果考虑到布局需要，有的时候我们会强制的将“显示类型”进行转换，在进行转换后，该元素的功能和特性（如将&lt;div&gt;标签转换为“inline-block”之后，也不能嵌套在&lt;p&gt;里和转换为“block”的&lt;span&gt;里）也不会产生变化。所以，在元素页面布局的时候，若对“行内元素”、“行内块级元素”和“块级元素”已经理解得比较透彻了，根据需要完全可以大胆地对“显示类型”进行转换。</p>
+	    <p>“display”属性主要有以下类型的值：</p>
+	    <dl class="attrExplain">
+	        <dt>none（主要）</dt>
+	        <dd>将元素设定为不显示</dd>
+
+	        <dt>inline（主要）</dt>
+	        <dd>将元素设定为“行内元素”</dd>
+
+	        <dt>inline-block（主要）</dt>
+	        <dd>将元素设定为“行内块元素”</dd>
+
+	        <dt>block（主要）</dt>
+	        <dd>将元素设定为“块元素”</dd>
+
+	        <dt>list-item</dt>
+	        <dd>将元素设置为列表项</dd>
+
+	        <dt>run-in</dt>
+	        <dd>根据上下文作为“行内块元素”或“块元素”显示</dd>
+
+	        <dt>table</dt>
+	        <dd>将元素作为table显示</dd>
+
+	        <dt>inline-table</dt>
+	        <dd>将元素作为行内的table显示</dd>
+
+	        <dt>table-row-group</dt>
+	        <dd>将元素作为一个tbody元素来显示</dd>
+
+	        <dt>table-header-group</dt>
+	        <dd>将元素作为一个thead元素来显示</dd>
+
+	        <dt>table-footer-group</dt>
+	        <dd>将元素作为一个tfoot元素来显示</dd>
+
+	        <dt>table-row</dt>
+	        <dd>将元素作为一个tr元素来显示</dd>
+
+	        <dt>table-column-group</dt>
+	        <dd>将元素作为一个colgroup元素来显示</dd>
+
+	        <dt>table-column</dt>
+	        <dd>将元素作为一个col元素来显示</dd>
+
+	        <dt>table-cell</dt>
+	        <dd>将元素作为一个table单元格元素来显示</dd>
+
+	        <dt>table-caption</dt>
+	        <dd>将元素作为一个table标题显示</dd>
+	    </dl>
+	</section>
+	<section>
+	    <h3>元素可见性“visibility”</h3>
+	    <p>该属性用于设置元素“是否可见”，也就是即使元素是不可见的，那它所占据的空间也不会消失。“visibility”属性有以下值：</p>
+	    <dl class="attrExplain">
+	        <dt>visible（默认）</dt>
+	        <dd>设置元素为可见的</dd>
+
+	        <dt>hidden</dt>
+	        <dd>设置元素为不可见的</dd>
+
+	        <dt>collapse</dt>
+	        <dd>在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为“hidden”</dd>
+	    </dl>
+	    <p>我们通过一段代码的运行效果来对比“display”属性和“visibility”在元素显示、隐藏后的布局对比。</p>
+	    <p class="noindent">HTML代码示例：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-116.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-117.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-71.html" style="height:228px;"></iframe>
+	</section>
 </root>
 
 

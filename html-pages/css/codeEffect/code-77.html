@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            margin: 0; padding: 0;
+        }
+        button {
+            width: 72px; height: 32px;
+            background-color: transparent;
+            background-image: url("../../../img/bgi/example-bgi-05.png");
+            background-repeat: no-repeat;
+            border: none; outline: none;
+            font:18px "微软雅黑"; color: #fff;
+            padding: 0;
+            box-sizing: content-box;
+            cursor: pointer;
+        }
+        button:nth-child(1) {
+            width: 144px; height: 64px;
+            background-position: 0 0;
+        }
+        button:nth-child(2) { background-position: 0 0 }
+        button:nth-child(3):hover { background-position: -72px 0 }
+        button:nth-child(4):active { background-position: 0 -32px }
+        button:nth-child(5):disabled {
+            background-position: -72px -32px;
+            color: #ddd;
+            cursor: not-allowed;
+        }
+        button:nth-child(6):hover { background-position: -72px 0 }
+        button:nth-child(6):active { background-position: 0 -32px }
+    </style>
+</head>
+<body>
+    <form name="background-position">
+        <button type="button">全 部</button>
+        <button type="button">普 通</button>
+        <button type="button">悬 浮</button>
+        <button type="button">点 击</button>
+        <button type="button" disabled>禁 用</button>
+        <button type="button">全 效</button>
+    </form>
+</body>
+</html>

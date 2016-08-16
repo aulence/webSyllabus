@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        html,body {
+            margin: 0; padding: 0;
+        }
+        section {
+            width: 220px; height: 140px;
+            background-image: url("../../../img/bgi/example-bgi-02.jpg");
+            background-repeat: no-repeat;
+            border: 1px solid #aaa;
+            margin-right: 30px;
+            float: left;
+        }
+        section:nth-child(1) {
+            background-size: 180px 50%;
+        }
+        section:nth-child(2) {
+            background-size: 180px auto;
+            background-position: 50% 0;
+        }
+        section:nth-child(3) {
+            background-size: contain;
+        }
+        section:nth-child(4) {
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+</body>
+</html>

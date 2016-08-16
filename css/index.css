@@ -17,8 +17,9 @@ header, .main, .main .content {
     position: relative;
 }
 /* user-select */
-header {
+header, .main .leftNav, .toggleDynamicAnchor, .dynamicAnchor {
     -webkit-user-select: none;
+    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
@@ -95,10 +96,6 @@ header .topNav li:active {
     margin-left: -215px;
     transition: all 0.3s;
     left: 0; top: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 .main .leftNav:hover {
     margin-left: 0;
@@ -139,4 +136,77 @@ header .topNav li:active {
    /* margin-left: 220px;*/
     transition: all 0.3s;
     overflow-y: auto;
+}
+/* 动态锚点导航 */
+.toggleDynamicAnchor {
+    width: 78px; height: 30px;
+    background-color: rgba(17, 39, 138, 0.05);
+    border: 1px solid rgba(227, 227, 227, 0.1);
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    top: 60px; right: 25px;
+    transition: all 0.15s linear;
+    cursor: pointer;
+}
+.toggleDynamicAnchor:hover {
+    background-color: #11278a;
+    border-color: #213aac;
+    color: #fff;
+}
+.dynamicAnchor {
+    position: fixed;
+    top: 92px; right: 26px;
+    display: none;
+}
+.dynamicAnchor ul {
+    min-width: 220px; max-height: 460px;
+    background-color: #fff;
+    border-radius: 8px;
+    list-style: none;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 0; margin: 0;
+    box-shadow: 0 2px 4px rgba(97, 108, 118, 0.3);
+}
+.dynamicAnchor ul li {
+    width: 100%; height: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: none;
+    box-sizing: border-box;
+}
+.dynamicAnchor ul li:hover {
+    border-left: 4px solid #11278a;
+    border-right: 4px solid #11278a;
+}
+.dynamicAnchor ul li:first-child {
+    border-top: 1px solid #ddd;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.dynamicAnchor ul li:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.dynamicAnchor ul li a {
+    width: 100%; height: 100%;
+    padding: 0 12px;
+    text-decoration: none;
+    line-height: 30px;
+    font-size: 16px;
+    color: #666;
+    white-space: nowrap;
+    display: block;
+    box-sizing: border-box;
+}
+.dynamicAnchor ul li a:hover {
+    color: #11278a;
 }

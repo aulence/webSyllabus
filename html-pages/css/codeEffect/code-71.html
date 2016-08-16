@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            margin: 0; padding: 0;
+        }
+        section{ margin: 20px 0;}
+        input { vertical-align: middle;}
+        input[type="text"][name="visibility"],
+        input[type="text"][name="display"] {
+            width: 120px;
+            margin-right: 30px;
+        }
+        input[type="checkbox"] {
+            width: 20px; height: 20px;
+        }
+        /* “visibility”属性 */
+        input[type="text"][name="visibility"] { visibility: hidden }
+        input:checked + input[name="visibility"] {
+            visibility: visible;
+        }
+        /* “display”属性 */
+        input[type="text"][name="display"] { display: none }
+        input:checked + input[name="display"] {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <section>
+            <h3>“visibility”属性：</h3>
+            <input name="visibility" type="checkbox" checked>
+            <input name="visibility" type="text" value="visibility">
+            <input name="visibility" type="checkbox">
+            <input name="visibility" type="text" value="显示与否">
+            <input name="visibility" type="checkbox" checked>
+            <input name="visibility" type="text" value="都会占据">
+            <input name="visibility" type="checkbox">
+            <input name="visibility" type="text" value="本来的空间">
+        </section>
+        <section>
+            <h3>“display”属性：</h3>
+            <input name="display" type="checkbox" checked>
+            <input name="display" type="text" value="display">
+            <input name="display" type="checkbox">
+            <input name="display" type="text" value="隐藏后">
+            <input name="display" type="checkbox" checked>
+            <input name="display" type="text" value="不会再">
+            <input name="display" type="checkbox">
+            <input name="display" type="text" value="占据空间">
+        </section>
+    </form>
+</body>
+</html>

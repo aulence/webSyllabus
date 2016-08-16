@@ -18,3 +18,19 @@ input[type="radio"], input[type="checkbox"] {
 input[type="image"] {
     height: auto;
 }
+/* 自定义滚动条样式 */
+::-webkit-scrollbar { width: 14px;}
+::-webkit-scrollbar-track-piece {
+    background-color: #f0f0f0;
+    box-shadow: inset 0 0 4px rgba(15, 25, 78, 0.3);
+    margin: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2a90d1;
+    min-height: 80px;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: #11278a;
+    box-shadow: 0 2px 8px rgba(59, 63, 80, 0.8);
+}

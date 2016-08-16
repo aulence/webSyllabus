@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        html,body {
+            margin: 0; padding: 0;
+        }
+        section {
+            width: 260px; height: 180px;
+            background-image: url("../../../img/bgi/example-bgi-02.jpg");
+            border: 15px dotted #00d8ff;
+            padding: 15px;
+            font: 24px "微软雅黑"; color: #fff;
+            margin-right: 20px; margin-bottom: 20px;
+            float: left;
+        }
+        section:nth-child(1) {
+            background-clip: border-box;
+        }
+        section:nth-child(2) {
+            background-clip: padding-box;
+        }
+        section:nth-child(3) {
+            background-clip: content-box;
+        }
+        section:nth-child(4) {
+            background-origin: border-box;
+            clear: both;
+        }
+        section:nth-child(5) {
+            background-origin: padding-box;
+        }
+        section:nth-child(6) {
+            background-origin: content-box;
+        }
+    </style>
+</head>
+<body>
+    <section>background-clip: border-box</section>
+    <section>background-clip: padding-box</section>
+    <section>background-clip: content-box</section>
+    <section>background-origin: border-box</section>
+    <section>background-origin: padding-box</section>
+    <section>background-origin: content-box</section>
+</body>
+</html>

@@ -32,6 +32,20 @@ $(function() {
     leftNavLoad();
     // 点击左侧导航，向“div.content”载入页面
     loadContentPage();
+    // 显示隐藏“动态锚点导航”
+    $(".toggleDynamicAnchor").on("click",function() {
+        var hasRoot = $("root[data-root] section").length != 0;
+        if(hasRoot) {
+            $(this).next(".dynamicAnchor").toggle(200);
+        }
+        else {
+            $(this).next(".dynamicAnchor").hide(200);
+        }
+    });
+    // 点击其它地方隐藏“动态锚点导航”
+   $(".dynamicAnchor").on('focusout', function() {
+        $(this).hide(300);
+    });
 });
 
 /**********************************************/
@@ -170,6 +184,21 @@ function loadContentPage() {
                 content.html(rqContent);
 				// 转换该页面内的“code”
 				//switchHtml();
+                // 设置“动态锚点”导航及设置内部<section>的ID
+                var dynAnchorUl = $(".dynamicAnchor ul"),
+                    section = $("root[data-root]").find("section"),
+                    section_len = section.length;
+                // 重置“动态锚点”导航内容
+                dynAnchorUl.html("");
+                for(var i = 0; i < section_len; i++) {
+                    // 添加“动态锚点”导航容器的ID
+                    section.eq(i).children("h3").attr("id", "sec-" + i);
+                    // 获取页面内章节的标题名称文本
+                    var secHtml = section.eq(i).children("h3").html();
+                    dynAnchorUl.append(
+                        '<li><a href="#sec-' + i + '">' + secHtml + '</a></li>'
+                    );
+                }
             },300);
         });
     });

@@ -167,15 +167,15 @@ root[data-root] dl.attrExplain dd {
     margin-bottom: 12px;
 }
 root[data-root] ul {
-    list-style-position: inside;
     list-style-image: url("../img/content/sign-dt-ul.png");
     margin-top: 8px; margin-bottom: 8px;
+    list-style-position: outside;
 }
 root[data-root] ul.indent {
-    margin: 0 2em;
+    margin: 0 2em 0 4em;
 }
 root[data-root] ul.indentX2 {
-    margin: 0 4em;
+    margin: 0 4em 0 6em;
 }
 root[data-root] ul li {
     line-height: 160%;
@@ -285,7 +285,7 @@ suph5 {
      background: url("../img/content/h5_support.gif") no-repeat;
 }
 unsuph5 {
-     background: url("../img/content/h5_unSupport.gif") no-repeat;
+    background: url("../img/content/h5_unSupport.gif") no-repeat;
 }
 supcss3 {
     background: url("../img/content/css3_support.gif") no-repeat;
