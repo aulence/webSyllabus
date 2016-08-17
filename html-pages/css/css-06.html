@@ -298,13 +298,13 @@
 	</section>
 	<!-- display -->
 	<section>
-	    <h3>元素的显示方式“diapaly”</h3>
+	    <h3>元素的显示方式“display”</h3>
 	    <p>规定元素的“<em>显示类型</em>”，以目前的HTML标准来讲，HTML文档中自带的标签元素的“显示类型”已经被定义，如：</p>
 	    <ul class="indent">
 	        <li>&lt;div&gt;、&lt;p&gt;、&lt;header&gt;、&lt;main&gt;、&lt;footer&gt;、&lt;nav&gt;、&lt;section&gt;、&lt;article&gt;、&lt;ul&gt;、&lt;ol&gt;等为“block”</li>
-	        <li>&lt;input&gt;、&lt;img&gt;、&lt;textarea&gt;、&lt;button&gt;、&lt;meter&gt;、&lt;progress&gt;”等为“line-block”</li>
-	        <li>&lt;span&gt;、&lt;a&gt;、&lt;label&gt;、&lt;em&gt;、&lt;mark&gt;、&lt;audio&gt;、&lt;video&gt;等为“line”</li>
-	        <li>&lt;table&gt;为“table”，&lt;tr&gt;为“table-row”,&lt;th&gt;和&lt;td&gt;为“bable-cell”</li>
+	        <li>&lt;input&gt;、&lt;img&gt;、&lt;textarea&gt;、&lt;button&gt;、&lt;meter&gt;、&lt;progress&gt;”等为“inline-block”</li>
+	        <li>&lt;span&gt;、&lt;a&gt;、&lt;label&gt;、&lt;em&gt;、&lt;mark&gt;、&lt;audio&gt;、&lt;video&gt;等为“inline”</li>
+	        <li>&lt;table&gt;为“table”，&lt;tr&gt;为“table-row”,&lt;th&gt;和&lt;td&gt;为“table-cell”</li>
 	        <li>&lt;li&gt;为“list-item”等等</li>
 	    </ul>
 	    <p>如果考虑到布局需要，有的时候我们会强制的将“显示类型”进行转换，在进行转换后，该元素的功能和特性（如将&lt;div&gt;标签转换为“inline-block”之后，也不能嵌套在&lt;p&gt;里和转换为“block”的&lt;span&gt;里）也不会产生变化。所以，在元素页面布局的时候，若对“行内元素”、“行内块级元素”和“块级元素”已经理解得比较透彻了，根据需要完全可以大胆地对“显示类型”进行转换。</p>
