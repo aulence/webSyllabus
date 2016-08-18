@@ -153,7 +153,7 @@
     </section>
     <!-- background -->
     <section>
-        <h3>“background”组合值</h3>
+        <h3>背景组合值“background”</h3>
         <p>在实际的开发过程中为了节省代码量，减小维护难度，我们通常会采用组合值的写法去设置背景，通常是下面这种模式：</p>
         <code class="w85p">
             <img src="img/code/csscode/code-css-128.jpg">
@@ -163,8 +163,64 @@
     </section>
     <!-- background渐变 -->
     <section>
-        <h3>“background”背景色渐变</h3>
-        <p>稍后补充</p>
+        <h3>背景色渐变“background”<supcss3></supcss3></h3>
+        <p>“background”背景色渐变是利用不过的色彩在元素内以一定的方向进行颜色的过度变化。IE浏览器早期的版本里有一套滤镜标准，也包含了渐变的功能，不过当时除了IE内核（Trident）的浏览器具有该功能，其它浏览器如果要实现渐变都是通过将一张图片进行水平（repeat-x）和垂直（repeat-y）方向的重复进行实现的，直到CSS3标准的版本发布之后，主流的浏览器才开始普遍的支持滤镜这一特效。</p>
+        <p>在CSS3中渐变主要有两种类型：</p>
+        <dl class="attrExplain">
+            <dt>线性渐变</dt>
+            <dd>颜色的变化过度方式是沿着一条<em>直线</em>进行的。</dd>
+            <dd>执行线性渐变的先决条件是必须要具有<em>两种或以上的颜色</em>。</dd>
+            <p class="noindent">我们首先来执行一次最<em>基本的渐变</em>和一个<em>有方向的渐变</em>。<a href="html-pages/css/codeEffect/code-82.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w75p">
+                <img src="img/code/csscode/code-css-129.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-82.html" style="height:308px;"></iframe>
+            <p class="noindent">再来看一个从<em>边角方向开始的渐变</em>示例。<a href="html-pages/css/codeEffect/code-83.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w75p">
+                <img src="img/code/csscode/code-css-130.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-83.html" style="height:308px;"></iframe>
+            <p>有的时候我们在做某些网页的时候不希望自己的作品和别人的一样，千篇一律的都是水平、垂直、对角线方向的渐变，这个时候我们需要制作一些有<em>角度的渐变</em>了。<a href="html-pages/css/codeEffect/code-84.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w75p">
+                <img src="img/code/csscode/code-css-131.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-84.html" style="height:246px;"></iframe>
+            <p>需要提出的是在支持CSS3最开始的版本，也就是现在来说叫老版本的主流浏览器（Chrome,Safari,fiefox），对角度的“理解”是不一样的，它们的开始角度0度是从水平的右方，也就是“三点钟方向”开始的。所以在遇到老版本的主流浏览器时要能正确的区分。</p>
+            <p>之前我们已经讲到，CSS3的渐变需要两种或以上的颜色组成，也就是说除了我们上面演示的<em>双色渐变</em>，当然还有<em>多色渐变</em>。接下来我们就来看多色渐变的设置方式。<a href="html-pages/css/codeEffect/code-85.html" target="_blank">HTML部分</a>为3个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w80p">
+                <img src="img/code/csscode/code-css-132.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-85.html" style="height:246px;"></iframe>
+            <p>在之前的示例中，我们只用到了“HEX”的颜色模式来制作渐变效果，其实在CSS3的渐变中，仍然是支持“颜色英文单词”、“RGBa”和“HSLa”的颜色模式的。接下来我们以一个“RGBa”颜色模式为例，来看看渐变中的透明。<a href="html-pages/css/codeEffect/code-86.html" target="_blank">HTML部分</a>为3个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w95p">
+                <img src="img/code/csscode/code-css-133.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-86.html" style="height:520px;"></iframe>
+            <p>上例中的第三个元素，采用的是<em>多重多色</em>的渐变方式，这也是现在很多高质量设计的国外网站、App页面所使用的方式，虽说代码更佳的复杂，但会让表现效果更佳的出众。</p>
+            <p>以上的线性渐变效果都是用渐变的值“linear-gradient()”加“方向/角度”和“颜色”参数实现的，在CSS3中还有一种特殊的线性渐变方式，叫做“<em>重复线性渐变</em>”，我们来看下面的示例。</p>
+            <p><a href="html-pages/css/codeEffect/code-87.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+            <code>
+                <img src="img/code/csscode/code-css-134.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-87.html" style="height:244px;"></iframe>
+            <p>通过上面“repeating-linear-gradient()”的用发大家会发现还是比较复杂的，但是如果对它的理解够透彻，还是能够用它来做出很多“高质感”的东西的，比如说进度条、标尺等，再配合我们后续会学到的径向渐变能做出更多有创意的图形元素。</p>
+
+            <dt>径向渐变</dt>
+            <dd>颜色的变化过度方式是以一个圆的圆心为参照进行的。</dd>
+            <dd>“径向渐变”的属性值参数设置和“线性渐变”一致，属性值的写法为“radial-gradient（[参数设置]）”。我们来简单看一个“径向渐变”的例子。</dd>
+            <p><a href="html-pages/css/codeEffect/code-89.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w85p">
+                <img src="img/code/csscode/code-css-136.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-89.html" style="height:244px;"></iframe>
+        </dl>
     </section>
 </root>
 

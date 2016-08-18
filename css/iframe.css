@@ -1,7 +1,15 @@
 @charset "utf-8";
 body, html {
     margin: 0; padding: 0;
-    font-size: 18px;
+    font-size: 20px;
+    overflow: hidden;
+}
+body:after {
+    content: ".";
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
 }
 label {
     font-size: 20px;

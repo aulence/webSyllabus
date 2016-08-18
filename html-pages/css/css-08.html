@@ -1,0 +1,98 @@
+<root data-root="CSS过渡特效">
+    <section class="mt0">
+        <h3>CSS过渡特效概述</h3>
+        <p>在CSS中用于设置过渡特效的属性叫做“<em>transition</em><supcss3></supcss3>”，该属性允许CSS的属性值在一定的时间区间内平滑地过渡，这就拜托了我们在CSS3版本标准之前对“JavaScript”和“Flash”的依赖，使页面的性能得以提升。这种效果可以在鼠标悬浮（:hover）、鼠标单击（:active）、表单元素获得焦点（:focus）或对元素任何改变以及在JavaScript中某些事件执行后触发，并圆滑（若不对时间曲线进行特殊设置）地以动画效果改变CSS的属性值。</p>
+        <p>该属性能够对CSS中绝大部分属性的变化生效，但不能对“显示类型（display）”的转换生效，这点在使用中需要留意。该属性包含多个分支属性，接下来我们对它的各分支属性进行详细的学习。</p>
+    </section>
+    <!-- transition-property -->
+    <section>
+        <h3>执行变换的属性“transition-property”</h3>
+        <p>该属性是用来指定当元素其中一个属性改变时执行的过渡动画效果，该属性有三种类型的值：</p>
+        <dl class="attrExplain">
+            <dt>none</dt>
+            <dd>将过渡效果设置为“<em>无过渡效果</em>”，或<em>停止</em>当前过渡效果。</dd>
+
+            <dt>all（默认）</dt>
+            <dd>为所支持的所有CSS属性在<em>值变化时</em>执行动画过渡效果。</dd>
+
+            <dt>[property name]</dt>
+            <dd>指定一个或多个属性名称列表，以逗号“,”进行分隔，当指定的属性产生变化时，为其执行指定属性的动画过渡效果。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-90.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w55p">
+            <img src="img/code/csscode/code-css-137.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-90.html"></iframe>
+    </section>
+    <section>
+        <h3>过渡执行的时间“transition-duration”</h3>
+        <p>该属性是用于设定一个属性的值过渡被触发开始时到结束时所需要经历的时间，单位为秒（s），如：“0.3s”或“.3s”,它的默认值为“0”，单位不能省略，否则过渡动画无法执行。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-91.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-138.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-91.html"></iframe>
+    </section>
+    <section>
+        <h3>过渡时间曲线“transition-timing-function”</h3>
+        <p>该属性允许你根据时间的推进去改变属性值的变换速率，目前它可能够设置6个类型的值：</p>
+        <dl class="attrExplain">
+            <dt>ease</dt>
+            <dd>默认值，逐渐变慢。</dd>
+
+            <dt>linear</dt>
+            <dd>匀速。</dd>
+
+            <dt>ease-in</dt>
+            <dd>加速。</dd>
+
+            <dt>ease-out</dt>
+            <dd>减速。</dd>
+
+            <dt>ease-in-out</dt>
+            <dd>先加速，后减速。</dd>
+
+            <dt>cubic-bezier([参数])</dt>
+            <dd>可以定义一个时间曲线，可以为其配置四个参数，前两个参数为“x1”和“x2”，定义“<em>开始点</em>”，后两个参数为“y1”和“y2”，定义“<em>结束点</em>”。而“开始点”和“结束点”是通过两条“转换轴”分别去调整两个点来实现曲线的变化的，如果对Photoshop里面的“钢笔工具”的“路径”比较熟悉的话，稍加联想应该能理解到这个时间曲线轴的改变原理，这种曲线叫做“<em>赛贝尔曲线</em>”。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-92.html" target="_blank">HTML部分</a>为6个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w65p">
+            <img src="img/code/csscode/code-css-139.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-92.html"></iframe>
+    </section>
+    <section>
+        <h3>过渡延迟“transition-delay”</h3>
+        <p>该属性规定在用户进行操作后多久开始执行动画，也就是延迟执行过渡动画的时间，单位同样是秒“s”，写法与“transition-duration”一致，默认值同样为“0”。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-93.html" target="_blank">HTML部分</a>为6个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-140.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-93.html"></iframe>
+    </section>
+    <section>
+        <h3>综合的“transition”</h3>
+        <p>和其它大多数CSS样式设置属性一样“transition”属性也支持多值组合的写法，而且也是实际开发中最为常用的写法，能大大地节约代码量，但在编写该属性的时候一定要注意值的编写顺序，否则过渡动画执行会异常，甚至完全不能执行。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-94.html" target="_blank">HTML部分</a>为6个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w65p">
+            <img src="img/code/csscode/code-css-141.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-94.html"></iframe>
+    </section>
+    <!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+        <p>尝试用CSS3的过渡属性制作出一个“创意特效”，具体要求如下：</p>
+        <p>1、不能是简单的色彩、大小、字体等变化，要有一定创意；</p>
+        <p>2、制作效果扩展性强，能为以后的作业或项目中所使用。</p>
+	</section>
+</root>
+
+
+
+

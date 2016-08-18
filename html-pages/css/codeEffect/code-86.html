@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        html,body {
+            margin: 0; padding: 0;
+            height: 100%
+        }
+        section {
+            width: 320px; height: 220px;
+            margin-right: 20px;
+            float: left;
+        }
+body {
+    background: url("../../../img/bgi/example-bgi-07.jpg") no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+section:nth-child(1) {
+     background: -webkit-linear-gradient(0deg,rgba(126, 3, 191, 0.3),#bf0377);
+     background: -moz-linear-gradient(0deg,rgba(126, 3, 191, 0.3),#bf0377);
+     background: -ms-linear-gradient(0deg,rgba(126, 3, 191, 0.3),#bf0377);
+     background: linear-gradient(0deg,rgba(126, 3, 191, 0.3),#bf0377);
+}
+section:nth-child(2) {
+     background: -webkit-linear-gradient(45deg,#0279d0,transparent,#a021ef);
+     background: -moz-linear-gradient(45deg,#0279d0,transparent,#a021ef);
+     background: -ms-linear-gradient(45deg,#0279d0,transparent,#a021ef);
+     background: linear-gradient(45deg,#0279d0,transparent,#a021ef);
+}
+section:nth-child(3) {
+    background: -webkit-linear-gradient(0deg,rgba(126, 3, 191, 0.1),rgba(126, 3, 191, 0.8)),
+                -webkit-linear-gradient(90deg,black,hsla(0, 100%, 50%, 0.3));
+    background: -moz-linear-gradient(0deg,rgba(126, 3, 191, 0.1),rgba(126, 3, 191, 0.8)),
+                -moz-linear-gradient(90deg,black,hsla(0, 100%, 50%, 0.3));
+    background: -ms-linear-gradient(0deg,rgba(126, 3, 191, 0.3),rgb(126, 3, 191)),
+                -ms-linear-gradient(90deg,black,hsla(0, 100%, 50%, 0.3));
+    background: linear-gradient(0deg,rgba(126, 3, 191, 0.3),rgb(126, 3, 191)),
+                linear-gradient(90deg,black,hsla(0, 100%, 50%, 0.3));
+}
+    </style>
+</head>
+<body>
+    <section></section>
+    <section></section>
+    <section></section>
+</body>
+</html>

@@ -43,8 +43,8 @@ $(function() {
         }
     });
     // 点击其它地方隐藏“动态锚点导航”
-   $(".dynamicAnchor").on('focusout', function() {
-        $(this).hide(300);
+   $(".content,.dynamicAnchor").on("click", function() {
+        $(".dynamicAnchor").hide(300);
     });
 });
 
@@ -182,8 +182,6 @@ function loadContentPage() {
                 GLOBAL.removeLoadingAnimate();
                 // 载入并显示该页面
                 content.html(rqContent);
-				// 转换该页面内的“code”
-				//switchHtml();
                 // 设置“动态锚点”导航及设置内部<section>的ID
                 var dynAnchorUl = $(".dynamicAnchor ul"),
                     section = $("root[data-root]").find("section"),
@@ -199,7 +197,31 @@ function loadContentPage() {
                         '<li><a href="#sec-' + i + '">' + secHtml + '</a></li>'
                     );
                 }
-            },300);
+                // 延迟设置iframe内容高度（防止页面内容没有加载完成）
+                var abc = setTimeout(function(){
+                    // 获取当前页内iframe的个数
+                    var ifr = $("iframe.codeEffect"),
+                        ifr_len = ifr.length;
+                    for(var i = 0; i < ifr_len; i++) {
+                        var ifr_height = ifr.eq(i).contents().find("body").outerHeight();
+                        ifr.eq(i).css("height",(ifr_height + 40) + "px");
+                    }
+                },1000);
+            },0);
         });
     });
 }
+/*
+* 功能：自动设置iframe内元素的高度
+* 添加日期：2016年8月18日
+*/
+/*function setIframeHeight() {
+    // 获取当前页内iframe的个数
+    var ifr = $("iframe.codeEffect"),
+        ifr_len = ifr.length;
+    for(var i = 0; i < ifr_len; i++) {
+        var ifr_height = ifr.eq(i).contents().find("#main").outerHeight();
+        ifr.eq(i).css("height",(ifr_height + 20) + "px");
+    }
+}*/
+

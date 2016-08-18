@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        section {
+            font: 20px/130px arial;
+            box-sizing: border-box;
+        }
+        section {
+            width: 160px; height: 160px;
+            transition: all 1.2s;
+            background-color: #e80000;
+            border: 5px solid #131313;
+            margin-right: 20px; float: left;
+            text-align: center; color: #fff;
+        }
+        section:nth-child(1) {
+            transition-timing-function: ease; /*(0.25, 0.1, 0.25, 1.0)*/
+        }
+        section:nth-child(2) {
+            transition-timing-function: linear; /* (0.0, 0.0, 1.0, 1.0) */
+        }
+        section:nth-child(3) {
+            transition-timing-function: ease-in; /* (0.42, 0, 1.0, 1.0) */
+        }
+        section:nth-child(4) {
+            transition-timing-function: ease-out; /* (0, 0, 0.58, 1.0) */
+        }
+        section:nth-child(5) {
+            transition-timing-function: ease-in-out; /* (0.42, 0, 0.58, 1.0) */
+        }
+        section:nth-child(6) {
+            transition-timing-function: cubic-bezier(0, 0.79, 0.95, 0.1);
+        }
+        section:hover {
+            background-color: #131313;
+            border-color: #e80000;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <section>ease</section>
+    <section>linear</section>
+    <section>ease-in</section>
+    <section>ease-out</section>
+    <section>ease-in-out</section>
+    <section>cubic-bezier</section>
+</body>
+</html>

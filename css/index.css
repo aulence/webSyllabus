@@ -164,7 +164,7 @@ header .topNav li:active {
     display: none;
 }
 .dynamicAnchor ul {
-    min-width: 220px; max-height: 460px;
+    min-width: 220px; max-height: 480px;
     background-color: #fff;
     border-radius: 8px;
     list-style: none;

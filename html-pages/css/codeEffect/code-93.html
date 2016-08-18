@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        section {
+            font: 20px/200px arial;
+            box-sizing: border-box;
+        }
+        section {
+            width: 200px; height: 200px;
+            transition: all 0.6s linear;
+            background-color: #e80000;
+            border: 5px solid #131313;
+            margin-right: 20px; float: left;
+            text-align: center; color: #fff;
+        }
+        section:nth-child(1) {
+            transition-delay: 0s;
+        }
+        section:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+        section:nth-child(3) {
+            transition-delay: 0.8s;
+        }
+        section:nth-child(4) {
+            transition-delay: 1.2s;
+        }
+        section:hover {
+            background-color: #131313;
+            border-color: #e80000;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <section>0s</section>
+    <section>0.4s</section>
+    <section>0.8s</section>
+    <section>1.2s</section>
+</body>
+</html>

@@ -7,7 +7,7 @@
 /* 共用样式 */
 /**********************************************/
 /* 盒子模型 */
-root[data-root], code, output, .module-welcome, iframe.codeEffect {
+root[data-root], code, output, .module-welcome, iframe.codeEffect,iframe.codeEffect-unauto {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -256,12 +256,12 @@ img.dateImg.w80p {
 }
 
 /**** 实际显示效果 ****/
-output, iframe.codeEffect {
+output, iframe.codeEffect,iframe.codeEffect-unauto {
 	width: 100%; height: auto;
 	background-color: #fff;
 	border: 1px solid #ddd;
 	border-radius: 15px;
-	    box-shadow: 0 4px 4px rgba(182, 186, 188, 0.33);
+    box-shadow: 0 4px 4px rgba(182, 186, 188, 0.33);
 	padding: 10px;
 	font-size: 20px;
 	color: #000;
@@ -271,7 +271,8 @@ output input {
 	font-size: 18px;
 }
 /* iframe代码显示效果容器 */
-iframe.codeEffect {
+iframe.codeEffect,iframe.codeEffect-unauto {
+    overflow: hidden;
 }
 /* HTML5支持图标 */
 suph5,unsuph5,supcss3,unsupcss3 {

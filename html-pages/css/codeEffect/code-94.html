@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        section {
+            font: 46px/240px "jokerman";
+            box-sizing: border-box;
+        }
+        section {
+            width: 240px; height: 240px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-right: 20px; float: left;
+            text-align: center; color: transparent;
+            box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0);
+            transform: rotate(-360deg);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+        section:nth-child(1) {
+            background-image: url("../../../img/bgi/example-bgi-01.jpg");
+            transition: .4s linear;
+        }
+        section:nth-child(2) {
+            background-image: url("../../../img/bgi/example-bgi-02.jpg");
+            transition: all .9s 0.1s;
+        }
+        section:nth-child(3) {
+            background-image: url("../../../img/bgi/example-bgi-03.jpg");
+            transition: all 1.85s ease-in-out 0.2s;
+        }
+        section:nth-child(4) {
+            background-image: url("../../../img/bgi/example-bgi-04.jpg");
+            transition: 1.2s cubic-bezier(0, 0.79, 0.95, 0.1);
+        }
+        section:hover {
+            transform: rotate(0deg);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+            color: #fff;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <section>first</section>
+    <section>second</section>
+    <section>thread</section>
+    <section>fourth</section>
+</body>
+</html>
