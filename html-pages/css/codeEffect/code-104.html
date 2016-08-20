@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            height: 560px;
+            background: url("../../../img/content/example/exam-005.jpg") no-repeat;
+            background-size: cover;
+            background-position: left bottom;
+        }
+        section {
+            position: absolute;
+            cursor: pointer;
+        }
+        section:nth-child(1) {
+            width: 341px; height: 500px;
+            background: url("../../../img/content/example/exam-004.png") no-repeat;
+            left: 100px; top: 40px;
+            transform: rotate(-15deg);
+            transform-origin: 34px 463px;
+            transition: 0.6s ease-in;
+        }
+        section:nth-child(2) {
+            width: 260px; height: 260px;
+            background: url("../../../img/content/example/exam-003.png") no-repeat;
+            left: 480px; top: 280px;
+            transition: 0.2s ease-out 0.4s;
+        }
+        section:nth-child(3) {
+            width: 180px; height: 120px;
+            background-color: #fe9031;
+            border-radius: 50%;
+            line-height: 160%;
+            font: 36px "droid sans";
+            color: #fff;
+            padding: 40px;
+            left: 680px; top: 100px;
+            transition: 0.3s ease-out 0.6s;
+            opacity: 0;
+        }
+        section:nth-child(3):after {
+            content: "";
+            display: block;
+            border-width: 30px 15px 0 15px;
+            border-style: solid;
+            border-color: #fe9031 transparent transparent transparent;
+            position: absolute;
+            left: 80px; top: 192px;
+            transform: rotate(22deg);
+        }
+        section:nth-child(1):active {
+            transform: rotate(42deg);
+        }
+        section:nth-child(1):active + section {
+            transform: matrix(0.6,0.2,0,0.6,80,60);
+        }
+        section:nth-child(1):active ~ section:nth-child(3){
+            opacity: 1;
+            /*transform: translate(-60px, 40px);*/
+            transform: matrix(1,0.3,0,1,-50,90);
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <section></section>
+    <section>你砍不到我，哦嚯嚯嚯嚯...</section>
+</body>
+</html>

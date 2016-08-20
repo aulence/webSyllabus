@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            height: 300px;
+            padding-top: 60px;
+        }
+        section {
+            text-align: center;
+            color: #fff;
+            font: 46px/240px "snap itc";
+            box-sizing: border-box;
+        }
+        section {
+            width: 240px; height: 240px;
+            transition: 0.3s linear;
+            float: left;
+        }
+        section:nth-child(1) {
+            background-color: #9f0606;
+        }
+        section:nth-child(2) {
+            background-color: #239f06;
+        }
+        section:nth-child(3) {
+            background-color: #06539f;
+        }
+        section:nth-child(4) {
+            background-color: #93069f;
+        }
+        section:nth-child(1):hover {
+            transform: skewX(30deg);
+        }
+        section:nth-child(2):hover {
+            transform: skewY(30deg);
+        }
+        section:nth-child(3):hover {
+            transform: skew(15deg, 30deg);
+        }
+        section:nth-child(4):hover {
+            transform: skew(30deg, -30deg);
+        }
+    </style>
+</head>
+<body>
+    <section>first</section>
+    <section>second</section>
+    <section>third</section>
+    <section>fourth</section>
+</body>
+</html>

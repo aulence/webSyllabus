@@ -170,12 +170,10 @@ root[data-root] ul {
     list-style-image: url("../img/content/sign-dt-ul.png");
     margin-top: 8px; margin-bottom: 8px;
     list-style-position: outside;
+    margin-left: 1.6em;
 }
 root[data-root] ul.indent {
-    margin: 0 2em 0 4em;
-}
-root[data-root] ul.indentX2 {
-    margin: 0 4em 0 6em;
+    margin: 0 4em 0 4em;
 }
 root[data-root] ul li {
     line-height: 160%;

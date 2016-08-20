@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            height: 320px;
+        }
+        section {
+            text-align: center;
+            color: #fff;
+            font: 46px/240px "snap itc";
+            box-sizing: border-box;
+        }
+        section {
+            width: 240px; height: 240px;
+            transition: 0.3s linear;
+            float: left;
+        }
+        section:nth-child(1) {
+            background-color: #9f0606;
+        }
+        section:nth-child(2) {
+            background-color: #239f06;
+        }
+        section:nth-child(1):hover {
+            transform: translate(120px, 80px);
+        }
+        section:nth-child(2):hover {
+            transform: matrix(1,0,0,1,120,80);
+        }
+    </style>
+</head>
+<body>
+    <section>first</section>
+    <section>second</section>
+</body>
+</html>
