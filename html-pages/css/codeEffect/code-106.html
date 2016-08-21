@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        section {
+            width: 220px; height: 220px;
+            margin-right: 50px;
+            float: left;
+            border: 2px solid #000;
+            text-align: center;
+            font: 46px/220px "snap itc";
+            color: #fff;
+            box-sizing: border-box;
+        }
+        section:nth-child(1) {
+            -webkit-perspective: 0;
+        }
+        section:nth-child(2) {
+            -webkit-perspective: 200;
+        }
+        section:nth-child(3) {
+            -webkit-perspective: 400;
+        }
+        section:nth-child(4) {
+            -webkit-perspective: 1000;
+        }
+        section article {
+            transform: rotateY(45deg);
+            opacity: 0.9;
+        }
+        section:nth-child(1) article {
+            background-color: #9f0606;
+        }
+        section:nth-child(2) article {
+            background-color: #239f06;
+        }
+        section:nth-child(3) article {
+            background-color: #06539f;
+        }
+        section:nth-child(4) article {
+            background-color: #93069f;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article>first</article>
+    </section>
+    <section>
+        <article>second</article>
+    </section>
+    <section>
+        <article>third</article>
+    </section>
+    <section>
+        <article>fourth</article>
+    </section>
+</body>
+</html>

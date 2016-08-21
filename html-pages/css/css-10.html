@@ -1,0 +1,191 @@
+<root data-root="CSS变形转换">
+    <section class="mt0">
+        <h3>CSS动画概述</h3>
+        <p>在CSS中执行动画的属性是CSS3属性中的“animation<supcss3></supcss3>”，该属性可以让元素随着时间的推移，产生“位置”、“形状”、“颜色”、“大小”、“透明度”等属性变化。</p>
+        <p>它和“transition”的不同之处在于，它可以不需要任何事件的激活（当然也可以通过事件激活），让元素本身就“<em>挂载</em>”一系列的CSS属性变化。他和“transform”的不同之处在于，它并不需要“transition”的过渡特效，让元素可以通过“<em>关键帧</em>”的设置达到想要的动画运行的“速度曲线（赛贝尔曲线）”。“animation”属性和前两者还有一个比较显著的区别，就是它可以单独地存在，即可以不依赖任何选择器，但可以提供给任何与它动画<em>内容匹配</em>并且“显示类型”支持的选择器<em>调用</em>，它和前两者还有一个很显著的区别，就是它能够“无限次”地执行动画效果。</p>
+        <p>该属性可以和过渡属性“transition”搭配使用，但通常来讲是没有共存的意义的，因为“animation”也可以通过设置“animation-timing-function（动画时间曲线，区别于‘过渡时间曲线’）”来达到动画平滑或无规律的“过渡”效果。但该属性和变形转换属性“transform”配合起来使用，往往都会出现一些让人感到“惊艳”的效果。</p>
+        <p>该属性的执行需要通过关键帧“<em>@keyframes+[animation name]</em>”进行定义，该定义从CSS3技术发展的现状来看，还都需要在前面加上浏览器厂商的“前缀”，如：“@-webkit-keyframes”、“@-moz-keyframes”或“@-ms-keyframes”等，当然，和其它需要加前缀的属性一样，该定义也需要保留一份未加任何前缀的“初始定义”，以供现在或未来的一些支持该属性定义的其它浏览器厂商使用，如：“腾讯浏览器（采用‘X5’内核排版渲染）”。</p>
+        <p>接下来，我们开始对“animation”属性的各分支属性进行系统化的学习。</p>
+	</section>
+	<!-- animation-name -->
+	<section>
+	    <h3>动画名称“animation-name”</h3>
+	    <p>该属性用于定义动画的名称，以供需要使用该动画的“animation”属性调用，该名称完全是由用户自定义的，但也应该要“<em>语义化</em>”一些，方便调用者能更直观地了解此处定义动画的实际作用，而且切忌出现特殊符号（浏览器解析会存在差异），如一个改变元素大小动画的名称定义应该是：</p>
+	    <code class="w30p">
+            <img src="img/code/csscode/code-css-160.jpg">
+        </code>
+        <p class="noindent">在CSS选择器中的调用就应该是：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-161.jpg">
+        </code>
+	</section>
+	<!-- 动画关键帧的两种定义方式 -->
+	<section>
+	    <h3>动画关键帧的两种定义方式</h3>
+	    <p>定义动画的“关键帧”有两种方式，一种为“英文单词”定义模式，一种为“百分数”定义模式。</p>
+	    <dl class="attrExplain">
+	        <dt>英文单词模式</dt>
+	        <dd>该模式只包含两个关键帧，即开始帧“from”，表示动画开始时执行的CSS属性，和结束帧“to”，表示动画结束时执行的CSS属性。</dd>
+
+	        <dt>百分数模式</dt>
+	        <dd>该模式相对“英文单词”定义关键帧的模式更为详细，能够支持理论上从“0%”到“100%”之间的所有帧的定义，“0%”相当于“from”，表示动画开始帧，“100%”相当于“to”，表示动画结束帧。该模式由于控制的精细度高，书写修改容易，甚至可以通过“定义百分比的跳跃”或“CSS属性值的跳跃”来实现动画的“匀速”、“加速”、“减速”，“变速”等动画速率的变化，非常地灵活，所以这种写法也是现今最主流的定义动画关键帧的方式。</dd>
+	    </dl>
+	    <p class="noindent">以下就是两种模式的书写对比：</p>
+	    <code class="w30p">
+            <img src="img/code/csscode/code-css-164.jpg">
+        </code>
+	</section>
+	<!-- animation-duration -->
+	<section>
+	    <h3>动画执行时间“animation-duration”</h3>
+	    <p>该属性用于定义动画执行的时间，即一段动画从开始到动画结束所经历的时间，单位为秒“s”或毫秒“ms”，默认值为“0”，即看不执行任何动画，所以在定义设置一个动画的时候始终都要设置该属性，并给定一个大于“0”的时间。</p>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-109.html" target="_blank">HTML部分</a>有一个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+	    <code class="w35p">
+            <img src="img/code/csscode/code-css-162.jpg">
+        </code>
+        <p>当然，上例中的“animation”各属性都不一定要写在“:hover”的伪类选择器里，也可以直接写在“section”的选择器里，不过这样页面在加载时就会直接执行该动画，除非设置了动画执行次数“animation-iteration-count”属性（后面会讲到该属性），否则页面将无法再次执行该动画，这点和设置了“<em>CSS位移属性</em>”并设置了“transition”过渡属性的元素一样。</p>
+	</section>
+	<!-- animation-timing-function -->
+	<section>
+	    <h3>动画时间曲线“animation-timing-function”</h3>
+	    <p>该属性和“transition”的分支属性“transition-timing-function”十分相似，同样是用于定义元素随着时间的推进执行动画的速率变化。它同样有这样6个值：</p>
+	    <dl class="attrExplain">
+            <dt>ease</dt>
+            <dd>默认值，逐渐变慢。</dd>
+
+            <dt>linear</dt>
+            <dd>匀速。</dd>
+
+            <dt>ease-in</dt>
+            <dd>加速。</dd>
+
+            <dt>ease-out</dt>
+            <dd>减速。</dd>
+
+            <dt>ease-in-out</dt>
+            <dd>先加速，后减速。</dd>
+
+            <dt>cubic-bezier([参数])</dt>
+            <dd>可以定义一个时间曲线，可以为其配置四个参数，前两个参数为“x1”和“x2”，定义“<em>开始控制点</em>”，后两个参数为“y1”和“y2”，定义“<em>结束控制点</em>”。而“开始点”和“结束点”是通过这两条“转换点控制轴”分别去调整两个点来实现曲线的变化的。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-110.html" target="_blank">HTML部分</a>代码为4个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+        <code class="w65p">
+            <img src="img/code/csscode/code-css-163.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-110.html"></iframe>
+	</section>
+	<!-- animation-delay -->
+	<section>
+	    <h3>动画时间的延迟“animation-delay”</h3>
+	    <p>该属性和“transition”属性的“transition-delay”属性也十分相似，它规定在动画是在延迟多少秒“s”或毫秒“ms”后开始执行动画，默认值同样为“0”，即立即开始动画。</p>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-111.html" target="_blank">HTML部分</a>代码为4个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-165.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-111.html"></iframe>
+        <p>该属性在制作大规模“动画集”时十分常用，可以让元素在执行指定事件（包括加载事件）后有次序地前后对“挂载”的动画进行播放，从而组成一幅“生动”而“有故事性”的动画。</p>
+	</section>
+	<!-- animation-iteration-count -->
+	<section>
+	    <h3>动画播放的次数“animation-iteration-count”</h3>
+	    <p>该属性用于设置动画播放的次数。它可以设置3种类型的值：</p>
+	    <dl class="attrExplain">
+	        <dt>1（默认值）</dt>
+	        <dd>表示在执行某事件后只执行1次动画。</dd>
+
+	        <dt>[number]</dt>
+	        <dd>任意正整数，表示在执行某事件后只执行[numver]次动画。</dd>
+
+	        <dt>infinite</dt>
+	        <dd>表示在执行某事件后“无限次”执行动画。</dd>
+	    </dl>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-112.html" target="_blank">HTML部分</a>代码为3个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+        <code class="w55p">
+            <img src="img/code/csscode/code-css-166.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-112.html"></iframe>
+	</section>
+	<!-- animation-direction -->
+	<section>
+	    <h3>动画周期逆向播放“animation-direction”</h3>
+	    <p>该属性用于设置元素动画是否能够周期性地逆向播放，逆向动画播放的进行时间和“正向播放”一致，时间速度曲线会按照“100%（to）”到“0%（from）”的方向进行。</p>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-113.html" target="_blank">HTML部分</a>代码为：</p>
+        <code class="w50p">
+            <img src="img/code/csscode/code-css-167.jpg">
+        </code>
+        <p class="noindent">对应的CSS部分代码为：</p>
+        <code class="w65p">
+            <img src="img/code/csscode/code-css-168.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-113.html"></iframe>
+	</section>
+	<!-- animation-play-state -->
+	<section>
+	    <h3>动画的播放和暂停“animation-play-state”</h3>
+	    <p>该属性用于设置动画的播放和暂停状态，它有两个值：</p>
+	    <dl class="attrExplain">
+	        <dt>running</dt>
+	        <dd>播放动画。</dd>
+
+	        <dt>paused</dt>
+	        <dd>暂停动画。</dd>
+	    </dl>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-114.html" target="_blank">HTML部分</a>代码为：</p>
+        <code class="w50p">
+            <img src="img/code/csscode/code-css-169.jpg">
+        </code>
+        <p class="noindent">对应的CSS部分代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-170.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-114.html"></iframe>
+	</section>
+	<!-- animation-fill-mode -->
+	<section>
+	    <h3>设定元素动画形态“animation-fill-mode”</h3>
+	    <p>经过之前“animation”属性的学习应该会发现一个问题，就是若不将动画的“animation-iteration-count”属性设置为“infinite”值的话，动画在播放完成后会还原到元素没有“挂载”动画播放效果之前的状态，在有的应用场景里这样似乎没有问题，但在有些应用场景下，这样的设定会让人有一种“瞎忙活”或“功败垂成”的感觉。而“animation-fill-mode”属性的出现克服了这个问题，它可以预设值动画播放前的“第一帧”和保留动画播放完成后的“最后一帧”，可以通过以下值进行设置：</p>
+	    <dl class="attrExplain">
+	        <dt>backwards</dt>
+	        <dd>让元素保持动画第一帧定义里所设置的CSS属性，直到动画开始执行。</dd>
+
+	        <dt>forwards</dt>
+	        <dd>让元素保持动画播放结束后最后一帧定义里所设置的CSS属性。</dd>
+
+	        <dt>both</dt>
+	        <dd>让元素保持动画第一帧里定义的CSS属性，直到动画开始，动画播放完成后又保持动画最后一帧的属性。</dd>
+	    </dl>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-115.html" target="_blank">HTML部分</a>代码为3个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-171.jpg">
+        </code>
+        <h4>运行效果（需要重载框架页面）：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-115.html"></iframe>
+	</section>
+	<!-- animation -->
+	<section>
+	    <h3>组合值的写法“animation”</h3>
+	    <p>作为CSS里的3大亮点“transition”属性、“transform”属性、“animation”属性，“animation”的值自然也支持组合形式的书写，如例：</p>
+	    <code class="w70p">
+            <img src="img/code/csscode/code-css-172.jpg">
+        </code>
+        <p>当然，上例中是一种将“animation”中所有支持的值都罗列的形式，在实际操作中，是可以根据需要“选取”所需要的值进行组合的，如：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-173.jpg">
+        </code>
+        <p>通过上面组合值的写法，仔细一点的人应该能发现，就是无论用什么方式去组合“animation”的值，有两个值是必要的，就是“动画名称”和“动画执行时间”，原因很简单，没有动画名称，元素就无法去调用该动画，没有动画执行时间，就看不到动画效果。这点在以后的使用中要特别的留心，而且值组合的顺序也要尽量按照本章中分支属性介绍的顺序进行，否则很可能让你定义的动画出现“意料外”的情况。</p>
+	</section>
+	<!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+        <p>练习有的，作业也会有的。</p>
+	</section>
+</root>
+
+
+
+

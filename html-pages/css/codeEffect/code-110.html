@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        /*body {
+            padding: 50px;
+        }*/
+        section {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            font: 42px/180px "snap itc";
+            box-sizing: border-box;
+            float: left;
+            margin-right: 50px;
+        }
+        section:nth-child(3){
+            padding-top: 40px;
+            font: 36px/50px "snap itc";
+        }
+        section:nth-child(4){
+            padding-top: 30px;
+            font: 36px/50px "snap itc";
+        }
+        section:nth-child(1) { background-color: #ba0a0a; }
+        section:nth-child(2) { background-color: #15b108; }
+        section:nth-child(3) { background-color: #0a47ba; }
+        section:nth-child(4) { background-color: #ba0a98; }
+        section:nth-child(1):hover,section:nth-child(2):hover,
+        section:nth-child(3):hover,section:nth-child(4):hover {
+             animation: rotateSection 3s;
+        }
+        section:nth-child(1):hover {
+            animation-timing-function: ease;
+        }
+        section:nth-child(2):hover {
+            animation-timing-function: linear;
+        }
+        section:nth-child(3):hover {
+            animation-timing-function: ease-in-out;
+        }
+        section:nth-child(4):hover {
+            animation-timing-function: cubic-bezier(1, -0.3, 0.99, 0.62);
+        }
+        @keyframes rotateSection {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <section>ease</section>
+    <section>linear</section>
+    <section>ease-in-out</section>
+    <section>cubic-bezier</section>
+</body>
+</html>

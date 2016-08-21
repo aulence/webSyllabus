@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        /*body {
+            padding: 50px;
+        }*/
+        section {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            font: 32px/180px "snap itc","华文琥珀";
+            box-sizing: border-box;
+            float: left;
+            margin-right: 50px;
+            cursor: default;
+        }
+        section:nth-child(1) { background-color: #ba0a0a; }
+        section:nth-child(2) { background-color: #15b108; }
+        section:nth-child(3) { background-color: #0a47ba; }
+        section:nth-child(4) { background-color: #ba0a98; }
+        section:nth-child(1):hover,section:nth-child(2):hover,
+        section:nth-child(3):hover,section:nth-child(4):hover {
+             animation: rotateSection 0.6s linear;
+        }
+        section:nth-child(1):hover {
+            animation-delay: 0s;
+        }
+        section:nth-child(2):hover {
+            animation-delay: 0.4s;
+        }
+        section:nth-child(3):hover {
+            animation-delay: 0.8s;
+        }
+        section:nth-child(4):hover {
+            animation-delay: 1.2s;
+        }
+        @keyframes rotateSection {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <section>延迟0s</section>
+    <section>延迟0.4s</section>
+    <section>延迟0.8s</section>
+    <section>延迟1.2s</section>
+</body>
+</html>

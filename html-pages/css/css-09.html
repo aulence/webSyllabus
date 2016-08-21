@@ -134,17 +134,70 @@
     <!-- transform-style -->
     <section>
         <h3>3D嵌套样式“transform-style”</h3>
-        <p>（内容在注册登录回复后可见）</p>
+        <p>该属性规定如何在3D空间中呈现被嵌套的元素（是子元素，而不是元素本身），它主要有两个值：</p>
+        <dl class="attrExplain">
+            <dt>flat</dt>
+            <dd>表示所有子元素在2D平面呈现。</dd>
+
+            <dt>preserve-3d</dt>
+            <dd>表示所有子元素在3D空间中呈现。</dd>
+        </dl>
+        <p>当“transform-style”的值为“preserve-3D”时更贴近我们现实中的思维，因为平时我们眼睛所看到的东西都是“3D（立体）”的，而当值为“flat”的时候，就相当于在纸上画画，无论画功再好，画出的东西都是平面的，只是由于透视和明暗关系，有的时候看起来<a href="http://www.gexing.com/shaitu/724322.html" target="_blank">“很立体”</a>罢了。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-105.html" target="_blank">HTML</a>部分的代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-153.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码为：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-154.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-105.html"></iframe>
     </section>
     <!-- perspective -->
     <section>
-        <h3>3D透视“perspective”</h3>
-        <p>（内容在注册登录回复后可见）</p>
+        <h3>3D透视“perspective”和“perspective-origin”</h3>
+        <p>“perspective”属性定义3D元素距视图的距离，它只对转换为了3D模式的元素生效，单位为像素。而定义了“perspective-origin”属性会让子元素（元素本身不会生效）获得透视效果，它是用于定义3D元素底部的位置，默认值是“50% 50%”或“center center”，表示3D元素透视的位置是以子元素的“中心”开始的。</p>
+        <p>“perspective”属性有两种使用方式，一种是直接作为一个属性去使用，即“perspective:400”的形式；还有一种形式是作为“Transform”属性的值去使用，这个时候就需要加上单位了，即：“transform: perspective(400px)”。</p>
+        <p>为了避免理解的混淆，我们首先来对“perspective”属性进行讲解。不同的浏览器器需要加上该浏览器的“<em>前缀</em>”，这里使用“Chrome v51”作为测试，考虑到篇幅限制这里就只测试了“-webkit-”前缀的“perspective”属性。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-106.html" target="_blank">HTML</a>部分的代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-155.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-156.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-106.html"></iframe>
+        <p>接来下我们再来看看“perspective-origin”属性的影响，为了避免差异带来的混淆，我们<a href="html-pages/css/codeEffect/code-107.html" target="_blank">HTML</a>部分采用同样的代码，将在“Y轴”上的旋转统一为“30度”，透视距离统一为“300像素”，对应的CSS代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-157.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-107.html"></iframe>
     </section>
     <!-- backface-visibility -->
     <section>
         <h3>3D翻转背面可见性“backface-visibility”</h3>
-        <p>（内容在注册登录回复后可见）</p>
+        <p>该属性定义当3D元素不面向屏幕时是否可见，该属性有两个值：</p>
+        <dl class="attrExplain">
+            <dt>visible（默认）</dt>
+            <dd>表示当3D元素通过“rotate”属性旋转到元素“背部”时，元素仍然可见。</dd>
+
+            <dt>hidden</dt>
+            <dd>表示当3D元素通过“rotate”属性旋转到元素“背部”时，元素不可见。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-108.html" target="_blank">HTML</a>部分代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-158.jpg">
+        </code>
+        <p class="noindent">对应的CSS部分代码为：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-159.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-108.html"></iframe>
     </section>
     <!-- 章节练习 -->
     <section class="unitPractice">

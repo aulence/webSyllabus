@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        section {
+            width: 240px; height: 240px;
+            margin-right: 50px;
+            float: left;
+            position: relative;
+        }
+        section article {
+            width: 100%; height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font: 56px/240px "snap itc";
+            color: #fff;
+            box-sizing: border-box;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+            transition: 0.6s linear;
+            border: 2px solid #0ff;
+            position: absolute;
+        }
+        section:nth-child(1) {
+            background-color: #d30000;
+            transform-style: flat;
+        }
+        section:nth-child(1) article {
+            background-image: url("../../../img/bgi/example-bgi-01.jpg");
+        }
+        section:nth-child(1) article:hover {
+            transform: rotateX(45deg) rotateY(30deg);
+        }
+        section:nth-child(2) {
+            background-color: #0041d3;
+            transform-style: preserve-3d;
+        }
+        section:nth-child(2) article {
+            background-image: url("../../../img/bgi/example-bgi-03.jpg");
+        }
+        section:nth-child(2) article:hover {
+            transform: rotateX(45deg) rotateY(30deg);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article>first</article>
+    </section>
+    <section>
+        <article>second</article>
+    </section>
+</body>
+</html>
