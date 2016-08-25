@@ -96,6 +96,7 @@ header .topNav li:active {
     margin-left: -215px;
     transition: all 0.3s;
     left: 0; top: 0;
+    z-index: 2;
 }
 .main .leftNav:hover {
     margin-left: 0;
@@ -128,6 +129,7 @@ header .topNav li:active {
 .leftNav li a.checked {
     background-color: #11278a;
     color: #fff;
+    animation: sendNavButton 0.9s cubic-bezier(.31, 0, .57, .01);
 }
 /* 页面主要内容 */
 .main .content {
@@ -209,4 +211,18 @@ header .topNav li:active {
 }
 .dynamicAnchor ul li a:hover {
     color: #11278a;
+}
+
+/**********************************************/
+/* 动画设置 */
+/**********************************************/
+@-webkit-keyframes sendNavButton {
+    0% { 
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(1280px, 0px);
+        opacity: 0;
+    }
 }

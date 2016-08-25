@@ -1,0 +1,53 @@
+<root data-root="HTML5实用标签">
+    <section class="mt0">
+        <h3>HTML全局属性概述</h3>
+        <p>HTML全局属性是可以应用于几乎所有（部分属性有一定的应用范围限制）的HTML标签的属性，现在已知的属性有16个，其中有一半左右是HTML5标准后出现的，很多属性在我们之前的学习中都已经接触过了的，能熟练地记识这些属性能够给我们之后的Web开发带来很多便利，减少开发中所犯的一些低级错误。作为一个Web前端工程师，能够准确地区分全局属性和<em>特殊属性</em>也是一项重要的基本功。接下来我们就来看看在HTML中哪些属性能够作为并为大部分主流浏览器所兼容的全局属性。</p>
+    </section>
+    <!-- id -->
+    <section>
+        <h3>唯一标识符“id”</h3>
+        <p>该属性能用于所有的HTML元素，为HTML元素指定一个唯一的标识符，用于CSS设置，JavasSript进行操作或其它脚本语言及服务器端语言进行设置操作。如：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-65.jpg">
+        </code>
+    </section>
+    <!-- class -->
+    <section>
+        <h3>元素类名“class”</h3>
+        <p>该属性可以用于所有HTML元素，为元素添加一个或<em>多个</em>类名。通常是用于CSS设置或配合JavaScript进行操作设置，多个类名以空格符进行分隔。如：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-66.jpg">
+        </code>
+    </section>
+    <!-- style -->
+    <section>
+        <h3>元素样式“style”</h3>
+        <p>该属性可以用于所有HTML元素，通过它的值可以给HTML元素设置CSS样式，语法和标准的CSS语法一致。如：</p>
+        <code class="w55p">
+            <img src="img/code/htmlcode/code-html-67.jpg">
+        </code>
+        <p>虽然通过该属性来设置CSS属性看似方便，但这样会让CSS的可复用性和可维护性都变得相当的糟糕，所以，除非对非常特殊的元素使用该属性，否则还是建议将样式写进独立的CSS文件当中对元素的样式进行设置。</p>
+    </section>
+    <!-- title -->
+    <section>
+        <h3>元素额外信息“title”</h3>
+        <p>该属性可以用于所有HTML元素，通过设置它的值，可以让用户鼠标悬浮在该元素上显示出“title”属性中所设置的值。如：</p>
+        <code class="w35p">
+            <img src="img/code/htmlcode/code-html-68.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-59.html"></iframe>
+        <p>该属性在现在PC端中的Web开发非常常用，由于现在Web设计的趋势是简洁化、扁平化设计，页面上的元素也需要极力地简洁，很多常用的按钮甚至都没有文字，而是采用一个图标进行替代。但这样的设计会让有些用户不清楚按钮的实际用途，这个时候“title”就能起到一个补充说明的作用。</p>
+    </section>
+    <!-- lang -->
+    <section>
+        <h3>语言设置“lang”</h3>
+        <p>该属性用于设置元素的语言类型，不支持的标签有&lt;base&gt;,&lt;br&gt;,&lt;frame&gt;,&lt;frameset&gt;,&lt;hr&gt;,&lt;iframe&gt;,&lt;param&gt; 及 &lt;script&gt;，但通常的使用方式是直接给&lt;html&gt;标签设置该属性。<p>
+    </section>
+    
+    <!-- 章节练习 -->
+	<section class="unitPractice">
+	    <h3>章节练习</h3>
+	    <p>练习有的，作业也会有的。</p>
+	</section>
+</root>

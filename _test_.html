@@ -1,46 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>HTML标签编写测试</title>
-    <style>
-        div {
-            width: 320px; height: 240px;
-            border: 2px solid #ffbf10;
-        }
-        section {
-            /* 分别表示：动画名称、执行时间、速度曲线、延迟时间、播放次数、周期逆向播放、
-            播放状态（开始/暂停）、首帧预设/末帧保留 */
-            animation: animName 1s ease 0.3s infinite alternate running both;
-
-            /* 执行动画“animName”，播放时间为2秒 */
-            animation: animName 2s;
-
-            /* 执行动画“animName”，播放时间为2秒，匀速播放 */
-            animation: animName 2s linear;
-
-            /* 执行动画“animName”，播放时间为2秒，延迟0.5秒播放 */
-            animation: animName 2s 0.5s;
-
-            /* 执行动画“animName”，播放时间为2秒，无限次播放 */
-            animation: animName 2s infinite;
-
-            /* 执行动画“animName”，播放时间为2秒，无限次播放，周期逆向播放 */
-            animation: animName 2s infinite alternate;
-
-            /* 执行动画“animName”，播放时间为2秒，延迟1秒，播放前显示首帧样式，
-            播放完成保留最后一帧样式 */
-            animation: animName 2s 1s both;
-
-            /* 等等... */
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div>
-        <img src="img/bgi/example-bgi-07.jpg" alt="">
-    </div>
+    <form class="userInfo">
+        <div class="line-0 bgc-red">
+            <label>用户名：</label>
+            <input class="userName" type="text">
+        </div>
+        <div class="line-1 bgc-blue">
+            <label>密码：</label>
+            <input class="userPwd" type="password">
+        </div>
+        <div class="line-2 bgc-no">
+            <button class="submitInfo" type="button">提交</button>
+        </div>
+    </form>
 </body>
 </html>
-
-

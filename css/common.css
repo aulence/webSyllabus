@@ -254,6 +254,7 @@ img.dateImg.w80p {
 }
 
 /**** 实际显示效果 ****/
+/* iframe代码显示效果容器 */
 output, iframe.codeEffect,iframe.codeEffect-unauto {
 	width: 100%; height: auto;
 	background-color: #fff;
@@ -264,12 +265,6 @@ output, iframe.codeEffect,iframe.codeEffect-unauto {
 	font-size: 20px;
 	color: #000;
 	display: block;
-}
-output input {
-	font-size: 18px;
-}
-/* iframe代码显示效果容器 */
-iframe.codeEffect,iframe.codeEffect-unauto {
     overflow: hidden;
 }
 /* HTML5支持图标 */
