@@ -179,6 +179,37 @@ root[data-root] ul li {
     line-height: 160%;
     font-size: 20px;
 }
+/**** 名词对应列表项 ****/
+root[data-root] ul.corresNouns {
+    list-style: none;
+}
+root[data-root] ul.corresNouns > li {
+    width: 340px; height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+root[data-root] ul.corresNouns > li > span {
+    line-height: 30px;
+    background-color: #fff;
+    white-space: nowrap;
+    position: absolute;
+    display: block;
+}
+root[data-root] ul.corresNouns > li > span:first-child {
+    top: 0; left: 0;
+}
+root[data-root] ul.corresNouns > li > span:first-child:after {
+    content: " ·······················································································";
+}
+root[data-root] ul.corresNouns > li > span:last-child {
+    background-color: #fff;
+    top: 0; right: 0;
+}
+root[data-root] ul.corresNouns > li > span:last-child:before {
+    content: " ";
+    display: inline-block;
+    width: 6px;
+}
 /**** 载入中的效果 ****/
 .content .loading {
     width: 90px; height: 30px;

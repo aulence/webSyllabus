@@ -42,12 +42,61 @@
     <!-- lang -->
     <section>
         <h3>语言设置“lang”</h3>
-        <p>该属性用于设置元素的语言类型，不支持的标签有&lt;base&gt;,&lt;br&gt;,&lt;frame&gt;,&lt;frameset&gt;,&lt;hr&gt;,&lt;iframe&gt;,&lt;param&gt; 及 &lt;script&gt;，但通常的使用方式是直接给&lt;html&gt;标签设置该属性。<p>
+        <p>该属性用于设置元素的语言类型，不支持的标签有&lt;base&gt;,&lt;br&gt;,&lt;frame&gt;,&lt;frameset&gt;,&lt;hr&gt;,&lt;iframe&gt;,&lt;param&gt; 及 &lt;script&gt;，但通常的使用方式是直接给&lt;html&gt;标签设置该属性，如：&lt;html lang="<em>zh-cn</em>"&gt;、&lt;html lang="zh"&gt;、&lt;html lang="en"&gt;这样的形式，分别表示将语言类型设置为“简体中文”、“中文”、“英文”。<p>
+        <p>现在很多<em>IDE</em>（代码编辑器）都有HTML基本文档的生成功能，有些国外的IDE会在默认生成的HTML文档结构中将&lt;html&gt;标签的“lang”属性的值设置为“en”，这样在有些中文版的现代浏览器（如中文版的“Google Chrome”）启动该网页时就会询问用户“是否翻译该网站”，这对于国内网站来说，显然是有损用户体验的。所以，我们在自动生成文档结构后都需要习惯性地检查一下&lt;html&gt;中的“lang”属性值是否是我们需要的“zh-cn”。当然，如果是进入跨国、外资企业，很多时候开发的并不是中文网站，这个时候就需要将“lang”设置为指定的国家语言了。</p>
+        <p class="noindent">下面是一些其它国家，及对应的语言类型简写：</p>
+        <ul class="corresNouns">
+            <li><span>英国</span><span>EN</span></li>
+            <li><span>日本</span><span>JA</span></li>
+            <li><span>法国</span><span>FR</span></li>
+            <li><span>西班牙</span><span>ES</span></li>
+            <li><span>葡萄牙</span><span>PT</span></li>
+            <li><span>德国</span><span>DE</span></li>
+            <li><span>印度尼西亚</span><span>ID/IN</span></li>
+            <li><span>意大利</span><span>IT</span></li>
+            <li><span>韩国</span><span>KO</span></li>
+            <li><span>马来西亚</span><span>MS</span></li>
+            <li><span>罗马利亚</span><span>RO</span></li>
+            <li><span>俄罗斯</span><span>RU</span></li>
+            <li><span>瑞典</span><span>SV</span></li>
+            <li><span>威尔士</span><span>CY</span></li>
+        </ul>
     </section>
+    <!-- accesskey -->
+    <section>
+        <h3>元素激活“accesskey”</h3>
+        <p>该属性用于激活元素，通常作用是让表单元素获得焦点,实现方式是通过键盘上的“Alt”键加上该属性设置的属性值，属性值是用户键盘上指定的任意<em>一个字母</em>或<em>一个常用符号</em>。</p>
+        <p class="noindent">部分样式已用CSS进行设置，HTML部分代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-69.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-60.html"></iframe>
+    </section>
+    <!-- tabindex -->
+    <section>
+        <h3>Tab键切换的次序“tabindex”</h3>
+        <p>该属性用于设定当用户按下键盘上的“Tab”键后，页面内可以获得焦点的元素获得焦点的次序（默认是基于文档流“从左到右，从上到下”的次序）。切换次序的先后遵循以下规则：</p>
+        <ul class="indent">
+            <li>必须为正整数</li>
+            <li>数字小的先获得焦点，数字大的后获得焦点</li>
+            <li>数字并不需要连续，如“1、2、5、7...”也能正常按次序跳转焦点</li>
+            <li>同样的数字，在文档流中先出现的先获得焦点，后出现的后获得焦点</li>
+            <li>不能为负数，否则会被忽略</li>
+            <li>可以为“0”，但会被排序到最后一个获得焦点</li>
+        </ul>
+        <p class="noindent">部分样式已用CSS进行设置，HTML部分代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-70.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-61.html"></iframe>
+    </section>
+
     
     <!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 	    <h3>章节练习</h3>
 	    <p>练习有的，作业也会有的。</p>
-	</section>
+	</section>-->
 </root>

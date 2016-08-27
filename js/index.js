@@ -204,7 +204,7 @@ function loadContentPage() {
                         ifr_len = ifr.length;
                     for(var i = 0; i < ifr_len; i++) {
                         var ifr_height = ifr.eq(i).contents().find("body").outerHeight();
-                        ifr.eq(i).css("height",(ifr_height + 30) + "px");
+                        ifr.eq(i).css("height",(ifr_height + 22) + "px");
                     }
                 },1000);
             },0);
