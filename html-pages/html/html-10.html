@@ -1,4 +1,4 @@
-<root data-root="HTML5实用标签">
+<root data-root="HTML全局属性">
     <section class="mt0">
         <h3>HTML全局属性概述</h3>
         <p>HTML全局属性是可以应用于几乎所有（部分属性有一定的应用范围限制）的HTML标签的属性，现在已知的属性有16个，其中有一半左右是HTML5标准后出现的，很多属性在我们之前的学习中都已经接触过了的，能熟练地记识这些属性能够给我们之后的Web开发带来很多便利，减少开发中所犯的一些低级错误。作为一个Web前端工程师，能够准确地区分全局属性和<em>特殊属性</em>也是一项重要的基本功。接下来我们就来看看在HTML中哪些属性能够作为并为大部分主流浏览器所兼容的全局属性。</p>
@@ -31,7 +31,8 @@
     <!-- title -->
     <section>
         <h3>元素额外信息“title”</h3>
-        <p>该属性可以用于所有HTML元素，通过设置它的值，可以让用户鼠标悬浮在该元素上显示出“title”属性中所设置的值。如：</p>
+        <p>该属性可以用于所有HTML元素，通过设置它的值，可以让用户鼠标悬浮在该元素上显示出“title”属性中所设置的值.</p>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-59.html" target="_blank">HTML部分</a>代码如下：</p>
         <code class="w35p">
             <img src="img/code/htmlcode/code-html-68.jpg">
         </code>
@@ -66,7 +67,7 @@
     <section>
         <h3>元素激活“accesskey”</h3>
         <p>该属性用于激活元素，通常作用是让表单元素获得焦点,实现方式是通过键盘上的“Alt”键加上该属性设置的属性值，属性值是用户键盘上指定的任意<em>一个字母</em>或<em>一个常用符号</em>。</p>
-        <p class="noindent">部分样式已用CSS进行设置，HTML部分代码如下：</p>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-60.html" target="_blank">HTML部分</a>代码如下：</p>
         <code class="w60p">
             <img src="img/code/htmlcode/code-html-69.jpg">
         </code>
@@ -85,14 +86,137 @@
             <li>不能为负数，否则会被忽略</li>
             <li>可以为“0”，但会被排序到最后一个获得焦点</li>
         </ul>
-        <p class="noindent">部分样式已用CSS进行设置，HTML部分代码如下：</p>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-61.html" target="_blank">HTML部分</a>代码如下：</p>
         <code class="w60p">
             <img src="img/code/htmlcode/code-html-70.jpg">
         </code>
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/html/codeEffect/code-61.html"></iframe>
     </section>
+    <!-- dir -->
+    <section>
+        <h3>改变文本的方向“dir”</h3>
+        <p>该属性可以设置元素内文本的方向，它包含两个值：</p>
+        <dl class="attrExplain">
+            <dt>ltr</dt>
+            <dd>默认，文本从左往右显示。</dd>
 
+            <dt>rtl</dt>
+            <dd>文本从右往左显示。</dd>
+        </dl>
+        <p>在实际操作中，单独把某段文字设为“从右往左”的时候并不多，而是在进行一些文字书写习惯是从右往左的国家的网站开发会用到，这个时候用CSS去控制会更加的明智，用CSS设置文本方向的属性可以参看本课件“CSS”课程分类中“CSS文本设置”的章节内容“设置文本方向‘direction’”。</p>
+    </section>
+    <!-- contenteditable -->
+    <section>
+        <h3>元素是否可编辑“contenteditable<suph5></suph5>”</h3>
+        <p>该属性是HTML5标准后写出现的一个比较有“革命意义”的属性，它可以让一个普通的布局标签元素（如&lt;div&gt;、&lt;p&gt;、&lt;span&gt;、&lt;section&gt;、&lt;article&gt;、&lt;header&gt;、&lt;main&gt;、&lt;footer&gt;、&lt;nav&gt;、&lt;aside&gt;等等）可以像一个文本框（域）一样编辑文本内容。之所以说它具有革命意义的原因在于，传统的表单输入元素的编辑只限于文本，而“contenteditable”属性只是让一个元素可以进行编辑，而并不会对其类型进行转化，也就是说网页中任何可以通过HTML+CSS实现的元素，都是可以进行编辑的。</p>
+        <p>该属性允许设置两种值，值的类型为一个布尔值：</p>
+        <dl class="attrExplain">
+            <dt>true</dt>
+            <dd>表示元素内可以进行编辑。</dd>
+
+            <dt>false</dt>
+            <dd>表示元素内不能进行编辑。</dd>
+        </dl>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-63.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-72.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-63.html"></iframe>
+    </section>
+    <!-- data-* -->
+    <section>
+        <h3>用户私有数据定制“data-*<suph5></suph5>”</h3>
+        <p>首先需要明白的是该属性本身并不会对元素及相关联的元素造成任何影响，也就是说该属性会被浏览器用户代理忽略。属性“data-*”后面的“*”号可以是用户自定义的英文单词、数字、横线“-”和下划线“_”等<em>字符串</em>。如：“data-username”、“data-photo_1”、“data-list-item_01”等。</p>
+        <p>该属性可以有属性值，也可以没有属性值，而属性值也完全是用户自定义的字符串。</p>
+        <p>该属性的作用和“class”属性的作用比较相似（但该属性不被较老版本的浏览器支持），同样可以通过它去进行CSS样式的设置，也可以被JavaScript代码进行DOM操作，数据获取、设置等，但很多时候“class”中的值是用于CSS样式设置的，如果对其操作修改会造成自身样式或后代元素的样式错乱，这个时候通过去操作开发者自定义“data-*”属性更为稳妥，也更为规范。</p>
+        <p class="noindent"><a href="html-pages/html/codeEffect/code-63.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-73.jpg">
+        </code>
+        <p class="noindent">CSS部分代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/htmlcode/code-html-74.jpg">
+        </code>
+        <p class="noindent">JavaScript部分代码如下：</p>
+        <code class="w60p">
+            <img src="img/code/htmlcode/code-html-75.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-64.html"></iframe>
+    </section>
+    <!-- draggable -->
+    <section>
+        <h3>元素是否可以拖动“draggable<suph5></suph5>”</h3>
+        <p>该属性用于设定元素是否可以拖动，它允许设置三种值：</p>
+        <dl class="attrExplain">
+            <dt>true</dt>
+            <dd>表示元素内可以进行拖动。</dd>
+
+            <dt>false</dt>
+            <dd>表示元素内不能进行拖动。</dd>
+
+            <dt>auto</dt>
+            <dd>使用浏览器的默认行为。</dd>
+        </dl>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-65.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code class="w65p">
+            <img src="img/code/htmlcode/code-html-76.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-65.html"></iframe>
+        <p>该属性实质上是HTML5提供为JavaScript提供的一个<em title="Application Programming Interface，意为：应用程序编程接口">API</em>，也就是说需要和编程语言进行配合使用，在这里我们通常是和JavaScript中的“ondragstart（作用于被拖拽元素开始被拖动时）”、“ondragenter（作用于被拖拽元素进入拖动目标元素后）”、“ondragover（作用于被拖拽元素被拖动的过程中）”、“ondrop（作用于被拖拽元素被拖动后放开鼠标左键时）”和“ondragend（作用于被拖拽元素拖动结束后）”事件配合使用。由于课程次序安排的原因，这里就暂时不提供JavaScript相关内容的演示了。</p>
+    </section>
+    <!-- hidden -->
+    <section>
+        <h3>隐藏元素“hidden<suph5></suph5>”</h3>
+        <p>该属性无需属性值（所有属性值都无效），在“严格模式”的HTML文档中需要写成“hidden="hidden"”，但凡设置了该属性的元素都会在页面中隐藏，并且不再占用“文档流”中的位置，相当于将元素CSS的显示类型“display”属性的值设置为“none”（但通过这种方式隐藏元素，它的优先级的权重为0，只要在CSS中<em title="即将元素CSS的“display”属性明文地设置出来">显示</em>地将“display”属性设置为“inline-block”或“block”等可以显示元素的类型即可显示出元素）。</p>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-66.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/htmlcode/code-html-77.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-66.html"></iframe>
+    </section>
+    <!-- spellcheck -->
+    <section>
+        <h3>英文拼写检查“spellcheck”</h3>
+        <p>该属性用于检查元素内容中英文语法拼写的检查，若元素中英文字母内容不是已知的英文单词浏览器会在单词下方划上一条红色的波浪线用于提示错误。</p>
+        <p>该属性允许设置两种值，值的类型为一个布尔值：</p>
+        <dl class="attrExplain">
+            <dt>true</dt>
+            <dd>表示为元素内的英文文本内容执行语法检查。</dd>
+
+            <dt>false</dt>
+            <dd>表示不为元素内的英文文本内容执行语法检查。</dd>
+        </dl>
+        <p class="noindent">部分样式已用CSS进行设置，<a href="html-pages/html/codeEffect/code-67.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code class="w65p">
+            <img src="img/code/htmlcode/code-html-78.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-67.html"></iframe>
+    </section>
+    <!-- 其它HTML全局属性 -->
+    <section>
+        <h3>其它HTML全局属性</h3>
+        <p>上面我们已经提到了13个HTML中的全局属性，这些属性都能被目前大部分或全部的浏览器所支持，而HTML5标准中出现的部分全局属性却不能完全地被目前的浏览器支持。下面列出了不能完全被现今主流浏览器所支持的剩余3个HTML全局属性，有兴趣的同学可以自行进行实践。</p>
+        <dl class="attrExplain">
+            <dt>dropzone</dt>
+            <dd>规定在拖动被拖动数据时是否进行复制、移动或链接。</dd>
+
+            <dt>translate</dt>
+            <dd>规定是否应该翻译元素内容</dd>
+
+            <dt>contextmenu</dt>
+            <dd>在用户右键目标元素时出现一个“id”属性值为“contextmenu”属性值中所设置文本内容的&lt;menu&gt;菜单，&lt;menu&gt;标签中的项通过子元素&lt;command&gt;标签的属性“label”进行文本设置从而显示出内容，用JavaScript的事件去定义这些&lt;command&gt;项的功能。</dd>
+            <p class="noindent"><a href="html-pages/html/codeEffect/code-68.html" target="_blank">HTML部分</a>代码如下（若浏览器不支持，在右键后出现的不是&lt;menu&gt;中所设置的命令项）：</p>
+            <code class="w60p">
+                <img src="img/code/htmlcode/code-html-79.jpg">
+            </code>
+        </dl>
+    </section>
     
     <!-- 章节练习 -->
 	<!--<section class="unitPractice">

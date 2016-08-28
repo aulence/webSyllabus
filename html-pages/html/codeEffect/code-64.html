@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例运行代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        [data-user-form] > div {
+            margin: 12px 0;
+        }
+        [data-user-form] > div > label {
+            width: 108px;
+            text-align: right;
+            display: inline-block;
+        }
+        [data-user-form] [data-userpasswor] {
+            background-color: #b7f4d1;
+        }
+    </style>
+</head>
+<body>
+    <form data-user-form>
+        <div>
+            <label>用户名：</label>
+            <input id="userName" type="text" data-username="aulence">
+        </div>
+        <div>
+            <label>密码：</label>
+            <input id="userPwd" type="password" data-userpasswor>
+        </div>
+        <div>
+            <label>手机号：</label>
+            <input id="userTel" type="text" data-tel="18116657687">
+        </div>
+    </form>
+    <script type="text/javascript">
+        // 获取“用户名”、“密码”和“手机号”的“data”数据
+        var userName = document.getElementById("userName"),
+            userName_data = userName.getAttribute("data-username"),
+            userPwd = document.getElementById("userPwd"),
+            userPwd_data = userName.getAttribute("data-userpasswor"),
+            userTel = document.getElementById("userTel"),
+            userTel_date = userTel.getAttribute("data-tel");
+        // 设置“用户名”和“手机号”的值
+        userName.value = userName_data;
+        userTel.value = userTel_date;
+    </script>
+</body>
+</html>

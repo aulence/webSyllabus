@@ -43,8 +43,16 @@ $(function() {
         }
     });
     // 点击其它地方隐藏“动态锚点导航”
-   $(".content,.dynamicAnchor").on("click", function() {
+    $(".content,.dynamicAnchor").on("click", function() {
         $(".dynamicAnchor").hide(300);
+    });
+    // 回到页面顶部按钮出现条件
+    $(".content").scroll(function() {
+        toggleToTopButton();
+    })
+    // 回到页面顶部的动画效果
+    $("a.toWinTop").on("click", function() {
+        contentToTop();
     });
 });
 
@@ -212,16 +220,31 @@ function loadContentPage() {
     });
 }
 /*
-* 功能：自动设置iframe内元素的高度
-* 添加日期：2016年8月18日
+* 功能：回到页面顶部按钮出现条件
+* 添加日期：2016年8月28日
 */
-/*function setIframeHeight() {
-    // 获取当前页内iframe的个数
-    var ifr = $("iframe.codeEffect"),
-        ifr_len = ifr.length;
-    for(var i = 0; i < ifr_len; i++) {
-        var ifr_height = ifr.eq(i).contents().find("#main").outerHeight();
-        ifr.eq(i).css("height",(ifr_height + 20) + "px");
+function toggleToTopButton() {
+    // 获取“内容”元素当前滚动条的高度
+    var content = $(".main[data-main]").children(".content"),
+        contentScrollTop = content.scrollTop(),
+        // 回到顶部按钮
+        toTopButton = $("a.toWinTop");
+    // 将滚动条的出现条件设置为当滚动距离元素顶部500像素的地方
+    if(contentScrollTop > 500) {
+        toTopButton.css("bottom", "6px");
     }
-}*/
+    else {
+        toTopButton.css("bottom", "-48px");
+    }
+}
+/*
+* 功能：回到页面顶部的动画效果
+* 添加日期：2016年8月28日
+*/
+function contentToTop() {
+    // 获取“内容”元素当前滚动条的高度
+    var content = $(".main[data-main]").children(".content"),
+        contentScrollTop = content.scrollTop();
+    content.animate({scrollTop: "0"},600);
+}
 

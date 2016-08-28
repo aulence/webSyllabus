@@ -94,7 +94,7 @@ header .topNav li:active {
     border-right: 1px solid #e3e3e3;
     padding-top: 12px; padding-bottom: 12px;
     margin-left: -215px;
-    transition: all 0.3s;
+    transition-duration: 0.2s;
     left: 0; top: 0;
     z-index: 2;
 }
@@ -135,8 +135,8 @@ header .topNav li:active {
 .main .content {
     width: calc(100% - 5px);/*width: calc(100% - 220px);*/ height: 100%;
     margin-left: 5px;
-   /* margin-left: 220px;*/
-    transition: all 0.3s;
+    /* margin-left: 220px;*/
+    transition-duration: 0.2s;
     overflow-y: auto;
 }
 /* 动态锚点导航 */
@@ -151,7 +151,7 @@ header .topNav li:active {
     text-align: center;
     color: rgba(255, 255, 255, 0.3);
     position: fixed;
-    top: 60px; right: 25px;
+    top: 60px; right: 20px;
     transition: all 0.15s linear;
     cursor: pointer;
 }
@@ -162,7 +162,7 @@ header .topNav li:active {
 }
 .dynamicAnchor {
     position: fixed;
-    top: 92px; right: 26px;
+    top: 92px; right: 21px;
     display: none;
 }
 .dynamicAnchor ul {
@@ -212,6 +212,37 @@ header .topNav li:active {
 .dynamicAnchor ul li a:hover {
     color: #11278a;
 }
+/* 回到页面顶部 */
+a.toWinTop {
+    width: 48px; height: 48px;
+    background: url("../img/content/toWinTop.png") no-repeat;
+    display: block;
+    position: fixed;
+    bottom: -48px; right: 20px;
+    transition-duration: 0.6s;
+    opacity: 0.1;
+}
+a.toWinTop:hover {
+    opacity: 1;
+}
+/* 横向分辨率小于1066时限制显示 */
+aside.displayRestriction {
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    display: none;
+    z-index: 9999;
+}
+aside.displayRestriction p {
+    text-align: center;
+    padding: 0 20px;
+    font: 36px/160% "微软雅黑";
+    color: #aaa;
+    position: absolute;
+    top: 50%;
+    margin-top: -80px;
+}
 
 /**********************************************/
 /* 动画设置 */
@@ -224,5 +255,12 @@ header .topNav li:active {
     100% { 
         transform: translate(1280px, 0px);
         opacity: 0;
+    }
+}
+
+/* 横向分辨率小于1066时限制显示 */
+@media screen and (max-width:1066px) {
+    aside.displayRestriction {
+        display: block;
     }
 }
