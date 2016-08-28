@@ -1,185 +1,205 @@
 <root data-root="CSS变形转换">
     <section class="mt0">
-        <h3>CSS动画概述</h3>
-        <p>在CSS中执行动画的属性是CSS3属性中的“animation<supcss3></supcss3>”，该属性可以让元素随着时间的推移，产生“位置”、“形状”、“颜色”、“大小”、“透明度”等属性变化。</p>
-        <p>它和“transition”的不同之处在于，它可以不需要任何事件的激活（当然也可以通过事件激活），让元素本身就“<em>挂载</em>”一系列的CSS属性变化。他和“transform”的不同之处在于，它并不需要“transition”的过渡特效，让元素可以通过“<em>关键帧</em>”的设置达到想要的动画运行的“速度曲线（赛贝尔曲线）”。“animation”属性和前两者还有一个比较显著的区别，就是它可以单独地存在，即可以不依赖任何选择器，但可以提供给任何与它动画<em>内容匹配</em>并且“显示类型”支持的选择器<em>调用</em>，它和前两者还有一个很显著的区别，就是它能够“无限次”地执行动画效果。</p>
-        <p>该属性可以和过渡属性“transition”搭配使用，但通常来讲是没有共存的意义的，因为“animation”也可以通过设置“animation-timing-function（动画时间曲线，区别于‘过渡时间曲线’）”来达到动画平滑或无规律的“过渡”效果。但该属性和变形转换属性“transform”配合起来使用，往往都会出现一些让人感到“惊艳”的效果。</p>
-        <p>该属性的执行需要通过关键帧“<em>@keyframes+[animation name]</em>”进行定义，该定义从CSS3技术发展的现状来看，还都需要在前面加上浏览器厂商的“前缀”，如：“@-webkit-keyframes”、“@-moz-keyframes”或“@-ms-keyframes”等，当然，和其它需要加前缀的属性一样，该定义也需要保留一份未加任何前缀的“初始定义”，以供现在或未来的一些支持该属性定义的其它浏览器厂商使用，如：“腾讯浏览器（采用‘X5’内核排版渲染）”。</p>
-        <p>接下来，我们开始对“animation”属性的各分支属性进行系统化的学习。</p>
-	</section>
-	<!-- animation-name -->
-	<section>
-	    <h3>动画名称“animation-name”</h3>
-	    <p>该属性用于定义动画的名称，以供需要使用该动画的“animation”属性调用，该名称完全是由用户自定义的，但也应该要“<em>语义化</em>”一些，方便调用者能更直观地了解此处定义动画的实际作用，而且切忌出现特殊符号（浏览器解析会存在差异），如一个改变元素大小动画的名称定义应该是：</p>
-	    <code class="w30p">
-            <img src="img/code/csscode/code-css-160.jpg">
-        </code>
-        <p class="noindent">在CSS选择器中的调用就应该是：</p>
+        <h3>CSS变形转换概述</h3>
+        <p>在CSS中执行变形转换的属性是CSS3属性中的“transform<supcss3></supcss3>”，能够执行“位移”、“旋转”、“缩放”、“倾斜”、“翻转”和“透视”等变形转换的设置，可以让Web页面的表现更加的“活跃”，增加页面的交互感，给用户留下更深的“印象”。但在用该属性进行设置时，特别是用于生产环境中时，一定要控制一个“度”，也就是说要避免“<em>过度设计</em>”，否则反而会让“印象”这一词有了贬义的意思。</p>
+    </section>
+    <!-- translate -->
+    <section>
+        <h3>transform之位移“translate”</h3>
+        <p>该属性值可以让元素从当前位置根据“left（X轴）”参数和“top（Y轴）”参数的设置在水平和垂直方向进行移动。它和用于布局的“position”属性，特别是当它的“position”的值为“relative”时十分相似，在进行移动后，自身的位置仍然保留，也不会影响到其它元素的位置，但有存在着区别：</p>
+        <ul class="indent">
+            <li>“translate”可以作用于已经执行了“绝对定位（position：absolute）”的元素，而要用“position”已经设置为了“绝对定位”的元素使用“相对定位（position：relative）”需要对布局进行重新计算，或修改DOM的标签嵌套方式。</li>
+            <li>使用“translate”可以让 GPU 参与运算，动画的 FPS 更高。</li>
+            <li>使用“translate”可以让动画的像素精确到浮点数，而使用“position”属性的值最小执行动画的单位是1像素。</li>
+        </ul>
+        <p>所以说，“position”属性是为布局而生，而“Transform”的“translate”是为动画而生。</p>
+        <p>该属性值有三种类型：“translateX”、“translateY”和“translate”：“translateX”设置元素在X轴方向的偏移，“translateY”设置元素在Y轴方向的偏移，“translate”同时设置元素在X轴和Y轴方向的偏移，参数间用逗号“,”进行分隔。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-95.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
         <code class="w40p">
-            <img src="img/code/csscode/code-css-161.jpg">
+            <img src="img/code/csscode/code-css-142.jpg">
         </code>
-	</section>
-	<!-- 动画关键帧的两种定义方式 -->
-	<section>
-	    <h3>动画关键帧的两种定义方式</h3>
-	    <p>定义动画的“关键帧”有两种方式，一种为“英文单词”定义模式，一种为“百分数”定义模式。</p>
-	    <dl class="attrExplain">
-	        <dt>英文单词模式</dt>
-	        <dd>该模式只包含两个关键帧，即开始帧“from”，表示动画开始时执行的CSS属性，和结束帧“to”，表示动画结束时执行的CSS属性。</dd>
-
-	        <dt>百分数模式</dt>
-	        <dd>该模式相对“英文单词”定义关键帧的模式更为详细，能够支持理论上从“0%”到“100%”之间的所有帧的定义，“0%”相当于“from”，表示动画开始帧，“100%”相当于“to”，表示动画结束帧。该模式由于控制的精细度高，书写修改容易，甚至可以通过“定义百分比的跳跃”或“CSS属性值的跳跃”来实现动画的“匀速”、“加速”、“减速”，“变速”等动画速率的变化，非常地灵活，所以这种写法也是现今最主流的定义动画关键帧的方式。</dd>
-	    </dl>
-	    <p class="noindent">以下就是两种模式的书写对比：</p>
-	    <code class="w30p">
-            <img src="img/code/csscode/code-css-164.jpg">
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-95.html"></iframe>
+    </section>
+    <!-- rotate -->
+    <section>
+        <h3>transform之旋转“rotate”</h3>
+        <p>该属性值会让元素以当前元素的中心(X=width/2，Y=height/2)进行旋转（若不对“transform-origin”进行设置），旋转的角度为参数所设定的值，“正数”是顺时针，“负数”是逆时针，单位为“<em>deg</em>”。</p>
+        <p>该属性值有三种类型：“rotateX”、“rotateY”和“rotate（也作rotateZ）”：“rotateX”设置元素在X轴方向的旋转，“rotateY”设置元素在Y轴方向的旋转，“rotate”设置元素在Z轴（垂直于元素平面的线）方向的旋转。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-96.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-143.jpg">
         </code>
-	</section>
-	<!-- animation-duration -->
-	<section>
-	    <h3>动画执行时间“animation-duration”</h3>
-	    <p>该属性用于定义动画执行的时间，即一段动画从开始到动画结束所经历的时间，单位为秒“s”或毫秒“ms”，默认值为“0”，即看不执行任何动画，所以在定义设置一个动画的时候始终都要设置该属性，并给定一个大于“0”的时间。</p>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-109.html" target="_blank">HTML部分</a>有一个&lt;section&gt;标签，对应的CSS部分代码为：</p>
-	    <code class="w35p">
-            <img src="img/code/csscode/code-css-162.jpg">
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-96.html"></iframe>
+    </section>
+    <!-- scale -->
+    <section>
+        <h3>transform之缩放“scale”</h3>
+        <p>该属性值会让元素以当前元素的中心进行缩放，参数的值为一个整数或浮点数，如：“1（默认）”不进行缩放，“0.8”缩小为原来的80%，“1.5”扩大到原来的150%，参数不需要单位。</p>
+        <p>该属性值有三种类型：“scaleX”、“scaleY”和“scale”：“scaleX”设置元素在X轴方向的缩放，“scaleY”设置元素在Y轴方向的缩放，“scale”可以同时设置元素在X轴和Y轴方向的缩放，参数间用逗号“,”进行分隔。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-97.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-144.jpg">
         </code>
-        <p>当然，上例中的“animation”各属性都不一定要写在“:hover”的伪类选择器里，也可以直接写在“section”的选择器里，不过这样页面在加载时就会直接执行该动画，除非设置了动画执行次数“animation-iteration-count”属性（后面会讲到该属性），否则页面将无法再次执行该动画，这点和设置了“<em>CSS位移属性</em>”并设置了“transition”过渡属性的元素一样。</p>
-	</section>
-	<!-- animation-timing-function -->
-	<section>
-	    <h3>动画时间曲线“animation-timing-function”</h3>
-	    <p>该属性和“transition”的分支属性“transition-timing-function”十分相似，同样是用于定义元素随着时间的推进执行动画的速率变化。它同样有这样6个值：</p>
-	    <dl class="attrExplain">
-            <dt>ease</dt>
-            <dd>默认值，逐渐变慢。</dd>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-97.html"></iframe>
+    </section>
+    <!-- skew -->
+    <section>
+        <h3>transform之倾斜“skew”</h3>
+        <p>该属性值会让元素根据水平（X轴）和垂直（Y轴）线参数设定倾斜角度。该属性值有三种类型：“skewX”、“skewY”和“skew”。“skewX”只有一个参数，用于控制元素在水平轴方向的倾斜，“skewY”只有一个参数，用于控制元素在垂直轴方向的倾斜，“skew”有两个参数（一个参数相当于“skewX”），分别控制元素在水平和垂直轴方向的倾斜。</p>
+        <p>该属性值有三种类型：“skewX”、“skewY”和“skew”：“skewX”设置元素在X轴方向的倾斜，“skewY”设置元素在Y轴方向的倾斜，“skew”可以同时设置元素在X轴和Y轴方向的倾斜，参数间用逗号“,”进行分隔。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-98.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-145.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-98.html"></iframe>
+    </section>
+    <!-- matrix -->
+    <section>
+        <h3>transform之转换组合“matrix”</h3>
+        <p>该属性值可以通过参数设置将所有的变形转换（2D）属性值组合在一起，该属性方法需要配置6个参数，通过配置这6个值来实现一个“<em>矩阵</em>”的变化，具体讨论起来会比较复杂，我们这里只是简单地谈一下通过“matrix”来实现变形转换原理：</p>
+        <dl class="attrExplain">
+            <dt>matrix——translate</dt>
+            <dd>“matrix”的第5个和第6个参数影响“translate”的效果：“matrix(1,0,0,1,120,80)”相当于“translate(120px,80px)”。</dd>
+            <p class="noindent"><a href="html-pages/css/codeEffect/code-99.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w45p">
+                <img src="img/code/csscode/code-css-146.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-99.html"></iframe>
 
-            <dt>linear</dt>
-            <dd>匀速。</dd>
+            <dt class="mt15">matrix——rotate</dt>
+            <dd>用“matrix”去实现“rotate”相对就要复杂一些，会涉及到“matrix”的前四个参数，并且会涉及到“三角函数”的运算，会增加实际操作的难度，如要用到旋转，还是直接使用“rotate”的形式会更高效。用“matrix”去实现旋转相当于“matrix(cosθ,sinθ,-sinθ,cosθ,0,0)”这种形式，其中“θ”为假设的角度。若要实现“rotate(30deg)”，写成“matrix”就应该是“matrix(0.866025,0.5,-0.5,0.866025,0,0)”。</dd>
+            <p class="noindent"><a href="html-pages/css/codeEffect/code-100.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w70p">
+                <img src="img/code/csscode/code-css-147.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-100.html"></iframe>
 
-            <dt>ease-in</dt>
-            <dd>加速。</dd>
+            <dt class="mt15">matrix——scale</dt>
+            <dd>“matrix”影响缩放“scale”的参数为第1和第4个参数，如：“matrix(1.5,0,0,1.3,0,0)”就相当于“scale(1.5,1.3)”。</dd>
+            <p class="noindent"><a href="html-pages/css/codeEffect/code-101.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w45p">
+                <img src="img/code/csscode/code-css-148.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-101.html"></iframe>
 
-            <dt>ease-out</dt>
-            <dd>减速。</dd>
+            <dt class="mt15">matrix——skew</dt>
+            <dd>用“matrix”去实现“skew”也比较复杂，也是通过“三角函数”的运算的出来的，不过只涉及到“matrix”的第2个和第3个参数。公式为：“matrix(1,tan(θy),tan(θx),1,0,0)”，如：“matrix(1,1,0.577350,1,0,0)”就相当于“skew(30deg,45deg)”</dd>
+            <p class="noindent"><a href="html-pages/css/codeEffect/code-102.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
+            <code class="w65p">
+                <img src="img/code/csscode/code-css-149.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-102.html"></iframe>
 
-            <dt>ease-in-out</dt>
-            <dd>先加速，后减速。</dd>
-
-            <dt>cubic-bezier([参数])</dt>
-            <dd>可以定义一个时间曲线，可以为其配置四个参数，前两个参数为“x1”和“x2”，定义“<em>开始控制点</em>”，后两个参数为“y1”和“y2”，定义“<em>结束控制点</em>”。而“开始点”和“结束点”是通过这两条“转换点控制轴”分别去调整两个点来实现曲线的变化的。</dd>
         </dl>
-        <p class="noindent"><a href="html-pages/css/codeEffect/code-110.html" target="_blank">HTML部分</a>代码为4个&lt;section&gt;标签，对应的CSS部分代码为：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-163.jpg">
+    </section>
+    <!-- transform-origin -->
+    <section>
+        <h3>变换原点“transform-origin”</h3>
+        <p>该属性用于设置旋转元素的原点（基点）位置，默认为元素的中点。可以为3种类型的值：“方位英文单词”，“Web常用长度单位”，“百分数”。</p>
+        <dl class="attrExplain">
+            <dt>方位英文单词</dt>
+            <dd>有“top”、“right”、“bottom”、“left”和“center”5个值可以使用，如“top left”表示左上角，“right bottom”表示右下角，“center center”表示默认的中点。</dd>
+
+            <dt>Web常用长度单位</dt>
+            <dd>如最常用的像素“px”，字符“em”，点“pt”等，如：“16px 20px”表示旋转的轴在“X轴”的16像素，“Y轴（向下为正，向上为负）”的20像素的位置。</dd>
+            <dt>百分数</dt>
+            <dd>第一个百分数表示相对于元素宽度的百分比位置，第二个百分数表示相对于元素高度的百分比位置，如：“0% 0%”相当于左上角，“50% 50%”相当于默认的中点，“100% 100%”相当于元素的右下角。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-103.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-150.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-110.html"></iframe>
-	</section>
-	<!-- animation-delay -->
-	<section>
-	    <h3>动画时间的延迟“animation-delay”</h3>
-	    <p>该属性和“transition”属性的“transition-delay”属性也十分相似，它规定在动画是在延迟多少秒“s”或毫秒“ms”后开始执行动画，默认值同样为“0”，即立即开始动画。</p>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-111.html" target="_blank">HTML部分</a>代码为4个&lt;section&gt;标签，对应的CSS部分代码为：</p>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-103.html"></iframe>
+        <p>通过上面学习的知识，我们来看一个“transition+transform”的综合应用：</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-104.html" target="_blank">HTML</a>部分的代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-151.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码为：</p>
+        <code class="w75p">
+            <img src="img/code/csscode/code-css-152.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-104.html"></iframe>
+    </section>
+    <!-- transform-style -->
+    <section>
+        <h3>3D嵌套样式“transform-style”</h3>
+        <p>该属性规定如何在3D空间中呈现被嵌套的元素（是子元素，而不是元素本身），它主要有两个值：</p>
+        <dl class="attrExplain">
+            <dt>flat</dt>
+            <dd>表示所有子元素在2D平面呈现。</dd>
+
+            <dt>preserve-3d</dt>
+            <dd>表示所有子元素在3D空间中呈现。</dd>
+        </dl>
+        <p>当“transform-style”的值为“preserve-3D”时更贴近我们现实中的思维，因为平时我们眼睛所看到的东西都是“3D（立体）”的，而当值为“flat”的时候，就相当于在纸上画画，无论画功再好，画出的东西都是平面的，只是由于透视和明暗关系，有的时候看起来<a href="http://www.gexing.com/shaitu/724322.html" target="_blank">“很立体”</a>罢了。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-105.html" target="_blank">HTML</a>部分的代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-153.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码为：</p>
         <code class="w60p">
-            <img src="img/code/csscode/code-css-165.jpg">
+            <img src="img/code/csscode/code-css-154.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-111.html"></iframe>
-        <p>该属性在制作大规模“动画集”时十分常用，可以让元素在执行指定事件（包括加载事件）后有次序地前后对“挂载”的动画进行播放，从而组成一幅“生动”而“有故事性”的动画。</p>
-	</section>
-	<!-- animation-iteration-count -->
-	<section>
-	    <h3>动画播放的次数“animation-iteration-count”</h3>
-	    <p>该属性用于设置动画播放的次数。它可以设置3种类型的值：</p>
-	    <dl class="attrExplain">
-	        <dt>1（默认值）</dt>
-	        <dd>表示在执行某事件后只执行1次动画。</dd>
-
-	        <dt>[number]</dt>
-	        <dd>任意正整数，表示在执行某事件后只执行[numver]次动画。</dd>
-
-	        <dt>infinite</dt>
-	        <dd>表示在执行某事件后“无限次”执行动画。</dd>
-	    </dl>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-112.html" target="_blank">HTML部分</a>代码为3个&lt;section&gt;标签，对应的CSS部分代码为：</p>
-        <code class="w55p">
-            <img src="img/code/csscode/code-css-166.jpg">
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-105.html"></iframe>
+    </section>
+    <!-- perspective -->
+    <section>
+        <h3>3D透视“perspective”和“perspective-origin”</h3>
+        <p>“perspective”属性定义3D元素距视图的距离，它只对转换为了3D模式的元素生效，单位为像素。而定义了“perspective-origin”属性会让子元素（元素本身不会生效）获得透视效果，它是用于定义3D元素底部的位置，默认值是“50% 50%”或“center center”，表示3D元素透视的位置是以子元素的“中心”开始的。</p>
+        <p>“perspective”属性有两种使用方式，一种是直接作为一个属性去使用，即“perspective:400”的形式；还有一种形式是作为“Transform”属性的值去使用，这个时候就需要加上单位了，即：“transform: perspective(400px)”。</p>
+        <p>为了避免理解的混淆，我们首先来对“perspective”属性进行讲解。不同的浏览器器需要加上该浏览器的“<em>前缀</em>”，这里使用“Chrome v51”作为测试，考虑到篇幅限制这里就只测试了“-webkit-”前缀的“perspective”属性。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-106.html" target="_blank">HTML</a>部分的代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-155.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码为：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-156.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-112.html"></iframe>
-	</section>
-	<!-- animation-direction -->
-	<section>
-	    <h3>动画周期逆向播放“animation-direction”</h3>
-	    <p>该属性用于设置元素动画是否能够周期性地逆向播放，逆向动画播放的进行时间和“正向播放”一致，时间速度曲线会按照“100%（to）”到“0%（from）”的方向进行。</p>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-113.html" target="_blank">HTML部分</a>代码为：</p>
-        <code class="w50p">
-            <img src="img/code/csscode/code-css-167.jpg">
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-106.html"></iframe>
+        <p>接来下我们再来看看“perspective-origin”属性的影响，为了避免差异带来的混淆，我们<a href="html-pages/css/codeEffect/code-107.html" target="_blank">HTML</a>部分采用同样的代码，将在“Y轴”上的旋转统一为“30度”，透视距离统一为“300像素”，对应的CSS代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-157.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-107.html"></iframe>
+    </section>
+    <!-- backface-visibility -->
+    <section>
+        <h3>3D翻转背面可见性“backface-visibility”</h3>
+        <p>该属性定义当3D元素不面向屏幕时是否可见，该属性有两个值：</p>
+        <dl class="attrExplain">
+            <dt>visible（默认）</dt>
+            <dd>表示当3D元素通过“rotate”属性旋转到元素“背部”时，元素仍然可见。</dd>
+
+            <dt>hidden</dt>
+            <dd>表示当3D元素通过“rotate”属性旋转到元素“背部”时，元素不可见。</dd>
+        </dl>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-108.html" target="_blank">HTML</a>部分代码为：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-158.jpg">
         </code>
         <p class="noindent">对应的CSS部分代码为：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-168.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-113.html"></iframe>
-	</section>
-	<!-- animation-play-state -->
-	<section>
-	    <h3>动画的播放和暂停“animation-play-state”</h3>
-	    <p>该属性用于设置动画的播放和暂停状态，它有两个值：</p>
-	    <dl class="attrExplain">
-	        <dt>running</dt>
-	        <dd>播放动画。</dd>
-
-	        <dt>paused</dt>
-	        <dd>暂停动画。</dd>
-	    </dl>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-114.html" target="_blank">HTML部分</a>代码为：</p>
-        <code class="w50p">
-            <img src="img/code/csscode/code-css-169.jpg">
-        </code>
-        <p class="noindent">对应的CSS部分代码为：</p>
-        <code class="w45p">
-            <img src="img/code/csscode/code-css-170.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-114.html"></iframe>
-	</section>
-	<!-- animation-fill-mode -->
-	<section>
-	    <h3>设定元素动画形态“animation-fill-mode”</h3>
-	    <p>经过之前“animation”属性的学习应该会发现一个问题，就是若不将动画的“animation-iteration-count”属性设置为“infinite”值的话，动画在播放完成后会还原到元素没有“挂载”动画播放效果之前的状态，在有的应用场景里这样似乎没有问题，但在有些应用场景下，这样的设定会让人有一种“瞎忙活”或“功败垂成”的感觉。而“animation-fill-mode”属性的出现克服了这个问题，它可以预设值动画播放前的“第一帧”和保留动画播放完成后的“最后一帧”，可以通过以下值进行设置：</p>
-	    <dl class="attrExplain">
-	        <dt>backwards</dt>
-	        <dd>让元素保持动画第一帧定义里所设置的CSS属性，直到动画开始执行。</dd>
-
-	        <dt>forwards</dt>
-	        <dd>让元素保持动画播放结束后最后一帧定义里所设置的CSS属性。</dd>
-
-	        <dt>both</dt>
-	        <dd>让元素保持动画第一帧里定义的CSS属性，直到动画开始，动画播放完成后又保持动画最后一帧的属性。</dd>
-	    </dl>
-	    <p class="noindent"><a href="html-pages/css/codeEffect/code-115.html" target="_blank">HTML部分</a>代码为3个&lt;section&gt;标签，对应的CSS部分代码为：</p>
-        <code class="w45p">
-            <img src="img/code/csscode/code-css-171.jpg">
-        </code>
-        <h4>运行效果（需要重载框架页面）：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-115.html"></iframe>
-	</section>
-	<!-- animation -->
-	<section>
-	    <h3>组合值的写法“animation”</h3>
-	    <p>作为CSS里的3大亮点“transition”属性、“transform”属性、“animation”属性，“animation”的值自然也支持组合形式的书写，如例：</p>
-	    <code class="w70p">
-            <img src="img/code/csscode/code-css-172.jpg">
-        </code>
-        <p>当然，上例中是一种将“animation”中所有支持的值都罗列的形式，在实际操作中，是可以根据需要“选取”所需要的值进行组合的，如：</p>
         <code class="w60p">
-            <img src="img/code/csscode/code-css-173.jpg">
+            <img src="img/code/csscode/code-css-159.jpg">
         </code>
-        <p>通过上面组合值的写法，仔细一点的人应该能发现，就是无论用什么方式去组合“animation”的值，有两个值是必要的，就是“动画名称”和“动画执行时间”，原因很简单，没有动画名称，元素就无法去调用该动画，没有动画执行时间，就看不到动画效果。这点在以后的使用中要特别的留心，而且值组合的顺序也要尽量按照本章中分支属性介绍的顺序进行，否则很可能让你定义的动画出现“意料外”的情况。</p>
-	</section>
-	<!-- 章节练习 -->
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-108.html"></iframe>
+    </section>
+    <!-- 章节练习 -->
     <section class="unitPractice">
         <h3>&lt;章节练习&gt;</h3>
         <p>练习有的，作业也会有的。</p>
