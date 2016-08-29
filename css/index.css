@@ -250,10 +250,13 @@ aside.displayRestriction p {
 @-webkit-keyframes sendNavButton {
     0% { 
         transform: translate(0px, 0px);
+        border-top-left-radius: 65%;
+        border-bottom-left-radius: 65%;
+        box-shadow: -10px 0 5px 2px #e2d96a,-30px 0 20px 5px #f51c1c;
         opacity: 1;
     }
     100% { 
-        transform: translate(1280px, 0px);
+        transform: translate(1280px, 10px) rotate(3deg);
         opacity: 0;
     }
 }

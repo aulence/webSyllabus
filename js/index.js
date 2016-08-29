@@ -283,7 +283,7 @@ function setAnthorAction() {
         contentSec_len = contentSec.length;
     for(var i = 0; i < contentSec_len; i++) {
         var secOffsetTop = contentSec.eq(i).offset().top;
-        if(secOffsetTop < 100 && secOffsetTop > -100) {
+        if(secOffsetTop < 300 && secOffsetTop > -74 ) {
             $(".dynamicAnchor li").eq(i).addClass("active");
             $(".dynamicAnchor li").eq(i).children("a").addClass("active");
             $(".dynamicAnchor li").eq(i).siblings("li").removeClass("active").children("a").removeClass("active");

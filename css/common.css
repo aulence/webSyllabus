@@ -110,7 +110,7 @@ root[data-root] p {
     text-indent: 2em;
     font-size: 20px;
     color: #555;
-    margin: 24px 0;
+    margin: 18px 0;
 }
 root[data-root] p.noindent {
     text-indent: 0;
@@ -168,7 +168,7 @@ root[data-root] dl.attrExplain dd {
 }
 root[data-root] ul {
     list-style-image: url("../img/content/sign-dt-ul.png");
-    margin-top: 8px; margin-bottom: 8px;
+    margin-top: 4px; margin-bottom: 4px;
     list-style-position: outside;
     margin-left: 1.6em;
 }
@@ -293,6 +293,7 @@ output, iframe.codeEffect,iframe.codeEffect-unauto {
 	border-radius: 15px;
     box-shadow: 0 4px 4px rgba(182, 186, 188, 0.33);
 	padding: 10px;
+    margin-bottom: 15px;
 	font-size: 20px;
 	color: #000;
 	display: block;

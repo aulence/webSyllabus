@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS示例代码</title>
+        <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+        <link rel="Bookmark" href="../../../img/other/favicon.ico">
+        <link rel="stylesheet" href="../../../css/iframe.css">
+        <style>
+            section {
+                width: 1024px;
+                background-color: #edebe4;
+                padding: 20px;
+                box-sizing: border-box;
+                border: 2px solid #2e2a1b;
+                border-radius: 15px;
+            }
+            section > p {
+                text-indent: 2em;
+                font: 26px "华文行楷";
+                color: #5f5a47;
+                margin: 0;
+            }
+            section:after {
+                content: ".";
+                height: 0;
+                visibility: hidden;
+                display: block;
+                clear: both;
+            }
+            section:not(:first-child) {
+                margin-top: 20px;
+            }
+            section > img {
+                width: 160px; height: 160px;
+                margin-bottom: 6px;
+            }
+            section.flImg > img {
+                margin-right: 8px;
+                float: left;
+            }
+            section.frImg > img {
+                margin-left: 8px;
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="flImg">
+            <img src="../../../img/bgi/example-bgi-01.jpg">
+            <p>壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。少焉，月出于东山之上，徘徊于斗牛之间。白露横江，水光接天。纵一苇之所如，凌万顷之茫然。浩浩乎如冯虚御风，而不知其所止；飘飘乎如遗世独立,羽化而登仙。</p>
+            <p>于是饮酒乐甚，扣舷而歌之。歌曰：“桂棹兮兰桨，击空明兮溯流光。渺渺兮予怀，望美人兮天一方。”客有吹洞箫者，倚歌而和之。其声呜呜然，如怨如慕，如泣如诉；余音袅袅，不绝如缕。舞幽壑之潜蛟，泣孤舟之嫠妇。</p>
+        </section>
+        <section class="frImg">
+            <img src="../../../img/bgi/example-bgi-03.jpg">
+            <p>壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。少焉，月出于东山之上，徘徊于斗牛之间。白露横江，水光接天。纵一苇之所如，凌万顷之茫然。浩浩乎如冯虚御风，而不知其所止；飘飘乎如遗世独立,羽化而登仙。</p>
+            <p>于是饮酒乐甚，扣舷而歌之。歌曰：“桂棹兮兰桨，击空明兮溯流光。渺渺兮予怀，望美人兮天一方。”客有吹洞箫者，倚歌而和之。其声呜呜然，如怨如慕，如泣如诉；余音袅袅，不绝如缕。舞幽壑之潜蛟，泣孤舟之嫠妇。</p>
+        </section>
+    </body>
+</html>

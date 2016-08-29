@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+    <link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.css">
+    <style>
+        body {
+            height: 80px;
+            padding-top: 62px;
+        }
+        section {
+            float: left;
+            margin-right: 50px;
+            border: 2px solid #aaa;
+            border-radius: 15px;
+            padding: 12px 20px;
+        }
+        section div > label {
+            width: 80px;
+            display: inline-block;
+        }
+        .posr_l100,.posr_r100,.posr_t-50,.posr_b20 {
+            position: relative;
+        }
+        .posr_l100 { left: 100px; }
+        .posr_r100 { rirght: 100px; }
+        .posr_t-50 { top: -50px; }
+        .posr_b20 { bottom: 20px; }
+        .aac {
+            position: relative;
+            top: 50px; left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="posr_l100">
+            <label>用户名：</label>
+            <input type="text">
+        </div>
+        <div class="posr_r100">
+            <label>密码：</label>
+            <input type="password">
+        </div>
+    </section>
+    <section class="posr_t-50">
+        <div>
+            <label>用户名：</label>
+            <input type="text">
+        </div>
+        <div>
+            <label class="posr_b20">密码：</label>
+            <input type="password">
+        </div>
+    </section>
+    <span class="aac">测试内容</span>
+</body>
+</html>

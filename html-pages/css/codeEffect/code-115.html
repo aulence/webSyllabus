@@ -8,23 +8,19 @@
     <link rel="stylesheet" href="../../../css/iframe.css">
     <style>
         body {
-            height: 240px;
-            padding-top: 38px;
-            padding-bottom: 12px;
+            padding: 44px;
+        }
+        section {
+            float: left;
+            margin-right: 50px;
+            font: 42px/200px "snap itc";
+            text-align: center;
+            color: #fff;
         }
         section {
             width: 200px; height: 200px;
-            background-color: #0cc3bb;
-            text-align: center;
-            color: #fff;
-            font: 32px/180px "snap itc";
-            box-sizing: border-box;
-            float: left;
-            margin-right: 50px;
-        }
-        section:nth-child(1), section:nth-child(2),
-        section:nth-child(3) {
             animation: changeElement 1.2s 3s;
+            background-color: #0ab7c6;
         }
         section:nth-child(1) {
             animation-fill-mode: backwards;
@@ -48,8 +44,8 @@
     </style>
 </head>
 <body>
-    <section>backwards</section>
-    <section>forwards</section>
-    <section>both</section>
+    <section>first</section>
+    <section>second</section>
+    <section>third</section>
 </body>
 </html>
