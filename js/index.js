@@ -49,9 +49,12 @@ $(function() {
     $(".content,.dynamicAnchor").on("click", function() {
         $(".dynamicAnchor").hide(300);
     });
-    // 回到页面顶部按钮出现条件
+    // content滚动触发的事件
     $(".content").scroll(function() {
+        // 回到页面顶部按钮出现条件
         toggleToTopButton();
+        // 通过滚动事件判断动态锚点的选中状态
+        setAnthorAction();
     })
     // 回到页面顶部的动画效果
     $("a.toWinTop").on("click", function() {
@@ -270,5 +273,22 @@ function animateScrollTarget(thisAnthor,event) {
     // 为当前锚点添加“选中效果”，移除父级同级锚点按钮的选中效果
     $(thisAnthor).addClass("active").parent().addClass("active")
         .siblings("li").removeClass("active").children().removeClass("active");
+}
+/*
+* 功能：通过滚动事件判断动态锚点的选中状态
+* 添加日期：2016年8月29日
+*/
+function setAnthorAction() {
+    var contentSec = $("[data-root]").children("section"),
+        contentSec_len = contentSec.length;
+    for(var i = 0; i < contentSec_len; i++) {
+        var secOffsetTop = contentSec.eq(i).offset().top;
+        if(secOffsetTop < 100 && secOffsetTop > -100) {
+            $(".dynamicAnchor li").eq(i).addClass("active");
+            $(".dynamicAnchor li").eq(i).children("a").addClass("active");
+            $(".dynamicAnchor li").eq(i).siblings("li").removeClass("active").children("a").removeClass("active");
+            return;
+        }
+    }
 }
 
