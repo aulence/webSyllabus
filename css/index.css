@@ -184,7 +184,7 @@ header .topNav li:active {
     border-top: none;
     box-sizing: border-box;
 }
-.dynamicAnchor ul li:hover {
+.dynamicAnchor ul li:hover,.dynamicAnchor ul li.active {
     border-left: 4px solid #11278a;
     border-right: 4px solid #11278a;
 }
@@ -209,7 +209,7 @@ header .topNav li:active {
     display: block;
     box-sizing: border-box;
 }
-.dynamicAnchor ul li a:hover {
+.dynamicAnchor ul li a:hover, .dynamicAnchor ul li a.active {
     color: #11278a;
 }
 /* 回到页面顶部 */

@@ -42,6 +42,9 @@ $(function() {
             $(this).next(".dynamicAnchor").hide(200);
         }
     });
+    $(document).off("click", ".dynamicAnchor a").on("click", ".dynamicAnchor a", function(e) {
+        animateScrollTarget(this,e);
+    })
     // 点击其它地方隐藏“动态锚点导航”
     $(".content,.dynamicAnchor").on("click", function() {
         $(".dynamicAnchor").hide(300);
@@ -246,5 +249,26 @@ function contentToTop() {
     var content = $(".main[data-main]").children(".content"),
         contentScrollTop = content.scrollTop();
     content.animate({scrollTop: "0"},600);
+}
+/*
+* 功能：动画效果滚动到动态锚点指向的目标
+* 添加日期：2016年8月29日
+* 参数：1、按钮本身；2、事件参数
+*/
+function animateScrollTarget(thisAnthor,event) {
+    // 阻止默认事件
+    event.preventDefault;
+    // 获取锚点按钮的索引值，锚点目标距离当前窗口顶部的位置，内容窗口的滚动条位置距离顶部的高度
+    var Anchor_index = $(thisAnthor).parent().index(),
+        targetH3_offsetTop = $("section h3").eq(Anchor_index).offset().top,
+        content = $("[data-main]").children(".content"),
+        content_scrollTop = content.scrollTop();
+    // 通过计算，将滚动条位置停留到指定的章节标题位置，“74”是标题盒子模型占据的高度的约计值
+    content.animate({
+        scrollTop: (content_scrollTop + targetH3_offsetTop) - 74 + "px"
+    },600);
+    // 为当前锚点添加“选中效果”，移除父级同级锚点按钮的选中效果
+    $(thisAnthor).addClass("active").parent().addClass("active")
+        .siblings("li").removeClass("active").children().removeClass("active");
 }
 
