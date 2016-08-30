@@ -54,7 +54,7 @@ body,html,input,textarea,a {
 root[data-root] .module-welcome p {
     width: auto;
     text-indent: 1em;
-    font: normal 56px/56px "方正舒体";
+    font: normal 56px/56px "方正舒体","华文行楷","楷体";
     padding: 48px;
     top: 50%;
     margin-top: -98px;
