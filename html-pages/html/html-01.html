@@ -22,12 +22,17 @@
 	<!-- 文档类型 -->
 	<section>
 	    <h3>&lt;!doctype html&gt;</h3>
-	    <p>Document type HTML，定义文档的类型为HTML。若无该标签，则很多浏览器不能正确识别内容，导致显示出现乱码，页面内的样式不能渲染，功能也会失效。</p>
+	    <p>Document type HTML，定义文档的类型为HTML。若无该标签，则很多浏览器不能正确识别HTML文档内的内容，导致显示出现乱码，页面内的样式不能渲染，功能也会失效，像这种无类型声明而进行页面渲染的模式称作“混杂模式”。</p>
+	    <p>&lt;!doctype html&gt;这种写法是HTML5标准后定义的写法，可以<em>向前兼容</em>，即稍老一点版本的浏览器也能正确识别该声明。早期版本的HTML定义会比较复杂，通常是从已有的页面拷贝，或编辑器自动生成的。下面是“HTML4”和“XHTML1”相关文档类型的一些声明方式，不要求记忆，只需在看到的时候能正确的识别。</p>
+	    <code>
+            <img src="img/code/htmlcode/code-html-80.jpg">
+        </code>
 	</section>
 	<!-- html标签 -->
 	<section>
 	    <h3>&lt;html&gt;标签</h3>
-	    <p>HTML文件最基本的标签，通常编辑器会将里面的“lang”属性的值设为“en”，这时用带自动翻译的浏览器（如Google Chrome）打开会识别到该属性值，从而询问用户是否翻译。因而，若网站面向的是中国客户，可以将该属性设置为“zh”或“zh-cn”或删除。</p>
+	    <p>HTML文件最基本的标签，在一些新版本的浏览器中没有该标签也能显示出HTML内的内容，但是为了兼容更多的浏览器还是应该避免这种“缺斤少两”的行为（除非该页面是通过Ajax异步导入到一个公共页内的，那外层的所有标签都可以省略，只用保留&lt;body&gt;标签内的内容），通常编辑器会将里面的“lang”属性的值设为“en”，这时用带自动翻译的浏览器（如Google Chrome）打开会识别到该属性值，从而询问用户是否翻译。因而，若网站面向的是中国客户，可以将该属性设置为“<em title="中文">zh</em>”或“<em title="简体中文">zh-cn</em>”或删除该属性。</p>
+	    <p>由于该标签是HTML文档中最基本的标签，所以它反而是一个非常容易被开发经验不足的开发者所忽略的标签，它在页面中也会根据自身的内容来调整占据浏览器内的高度，也可以设置CSS样式，这在以后的项目开发中要稍加留心，特别是做页面<em title="如统一浏览器行为差异，统一标签特殊样式的差异等">CSS样式初始化</em>的时候要注意。</p>
 	</section>
 	<!-- head标签 -->
 	<section>
@@ -35,20 +40,20 @@
 	    <p>用于放置网页基本信息的标签，需要包含&lt;meta&gt;标签和&lt;title&gt;标签对，可包含外部文件引入的标签，如：&lt;style&gt;标签对、&lt;link&gt;标签和&lt;script&gt;标签对。</p>
 	    <dl class="attrExplain">
 	        <dt>&lt;meta&gt;标签</dt>
-	            <dd>不包含任何内容，并且没有结束标签。它是通过对应的属性来设置<em>编码格式</em>（必要）、设备显示缩放、搜索引擎关键字、描述、浏览器内核渲染方式等内容。<a href="https://segmentfault.com/a/1190000002407912" target="_blank">&lt;参考文献&gt;</a></dd>
+	            <dd>不包含任何内容，并且没有结束标签。它是通过对应的属性来设置<em title="通常采用通用编码格式“utf-8”">编码格式</em>（必要）、设备显示缩放、搜索引擎关键字、描述、浏览器内核渲染方式等内容。<a href="https://segmentfault.com/a/1190000002407912" target="_blank">&lt;参考文献&gt;</a></dd>
             <dt>&lt;title&gt;标签</dt>
-                <dd>不需要设置任何属性，只需包含纯文本内容，用于显示网页明显，在浏览器端会将该标签内设置的文本内容显示于浏览器标签页上。</dd>
+                <dd>不需要设置任何属性，只需包含纯文本内容，用于显示网页明显，在浏览器端会将该标签内设置的文本内容显示于浏览器标签页上。如：&lt;title&gt;HTML基本文档结构&lt;/title&gt;，在浏览器标签页上的显示效果就如下：</dd>
                 <dd>
                     <code class="mt10 w80p">
                         <img src="img/content/html/browerMarkup.jpg">
                     </code>
                 </dd>
             <dt>&lt;style&gt;标签对</dt>
-                <dd>在该标签对内通过选择符设置页面内标签元素的样式。在HTML5规范中已不需要设置属性，若考虑到兼容性，通常需要加上属性“&lt;style type="text/css"&gt;”。</dd>
+                <dd>在该标签对内通过<em title="在“CSS”课程分类中会讲到">选择器</em>设置页面内标签元素的样式。在HTML5规范中已不需要设置属性，若考虑到兼容性，通常需要加上样式类型说明的属性“&lt;style type="text/css"&gt;”。</dd>
             <dt>&lt;link&gt;标签</dt>
-                <dd>该标签没有结束标签，用于导入外部文件。但目前的浏览器主要支持两种文件的引入方式，即<em>外部样式</em>表和浏览器标签上的<em>图标</em>。该标签主要支持两种属性：“rel”和“href”,分别是定义引入<em>文件的类型</em>和引入<em>文件所在的路径</em>。</dd>
+                <dd>该标签没有结束标签，用于导入外部文件。但目前的浏览器主要支持两种文件的引入方式，即<em title="又叫做“外链样式”">外部样式</em>表和浏览器标签上的<em title="扩展名为“.ico”的图片文件，现在已经有浏览器支持“.png”格式的图片作为标签页图标了">图标</em>。该标签主要支持两种属性：“rel”和“href”,分别是定义引入<em title="若引用的是CSS样式就是“stylesheet”">文件的类型</em>和引入<em title="有“相对路径”和“绝对路径”两种方式">文件所在的路径</em>。</dd>
             <dt>&lt;script&gt;标签对</dt>
-                <dd>在HTML5的规范中，该标签不需要加上任何属性，默认支持Javascript的执行，老版本的IE浏览器需要加上属性&lt;script type="text/javascript"&gt;。在以前，这个标签通常是放置于&lt;head&gt;标签对以内的，后来很多前端工程师发现，将该标签<em>放置于文档末尾</em>，也就是&lt;/body&gt;结束标签之后（&lt;/html&gt;结束标签之前）更利于提升HTML文档的加载显示速度。到现在，这种做法已经成为了一种主流的做法。</dd>
+                <dd>在HTML5的规范中，该标签不需要加上任何属性，默认支持Javascript的执行，老版本的IE浏览器需要加上属性&lt;script type="text/javascript"&gt;。在以前，这个标签通常是放置于&lt;head&gt;标签对以内的，后来很多前端工程师发现，将该标签<em title="如下图">放置于文档末尾</em>，也就是&lt;/body&gt;结束标签之后（&lt;/html&gt;结束标签之前）更利于提升HTML文档的加载显示速度。到现在，这种做法已经成为了一种主流的做法。</dd>
                 <dd>
                     <code class="mt10 w90p">
                         <img src="img/code/htmlcode/code-html-04.jpg">
@@ -71,12 +76,12 @@
 	<!-- 文档流 -->
 	<section>
 	    <h3>文档流</h3>
-	    <p>所谓文档流就是HTML文档中<em>可显示对象</em>在排列时所占用的位置。HTML文档流中的标签元素遵循“从左到右、从上到下”的排列次序。如：</p>
+	    <p>所谓文档流就是HTML文档中<em title="在HTML中绝大部分元素都是能够显示的，只有部分元素本身就是隐藏的，也有通过为元素设置“hidden”属性和通过CSS方式设置“diaplay”属性值为“none”的方式实现隐藏的">可显示元素</em>在排列时所占用的位置。HTML文档流中的标签元素遵循“从左到右、从上到下”的排列次序。如：</p>
 	    <code class="w45p">
             <img src="img/code/htmlcode/code-html-71.jpg">
         </code>
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/html/codeEffect/code-62.html"></iframe>
-        <p>CSS样式表中的一些属性可以让指定的元素脱离文档流，也就是忽略元素的默认定位属性，将元素重新定位（“position:absulute”和“position:fixed”）或浮动（“float:left”和“float:right”）到指定位置以适应页面的布局需要，这在我们以后的CSS课程章节中会进行学习。</p>
+        <p>CSS样式表中的一些属性可以让指定的元素脱离文档流，也就是忽略元素的默认定位属性（position:static），将元素重新定位（“position:absolute”和“position:fixed”）或浮动（“float:left”和“float:right”）到指定位置以适应页面的布局需要，还有一个有些争议的脱离文档流的方式，就是将CSS的“display”属性值设置为“none”，之所以说有争议就是要看怎么去划分“脱离”和“隐藏”这两个词界限了，这些在我们以后的CSS课程章节中会进行学习。</p>
 	</section>
 </root>
