@@ -16,6 +16,8 @@ var GLOBAL = {
 /* 页面加载完成执行 */
 /**********************************************/
 $(function() {
+    // 重设地址栏名称
+    location.href = location.origin + "#html-welcome";
     // 重置导航内容为HTML页面相关
     $.get("html-module/html.html", function(rqHtml) {
         $(".main .leftNav").html(rqHtml);
@@ -134,8 +136,10 @@ function navChecked(navBtn) {
         else if(file_extentionName = ".html") {
             fileName_simple = fileName.substr(0,fileName_len - 5);
         }
-        // 从新设置浏览器地址栏的信息(IP地址、接口+索引页+简单文件名)
-        location.href = local.origin + local.pathname + "#" + fileName_simple;
+        // 从新设置浏览器地址栏的信息(IP地址、端口号+索引页+简单文件名)
+        //location.href = local.origin + local.pathname + "#" + fileName_simple;
+        // 从新设置浏览器地址栏的信息(IP地址、端口号+简单文件名)
+        location.href = local.origin + "#" + fileName_simple;
     }
 }
 /**
