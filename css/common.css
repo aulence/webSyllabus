@@ -274,6 +274,7 @@ code.w35p img { width: 35%;}
 code.w30p img { width: 30%;}
 code.w25p img { width: 25%;}
 code.w20p img { width: 20%;}
+code.w15p img { width: 15%;}
 img.dateImg {
     width: auto;
     max-width: 100%;
