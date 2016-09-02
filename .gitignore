@@ -5,5 +5,9 @@
 /node_modules/
 /media/
 /_test_.html
-/_test_.css
-/知识遗漏点汇总.txt
+/css/_test_.css
+/css/index.css
+/css/common.css
+/css/iframe.css
+/js/index.js
+/txtdoc/知识遗漏点汇总.txt
