@@ -1,28 +1,34 @@
 <root data-root="HTML超链接">
     <section class="mt0">
-        <h3>HTML中的超链接</h3>
-        <p>在HTML中，我们点击一段文本(超链接默认情况是一个“行内标签”)，或者一个按钮，当前页面会跳转到另外一个页面，或在一个新的页面中打开，我们将这个文本或按钮叫做“<em>超链接</em>”。超链接的必要属性是“<em>href</em>”（如果没有这个属性，&lt;a&gt;标签相当于一个&lt;span&gt;标签，且不会给文字设置颜色和下划线），它的属性值决定它将跳转到的文件。文件类型可以是一个“http/https”协议的网站，也可以是一个站内网页，甚至还可以是一张图片、一个文本文件等可以显示内容的文件。</p>
+        <h3>HTML超链接概述</h3>
+        <p>在HTML中，我们点击一段文本(超链接默认情况是一个“行内标签”)，或者一个按钮（该标签内能包含任意类型的HTML元素，当它包含的内容不仅仅为文本，或不含文本时，它会表现得像一个按钮），当前页面会跳转到另外一个页面，或在一个新的页面中打开，我们将这个文本或按钮叫做“<em title="从一个网页指向一个目标的连接关系">超链接</em>”。超链接的必要属性是“<em title="Hypertext Reference,超文本引用">href</em>”（如果没有这个属性，&lt;a&gt;标签会类似于一个&lt;span&gt;一样的文本标签，且不会给文字设置颜色和下划线），它的属性值决定它将跳转到的文件的URL。文件类型可以是一个“http/https”协议的网站，也可以是一个站内网页，一个电子邮件地址，一张图片、一个文本文件等可以显示内容的文件，甚至还可以是一个应用程序。</p>
         <code class="w80p">
             <img src="img/code/htmlcode/code-html-14.jpg">
         </code>
         <h4>运行效果：</h4>
         <iframe class="codeEffect-unauto" src="html-pages/html/codeEffect/code-09.html" style="height:480px;"></iframe>
-        <p>除此之外，超链接&lt;a&gt;标签还有一个比较实用的属性“<em>target</em>”，它规定网页以何种方式行进跳转，他们有以下属性值：</p>
+        <p>除此之外，超链接&lt;a&gt;标签还有一个比较实用的属性“<em title="目标，这里是设置点击超链接后目标文件的打开方式">target</em>”，它规定“href”属性中指定的网页或文件以何种方式行进跳转或打开，他们有以下属性值：</p>
         <dl class="attrExplain">
             <dt>_blank</dt>
-                <dd>在一个新的浏览器窗口或标签页中打开新的页面</dd>
+            <dd>在一个新的浏览器窗口或标签页中打开页面或文件</dd>
+
             <dt>_self</dt>
-                <dd>在当前浏览器窗口打开页面</dd>
+            <dd>在当前浏览器窗口打开页面或文件</dd>
+
             <dt>_parent</dt>
-                <dd>在框架的父级打开页面</dd>
+            <dd>在框架的父级打开页面或文件</dd>
+
             <dt>_top</dt>
-                <dd>在框架的最顶层打开新的页面（若包含多个框架的嵌套）</dd>
+            <dd>在框架的最顶层打开新的页面或文件（若包含多个框架的嵌套）</dd>
+
             <dt>“iframe”的“name”属性的值</dt>
-                <dd>通过将&lt;a&gt;标签的href属性设置为需要打开的文件，并将“target”的值设为页面中一个嵌入式框架&lt;iframe&gt;的“name”属性的值，使文件内容在这个&lt;iframe&gt;内打开</dd>
+            <dd>通过将&lt;a&gt;标签的href属性设置为需要打开的文件，并将“target”的值设为页面中一个嵌入式
+            框架&lt;iframe&gt;的“name”属性的值，使文件内容在这个&lt;iframe&gt;内打开</dd>
         </dl>
     </section>
     <section>
         <h3>利用超链接跳转到本页的<em>锚点</em></h3>
+        <p>将&lt;a&gt;标签的“href”属性设置为“#”+“指定元素的ID值”后，该超链接不再是进行页面间的跳转或是文件的打开了，而是将页面滚动到本页面中ID属性值和“href”属性值“#”后的值所对应的值的地方，页面滚动的目标元素的上边缘将和浏览器内容窗口上边缘重合。可以通过下面这样一个例子进行理解：</p>
         <code class="w40p">
             <img src="img/code/htmlcode/code-html-15.jpg">
         </code>
@@ -40,7 +46,59 @@
     </section>
     <section>
         <h3>超链接的回到顶部按钮</h3>
-        <p>在页面中加入<em>&lt;a href="#top"&gt;回到顶部&lt;/a&gt;</em>按钮，将它显示类型转化为一个“block”，再通过“<em title="position:fixed">固定定位</em>”属性将它定位到页面合适位置，在点击该按钮后会让页面快速回到滚动条的顶部。</p>
+        <p>在页面中加入<em>&lt;a href="#top"&gt;回到顶部&lt;/a&gt;</em>按钮，通过“<em title="position:fixed，在CSS课程中“CSS显示与定位”中会讲解到">固定定位</em>”属性将它定位到页面合适位置（这是比较常用的做法，实际上该按钮放置于&lt;body&gt;标签对内的任何地方都是没问题的，但除了一些特殊情况，下面会提到），在点击该按钮后会让页面立刻回到滚动条的顶部。而且在页面中是不需要定义一个id名为“top”的锚点的，“#top”这个值是浏览器对HTML的“href”属性的自带功能。所以若页面中使用了这种方式让页面回到顶部的话，当前页面的所有元素都要避免使用“top”这个id值，否则该功能会失效。</p>
+        <p>除此之外，还有两点需要注意：</p>
+        <ul class="indent">
+            <li>用&lt;a href="#top"&gt;这种方式回到页面顶部它只对当前页面<em title="即当前页面不包含于任何框架中，相当于是“target”属性值为“_top”的情况">最顶层</em>生效，对&lt;iframe&gt;标签内通过“src”属性指定的页面是无效的</li>
+            <li>通过Ajax异步加载外部内容到当前页面元素内而生成滚动条的，这种回到顶部的方式也不能生效（我们的课件右下角的“回到顶部”按钮的功能是通过CSS+JS实现的）</li>
+        </ul>
+        <p>如果自己开发的页面出现了以上阐述的两种情况及类似情况，想实现回到页面顶部的功能，就得通过JS去显示了。</p>
+    </section>
+    <!-- iframe -->
+    <section>
+        <h3>嵌入式框架&lt;iframe&gt;</h3>
+        <p>严格意义上讲&lt;iframe&gt;并不属于“超链接”这一讲的的范畴，但它通常不会以独立的形式存在于页面内（课件中的示例运行效果就是&lt;iframe&gt;，它们之所以独立出来，是为了使其代码独立于主页面，以便于各种类型代码的维护），而很多时候它们所显示的页面是超链接中的“href”指定的，而超链接中的“target”属性值指向为该&lt;iframe&gt;的id（有些浏览器不支持id值这种方式）或者name。</p>
+        <p>该标签具有很多属性，但这些属性最好都是在学习CSS后，用CSS进行设置，这里只要作了解即可。它有一些通用属性，也有一些专用属性，具体如下：</p>
+        <dl class="attrExplain">
+            <dt>name</dt>
+            <dd>用于设置&lt;iframe&gt;的名称。</dd>
+
+            <dt>width</dt>
+            <dd>用于设置&lt;iframe&gt;的宽度，值可以为像素（不用添加“px”单位）和百分数。</dd>
+
+            <dt>height</dt>
+            <dd>用于设置&lt;iframe&gt;的高度，值可以为像素（不用添加“px”单位）和百分数。</dd>
+
+            <dt>src</dt>
+            <dd>用于设置&lt;iframe&gt;元素内需要显示页面或文件的URL地址，该属性的值可以由与之关联的&lt;a&gt;标签点击设置（通过将&lt;a&gt;标签的“target”属性的值设置为该&lt;iframe&gt;的“name”属性的值进行关联）。</dd>
+
+            <dt>frameborder</dt>
+            <dd>是否显示边框，它只有两个值：</dd>
+            <ul>
+                <li>0：表示不显示边框</li>
+                <li>1：显示要显示边框</li>
+            </ul>
+
+            <dt>marginwidth</dt>
+            <dd>用于设置&lt;iframe&gt;的左侧和右侧的距离，值为像素（不用添加“px”单位）。</dd>
+
+            <dt>marginheight</dt>
+            <dd>用于设置&lt;iframe&gt;的顶部和底部的距离，值为像素（不用添加“px”单位）。</dd>
+
+            <dt>scrolling</dt>
+            <dd>是否在&lt;iframe&gt;中显示滚动条，有三个可用值：</dd>
+            <ul>
+                <li>auto：默认，根据内容自动出现或隐藏滚动条</li>
+                <li>yes：始终显示滚动条</li>
+                <li>no：始终隐藏滚动条</li>
+            </ul>
+        </dl>
+        <p>我来看一个<a href="html-pages/html/codeEffect/code-46.html" target="_blank">具体的示例</a>：</p>
+        <code>
+            <img src="img/code/htmlcode/code-html-82.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-70.html"></iframe>
     </section>
     <!-- 本节练习 -->
 	<section class="unitPractice">
