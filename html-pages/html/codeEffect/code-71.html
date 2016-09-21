@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>示例运行代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.min.css">
+    <style>
+        div {
+            float: left;
+        }
+        div:last-of-type {
+            margin-left: 20px;
+        }
+        div > nav {
+            margin-bottom: 10px;
+        }
+        iframe {
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="https://www.baidu.com/" target="ifr_1">百度</a>&nbsp;
+            <a href="../../../img/content/example/exam-003.png" target="ifr_2">
+                蘑菇(&lt;iframe&gt;窗口2显示)
+            </a>&nbsp;
+            <a href="../../css/codeEffect/code-78.html" target="ifr_1">原网页</a>
+        </nav>
+        <iframe name="ifr_1" width="420" height="340" frameborder="1" src="../../css/codeEffect/code-78.html"></iframe>
+    </div>
+    <div>
+        <nav>
+            <a href="https://www.baidu.com/" target="ifr_2">百度</a>&nbsp;
+            <a href="../../../img/content/example/exam-003.png" target="ifr_1">
+                蘑菇(&lt;iframe&gt;窗口1显示)
+            </a>&nbsp;
+            <a href="../../css/codeEffect/code-78.html" target="ifr_2">原网页</a>
+        </nav>
+        <iframe name="ifr_2" width="420" height="340" frameborder="1" src="../../css/codeEffect/code-78.html"></iframe>
+    </div>
+
+</body>
+</html>
