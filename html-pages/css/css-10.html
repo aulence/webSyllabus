@@ -57,10 +57,33 @@
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/css/codeEffect/code-98.html"></iframe>
     </section>
+    <!-- transform之组合值 -->
+    <section>
+        <h3>transform的组合值</h3>
+        <p>和其它具有分支属性的CSS属性一样，“transform”属性也能采用多值组合的方式来实现一个CSS的复杂效果（&lt;注意&gt;以上讲到的变形转换效果均不是该属性的分支属性，而是通过设置不同的值，并且配置该值允许的参数实现的），有一点需要特别注意的是，若该属性配合过渡CSS特效“transition”属性来使用的话，值的先后顺序不一样，很多时候效果也是不一样的，需要根据需要去调整值设置的顺序。</p>
+        <p>我们首先以“translate”和“rotate”为例来看两个例子，首先是一个“translate”的属性值在前，“rotate”的属性值在后的例子，<a href="html-pages/css/codeEffect/code-127.html" target="_blank">HTML部分</a>代码如下：</p>
+        <code>
+            <img src="img/code/csscode/code-css-194.jpg">
+        </code>
+        <p class="noindent">对应的CSS的代码如下：</p>
+        <code>
+            <img src="img/code/csscode/code-css-195.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-127.html"></iframe>
+        <p >HTML代码不变，CSS代码部分改动“tranform”属性内“translate”和“rotate”值的位置后（为了让演示效果更明显，稍微调整了一下“金箍棒”的“margin-left”属性），<a href="html-pages/css/codeEffect/code-128.html" target="_blank">示例如下</a>：</p>
+        <code>
+            <img src="img/code/csscode/code-css-196.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-128.html"></iframe>
+        <p>从上面两个例子可以发现，“transform”属性的值顺序的不同，所产生的效果有时会有非常大的差别，不过正是这种差别可以让效果表现得更加丰富，让我们拥有了更多的选择，在对该属性有一定熟悉程度后，可以先在脑袋里构思需要的效果，然后再以此将所需的值写出来，并设置相应的参数。</p>
+        <p>到目前为止，我们已经学习了“transform”的4种(“translate”、“rotate”、“scale”和“skew”)2D转换变形方式，这4种方式都可以在该属性内进行自由组合，考虑到篇幅关系，这里就不再一一进行组合演示了，有兴趣的同学可以自行操作实验。</p>
+    </section>
     <!-- matrix -->
     <section>
-        <h3>transform之转换组合“matrix”</h3>
-        <p>该属性值可以通过参数设置将所有的变形转换（2D）属性值组合在一起，该属性方法需要配置6个参数，通过配置这6个值来实现一个“<em>矩阵</em>”的变化，具体讨论起来会比较复杂，我们这里只是简单地谈一下通过“matrix”来实现变形转换原理：</p>
+        <h3>transform之矩阵“matrix”</h3>
+        <p>该属性值可以通过参数设置同样将所有的变形转换（2D）属性值组合在一起，和“transform”的多值组合的写法不一样，它只有一个值，不过是需要配置6个参数，通过配置这6个值来实现一个“<em>矩阵</em>”的变化，而且这种变化是同时产生的，无法调整每种变形转换的顺序。“matrix”这个值的实现原理具体讨论起来会比较复杂（有兴趣的同学可以搜索“矩阵”的相关文献进行了解，它并非CSS独有，而是数学运算里的一个知识点），我们这里只是简单地谈一下通过“matrix”来实现变形转换原理：</p>
         <dl class="attrExplain">
             <dt>matrix——translate</dt>
             <dd>“matrix”的第5个和第6个参数影响“translate”的效果：“matrix(1,0,0,1,120,80)”相当于“translate(120px,80px)”。</dd>

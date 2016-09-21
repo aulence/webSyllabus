@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS示例代码</title>
+    <link rel="shortcut icon" href="../../../img/other/favicon.ico">
+    <link rel="Bookmark" href="../../../img/other/favicon.ico">
+    <link rel="stylesheet" href="../../../css/iframe.min.css">
+    <style>
+        body {
+            height: 340px;
+        }
+        /* 金箍棒控制器 */
+        .ctrlCrabstick {
+            width: 32px; height: 32px;
+            background-color: #1747c9;
+            border-radius: 50%;
+        }
+        /* 金箍棒 */
+        .crabstick {
+            width: 14px; height: 220px;
+            background: url("../../../img/content/crabstick.png") no-repeat;
+            margin-left: 60px;
+            transition: 1.2s ease-out;
+        }
+        .ctrlCrabstick:hover + .crabstick {
+	        transform: translate(600px, 100px) rotate(720deg) scale(0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="ctrlCrabstick"></div>
+    <div class="crabstick"></div>
+</body>
+</html>
