@@ -76,14 +76,14 @@
             <dd>是否显示边框，它只有两个值：</dd>
             <ul>
                 <li>0：表示不显示边框</li>
-                <li>1：显示要显示边框</li>
+                <li>1：表示要显示边框</li>
             </ul>
 
             <dt>marginwidth</dt>
-            <dd>用于设置&lt;iframe&gt;的左侧和右侧的距离，值为像素（不用添加“px”单位）。</dd>
+            <dd>用于设置&lt;iframe&gt;内容的左侧和右侧的距离，值为像素（不用添加“px”单位），若&lt;iframe&gt;内的页面设置有CSS的“margin”属性，则&lt;iframe&gt;设置的“marginwidth”属性将无效。</dd>
 
             <dt>marginheight</dt>
-            <dd>用于设置&lt;iframe&gt;的顶部和底部的距离，值为像素（不用添加“px”单位）。</dd>
+            <dd>用于设置&lt;iframe&gt;内容的顶部和底部的距离，值为像素（不用添加“px”单位），若&lt;iframe&gt;内的页面设置有CSS的“margin”属性，则&lt;iframe&gt;设置的“marginheight”属性将无效。（不过通常也不建议设置“marginwidth”和“marginheight”这两个属性，因为基本上都会被&lt;iframe&gt;所关联网页的CSS样式所覆盖，除非&lt;iframe&gt;所关联的文件并非一个Web页面，而是文本文件、图片文件及其它多媒体文件等）</dd>
 
             <dt>scrolling</dt>
             <dd>是否在&lt;iframe&gt;中显示滚动条，有三个可用值：</dd>
@@ -93,14 +93,14 @@
                 <li>no：始终隐藏滚动条</li>
             </ul>
         </dl>
-        <p class="noindent">先来看一个不包含超链接控制的&lt;iframe&gt;使用的<a href="html-pages/html/codeEffect/code-70.html" target="_blank">具体示例</a>：</p>
+        <p class="noindent">先来看一个不包含超链接控制的&lt;iframe&gt;的<a href="html-pages/html/codeEffect/code-70.html" target="_blank">演示示例</a>：</p>
         <code>
             <img src="img/code/htmlcode/code-html-82.jpg">
         </code>
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/html/codeEffect/code-70.html"></iframe>
 
-        <p class="noindent">再来看一个含有超链接控制的&lt;iframe&gt;使用的<a href="html-pages/html/codeEffect/code-71.html" target="_blank">具体示例</a></p>
+        <p class="noindent">再来看一个含有超链接控制的&lt;iframe&gt;的<a href="html-pages/html/codeEffect/code-71.html" target="_blank">运用示例</a></p>
         <code>
             <img src="img/code/htmlcode/code-html-83.jpg">
         </code>
