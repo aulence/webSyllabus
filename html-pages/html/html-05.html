@@ -1,18 +1,18 @@
 <root data-root="HTML列表">
     <section class="mt0">
         <h3>HTML列表概述</h3>
-        <p>HTML中的列表是用于一系列有关联的事项或某件事物进行步骤的描述性标签，主要分为两种类型：“<em>无序列表&lt;ul&gt;</em>”和“<em>有序列表&lt;ol&gt;</em>”，但在通过该标签的CSS属性“list-style”进行一定的设置后，两种标签也就没有任何实质性的区别了。该类标签除了上述描述的作用外，现在还经常将其CSS的属性“list-style”设置为“none”，并为其子元素标签&lt;li&gt;的“float”属性的值设置为“left”来作为网站“<em>导航栏</em>”的容器标签来使用。除了无序和有序列表，还有一种稍微特殊的列表叫做“<em>定义列表&lt;dl&gt;</em>”，该列表类型虽然没有项目符号，但在用于一些类似于“名词--描述”结构的说明时，结构更加的清晰合理。</p>
+        <p>HTML中的列表是用于一系列有关联的事项或某件事物进行步骤的描述性标签，主要分为两种类型：“<em title="即列表项目符号为一致的符号">无序列表&lt;ul&gt;</em>”和“<em title="即项目符号为先后顺序关系的字符，如阿拉伯数字、英文字母">有序列表&lt;ol&gt;</em>”，但在通过该标签的CSS属性“list-style”进行一定的设置后，两种标签也就没有任何实质性的区别了。该类标签除了上述描述的作用外，现在还经常将其CSS的属性“list-style”设置为“none”，并为其子元素标签&lt;li&gt;的“float”属性的值设置为“left”来作为网站“<em title="主要由超链接标签组成，也可以通过JS的“location.href”方法去指定跳转路径">导航栏</em>”的容器标签来使用。除了无序和有序列表，还有一种稍微特殊的列表叫做“<em title="一个包含定义标题和定义描述内容的列表">定义列表&lt;dl&gt;</em>”，该列表类型虽然没有项目符号，但在用于一些类似于“名词--描述”结构的说明时，结构更加的清晰合理。</p>
     </section>
     <section>
         <h3>无序列表&lt;ul&gt;</h3>
-        <p>无序列表的显示类型为“<em>块级元素</em>（block）”，其列表项子元素的显示类型为“<em>list-item</em>”（由于该类型的表现和“块级元素”几乎一致，所以可以该类型也视为“block”）。</p>
-        <p class="noindent">HTML代码示例：</p>
+        <p>无序列表的显示类型为“<em title="display:block，默认情况下能独占一行的元素显示类型">块级元素</em>（block）”，其列表项子元素的显示类型为“<em title="列表项类型">list-item</em>”（由于该类型的表现和“块级元素”几乎一致，所以可以将它的类型视为带有项目符号的“块级元素”）。</p>
+        <p class="noindent"><a href="html-pages/html/codeEffect/code-52.html" target="_blank">HTML代码</a>示例：</p>
         <code>
             <img src="img/code/htmlcode/code-html-58.jpg">
         </code>
         <h4>运行效果：</h4>
         <iframe class="codeEffect" src="html-pages/html/codeEffect/code-52.html" style="height:144px;"></iframe>
-        <p>无序列表可以通过“<em>type</em>”属性来设置“列表项目符号”的类型，不过还是建议在学习了CSS里的“list-style”属性后对其进行设置：</p>
+        <p>无序列表可以通过“<em title="译意为“类型”">type</em>”属性来设置“列表项目符号”的类型，不过还是建议在学习了CSS里的“list-style”属性后对其进行设置：</p>
         <dl class="attrExplain">
             <dt>disc</dt>
             <dd>项目符号以实心圆“●”表示，默认值。</dd>
@@ -78,11 +78,11 @@
 	</section>
 	<section>
 	    <h3>无序列表和无序列表的界限</h3>
-	    <p>在不设置任何CSS样式的情况下，无序列表不具有计数功能，而有序列表具有计数功能，但在通过CSS对该标签的“list-style”进行设置后，这两种类型的标签不再具有明显的功能界限，不仅能完全的消除列表项符号，还能将列表项前的符号设置为“<em>图片</em>”，设置列表项符号的悬挂方式等，这些在我们后面的CSS知识里会讲到。</p>
+	    <p>在不设置任何CSS样式的情况下，无序列表不具有计数功能，而有序列表具有计数功能，但在通过CSS对该标签的“list-style”进行设置后，这两种类型的标签不再具有明显的功能界限，不仅能完全的消除列表项符号，还能将列表项前的符号设置为“<em title="CSS属性为“list-style-image”，通过“url()”值指定所用图片的url地址">图片</em>”，设置列表项符号的悬挂方式等，这些在我们后面的CSS知识里会讲到。</p>
 	</section>
 	<section>
 	    <h3>定义列表&lt;dl&gt;</h3>
-	    <p>“定义列表”分为两层：第一层为定义的列表<em>&lt;dl&gt;</em>；第二层分为两个部分，即<em>&lt;dt&gt;</em>和<em>&lt;dd&gt;</em>，&lt;dt&gt;用于定义列表中的项目，&lt;dd&gt;用于描述定义的项目，它们的显示类型都为“块级元素（block）”。相对于“无序列表”和“有序列表”，这种列表由于其自身的结构原因，对需要进行名词性描述的列表更为适用（如本课件的各种属性的描述结构）。</p>
+	    <p>“定义列表”分为两层：第一层为定义的列表<em title="全名：define list">&lt;dl&gt;</em>；第二层分为两个部分，即<em title="全名：define heading">&lt;dt&gt;</em>和<em title="全名：define describe">&lt;dd&gt;</em>，&lt;dt&gt;用于定义列表中的项目，&lt;dd&gt;用于描述定义的项目，它们的显示类型都为“块级元素（block）”。相对于“无序列表”和“有序列表”，这种列表由于其自身的结构原因，对需要进行名词性描述的列表更为适用（如本课件的各种属性的描述结构）。</p>
 	    <p class="noindent">HTML代码示例：</p>
         <code class="w40p">
             <img src="img/code/htmlcode/code-html-64.jpg">
