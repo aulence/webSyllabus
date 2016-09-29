@@ -25,7 +25,7 @@
                         <img src="img/code/csscode/code-css-023.jpg">
                     </code>
                     <h4>运行效果：</h4>
-                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-12.html" style="height:158px;"></iframe>
+                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-12.html" style="height:158px;"></iframe>
                 </dd>
             <dt>font-weight</dt>
                 <dd>用于设置字体粗细，可设置以下值：</dd>
@@ -47,7 +47,7 @@
                         <img src="img/code/csscode/code-css-025.jpg">
                     </code>
                     <h4>运行效果：</h4>
-                    <iframe class="codeEffect" src="html-pages/css/codeEffect/code-13.html" style="height:200px;"></iframe>
+                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-13.html" style="height:200px;"></iframe>
                 </dd>
             <dt>font-size</dt>
                 <dd>用于设置字体大小的，可设置的值可以是任意<em>正整数</em>和<em>浮点数</em>，但考虑到Chrome等主流浏览器不支持12像素以下的字体，若字号以像素为单位，或通过设置其它单位转换为的像素值不应该小于12像素。常用的字号单位有：</dd>
@@ -73,7 +73,7 @@
                     <img src="img/code/csscode/code-css-027.jpg">
                 </code>
                 <h4>运行效果：</h4>
-                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-14.html" style="height:116px;"></iframe>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-14.html" style="height:116px;"></iframe>
             <dt class="mt15">font-family</dt>
                 <dd>用于设置字体系列，就是我们通常说的“所用字体”。设置字体有以下规则，使用中文字体，或带空格的英文字体名，需要用“<em>引号</em>”将该字体名扩起来，单个单词的字体名称则无需加上引号。“font-family”可以有多个值，多个值设置的作用是，当浏览用户本地计算机没有找到设置的第一个值所表示的字体时，会去找第二个，以此类推，若找到最后一个值都没有找到匹配的字体，浏览器则会用自己的默认字体。考虑到网页最终显示效果在不同设备上的一致性，我们通常使用的中文字体只有：“<em>宋体</em>”、“<em>微软雅黑</em>”、“黑体”、“楷体”、“幼圆”等，而目前以“微软雅黑”为最常用设计字体。常用的英文字体有：“<em>Arial</em>”、“Helvetica”、“Tahoma”、“Verdana”、“Lucida Grande”、“Times New Roman”、“Georgia”等。</dd>
                 <code class="w65p">
@@ -84,7 +84,7 @@
                     <img src="img/code/csscode/code-css-029.jpg">
                 </code>
                 <h4>运行效果：</h4>
-                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-15.html" style="height:310px;"></iframe>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-15.html" style="height:310px;"></iframe>
             <dt class="mt15">font的组合写法</dt>
                 <dd>除了为“font”的具体分支属性设置样式，我们还能将“font”的多个值组合起来写，如我们要设置一个风格为正常的粗体，字号为20像素的“微软雅黑”和一个风格为斜体的正常粗细，字号为22像素的“宋体”，我们可以这样写：</dd>
                 <code class="w60p">
@@ -95,7 +95,7 @@
                     <img src="img/code/csscode/code-css-031.jpg">
                 </code>
                 <h4>运行效果：</h4>
-                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-16.html" style="height:138px;"></iframe>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-16.html" style="height:138px;"></iframe>
                 <dd class="mt15">由于字体风格和字体粗细，具有一定的相似性，如他们都有一个“normal”值，所以在写“font”属性组合值的时候可以省略二者之一，以辨识到的值进行设置，另外一个自动为“normal”，甚至还能省略掉第前两个值，只保留“font-size”和“font-family”如：</dd>
                 <code class="w65p">
                     <img src="img/code/csscode/code-css-032.jpg">
@@ -105,7 +105,7 @@
                     <img src="img/code/csscode/code-css-033.jpg">
                 </code>
                 <h4>运行效果：</h4>
-                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-17.html" style="height:224px;"></iframe>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-17.html" style="height:224px;"></iframe>
                 <dd class="mt15">但有一点需要强调的是，在“font”组合值的写法中，只有“font-size”和“font-family”这两个的值是不能省略的，而且是缺一不可，否则浏览器会不认识该值，对该组合值进行报错。</dd>
                 <dd>“font”属性组合值的写法，除了以上所提到的，它还有一种比较不常见，却还比较实用的写法，即可直接在“font”属性内设置文本的行高“line-height”，如下：</dd>
                 <code class="w75p">
@@ -116,7 +116,7 @@
                     <img src="img/code/csscode/code-css-035.jpg">
                 </code>
                 <h4>运行效果：</h4>
-                <iframe class="codeEffect" src="html-pages/css/codeEffect/code-18.html" style="height:176px;"></iframe>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-18.html" style="height:176px;"></iframe>
         </dl>
     </section>
     <!-- 章节练习 -->

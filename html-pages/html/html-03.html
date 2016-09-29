@@ -6,7 +6,7 @@
             <img src="img/code/htmlcode/code-html-09.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-04.html" style="height:520px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/html/codeEffect/code-04.html" style="height:520px;"></iframe>
     </section>
     <section>
         <h3>&lt;img&gt;的“alt”和“title”属性</h3>
@@ -15,13 +15,13 @@
             <img src="img/code/htmlcode/code-html-10.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-05.html" style="height:100px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/html/codeEffect/code-05.html" style="height:100px;"></iframe>
         <p>在对于需要进行说明的图片，或者单纯是为了提升用户体验，我有的时候需要为图片进行一定的简单描述，在特定的条件下，在图片旁边写上一串文本，既影响了布局，又显得突兀，这个时候我们就需要用到&lt;img&gt;标签内的“<em title="和&lt;title&gt;标签的作用不一样，要注意区分">title</em>”属性.</p>
         <code class="w70p">
             <img src="img/code/htmlcode/code-html-11.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-06.html" style="height:520px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/html/codeEffect/code-06.html" style="height:520px;"></iframe>
         <p>在这里需要说明的是，“title”这个属性，最常用的地方虽然是&lt;img&gt;标签，但它在其它几乎任何标签上都可以使用，包括文本标签&lt;span&gt;。现代的网页设计风格趋势是简洁化，导致很多按钮也由以前的文本按钮变成了<em title="按钮以图片的形式展示出来，通常不包含文本">图标按钮</em>，但图标按钮有时由于个体理解差异，并不能直观的表示该按钮的真实作用，这个时候为它加上一个“title”属性用于说明按钮的功能是个提升用户体验的好办法。</p>
     </section>
     <section>
@@ -31,14 +31,14 @@
             <img src="img/code/htmlcode/code-html-12.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-07.html" style="height:290px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/html/codeEffect/code-07.html" style="height:290px;"></iframe>
         <p>&lt;img&gt;标签和&lt;span&gt;标签这类标签不同，虽然它是个“<em title="在CSS中的display属性中的值为“inline”">行内标签</em>（又称：内联元素、行内元素）”，但是它具有“行内块标签（又称：内联块元素、行内块元素）”的一些特性，这样类型的标签，既不会在限定宽度（浏览器宽度或父级元素设置的宽度）内产生换行，又能调整大小，而且&lt;img&gt;标签还有个特殊的地方，就是它能够通过“标签属性”来设置的自己的大小，即不需通过“行内样式”或其它方式的样式设置来调整大小（但后面CSS学习后，还是需要通过CSS来设置样式的）。</p>
         <p>我们通过运行下面一段代码来观察显示的效果。</p>
         <code class="w90p">
             <img src="img/code/htmlcode/code-html-13.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/html/codeEffect/code-08.html" style="height:260px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/html/codeEffect/code-08.html" style="height:260px;"></iframe>
         <p>虽然图片的大小是可以调整的，但为了浏览器性能考虑，现在很多Web前端优化工程师针对提升Web性能的建议都是：一开始就使用已经在图像软件里裁切或调整好大小的图片，尽量避免在HTML或CSS代码中对图片的大小进行缩放调整。原因是，<em title="区别于矢量图">位图</em>是按对应浏览器分辨率像素进行渲染的，一旦图像进行了缩放，那图像将不再是按照对应关系去进行渲染了，而是要在渲染的过程中不断地进行运算后再进行渲染，这对浏览器性能有一定程度地消耗，特别是在页面内图片数量非常多的时候。</p>
         <h3>思考</h3>
         <p>通过以上的代码示例，我们发现“width”和“height”的设置有什么样的关系？</p>

@@ -92,7 +92,7 @@
             <img src="img/code/csscode/code-css-117.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-71.html" style="height:228px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-71.html" style="height:228px;"></iframe>
         <p>通过以上示例我们可以清楚地发现，通过将“visibility”的属性值设置为“hidden”，元素虽然不可见了，但仍未脱离“文档流”，在页面显示中占据着原本的位置。而通过将“display”的属性值设置为“none”，元素不可见了，而且在页面中占据的位置也让与“文档流”内布局的其它元素了。通过这两个属性的这一特性，我们可以更加灵活地进行元素的显隐操作，以达到更理想的页面布局效果。</p>
 	</section>
 	<!-- opacity -->
@@ -104,7 +104,7 @@
             <img src="img/code/csscode/code-css-135.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-88.html" style="height:224px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-88.html" style="height:224px;"></iframe>
         <p>通过学习过上面的知识需要进行说明的是，将“opacity”的值设置为“0”，和将“visibility”的值设置为“hidden”在布局表现上几乎一致，但在对待用户<em>行为</em>上却有着很大的差别。因为，通过将“opacity”的值设置为“0”的方式，只是让元素透明了，但仍然是可以让如鼠标悬浮等事件生效的，而将“visibility”的值设置为“hidden”的方式，是不能触发鼠标悬浮这一类的事件的，这点要注意区分。</p>
 	</section>
 	<!-- float -->
@@ -131,7 +131,7 @@
             <img src="img/code/csscode/code-css-175.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-116.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-116.html"></iframe>
 
         <p class="noindent">再来看一个“图文混排”的示例（做了部分其它样式美化），<a href="html-pages/css/codeEffect/code-117.html" target="_blank">HTML代码</a>如下：</p>
         <code class="w80p">
@@ -142,7 +142,7 @@
             <img src="img/code/csscode/code-css-177.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-117.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-117.html"></iframe>
         <p>在使用浮动“float”属性的时候有一个需要特别注意的地方，就是若一个<em title="某些“块级元素”会具有内、外间距">普通</em>的“块级元素”内的子元素全部都具有浮动属性（值必须为“left”或“right”），那它自身的<em>高度会为“0”像素</em>，这是因为它的子元素已经全部脱离了“文档流”，再加上HTML中的普通“块级元素”若不设定“height”为大于“0”的像素值，那它在页面中将不能显示，所以这个元素在页面中的高度固然为“0”。</p>
         <p>若其子元素全部浮动的元素是独立存在于一个已经参与“定位（本章接下来的内容会讲到）”的元素内的话似乎也没有什么影响，但若它已经参与了“文档流”内的布局了的话，因为其高度为“0”的原因会给后续的元素布局带来些麻烦，我们看看<a href="html-pages/css/codeEffect/code-118.html" target="_blank">这样一个例子</a>：</p>
         <code class="w85p">
@@ -153,7 +153,7 @@
             <img src="img/code/csscode/code-css-179.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-118.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-118.html"></iframe>
         <p>通过上面的示例，我们可以清楚地看到，每个区块元素&lt;section&gt;都没有设置“height”属性，而是想通过该元素内部的子元素自动地“撑起”它的高度，内部的文本的确是撑起了这个&lt;section&gt;元素的高度，但是意外的是，里面的&lt;img&gt;元素的却超出了其父元素&lt;section&gt;的下边界。这是因为代码中的两个&lt;img&gt;元素都设置了“float”属性，第一个值的为“left”，第二个的值为“right”，都脱离了“文档流”，也就是不再占据页面内的高度了，所以出现了以上示例中的情况。要防止元素设置“float”产生的副作用，请学习下一节的内容“清除浮动副作用”。</p>
     </section>
     <!-- 清除浮动 -->
@@ -182,7 +182,7 @@
                 <img src="img/code/csscode/code-css-181.jpg">
             </code>
             <h4>运行效果：</h4>
-            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-119.html"></iframe>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-119.html"></iframe>
             <dd>通过上面的示例我们可以发现，通过这种方式可以成功地消除子元素浮动对父元素高度的影响，但是这样会给页面添加一些无意义的空标签，并不是很理想。</dd>
             <!-- position:absolue -->
             <dt>使用绝对定位“position:absolue”</dt>
@@ -195,7 +195,7 @@
                 <img src="img/code/csscode/code-css-183.jpg">
             </code>
             <h4>运行效果：</h4>
-            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-120.html"></iframe>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-120.html"></iframe>
             <dd>为了便于观察效果，这次我们给&lt;ul&gt;标签添加了一个紫色的边框，可以发现，&lt;li&gt;的父级元素&lt;ul&gt;也有了适应子元素内容的高度，但是一个很严重的情况出现了，首先&lt;ul&gt;的父级元素&lt;section&gt;仍然没有高度，并且3个&lt;ul&gt;列表由于绝对定位的原因，全部叠在了一起，显然这种做法的缺点也比较明显，就是当页面内存在多个浮动元素组的时候，此方法对布局的帮助也不大。</dd>
             <!-- overflow -->
             <dt>裁切显示属性“overflow”</dt>
@@ -205,7 +205,7 @@
                 <img src="img/code/csscode/code-css-184.jpg">
             </code>
             <h4>运行效果：</h4>
-            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-121.html"></iframe>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-121.html"></iframe>
             <dd>现在，不仅&lt;li&gt;的父元素&lt;ul&gt;自适应了子元素的高度，连最外层的&lt;section&gt;也自适应了其后代元素的高度，到目前为止也算是效果最理想的一种做法了。</dd>
             <dd>但并不是说该方法就没有缺点了，就是当用“float”来制作具有“二级导航菜单”的导航条的时候，用“overflow”去消除浮动就会出现问题了，就是如果用它的值“hidden”的时候，“二级导航菜单”由于被“裁切”了根本不会显示；如果用“auto”或者“scroll”的时候呢，又会在导航栏下生成一个内容都显示不全的，还带难看滚动条的“不明物体”；而用“visible”这个值的时候呢，又没有达到清除浮动影响的效果。有兴趣的同学可以自行试验。</dd>
             <!-- :after -->
@@ -215,7 +215,7 @@
                 <img src="img/code/csscode/code-css-185.jpg">
             </code>
             <h4>运行效果：</h4>
-            <iframe class="codeEffect" src="html-pages/css/codeEffect/code-122.html"></iframe>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-122.html"></iframe>
             <dd>通过之前学习的“CSS高级选择器”章节内容应该还记得，“:after”是向设置了该选择器的子元素的末尾插入“显示类型”为“inline”的内容，而且通过这种方式插入的内容是个实实在在的HTML元素，也就它具有普通HTML元素的几乎一切CSS属性，“可操作性”非常的高。</dd>
             <dd>本例中，我们首先用该选择器必要的属性“content”插入一个任意字符（某些“高级”浏览器里也可以为“空”，但为了兼容性考虑，加上一个任意字符更加安全），然后将元素高度设置为“0”，使它不占据页面的空间，为了保证插入的那个“任意字符”不显示出来，我们还需要设置“visibility”属性的值为“hidden”。由于通过该选择器插入的内容的“显示类型”为“inline”，我们还需要将它转换为“block”。最后，也是最重要的一步，就是设置“clear”属性了。</dd>
             <dd>该方式看似复杂，但却是目前为止清除浮动影响的最佳方式，即：在HTML不用添加无意义的空标签，不会让布局重叠，不会裁切显示元素。它唯一的缺点就是不支持老版本的浏览器（IE7及以下版本），但是随着互联网技术的发展，这些问题都不再成为问题，都交给时间去解决吧。</dd>
@@ -257,7 +257,7 @@
             <img src="img/code/csscode/code-css-187.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-123.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-123.html"></iframe>
         <p>上例显示效果稍显错乱，但只是为了说明一个问题，就是参与“相对定位”的元素并不会影响到其它元素在“文档流”中的位置，而自身的“文档流”位置也正常保留了的。“相对定位”通常是用于布局相对复杂、浏览器布局差异比较大的表单元素。就是将所有&lt;label&gt;元素与右侧的表单元素进行垂直上对齐（vertical-align:top，该属性的值“middle”在各浏览器上也存在差异，不推荐在表单布局中使用）,然后通过设置“相对定位”的“top”属性的值来达到“视觉上”的垂直居中效果。</p>
     </section>
     <!-- 绝对定位 -->
@@ -282,7 +282,7 @@
             <img src="img/code/csscode/code-css-189.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-124.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-124.html"></iframe>
         <p>这样的定位方式相对简单，所有元素的定位都是相对于浏览器边缘进行的位置设置，只有最后一个&lt;section&gt;元素稍微特殊一点，是利用“position:absolute”加上“margin-left”的方式进行水平居中定位，这也是一定条件下（常用于元素宽度大于浏览宽度的情况，比如说大幅的Banner元素）比较实用的居中定位方式。</p>
         <p>我们再来看一个有嵌套关系，并且涉及多层元素定位的例子，<a href="html-pages/css/codeEffect/code-125.html" target="_blank">HTML部分</a>的代码如下：</p>
         <code class="w90p">
@@ -293,7 +293,7 @@
             <img src="img/code/csscode/code-css-191.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-125.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-125.html"></iframe>
         <p>这个示例的CSS代码比较多，但关键代码就8行，就是第2、3个&lt;section&gt;及子元素&lt;article&gt;执行定位相关的属性。首先可以发现之前谈到的一个问题，也就是第2、3个&lt;section&gt;的“top”属性都是“0”，但是由于第2个&lt;section&gt;执行的是“相对定位”，将该属性值设置为“0”等于是没有做垂直方向的偏移，也能说明它仍居“文档流”内，而第3个&lt;section&gt;执行的是“绝对定位”，它会忽略“文档流”内所有元素的位置，去相对于当前浏览器边界做定位。</p>
         <p>本例中的2个&lt;section&gt;内的&lt;article&gt;元素都执行的是“绝对定位”，可以发现，他们并没有去“寻找”浏览器边界做定位，而是相对父元素&lt;section&gt;去做了定位，而且这与父元素&lt;section&gt;执行的是“相对定位”还是“绝对定位”并没有关系，当然，若父元素&lt;section&gt;执行的是“固定定位”（position:fixed，后续会讲到）也会达到同样的效果。</p>
         <p>“绝对定位”初看是一个比较简单的属性，但深究起来还是有很多复杂的地方，如：一个元素没有设置宽和高，将它“上右下左”四个方向的属性值都设置为“0”，那它的宽和高将占满整个浏览器窗口等等。通过单纯的知识点记忆很难对它的所有特性进行掌握，这还需要更多的项目实战经验对其进行理解。</p>
@@ -328,7 +328,7 @@
             <img src="img/code/csscode/code-css-193.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe class="codeEffect" src="html-pages/css/codeEffect/code-126.html"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-126.html"></iframe>
     </section>
 </root>
 
