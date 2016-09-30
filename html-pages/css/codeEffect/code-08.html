@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <title>CSS示例代码</title>
     <link rel="stylesheet" href="../../../css/iframe.min.css">
-    <link rel="stylesheet" href="code-07.css">
+    <style>
+        /* 同级元素选择器(+) */
+        .cmdDiv,.sortFly,.longFly {
+            width: 180px;
+        }
+        .cmdDiv {
+            text-align: center;
+            border: 2px solid #999;
+        }
+        .sortFly,.longFly {
+            transition: all 0.6s ease-in;
+        }
+        .cmdDiv:hover + .sortFly {
+            margin-left: 300px;
+        }
+        .cmdDiv:hover + .longFly {
+            margin-left: 500px;
+        }
+    </style>
 </head>
 <body>
     <div class="cmdDiv">这是DIV</div>

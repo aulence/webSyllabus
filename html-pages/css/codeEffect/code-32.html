@@ -6,6 +6,26 @@
     <link rel="stylesheet" href="../../../css/iframe.min.css">
     <link rel="stylesheet" href="../../../html-pages/css/codeEffect/code-11.css">
     <style>
+        /* 伪元素选择器--元素之前添加 */
+        .addBefore-1:before {
+            content: url("../../../img/other/onepiece-1.png");
+            width: 24px; height: 24px;
+        }
+        .addBefore-2:before {
+            content: url("../../../img/other/onepiece-1.png");
+            width: 0px;
+            display: inline-block;
+        }
+        .addBefore-3:before {
+            content: "好像";
+            border: 1px solid #f80;
+            font: 24px "微软雅黑";
+            color: #f80;
+            display: inline-block;
+            position: relative;
+            top: -4px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>

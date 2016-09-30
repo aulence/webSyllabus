@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS示例代码</title>
+    <link rel="stylesheet" href="../../../css/iframe.min.css">
+    <style>
+        /* 子选择器 */
+        article > p > span {
+            font-size: 20px;
+            color: #239923;
+        }
+        article > .paragraph {
+            line-height: 160%;
+            margin: 0; padding: 10px;
+        }
+        #userLogin > form {
+            width: 660px; height: auto;
+            margin: 0 auto; padding: 20px;
+        }
+        div > #userName {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <section>
@@ -25,5 +44,7 @@
             </div>
         </form>
     </section>
-</body><script src="../../../plugin/jquery-3.1.0.min.js"></script><script src="../../../js/iframe.min.js"></script>
+</body>
+<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+<script src="../../../js/iframe.min.js"></script>
 </html>

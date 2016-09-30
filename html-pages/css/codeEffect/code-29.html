@@ -4,8 +4,26 @@
     <meta charset="utf-8">
     <title>CSS示例代码</title>
     <link rel="stylesheet" href="../../../css/iframe.min.css">
-    <link rel="stylesheet" href="../../../html-pages/css/codeEffect/code-10.css">
     <style>
+        /* 文本裁切 */
+        .text-inhrit,.text-clip,.text-ellipsis {
+            width: 720px
+        }
+        .text-inherit {
+            text-overflow: inherit;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .text-clip {
+            text-overflow: clip;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .text-ellipsis {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>

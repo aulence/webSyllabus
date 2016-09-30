@@ -1,36 +1,36 @@
 @charset "utf-8";
-    /* 标签选择器 */
-    div {
-        width: 480px; height: 320px;
-        background-color: #8c8c8c;
-    }
-    p {
-        margin: 0; padding: 10px;
-    }
-    a {
-        text-decoration: none;
-        color: #3388dd;
-    }
-    /* 类选择器 */
-    .showImg {
-        width: 720px; height: 480px;
-    }
-    .fz16 {
-        font-size: 16px;
-    }
-    .ff_songTi {
-        font-family: "宋体";
-    }
-    /* ID选择器 */
-    #userName {
-        position: absolute;
-        top: 10px; right: 10px;
-    }
-    #userPhoto {
-        width: 64px; height: 64px;
-        border-radius: 32px;
-        overflow: hidden;
-    }
+/* 标签选择器 */
+div {
+    width: 480px; height: 320px;
+    background-color: #8c8c8c;
+}
+p {
+    margin: 0; padding: 10px;
+}
+a {
+    text-decoration: none;
+    color: #3388dd;
+}
+/* 类选择器 */
+.showImg {
+    width: 720px; height: 480px;
+}
+.fz16 {
+    font-size: 16px;
+}
+.ff_songTi {
+    font-family: "宋体";
+}
+/* ID选择器 */
+#userName {
+    position: absolute;
+    top: 10px; right: 10px;
+}
+#userPhoto {
+    width: 64px; height: 64px;
+    border-radius: 32px;
+    overflow: hidden;
+}
 
 
 
