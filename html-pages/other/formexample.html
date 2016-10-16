@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <link rel="shortcut icon" href="img/other/favicon.ico">
+	<link rel="Bookmark" href="img/other/favicon.ico">
+    <title>表单元素示例</title>
+    <link rel="stylesheet" href="plugin/baseCSS-1.1.0.css">
+    <link rel="stylesheet" href="../../css/other/formexample.css">
+</head>
+<body>
+    <h1>表单元素示例</h1>
+    <form>
+        <!-- 用户名 -->
+        <div>
+            <label>用户名：</label>
+            <input type="text" placeholder="请输入6~12位用户名">
+        </div>
+        <!-- 昵称 -->
+        <div>
+            <label>昵称：</label>
+            <input type="text" placeholder="请输入大家对你的称呼">
+        </div>
+        <!-- 密码 -->
+        <div>
+            <label>密码：</label>
+            <input type="password" placeholder="请输入8~16位英文、数字或符号的密码">
+        </div>
+        <!-- 确认密码 -->
+        <div>
+            <label>确认密码：</label>
+            <input type="password" placeholder="请再次输入密码">
+        </div>
+        <!-- 手机 -->
+        <div>
+            <label>手机：</label>
+            <input type="number" placeholder="请输入你的手机号">
+        </div>
+        <!-- 性别 -->
+        <div>
+            <label>性别：</label>
+            <input id="secrecy" name="gender" type="radio" checked><label for="secrecy">保密</label>&nbsp;&nbsp;
+            <input id="male" name="gender" type="radio"><label for="male">男</label>&nbsp;&nbsp;
+            <input id="female" name="gender" type="radio"><label for="female">女</label>
+        </div>
+        <!-- 爱好 -->
+        <div>
+            <label>爱好：</label>
+            <input id="book" name="hobby" type="checkbox"><label for="book">看书</label>&nbsp;&nbsp;
+            <input id="sport" name="hobby" type="checkbox"><label for="sport">运动</label>&nbsp;&nbsp;
+            <input id="computer" name="hobby" type="checkbox"><label for="computer">电脑</label>
+            <input id="travel" name="hobby" type="checkbox"><label for="travel">旅游</label>
+        </div>
+        <!-- 所属行业 -->
+        <div>
+            <label>所属行业：</label>
+            <select>
+                <option value="0" style="color:#aaa">请选择</option>
+                <option value="1">农、林、牧、渔业</option>
+                <option value="2">采矿业</option>
+                <option value="3">制造业</option>
+                <option value="4">燃气及水生产供应业</option>
+                <option value="5">批发和零售业</option>
+                <option value="6">交通运输、存储和快递业</option>
+                <option value="7">住宿和餐饮业</option>
+                <option value="8">信息传输、软件和软件信息服务业</option>
+                <option value="9">金融业</option>
+                <option value="10">房地产业</option>
+                <option value="11">教育行业</option>
+                <option value="12">卫生和社会工</option>
+                <option value="13">国际组织</option>
+            </select>
+        </div>
+        <!-- 个人主页 -->
+        <div>
+            <label>个人主页：</label>
+            <input type="url" placeholder="如：http://www.aulence.com">
+        </div>
+        <!-- 个人简介 -->
+        <div>
+            <label>个人简介：</label>
+            <textarea placeholder="让大家更快地认识你"></textarea>
+        </div>
+        <!-- 注册和重置 -->
+        <div class="submitForm">
+            <button type="button">注册</button>
+            <button type="reset">重置</button>
+        </div>
+    </form>
+</body>
+</html>

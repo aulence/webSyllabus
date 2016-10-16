@@ -1,0 +1,105 @@
+@charset "utf-8";
+/**
+* 功能：表单元素示例
+**/
+body {
+    font-size: 20px;
+    font-family: "微软雅黑";
+    color: #555;
+    padding-bottom: 100px;
+}
+h1 {
+    text-align: center;
+}
+form {
+    width: 480px;
+    margin: 0 auto;
+}
+form > div {
+    margin: 16px 0;
+}
+input,select {
+    font-family: "微软雅黑";
+}
+input:not([type="radio"]),input:not([type="checkbox"]) {
+    width: 340px;
+    padding: 6px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 18px;
+    color: #666;
+    box-sizing: border-box;
+    outline: none;
+}
+/*input:not([type="radio"]):focus,input:not([type="checkbox"]):focus {
+    box-shadow: 0 0 5px #26f;
+}*/
+label,input {
+    vertical-align: top;
+}
+/* 字段标签 */
+label:not([for]) {
+    width: 100px;
+    text-align: right;
+    position: relative;
+    top: 4px;
+    display: inline-block;
+}
+/* 单选、多选标签 */
+label[for] {
+    position: relative;
+    top: 4px;
+}
+/* 单选按钮 */
+input[type="radio"],input[type="checkbox"] {
+    width: auto;
+    position: relative;
+    top: 8px;
+    outline: none;
+}
+/* 下拉菜单 */
+select {
+    width: 340px;
+    padding: 6px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    font-size: 18px;
+    color: #666;
+    outline: none;
+}
+/* 个人简介 */
+textarea {
+    width: 340px; height: 133px;
+    padding: 4px;
+    line-height: 25px;
+    font-size: 20px;
+    color: #666;
+    box-sizing: border-box;
+    outline: none;
+}
+/* 提交按钮组 */
+.submitForm {
+    text-align: center;
+    margin-top: 30px;
+}
+.submitForm button {
+    width: 106px; height: 32px;
+    background-color: #f3f4f5;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font: 20px "微软雅黑";
+    color: #555;
+    cursor: pointer;
+    outline: none;
+}
+.submitForm button:hover {
+    background-color: #fff;
+    color: #777;
+}
+.submitForm button:active {
+    background-color: #f3f4f5;
+    color: #444;
+}
+.submitForm button[type="reset"] {
+    margin-left: 50px;
+}
