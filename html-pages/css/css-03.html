@@ -1,378 +1,170 @@
-<root data-root="CSS高级选择器">
-    <style>
-        .selection::selection { background-color: #600; color: #8c8ce8;}
-        .selection::-moz-selection { background-color: #600; color: #8c8ce8;}
-    </style>
+<root data-root="CSS字体样式">
     <section class="mt0">
-        <h3>CSS高级选择器概述</h3>
-        <p>CSS高级选择器区别于CSS普通选择器，它并非是通过HTML页面标签中一些可见的因素进行选择（如标签名，属性名、值，同级关系，嵌套结构等），也不是对一些简单的操作条件进行选择（如鼠标悬浮，鼠标点击，输入框获得焦点等），而是对标签元素的结构、标签元素的索引、标签元素的状态等一些更为复杂的条件下进行的选择，甚至能改变现有标签的状态结构。</p>
-        <p>很多CSS高级选择器都是在CSS3标准后诞生的，它们出现一方面让标签的选择更加的简便精准，一方面又让HTML的DOM结构更加清晰，顺应了标签结构语义化，可读性更强的趋势，同时也使得搜索引擎能更好的检索到我们所开发的网站（SEO）。能正确灵活地运用CSS的高级选择器，不仅能让我们开发的网站功能更加地强大，表现更加地“绚丽”，还能更大程度地增加用户的体验度，让我们开发的网站在用户心目中留下一个深刻的好印象。</p>
+        <h3>CSS文本样式概述</h3>
+        <p>文本在HTML页面中是最基本的表现形式，通过文本能最有效而详细的说明网页中的内容。但若不对页面中的文本做任何处理，那会给用户浏览带来一些不好的体验。如果通过CSS对文本进行设置后，不仅让用户浏览体验更佳的好，也会让页面的美观程度提升一个高度。</p>
+        <p>我们可以通过一个<a href="html-pages/css/codeEffect/code-10.html" target="_blank">页面文本布局糟糕的例子</a>和一个<a href="html-pages/css/codeEffect/code-11.html" target="_blank">页面文本布局美观的例子</a>来进行比较。通过比较我们可以发现，一个文本布局良好的页面给用户的体验要远远好于一个文本布局不加修饰的页面。所以要想一个页面制作得比较精美，那么我们首先要从CSS的字体文本的样式学起。</p>
     </section>
     <section>
-        <h3>伪元素选择器<supcss3></supcss3></h3>
-        <p>该类选择器主要用于向指定的<em>选择器</em>添加指定的效果，该类选择器会<em>增加“1”的权重</em>，主要有四个伪元素：</p>
+        <h3>文字的的基本属性“font”</h3>
+        <p>该属性用于设置网页中文本的基本显示样式，如<em>字体类型</em>、<em>字体粗细</em>、<em>字体大小</em>、<em>字体系列</em>，甚至还可以直接通过对“font”属性多值的设置实现对文本行高的设置。</p>
+        <p class="noindent">“font”属性有以下分支属性：</p>
         <dl class="attrExplain">
-            <dt>:first-letter</dt>
-                <dd>选择“块级元素”文本段落中的首个字符，只能对“块级元素”生效。</dd>
-                <dd>该选择器可以设置的值有：</dd>
+            <dt>font-style</dt>
+                <dd>用于设置字体类型，可设置以下值：</dd>
+                <ul>
+                    <li>normal：普通字体</li>
+                    <li>italic：斜体</li>
+                    <li>oblique：倾斜字体</li>
+                </ul>
+                <dd>
+                    <code class="w55p">
+                        <img src="img/code/csscode/code-css-022.jpg">
+                    </code>
+                    <p class="noindent">对应的CSS代码如下：</p>
+                    <code class="w45p">
+                        <img src="img/code/csscode/code-css-023.jpg">
+                    </code>
+                    <h4>运行效果：</h4>
+                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-12.html" style="height:158px;"></iframe>
+                </dd>
+            <dt>font-weight</dt>
+                <dd>用于设置字体粗细，可设置以下值：</dd>
                 <dd>
                     <ul>
-                        <li>font属性</li>
-                        <li>color属性</li>
-                        <li>background属性</li>
-                        <li>margin属性</li>
-                        <li>padding属性</li>
-                        <li>border属性</li>
-                        <li>text-decoration属性</li>
-                        <li>vertical-align属性</li>
-                        <li>text-transform属性</li>
-                        <li>line-height属性</li>
-                        <li>float属性</li>
-                        <li>clear属性</li>
+                        <li>normal：正常粗细</li>
+                        <li>bold：粗体</li>
+                        <li>bolder：更粗的字体</li>
+                        <li>lighter：更细的字体</li>
+                        <li>100~900：步长为100，400 等同于 normal，而 700 等同于 bold</li>
                     </ul>
                 </dd>
                 <dd>
-                    <p class="noindent">HTML代码示例：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-058.jpg">
+                    <code class="w55p">
+                        <img src="img/code/csscode/code-css-024.jpg">
                     </code>
                     <p class="noindent">对应的CSS代码如下：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-059.jpg">
+                    <code class="w45p">
+                        <img src="img/code/csscode/code-css-025.jpg">
                     </code>
                     <h4>运行效果：</h4>
-                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-30.html" style="height:92px;"></iframe>
+                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-13.html" style="height:200px;"></iframe>
                 </dd>
-            <dt>:first-line</dt>
-                <dd>选择“块级元素”文本段落中的首行文本，只能对“块级元素”生效。</dd>
-                <dd>该选择器可以设置的值有：</dd>
+            <dt>font-size</dt>
+                <dd>用于设置字体大小的，可设置的值可以是任意<em>正整数</em>和<em>浮点数</em>，但考虑到Chrome等主流浏览器不支持12像素以下的字体，若字号以像素为单位，或通过设置其它单位转换为的像素值不应该小于12像素。常用的字号单位有：</dd>
                 <dd>
                     <ul>
-                        <li>font属性</li>
-                        <li>color属性</li>
-                        <li>background属性</li>
-                        <li>word-spacing属性</li>
-                        <li>letter-spacing属性</li>
-                        <li>text-decoration属性</li>
-                        <li>vertical-align属性</li>
-                        <li>text-transform属性</li>
-                        <li>line-height属性</li>
-                        <li>clear属性</li>
+                        <li><em>px</em>（像素）</li>
+                        <li><em>em</em>（当前父元素内的默认字体大小）</li>
+                        <li><em>%</em>（相对于浏览器默认字体大小的百分比）</li>
+                        <li>pt（点）</li>
+                        <li>ex（相当对于字母“x”的高度）</li>
+                        <li>pc（派卡）</li>
+                        <li>mm（毫米）</li>
+                        <li>cm（厘米）</li>
+                        <li>in（英寸）</li>
                     </ul>
                 </dd>
-                <dd>
-                    <p class="noindent">HTML代码示例：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-060.jpg">
-                    </code>
-                    <p class="noindent">对应的CSS代码如下：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-061.jpg">
-                    </code>
-                    <h4>运行效果：</h4>
-                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-31.html" style="height:122px;"></iframe>
-                </dd>
-            <dt>:before</dt>
-                <dd>在指定的选择器之前插入一段内容。插入的内容默认为“行内元素”，可以通过“display”强制装换显示类型。</dd>
-                <dd>
-                    <p class="noindent">HTML代码示例：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-062.jpg">
-                    </code>
-                    <p class="noindent">对应的CSS代码如下：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-063.jpg">
-                    </code>
-                    <h4>运行效果：</h4>
-                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-32.html" style="height:266px;"></iframe>
-                </dd>
-            <dt>:after</dt>
-                <dd>在指定的选择器之后插入一段内容，使用方式和“:before”一样。插入的内容默认也是为“行内元素”，同样可以通过“display”强制装换显示类型。</dd>
-                <dd>
-                    <p class="noindent">HTML代码示例：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-064.jpg">
-                    </code>
-                    <p class="noindent">对应的CSS代码如下：</p>
-                    <code>
-                        <img src="img/code/csscode/code-css-065.jpg">
-                    </code>
-                    <h4>运行效果：</h4>
-                    <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-33.html" style="height:212px;"></iframe>
-                </dd>
+                <dd>需要明白的一个常识，除非人为的对浏览器的设置进行了更改，否则目前浏览器的主流的字号都是采用16像素（px）的字体。</dd>
+                <code class="w50p">
+                    <img src="img/code/csscode/code-css-026.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code class="w35p">
+                    <img src="img/code/csscode/code-css-027.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-14.html" style="height:116px;"></iframe>
+            <dt class="mt15">font-family</dt>
+                <dd>用于设置字体系列，就是我们通常说的“所用字体”。设置字体有以下规则，使用中文字体，或带空格的英文字体名，需要用“<em>引号</em>”将该字体名扩起来，单个单词的字体名称则无需加上引号。“font-family”可以有多个值，多个值设置的作用是，当浏览用户本地计算机没有找到设置的第一个值所表示的字体时，会去找第二个，以此类推，若找到最后一个值都没有找到匹配的字体，浏览器则会用自己的默认字体。考虑到网页最终显示效果在不同设备上的一致性，我们通常使用的中文字体只有：“<em>宋体</em>”、“<em>微软雅黑</em>”、“黑体”、“楷体”、“幼圆”等，而目前以“微软雅黑”为最常用设计字体。常用的英文字体有：“<em>Arial</em>”、“Helvetica”、“Tahoma”、“Verdana”、“Lucida Grande”、“Times New Roman”、“Georgia”等。</dd>
+                <code class="w65p">
+                    <img src="img/code/csscode/code-css-028.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code class="w60p">
+                    <img src="img/code/csscode/code-css-029.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-15.html" style="height:310px;"></iframe>
+            <dt class="mt15">font的组合写法</dt>
+                <dd>除了为“font”的具体分支属性设置样式，我们还能将“font”的多个值组合起来写，如我们要设置一个风格为正常的粗体，字号为20像素的“微软雅黑”和一个风格为斜体的正常粗细，字号为22像素的“宋体”，我们可以这样写：</dd>
+                <code class="w60p">
+                    <img src="img/code/csscode/code-css-030.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code class="w55p">
+                    <img src="img/code/csscode/code-css-031.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-16.html" style="height:138px;"></iframe>
+                <dd class="mt15">由于字体风格和字体粗细，具有一定的相似性，如他们都有一个“normal”值，所以在写“font”属性组合值的时候可以省略二者之一，以辨识到的值进行设置，另外一个自动为“normal”，甚至还能省略掉第前两个值，只保留“font-size”和“font-family”如：</dd>
+                <code class="w65p">
+                    <img src="img/code/csscode/code-css-032.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code class="w50p">
+                    <img src="img/code/csscode/code-css-033.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-17.html" style="height:224px;"></iframe>
+                <dd class="mt15">但有一点需要强调的是，在“font”组合值的写法中，只有“font-size”和“font-family”这两个的值是不能省略的，而且是缺一不可，否则浏览器会不认识该值，对该组合值进行报错。</dd>
+                <dd>“font”属性组合值的写法，除了以上所提到的，它还有一种比较不常见，却还比较实用的写法，即可直接在“font”属性内设置文本的行高“line-height”，如下：</dd>
+                <code class="w75p">
+                    <img src="img/code/csscode/code-css-034.jpg">
+                </code>
+                <p class="noindent">对应的CSS代码如下：</p>
+                <code class="w50p">
+                    <img src="img/code/csscode/code-css-035.jpg">
+                </code>
+                <h4>运行效果：</h4>
+                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-18.html" style="height:176px;"></iframe>
         </dl>
-        <p>使用“:before”和“:after”伪元素选择器不仅能为指定的元素添加文字、图片和各种利用“width”、“height”、“border”制作出来的形状，甚至还能添加音频、视频这些多媒体文件，而且具有高度自定义性。</p>
     </section>
     <!-- 章节练习 -->
 	<section class="unitPractice">
         <h3>&lt;章节练习（一）&gt;</h3>
-	    <p>制作任意四个文本文本，具体要求如下：</p>
-	    <p>1、第一个文本段落需大于两行，为首字添加一个效果：字体设为22像素的“微软雅黑”字体，具有一个2像素的边框，字体颜色和边框均为红色，背景色为“#f3d5df”,字体与表框之间的内间距为2像素；</p>
-	    <p>2、第二个文本段落需大于两行，将首行文字的字间距设为“0.8em”24像素的“微软雅黑”字体，字体颜色为“#e910d4”，并且具有下划线；</p>
-	    <p>3、第三个段落文本，字数控制在4~10字内，文本水平居中。为该段落前添加一个宽高均为“32像素”背景色为“#6d2a03”圆角（border-radius）为“16像素”的形状，形状内含有一个水平垂直均居中的“炫”字。设法使该形状和段落文本水平对齐。</p>
-	    <p>4、第四个段落文本，字数控制在4~10字内，文本水平居中。为该段落后添加一张接近圆形的“PNG图片”，图片大小为“32*32”。设法使该图片和和段落文本水平对齐。</p>
+	    <p>用“font”多值组合的写法制作任意四个段落的文本，具体要求如下：</p>
+	    <p>1、第一段文本为正常风格，正常粗细，16像素的“宋体”</p>
+	    <p>2、第二段文本为斜体风格，正常粗细，20像素的“微软雅黑”</p>
+	    <p>3、第三段文本为正常风格，加粗，22像素的“幼圆”</p>
+	    <p>4、第四段文本为斜体风格，加粗，22像素的“楷体”</p>
+	    <p>5、所有段落的行高是文字的1.6倍，并且不能使用“line-height”属性</p>
+	    <p>6、每个段落之间的间距是30像素</p>
 	    <h4>&lt;扩展功能&gt;</h4>
-	    <p>1、使段落三前面的“炫”字形状显示出动态的“外发光效果”（最小发光距离“5像素”，最大发光距离“20像素”，发光颜色“rgba(48, 77, 235, 0.88)”）；</p>
-	    <p>2、使段落四后方的图片以中心为原点进行无限的顺逆时针旋转（旋转速度自定）。</p>
+	    <p>1、具有一个在页面中居中的，字体为普通风格、普通粗细、颜色为“#0349fc”的一级标题，字体为“微软雅黑”</p>
+	    <p>2、每个段落有2个字符的缩进</p>
 	</section>
     <section>
-        <h3>结构性伪类选择器<supcss3></supcss3></h3>
-        <p>该类选择器主要用于当前选择器精确地通过元素“<em>索引值</em>”或“<em>匹配类型</em>”的索引值定位到该选择器的<em>同级</em>指定元素。该类选择器的格式是“<em>基本选择器</em>（包括‘后代选择器’、‘自选择器’、‘同级选择器’等）”或“<em>属性选择器</em>（包括各种带条件的属性选择器）”+“结构性伪类选择器”的形式。“结构性伪类选择器”会增加“1”的权重，该类选择器主要有以下形式：</p>
+        <h3>字体颜色--color</h3>
+        <p>在目前的浏览器标准中，要想改变浏览器默认字体的颜色（#000000）唯一的途径就是通过CSS的“color”属性进行设置。颜色属性可以设置4种类型的值，有以下类型：</p>
         <dl class="attrExplain">
-            <dt>:first-child</dt>
-                <dd>对该类所有父元素中的首个子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-066.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-067.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-34.html" style="height:482px;"></iframe>
-            <dt class="mt15">:last-child</dt>
-                <dd>对该类所有父元素中的最后一个子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-068.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-069.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-35.html" style="height:482px;"></iframe>
-            <dt class="mt15">:first-of-type</dt>
-                <dd>对该类所有父元素中的首个匹配到类型的子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-070.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-071.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-36.html" style="height:504px;"></iframe>
-            <dt class="mt15">:last-of-type</dt>
-                <dd>对该类所有父元素中的最后一个匹配到类型的子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-072.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-073.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-37.html" style="height:504px;"></iframe>
-            <dt class="mt15">:only-child</dt>
-                <dd>对该类所有父元素中只含有唯一所匹配（不包含同级元素）的子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-074.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-075.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-38.html" style="height:518px;"></iframe>
-            <dt class="mt15">:only-of-type</dt>
-                <dd>对该类所有父元素中只含有唯一所匹配类型的子元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-076.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-077.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-39.html" style="height:484px;"></iframe>
-            <dt class="mt15">:nth-child(n)</dt>
-                <dd>对其父元素的第“n”个子元素进行选择，通过设置<em>参数</em>“n”指定为第几个元素</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-078.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-079.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-40.html" style="height:160px;"></iframe>
-                <p class="noindent">该选择器不仅能准确的匹配到第“几”个指定类型的元素，还能对匹配类型元素的“<em>奇偶索引</em>”值进行选择，用“奇偶索引”选择器来制作隔行变色的表格及相关场景的元素时非常高效便捷：</p>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-080.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-081.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-41.html" style="height:214px;"></iframe>
-                <p class="noindent">除此之外，“:nth-child(n)”这个结构性伪类选择器的参数还具备运算特性，如：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-082.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-083.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-42.html" style="height:222px;"></iframe>
-                <p class="noindent">这样的参数我们叫做“带增量计算”的参数，参数内的“n”是一个增量，它从“0”开始计数，每次“+1”。如上代码，第一生效时机是“3*0-1”（计算结果小于1），无效；第二次生效时机是“3*1-1”,为第2个；第三次生效时机是“3*2-1”，为第5个，以此类推。</p>
-            <dt class="mt15">:nth-last-child(n)</dt>
-                <dd>该选择器和“:nth-child(n)”的特性基本一致，唯一的不同点就是该选择器的索引值是从该选择器匹配到的元素的同级元素中的<em>最后一个</em>开始进行计算的。主要运用范畴是，当这些标签元素是动态生成的，也就是说生成数量不固定的时候，用“:nth-last-child(n)”能精确的定位到同级元素中的最后一个（这里使用“:last-child”会更简便）、最后几个，或从最后开始有选择地进行计数选择。</dd>
-            <dt class="mt15">:nth-of-type(n)</dt>
-                <dd>如果你对“:first-of-type”、“:last-of-type”、“:only-of-type”以及“:nth-child(n)”这几个选择器已经有足够深的理解了，现在应该不难猜到“:nth-of-type”的作用了，该选择器是对匹配标签类型的同级元素进行选择。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-084.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-085.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-43.html" style="height:64px;"></iframe>
-                <p class="noindent">该选择器的参数设置和“:nth-child(n)”中的“n”是一样的，即既可以传进“odd”和“even”这样的奇偶数，也可以传进带有“增量计算”的参数。</p>
-            <dt class="mt15">:nth-last-of-type</dt>
-                <dd>该选择器和“:nth-of-type(n)”的特性基本一致，不过计算方式也和“nth-last-child(n)”一样，是从最后一个开始计数，这里就不再赘述。</dd>
-            <dt class="mt15">:root</dt>
-                <dd>该选择器选择HTML页面的根节点元素，也就是&lt;html&gt;标签。</dd>
-                <p class="noindent">该选择符不能选择任何其它HTML文档内的标签，只能单独使用，对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-086.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect-unauto" src="html-pages/css/codeEffect/code-44.html" style="height:276px;"></iframe>
-            <dt class="mt15">:empty</dt>
-                <dd>该选择器会匹配所有，或指定基本选择器内没有元素（没有子节点）的标签元素。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-087.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-088.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-45.html" style="height:362px;"></iframe>
-            <dt class="mt15">:target</dt>
-                <dd>该选择器用于“<em>活动锚点</em>”所指向的对象的选择。</dd>
-                <p class="noindent"><a href="html-pages/css/codeEffect/code-46.html" target="_blank">由于页面信息量比较大，所以我们在新打开的窗口中查看HTML文件及对应的CSS代码。</a></p>
-            <dt class="mt15">:not(selector)</dt>
-                <dd>该选择器是用于排除指定元素的选择器。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-089.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-090.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-47.html" style="height:306px;"></iframe>
+            <dt>颜色英文单词</dt>
+            <dd style="word-wrap:break-word">可以通过颜色的英文单词直接设置文本的颜色，如“<em style="color:#ff0000">red</em>”、“<em style="color:#ff8800">orange</em>”、“<em style="color:#ffff00">yellow</em>”、“<em style="color:#00ff00">green</em>”、“<em style="color:#00ffff">cyan</em>”、“<em style="color:#0000ff">blue</em>”、“<em style="color:#ff00ff">purple</em>”、“<em style="color:#ff88aa">pink</em>”、“<em style="color:#888888">gray</em>”、“<em style="color:#000">black</em>”和“<em style="color:#fff; background-color:#000">white</em>”等等。</dd>
+            <dt>HEX（16进制颜色）</dt>
+                <dd>通过“#”+16进制表示颜色，有“#”+“三位”和“#”+“六位”的形式。若是“三位”的形式，第一位表示“<em style="color:#ff0000">红</em>”，第二位表示“<em style="color:#00ff00">绿</em>”，第三位表示“<em style="color:#0000ff">蓝</em>”，通过取值区间“0-9”,“a-f”(10-16)的组合，如“<em style="color:#2266ff">#26f</em>”，共计能表达<em>4,096</em>个颜色。若是“六位”的形式，可以表示的颜色数更加细致，第一二为表示“<em style="color:#ff0000">红</em>”，第三四位表示“<em style="color:#00ff00">绿</em>”，第四五位表示“<em style="color:#0000ff">蓝</em>”，同样也是通过取值区间“0-9”,“a-f”的组合，如“<em style="color:#2369fd">#2369fd</em>”，共计能表达<em>16,777,216</em>个颜色。</dd>
+            <dt>RGBa/ARGB（Alpha的三原色）</dt>
+                <dd>和“HEX”表示三原色一样，该模式同样也是采用三元色的值来表现色彩，不过“RGBa”颜色模式采用的是10进制的值，格式如“<em style="color:rgb(34, 102, 255)">rgb(34, 102, 255)</em>”，值之间用英文逗号“,”进行分割，第一个值表示“<em style="color:#ff0000">红</em>”，第二个值表示“<em style="color:#00ff00">绿</em>”，第三个值表示“<em style="color:#0000ff">蓝</em>”，每个值的区间为“0-255”（256个色阶），共计同样也能表示<em>16,777,216</em>个颜色。除此之外，该模式还支持对不透明度的设置，也就是“RGBa”里面的这个“a”（alpha），它表示不透明度，取值区间是“0到1”之间的浮点数（可保留到两位小数），“0”表示完全透明，“1”表示完全不透明，写法如“<em style="color:rgba(34, 102, 255, 0.55); background-image:url(img/bgi/rgba_bg-01.jpg)">rgba(34, 102, 255, 0.55)</em>”、“<em style="color:rgba(34, 102, 255, 0.9); background-image:url(img/bgi/rgba_bg-01.jpg)">rgba(34, 102, 255, .9)</em>”或“<em style="color:rgb(34, 102, 255); background-image:url(img/bgi/rgba_bg-01.jpg)">rgb(34, 102, 255)</em>”。</dd>
+            <dt>HSLa（Alpha的Hue、Saturation、Lightness）</dt>
+                <dd>该模式通过设置“色调”（Hue）、“饱和度”（Saturation）、“亮度”（Lightness）和“不透明度”（Alpha）来表现色彩的，不透明度的表示和“RGBa”一样，我们主要来看下面三个值的意义：<br>色调：除开“黑色”和“白色”从<em>纯红色</em>过度到<em>纯蓝色</em>再过度到<em>纯红色</em>这一过程的颜色轴的区间，共计<em>360</em>个色调；<br>饱和度：从该色调的<em>纯黑</em>到该色调的<em>纯色</em>区间，越接近黑色，<em>饱和度越低</em>，越接近纯色，<em>饱和度越高</em>；<br>亮度：从“<em>纯黑</em>”到“<em>纯白</em>”这一过程的表示，越接近黑色亮度越低，越接近白色亮度越高。</dd>
+                <dd>如例：</dd>
+                <dd><em style="color:hsla(316, 75%, 56%, 0.9)">这是一个色调为316，饱和度75%，亮度56%，不透明度0.9的颜色--HSLa(316, 75%, 56%, 0.9)</em></dd>
+                <dd><em style="color:hsl(76, 35%, 45%)">这是一个色调为76，饱和度35%，亮度45%，不透明的颜色--HSL(76, 35%, 45%)</em></dd>
+            <dt>Transparent（透明）</dt>
+                <dd>只要设置该值，那文本的内容将变为完全透明，即无论背景为什么颜色或图片，都会完全看不到设置的文字元素，只是起到了一个占位作用，除非文本被选中，如下例：</dd>
+                <dd><em style="color:transparent; background-image:url(img/bgi/rgba_bg-01.jpg)">这是一段一般人根本不会发现的文字。</em></dd>
+                <dd>需要补充的是，“IE 8”浏览器及以下的版本不支持“RGBa”、“HSLa”模式及“Transparent”值，即不支持透明度部分的值，对常规“RGB”和“HSL”模式仍能正常支持。</dd>
         </dl>
     </section>
     <!-- 章节练习 -->
 	<section class="unitPractice">
         <h3>&lt;章节练习（二）&gt;</h3>
-	    <p>制作三个表格，具体要求如下：</p>
-	    <p>1、三个表格均不含“&lt;thead&gt;”、“&lt;tbody&gt;”、“&lt;tfoot&gt;”和“&lt;th&gt;”标签；</p>
-	    <p>2、第一个表格为6行8列，表格实现隔行背景变色效果，首行和末行背景色一致，但与其它行颜色不一样。为第一、第四，第七列添加同一个背景色；</p>
-	    <p>3、第二个表格为5行8列，表头横跨8列，表头字体为24像素的“微软雅黑”字体。表格实现隔行背景变色效果。第二行第三列、第二行第七列、第三行第五列、第四行第五列、第四行第一列、第四行第六列、第五行第四列单元格内容为空，其它单元格均需填充任意文本内容，并且将内容为空的单元格背景色设置为“#888”；</p>
-	    <p>4、第三个表格为5行8列，执行跨行背景变色和跨列背景变色效果。首行和末行、首列和末列的字体大小为其它单元格的1.4倍；</p>
-	    <p>5、顶部添加三个漂亮的超链接按钮（鼠标悬浮、鼠标点击均要有效果变化）。点击第一个、第二个和第三个超链接按钮时，分别让第一个、第二个和第三个表格产生“水平0偏移”，“垂直向下偏移8像素”，“模糊距离8像素”，颜色为“rgba(166,167,168,0.9)”的阴影。同一时间，有且只有一个表格产生此阴影效果；</p>
-	    <p>6、除了&lt;table&gt;标签外，其它标签内不能出现任何“Class”和“id”属性。所有表格的字体颜色为“#fff”，并且要求和背景色有区分（即能清楚辨认文本）；</p>
-	    <p>7、所有表格的宽度为960像素，页面水平居中，表格间上下的距离为50像素，所有单元格行高为32像素。顶部的第一个按钮需要和表格的左边缘垂直对齐，并且与页面顶部保持20像素的距离。</p>
-	</section>
-    <section>
-        <h3>UI元素状态伪类选择器</h3>
-        <p>该类选择器的选择依据主要是页面内标签元素的状态发生改变时所触发的选择状态改变。如：表单元素的“读写状态”、“值状态”，各类元素的“选中状态”等。“UI元素状态伪类选择器”主要有以下内容：</p>
-        <dl class="attrExplain">
-            <dt>:read-only</dt>
-                <dd>当标签元素为只读状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox（火狐）浏览器中的写法为“-moz-read-only”。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-091.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-092.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-48.html" style="height:204px;"></iframe>
-            <dt class="mt15">:read-write</dt>
-                <dd>当标签元素为可写状态时，触发该选择器。通常用于“input”和“textarea”。在FireFox浏览器中的写法为“-moz-read-write”。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-093.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-094.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-49.html" style="height:204px;"></iframe>
-            <dt class="mt15">:enabled</dt>
-                <dd>当标签元素为可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-097.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-098.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-51.html" style="height:262px;"></iframe>
-            <dt class="mt15">:disabled</dt>
-                <dd>当标签元素为不可用状态时，触发该选择器，通常用于“input”、“select”和“textarea”。</dd>
-                <p class="noindent">HTML代码与上一个例子一致，修改后的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-099.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-52.html" style="height:262px;"></iframe>
-            <dt class="mt15">:checked</dt>
-                <dd>当表单元素的值处于“checked”（被选中）状态时，触发该选择器，通常用于&lt;input&gt;标签的“type”属性为“checkbox”和“radio”的表单元素。在FireFox浏览器中的写法为“-moz-checked”。</dd>
-                <p class="noindent">HTML代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-095.jpg">
-                </code>
-                <p class="noindent">对应的CSS代码如下：</p>
-                <code>
-                    <img src="img/code/csscode/code-css-096.jpg">
-                </code>
-                <h4>运行效果：</h4>
-                <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-50.html" style="height:90px;"></iframe>
-            <dt class="mt15">:default</dt>
-                <dd>当表单元素的值处于默认选中状态时，触发该选择器，通常用于&lt;input&gt;标签的“type”属性为“checkbox”和“radio”的表单元素。老版本的webkit和IE（edge）不支持该选择器，其它主流浏览器均支持该选择器。</dd>
-            <dt class="mt15">:indeterminate</dt>
-                <dd>当一个&lt;input&gt;标签的“type”属性为“checkbox”或“radio”的表单元素都处于“半被选中”状态时，触发该选择器。该状态选择器的值目前只能通过JavaScript进行设置。</dd>
-            <dt class="mt15">::selection </dt>
-                <dd class="selection">该选择器是用于当页面内面内的各种元素被选中时所触发的样式。在FireFox浏览器中的写法为“::-moz-selection”，且不能用群组选择器的方式来使用。（用鼠标选择该段查看效果）</dd>
-        </dl>
-    </section>
-    <!-- 章节练习 -->
-	<section class="unitPractice">
-        <h3>&lt;章节练习（三）&gt;</h3>
-	    <p>制作一个漂亮的导航栏，具体要求如下：</p>
-	    <p>1、导航栏横跨整个浏览器窗口（宽度100%），高度为60像素，需要6个宽度一致，高度为60像素的导航按钮（文本内容自定），导航按钮均匀分布在一个宽度为960像素的容器元素内，该容器元素水平居中；</p>
-	    <p>2、整个导航栏的背景色及按钮背景色为“#e73030”，导航按钮的默认字体颜色为“#f6e2e2”，鼠标悬浮时和被点选中的导航按钮颜色均为“#ba0505”，字体颜色为“#fff”;</p>
-	    <p>3、当前导航按钮在被点中时添加“选中”效果，其它已经被选中的导航按钮取消“选中”效果。</p>
-	    <p>&lt;扩展练习&gt;</p>
-	    <p>利用该原理，制作出一个效果和导航栏一致，但能实现多选效果的关于“前端攻城狮必备技能”复选按钮组，色彩风格自定（但必须能清晰看到被选中的效果），需要有以下按钮：</p>
-	    <p>1、HTML5</p>
-	    <p>2、CSS3</p>
-	    <p>3、JavaScript</p>
-	    <p>4、jQuery</p>
-	    
+        <p>将本节中第一个练习的4个文本段落设为不同的颜色，具体要求如下：</p>
+        <p>1、第一个段落的字体颜色用英文单词表示</p>
+        <p>2、第二个段落的字体颜色用HEX颜色模式表示</p>
+        <p>3、第三个段落的字体颜色用RGBa颜色模式表示</p>
+        <p>4、第二个段落的字体颜色用HSLa颜色模式表示</p>
+        <p>5、新增一个段落，除首字外，其它字体颜色为透明，字体大小为1.2em，其它为正常</p>
+	    <h4>&lt;扩展功能&gt;</h4>
+	    <p>为第五个段落增加一个文字阴影（“X轴”偏移量为“0”，“Y轴”偏移量为“2像素”，“模糊度”为“1像素”，阴影颜色用RGBa表示，其中“红、绿、蓝”的值都设置为“186”，不透明度为“90%”），并将该段落的全部文字全部设为白色</p>
 	</section>
 </root>
 

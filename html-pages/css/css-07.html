@@ -1,226 +1,334 @@
-<root data-root="CSS元素背景">
+<root data-root="CSS显示与定位">
     <section class="mt0">
-        <h3>CSS背景概述</h3>
-        <p>在当今的HTML页面中，页面的背景色默认为“白色”，除了少许的表单元素及HTML5规范后才出现的一些新的“功能性”元素标签，其它元素是不具有背景色的（也可以理解为透明的）。要为页面内的元素添加漂亮的“装饰”，让页面表现得更加丰富，区别于人，除了“border”、“outline”、“box-shadow”外，“background”在里面也扮演着相当重要的角色，本章的主要内容就是围绕“background”这个属性进行的。</p>
+        <h3>CSS显示与定位概述</h3>
+        <p>在HTML中，元素会按照标准的“文档流”布局方式进行布局，即“从左到右，从上到下”的方式进行布局，而通过CSS里面的部分定位和显示方式的设置可以使元素脱离“文档流”，采用特殊的布局方式进行布局，或者在页面中进行“隐藏”，而“隐藏”在CSS中又有两种定义方式，一种可以脱离“文档流”，一种仍然存在于“文档流”的布局中。</p>
     </section>
-    <!-- background-color -->
-    <section>
-        <h3>背景色“background-color”</h3>
-        <p>该属性可以称得上是该属性使用率最高的属性，是用于设置<em>任何显示类型</em>（display）元素的背景颜色，可以使用的颜色为Web技术中的常用颜色模式：“颜色英文单词”、“HEX”、“RGBa”、“HSLa”。</p>
-        <p class="noindent">HTML代码部分为4个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w35p">
-            <img src="img/code/csscode/code-css-118.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-72.html" style="height:166px;"></iframe>
-        <p>通过上面的示例我们可以发现，“background-color”默认的颜色范围会覆盖到“border”的边界，但是这个覆盖范围是可以通过后面会讲到的“background-clip”分支属性进行设置的。</p>
-    </section>
-    <!-- background-image -->
-    <section>
-        <h3>背景图像“background-image”</h3>
-        <p>作为“background”的一个重要分支属性，在HTML的美化设计中也占据到相当重要的作用，特别是在CSS3版本发布之前“background-image”这一属性在页面的美化中可以说有着非常核心的地位，但在CSS3版本发布之后，该属性在页面美化中的比重开始下降，页面的加载速度也得到了不少的提升。但要用CSS3或者HTML的“canvas”技术去实现复杂的图像终究比较困难，所以在很多Web应用场景中“background-image”仍然扮演着非常重要的角色。</p>
-        <p>在实际运用的过程中需要注意的是背景图片“background-image”是可以和背景色“background-color”共存的，也就是当采用一张“非矩形”的“png图片”作为背景图片时要小心背景色带来的意外影响。</p>
-        <p class="noindent">HTML代码部分为4个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w75p">
-            <img src="img/code/csscode/code-css-119.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-73.html" style="height:186px;"></iframe>
-    </section>
-    <!-- background-repeat -->
-    <section>
-        <h3>背景图像重复“background-repeat”</h3>
-        <p>当一张背景图片宽或高小于其元素容器，或用“background-size”（后面会讲到）设置宽高小于元素容器的宽高时，背景图片默认会以“平铺”的方式排满整个元素的背景，而该属性正式用于控制图像重复排列方式的，它有以下值：</p>
-        <dl class="attrExplain">
-            <dt>repeat</dt>
-            <dd>默认，以“平铺”的方式排列图片</dd>
+	<!-- display -->
+	<section>
+	    <h3>元素的显示方式“display”</h3>
+	    <p>规定元素的“<em>显示类型</em>”，以目前的HTML标准来讲，HTML文档中自带的标签元素的“显示类型”已经被定义，如（只列出了部分“显示类型”的分类）：</p>
+	    <ul class="indent">
+	        <li>block：&lt;div&gt;、&lt;p&gt;、&lt;header&gt;、&lt;main&gt;、&lt;footer&gt;、&lt;nav&gt;、&lt;section&gt;、&lt;article&gt;、&lt;ul&gt;、&lt;ol&gt;等。</li>
+	        <li>inline-block：&lt;input&gt;、&lt;textarea&gt;、&lt;button&gt;、&lt;meter&gt;、&lt;progress&gt;”等。</li>
+	        <li>inline：&lt;span&gt;、&lt;a&gt;、&lt;label&gt;、&lt;em&gt;、&lt;mark&gt;、&lt;img&gt;、&lt;audio&gt;、&lt;video&gt;等。</li>
+	        <li>table：&lt;table&gt;。</li>
+	        <li>table-row：&lt;tr&gt;。</li>
+	        <li>table-cell：&lt;th&gt;和&lt;td&gt;。</li>
+	        <li>list-item：&lt;li&gt;。</li>
+	    </ul>
+	    <p>如果考虑到布局需要，有的时候我们会强制的将“显示类型”进行转换，在进行转换后，该元素的功能和特性（如将&lt;div&gt;标签转换为“inline-block”之后，也不能嵌套在&lt;p&gt;里和转换为“block”的&lt;span&gt;里）也不会产生变化。所以，在元素页面布局的时候，若对“行内元素”、“行内块级元素”和“块级元素”已经理解得比较透彻了，根据需要完全可以大胆地对“显示类型”进行转换。</p>
+	    <p>显示类型“display”属性主要有以下类型的值：</p>
+	    <dl class="attrExplain">
+	        <dt>none（主要）</dt>
+	        <dd>将元素设定为不显示，使元素完全地脱离“文档流”。</dd>
 
-            <dt>repeat-x</dt>
-            <dd>只在水平方向（X轴方向）进行重复</dd>
+	        <dt>inline（主要）</dt>
+	        <dd>将元素设定为“行内元素”。</dd>
 
-            <dt>repeat-y</dt>
-            <dd>只在垂直方向（Y轴方向）进行重复</dd>
+	        <dt>inline-block（主要）</dt>
+	        <dd>将元素设定为“行内块元素”。</dd>
 
-            <dt>no-repeat</dt>
-            <dd>使背景图片不重复</dd>
-        </dl>
-        <p class="noindent">HTML代码部分为4个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-120.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-74.html" style="height:186px;"></iframe>
-    </section>
-    <!-- background-position -->
-    <section>
-        <h3>背景图定位“background-position”</h3>
-        <p>该属性用于设置背景图片在元素内出现的位置。使用这个属性主要分为两类实际情况：第一类情况就是元素的宽高大于背景图片时，这个时候是通过“0”或“<em>正数值</em>”去进行定位；第二类情况就是元素的宽高小于背景图片的宽高时，这个时候是通过“0”或“<em>负数值</em>”去进行定位（这是采用“CSS图片精灵（CSS Sprites）”技术来开发项目的时候必用的属性）。</p>
-        <p class="noindent">该属性的值有三种形式：</p>
-        <dl class="attrExplain">
-            <dt>方位英文单词</dt>
-            <dd>可以有“left”、“right”、“top”、“bottom”和“center”。用法如：“left top”（默认），设置背景图在元素内的“左上方”；“right bottom”，设置背景图在元素内的“右下方”；“center center”，设置背景图在元素的“中心”。</dd>
+	        <dt>block（主要）</dt>
+	        <dd>将元素设定为“块元素”。</dd>
 
-            <dt>百分比单位</dt>
-            <dd>用法如：“0% 50%”，设置背景图在元素内“水平方向”的“左方”，垂直方向的“中心”；“50% 50%”,，设置背景图在元素内的“中心”；“100% 100%”,，设置背景图在元素内的“右下方”。</dd>
+	        <dt>list-item</dt>
+	        <dd>将元素设置为列表项。</dd>
 
-            <dt>像素单位</dt>
-            <dd>背景图的“左上角”相对于元素“左上角”偏移的距离，如“10px 20px”,设置背景图“水平向右”偏移10像素，“垂直向下”偏移20像素。 </dd>
-        </dl>
-        <p>这三种形式去设置背景图片的位置是可以“<em>混搭</em>”的，如：“left 100%”、“50% 70px”、“top 30px”等。不过从代码规范性的角度出发，并不推荐这种“混搭”的方式。</p>
-        <p class="noindent">这是一个通常定位图片位置的例子，HTML代码部分为4个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-122.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-76.html" style="height:166px;"></iframe>
-        <p class="noindent">这是用“CSS Sprites”进行定位的例子，HTML代码部分为:</p>
-        <code class="w50p">
-            <img src="img/code/csscode/code-css-123.jpg">
+	        <dt>run-in</dt>
+	        <dd>根据上下文作为“行内块元素”或“块元素”显示。</dd>
+
+	        <dt>table</dt>
+	        <dd>将元素作为table显示。</dd>
+
+	        <dt>inline-table</dt>
+	        <dd>将元素作为行内的table显示。</dd>
+
+	        <dt>table-row-group</dt>
+	        <dd>将元素作为一个tbody元素来显示。</dd>
+
+	        <dt>table-header-group</dt>
+	        <dd>将元素作为一个thead元素来显示。</dd>
+
+	        <dt>table-footer-group</dt>
+	        <dd>将元素作为一个tfoot元素来显示。</dd>
+
+	        <dt>table-row</dt>
+	        <dd>将元素作为一个tr元素来显示。</dd>
+
+	        <dt>table-column-group</dt>
+	        <dd>将元素作为一个colgroup元素来显示。</dd>
+
+	        <dt>table-column</dt>
+	        <dd>将元素作为一个col元素来显示。</dd>
+
+	        <dt>table-cell</dt>
+	        <dd>将元素作为一个table单元格元素来显示。</dd>
+
+	        <dt>table-caption</dt>
+	        <dd>将元素作为一个table标题显示。</dd>
+	    </dl>
+	</section>
+	<!-- visibility -->
+	<section>
+	    <h3>元素可见性“visibility”</h3>
+	    <p>该属性用于设置元素“是否可见”，也就是即使元素是不可见的，那它所占据的空间也不会消失。“visibility”属性有以下值：</p>
+	    <dl class="attrExplain">
+	        <dt>visible（默认）</dt>
+	        <dd>设置元素为可见的</dd>
+
+	        <dt>hidden</dt>
+	        <dd>设置元素为不可见的</dd>
+
+	        <dt>collapse</dt>
+	        <dd>在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为“hidden”</dd>
+	    </dl>
+	    <p>我们通过一段代码的运行效果来对比“display”属性和“visibility”在元素显示、隐藏后的布局对比。</p>
+	    <p class="noindent">HTML代码示例：</p>
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-116.jpg">
         </code>
         <p class="noindent">对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-124.jpg">
+        <code class="w60p">
+            <img src="img/code/csscode/code-css-117.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-77.html" style="height:88px;"></iframe>
-    </section>
-    <!-- background-attachment -->
-    <section>
-        <h3>背景图固定“background-attachment”</h3>
-        <p>通过将该属性的值设置为“<em>fixed</em>”后，页面出现滚动条后就算页面滚动，背景图也会固定在原来的位置不会跟随页面滚动。它的默认值是“<em>scroll</em>”，是当页面滚动的时候，背景图也跟随页面同步滚动。</p>
-        <p class="noindent">主要的CSS代码如下：</p>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-71.html" style="height:228px;"></iframe>
+        <p>通过以上示例我们可以清楚地发现，通过将“visibility”的属性值设置为“hidden”，元素虽然不可见了，但仍未脱离“文档流”，在页面显示中占据着原本的位置。而通过将“display”的属性值设置为“none”，元素不可见了，而且在页面中占据的位置也让与“文档流”内布局的其它元素了。通过这两个属性的这一特性，我们可以更加灵活地进行元素的显隐操作，以达到更理想的页面布局效果。</p>
+	</section>
+	<!-- opacity -->
+	<section>
+	    <h3>元素的不透明度“opacity”</h3>
+	    <p>该元素用户设置元素的不透明度，取值范围是“0”到“1”之间的浮点数，可以保留两位小数，如“0.3”、“0.55”，可以支持省略掉前面的“0”也就是“.3”、“.55”的写法。“0”（相当于“visibility:hidden”）表示完全透明，“1”（默认）表示完全不透明。</p>
+	    <p class="noindent"><a href="html-pages/css/codeEffect/code-88.html" target="_blank">HTML部分</a>为6个&lt;section&gt;标签，CSS代码如下：</p>
         <code class="w65p">
-            <img src="img/code/csscode/code-css-125.jpg">
+            <img src="img/code/csscode/code-css-135.jpg">
         </code>
-        <p class="noindent"><a href="html-pages/css/codeEffect/code-78.html" target="_blank">查看本例演示效果</a></p>
-    </section>
-    <!-- background-clip -->
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-88.html" style="height:224px;"></iframe>
+        <p>通过学习过上面的知识需要进行说明的是，将“opacity”的值设置为“0”，和将“visibility”的值设置为“hidden”在布局表现上几乎一致，但在对待用户<em>行为</em>上却有着很大的差别。因为，通过将“opacity”的值设置为“0”的方式，只是让元素透明了，但仍然是可以让如鼠标悬浮等事件生效的，而将“visibility”的值设置为“hidden”的方式，是不能触发鼠标悬浮这一类的事件的，这点要注意区分。</p>
+	</section>
+	<!-- float -->
     <section>
-        <h3>背景裁切范围“background-clip<supcss3></supcss3>”</h3>
-        <p>该属性是规定背景显示的范围，是从“border”开始，是从“padding”开始，还是从“content”开始，它有以下值：</p>
+        <h3>元素的浮动“float”</h3>
+        <p>该属性可以使元素脱离文档流，在父容器中进行浮动，停靠到父元素的“<em title="结合盒子模型进行思考">内容边界</em>”或其它浮动元素的“<em>边框</em>”，浮动的元素会忽略元素间的“空格”，让同样具有该属性的元素“紧密”地排列在一起。该属性通常用于处理一些需要紧密排列在一起的“块级元素”，如“导航条”、“相册”，或用于处理“图文混排”等。</p>
+        <p>该属性有三个允许的值：</p>
         <dl class="attrExplain">
-            <dt>border-box</dt>
-            <dd>默认，背景的覆盖范围从“border”开始</dd>
+            <dt>none</dt>
+            <dd>默认，元素不进行浮动。</dd>
 
-            <dt>padding-box</dt>
-            <dd>背景的覆盖范围从“padding”开始</dd>
+            <dt>left</dt>
+            <dd>元素从左到右进行浮动。</dd>
 
-            <dt>content-box</dt>
-            <dd>背景的覆盖范围从“content”开始</dd>
+            <dt>right</dt>
+            <dd>元素从右到左进行浮动。</dd>
         </dl>
-        <p class="noindent">HTML代码部分为3个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-121.jpg">
+        <p class="noindent">首先看来一个“无序列表”的浮动示例，<a href="html-pages/css/codeEffect/code-116.html" target="_blank">HTML代码</a>如下：</p>
+        <code class="w25p">
+            <img src="img/code/csscode/code-css-174.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-175.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-75.html" style="height:246px;"></iframe>
-        <p>该示例中使用了背景图片“background-image”作为演示，当背景为背景色“background-color”时该属性进行的范围裁切效果也是一样的，可以自行进行效果实践。</p>
-    </section>
-    <!-- background-size -->
-    <section>
-        <h3>背景图大小“background-size<supcss3></supcss3>”</h3>
-        <p>该属性用于设置背景图片的大小，主要可以通过四种类型的单位设置：</p>
-        <dl class="attrExplain">
-            <dt>像素值</dt>
-            <dd>可以通过像素“px”精确地设置背景图片的大小。需要设置为两个值，第一个值表示背景图的<em>宽度</em>，第二个值表示背景图的<em>高度</em>，还可以通过设置宽度或高度的其中一个，将另外一个值设置成“<em>auto</em>”达到保持背景图原始图像比例的效果。如：“240px 120px”、“180px auto”或“auto（相当于还原默认的大小）”。</dd>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-116.html"></iframe>
 
-            <dt>百分比值</dt>
-            <dd>用“百分比”作为值，结构和用“像素值”一致，也是两个值，第一个值是相对于元素宽度的百分比值，第二个值是相对于元素高度的百分比。如：“100% 80%”、“100% auto”或“auto 50%”。</dd>
-
-            <dt>contain</dt>
-            <dd>自动将背景图像填满元素的其中一边，图像的比例保持不变。</dd>
-
-            <dt>cover</dt>
-            <dd>在保持图像原始比例的情况下，将元素的背景区域完全覆盖，超出元素宽高的部分会自动被裁剪，是一种比较“智能”的背景图片大小设置方式，通过配合“background-position”属性使用可以将开发者认为背景图像中“更重要”的部分通过定位显示出来。</dd>
-        </dl>
-        <p class="noindent">HTML代码部分为4个&lt;section&gt;标签,对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-126.jpg">
+        <p class="noindent">再来看一个“图文混排”的示例（做了部分其它样式美化），<a href="html-pages/css/codeEffect/code-117.html" target="_blank">HTML代码</a>如下：</p>
+        <code class="w80p">
+            <img src="img/code/csscode/code-css-176.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-177.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-79.html" style="height:168px;"></iframe>
-    </section>
-    <!-- background-origin -->
-    <section>
-        <h3>背景开始位置“background-origin<supcss3></supcss3>”</h3>
-        <p>设置背景图像开始的位置，它和“background-clip”的使用方式十分相似，可以通过一段实例对比两者之间的差别。</p>
-        <p class="noindent">HTML代码部分为6个&lt;section&gt;标签,第1排的3个为“background-clip”属性设置，第2排的3个为“background-origin”属性设置,对应的CSS代码如下：</p>
-        <code class="w65p">
-            <img src="img/code/csscode/code-css-127.jpg">
-        </code>
-        <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-80.html" style="height:544px;"></iframe>
-    </section>
-    <!-- background -->
-    <section>
-        <h3>背景组合值“background”</h3>
-        <p>在实际的开发过程中为了节省代码量，减小维护难度，我们通常会采用组合值的写法去设置背景，通常是下面这种模式：</p>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-117.html"></iframe>
+        <p>在使用浮动“float”属性的时候有一个需要特别注意的地方，就是若一个<em title="某些“块级元素”会具有内、外间距">普通</em>的“块级元素”内的子元素全部都具有浮动属性（值必须为“left”或“right”），那它自身的<em>高度会为“0”像素</em>，这是因为它的子元素已经全部脱离了“文档流”，再加上HTML中的普通“块级元素”若不设定“height”为大于“0”的像素值，那它在页面中将不能显示，所以这个元素在页面中的高度固然为“0”。</p>
+        <p>若其子元素全部浮动的元素是独立存在于一个已经参与“定位（本章接下来的内容会讲到）”的元素内的话似乎也没有什么影响，但若它已经参与了“文档流”内的布局了的话，因为其高度为“0”的原因会给后续的元素布局带来些麻烦，我们看看<a href="html-pages/css/codeEffect/code-118.html" target="_blank">这样一个例子</a>：</p>
         <code class="w85p">
-            <img src="img/code/csscode/code-css-128.jpg">
+            <img src="img/code/csscode/code-css-178.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-179.jpg">
         </code>
         <h4>运行效果：</h4>
-        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-81.html" style="height:204px;"></iframe>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-118.html"></iframe>
+        <p>通过上面的示例，我们可以清楚地看到，每个区块元素&lt;section&gt;都没有设置“height”属性，而是想通过该元素内部的子元素自动地“撑起”它的高度，内部的文本的确是撑起了这个&lt;section&gt;元素的高度，但是意外的是，里面的&lt;img&gt;元素的却超出了其父元素&lt;section&gt;的下边界。这是因为代码中的两个&lt;img&gt;元素都设置了“float”属性，第一个值的为“left”，第二个的值为“right”，都脱离了“文档流”，也就是不再占据页面内的高度了，所以出现了以上示例中的情况。要防止元素设置“float”产生的副作用，请学习下一节的内容“清除浮动副作用”。</p>
     </section>
-    <!-- background渐变 -->
+    <!-- 清除浮动 -->
     <section>
-        <h3>背景色渐变“background”<supcss3></supcss3></h3>
-        <p>“background”背景色渐变是利用不过的色彩在元素内以一定的方向进行颜色的过度变化。IE浏览器早期的版本里有一套滤镜标准，也包含了渐变的功能，不过当时除了IE内核（Trident）的浏览器具有该功能，其它浏览器如果要实现渐变都是通过将一张图片进行水平（repeat-x）和垂直（repeat-y）方向的重复进行实现的，直到CSS3标准的版本发布之后，主流的浏览器才开始普遍的支持滤镜这一特效。</p>
-        <p>在CSS3中渐变主要有两种类型：</p>
+        <h3>清除浮动副作用</h3>
+        <p>通过上一节的学习明白了设置了“float”属性元素的父元素高度会为“0”，这会对页面后续的布局带来些麻烦。要解决这一“麻烦”比较常用的有以下方式：</p>
         <dl class="attrExplain">
-            <dt>线性渐变</dt>
-            <dd>颜色的变化过度方式是沿着一条<em>直线</em>进行的。</dd>
-            <dd>执行线性渐变的先决条件是必须要具有<em>两种或以上的颜色</em>。</dd>
-            <p class="noindent">我们首先来执行一次最<em>基本的渐变</em>和一个<em>有方向的渐变</em>。<a href="html-pages/css/codeEffect/code-82.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
-            <code class="w75p">
-                <img src="img/code/csscode/code-css-129.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-82.html" style="height:308px;"></iframe>
-            <p class="noindent">再来看一个从<em>边角方向开始的渐变</em>示例。<a href="html-pages/css/codeEffect/code-83.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
-            <code class="w75p">
-                <img src="img/code/csscode/code-css-130.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-83.html" style="height:308px;"></iframe>
-            <p>有的时候我们在做某些网页的时候不希望自己的作品和别人的一样，千篇一律的都是水平、垂直、对角线方向的渐变，这个时候我们需要制作一些有<em>角度的渐变</em>了。<a href="html-pages/css/codeEffect/code-84.html" target="_blank">HTML部分</a>为2个&lt;section&gt;标签，CSS代码如下：</p>
-            <code class="w75p">
-                <img src="img/code/csscode/code-css-131.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-84.html" style="height:246px;"></iframe>
-            <p>需要提出的是在支持CSS3最开始的版本，也就是现在来说叫老版本的主流浏览器（Chrome,Safari,fiefox），对角度的“理解”是不一样的，它们的开始角度0度是从水平的右方，也就是“三点钟方向”开始的。所以在遇到老版本的主流浏览器时要能正确的区分。</p>
-            <p>之前我们已经讲到，CSS3的渐变需要两种或以上的颜色组成，也就是说除了我们上面演示的<em>双色渐变</em>，当然还有<em>多色渐变</em>。接下来我们就来看多色渐变的设置方式。<a href="html-pages/css/codeEffect/code-85.html" target="_blank">HTML部分</a>为3个&lt;section&gt;标签，CSS代码如下：</p>
-            <code class="w80p">
-                <img src="img/code/csscode/code-css-132.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-85.html" style="height:246px;"></iframe>
-            <p>在之前的示例中，我们只用到了“HEX”的颜色模式来制作渐变效果，其实在CSS3的渐变中，仍然是支持“颜色英文单词”、“RGBa”和“HSLa”的颜色模式的。接下来我们以一个“RGBa”颜色模式为例，来看看渐变中的透明。<a href="html-pages/css/codeEffect/code-86.html" target="_blank">HTML部分</a>为3个&lt;section&gt;标签，CSS代码如下：</p>
-            <code class="w95p">
-                <img src="img/code/csscode/code-css-133.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-86.html" style="height:520px;"></iframe>
-            <p>上例中的第三个元素，采用的是<em>多重多色</em>的渐变方式，这也是现在很多高质量设计的国外网站、App页面所使用的方式，虽说代码更佳的复杂，但会让表现效果更佳的出众。</p>
-            <p>以上的线性渐变效果都是用渐变的值“linear-gradient()”加“方向/角度”和“颜色”参数实现的，在CSS3中还有一种特殊的线性渐变方式，叫做“<em>重复线性渐变</em>”，我们来看下面的示例。</p>
-            <p><a href="html-pages/css/codeEffect/code-87.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
-            <code>
-                <img src="img/code/csscode/code-css-134.jpg">
-            </code>
-            <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-87.html" style="height:244px;"></iframe>
-            <p>通过上面“repeating-linear-gradient()”的用发大家会发现还是比较复杂的，但是如果对它的理解够透彻，还是能够用它来做出很多“高质感”的东西的，比如说进度条、标尺等，再配合我们后续会学到的径向渐变能做出更多有创意的图形元素。</p>
-
-            <dt>径向渐变</dt>
-            <dd>颜色的变化过度方式是以一个圆的圆心为参照进行的。</dd>
-            <dd>“径向渐变”的属性值参数设置和“线性渐变”一致，属性值的写法为“radial-gradient（[参数设置]）”。我们来简单看一个“径向渐变”的例子。</dd>
-            <p><a href="html-pages/css/codeEffect/code-89.html" target="_blank">HTML部分</a>为4个&lt;section&gt;标签，CSS代码如下：</p>
+            <!-- clear -->
+            <dt>使用清除浮动影响的专用属性“clear”</dt>
+            <dd>该属性用于清除浮动带来父元素高度为“0”的影响，它有以下值：</dd>
+            <dd>
+                <ul>
+                    <li>none：默认值，不清楚浮动影响</li>
+                    <li>left：清除左浮动元素带来的影响</li>
+                    <li>right：清除右浮动元素带来的影响</li>
+                    <li>both：清除左右两侧浮动元素带来的影响</li>
+                </ul>
+            </dd>
+            <dd>该属性使用的方式，通常是给一个高度“height”设置为“0”的“块级元素”使用，要保证该“块级元素”内没有内容（有内容会为页面添加无用的信息），或者“visibility”属性的值为“hidden”（不能将“display”属性设置为“none”，这样元素会脱离“文档流”，也就起不到清楚浮动影响的效果了）。</dd>
+            <dd><a href="html-pages/css/codeEffect/code-119.html" target="_blank">HTML代码</a>如下：</dd>
             <code class="w85p">
-                <img src="img/code/csscode/code-css-136.jpg">
+                <img src="img/code/csscode/code-css-180.jpg">
+            </code>
+            <p class="noindent">对应的CSS代码如下：</p>
+            <code class="w55p">
+                <img src="img/code/csscode/code-css-181.jpg">
             </code>
             <h4>运行效果：</h4>
-            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-89.html" style="height:244px;"></iframe>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-119.html"></iframe>
+            <dd>通过上面的示例我们可以发现，通过这种方式可以成功地消除子元素浮动对父元素高度的影响，但是这样会给页面添加一些无意义的空标签，并不是很理想。</dd>
+            <!-- position:absolue -->
+            <dt>使用绝对定位“position:absolue”</dt>
+            <dd><a href="html-pages/css/codeEffect/code-120.html" target="_blank">HTML代码</a>大致和上例相似，不过去处了添加了“clear”属性的空标签，如下：</dd>
+            <code class="w85p">
+                <img src="img/code/csscode/code-css-182.jpg">
+            </code>
+            <p class="noindent">对应的CSS代码如下：</p>
+            <code class="w35p">
+                <img src="img/code/csscode/code-css-183.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-120.html"></iframe>
+            <dd>为了便于观察效果，这次我们给&lt;ul&gt;标签添加了一个紫色的边框，可以发现，&lt;li&gt;的父级元素&lt;ul&gt;也有了适应子元素内容的高度，但是一个很严重的情况出现了，首先&lt;ul&gt;的父级元素&lt;section&gt;仍然没有高度，并且3个&lt;ul&gt;列表由于绝对定位的原因，全部叠在了一起，显然这种做法的缺点也比较明显，就是当页面内存在多个浮动元素组的时候，此方法对布局的帮助也不大。</dd>
+            <!-- overflow -->
+            <dt>裁切显示属性“overflow”</dt>
+            <dd>该属性本是用于是否裁切设定该属性的元素对未能完全显示内容，未能完全显示的内容是否在元素内生成滚动条以便于完全查看。但后来很多开发者在实际工作中发现，该属性还有一个“妙用”，就是可以消除浮动元素对父级元素高度的影响，就是将该属性的值设为除了“visible”外允许的值（auto、hidden和scroll），通常是“hidden”，即可使父元素适应子元素的高度。</dd>
+            <dd><a href="html-pages/css/codeEffect/code-121.html" target="_blank">HTML代码</a>和上例完全一样，CSS代码只是将“position:absolue”改为了“overflow:hidden”，如下：</dd>
+            <code class="w35p">
+                <img src="img/code/csscode/code-css-184.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-121.html"></iframe>
+            <dd>现在，不仅&lt;li&gt;的父元素&lt;ul&gt;自适应了子元素的高度，连最外层的&lt;section&gt;也自适应了其后代元素的高度，到目前为止也算是效果最理想的一种做法了。</dd>
+            <dd>但并不是说该方法就没有缺点了，就是当用“float”来制作具有“二级导航菜单”的导航条的时候，用“overflow”去消除浮动就会出现问题了，就是如果用它的值“hidden”的时候，“二级导航菜单”由于被“裁切”了根本不会显示；如果用“auto”或者“scroll”的时候呢，又会在导航栏下生成一个内容都显示不全的，还带难看滚动条的“不明物体”；而用“visible”这个值的时候呢，又没有达到清除浮动影响的效果。有兴趣的同学可以自行试验。</dd>
+            <!-- :after -->
+            <dt>使用伪类元素选择器“:after”</dt>
+            <dd>使用这种方法的原理和在浮动元素“同级”的末尾加上一个带有“clear”属性的“块级元素”一样，不过设置方式看上去稍微复杂一点。我们先来看一下采用这种方式的实际效果，<a href="html-pages/css/codeEffect/code-122.html" target="_blank">HTML部分</a>与之前的示例也是一致的，对应的CSS代码如下：</dd>
+            <code class="w35p">
+                <img src="img/code/csscode/code-css-185.jpg">
+            </code>
+            <h4>运行效果：</h4>
+            <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-122.html"></iframe>
+            <dd>通过之前学习的“CSS高级选择器”章节内容应该还记得，“:after”是向设置了该选择器的子元素的末尾插入“显示类型”为“inline”的内容，而且通过这种方式插入的内容是个实实在在的HTML元素，也就它具有普通HTML元素的几乎一切CSS属性，“可操作性”非常的高。</dd>
+            <dd>本例中，我们首先用该选择器必要的属性“content”插入一个任意字符（某些“高级”浏览器里也可以为“空”，但为了兼容性考虑，加上一个任意字符更加安全），然后将元素高度设置为“0”，使它不占据页面的空间，为了保证插入的那个“任意字符”不显示出来，我们还需要设置“visibility”属性的值为“hidden”。由于通过该选择器插入的内容的“显示类型”为“inline”，我们还需要将它转换为“block”。最后，也是最重要的一步，就是设置“clear”属性了。</dd>
+            <dd>该方式看似复杂，但却是目前为止清除浮动影响的最佳方式，即：在HTML不用添加无意义的空标签，不会让布局重叠，不会裁切显示元素。它唯一的缺点就是不支持老版本的浏览器（IE7及以下版本），但是随着互联网技术的发展，这些问题都不再成为问题，都交给时间去解决吧。</dd>
         </dl>
+    </section>
+    <!-- 定位概述 -->
+    <section>
+        <h3>定位属性“position”概述</h3>
+        <p>在HTML中，元素的布局可以通过CSS的浮动属性“float”和外间距属性“margin”，甚至是内间距属性“padding”去实现（通过将边框属性“border”的分支属性“border-color”设置为“transparent”去做布局也不是不可以），但是这些布局方式都存在着各种各样的局限性，这个时候定位属性“position”的出现绝对是对元素布局的一个非常好的补充。而且该属性对<em>所有显示类型</em>的元素适用。</p>
+        <p>该属性有以下值：</p>
+        <dl class="attrExplain">
+            <dt>static</dt>
+            <dd>默认值，采用元素默认的定位方式。</dd>
+
+            <dt>relative</dt>
+            <dd>使元素对其原始位置进行“相对定位”。</dd>
+
+            <dt>absolute</dt>
+            <dd>使元素根据父（祖先）父元素的定位情况进行“绝对定位”。</dd>
+
+            <dt>fixed</dt>
+            <dd>使元素相对于浏览器窗口进行“固定定位”。</dd>
+        </dl>
+        <p>该属性除了值为“static”的情况，通常要配合“top”、“right”、“bottom”和“left”四个属性去使用，这四个属性允许的值为Web技术中常用的长度单位，如：“像素”、“百分数”、“字符大小”、“点”等。</p>
+        <p>设置过定位属性的元素，有的时候会根据布局的需要出现重叠，重叠的规则是：在HTML文档中后出现的元素会出现在先出现元素的上方。若要调整元素的层级可以通过“<em>z-index</em>”属性进行设置，该属性接受<em>整型数值</em>作为值，值越大的，层级越高，越接近用户视觉，值越小则反之。（像一本反着翻开的书，页码越大越靠上，越容易被读者看到，页码越小则反之。）</p>
+        <p>“z-index”属性的取值范围在“-32767”至“32767”之间，“0”为默认值。当然，我们通常不会去使用到该属性的最小或最大值，为了便于管理页面内元素的“层级关系”，通常我们都是将该属性的值设置在一个比较便于管理的区间内，如“0到10”之间。</p>
+        <p>接下来我们开始对每种定位方式进行系统的学习。</p>
+    </section>
+    <!-- 相对定位 -->
+    <section>
+        <h3>相对定位“position:relative”</h3>
+        <p>当一个元素的“position”属性的值为“relative”时，元素对其原始位置进行“相对定位”，但元素在“文档流”中所占据的位置仍然保留。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-123.html" target="_blank">HTML部分</a>的代码如下：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-186.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w45p">
+            <img src="img/code/csscode/code-css-187.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-123.html"></iframe>
+        <p>上例显示效果稍显错乱，但只是为了说明一个问题，就是参与“相对定位”的元素并不会影响到其它元素在“文档流”中的位置，而自身的“文档流”位置也正常保留了的。“相对定位”通常是用于布局相对复杂、浏览器布局差异比较大的表单元素。就是将所有&lt;label&gt;元素与右侧的表单元素进行垂直上对齐（vertical-align:top，该属性的值“middle”在各浏览器上也存在差异，不推荐在表单布局中使用）,然后通过设置“相对定位”的“top”属性的值来达到“视觉上”的垂直居中效果。</p>
+    </section>
+    <!-- 绝对定位 -->
+    <section>
+        <h3>绝对定位“position:absolute”</h3>
+        <p>当一个元素的“position”属性的值为“absolute”时，该属性会相对<em>最近</em>的具有定位属性“position”（值不能够为“static”）的“祖先”级元素进行“相对定位”，没错，这里就是“相对定位”。如果当元素<em>遍历</em>完所有的“祖先”元素都没有找到有“postion”的，那它将对当前的浏览器窗口进行“绝对定位”。</p>
+        <p>若同级元素都具有“绝对定位”的属性，那这些元素会重叠在一起，除非通过“z-index”属性进行层级调整。若某个元素内存在一个<em>唯一</em>的绝对定位的元素，如果没有给它设置“left”、“top”等这一系列的属性，那它将会保持原位，但是一旦设置了“left”或“right”值，那元素将会在<em>水平轴</em>方向去执行绝对定位的规则，但垂直轴方向并不会发生位置变动。若设置了“top”或“bottom”（“left”和“right”值没有设置的情况），那元素将会在<em>垂直轴</em>方向去执行绝对定位的规则。现在很多网站内的“二级导航菜单”就是利用绝对定位这一特性制作的。</p>
+        <p>需要指出的是，将一个元素设置为“绝对定位”后，它对元素的性质有以下几种改变：</p>
+        <ul class="indent">
+            <li>元素会从“文档流”中脱离，不再占据页面内“文档流”的显示位置</li>
+            <li>“非块级”的元素会被转化成“块级元素”。</li>
+            <li>元素的宽和高将对内容自适应（不再是“块级元素”默认100%的宽度了）。</li>
+            <li>若一个具有宽和高的元素是其父级元素中唯一的子元素，并且其父元素没有设置高度属性，那父元素内容的高度将会变为“0”。</li>
+        </ul>
+        <p>根据“绝对定位”对元素的改变，记得在页面布局的时候对设置了该属性值的元素做一些针对性的调整，如：不用再给元素显示地设置“display”属性，用于节约代码量，给没有内容的元素及其父级元素设置宽和高等。</p>
+        <p>我们首先来看一个&lt;body&gt;元素下的子元素直接进行“绝对定位”的示例，<a href="html-pages/css/codeEffect/code-124.html" target="_blank">HTML部分</a>的代码如下：</p>
+        <code class="w90p">
+            <img src="img/code/csscode/code-css-188.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-189.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-124.html"></iframe>
+        <p>这样的定位方式相对简单，所有元素的定位都是相对于浏览器边缘进行的位置设置，只有最后一个&lt;section&gt;元素稍微特殊一点，是利用“position:absolute”加上“margin-left”的方式进行水平居中定位，这也是一定条件下（常用于元素宽度大于浏览宽度的情况，比如说大幅的Banner元素）比较实用的居中定位方式。</p>
+        <p>我们再来看一个有嵌套关系，并且涉及多层元素定位的例子，<a href="html-pages/css/codeEffect/code-125.html" target="_blank">HTML部分</a>的代码如下：</p>
+        <code class="w90p">
+            <img src="img/code/csscode/code-css-190.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w35p">
+            <img src="img/code/csscode/code-css-191.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-125.html"></iframe>
+        <p>这个示例的CSS代码比较多，但关键代码就8行，就是第2、3个&lt;section&gt;及子元素&lt;article&gt;执行定位相关的属性。首先可以发现之前谈到的一个问题，也就是第2、3个&lt;section&gt;的“top”属性都是“0”，但是由于第2个&lt;section&gt;执行的是“相对定位”，将该属性值设置为“0”等于是没有做垂直方向的偏移，也能说明它仍居“文档流”内，而第3个&lt;section&gt;执行的是“绝对定位”，它会忽略“文档流”内所有元素的位置，去相对于当前浏览器边界做定位。</p>
+        <p>本例中的2个&lt;section&gt;内的&lt;article&gt;元素都执行的是“绝对定位”，可以发现，他们并没有去“寻找”浏览器边界做定位，而是相对父元素&lt;section&gt;去做了定位，而且这与父元素&lt;section&gt;执行的是“相对定位”还是“绝对定位”并没有关系，当然，若父元素&lt;section&gt;执行的是“固定定位”（position:fixed，后续会讲到）也会达到同样的效果。</p>
+        <p>“绝对定位”初看是一个比较简单的属性，但深究起来还是有很多复杂的地方，如：一个元素没有设置宽和高，将它“上右下左”四个方向的属性值都设置为“0”，那它的宽和高将占满整个浏览器窗口等等。通过单纯的知识点记忆很难对它的所有特性进行掌握，这还需要更多的项目实战经验对其进行理解。</p>
+    </section>
+    <!-- 固定定位 -->
+    <section>
+        <h3>固定定位“position:fixed”</h3>
+        <p>当一个元素的“position”属性的值为“fixed”时，那它会相对于浏览器边界进行定位，并且当页面存在滚动条的时候，页面的滚动也不会对其和浏览器边界之间的相对位置产生影响，就像是“漂浮”在一个固定的地方一样，所以将其称作“固定定位”。除此之外，“固定定位”和“绝对定位”的其它特性都比较相似，而且该定位方式也会脱离“文档流”，它和文档内的元素都不会有任何布局上的互相干扰。针对“固定定位”的这些特性，它通常用于以下情景：</p>
+        <dl class="attrExplain">
+            <dt>弹出框底部的“遮罩层”</dt>
+            <dd>现在的网页设计基本不会再去采用浏览器引擎内自带的那种弹出提示框，而一般是开发者根据美工的要求自定义的弹出框，但自行设计的弹出框并不具备<em title="是编程的一种术语，表示当一个事件正在进行时，其它任何程序事件都不能执行，直到用户或程序结束当前事件">页面事件阻塞</em>功能，为了防止用户“绕过”弹出框去继续对页面元素进行操作，绝大部分时候都会在弹出框下方（通过“z-index”设置层级关系）添加一层“遮罩”（这层遮罩可以是透明的，也可以是色彩半透明的），这样用户就不能再通过鼠标点击的方式去操作弹出框“下方”的内容了。</dd>
+
+            <dt>页面浮动二维码</dt>
+            <dd>微信公众号是现在各类商家推广自身品牌，自媒体发布的一个非常主流的手段，所以在自己的官方网站的空白处都会“悬浮”着一个二维码，若用户不需要关注这个商家（企业、机构、学院等）点击该二维码旁的关闭按钮即可关闭二维码。</dd>
+
+            <dt>“回到顶部”按钮</dt>
+            <dd>现在内容稍多的网站，为了顾及到用户体验，几乎都会在页面空白的适当位置加上一个“回到顶部”按钮，需要该按钮的位置不受页面滚动的影响，最高效的办法（也可以利用JavaScript去做，再配以CSS的过渡特效，可以实现一定的动态效果，但相对低效）也就是通过“固定定位”去实现了。</dd>
+
+            <dt>网站/应用操作指引</dt>
+            <dd>现在做得较好的互联网网站为了迎合大众的赏美和做功能上的一些调整，时常会涉及到网站风格及内容的改版，这样网站上的功能内容、位置结构都会涉及到改动，会让新老用户都“无从下手”，这个时候利用CSS中“固定定位”元素设计的“指引步骤”，再配以JavaScript的控制，会让用户有一种“这个网站做得很人性化”的感觉。但这种设计也不要滥用，凡事都有个度，用户体验设计亦是如此，若太多地采用这种方式反而会影响一些熟悉该网站的用户的操作流畅度。</dd>
+
+            <dt>固定的顶部导航栏</dt>
+            <dd>有些网站希望用户尽可能多地浏览本站的内容，但由于设计风格开阔或者信息内容太多等原因，导致每页的内容都比较多，通过“回到顶部”按钮又增加了操作步骤（在用户体验设计中重要的一环就是要求用户操作数更少，但能实现的交互功能更多），这个时候通过“固定定位”将网站导航栏“浮动固定”在页面的顶部，这样用户无论在页面内容的什么地方，都能更方便地进行页面的跳转了。</dd>
+        </dl>
+        <p>以上这些情景用例只是对“固定定位”比较常用的地方进行说明，而创意这个东西是没有边界的，只要愿意多观察、多思考、多总结，就能将很多简单的属性用得不简单。但由于现在是在学习Web前端技术的阶段，还得需要先把基础理论知识掌握牢固。</p>
+        <p class="noindent"><a href="html-pages/css/codeEffect/code-126.html" target="_blank">HTML部分</a>的代码如下（将代码内部的文本作了折叠）：</p>
+        <code class="w30p">
+            <img src="img/code/csscode/code-css-192.jpg">
+        </code>
+        <p class="noindent">对应的CSS代码如下：</p>
+        <code class="w40p">
+            <img src="img/code/csscode/code-css-193.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/css/codeEffect/code-126.html"></iframe>
     </section>
 </root>
 
