@@ -3,12 +3,14 @@
 * 功能：面试口才技巧页面设置
 **/
 body {
+    background-color: #fff;
     font-family: "微软雅黑";
     font-size: 16px;
 }
 h1 {
     font: 1.5em/2.4 "微软雅黑";
     text-align: center;
+    margin-top: 16px;
 }
 article {
     width: 960px;
@@ -24,6 +26,21 @@ article p {
     text-indent: 2em;
     color: #666;
     margin-top: 18px;
+}
+/* 摘录引语 */
+section.excerptFrom {
+    text-align: right;
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 40px;
+}
+section.excerptFrom a {
+    text-decoration: none;
+    font: italic 1em "Georgia";
+    color: #61738f;
+}
+section.excerptFrom a:hover {
+    color: #8091ac;
 }
 @media screen and (max-width:1024px) {
     article {

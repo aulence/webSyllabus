@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <link rel="shortcut icon" href="../../img/other/favicon.ico">
 	<link rel="Bookmark" href="../../img/other/favicon.ico">
     <title>睿峰培训--面试口才技巧</title>
-    <link rel="stylesheet" href="../../plugin/baseCSS-1.1.0.css">
+    <link rel="stylesheet" href="../../plugin/baseCSS-1.1.0.min.css">
     <link rel="stylesheet" href="../../css/other/interviewing.css">
 </head>
 <body>
@@ -42,6 +42,23 @@
         <p>应试人员通常还会这么问：“如果你的意见和上司的意见发生了冲突，你会怎么做？”这种假设是想试探你的沟通能力和自我认同感。你的回答应该是：“首先，对上司的意见进行思考，因为毕竟他比我更有经验，看问题也会更加全面和深刻一些；其次，如果我的确认为我的意见更加准确，那么我会把我的意见和上司进行沟通，相信他也会赞同我的意见，因为毕竟我们的目标是相同的。当然，在沟通的过程中应该注意运用一定的技巧。”</p>
         <p>第四个问题是你关心的，那就是薪酬。求职者即使不认为这个问题是最重要的，至少也会认为它很重要。如何跟面试人员谈论薪酬问题十分关键，它对你面试成功与否有很大的影响。
             大胆地说出你的期望薪酬，不要说“按照公司的规定办”之类的话。这表明你对现在的工作并没有很清楚的认识。当然，你的期望薪酬应该跟公司和你个人的要求都相符合，过高或过低对你都没有好处。给出一个可以浮动的范围，这样让对方有考虑的空间。一般而言，如果你的确很适合的话，雇主不会让你失望的。</p>
+        <section class="excerptFrom">--摘自<a href="http://baike.baidu.com/link?url=BdUU4_u71is7tazAFj22v8yEqk2oPjhk4WGwVXQ3EJId9L_geLNi1LYaYRmoqv84sYlMC14IG7iUtnwul-7R8v8vbTJ6cu1BVPJuVa0pzYqlofdsD_Kx0jqGM7Vku-MI55qML7uowmapXgJ5yN6XX_" target="_blank" title="了解作者">Dale Carnegie</a>的著作《沟通的艺术与处世的智慧》</section>
     </article>
+    <script>
+        var hasMain = document.getElementsByClassName("main").length != 0,
+            hasLeftNav = document.getElementsByClassName("leftNav").length != 0,
+            hasContent = document.getElementsByClassName("content").length != 0;
+        // 该页面在课件内
+        if(hasMain && hasLeftNav && hasContent) {
+            var art = document.getElementsByTagName("article")[0];
+            // 设置文章的文本布局
+            art.style.width = "100%";
+            art.style.padding = "0px 20px 80px 20px";
+            art.style.boxSizing = "border-box";
+            art.style.fontSize = "20px";
+        }
+        // 该页面单独打开
+        else { }
+    </script>
 </body>
 </html>
