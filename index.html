@@ -14,13 +14,18 @@
     <title>HTML5代码示例器</title>
     <script type="text/javascript">
         /* Apache服务器端使用 */
-        /* window.location.href="https://www.aulence.com";*/
+        /*window.location.href="https://www.aulence.com";*/
 
         /* 云对象存储服务器端使用 */
+        /* 原始方法 */
         /*var url = window.location.href;
         if (url.indexOf("https") < 0) {
             url = url.replace("http:", "https:");
             window.location.replace(url);
+        }*/
+        /* 新方法 */
+        /*if (document.location.protocol != "https:") {
+            location.href = location.href.replace(/^http:/,"https:");
         }*/
     </script>
     <link rel="stylesheet" href="plugin/baseCSS-1.1.0.min.css">
