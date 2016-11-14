@@ -14,12 +14,11 @@
     <title>HTML5在线课件</title>
     <script type="text/javascript">
         /* 云服务端二级域名异常，跳转至普通域名 */
-        /*var theDomain = window.location.href,
+        var theDomain = window.location.href,
             hasWWW = theDomain.indexOf("www") > 0;
         if(hasWWW) {
             window.location.href="http://aulence.com/"
-        }*/
-        /* Apache服务器端使用 *//*window.location.href="https://www.aulence.com";*//* 云对象存储服务器端使用 *//* 原始方法 *//*var url = window.location.href;if (url.indexOf("https") < 0) {url = url.replace("http:", "https:");window.location.replace(url);}*//* 新方法 *//*if (document.location.protocol != "https:") {location.href = location.href.replace(/^http:/,"https:");}*/
+        }
     </script>
     <link rel="stylesheet" href="plugin/baseCSS-1.1.0.min.css">
     <link rel="stylesheet" href="css/common.min.css">
@@ -28,7 +27,7 @@
 <body>
     <header>
         <!-- logo -->
-        <div class="logo"></div>
+        <div class="logo" title="点击登录"></div>
 
         <!-- 主导航栏 -->
         <nav class="topNav">
@@ -57,6 +56,12 @@
         <div class="content">
             <!-- Ajax加载 -->
         </div>
+    </div>
+
+    <!-- 左侧登录按钮 -->
+    <div class="leftLogin" data-leftLogin>
+        <span>登录</span>
+        <i></i>
     </div>
 
     <!-- 动态锚点导航 -->
