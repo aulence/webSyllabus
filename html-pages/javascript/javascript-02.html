@@ -74,6 +74,17 @@
             <img src="img/code/jscode/code-js-005.jpg">
         </code>
     </section>
+    <section>
+        <h3>局部变量和全局变量</h3>
+        <p>JavaScript和其它大部分的编程语言一样，它的变量也分为“局部变量”和“全局变量”。所谓“局部变量”即是值所定义的一个变量只会在一个限定的范围内生效，通常指在某一个函数（function）内。而通过全局的方法或者其它函数是无法获取该变量的值的。如：</p>
+        <code>
+            <img src="img/code/jscode/code-js-009.jpg">
+        </code>
+        <p>而“全局变量”，它的值可以被所有的方法或函数获取到。通常将一个变量写在所有函数的外部的变量，就叫做“全局变量”，但是在函数内部，若忘记在变量名前加上“var”的话，该变量也会成为全局变量，从而不小心被其它函数将值给误改了，所以在函数内部一定要记得在变量名前加上关键字“var”来定义一个变量。</p>
+        <code>
+            <img src="img/code/jscode/code-js-010.jpg">
+        </code>
+    </section>
     <!-- 数据类型 -->
     <section>
         <h3>JavaScript的六种数据类型</h3>
@@ -86,7 +97,7 @@
             <dd>该类型用于表示如“英文”，“中文”，“其它国家语言”，“键盘上的符号”，“特殊编码”等字符，甚至可以是数字。该类型的值都需要用一对<em>英文引号</em>（可以是单引号，也可以是双引号）阔起来，否则在使用该变量的时候会报出未定义的错误，成为一个“未定义”类型，而本想作为字符串的数字也会成为一个“数值型”。</dd>
 
             <dt>boolean（布尔型）</dt>
-            <dd>改类型只有两个值，即：</dd>
+            <dd>该类型只有两个值，即：</dd>
             <ul>
                 <li><em>true</em>：表示“是”，在<em title="如“if else”判断">判断语句</em>中可以用“非0”、“非undefined”、“非null”、“非NaN”、“字符串”、“对象”甚至是一个“函数”表示</li>
                 <li><em>false</em>：表示“否”，在判断语句中可以用数值“0”、“undefined”、“null”或“NaN”表示</li>
@@ -128,7 +139,7 @@
     </section>
     <!-- 章节练习 -->
     <section class="unitPractice">
-        <h3>&lt;章节练习&gt;</h3>
+        <h3>&lt;章节练习一&gt;</h3>
         <p>任意新建一个HTML文件，在&lt;body&gt;标签内编写一个&lt;script&gt;标签对，在&lt;script&gt;标签内完成以下需求：</p>
         <p>1、需要创建n个变量，只通过一个“var”声明全部的变量；</p>
         <p>2、创建一个名为“loginCount”的变量，值为“47”加上“53”；</p>
@@ -138,6 +149,311 @@
         <p>6、创建一个名为“skill”的变量，值为一个对象，该对象包含3个子项：“html”，“css”，“javascript”。第一个子项包含子项：“doctype”，“html”，“head”，“body”，它们的值分别是“文件类型”，“HTML根标签”，“HTML信息标签”，“HTML内容标签”；第二个子项包含子项“charset”，“selector”，“attribute”，“value”，它们的值分别是“编码类型”，“选择器”，“属性名”，“属性值”；第三个子项包含子项：“vari”，“operat”，“func”，“logic”，“bom”，“dom”，“judge”，它们的值分别为“变量”，“运算”，“函数”，“逻辑”，“浏览器对象模型”，“文档对象模型”，“判断”；</p>
         <p>7、创建一个名为“testFun”的变量，值为一个函数，该函数内只有一条语句“console.log("程序测试")”；</p>
         <p>8、为所有的变量前都加上一个单行注释，说明该变量为什么数据类型。</p>
+	</section>
+	<!-- 变量的命名 -->
+	<section>
+	    <h3>JavaScript变量的命名</h3>
+	    <p>JS的命名和我们之前所接触到的CSS有所不同，它的命名应当遵守以下规则：</p>
+	    <ul class="indent">
+	        <li>只能以“英文字母”、“其他国家语言字符”、“_”（下划线）、“$”（美元符号）开头</li>
+	        <li>不能以“数字”及“其它特殊符号”（键盘上的符号）作为开头</li>
+	        <li>首个字符以后可以使用“数字”</li>
+	        <li>不能使用“<em title="JS中已经在使用的变量名、方法名等">关键字</em>”和“<em title="JS未来可能被使用的变量名、方法名等">保留字</em>”作为变量名</li>
+	        <li>不是保留字，但具有一定意义的字符，如“Infinity”、“null”、“NaN”、“undefined”等</li>
+	    </ul>
+	    <p>和之前我们提到过的CSS的“id”、“class”和“name”的命名一样，JavaScript的命名也应该尽量“语义化”一点，即所命的名应该能尽可能真实地反应出该变量在程序中的实际作用。举几个实际的命名例子供参考：</p>
+	    <ul class="indent">
+	        <li>导航按钮组：navBtnGroup（Navigation button group）</li>
+	        <li>当前窗口的高度：win_h、winH、winHeight（window height）</li>
+	        <li>某个算术表达式运算的结果：result、count</li>
+	        <li>爱好：userHobby</li>
+	        <li>登录框/注册框：loginBox/regsterBox</li>
+	        <li>登录框状态：loginStatus</li>
+	        <li>用户名：userName</li>
+	        <li>用户的信息：userInfo（user information）</li>
+	        <li>信息提示框：mesgBox（message box）</li>
+	    </ul>
+	    <p>当然也可以借鉴一些语言的命名方式，即已知变量的结果是一个什么数据类型的时候，在变量名前再加上一个类型标识符，这样能让开发者在维护和测试代码的时候更加清楚变量的一个实际作用，也能为思维构建提供一定的帮助。实际上在很多对代码规范要求很严格的大型企业都会有类似的命名规定。上面列表中的命名方式采用这种“数据类型”+“作用说明”的写法后，应该改为：</p>
+	    <ul class="indent">
+	        <li>oNavBtnGroup（对象，object）</li>
+	        <li>numWinHight（数值，number）</li>
+	        <li>numResult（数值，number）</li>
+	        <li>arrUserHobby（数组，object，在其它编程语言里是表示“array”）</li>
+	        <li>oLoginBox/oRegsterBox（对象，object）</li>
+	        <li>boolLoginStatus（布尔值，boolean）</li>
+	        <li>strUserName（字符串，string）</li>
+	        <li>oUserInfo（对象，object）</li>
+	        <li>funMesgBox（函数，object）</li>
+	    </ul>
+	    <p>函数内的命名很多时候可以稍微简单一些，只要函数本身有比较详细的注释，变量名简短一点有的时候反而更能帮助代码的阅读，但也需要掌握一个平衡点，不能无顾忌地缩减变量名。</p>
+	    <p>当如果变量名声明在全局环境中的话，命名就不宜过度的简短了。我们先来看一个不安全的全局命名方式：</p>
+	    <code>
+            <img src="img/code/jscode/code-js-011.jpg">
+        </code>
+        <p>上例图中的错误只是为了起到演示作用，实际开发中相信也不会有这么粗心的程序员。但当变量比较复杂，如包含大型对象，或者功能复杂的函数的时候，一个变量就会占据很多行代码的空间，这个时候代码编辑器的一屏内基本看不到其它变量名，出现重名就在所难免了。所以，我们更推荐借鉴“C#”这种语言“命名空间”的思维来对变量进行命名，如下图：</p>
+        <code>
+            <img src="img/code/jscode/code-js-012.jpg">
+        </code>
+	</section>
+	<!-- 关键字和保留字 -->
+	<section>
+	    <h3>JavaScript的关键字和保留字</h3>
+	    <p>在上一节中我们提到了两个词语——“关键字”和“保留字”，就是我们在进行变量命名的时候需要避免使用的两类名称。所谓“关键字”，就是JavaScript现在正常使用的一些名称，它们可能是系统变量名，也可能是一个JS内置的方法函数名，还可能是已知宿主环境提供的API。而“保留字”是现在暂时没有使用，但在未来JavaScript可能会使用的名称，这些“保留字”经过JS不断的发展，已经有一些成为了“关键字”。</p>
+	    <dl class="attrExplain">
+	        <dt>关键字</dt>
+	        <dd>
+	            <table class="normal cols-6">
+	                <tr>
+	                    <td>break</td>
+	                    <td>do</td>
+	                    <td>instanceof</td>
+	                    <td>typeof</td>
+	                    <td>if</td>
+	                    <td>else</td>
+	                </tr>
+	                <tr>
+	                    <td>case</td>
+	                    <td>var</td>
+	                    <td>new</td>
+	                    <td>finally</td>
+	                    <td>return</td>
+	                    <td>void</td>
+	                </tr>
+	                <tr>
+	                    <td>continue</td>
+	                    <td>for</td>
+	                    <td>switch</td>
+	                    <td>while</td>
+	                    <td>debugger</td>
+	                    <td>function</td>
+	                </tr>
+	                <tr>
+	                    <td>this</td>
+	                    <td>with</td>
+	                    <td>try</td>
+	                    <td>catch</td>
+	                    <td>throw</td>
+	                    <td>delete</td>
+	                </tr>
+	                <tr>
+	                    <td>default</td>
+	                    <td>in</td>
+	                    <td>implements</td>
+	                    <td>package</td>
+	                    <td>public</td>
+	                    <td>interface</td>
+	                </tr>
+	                <tr>
+	                    <td>private</td>
+	                    <td>static</td>
+	                    <td>let</td>
+	                    <td>protected</td>
+	                    <td>yield</td>
+	                    <td></td>
+	                </tr>
+	            </table>
+	        </dd>
+
+	        <dt>保留字</dt>
+	        <table class="normal cols-6">
+	            <tr>
+	                <td>abstract</td>
+	                <td>enum</td>
+	                <td>int</td>
+	                <td>short</td>
+	                <td>boolean</td>
+	                <td>export</td>
+	            </tr>
+	            <tr>
+	                <td>byte</td>
+	                <td>extends</td>
+	                <td>long</td>
+	                <td>super</td>
+	                <td>native</td>
+	                <td>synchronized</td>
+	            </tr>
+	            <tr>
+	                <td>class</td>
+	                <td>float</td>
+	                <td>throws</td>
+	                <td>const</td>
+	                <td>goto</td>
+	                <td>transient</td>
+	            </tr>
+	            <tr>
+	                <td>volatile</td>
+	                <td>double</td>
+	                <td>import</td>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+	        </table>
+	    </dl>
+	    <p>但是需要明白的是JavaScript中的“关键字”和“保留字”也不是一成不变的，它们也会随着这个语言的发展新增或删除（例如“debugger”就是ECMAScript 5中新增的关键字）。但考虑到“向上兼容”，以前提出的这些“关键字”和“保留字”也应该在规范出现更改之后也避免去使用，以免造成程序异常。</p>
+	</section>
+	<!-- 基本运算符 -->
+	<section>
+	    <h3>JavaScript基本运算符</h3>
+	    <p>JavaScript基本运算符是用于一个表达式内最终会返回一个具有一种数据类型的运算符，它可以对常量和变量进行特定的简单运算，然后通过各种简单的运算符“组装”为一个较复杂的语句组。这样的运算一般会出现在一个具有复合功能的函数内部，也可以将运算结果赋予一个变量，让这个变量参与到整个程序逻辑当中去。</p>
+	    <p>JS基本运算符主要分为三类，分别是“<em>字符串拼接运算符</em>”、“<em>算术运算符</em>”和“<em>赋值运算符</em>”。</p>
+	    <dl class="attrExplain">
+	        <dt>字符串拼接运算符</dt>
+	        <dd>该运算符是基本运算符中最简单的一种形式，它只是将几个变量或常量拼接到一起，然后再将得出的结果赋予一个变量（可以是新建的变量，也可以是对现有的变量的值进行修改），如例：</dd>
+	        <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-013.jpg">
+                </code>
+	        </dd>
+	        <dd>当然，在实际开发过程中这些变量（指变量a、b和c）的值都不是手动设置的，他们都在程序中经过一些其它语句的操作后获得的动态值。我们再来看一个实际开发中用得比较多的“常量+变量”字符串拼接的示例：</dd>
+	        <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-014.jpg">
+                </code>
+	        </dd>
+
+	        <dt>算术运算符</dt>
+	        <dd>该运算符和数学中的简单的“加减乘除”基本一样，主要是用于一些数值的运算，在“财务类”、“统计类”和“游戏”这些类型的网站项目会大量地用到。它主要有以下运算符类型：（以下所有运算符中的变量“y = 5”）</dd>
+	        <dd>
+	            <table class="normal">
+                    <tr>
+                        <th>运算符</th>
+                        <th>作用</th>
+                        <th>实例</th>
+                        <th>运算结果</th>
+                    </tr>
+	                <tr>
+	                    <td>+</td>
+	                    <td>相加</td>
+	                    <td>x = y + 5</td>
+	                    <td>x = 10</td>
+	                </tr>
+	                <tr>
+	                    <td>-</td>
+	                    <td>相减</td>
+	                    <td>x = y - 5</td>
+	                    <td>x = 0</td>
+	                </tr>
+	                <tr>
+	                    <td>*</td>
+	                    <td>相乘</td>
+	                    <td>x = y * 5</td>
+	                    <td>x = 25</td>
+	                </tr>
+	                <tr>
+	                    <td>/</td>
+	                    <td>相除</td>
+	                    <td>x = 10 / y</td>
+	                    <td>x = 2</td>
+	                </tr>
+	                <tr>
+	                    <td>%</td>
+	                    <td>取余数</td>
+	                    <td>x = y % 3</td>
+	                    <td>x = 2</td>
+	                </tr>
+	                <tr>
+	                    <td>++</td>
+	                    <td>累加</td>
+	                    <td>x = y++</td>
+	                    <td>x = 6</td>
+	                </tr>
+	                <tr>
+	                    <td>--</td>
+	                    <td>递减</td>
+	                    <td>x = y--</td>
+	                    <td>x = 4</td>
+	                </tr>
+	            </table>
+	        </dd>
+	        <dd>当然，算术运算符和字符串拼接运算符一样，它也是可以在一个语句内出现多次，形成一个<em>复合算术运算符</em>，这种运算符通过<em>小括号</em>“()”去控制优先级。需要特别指出的是JavaScript内是没有数学中的“中括号”和“大括号”的算术运算符的，只能通过多层小括号去实现，括号必须成对出现，否则程序会出现异常。如“x = ((2 + y) * 5 - 10) / 2”。</dd>
+
+	        <dt>赋值运算符</dt>
+	        <dd>赋值运算符是为JavaScript中的变量赋值，即将该运算符右方计算出的值赋予左侧的变量。在JavaScript中有以下赋值运算符：（以下所有运算符中的变量“x = 2, y = 4”）</dd>
+	        <table class="normal">
+                <tr>
+                    <th>运算符</th>
+                    <th>作用</th>
+                    <th>实例</th>
+                    <th>相当于</th>
+                    <th>结果</th>
+                </tr>
+	            <tr>
+	                <td>=</td>
+	                <td>赋值</td>
+	                <td>x = y</td>
+	                <td>x = y</td>
+	                <td>x = 4</td>
+	            </tr>
+	            <tr>
+	                <td>+=</td>
+	                <td>变量与值相加</td>
+	                <td>x += y</td>
+	                <td>x = x + y</td>
+	                <td>x = 6</td>
+	            </tr>
+	            <tr>
+	                <td>-=</td>
+	                <td>变量与值相减</td>
+	                <td>x -= y</td>
+	                <td>x = x - y</td>
+	                <td>x = -2</td>
+	            </tr>
+	            <tr>
+	                <td>*=</td>
+	                <td>变量与值相乘</td>
+	                <td>x *= y</td>
+	                <td>x = x * y</td>
+	                <td>x = 8</td>
+	            </tr>
+	            <tr>
+	                <td>/=</td>
+	                <td>变量与值相除</td>
+	                <td>x /= y</td>
+	                <td>x = x / y</td>
+	                <td>x = 0.5</td>
+	            </tr>
+	            <tr>
+	                <td>%=</td>
+	                <td>变量对值取余</td>
+	                <td>x %= y</td>
+	                <td>x = x % y</td>
+	                <td>x = 2</td>
+	            </tr>
+	        </table>
+	    </dl>
+	    <p>在很多稍微复杂一点的表达式中，以上几种运算符基本上是同时存在于一条语句中的。首先要熟悉这几种运算操作符，然后在项目中灵活地组合其用法，将其组合为性能最好，可扩展性最好的程序。</p>
+	</section>
+	<!-- 二元运算符 -->
+	<section>
+	    <h3>JavaScript二元运算符</h3>
+	    <p>二元运算符是JavaScript用于判断几条语句成立情况的一种运算符，这种运算符之所以被称作“二元”，是因为这种运算符要成立，必须要具有两个“量”（除了“非”运算，这个“量”可以常量或变量），这种运算符<em>只会</em>返回“布尔型”数据类型的结果，用于帮助程序做逻辑的判断。</p>
+	    <p>二元运算符有三个，即“<em>与</em>”、“<em>或</em>”、“<em>非</em>”。</p>
+	    <dl class="attrExplain">
+	        <dt>与——“&amp;&amp;”</dt>
+	        <dd>只有当参数运算的所有变量或常量返回的值都为“true”的时候（每种数据类型返回的布尔值可以参看本章中“JavaScript的六种数据类型”章节中“boolean（布尔型）”的介绍），该运算符返回的最终结果才为“true”，否则为“false”。应用场景：“登录操作”，“完胜判定”，“七龙珠模式”。</dd>
+	        <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-015.jpg">
+                </code>
+	        </dd>
+
+	        <dt>或——“||”</dt>
+	        <dd>参数运算的变量或常量中，只需要其中一个的值为“true”，该运算符返回的最终结果就为“ture”，如果所有值都为“false”的时候，那该运算符返回的结果才会为“false”。应用场景：“全勤绩效考核”，“棋牌游戏”。</dd>
+	        <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-016.jpg">
+                </code>
+	        </dd>
+
+	        <dt>非——“!”</dt>
+	        <dd>如果当前常量或变量不是一个布尔值，将其通过布尔型转换的规则转换为一个布尔值（如字符串不是一个布尔型，但是经过规则转换为就会成为一个“true”，又如“undefined”经转换后会成为“false”），然后对当前的布尔值进行“取反”操作。如‘与--“&amp;&amp;”’代码中的示例。</dd>
+	    </dl>
+	</section>
+	<!-- 三元表达式 -->
+	<section>
+	    <h3>JavaScript三元表达式</h3>
+	    <p>暂时没有内容，稍后补上！</p>
 	</section>
 </root>
 
