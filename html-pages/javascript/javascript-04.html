@@ -1,0 +1,112 @@
+<root data-root="JavaScript循环">
+    <!-- 循环概述 -->
+    <section class="mt0">
+        <h3>JavaScript循环概述</h3>
+        <p>和其它绝大部分编程语言一样，JavaScript也有自己的循环语句，循环语法结构上主要借鉴的是Java。循环语句全称“条件循环执行语句”，从名称就能看出来，它的执行也需要依耐条件，只有当条件满足时才会循环地去执行一段语句，直到条件不再满足时。但倘若这个条件永远无法满足（出现这样的情况通常是编码过程中对条件的把握不严谨或粗心造成的），那这个循环就会无限地执行下去，对计算机的性能消耗会非常大，直到计算机CPU消耗率达到100%，造成程序的<em title="类似操作系统的假死状态，当高耗程序对资源释放后系统又会重新运行起来">假死</em>，这样的循环语句通常称作<em>死循环</em>。</p>
+        <p>条件判断语句，特别是“if语句”或许是最重要，最有用的条件语句了，但它的不足之处在于，它没有办法去完成一些需要重复的操作，特别是当这些重复性的操作数非常巨大时。而要完成大量重复的操作，只能使用循环语句了。</p>
+        <p>之前提到过，循环语句可以让我们反复多次地运行同一段代码。循环语句分为几种不同的类型，但它们的工作原理几乎一样：只要给定条件仍能得到满足，包含在循环语句里的代码就将重复地执行下去，一旦条件得不到满足，即条件语句得出的结果不再为“true”时（这点和“if语句”是否执行一样），循环也就结束了。在JavaScript中，循环也分为<em>单次结束</em>和<em>完全结束</em>两种，这在我们本章中会讲到。我们首先来看一个循环执行的例子：</p>
+        <p class="noindent"><a href="html-pages/javascript/codeEffect/code-001.html" target="_blank">HTML</a>部分的代码：</p>
+        <code>
+            <img src="img/code/jscode/code-js-031.jpg">
+        </code>
+        <p class="noindent">JavaScript部分代码。首先，仿真出一个“物流信息”的数据对象（在生产环境中，这样的数据都是从数据库获得的）：</p>
+        <code>
+            <img src="img/code/jscode/code-js-032.jpg">
+        </code>
+        <p class="noindent">然后，我们添加这样一个循环添加“物流信息”的函数：</p>
+        <code>
+            <img src="img/code/jscode/code-js-033.jpg">
+        </code>
+        <p class="noindent">最后，我只需要为id为“runForBtn”的按钮添加一个点击事件，让按钮被点击之后去调用执行之前所定义的这个函数即可：</p>
+        <code>
+            <img src="img/code/jscode/code-js-034.jpg">
+        </code>
+        <h4>运行效果：</h4>
+        <iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-001.html"></iframe>
+        <p>上例中采用的是在JavaScript中使用最为最为广泛的“for条件循环语句”，通常我们简称为“for循环”，该语句在本章中会作为重点讲解。从上例中可以可以看到，HTML页面文件中本来只有一行数据，在点击可上方的“加载物流数据”按钮后数据才会完整显示出来，而下方的数据是通过循环“物流信息”这个对象，并通过JavaScript内置的“innerHTML”方法通过“自加赋值运算符”将我们拼接的字符串最终以“HTML格式”添加进表格并显示出来的。实际上页面中一开始就显示出的第一行数据信息是为了测试显示效果，实际生产环境中，表格中除了表头，表体是没有数据的。这些数据都是需要通过服务器端语言通过数据库去获取到（即常说的后台页面），然后前端通再通过Ajax等技术手段从后台页面去获取这些数据。（实际上现在的JavaScript已经能直接对数据库进行操作了，甚至还有直接在服务器端运行JavaScript的项目“nodeJS”）</p>
+    </section>
+    <!-- while循环 -->
+    <section>
+        <h3>while循环</h3>
+        <p>“while循环”包括一个循环条件和一段代码块，它的基本语法结构与“if语句”基本完全一样，它们的区别在于，只要条件为真（true），就不断循环执行代码块。</p>
+        <p>我们先来看一下“while循环”的简单代码示例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-035.jpg">
+        </code>
+        <p>代码在运行后，Google Chrome浏览器开发者工具的的控制台中（以后在本课件中简称为“控制台”）输出的结构为：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-036.jpg">
+        </code>
+        <p>在这个过程中，一开始“count”这个变量的数值为“0”，进入while后面的括号内进行条件判断，“0&lt;5”条件成立，得出布尔值的结果“true”，然后进入循环体内部，执行“count++”（即：count = 0 + 1），经过计算后，此时的“count”的值已经变为“1”了，然后在控制台内输出结果。接着循环又将从while的地方开始，进入条件判断，“1&lt;5”条件成立，然后再次进行循环体依次按行去执行语句，以此类推。当“count”通过一次次的自加运算，值变为“5”的时候进行条件判断，“5&lt;5”条件不成立，返回布尔值结果“false”，跳出整个while循环执行后续的语句。</p>
+        <p>为了说明while循环的原理，我们稍微改动一下之前的代码再来观察控制台的输出结果：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-037.jpg">
+        </code>
+        <p>然后我们在控制台会看到这样的结果：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-038.jpg">
+        </code>
+        <p>通过这个示例，基本完全应证了之前我们讲述的while循环的运行原理。那我们来思考一个问题，就是将上例代码while循环体内部的代码“count++”和“console.log("现在count的值是：" + count)”上下位置交换一下，在控制台得出的结果应该会是什么。</p>
+    </section>
+    <!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习一&gt;</h3>
+        <p>编写一个“while循环”，在控制台中输出“0~100”之间的“奇数”。</p>
+	</section>
+	<!-- do while循环 -->
+	<section>
+	    <h3>do while循环</h3>
+	    <p>类似于if语句的情况，while循环内语句有可能不被执行：因为循环的条件判断发生在每次循环开始之前，所以如果循环的条件判断求值结果是false，那循环体的代码是不会执行的。</p>
+	    <p>在有些应用场景里，我们希望包含在循环体内的语句至少执行一次。这个时候“do while循环”就是我们最好的选择了。简单的理解就是，“while循环”先判断条件再决定是否执行，而“do while循环”执行一次循环体内的语句再判断条件。我们来看看“do while循环”的基本语法结构：</p>
+	    <code class="indent">
+            <img src="img/code/jscode/code-js-039.jpg">
+        </code>
+        <p>控制台中会输出结果：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-040.jpg">
+        </code>
+        <p>首先，注意“while(条件判断)”后面的分号“;”，一定要加上，之前“while循环”语句的结束是“}”所以不需要。其次，记忆良好的你也许会认为，这和之前“while循环”的输出结果没有任何一个字的不同，但你看到的只是现象。我们只需要做一个简单的实验就能发现差别，只需要把声明“count”变量时的那个数值“0”改成“5”，再分别去运行一次“while循环”和一次“do while循环”就立刻会发现它们之间最本质的差别了。</p>
+	</section>
+	<!-- for循环 -->
+	<section>
+	    <h3>for循环</h3>
+	    <p>在现在的生产环境中，“for循环”是使用得最多的一种循环方式。这和它执行的性能和应用范围并没有关系。很多时候使用这个循环语句更多地考虑是，这种循环的声明方式是将变量名，条件判断和自增运算都放在了这个循环方法的括号内部。这样一来使得语法更加简洁明了，即省掉了声明变量的作用注释，在阅读代码时让独立在循环体外部的变量对我们的判断产生干扰。同时这样也最大程度地避免了循环的异常——忘记在循环体内部加上变量的自增语句而导致的“死循环”。</p>
+	    <p>我们首先来看“for循环”的基本语法结构：</p>
+	    <code class="indent">
+            <img src="img/code/jscode/code-js-041.jpg">
+        </code>
+        <p>控制台中输出的结果为：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-042.jpg">
+        </code>
+        <p>和我们之前看到过的“while系列循环”不一样，这次的循环条件内多了好多内容。其实“for循环”只是将循环体外部独立声明的变量和循环体内部的变量自增运算都放进了“for”后面的括号里，成为了一个“条件组合”，上例中“for循环”写成“while循环”就相当于：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-043.jpg">
+        </code>
+        <p>它得出的结果和上例“for循环”的结果完全一致，也是刚才要大家思考内容的正确结果。通过两段代码的示例图可以清晰地发现，“for循环”这种循环语句无论是在代码行数减少方面，还是在结构说明上都会好很多，所以也是今后使用的最多的一种循环语句。本章中的第一个示例，就是用for循环实现的。</p>
+	</section>
+	<!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习二&gt;</h3>
+        <p>将“章节练习一”中的要求用“for循环”进行实现。</p>
+	</section>
+	<!-- 循环语句的嵌套 -->
+	<section>
+	    <h3>循环语句的嵌套</h3>
+	    <p>内容准备中，敬请期待...</p>
+	    <!-- 同时在条件中声明多个变量 -->
+	</section>
+	<!-- 循环语句的中断和跳出 -->
+	<section>
+	    <h3>循环语句的中断和跳出</h3>
+	    <p>内容准备中，敬请期待...</p>
+	    <!-- continue、break和reture -->
+	    <!-- reture只能单独出现在循环体内，如果出现在函数内会包语法错误 -->
+	</section>
+</root>
+
+
+
+
+
+

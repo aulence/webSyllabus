@@ -1,18 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>循环的示例</title>
+    <title>JavaScript代码示例</title>
     <link rel="stylesheet" href="../../../css/iframe.min.css">
     <style>
         html,body {
-            height: 300px;
+            height: 310px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: #666;
+        }
+        table, table th, table td {
+            border: 1px solid #edd2d2;
+        }
+        table th {
+            background-color: #d31709;
+            color: #fff;
+            font: normal 18px "微软雅黑";
+        }
+        table tbody tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #fff2f1;
+        }
+        table th, table td {
+            padding: 4px 12px;
+            text-align: left;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <button id="runForBtn" class="normal" type="button">执行循环</button>
-    <div id="runForDiv"></div>
+    <button id="runForBtn" class="normal" type="button">加载物流数据</button>
+    <table id="runForTable">
+        <thead>
+            <tr>
+                <th>订单号</th><th>商品名称</th><th>发货地</th><th>目的地</th><th>发货时间</th><th>到达时间</th><th>签收时间</th><th>联系方式</th><th>签收人</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>jd-348247</td><td>相机</td><td>杭州</td><td>成都</td><td>2016-11-11</td><td>2016-11-20</td><td>2016-11-20</td><td>18116657687</td><td>魏叶</td>
+            <!-- 通过循环加载的数据 -->
+        </tbody>
+    </table>
 </body>
 <script src="../../../plugin/jquery-3.1.0.min.js">
 </script><script src="../../../js/iframe.min.js"></script>
