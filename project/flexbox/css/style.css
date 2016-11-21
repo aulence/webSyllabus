@@ -1,0 +1,233 @@
+@charset "utf-8";
+html,body {
+    background: url("../img/bg-content.jpg") repeat;
+    margin: 0; padding: 0;
+    font: 24px "微软雅黑";
+    color: #555;
+}
+body {
+    padding-bottom: 150px;
+}
+main {
+    width: 960px;
+    margin: 0 auto;
+}
+h1, h2, h3 {
+    font-weight: normal;
+}
+h1 {
+    text-align: center;
+    font-size: 32px;
+}
+h2 {
+    margin-top: 46px;
+    font-size: 26px;
+    color: #666;
+}
+h3 {
+    margin-top: 26px;
+    font-size: 22px;
+    color: #666;
+}
+
+/**** 集体设置 ****/
+[class|="flexBox"] {
+    height: 140px;
+    background-color: #ddd;
+    /* 显示类型为弹性的盒子（兼容写法） */
+    display: -webkit-box; /* iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* Firefox 19- */
+    display: -ms-flexbox; /* IE 10 */
+    display: -webkit-flex; /* 稍微新一点，但现在算老版本的Chrome */
+    /* 显示类型为弹性的盒子 */
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+[class|="flexBox"] > div {
+    /* 在宽度没有进行分配时元素子项占据的原始宽度，相当于设置了一个“width”属性 */
+    flex-basis: 160px;
+    height: 100px;
+    text-align: center;
+    line-height: 180%;
+    color: #fff;
+}
+[class|="flexBox"] > div:nth-child(1) { background-color: #ed0000;}
+[class|="flexBox"] > div:nth-child(2) { background-color: #faec39;}
+[class|="flexBox"] > div:nth-child(3) { background-color: #94f84a;}
+[class|="flexBox"] > div:nth-child(4) { background-color: #49f5e1;}
+[class|="flexBox"] > div:nth-child(5) { background-color: #4998f5;}
+[class|="flexBox"] > div:nth-child(6) { background-color: #5049f5;}
+[class|="flexBox"] > div:nth-child(7) { background-color: #8b49f5;}
+[class|="flexBox"] > div:nth-child(8) { background-color: #e149f5;}
+[class|="flexBox"] > div:nth-child(9) { background-color: #f54956;}
+
+/**** 细节设置 ****/
+/* 统一盒子行布局样式 */
+.flexBox-1, .flexBox-3, .flexBox-4, .flexBox-5, .flexBox-6, .flexBox-7, .flexBox-18, .flexBox-19, .flexBox-20, .flexBox-21, .flexBox-22 {
+    /* 子元素按一行排列 */
+    flex-direction: row;
+}
+/* 盒子2 */
+.flexBox-2 {
+    /* 子元素按一列排列 */
+    flex-direction: column;
+}
+/* 盒子3 */
+.flexBox-3 {
+    /* 水平左对齐 */
+    justify-content: flex-start;
+}
+/* 盒子4 */
+.flexBox-4 {
+    /* 水平居中对齐 */
+    justify-content: center;
+}
+/* 盒子5 */
+.flexBox-5 {
+    /* 水平右对齐 */
+    justify-content: flex-end;
+}
+/* 盒子6 */
+.flexBox-6 {
+    /* 水平两端分散对齐 */
+    justify-content: space-between;
+}
+/* 盒子7 */
+.flexBox-7 {
+    /* 水平分散对齐 */
+    justify-content: space-around;
+}
+/* 子元素高度不一致的 */
+.h-inconfor > div:nth-child(1) { height: 140px; }
+.h-inconfor > div:nth-child(2) { height: 200px; }
+.h-inconfor > div:nth-child(3) { height: 100px; }
+.h-inconfor > div:nth-child(4) { height: 170px; }
+/* 统一高度和盒子行布局样式 */
+.flexBox-8, .flexBox-9, .flexBox-10, .flexBox-11, .flexBox-12, .flexBox-13, .flexBox-14, .flexBox-15, .flexBox-16, .flexBox-17, .flexBox-24 {
+	height: 240px;
+    flex-direction: row;
+}
+/* 盒子8 */
+.flexBox-8 {
+    /* 垂直顶端对齐 */
+    align-items: flex-start;
+}
+/* 盒子9 */
+.flexBox-9 {
+    /* 垂直居中对齐 */
+    align-items: center;
+}
+/* 盒子10 */
+.flexBox-10 {
+    /* 垂直底端对齐 */
+    align-items: flex-end;
+}
+/* 盒子11 */
+.flexBox-11 {
+    /* 垂直基线对齐 */
+    align-items: baseline;
+}
+/* 盒子12 */
+.flexBox-12 {
+    /* 垂直方向占满高度，但需要子元素项没有高度，或者高度为“auto”才会生效 */
+    align-items: stretch;
+}
+.flexBox-12.h-inconfor > div {
+	/* 这里要取消高度的设置“align-items”属性的“stretch”值才会生效。注意算选择器的权重，否则无法覆盖原始设置的高度 */
+    height: auto;
+}
+/* 统一换行样式 */
+.flexBox-13, .flexBox-14, .flexBox-15, .flexBox-16, .flexBox-17, .flexBox-18 {
+    /* 设置换行，默认值是“nowrap”，除此之外还有一个值“wrap-reverse”表示从下至上的换行，也就是新出现的行会在当前行的上方 */
+    flex-wrap: wrap;
+}
+/* 盒子13 */
+.flexBox-13 {
+    /* 多行内容出现在上方（如果只有一行内容，该属性不会生效） */
+    align-content: flex-start;
+}
+/* 盒子14 */
+.flexBox-14 {
+    /* 多行内容出现在中间 */
+    align-content: center;
+}
+/* 盒子15 */
+.flexBox-15 {
+    /* 多行内容出现在下方 */
+    align-content: flex-end;
+}
+/* 盒子16 */
+.flexBox-16 {
+    /* 多行内容垂直两端分散对齐 */
+    align-content: space-between;
+}
+/* 盒子17 */
+.flexBox-17 {
+    /* 多行内容垂直分散对齐 */
+    align-content: space-around;
+}
+/* 盒子18 */
+.flexBox-18 {
+    /* 多行内容垂直分散对齐 */
+    align-content: space-around;
+}
+.flexBox-18 > div:nth-child(1) { order: 3 }
+.flexBox-18 > div:nth-child(2) { order: 2 }
+.flexBox-18 > div:nth-child(3) { order: -1 }
+.flexBox-18 > div:nth-child(4) { order: 0 }
+.flexBox-18 > div:nth-child(5) { order: -2 }
+.flexBox-18 > div:nth-child(6) { order: 109 }
+/* 盒子19 */
+.flexBox-19 > div {
+    /* 让元素平分占据剩余空间 */
+    flex-grow: 1;
+}
+/* 盒子20 */
+.flexBox-20 > div {
+    flex-grow: 1;
+}
+.flexBox-20 > div:nth-child(3) {
+    /* 第三个元素子项占据的剩余空间是其它项的2倍 */
+    flex-grow: 2;
+}
+.flexBox-21 > div, .flexBox-22 > div, .flexBox-23 > div {
+    width: 25%;
+}
+/* 盒子21 */
+.flexBox-21 > div {
+    /* 当空间不足时所有元素子项都会缩小，默认值为1 */
+    flex-shrink: 1;
+}
+/* 盒子22 */
+.flexBox-22 > div {
+    flex-shrink: 1;
+}
+.flexBox-22 > div:nth-child(3) {
+    /* 该属性值为“0”的元素子项不会缩小 */
+    flex-shrink: 0;
+}
+/* 盒子23-1 */
+.flexBox-23-1 > div {
+    /* flex-grow=1，flex-shrink=1，flex-basis=auto */
+    flex: 1 1 auto;
+}
+/* 盒子23-2 */
+.flexBox-23-2 > div {
+    flex: 0 1 20%;
+}
+/* 盒子23-3 */
+.flexBox-23-3 > div {
+    flex: 0 0 20%;
+}
+/* 盒子23-4 */
+.flexBox-23-4 > div {
+    flex: 1 0 auto;
+}
+/* 盒子24 */
+.flexBox-24 {
+    align-items: center;
+}
+.flexBox-24 > div:nth-child(3) {
+    align-self: flex-end;
+}

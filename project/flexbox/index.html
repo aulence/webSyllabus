@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性盒子布局示例</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <h1>Flexible Box布局示例</h1>
+        <h2>1、基本的按行布局</h2>
+        <div class="flexBox-1">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>2、基本的按列布局</h2>
+        <div class="flexBox-2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>3、水平左对齐</h2>
+        <div class="flexBox-3">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>4、水平居中对齐</h2>
+        <div class="flexBox-4">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>5、水平右对齐</h2>
+        <div class="flexBox-5">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>6、水平两端分散对齐</h2>
+        <div class="flexBox-6">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>7、水平分散对齐</h2>
+        <div class="flexBox-7">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>8、垂直顶端对齐</h2>
+        <div class="flexBox-8 h-inconfor">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>9、垂直居中对齐</h2>
+        <div class="flexBox-9 h-inconfor">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>10、垂直底端对齐</h2>
+        <div class="flexBox-10 h-inconfor">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>11、文本基线对齐</h2>
+        <div class="flexBox-11 h-inconfor">
+            <div>这</div>
+            <div>是</div>
+            <div>文</div>
+            <div>本</div>
+        </div>
+        <h2>12、垂直伸展对齐</h2>
+        <div class="flexBox-12 h-inconfor">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>13、多行元素垂直居上</h2>
+        <div class="flexBox-13">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>14、多行元素垂直居中</h2>
+        <div class="flexBox-14">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>15、多行元素垂直居下</h2>
+        <div class="flexBox-15">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>16、多行元素垂直两端分散对齐</h2>
+        <div class="flexBox-16">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>17、多行元素垂直分散对齐</h2>
+        <div class="flexBox-17">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>18、元素子项的次序排列</h2>
+        <div class="flexBox-18">
+            <div>3</div><div>2</div><div>-1</div>
+            <div>0</div><div>-2</div><div>109</div>
+        </div>
+        <h2>19、元素子项对剩余空间的平均分配</h2>
+        <div class="flexBox-19">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>20、某个元素子项占据平均分配更多的空间（本例为2倍）</h2>
+        <div class="flexBox-20">
+            <div>比原始宽度<br>多了64</div>
+            <div>比原始宽度<br>多了64</div>
+            <div>比原始宽度<br>多了128</div>
+            <div>比原始宽度<br>多了64</div>
+        </div>
+        <h2>21、当空间不足时，所有元素子项自动缩小</h2>
+        <div class="flexBox-21">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>22、某个元素子项不缩小，其它项都会缩小</h2>
+        <div class="flexBox-22">
+            <div></div><div></div><div>我不会缩小</div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h2>23、元素子项分配剩余空间、元素缩小填充和默认宽度的缩写</h2>
+        <h3>flex: 1 1 auto（等同于“flex-grow:1; flex-shrink:1; flex-basis:auto”，后面三个例子同理）</h3>
+        <div class="flexBox-23-1">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h3>flex: 0 1 20%</h3>
+        <div class="flexBox-23-2">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <h3>flex: 0 0 20%</h3>
+        <div class="flexBox-23-3">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h3>flex: 1 0 auto</h3>
+        <div class="flexBox-23-4">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>24、设置某个元素子项单独使用一种对齐方式</h2>
+        <div class="flexBox-24 h-inconfor">
+            <div></div>
+            <div></div>
+            <div>我是特殊项</div>
+            <div></div>
+        </div>
+    </main>
+</body>
+</html>
