@@ -26,6 +26,7 @@ var logisInfo = {
 // 执行循环加载数据的按钮
 var forLoadBtn = document.getElementById("runForBtn");
 forLoadBtn.onclick = function() {
+    // 调用加载数据的功能函数
     loadLogisInfo();
 }
 /**

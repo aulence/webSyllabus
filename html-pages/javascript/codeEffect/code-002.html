@@ -5,12 +5,58 @@
     <title>JavaScript代码示例</title>
     <link rel="stylesheet" href="../../../css/iframe.min.css">
     <style>
+        html, body {
+            margin: 0; padding: 0;
+        }
+        body {
+            height: 480px;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+        .line {
+            width: 900px; height: 50px;
+            border-bottom: none;
+        }
+        .line > div {
+            width: 100px; height: 100%;
+            background: linear-gradient(145deg,#53a3eb,#096dc7);
+            text-align: center;
+            font: 26px arial;
+            line-height: 50px;
+            box-sizing: border-box;
+            display: inline-block;
+            color: #fff;
+            transition-duration: 0.1s;
+            cursor: default;
+        }
+        .line > div:hover {
+            transform: scale(1.5) rotate(-8deg);
+            box-shadow: 4px 4px 8px rgba(49, 53, 56, 0.3);
+            font-family: "goudy stout";
+        }
     </style>
 </head>
 <body>
 </body>
 <script src="../../../plugin/jquery-3.1.0.min.js">
 </script><script src="../../../js/iframe.min.js"></script>
+<script>
+    haskell();
+    function haskell() {
+        // 存储显示复杂的JavaScript选择器
+        var body = document.getElementsByTagName("body")[0],
+            line = document.getElementsByClassName("line");
+        // 执行循环9次（99乘法表有9行和最多9列）
+        for(var i = 0; i < 9; i++) {
+            // 在<body>标签内累加“div.line”标签
+            body.innerHTML += '<div class="line"></div>';
+            for(var j = 0; j <= i; j++) {
+                line[i].innerHTML +=
+                '<div>' + (i + 1) + '×' + (j + 1) + '</div>';
+            }
+        }
+    }
+</script>
 </html>
 
 
