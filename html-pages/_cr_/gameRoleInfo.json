@@ -1,0 +1,26 @@
+[
+    {
+        "name": "皮卡丘",
+        "series": "电系",
+        "skill": "十万伏特",
+        "color": "#f8dc00"
+    },
+    {
+        "name": "小火龙",
+        "series": "火系",
+        "skill": "火花",
+        "color": "#eb3701"
+    },
+    {
+        "name": "小水龟",
+        "series": "水系",
+        "skill": "水枪",
+        "color": "#0077dd"
+    },
+    {
+        "name": "妙蛙种子",
+        "series": "草系",
+        "skill": "藤鞭",
+        "color": "#05d425"
+    }
+]
