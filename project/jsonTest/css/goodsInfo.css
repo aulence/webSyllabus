@@ -1,0 +1,50 @@
+@charset "utf-8";
+html,body {
+    margin: 0; padding: 0;
+}
+body {
+    padding: 20px;
+    padding-bottom: 150px;
+    box-sizing: border-box;
+}
+body,input,button {
+    font: 22px "微软雅黑";
+}
+button,a {
+    cursor: pointer;
+}
+button,input,textarea {
+    outline: none;
+}
+/* 输出结果 */
+.printRes {
+    padding: 12px;
+    padding-left: 0;
+    display: table;
+}
+.printRes > div {
+    line-height: 160%;
+    margin: 10px 0;
+    padding: 0 12px;
+    display: table-row;
+}
+.printRes > div > span {
+    border-bottom: 1px dashed #e07777;
+    padding: 0 16px;
+    display: table-cell;
+    color: #555;
+}
+.printRes > div > span.price {
+    font: 26px "Algerian";
+    color: #fd840b;
+}
+.printRes > div > span.price:before {
+    content: "￥";
+}
+
+
+
+
+
+
+

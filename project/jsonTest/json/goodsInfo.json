@@ -1,0 +1,82 @@
+{
+    "food": [
+        {
+            "id": "foo-001",
+            "name": "方便面",
+            "stockDate": "2016-11-23",
+            "price": "8.00"
+        },
+        {
+            "id": "foo-002",
+            "name": "辣条",
+            "stockDate": "2016-11-24",
+            "price": "0.50"
+        },
+        {
+            "id": "foo-003",
+            "name": "三鹿奶粉",
+            "stockDate": "2016-11-25",
+            "price": "48.00"
+        }
+    ],
+    "artDailyUse": [
+        {
+            "id": "art-001",
+            "name": "香皂",
+            "stockDate": "2016-11-23",
+            "price": "5.00"
+        },
+        {
+            "id": "art-002",
+            "name": "牙刷",
+            "stockDate": "2016-11-24",
+            "price": "12.50"
+        },
+        {
+            "id": "art-003",
+            "name": "洗衣粉",
+            "stockDate": "2016-11-25",
+            "price": "36.00"
+        }
+    ],
+    "kitchen": [
+        {
+            "id": "kit-001",
+            "name": "锅",
+            "stockDate": "2016-11-23",
+            "price": "80.00"
+        },
+        {
+            "id": "kit-002",
+            "name": "碗",
+            "stockDate": "2016-11-24",
+            "price": "48.50"
+        },
+        {
+            "id": "kit-003",
+            "name": "瓢",
+            "stockDate": "2016-11-25",
+            "price": "12.00"
+        }
+    ],
+    "electricApp": [
+        {
+            "id": "ele-001",
+            "name": "电视",
+            "stockDate": "2016-11-23",
+            "price": "3605.00"
+        },
+        {
+            "id": "ele-002",
+            "name": "冰箱",
+            "stockDate": "2016-11-24",
+            "price": "2000.00"
+        },
+        {
+            "id": "ele-002",
+            "name": "冰箱",
+            "stockDate": "2016-11-24",
+            "price": "2000.00"
+        }
+    ]
+}
