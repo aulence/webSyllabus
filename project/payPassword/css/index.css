@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* 子页面的内容 */
+div[data-page-content] {
+}
+/* 普通按钮样式 */
+button.normal {
+    width: 100%; height: 42px;
+    background-color: #01aa01;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+}

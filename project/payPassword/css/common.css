@@ -1,0 +1,231 @@
+@charset "utf-8";
+/**
+* 功能：公共样式文件
+**/
+/*********************************************/
+/* 样式初始化部分 */
+/*********************************************/
+html,body {
+    height: 100%;
+    margin: 0; padding: 0;
+    font: 18px "微软雅黑";
+}
+/* 转换为IE盒子模型 */
+body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+    box-sizing: border-box;
+}
+/* 手型按钮 */
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a {
+    cursor: pointer;
+}
+button,input,textarea,select {
+    outline: none;
+}
+
+/*********************************************/
+/* 元件化样式部分 */
+/*********************************************/
+/* 块级元素 */
+page[data-page] {
+    display: block;
+}
+/* 绝对定位 */
+page[data-page], header, main, footer, header span[data-href],.payInfoBox-main,.closeBox{
+    position: absolute;
+}
+/* 固定定位 */
+[data-keyboard-number],.payInfoBox {
+    position: fixed;
+}
+/* 溢出显示裁切 */
+body,page[data-page], .payInfoBox-main .payPwd {
+    overflow: hidden;
+}
+
+/*********************************************/
+/* 页面公共样式部分 */
+/*********************************************/
+body {
+    width: 100%;
+}
+/* 内置页面 */
+page[data-page] {
+    width: 100%; height: 100%;
+}
+header,footer {
+    background-color: #35343a;
+    text-align: center;
+    font: 22px/50px "微软雅黑";
+    color: #fff;
+}
+header {
+    width: 100%; height: 50px;
+    left: 0px; top: 0px;
+}
+/* 返回按钮 */
+header span[data-href] {
+    line-height: 50px;
+    left: 10px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+main {
+    width: 100%; height: calc(100% - 100px);
+    padding: 10px;
+    background-color: #fff;
+    border-left: 1px solid #aaa;
+    top: 50px;
+}
+footer {
+    width: 100%; height: 50px;
+    left: 0px; bottom: 0px;
+}
+/* 设置子页面 */
+page[data-page] {
+    transition-duration: 0.4s;
+}
+page[data-page]:nth-of-type(1) {
+    left: -100%;
+    z-index: 1;
+}
+page[data-page]:nth-of-type(2) {
+}
+page[data-page]:nth-of-type(3) {
+    right: -100%;
+    z-index: 1;
+}
+/* 遮罩层 */
+.maskLayer {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    z-index: 10;
+}
+/* 数字键盘 */
+[data-keyboard-number] {
+    width: 100%; height: 200px;
+    background-color: #fff;
+    border-top: 1px solid #888;
+    left: 0; bottom: 0;
+    z-index: 20;
+    overflow: hidden;
+}
+[data-keyboard-number] > div {
+    width: 33.33333333%; height: 25%;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+    font: 32px/50px "arial";
+    float: left;
+    cursor: pointer;
+}
+[data-keyboard-number] > div:nth-of-type(3n) {
+    border-right: none;
+}
+[data-keyboard-number] > div:empty {
+    background-color: #eee;
+    cursor: default;
+}
+
+/* 支付信息框 */
+.payInfoBox {
+    width: 100%; height: calc(100% - 200px);
+    z-index: 11;
+}
+.payInfoBox-main {
+    width: 280px; height: 220px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    left: calc(50% - 140px);
+    top: calc(50% - 108px);
+}
+.payInfoBox-main p {
+    margin: 0;
+}
+.payInfoBox-main p:first-of-type {
+    border-bottom: 1px solid #b6ccaf;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+/* 支付对象姓名 */
+.payInfoBox-main .objName {
+    text-align: center;
+    line-height: 40px;
+}
+/* 支付金额 */
+.payInfoBox-main .money {
+    text-align: center;
+    font-size: 40px;
+    font-family: arial;
+    line-height: 50px;
+}
+/* 密码错误信息提示 */
+.payInfoBox-main .erro {
+    height: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 20px;
+    color: #e63434;
+}
+/* 密码框 */
+.payInfoBox-main .payPwd {
+    width: 240px; height: 40px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.payInfoBox-main .payPwd > div {
+    width: 40px; height: 100%;
+    border-right: 1px solid #aaa;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+}
+.payInfoBox-main .payPwd > div:last-of-type {
+    border-right: none;
+}
+.payInfoBox-main .payPwd i {
+    width: 16px; height: 16px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+}
+/* 关闭按钮 */
+.closeBox {
+    left: 2px; top: 2px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer
+}
+.closeBox:active {
+    color: #333;
+}
+
+
+/**** 特殊处理 ****/
+button,input,textarea,select {
+    font: 20px "微软雅黑";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
