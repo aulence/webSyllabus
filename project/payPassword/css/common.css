@@ -172,7 +172,7 @@ page[data-page]:nth-of-type(3) {
 }
 /* 密码框 */
 .payInfoBox-main .payPwd {
-    width: 240px; height: 40px;
+    width: 242px; height: 40px;
     border: 1px solid #aaa;
     border-radius: 3px;
     margin: 0 auto;
@@ -196,7 +196,7 @@ page[data-page]:nth-of-type(3) {
 }
 /* 关闭按钮 */
 .closeBox {
-    left: 2px; top: 2px;
+    left: 12px; top: 2px;
     font-size: 24px;
     color: #999;
     cursor: pointer
