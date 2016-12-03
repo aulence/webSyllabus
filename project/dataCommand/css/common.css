@@ -1,0 +1,177 @@
+@charset "utf-8";
+/**
+* 功能：公共样式文件
+**/
+/*********************************************/
+/* 样式初始化部分 */
+/*********************************************/
+html,body {
+    height: 100%;
+    margin: 0; padding: 0;
+    font: 18px "微软雅黑";
+}
+/* 转换为IE盒子模型 */
+body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+    box-sizing: border-box;
+}
+/* 手型按钮 */
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a {
+    cursor: pointer;
+}
+/* 消除轮廓线 */
+button,input,textarea,select {
+    outline: none;
+}
+/* 表单字体 */
+button,input,textarea,select {
+    font: 18px "微软雅黑";
+}
+/* 固定定位 */
+.popBox {
+    position: fixed;
+}
+/* 绝对定位 */
+.popBox .maskLayer, .popBox .popBox-main {
+    position: absolute;
+}
+
+/*********************************************/
+/* 样式元件部分 */
+/*********************************************/
+
+/*********************************************/
+/* 样式细节设置部分 */
+/*********************************************/
+body {
+    padding: 20px;
+    color: #333;
+}
+/**** 表格设置部分 ****/
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #7fa894;
+}
+#dataTable {
+    margin-top: 20px;
+}
+/* 表格行的设置 */
+#dataTable tbody tr:nth-child(even) {
+    background-color: #edfff7;
+}
+/* 单元格的设置 */
+th {
+    background-color: #0b9f55;
+    color: #fff;
+}
+th, td {
+    border-left: none;
+    border-right: none;
+    padding: 6px 12px;
+    text-align: left;
+    font: normal 18px "微软雅黑";
+}
+td {
+    color: #666;
+}
+/**** 全选按钮首列 ****/
+table input[type="checkbox"] {
+    width: 16px; height: 16px;
+}
+th.ckb-all {
+    width: 20px;
+}
+th.ckb-all input[type="checkbox"] {
+    cursor: not-allowed;
+}
+/**** 操作按钮 ****/
+.ctrlBtnGroup button {
+    margin-left: 12px;
+}
+.ctrlBtnGroup button:first-child {
+    margin-left: 0;
+}
+#dataTable .ctrl {
+    width: 110px;
+}
+#dataTable .ctrl a {
+    margin-right: 10px;
+    display: inline-block;
+}
+#dataTable .ctrl a.decribe {
+    color: #76a2ff;
+}
+#dataTable .ctrl a.decribe:hover {
+    color: #135dfa;
+}
+#dataTable .ctrl a.delete {
+    color: #ff8080;
+}
+#dataTable .ctrl a.delete:hover {
+    color: #ff0a0a;
+}
+
+/**** 弹出框组件 ****/
+.popBox {
+	left: 0; top: 0; right: 0; bottom: 0;
+}
+/* 遮罩层 */
+.popBox .maskLayer {
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+/* 弹出框--主体 */
+.popBox .popBox-main {
+    min-width: 360px;
+    max-width: 460px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 36px 46px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    left: 50%; top: 50%;
+    z-index: 11;
+    display: none;
+}
+/* 弹出框--消息 */
+.popBox .popBox-mesg {
+    width: 100%;
+    text-align: center;
+    line-height: 160%;
+    /*margin-top: 16px;*/
+    margin-bottom: 30px;
+}
+/* 弹出框--按钮组 */
+.popBox .popBox-btnGroup {
+    text-align: center;
+}
+.popBox .popBox-btnGroup button {
+    background-color: #0b9f55;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 40px;
+    color: #fff;
+}
+.popBox .popBox-btnGroup button:hover {
+    background-color: #10cb6d;
+}
+.popBox .popBox-btnGroup button:active {
+    background-color: #0b9f55;
+}
+.popBox .popBox-btnGroup button:nth-child(2) {
+    margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

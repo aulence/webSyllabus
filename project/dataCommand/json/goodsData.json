@@ -1,0 +1,42 @@
+[
+    {
+        "choose": "<input type=\"checkbox\" name=\"ckData\">",
+        "id": "food-014",
+        "goods": "牛奶",
+        "manufacDate": "2016-11-18",
+        "stockDete": "2016-11-19",
+        "qualityDete": "2",
+        "price": "128",
+        "command": "<a class=\"decribe\">查看</a><a class=\"delete\">删除</a>"
+    },
+    {
+        "choose": "<input type=\"checkbox\" name=\"ckData\">",
+        "id": "elec-177",
+        "goods": "吸尘器",
+        "manufacDate": "2016-10-10",
+        "stockDete": "2016-12-01",
+        "qualityDete": "4",
+        "price": "399",
+        "command": "<a class=\"decribe\">查看</a><a class=\"delete\">删除</a>"
+    },
+    {
+        "choose": "<input type=\"checkbox\" name=\"ckData\">",
+        "id": "kitc-026",
+        "goods": "微波炉",
+        "manufacDate": "2016-09-18",
+        "stockDete": "2016-11-28",
+        "qualityDete": "4",
+        "price": "2088",
+        "command": "<a class=\"decribe\">查看</a><a class=\"delete\">删除</a>"
+    },
+    {
+        "choose": "<input type=\"checkbox\" name=\"ckData\">",
+        "id": "arti-019",
+        "goods": "沐浴露",
+        "manufacDate": "2016-06-09",
+        "stockDete": "2016-11-11",
+        "qualityDete": "3",
+        "price": "66.5",
+        "command": "<a class=\"decribe\">查看</a><a class=\"delete\">删除</a>"
+    }
+]
