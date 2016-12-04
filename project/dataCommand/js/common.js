@@ -1,6 +1,15 @@
 /**
 * 功能：公共功能控制
 **/
+/* 全局变量定义 */
+var DATAC =  {
+    //　JSON文件地址
+    url: "json/goodsData.json",
+    loading: '<div class="popBox">\
+              <div class="maskLayer"></div>\
+              <div class="loadingAnim"></div>\
+              </div>'
+}
 /*****************************************************/
 /* 页面加载完成后的事件 */
 /*****************************************************/
@@ -8,9 +17,22 @@ $(function() {
     // 加载数据按钮点击事件
     $("#loadData").click(function() {
         // 执行获取JSON文件的AJAX操纵
-        $.getJSON("json/goodsData.json", function(data) {
+        $.getJSON(DATAC.url, function(data) {
+            // 添加载入中效果
+            var notCont = $("#dataTable tbody").children().length == 0;
+            if(notCont) {
+                $("body").append(DATAC.loading);
+            }
             // 调用函数“获取商品信息并现实与页面”
-            getDataInHTML(data);
+            setTimeout(function() {
+                // 清除原有数据
+                $("#dataTable tbody").html("");
+                getDataInHTML(data);
+                // 清除载入等待动画
+                $(".popBox").fadeOut(600, function() {
+                    $(this).remove();
+                });
+            }, 600);
         });
     });
 
@@ -37,6 +59,15 @@ $(function() {
     $("#delCkdData").click(function() {
          deleteConfirm("multiple", this);
     });
+
+    // “货号”排序功能
+    sortOrder(0);
+    // “生产日期”排序功能
+    sortOrder(1);
+    // “进货日期”排序功能
+    sortOrder(2);
+    // “价格”排序功能
+    sortOrder(3);
 });
 
 /*****************************************************/
@@ -59,6 +90,7 @@ function getDataInHTML(jsonData) {
     }
     // 向数据表内遍历出JSON数据
     else {
+        // 遍历出JSON数据内容于表格内
         for(var i = 0; i < jsonObj_len; i++) {
             // 添加一个表格空行
             dataContent.append("<tr></tr>");
@@ -281,6 +313,178 @@ function popBox(param) {
     });
 }
 
+/**
+* 功能：排序功能
+* 参数：1、排序按钮在<thead>内的下标
+**/
+function sortOrder(idx) {
+    $("#dataTable thead i").eq(idx).click(function() {
+        // 获取三种状态
+            // 箭头默认状态
+        var isNormal = $(this).hasClass("normal"),
+            // 箭头向上
+            isAscending = $(this).hasClass("up"),
+            // 箭头向下
+            isDescending = $(this).hasClass("down");
+        // 箭头方向设置
+        //　如果箭头为默认状态或者向下（实行升序排列）
+        if(isNormal || isDescending) {
+            // 设置为向上
+            $(this).removeClass("normal down").addClass("up")
+            // 恢复其它兄弟节点的效果
+            .parent().siblings().children("i.arrow").removeClass("up down").addClass("normal");
+            // 如果是货号排序
+            if(idx == 0) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.id.slice(obj1.id.lastIndexOf("\-") + 1);
+                        num2 = obj2.id.slice(obj2.id.lastIndexOf("\-") + 1);
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data);
+                });
+            }
+            // 如果是生产日期排序
+            else if(idx == 1) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.manufacDate.replace(/\-/g, "");
+                        num2 = obj2.manufacDate.replace(/\-/g, "");
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data);
+                });
+            }
+            // 如果是进货日期排序
+            else if(idx == 2) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.stockDete.replace(/\-/g, "");
+                        num2 = obj2.stockDete.replace(/\-/g, "");
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data);
+                });
+            }
+            // 如果是价格排序
+            else if(idx == 3) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.price;
+                        num2 = obj2.price;
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data);
+                });
+            }
+            //　其它异常情况
+            else {
+                return;
+            }
+        }
+        // 如果箭头向上（实行降序排列）
+        else if(isAscending) {
+            // 设置为向下
+            $(this).removeClass("up").addClass("down")
+            // 恢复其它兄弟节点的效果
+            .parent().siblings().children("i.arrow").removeClass("up down").addClass("normal");
+            // 如果是货号排序
+            if(idx == 0) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.id.slice(obj1.id.lastIndexOf("\-") + 1);
+                        num2 = obj2.id.slice(obj2.id.lastIndexOf("\-") + 1);
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data, "rev");
+                });
+            }
+            // 如果是生产日期排序
+            else if(idx == 1) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.manufacDate.replace(/\-/g, "");
+                        num2 = obj2.manufacDate.replace(/\-/g, "");
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data, "rev");
+                });
+            }
+            // 如果是进货日期排序
+            else if(idx == 2) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.stockDete.replace(/\-/g, "");
+                        num2 = obj2.stockDete.replace(/\-/g, "");
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data, "rev");
+                });
+            }
+            // 如果是价格排序
+            else if(idx == 3) {
+                $.getJSON(DATAC.url,function(data) {
+                    // 执行升序排序
+                    data.sort(function(obj1,obj2) {
+                        var num1 = 0, num2 = 0;
+                        num1 = obj1.price;
+                        num2 = obj2.price;
+                        return num1 - num2;
+                    });
+                    // 数据写入及载入动画闭包功能调用
+                    loadData(data, "rev");
+                });
+            }
+            //　其它异常情况
+            else {
+                return;
+            }
+        }
+        /**
+        * 功能：载入动画的添加、移除，及数据写入的闭包功能
+        * 参数：1、JSON原对象；2、如果传入“rev”，表示降序
+        **/
+        function loadData(orgData, type) {
+            // 如果传入降序参数，则执行反序
+            if(type == "rev") {
+                orgData.reverse();
+            }
+            // 添加载入中效果
+            $("body").append(DATAC.loading);
+            // 调用函数“获取商品信息并现实与页面”
+            setTimeout(function() {
+                // 清除原有数据
+                $("#dataTable tbody").html("");
+                getDataInHTML(orgData);
+                // 清除载入等待动画
+                $(".popBox").fadeOut(600, function() {
+                    $(this).remove();
+                });
+            }, 600);
+        }
+    });
+}
 
 
 

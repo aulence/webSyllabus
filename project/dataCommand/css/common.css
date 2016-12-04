@@ -14,8 +14,15 @@ html,body {
 body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
     box-sizing: border-box;
 }
+ul,ol,h1,h2,h3,h4,h5,h6,p,input,select,textarea,button {
+    margin: 0;
+}
+
+/*********************************************/
+/* 样式元件部分 */
+/*********************************************/
 /* 手型按钮 */
-button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a {
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a,thead i.arrow {
     cursor: pointer;
 }
 /* 消除轮廓线 */
@@ -31,13 +38,17 @@ button,input,textarea,select {
     position: fixed;
 }
 /* 绝对定位 */
-.popBox .maskLayer, .popBox .popBox-main {
+.popBox .maskLayer, .popBox .popBox-main, .loadingAnim  {
     position: absolute;
 }
-
-/*********************************************/
-/* 样式元件部分 */
-/*********************************************/
+/* 相对定位 */
+thead i.arrow {
+    position: relative;
+}
+/* 行内块元素 */
+thead i.arrow, #dataTable .ctrl a {
+    display: inline-block;
+}
 
 /*********************************************/
 /* 样式细节设置部分 */
@@ -76,6 +87,20 @@ th, td {
 td {
     color: #666;
 }
+/**** 排序的箭头按钮 ****/
+thead i.arrow {
+    width: 16px; height: 16px;
+    background: url("../img/arrow.png") 0 0 no-repeat;
+    vertical-align: bottom;
+    top: -2px; left: 4px;
+    transition-duration: 0.1s;
+}
+thead i.arrow.up {
+    transform: rotate(-90deg);
+}
+thead i.arrow.down {
+    transform: rotate(90deg);
+}
 /**** 全选按钮首列 ****/
 table input[type="checkbox"] {
     width: 16px; height: 16px;
@@ -98,7 +123,6 @@ th.ckb-all input[type="checkbox"] {
 }
 #dataTable .ctrl a {
     margin-right: 10px;
-    display: inline-block;
 }
 #dataTable .ctrl a.decribe {
     color: #76a2ff;
@@ -163,11 +187,24 @@ th.ckb-all input[type="checkbox"] {
 .popBox .popBox-btnGroup button:nth-child(2) {
     margin-left: 30px;
 }
+/* 载入中动画效果 */
+.loadingAnim {
+    width: 64px; height: 64px;
+    background: url("../img/loading.png") 0 0 no-repeat;
+    left: calc(50% - 32px); top: calc(50% - 32px);
+    animation: loading 1.2s linear infinite;
+    z-index: 12;
+}
 
+/*********************************************/
+/* 样式细节设置部分 */
+/*********************************************/
 
-
-
-
+/* 载入中动画关键帧定义 */
+@keyframes loading {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
 
 
 
