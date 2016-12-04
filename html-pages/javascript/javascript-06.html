@@ -375,9 +375,136 @@
         <code class="indent">
             <img src="img/code/jscode/code-js-158.jpg">
         </code>
-        <p>这两种访问属性的方法的区别还不止于此，通过“.”访问的属性不能是变量，不能是运算表达式，但是用“[attr]”这种方式可以接受变量，亦可以接受运算表达式。</p>
-    </section>
+        <p>这两种访问属性的方法的区别还不止于此，通过“.”访问的属性不能是变量，不能是运算表达式，但是用“[attr]”这种方式可以接受变量，亦可以接受运算表达式。在对象的属性不是很确定的时候，用“[variable]”作为一个对象的载体是一个非常不错的选择。</p>
+        <p>比如现在，我们在一个虚拟出来的“书籍”对象内配置一个简单的方法，用于输出一个对象内指定属性的值，就可以这样去写：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-159.jpg">
+        </code>
+        <p>在控制台中进行传参调用后的结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-160.jpg">
+        </code>
+        <p>如果讲上例中的“book[link]”换成“book.link”的话，该功能是无法完成的，无论配置任何参数返回的都将是undefined。正是因为使用“[]”的形式有接收变量的作用，这为我们以后封装具有对象的函数提供了便利。但若所使用对象不涉及到变量，还是建议使用“.”的形式对属性访问更加便捷高效。</p>
+        <p>对于使用“[]”访问对象的属性还有一点需要补充，就是若对象是一个数组的话还可以使用<em>运算表达式</em>去访问数组内的内容。这对于实现一些复杂的需求会有一定程度的帮助，我们看来这几个简单例子：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-161.jpg">
+        </code>
+        <p>示例中最后三个完全一样的表达式“arr[Math.round(Math.random() * (arr.length - 1))]”得出的结果却不相同，是因为里面用到了<em>Math</em>函数内的取0~1之间的随机数方法<em>random()</em>，外层用该函数的“四舍五入”方法<em>round()</em>保证取出的数是整数。整个“[]”取出的数为整个数组下标从0到length-1（最大下标）之间的随机下标。</p>
+        <p>和查看所有数组的下标一样，利用<em>Object.keys(obj)</em>方法可以查看对象所有的属性名，返回的结果是一个数组。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-162.jpg">
+        </code>
+        <p>通过上面的示例可以发现，利用这个内置对象Object的keys()方法，我们可以“玩出”非常多的花样，不仅可以像数组那样通过“length”属性（对象本身是没有length这个属性的）获取到对象的属性个数，还可以像数组那样，通过下标去访问对象内的属性值。单是获取对象属性个数这一点来讲，这个方法会被我们用“计数器”+“for-in遍历”要显得“干净”得多。</p>
+        <p>对于数据操作来讲，无非就是四种操作“增、删、改、查”。对于对象来讲，“增”就是为一个对象新增一个之前不存在的属性名，然后进行赋值；“改”就是对对象已经存在的属性名进行从新赋值，达到一个修改原始对象的效果；而“查”就是简单地通过对象的属性名访问即可（当然也可以通过对“[]”传变量实现访问）。这些我们之前都讲解过，但对于“<em>删</em>”来讲稍微有些特殊，需要用到关键字“<em>delete</em>”进行操作，为了说明问题，我们还是对这些操作进行回顾并在其中列出“delete”的使用方式。原数组如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-163.jpg">
+        </code>
+        <dl class="attrExplain">
+            <dt>增</dt>
+            <dd>新增一个“出版社”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-164.jpg">
+                </code>
+            </dd>
 
+            <dt>删</dt>
+            <dd>删除“出版装订类型”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-165.jpg">
+                </code>
+            </dd>
+            <dd>注意，该方法在执行成功后会返回一个布尔值<em>true</em>，只有当正在删除的对象属性不存在或不能删除（如继承的属性：toString、valueOf等）时才会返回false值。</dd>
+
+            <dt>改</dt>
+            <dd>修改“图书页数”和“出版时间”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-166.jpg">
+                </code>
+            </dd>
+
+            <dt>查</dt>
+            <dd>查询“书名”、“作者”和“页数”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-167.jpg">
+                </code>
+            </dd>
+        </dl>
+        <p>当不知一个对象的属性是否声明过，使用<em>in</em>运算符来进行判断是再好不过的选择了（选用对象仍是之前的“书籍”）。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-168.jpg">
+        </code>
+    </section>
+    <!-- 对象操作 -->
+    <section>
+        <h3>对象操作</h3>
+        <p>JavaScript原生提供一个Object对象，所有其他对象都继承自这个对象。Object本身也是一个构造函数，可以直接通过它来生成新对象。基本语法为：</p>
+        <p><em>var obj = new Object();</em></p>
+        <p>对象型数据有一个比较有趣的特点就是它具有<em>原型类</em>（prototype），任何对象都能通过原型类来拓展自己的功能，这一点，我们在“数组操作”一节中的“数组求和”功能里就已经见识到了。数组之所以可以通过原型类来扩展自己的功能，是因为数组本身也属于“对象”。我们再来看一个关于内置对象通过原型类扩展自己的<em>方法</em>的简单例子，基本代码如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-169.jpg">
+        </code>
+        <p>在控制台中被调用后的返回值结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-170.jpg">
+        </code>
+        <p>上面的代码中，首先是给内置对象Object添加了一个原型类的方法，该方法内“keys()”方法的作用我们在上一节“对象详解”中已经学习过，是用于讲对象的属性名进行返回，然后形成一个数组。而在该方法之前有一个关键字<em>this</em>，它表示使用该原型方法的对象的本身，如“obj1”在使用“showAttr()”方法时，“this”指的就是“obj1”。</p>
+        <p>showAttr()这个方法是我们的一个自定义名称，我们可以根据需要，给原型类添加任意的自定义方法。这样一来，以后所有的新建对象都可以使用这些方法，大大地减少了代码量和也减少了对方法参数的配置。可以把原型类内我们自定义新建的方法理解为对象的公共方法，任何对象在同一个作用域内都可以对其进行使用。</p>
+        <p>其实，也并非只有数组（Array）和普通对象（Object）才是所谓的“对象”，可以将JavaScript任何允许的数据类型放置于<em>Object()</em>方法的参数内都可以转换成为一个对象，这样的对象称作“<em title="变量的赋值操作是对值的引用">包装对象</em>”，这在我们上一章的课程内。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-171.jpg">
+        </code>
+        <p>但如果，使用Object()方法为参数内配置一个JavaScript的“<em title="变量的赋值操作是对内存地址的引用">内置对象</em>”，那返回的就是该对象本身。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-172.jpg">
+        </code>
+        <p>为了证明这一点，我们对刚才的这些内置对象做了一次“严格等于”运算符的比较运算。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-173.jpg">
+        </code>
+        <p>像“对象”这种复合型的值，通过普通方式来判断它是否为一个“内置对象”比较困难，像判断数值和判断数组都有类似于“isNaN()”和“isArray()”这样的方法，但是对象却没有，直接使用我们猜测存在的方法“isObject()”只会是这种下场：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-174.jpg">
+        </code>
+        <p>但好消息是，这并不妨碍我们自己根据对象已经暴露的一些特性给它创建一个“原生方法”：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-175.jpg">
+        </code>
+        <p>调用我们自定义的原型类方法后，在控制台中的返回值结果分别如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-176.jpg">
+        </code>
+        <p>上一章我们在讲解“字符串操作”的时候提到过一个方法“<em>String()</em>”，它可以将任何类型的数据都转换成字符串，但在转换数组和对象时，出现了点特殊情况（可以自行回顾该章节的内容），即其它类型的数据都变成了和原始声明时基本一样的数据，只是加上了引号，而对象出现的结果却是“<em>[object Object]</em>”，其实这里的第一个值表示该值是一个对象（之前提到过，JavaScript中任何值都可以成为对象），第二个值为该类型值的构造函数（有些对象是通过包装而来的）。当然，除了将需要转换字符串的内容放置于String()方法的参数内，还能通过对象属性的方式来使用该方法，它的写法是“toString()”，不需要配置参数。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-177.jpg">
+        </code>
+        <p>可以从运行结果中看出来，这和我们上次使用的“String()”方法得出的结果完全一样。但其实作为一个对象的属性的“toString()”方法来讲自然会有一些不同的。它其实是对象原型类的一个方法，语法如下：</p>
+        <p><em>Object.prototype.toString</em></p>
+        <p>既然是原型类的方法，那很多时候它们还有自己的“<em title="内部的实现相当于一个函数闭包">子方法</em>”，如“<em>call()</em>”方法。基本使用方法如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-178.jpg">
+        </code>
+        <p>通过示例可以发现，除了特殊的自身不等于自身的“NaN”值以外，其它的值都在返回结果的第二个值中表现出了自己真实的“值类型”，这最大程度地弥补了“typeof()”方法（通常情况下，typeof()方法还是首选）的不足。但是单是发现了这个原型方法的特性还没有什么用，要真正地将该特性利用起来，还得我们自己写成一个方法函数。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-179.jpg">
+        </code>
+        <p>通过在控制台中调用该函数进行测试：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-180.jpg">
+        </code>
+        <p>经过简单测试，自定义的方法完美地实现了数组类型的精确判定。另外，上例中出现了一个陌生的方法啊，已经在注释内进行说明了，就是将英文转换成<em>小写字母</em>的方法“<em>toLowerCase()</em>”，和将英文转换为<em>大写字母</em>的方法“<em>toUpperCase()</em>”，但这在中文网站或应用内并不常用，只需明白有这两个方法（实际上还有个每个单词首字符都大写的方法），需要使用时再进行查询即可。</p>
+        <p>明白了这些特性后，我们还可以发挥自己的想象能力玩一些更为“高端的操作”，如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-181.jpg">
+        </code>
+        <p>通过在控制台中调用自定义的对象的方法进行测试：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-182.jpg">
+        </code>
+    </section>
 </root>
 
 
