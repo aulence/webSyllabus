@@ -27,6 +27,7 @@ $(function() {
             setTimeout(function() {
                 // 清除原有数据
                 $("#dataTable tbody").html("");
+                // 获取JSON数据并显示于页面内
                 getDataInHTML(data);
                 // 清除载入等待动画
                 $(".popBox").fadeOut(600, function() {
@@ -123,7 +124,10 @@ function getDataInHTML(jsonData) {
             }
         }
         // 启用全选按钮
-        $(".ckb-all input:checkbox").prop("disabled", false).css("cursor", "pointer");
+        var allCkb = $(".ckb-all input:checkbox");
+        allCkb.prop("disabled", false).css("cursor", "pointer");
+        // 消除默认半选状态
+        allCkb[0].indeterminate = false;
     }
 }
 
@@ -169,7 +173,7 @@ function dataTrCkd(ident) {
     // 全部都没有选中
     if(ckdCount == 0) {
         // 取消半选状态
-        ckbAll[0].indeterminate = false
+        ckbAll[0].indeterminate = false;
         // 取消全选复选框的选中效果
         ckbAll.prop("checked", false);
     }
@@ -181,7 +185,7 @@ function dataTrCkd(ident) {
     // 全部都选中
     else {
         // 取消半选状态
-        ckbAll[0].indeterminate = false
+        ckbAll[0].indeterminate = false;
         // 将全选复选框设置为选中状态
         ckbAll.prop("checked", true);
     }
@@ -214,11 +218,18 @@ function deleteConfirm(deleteType, ident) {
                         // 获取全选按钮
                         var ckbAll = $(".ckb-all input:checkbox");
                         // 取消全选按钮半选状态
-                        ckbAll[0].indeterminate = false
+                        ckbAll[0].indeterminate = false;
                         // 取消全选复选框的选中效果
                         ckbAll.prop("checked", false);
                         // 禁用全选按钮
                         ckbAll.prop("disabled", true).css("cursor", "not-allowed");
+                    }
+                    // 获取当前数据的条数
+                    var data_len = $("#dataTable tbody").children().length;
+                    // 如果为已经不存在数据了
+                    if(data_len == 0) {
+                        // 恢复排序箭头的指向
+                        $("#dataTable thead i.arrow").removeClass("up down");
                     }
                 });
             },
@@ -250,6 +261,13 @@ function deleteConfirm(deleteType, ident) {
                         ckbAll.prop("checked", false);
                         // 禁用全选按钮
                         ckbAll.prop("disabled", true).css("cursor", "not-allowed");
+                    }
+                    // 获取当前数据的条数
+                    var data_len = $("#dataTable tbody").children().length;
+                    // 如果为已经不存在数据了
+                    if(data_len == 0) {
+                        // 恢复排序箭头的指向
+                        $("#dataTable thead i.arrow").removeClass("up down");
                     }
                 });
             }
@@ -319,6 +337,12 @@ function popBox(param) {
 **/
 function sortOrder(idx) {
     $("#dataTable thead i").eq(idx).click(function() {
+        // 判断表格内是否有数据
+        var hasData = $("#dataTable tbody").children().length;
+        // 如果表格内没有数据中止本次操作
+        if(!hasData) {
+            return;
+        }
         // 获取三种状态
             // 箭头默认状态
         var isNormal = $(this).hasClass("normal"),
@@ -476,6 +500,7 @@ function sortOrder(idx) {
             setTimeout(function() {
                 // 清除原有数据
                 $("#dataTable tbody").html("");
+                // 获取JSON数据并显示于页面内
                 getDataInHTML(orgData);
                 // 清除载入等待动画
                 $(".popBox").fadeOut(600, function() {
