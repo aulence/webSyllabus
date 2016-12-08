@@ -288,7 +288,7 @@ function popBox(param) {
     // 参数未配置的默认值处理
     param.content = (param.content === undefined ? "程序员有点懵-_-!" : param.content);
     param.confirm = (param.confirm === undefined ? function(){} : param.confirm);
-    param.cancel = (param.cancel === undefined ? function(){} : param.cance);
+    param.cancel = (param.cancel === undefined ? function(){} : param.cancel);
     // 为HTML添加弹出框组件
     $("body").append(
         '<div class="popBox">' +
