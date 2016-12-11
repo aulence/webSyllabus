@@ -58,7 +58,7 @@ $(function() {
 
     // 删除被选中的数据
     $("#delCkdData").click(function() {
-         deleteConfirm("multiple", this);
+        deleteConfirm("multiple", this);
     });
 
     // “货号”排序功能
@@ -210,20 +210,7 @@ function deleteConfirm(deleteType, ident) {
                     // 移除当前行
                     $(this).remove();
                     // 动态设定当前全选按钮的状态
-                    dataTrCkd(ident)
-                    // 当前数据行的个数
-                    var  tr_len = $("#dataTable tbody tr").length;
-                    // 判断是否需要回复全选按钮状态
-                    if(tr_len == 0) {
-                        // 获取全选按钮
-                        var ckbAll = $(".ckb-all input:checkbox");
-                        // 取消全选按钮半选状态
-                        ckbAll[0].indeterminate = false;
-                        // 取消全选复选框的选中效果
-                        ckbAll.prop("checked", false);
-                        // 禁用全选按钮
-                        ckbAll.prop("disabled", true).css("cursor", "not-allowed");
-                    }
+                    dataTrCkd(ident);
                     // 获取当前数据的条数
                     var data_len = $("#dataTable tbody").children().length;
                     // 如果为已经不存在数据了
@@ -250,18 +237,6 @@ function deleteConfirm(deleteType, ident) {
                     $(this).remove();
                     // 动态设定当前全选按钮的状态
                     dataTrCkd(ident)
-                    // 当前数据行的个数
-                    var tr_len = $("#dataTable tbody tr").length;
-                    if(tr_len == 0) {
-                        // 获取全选按钮
-                        var ckbAll = $(".ckb-all input:checkbox");
-                        // 取消全选按钮半选状态
-                        ckbAll[0].indeterminate = false
-                        // 取消全选复选框的选中效果
-                        ckbAll.prop("checked", false);
-                        // 禁用全选按钮
-                        ckbAll.prop("disabled", true).css("cursor", "not-allowed");
-                    }
                     // 获取当前数据的条数
                     var data_len = $("#dataTable tbody").children().length;
                     // 如果为已经不存在数据了

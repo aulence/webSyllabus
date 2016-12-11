@@ -1,0 +1,303 @@
+<root data-root="JavaScript函数对象">
+    <!-- 概述 -->
+    <section class="mt0">
+    	<h3>JavaScript函数对象概述</h3>
+    	<p>JavaScript不仅允许开发者自定义函数，还允许开发者通过原型类（prototype）来扩展原生JS对象的功能。除此以外，JavaScript还提供了很多系统内置的函数对象，这些函数对象是JavaScript的一个重要功能组成部分，它们的实现基本上没有可替代方案，如延时函数“setTimeout()”、定时执行函数“setInterval()”、时间日期函数“Date()”、数学计算函数对象“Math”、正则表达式函数“RegExp()”，还JavaScript对象表示法的“JSON”对象等等。</p>
+    	<p>由于JavaScript任何数据都是对象的这一理念，上面这些以函数形式出现的字符实质上都是对象，它们都具有对象所具有的公共方法和各自的一些私有方法，所以在本章中，我们都将其笼统地称作“<em>函数对象</em>”。</p>
+    	<p>JavaScript正是因为有了这些函数对象，才可能让JavaScript功能更加的丰富强大，成为一门独立的编程语言。上面列出的这些系统内置的函数对象还只是JavaScript中的一部分，随着ECMAScript标准的推进，已经出现了一些新的函数对象。但由于各种客观因素，不可能对所有的JavaScript函数对象都进行完全的掌握，本章内容主要是针对一些常用的系统函数对象进行讲解。</p>
+	</section>
+	<!-- 延时执行函数 -->
+	<section>
+		<h3>延时函数setTimeout()</h3>
+		<p>内容已经讲解，课件内容后续补上。</p>
+	</section>
+	<!-- 定时执行函数 -->
+	<section>
+		<h3>延时函数setInterval()</h3>
+		<p>内容已经讲解，课件内容后续补上。</p>
+	</section>
+	<!-- 日期函数 -->
+	<section>
+		<h3>日期函数Date()</h3>
+		<p>Date对象是JavaScript用于获取日期和时间的函数操作接口。它能表现的日期时间范围是1970年1月1日00:00:00前后的各1亿天（单位为毫秒）。它可以作为普通函数直接被调用，返回的结果是一个日期时间详细信息的字符串。</p>
+		<code class="indent">
+            <img src="img/code/jscode/code-js-223.jpg">
+        </code>
+        <p>Date()函数不接收任何参数（任何有效数据作为参数都会被忽略），当Date()函数被直接调用时，返回的总是当前的系统日期时间。该函数还可以被当做是构造函数使用，即在函数前添加一个关键字“new”作为命令，它会返回一个对象的实例（即不需要像函数那样调用，可以通过方法的形式去访问了）。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-224.jpg">
+        </code>
+        <p>当Date对象作为构造函数的时候，它是可以接收参数的。它接收的参数类型可以为数值型（当然也可以是算术运算的表达式），表示从1970年1月1日00:00:00这一时间点开始的毫秒数，正数是向后，负数是向前。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-225.jpg">
+        </code>
+        <p>另外，Date对象的参数还可以是字符串，但这个字符串必须得符合日期的一些基本格式，如例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-226.jpg">
+        </code>
+        <p>详细地说，当Date函数对象的参数为数值的时候，它最多可以接收的参数个数有7个，分别是：年、月、日、时、分、秒、毫秒。但当字符串只能有一个参数，且最多只能表示年、月、日（用逗号分隔），否则会返回“Invalid Date”，表示无效的日期格式。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-227.jpg">
+        </code>
+        <p>需要注意的是，Date对象的月份是从0月开始计算的，从上例中可以发现，在“年份”的参数位上配置的是“2016”，“月份”的参数位上配置的数为“12”，但在实际出来的结果中，年份已经变成了“2017”，而月份本应是“Dec”（December），却变成了“Jan”（January），这是“进制”导致的。如月份为“13”的时候会被算成次年的2月份，如果月份为“14”的时候会被算成次年的3月份，以此类推。这是在以后日期计算中要非常的注意的地方。而且还有一点需要注意的是，参数不能为单独的“年份”，否则会被解析成毫秒数。如果是需要返回的结果中的年份和参数一致，那记得要给该参数加上一对引号，如：new Date("2016")。</p>
+        <p>两个Date对象可以进行计算，如果是相减，返回的两者之间相差的毫秒数（可以为负数）。如果为相加，返回的是两个对象的字符串拼接结果。</p>
+        <code>
+            <img src="img/code/jscode/code-js-228.jpg">
+        </code>
+        <p>Date对象作为了一个对象，自然会有自己的原型类（prototype）方法，如：返回一个完整的日期字符串“Date.prototype.toString()”、返回对应的UTC时间“Date.prototype.toUTCString()”、返回对应时间的ISO8601写法“Date.prototype.toISOString()”、返回一个符合JSON格式的ISO格式的日期字符串“Date.prototype.toJSON()”、返回日期字符串“Date.prototype.toDateString()”、返回时间字符串“Date.prototype.toTimeString()”等等。</p>
+        <p>Date对象的专用方法不可谓不多，但若开发的是本土的项目，有两个Date原型类的方法可加以利用，一个是返回当地日期格式的“toLocaleDateString()”，一个是返回当地时间格式的“toLocaleTimeString()”。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-229.jpg">
+        </code>
+        <p>虽然我们可以利用字符串操作的方法截取Date对象返回值中我们需要的部分，但操作起来会十分不便，增加很多无谓的工作量。实际上Date对象已经提供了专门获取对象中某一个方面的值的“<em>get*()</em>”方法。</p>
+        <ul class="indent">
+        	<li>getFullYear()，返回四位的年份</li>
+        	<li>getMonth()，返回月份（0表示1月，1表示2月...11表示12月）</li>
+        	<li>getDate()，返回当月的第几号</li>
+        	<li>getHours()，返回时（24小时制，0~23）</li>
+        	<li>getMinutes()，返回分</li>
+        	<li>getSeconds()，返回秒</li>
+        	<li>getMilliseconds()，返回毫秒（1000进制）</li>
+        	<li>getDay()，返回星期几（星期日为0，星期一为1...星期六为6）</li>
+        </ul>
+        <p>来看一下这些方法的使用示例：（由于代码运行时间段不一致，分钟单位之后的运行结果会比完整字符串显示的时间略有推迟）</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-230.jpg">
+        </code>
+        <p>Date拥有的“get*()”方法除了上述方法外，还有用于返回距离1970年1月1日00:00:00的毫秒数“getTime()”和用于返回距离1900的年数“getYear()”等方法，但考虑到实际使用并不是很多，在这里并没有举出示例。</p>
+        <p>有了“get*()”方法，Date对象自然也提供了“<em>set*()</em>”的方法，可以对现有的Date对象进行修改。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-231.jpg">
+        </code>
+        <p>“set*()”方法和“get*()”方法配合使用，并进行一些简单计算来达到一些项目的特殊需求。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-232.jpg">
+        </code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>计算出今年中最后一天（到今年最后一天的23时59分59秒999毫秒）到今天...</p>
+		<p>1、...的天数；</p>
+		<p>2、...的小时数；</p>
+		<p>3、...的分钟数；</p>
+		<p>4、...的秒数；</p>
+		<p>并通过一个定时执行函数实时地将完整信息显示于页面内。</p>
+		<p>&lt;提示&gt;可以用“Math.ceil()”方法向上取整</p>
+	</section>
+	<!-- 数学函数 -->
+	<section>
+		<h3>数学计算对象Math</h3>
+		<p>该对象提供了一系列的数学常数和计算方法。该对象不是构造函数，不能通过构造函数生成实例，它的所有方法都只有通过Math对象去进行调用。</p>
+		<p>Math对象提供以下属性来表示数学中的数值形态：</p>
+		<ul class="indent">
+			<li>Math.E，常数E</li>
+			<li>Math.LN2，2的自然对数</li>
+			<li>Math.LN10，10的自然对数</li>
+			<li>Math.LOG2E，以2为底e的对数</li>
+			<li>Math.LOG10E，以10为底的e的对数</li>
+			<li>Math.PI，圆周率π</li>
+			<li>Math.SQRT1_2，0.5的平方根</li>
+			<li>Math.SQRT2，2的平方根</li>
+		</ul>
+		<p>这些属性在控制台中直接运行后结果如下：</p>
+		<code class="indent">
+            <img src="img/code/jscode/code-js-233.jpg">
+        </code>
+        <p>Math对象除了上面的属性，还提供了一些较为实用的方法：</p>
+        <ul class="indent">
+			<li>Math.abs()，绝对值</li>
+			<li>Math.ceil()，向上取整</li>
+			<li>Math.floor()，向下取整</li>
+			<li>Math.round()，四舍五入</li>
+			<li>Math.max()，最大值</li>
+			<li>Math.min()，最小值</li>
+			<li>Math.pow()，指数运算</li>
+			<li>Math.sqrt()，平方根</li>
+			<li>Math.log()，自然对数</li>
+			<li>Math.exp()，e的指数</li>
+			<li>Math.random()，随机数</li>
+		</ul>
+		<p>下面就来通过一些简单的示例来观察这些方法的作用。</p>
+		<dl class="attrExplain">
+			<dt>Math.abs()</dt>
+			<dd>对一个数求绝对值。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-234.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.ceil()</dt>
+			<dd>对一个小数求向上取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-235.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.floor()</dt>
+			<dd>对一个小数求向下取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-236.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.round()</dt>
+			<dd>对一个小数“四舍五入”取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-238.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.max()</dt>
+			<dd>对参数列表中的数字求最大值，参数必须全部为数值型（或能转换为数值的字符串），否则会返回NaN。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-237.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.min()</dt>
+			<dd>对参数列表中的数字求最小值，参数同样必须全部为数值型，否则会返回NaN。原理和“Math.max()”一致，这里不再提供示例。</dd>
+
+			<dt>Math.pow()</dt>
+			<dd>该方法允许两个参数，第一个参数表示底数，第二个参数表示幂。即第二个参数是第一个参数的n次方，然后返回结果。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-239.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.sqrt()</dt>
+			<dd>返回一个数的平方根，如果是一个负数会返回NaN。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-240.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.log()</dt>
+			<dd>返回以e为底的自然对数值。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-241.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.exp()</dt>
+			<dd>返回常数e的参数次方。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-242.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.random()</dt>
+			<dd>返回一个0~1之间的<em title="计算机中的随机数都是伪随机数">伪随机数</em>，包含0，但不包含1。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-243.jpg">
+				</code>
+			</dd>
+		</dl>
+		<p>Math对象提供的这些方法中的某些方法单独存在似乎没有什么意义，需要进行配合使用才能发挥其真正的价值。如现在需要返回一个从0到5之间的随机数，那需要保证的是数字不能出现小数，但又必须覆盖到数字“0”和数字“5”，这个时候向下取整和向上取整的方法都是不可行的，就只有配合“四舍五入”的方法了。示例如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-244.jpg">
+		</code>
+		<p>但倘若需要返回的是某一段数值之间的随机数，那公式应该是“Math.round(Math.random() * (max - min)) + min”的形式，例如现在我们要取出2~6之间的随机数的，那写法就应该如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-245.jpg">
+		</code>
+		<p>返回数值是Math.random()基本功能，利用它的实现原理和字符串或者数组的特性，我还可以取出随机的其它数据格式，如字符串中的某一个字符，或者数组中的某一个元素。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-246.jpg">
+		</code>
+		<p>Math对象还提供了一组求取三角函数值的方法，参数均为0~1之间（包括0和1）的浮点数：</p>
+		<ul class="indent">
+			<li>Math.sin()，返回参数的正弦</li>
+			<li>Math.cos()，返回参数的余弦</li>
+			<li>Math.tan()，返回参数的正切</li>
+			<li>Math.asin()，返回参数的反正弦</li>
+			<li>Math.acos()，返回参数的反余弦</li>
+			<li>Math.atan()，返回参数的反正切</li>
+		</ul>
+		<p>这组方法在目前的网站或应用中使用得并不是很多，但在HTML5的三维图形技术WebGL技术中比较常见（在“CSS transform变形转换”一章中的“矩阵”也有涉及），这里可以暂时作为了解即可。它们的使用方法如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-247.jpg">
+		</code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习二&gt;</h3>
+		<p>编写一个函数，功能为随机生成一串字符范围为“A~Z”、“a~z”以及“0~9”的“不确定位数”的验证码，验证码生成的位数由函数的参数决定。</p>
+		<p>&lt;提供数据&gt;</p>
+		<p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</p>
+	</section>
+	<!-- 正则表达式 -->
+	<section>
+		<h3>正则表达式RegExp对象</h3>
+		<p>正则表达式（regular expression）是一种表达字符串结构的方法。它现在的主要用途就是给定一个模式，然后让指定字符串来匹配这个模式。常见的用途有“关键字过滤”、“用户表单输入”、“数据内容筛选”等。JavaScript的正则表达式是参照<em title="一种计算机程序语言，类似于C、sed、awk、shell等语言">Perl</em>的第5版设定的。</p>
+		<p>新建一个正则表达式有两种方法，一种是将需要匹配的字符放置于双斜杠“<em>//</em>”内，一种是利用构造函数“new RegExp()”创建。而这两种方法基本上是等价的，它们的差别在于：第一种方法在编译时新建正则表达式，第二种方法在运行时新建正则表达式。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-248.jpg">
+		</code>
+		<p>正则表达式本身也是一种对象。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-249.jpg">
+		</code>
+		<p>正则表达式可以接收第二个参数。这些参数可以单独使用，也可组合使用。</p>
+		<ul class="indent">
+			<li>i，表示忽略大小写</li>
+			<li>g，表示全局匹配，否则只返回第一个匹配的值</li>
+			<li>m，表示多行匹配</li>
+		</ul>
+		<p>使用示例如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-250.jpg">
+		</code>
+		<p>正则表达式提供了一个可读写的“<em>lastIndex</em>”属性来获取或设置开始匹配的位置。该属性生效的前提是表达式内具有“<em>g</em>”这个参数。同时也提供了一个只可读的“<em>source</em>”属性来返回正则表达式的字符串形式。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-251.jpg">
+		</code>
+		<p>正则表达式提供了两个方法来匹配字符串返回结果的方式。</p>
+		<dl class="attrExplain">
+			<dt>test()方法</dt>
+			<dd>该方法返回的是一个布尔值，表示是否匹配某一个字符串，若匹配返回true，否则返回false。若加上参数“g”，则每一次test()方法都从上一次结束的位置开始向后匹配。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-252.jpg">
+				</code>
+			</dd>
+			<dd>若手动设置lastIndex属性的值，那对字符串的匹配会按照lastIndex属性设置的开始下标位置进行匹配，若能匹配到完整的字符就返回true，否则返回false。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-253.jpg">
+				</code>
+			</dd>
+
+			<dt>exec()方法</dt>
+			<dd>该方法可以返回匹配的结果，如果匹配就返回一个数组，数组元素是所有匹配的字符串的结果，若无匹配就返回null。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-254.jpg">
+				</code>
+			</dd>
+			<dd>exec()方法还拥有两个属性，“<em>input</em>”属性会返回整个匹配的字符串，“<em>index</em>”属性会返回匹配成功开始的位置。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-255.jpg">
+				</code>
+			</dd>
+		</dl>
+		<p>除了利用正则表达式提供的方法，我们还可以利用字符串对象（即“String.prototype”）提供的方法来完成正则匹配，部分内容我们在字符串操作一章节中已经实例演示过了。可以通过我们接下的正则表达式学习来深化之前所学的字符串操作的相关内容。</p>
+	</section>
+</root>
+
+
+
+
+
+
