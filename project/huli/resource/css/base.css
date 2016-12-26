@@ -1,0 +1,415 @@
+@charset "utf-8";
+/**
+* 功能：网站基本样式设置
+* 最后修改日期：2015年8月26日
+* 作者：魏叶
+**/
+
+/***********************************
+            集体声明属性
+***********************************/
+
+/* 切图引入 */
+.contUS_mark, .logo, .login, .shopping, .home_h1, .main_nav .nav_search i, .footer_mark-keyword i, .sina_logo-small, .weixin_logo-small, .sina_rqcode-small, .weixin_rqcode-small, .email_sent i, .ckb_custom, .ckb-part_custom, .ckb-checked_custom, .rdo_custom, .rdo-checked_custom, .alipay, .unionpay, .order_flowStatus .flowPath-arrow, .order_flowStatus .fp_status, .goodsBuy .onlineServer button, .mesgItem .mesgSelect .selector, .cancelSell_baseCtrl .cancelCtrl .selector, .sellInfoSet > div .leftLabel i, .tipsBox .tips-arrow, .rightInfo .newAddInfo .furnInfo-icon .icon, .rightInfo .newAddInfo .furnInfo-ctrl .furnInfo-edit, .rightInfo .newAddInfo .furnInfo-ctrl .furnInfo-dele, .sellInfoSet .addNewInfoBtn, .rightInfo .newAddInfo .sellerInfo-icon .icon, .rightInfo .newAddInfo .sellerInfo-ctrl .sellerInfo-edit, .rightInfo .newAddInfo .sellerInfo-ctrl .sellerInfo-dele, .furnInfoSet .notReceive p span i, .furnInfoSet .uploadImg-list .uploadImg-list-item i { background: url(../img/ele/sprites_0.png) no-repeat;}
+
+/* 行块显示 */
+.header_bg img,.contUS_mark, .logo a, .main_nav ul, .main_nav ul li div a, .select_custom i, .home_h1, .main_nav .nav_search, .main_nav .nav_search input, .main_nav .nav_search i, .footer_mark-keyword i, .footer_mark-keyword span, .footer_info-content p, .loginBox label, .email_sent i, .goMyEmail a, .treas_brief-goto a, .btn-large, h1.classifyHeader, .tipsBox .tips-arrow { display: block;}
+
+/* 行内块显示 */
+.login, .shopping, .main_nav ul li a, .select_custom, .footer_mark-keyword, .sina_logo-small, .weixin_logo-small, .footer_info-content, .ckb_custom, .ckb-part_custom, .ckb-checked_custom, .rdo_custom, .rdo-checked_custom, .alipay, .unionpay, .totalInfo .totalInfo-content > label, .totalInfo .totalInfo-content > div, .base_table .data_ctrlGroup .gapLine_v, .base_table .data_ctrlGroup a { display: inline-block;}
+
+/* 绝对定位 */
+.header_bg, .contUS_mark, .loginOrShop, .main_nav, .select_custom span, .treas_brief, .tipsBox .tips-arrow { position: absolute;}
+
+/* 相对定位 */
+.logo, .shopping { position: relative;}
+
+/* 水平居中 */
+.loginBox, .email_sent, .email_sent i, .goMyEmail a, .notReceiveEmail, .shopping-none, .shopping-cart, .sc-content, .orderForm, .btn-large, .base_table { margin-left: auto; margin-right: auto;}
+
+/* 左浮动 */
+.main_nav .nav_search input, .main_nav .nav_search i { float: left;}
+
+/* 无法被选中 */
+.header, .sc-content, .btn-large, .goodsBuy .goodsBuyCtrl .plus:active, .goodsBuy .goodsBuyCtrl .minus:active, .cancelSell_baseCtrl .cancelCtrl label { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+
+/* 超链接下划线消除 */
+.footer_info-content p a, .treas_brief-goto a, .treas_brief-content .treas_name a, .sc-content .tren_info p a, .userName a, .btn-large, .base_table .img_thumbnail p a, .link-blue, .btn-large_inline { text-decoration: none;}
+
+/* 基本本文框样式 */
+input[type="text"], input[type="password"] { background-color: #fff; border: 1px solid #cccbca; outline: none; box-sizing: border-box; padding: 0 10px; font-size: 15px; color: #666; transition: box-shadow .3s;}
+input[type="text"]:focus, input[type="password"]:focus { border: 1px solid #82c353; box-shadow: 0 0 10px rgba(130, 195, 83, 0.6);}
+
+/* 基本按钮样式 */
+button[type="button"], button[type="submit"], button[type="reset"], .bottomBtn-large { background-color: #838281; border: none; outline: none; font-family: "微软雅黑"; cursor: pointer;}
+
+/* 内容超出裁切省略显示(使用前提：元素具有固定宽度) */
+.treas_count, .sc-content .tren_info p, .select_custom dl dt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+/* 手型按钮 */
+.login, .shopping, .select_custom, .main_nav .nav_search i, .treas_brief-goto a, .orderForm a.addAddr, .select_custom dl dt, .ckb_custom, .ckb-part_custom, .ckb-checked_custom, .rdo_custom, .rdo-checked_custom, .base_table .data_ctrlGroup a { cursor: pointer;}
+
+/***********************************
+            区域效果设置
+***********************************/
+
+/**** 网站主体内容部分 ****/
+html,body { font-family: "微软雅黑";}
+
+.main { width: 100%; height: auto; background: #fff; margin: 0 auto;}
+
+/**** 网站头部 ****/
+.header { width: auto; height: 296px; position: relative;}
+
+/* 头部元素层级设定 */
+.contUS_mark, .logo, .loginOrShop { z-index: 11;}
+
+/* 头部背景 */
+.header_bg { width: 1260px; height: 295px; z-index: 0; }
+
+/* 联系我们横标按钮 */
+.contUS_mark { width: 221px; height: 53px; background-position: 0px -138px; top: 0; left: 10px;}
+.contUS_mark:hover { background-position: 0px -191px;}
+
+/* logo */
+.logo { width: 286px; height: 83px; background-position: -2px -45px; margin: 0 auto; top: 58px;}
+.logo a { width: 100%; height: 100%;}
+
+/* 登录按钮（用户名）&& 购物车组 */
+.loginOrShop { width: auto; height: auto; top: 78px; right: 10px;}
+/* 登录按钮 */
+.login { width: 105px; height: 37px; background-position: -230px -146px;}
+.login:hover { background-position: -230px -183px;}
+/* 用户名 */
+.pesnName { height: 30px; line-height: 30px; position: relative; top: -10px; display: inline-block;}
+.pesnName a { text-decoration: none; color: #666;}
+.pesnName a:hover { text-decoration: underline; color: #de3d36;}
+/* 购物车按钮 */
+.shopping { width: 54px; height: 54px; background-position: -21px -377px; border: 1px solid transparent; margin-left: 2px; top: 10px; z-index: 12;}
+.shopping.active { background-position: -84px -377px;}
+/* 购物车宝贝数量 */
+.shopping > .treas_count { width: 12px; height: 12px; background-color: #da251d; border-radius: 8px; text-align: center; font: normal 10px/12px "微软雅黑"; color: #fff; position: absolute; top: 10px; right: 5px; display: block; z-index: 13;}
+.shopping.hasRreasure { background-position: -21px -434px;}
+.shopping.hasRreasure.active { background-position: -84px -435px;}
+/* 购物车宝贝简要信息 */
+.treas_brief { width: 198px; background-color: #fff; box-sizing: border-box; padding: 20px; border: 1px solid #ccc; top: 65px; right: 1px; z-index: 11; display: none;}
+.treas_brief-content { width: 100%; height: auto; padding-bottom: 10px; border-bottom: 1px solid #ccc; margin-bottom: 20px;}
+.treas_brief-content p { width: 166px; height: 25px; font: normal 12px/25px "宋体"; overflow: hidden;}
+.treas_brief-content .treas_name, .treas_brief-content .treas_price, .treas_brief-content .treas_count { float: left;display: block; color: #999;}
+.treas_brief-content .treas_name { width: 98px;}
+.treas_brief-content .treas_name a { color: #888}
+.treas_brief-content .treas_name a:hover { text-decoration: underline; color: #4375ad;}
+.treas_brief-content .treas_price, .treas_brief-content .treas_count { margin-left: 2px; text-align: right;}
+.treas_brief-content .treas_price { width: 32px; color: #ce9411; }
+.treas_brief-content .treas_count { width: 21px;}
+/* 跳转到购物车页面 */
+.treas_brief-goto a { width: 100%; height: 40px; background-color: #da251d; font: normal 15px/40px "微软雅黑"; text-align: center; color: #fff;}
+.treas_brief-goto a:hover { background-color: #ed4941;}
+
+/* 自定义下拉选择菜单 */
+.select_custom { width: auto; min-width: 80px; height: 34px; border: 1px solid #bfbfbe; position: relative; padding-left: 6px;}
+/* 选中项 */
+.select_custom i { width: auto; height: 34px; background: url(../img/ele/slt_0.png) 66px 0 no-repeat; line-height: 34px; text-align: center; font-style: normal; font-size: 16px; color: #666; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;  padding-right: 34px;}
+/* 下拉选择容器 */
+.select_custom dl { max-height: 256px; background-color: #fff; display: block; border: 1px solid #bfbfbe; display: none; float: left; position: relative; z-index: 999; overflow: auto;}
+/* 下拉选择选项 */
+.select_custom dl dt { padding: 0 10px; line-height: 32px; text-align: center; font-size: 14px; color: #666; display: block;}
+.select_custom dl dt:hover { background-color: #82c353; color: #fff;}
+
+/* 地区选择 */
+.dist-select { width: 140px; position: absolute; left: 50%; top: 164px; margin-left: -70px; z-index: 11;}
+/*.dist-select i { background-position: 106px 0;}*/
+/*.dist-select i:hover { background-position: 106px -34px;}*/
+
+/* 自定义复选框 */
+.ckb_custom, .ckb-part_custom, .ckb-checked_custom { width: 16px; height: 16px; background-color: #fff;}
+.ckb_custom { background-position: -412px -46px;}
+.ckb-part_custom { background-position: -412px -73px;}
+.ckb-checked_custom { background-position: -412px -100px;}
+
+/* 自定义单选框 */
+.rdo_custom, .rdo-checked_custom { width: 16px; height: 16px;}
+.rdo_custom { background-position: -444px -46px;}
+.rdo-checked_custom { background-position: -444px -74px;}
+
+/* 主导航栏 */
+.main_nav { width: 100%; height: 54px; background: #fff; opacity: 0.96; filter:alpha(opacity=96); border-top: 1px solid #d1d0d0; border-bottom: 1px solid #c9c8c8; top: 220px; z-index: 10;}
+.main_nav ul { width: 100%; height: 52px; /*border-top: 1px solid #e5e5e5; border-bottom: 1px solid #ededed;*/}
+
+/* 超链接样式统一 */
+.main_nav ul li a { text-decoration: none; color: #555;}
+
+/* 一级导航 */
+.main_nav ul li { border: 1px solid transparent; line-height: 54px; padding: 0 16px; float: left; margin-top: -1px; margin-right: 40px;}
+.main_nav ul li:hover { border: 1px solid #bfbfbe; background-color: #ffffff;}
+.main_nav ul li a { width: auto height: 51px; border: 1px solid transparent; border-top: 2px solid transparent;  border-bottom: 1px solid transparent; line-height: 51px; text-align: center; font-family: "微软雅黑"; font-size: 18px; padding: 0 6px; transition: border 0.6s;}
+.main_nav ul li:hover > a { border-bottom: 1px solid #f09b97; color: #d8170e}
+
+/* 二级导航 */
+.main_nav ul li div { padding: 16px 0; overflow: hidden; display: none;}
+.main_nav ul li:hover div { overflow: hidden; display: block;}
+
+/* 二级导航——元素布局 */
+.main_nav ul li div .lev2_col-1, .main_nav ul li div .lev2_col-2 { height: 32px; line-height: 32px; font-size: 14px;}
+.main_nav ul li div .lev2_col-1 { width: auto; display: block;}
+.main_nav ul li div .lev2_col-2 { width: 78px; display: block; float: left;}
+.main_nav ul li div .lev2_col-1:hover, .main_nav ul li div .lev2_col-2:hover { text-decoration: underline; color: #d8170e;}
+
+/* 导航搜索框 */
+.main_nav .nav_search { width: auto; height: 34px; margin-top: 8px; margin-right: 34px;  float: right;}
+.main_nav .nav_search input { width: 126px; height: 34px; background-color: #fff; border: 1px solid #bfbfbe; outline: none; padding: 0 6px; padding-right: 32px; font-family: "微软雅黑"; font-size: 15px; color: #555;}
+.main_nav .nav_search i { width: 34px; height: 34px; background-position: -298px -43px; margin-left: -34px;}
+.main_nav .nav_search i:hover { background-position: -298px -77px;}
+.main_nav .nav_search i:active { background-position: -298px -43px;}
+
+/**** footer ****/
+.footer { background-color: #f0f2f3; margin-top: 72px;}
+
+/* footer标语 */
+.footer_title { width: 100%; height: 76px; background-color: #82c353; line-height: 76px; text-align: center; letter-spacing: 8px; font-family: "微软雅黑"; font-size: 22px; color: #fff;}
+
+/* footer宣传关键字标签 */
+.footer_mark { text-align: center;}
+.footer_mark-keyword { width: 155px; height: 120px; margin-top: 25px;}
+.footer_mark-keyword i, .footer_mark-keyword span { margin-left: auto; margin-right: auto;}
+.footer_mark-keyword i { width: 84px; height: 97px; background-position: -345px -134px; font: normal 24px/97px "微软雅黑"; color: #fff; }
+.footer_mark-keyword span { width: auto; line-height: 14px; text-align: center; font-size: 13px; margin-top: 6px; color: #999;}
+
+/* footer信息 */
+.footer_info { overflow: hidden; margin-top: 36px; text-align: center;}
+.footer_info-content { width: auto; height: 120px; padding: 0 41px 0 47px; border-left: 1px solid #b6b7b8; vertical-align: middle; text-align: left;}
+.footer_info-content h2 { font: bold 16px/22px "微软雅黑"; margin-top: 4px; margin-bottom: 14px;}
+.footer_info-content p { line-height: 20px;}
+.footer_info-content p a, .footer_info-content p span { font-size: 12px; font-family: "微软雅黑"; color: #666;}
+.footer_info-content p a:hover { text-decoration: underline; color: #444;}
+.footer_info-content p.h-14 { line-height: 14px;}
+/* 补充边框 */
+.footer_info-content.addBorder{ border-right: 1px solid #b6b7b8;}
+
+/* footer二维码 */
+.sina_logo-small, .weixin_logo-small { width: 26px; height: 27px; vertical-align: middle;}
+.sina_rqcode-small, .weixin_rqcode-small { width: 86px; height: 86px; margin-left: 36px;}
+/* 新浪微博二维码 */
+.sina_logo-small { background-position: -368px -47px;}
+.sina_rqcode-small { background-position: -264px -231px;}
+
+/* 微信二维码 */
+.weixin_logo-small { background-position: -368px -84px;}
+.weixin_rqcode-small { background-position: -350px -231px;}
+
+/* 网站备案信息 */
+.footer_copyright { width: 712px; height: 38px; background-color: #82c353; text-align: center; font: normal 15px/38px "微软雅黑"; color: #fff; margin: 0 auto; margin-top: 36px;}
+
+/**** 弹出框 ****/
+.popupBox, .maskLayer, .maskLayer_temp { position: fixed;}
+.popupBox { width: auto; height: auto; background-color: #fff; padding: 26px 68px 50px; border: 1px solid #eee; border-radius: 16px; box-shadow: 0 0 24px rgba(183, 184, 185, 0.8); left: 50%; top: 0; z-index: 9999;}
+
+/* 弹出框头部 */
+.popup-header { font-size: 22px; text-align: center;}
+.popup-header .popup-h1{ border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+
+/* 弹出框内容 */
+.popup-content { font-size: 18px; margin-top: 30px;}
+.popup-content p { min-width: 320px; line-height: 160%; text-align: center;}
+
+/* 弹出框表单内容 */
+.popup-content textarea { width: 360px; height: 90px; padding: 10px; border: 1px solid #aaa; font: normal 16px/24px "微软雅黑"; color: #666; outline: none; resize: none;}
+
+/* 弹出框底部 */
+.popup-footer { text-align: center; margin-top: 38px;}
+.popup-footer button { width: 160px; height: 50px; font-family: "微软雅黑"; font-size: 18px; color: #fff;}
+.popup-footer button:hover { background-color: #82c353;}
+.popup-footer button:active { background-color: #97d967;}
+
+/* 遮罩层 */
+.maskLayer, .maskLayer_temp { left: 0; top: 0; right: 0; bottom: 0; z-index: 9998;}
+
+/* 分隔线 */
+.gapLine_0 { width: 1px; height: 36px; border-right: 2px solid #ccc; margin-left: 10px; display: inline-block;}
+.gapLine_1 { width: 100%; height: 1px; border-bottom: 1px solid #ccc; margin-top: 16px; display:block;}
+
+/**** 基本表格设置 ****/
+.base_table { width: 100%; background-color: #fff; border: 1px solid #ccc; border-collapse: collapse;}
+.base_table tr { border-bottom: 1px solid #ccc;}
+.base_table th { font: normal 18px/50px "微软雅黑";}
+.base_table td { padding: 10px; text-align: center; color: #888;}
+
+/* 表格特殊宽度设置 */
+.base_table.w-1080 { width: 1080px;}
+.base_table.w-1190 { width: 1190px;}
+
+/* 表头项特殊宽度设置 */
+.base_table th.w-180 { width: 180px;}
+
+/* 个人信息表格--复选框列 */
+.base_table .trea_ckd { width: 80px; text-align: center;}
+
+/* 个人信息表格--图文信息列 */
+.base_table .img_info img{ width: 78px; height: 52px; border: 1px solid #ccc; display: block; margin: 0 auto;}
+.base_table .img_thumbnail p { width: 100px; padding: 10px 10px 0px; text-align: center; font-size: 12px;}
+.base_table .img_thumbnail p a { color: #888;}
+.base_table .img_thumbnail p a: hover { text-decoration: underline;}
+.base_table .disc_info { width: 140px; line-height: 22px; padding: 0; text-align: left; font-size: 12px; color: #888;}
+
+/* 个人信息表格--数量选择列 */
+.base_table .count_sum button{ width: 24px; height: 24px; background-color: transparent; border: none; text-align: center; font-size: 20px; color: #bbb; display: inline-block; cursor: not-allowed;}
+.base_table .count_sum button.active { color: #333; cursor: pointer;}
+.base_table .count_sum input[type='text'] { width: 36px; height: 26px; text-align: center;}
+
+/* 个人信息表格--数据操作列 */
+.base_table .data_ctrl .dele { text-decoration: none; color: #666}
+.base_table .data_ctrl .dele:hover { text-decoration: underline; color: #d8170e;}
+
+/* 个人信息表格--数据操作组列 */
+.base_table .data_ctrlGroup { width: 146px;}
+.base_table .data_ctrlGroup .top{ border-bottom: 1px solid #ccc;}
+.base_table .data_ctrlGroup .top, .base_table .data_ctrlGroup .bottom { padding: 5px;}
+.base_table .data_ctrlGroup a { padding: 4px 10px;}
+.base_table .data_ctrlGroup .gapLine_v { width: 1px; height: 14px; border-right: 1px solid #ccc; vertical-align: middle;}
+
+/* 表格特殊样式设置--表格宽度 */
+.base_table .w-140 { width: 320px;}
+.base_table .w-320 { width: 320px;}
+
+/*  表格特殊样式设置--内容缩进 */
+.base_table .indent-30 { text-indent: 30px;}
+
+/*  表格特殊样式设置--对齐方式（左） */
+.base_table .txt-left { text-align: left;}
+
+/**** 商品统计信息统计 ****/
+.totalInfo { width: auto; position: relative; padding: 10px 20px; overflow: hidden;}
+.totalInfo .total-right { width: 320px; float: right;}
+.totalInfo .totalInfo-top { width: 100%; border-bottom: 1px solid #6a6b6c;}
+.totalInfo .totalInfo-content { line-height: 140%; font-size: 18px; padding: 5px 0;}
+.totalInfo .totalInfo-content > label { width: 50%; text-align: right;}
+.totalInfo .totalInfo-content > div { text-align: left;}
+.totalInfo .totalInfo-bottom .totalInfo-content { margin-top: 10px;}
+
+/* 大按钮 */
+.ctrlBar-bottom { text-align: center;}
+.btn-large,.btn-large_inline { width: 400px; height: 64px; background-color: #838281; border-radius: 3px; text-align: center; font: normal 32px/64px "微软雅黑"; color: #fff; display: block}
+.btn-large:hover, .btn-large_inline:hover { background-color: #82c353}
+.btn-large:active, .btn-large_inline:active { background-color: #73b543; box-shadow: 0 2px 10px rgba(13, 70, 6, 0.3) inset; color: #efe8e8;}
+/* 大按钮--禁用 */
+.btn-large.disabled, .btn-large_inline.disabled { background-color: #aaadad; cursor: not-allowed;}
+.btn-large_inline { display: inline-block;}
+/* 大按钮--红色版 */
+.btn-large.btn-red, .btn-large_inline.btn-red { background-color: #da251d; }
+.btn-large.btn-red:hover, .btn-large_inline.btn-red:hover { background-color: #ef382f; }
+.btn-large.btn-red:active, .btn-large_inline.btn-red:active { background-color: #da251d; box-shadow: 0 2px 10px rgba(70, 18, 6, 0.3) inset; color: #efe8e8;}
+/* 大按钮--红色版--禁用 */
+.btn-large.btn-red.disabled, .btn-large_inline.btn-red.disabled { background-color: #ef5852; }
+/* 中等按钮 */
+.btn-large_inline.btn-normal { width: auto; height: 32px; line-height: 32px; font-size: 18px; padding: 0 14px;}
+
+/* 分类标题样式 */
+h1.classifyHeader { width: 100%; height: 56px; line-height: 56px; border-bottom: 1px solid #ccc; font-size: 24px; margin-bottom: 24px;}
+
+/***********************************
+            特殊元素设置
+***********************************/
+
+/* 导航特殊元素处理 */
+.main_nav ul li.w-134 { width: 134px;}
+.main_nav ul li div .lev2_col-2.w-48 { width: 48px;}
+
+/* 页面内容 */
+.content { margin-bottom: 100px;}
+
+/* 突出显示的文字 */
+.prominent { font-size: 20px; font-weight: bold; color: #de3d36; }
+.prominent.plusFont { font-size: 22px;}
+
+/* 蓝色超链接文字及交互 */
+.link-blue { color: #008edc;}
+.link-blue:hover { color: #d8180f; text-decoration: underline;}
+
+/* 灰色超链接文字及交互 */
+.link-gray { color: #888;}
+.link-gray:hover { color: #008edc; text-decoration: underline;}
+.link-gray.dele:hover, .link-gray.deleSell:hover  { color: #d8180f;}
+/* 灰色超链接文字及交互--禁用文字按钮 */
+.link-gray.disabled {color: #e3e9ef;cursor: not-allowed !important;}
+.link-gray.disabled {text-decoration: none;}
+
+/* 气泡提示框 */
+.tipsBox .tips-arrow { width: 12px; height: 10px; background-position: -169px -564px; top: 14px;}
+.tips-content { padding: 14px 20px; background-color: #838281; border-radius: 5px; line-height: 140%; font-size: 15px; color: #e3e3e3; margin-left: 12px;}
+.tips-content p span { display: inline-block; margin-top: 10px;}
+
+/* 通用字体--颜色--浅灰 */
+.font-lightGray { color: #888}
+
+/* 通用字体--字号 */
+.font-14 { font-size: 14px}
+.font-18 { font-size: 18px}
+
+/* 间隙设置--左 */
+.ml-0 { margin-left: 0;}
+.ml-10 { margin-left: 10px;}
+.ml-38 { margin-left: 38px;}
+.ml-60 { margin-left: 60px;}
+.ml-100 { margin-left: 100px;}
+/* 间隙设置--上 */
+.mt-3 { margin-top: 3px;}
+.mt-10 { margin-top: 10px;}
+.mt-15 { margin-top: 15px;}
+.mt-20 { margin-top: 20px;}
+.mt-24 { margin-top: 24px;}
+.mt-30 { margin-top: 30px;}
+.mt-38 { margin-top: 38px;}
+.mt-50 { margin-top: 50px;}
+.mt-80 { margin-top: 80px;}
+.mt-100 { margin-top: 100px;}
+/* 间隙设置--下 */
+.mb-40 { margin-bottom: 40px;}
+
+/* 内间隙设置 */
+.p-30 { padding: 30px;}
+.pt-25 { padding-top: 25px;}
+.pt-40 { padding-top: 40px;}
+.pb-50 { padding-bottom: 50px;}
+
+/* 背景色--白色 */
+.white-bg { background-color: #fff;}
+
+/* 网站分辨率*/
+.dpi-1240, .dpi-1260, .dip-960, .rcmdComod { margin-left: auto; margin-right: auto;}
+.dip-960 { width: 960px;}
+.dpi-1240, .rcmdComod { width: 1240px;}
+.dpi-1260 { width: 1260px;}
+
+/***********************************
+            响应式设计
+***********************************/
+
+@media screen and (max-width:1260px) {
+    .header_bg { width: auto;}
+    .dpi-1260 { width: auto;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

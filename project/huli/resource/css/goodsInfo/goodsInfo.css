@@ -1,0 +1,425 @@
+/**
+ * 功能：商品详情样式设置
+ * 最后修改日期：2015年8月10日
+ * 作者：魏叶
+ **/
+
+/***********************************
+            集体声明属性
+***********************************/
+
+/* 盒子模型设置*/
+.goodsShowImg .thumbnail ul li, .goodsBuyInfo .goodsBuy, .goodsBuy .goodsBuyCtrl .plus, .goodsBuy .goodsBuyCtrl .minus, .goodsRecom .recomList a { box-sizing: border-box;}
+
+/* 块元素居中显示 */
+.content { margin-left: auto; margin-right: auto;}
+
+/* 内联块显示 */
+.goodsBuy .goodsName p span, .goodsBuy .goodsPrice > div, .goodsBuy .goodsPrice span, .goodsBuy .goodsDynamic .score a, .goodsBuy .goodsBuyCtrl .countSet, .goodsBuy .goodsBuyCtrl .immedBuy, .goodsBuy .goodsBuyCtrl .shoppingCar, .goodsRecom .goodsBaseInfo span { display: inline-block;}
+
+/* 行块显示 */
+.goodsShowImg .mainImg li, .goodsShowImg .thumbnail ul li, .goodsBuy .goodsBuyCtrl .countSet input[type='text'], .goodsBuy .goodsBuyCtrl .plus, .goodsBuy .goodsBuyCtrl .minus, .goodsRecom .recomList a, .goodsRecom .goodsBaseInfo span.goodsPrice .deleOldPrice { display: block;}
+
+/* 左浮动 */
+.goodsShowImg, .goodsShowImg .thumbnail ul li, .goodsShowImg .mainImg li, .goodsBuy .goodsBuyCtrl .countSet input[type='text'], .goodsStyle > div, .goodsRecom .recomList a, .assemGoodsBuyInfo .goodsShowImg .mainImg, .assemGoodsBuyInfo .goodsShowImg .thumbnail, .assemBuyInfo .goodsBuy .onlineServer, .assemBuyInfo .goodsBuy .huliServer { float: left;}
+
+/* 隐藏 */
+.goodsShowImg .mainImg li { display: none;}
+
+/* 垂直居中显示 */
+.goodsBuy .goodsBuyCtrl .countSet, .goodsBuy .goodsBuyCtrl .immedBuy, .goodsBuy .goodsBuyCtrl .shoppingCar { vertical-align: middle;}
+
+/* 文本居中显示 */
+.goodsBuy .goodsBuyCtrl .countSet input[type='text'], .goodsBuy .goodsBuyCtrl .plus, .goodsBuy .goodsBuyCtrl .minus, .goodsRecom .goodsBaseInfo { text-align: center;}
+
+/* 相对定位 */
+.goodsShowImg .mainImg, .goodsBuy .goodsPrice > div, .goodsRecom .goodsBaseInfo span.goodsPrice .oldPrice, .assemBuyInfo { position: relative;}
+
+/* 绝对定位 */
+.goodsShowImg .mainImg ul li, .assemBuyInfo .goodsBuy .goodsBuyCtrl, .assemBuyInfo .customerServices { position: absolute;}
+
+/* 超出范围裁切显示 */
+.goodsBuyInfo, .goodsShowImg, .goodsShowImg .mainImg, .goodsShowImg .thumbnail ul, .goodsShowImg .thumbnail ul li, .goodsBuy .goodsBuyCtrl .countSet, .goodsStyle, .goodsRecom .recomList, .assemGoodsBuyInfo { overflow: hidden;}
+
+/* 超链接下划线下划线消除 */
+.goodsRecom .recomList a { text-decoration: none;}
+
+/* 手型按钮 */
+.goodsShowImg .thumbnail ul li, .goodsBuy .goodsBuyCtrl .plus, .goodsBuy .goodsBuyCtrl .minus { cursor: pointer;}
+
+/***********************************
+            页面具体设置
+***********************************/
+.content {
+    width: 1190px;
+    padding: 10px 0 0;
+}
+
+/* 商品展示及购买信息 */
+.goodsBuyInfo {
+    width: 100%; height: auto;
+}
+
+/**** 商品展示图 ****/
+.goodsBuyInfo .goodsShowImg {
+    width: 595px; height: auto;
+}
+.assemGoodsBuyInfo .goodsShowImg {
+    width: 100%; height: auto;
+}
+.goodsShowImg .mainImg {
+    width: 595px; height: 437px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+.assemGoodsBuyInfo .goodsShowImg .mainImg {
+    width: 1024px; height: 636px;
+}
+.goodsShowImg .mainImg ul {
+    white-space: nowrap;
+}
+.goodsShowImg .mainImg li.show {
+    display: block;
+}
+.goodsShowImg .mainImg img {
+    width: 100%; height: 437px;
+}
+.assemGoodsBuyInfo .goodsShowImg .mainImg li {
+    width: 1024px;
+}
+.assemGoodsBuyInfo .goodsShowImg .mainImg img {
+    width: 100%; height: 636px;
+}
+
+/* 缩略图列表 */
+.goodsShowImg .thumbnail {
+    margin-top: 20px;
+}
+.assemGoodsBuyInfo .goodsShowImg .thumbnail {
+    margin-top: 0px; margin-left: 30px;
+}
+.goodsShowImg .thumbnail ul {
+    width: 595px; height: 112px;
+    white-space: nowrap;
+}
+.assemGoodsBuyInfo .goodsShowImg .thumbnail ul {
+    width: 136px; height: 636px;
+    white-space: normal;
+}
+.goodsShowImg .thumbnail ul li {
+    width: 112px; height: 112px;
+    /*border: 3px solid transparent;*/
+    border-radius: 5px;
+    margin-left: 8.7px;
+}
+.assemGoodsBuyInfo .goodsShowImg .thumbnail ul li {
+    width: 136px; height: 96px;
+    margin-left: 0; margin-top: 12px;
+}
+.assemGoodsBuyInfo .goodsShowImg .thumbnail ul li.mt-0 {
+    margin-top: 0;
+}
+.goodsShowImg .thumbnail ul li.selected {
+    border: 3px solid #82c353;
+}
+.goodsShowImg .thumbnail ul li img {
+    width: 100%; height: 112px;
+}
+
+/**** 组合产品购买 ****/
+.assemBuyInfo {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    clear: both;
+}
+.assemBuyInfo h1.classifyHeader {
+    font-size: 32px;
+}
+.assemBuyInfo h1.classifyHeader span {
+    font-size: 18px; font-weight: normal;
+    margin-left: 30px;
+    vertical-align: baseline;
+}
+.assemBuyInfo h1.classifyHeader span.gapLine {
+    border-right: 1px solid #aaa;
+    margin-left: 4px; margin-right: 6px;
+}
+
+/**** 商品购买 ****/
+.goodsBuyInfo .goodsBuy {
+    width: auto; height: auto;
+    margin-left: 675px;
+}
+
+/* 商品名称及筛选项 */
+.goodsBuy .goodsName h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+.goodsBuy .goodsName p {
+    margin-top: 16px;
+}
+.goodsBuy .goodsName p span {
+    padding: 0 20px;
+    border-left: 1px solid #333;
+    font-size: 18px;
+}
+
+/* 商品价格 */
+.goodsBuy .goodsPrice {
+    margin-top: 60px;
+}
+.assemBuyInfo .goodsBuy .goodsPrice {
+    margin-top: 30px;
+}
+.goodsBuy .goodsPrice span {
+    font-weight: bold;
+}
+.goodsBuy .goodsPrice span.rmbSign {
+    font-size: 18px;
+    vertical-align: top;
+}
+.goodsBuy .goodsPrice span.rmbNum {
+    font-family: Arial;
+    line-height: 58px;
+    font-size: 72px;
+    vertical-align: middle;
+}
+.goodsBuy .goodsPrice span.rmbYuan {
+    font-size: 20px;
+    vertical-align: bottom;
+}
+/* 商品价格--原始价格删除线 */
+.goodsBuy .goodsPrice .origPrice .deleOldPrice {
+    width: 110%; height: 1px;
+    border-bottom: 2px solid #eb1212;
+    position: absolute;
+    top: 31px; left: -5%;
+    -webkit-transform: rotate(12deg);
+    -ms-transform: rotate(12deg);
+    transform: rotate(12deg);
+}
+/* 商品价格--新价格 */
+.goodsBuy .goodsPrice .newPrice {
+    margin-left: 20px;
+}
+.goodsBuy .goodsPrice .newPrice .rmbNum {
+    color: #d8170e;
+}
+
+/* 商品动态信息 */
+.goodsBuy .goodsDynamic {
+    line-height: 180%;
+    font-size: 18px;
+    margin-top: 19px;
+}
+/* 商品动态信息--原始购买价格 */
+.goodsBuy .goodsDynamic .origBuyPrice .rmbNum {
+    font-size: 28px;
+    font-weight: bold;
+}
+/* 商品动态信息--积分 */
+.goodsBuy .goodsDynamic .score a {
+    color: #666;
+    margin-left: 42px;
+}
+.goodsBuy .goodsDynamic .score a:hover {
+    color: #de3d36;
+}
+
+/* 商品购买操作 */
+.goodsBuy .goodsBuyCtrl {
+    margin-top: 19px;
+}
+.assemBuyInfo .goodsBuy .goodsBuyCtrl {
+    right: 0; top: 76px;
+}
+/* 商品购买操作--数量设置 */
+.goodsBuy .goodsBuyCtrl .countSet {
+    width: 90px; height: 48px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+.goodsBuy .goodsBuyCtrl .countSet input[type='text'] {
+    width: 60px; height: 48px;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font-size: 20px;
+}
+.goodsBuy .goodsBuyCtrl .countSet input[type='text']:focus {
+    box-shadow: none;
+}
+/* 数量设置按钮 */
+.goodsBuy .goodsBuyCtrl .countSet .countSetArea {
+    width: 30px; height: 48px;
+    margin-left: 60px;
+}
+.goodsBuy .goodsBuyCtrl .plus, .goodsBuy .goodsBuyCtrl .minus {
+    width: 100%; height: 24px;
+    background-color: #e3e3e3;
+    border-left: 1px solid #9a9b9c;
+    line-height: 24px;
+    font-size: 24px;
+    color: #666;
+}
+.goodsBuy .goodsBuyCtrl .minus {
+    font-size: 32px;
+    border-top: 1px solid #9a9b9c;
+}
+.goodsBuy .goodsBuyCtrl .plus:active, .goodsBuy .goodsBuyCtrl .minus:active {
+    background-color: #f4f1f1;
+    color: #333;
+}
+.goodsBuy .goodsBuyCtrl .plus.disabled, .goodsBuy .goodsBuyCtrl .minus.disabled {
+    background-color: #c5c3c4;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* 购买 & 加入购物车按钮 */
+.goodsBuy .goodsBuyCtrl .immedBuy, .goodsBuy .goodsBuyCtrl .shoppingCar {
+    width: 196px; height: 48px;
+    line-height: 46px;
+    border-radius: 5px;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+/* 立即购买 */
+.goodsBuy .goodsBuyCtrl .immedBuy {
+    background-color: #db261f;
+    color: #fff;
+}
+.goodsBuy .goodsBuyCtrl .immedBuy:hover {
+     background-color: #e8433c;
+}
+.goodsBuy .goodsBuyCtrl .immedBuy:active {
+     background-color: #db261f;
+}
+
+/* 加入购物车 */
+.goodsBuy .goodsBuyCtrl .shoppingCar {
+    background-color: #ffffff;
+    border: 1px solid #aaa;
+    color: #999;
+}
+.goodsBuy .goodsBuyCtrl .shoppingCar:hover {
+    background-color: #fcfcfc;
+    border: 1px solid #bbb;
+    color: #aaa;
+}
+.goodsBuy .goodsBuyCtrl .shoppingCar:active {
+    background-color: #ffffff;
+    border: 1px solid #aaa;
+    color: #999;
+}
+
+/* 组合产品客服及户里服务 */
+.assemBuyInfo .customerServices {
+    right: 0; bottom: 16px;
+}
+.assemBuyInfo .goodsBuy .onlineServer {
+    margin-top: 0;
+}
+/* 在线客服 */
+.goodsBuy .onlineServer {
+    margin-top: 60px;
+}
+.goodsBuy .onlineServer button {
+    width: 157px; height: 48px;
+    background-position: -276px -355px;
+}
+.goodsBuy .onlineServer button:hover {
+    background-position: -276px -403px;
+}
+.goodsBuy .onlineServer button:active {
+    background-position: -276px -355px;
+}
+
+/* 户里服务 */
+.goodsBuy .huliServer p {
+    width: 96%; height: auto;
+    line-height: 26px;
+    padding: 10px 10px;
+    background-color: #666;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #f3f3f3;
+    margin-top: 12px;
+}
+.assemBuyInfo .goodsBuy .huliServer p {
+    width: auto;
+    margin-top: 0; margin-left: 20px;
+}
+
+/**** 分类容器统一布局设置 ****/
+.goodsStyle, .goodsDetails, .goodsDeliver, .goodsRecom {
+    margin-top: 20px;
+}
+/**** 商品规格 ****/
+.goodsStyle > div {
+    width: 33.33333333%;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+/**** 商品详情 ****/
+.goodsDetails .detailsContent {
+    width: 100%; height: 300px;
+    background: #efefef;
+}
+
+/**** 送货 ****/
+.goodsDeliver > div {
+    font-size: 18px;
+}
+
+/* 推荐商品 */
+.goodsRecom .recomList a {
+    width: 364px;
+    margin-left: 40px;
+    border: 3px solid transparent;
+}
+.goodsRecom .recomList a:hover{
+    background-color: #ecf2e9;
+    border: 3px solid #82c353;
+    transition: border-color,background-color 0.6s,0.6s;
+}
+.goodsRecom .recomList a img{
+    width: 100%; height: 100%;
+}
+/* 推荐商品--基本信息 */
+.goodsRecom .goodsBaseInfo {
+    height: 64px;
+    line-height: 64px;
+    color: #333;
+    white-space: nowrap;
+}
+.goodsRecom .goodsBaseInfo span.goodsName {
+    font-size: 18px;
+}
+/* 推荐商品--基本信息--商品价格 */
+.goodsRecom .goodsBaseInfo span.goodsPrice {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 16px;
+}
+.goodsRecom .goodsBaseInfo span.goodsPrice .newPrice {
+    margin-left: 16px;
+    color: #d8170e;
+}
+/* 推荐商品--基本信息--商品价格--价格删除线 */
+.goodsRecom .goodsBaseInfo span.goodsPrice .deleOldPrice {
+    width: 110%; height: 1px;
+    border-bottom: 2px solid #eb1212;
+    position: absolute;
+    top: 31px; left: -5%;
+    -webkit-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+/***********************************
+            页面动画效果
+***********************************/

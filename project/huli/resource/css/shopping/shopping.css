@@ -1,0 +1,157 @@
+@charset "utf-8";
+/**
+* 功能：购物车相关页面样式设置
+* 最后修改日期：2015年8月2日
+* 作者：魏叶
+**/
+
+/* 购物车为空 */
+.shopping-none { width: 960px; height: 320px; background-color: #dededd; margin-top: 60px;}
+.shopping-none p { text-align: center; font: normal 20px/320px "微软雅黑";}
+
+/* 购物车 */
+.shopping-cart { width: 1240px; height: auto; margin-top: 15px;}
+.shopping-cart h2, .shopping-cart h3 { text-align: left; line-height: 160%; font-family: "微软雅黑";}
+.shopping-cart h2 { font-size: 20px;}
+.shopping-cart h3 { font-size: 18px;}
+.sc-content { width: 1156px; height: auto; margin-top: 16px;}
+.sc-content table, .orderForm-info table { width: 100%; border: 1px solid #ccc;}
+.sc-content tbody tr, .orderForm-info table tr { border-top: 1px solid #ccc;}
+
+/* 购物车表格设置 */
+.sc-content table .trea_ckd { width: 80px; text-align: center;}
+.sc-content table th, .orderForm-info table th { font: normal 18px/50px "微软雅黑";}
+.sc-content table td, .orderForm-info table td { padding: 10px; text-align: center; color: #888;}
+
+/* 购物车表格——商品选择框 */
+.sc-content input[type='checkbox'] { display: none;}
+
+/* 购物车表格——商品信息 */
+.sc-content .tren_info, .orderForm-info .tren_info { width: 140px; white-space: nowrap; text-align: left;}
+.sc-content .tren_info > div, .orderForm-info .tren_info > div { vertical-align: middle; display: inline-block;}
+.sc-content .tren_info img, .orderForm-info .tren_info img { width: 78px; height: 52px; border: 1px solid #ccc; display: block; margin: 0 auto;}
+.sc-content .tren_info p, .orderForm-info .tren_info p { width: 100px; padding: 10px 10px 0px; text-align: center; font-size: 12px;}
+.sc-content .tren_info p a, .orderForm-info .tren_info p a { text-decoration: none; color: #888;}
+.sc-content .tren_info p a:hover, .orderForm-info .tren_info p a:hover { text-decoration: underline;}
+
+/* 购物车表格——产品详细信息 */
+.sc-content .tren_info .disc_info p, .orderForm-info .tren_info .disc_info p { width: 140px; line-height: 22px; padding: 0; text-align: left;}
+
+/* 购物车表格——商品数量 */
+.sc-content .trea_count button { width: 24px; height: 24px; background-color: transparent; border: none; text-align: center; font-size: 20px; color: #bbb; display: inline-block; cursor: not-allowed;}
+.sc-content .trea_count button.active { color: #333; cursor: pointer;}
+.sc-content .trea_count input[type='text'] { width: 36px; height: 26px; text-align: center;}
+
+/* 购物车表格——商品删除 */
+.trea_del a{ text-decoration: none; color: #666}
+.trea_del a:hover{ text-decoration: underline; color: #d8170e;}
+
+/* 购物结算栏 */
+.sc-payBar { width: 1156px; height: 54px; line-height: 54px; background-color: #dededd; position: relative;  margin: 28px auto 0;}
+
+/* 购物结算栏——左侧 */
+.sc-payBar-left > div, .sc-payBar-left > div span { display: inline-block;}
+.sc-payBar-left .trea_count_sum { font-size: 20px; color: #d8170e; padding: 0 2px;}
+.sc-payBar-left .allCkd { position: relative; top: 2px; margin-left: 43px;}
+
+/* 购物结算栏——右侧 */
+.sc-payBar-right { position: absolute; right: 0; top: 0;}
+.sc-payBar-right > div, .sc-payBar-right > div > p { display: inline-block;}
+.sc-payBar-right > div > p.pos_-t2 { position: relative; top: -2px;}
+.sc-payBar-right > div span.plusFont { font-size: 20px;}
+.sc-payBar-right > div span.monney { font-size: 22px; color: #d8170e; margin-left: 8px;}
+.sc-payBar-right > div.mr-160 { margin-right: 160px;}
+.sc-payBar-right > div .gotoPay { width: 138px; height: 54px; background-color: #da251d; border: none; font-size: 20px; font-family: "微软雅黑"; color: #fff; position: absolute; right: 0; top: 0;}
+.sc-payBar-right > div .gotoPay:hover { background-color: #ea4d46; }
+.sc-payBar-right > div .gotoPay:active { background-color: #da251d; }
+
+/* 订单管理确认 */
+.orderForm { width: 1106px; height: auto; padding: 25px; margin-top: 16px; border: 1px solid #ccc;}
+.orderForm a.addAddr { font-family: "微软雅黑"; font-size: 18px; text-decoration: none; color: #008edc; display: inline-block; margin-left: 36px;}
+.orderForm a.addAddr:hover { color: #d8180f; text-decoration: underline;}
+
+/* 收货地址管理 */
+.addr_take { width: auto; height: auto; padding: 26px; padding-top: 0; border-bottom: 1px solid #ccc; overflow: hidden;}
+.addr_take-info { width: 334px; height: 110px; line-height: 110px; box-sizing: border-box; border: 1px solid #838281; text-align: center; font-size: 14px; color: #888; float: left; margin-left: 26px; margin-top: 26px; position: relative; cursor: pointer;}
+.addr_take-info.checked { border: 1px solid #eb423b; outline: 2px solid #eb423b;}
+.addr_take-info .info-top, .addr_take-info .info-content { text-align: left; padding: 0 22px; box-sizing: border-box; }
+.addr_take-info .info-top { width: 100%; height: 36px; line-height: 36px; border-bottom: 1px solid #838281;}
+.addr_take-info .info-top span { display: inline-block; padding-right: 16px;}
+.addr_take-info .info-content { line-height: 140%; padding-top: 10px;}
+.addr_take-info .info-bottom { width: 126px; height: 20px; line-height: 20px; background-color: #838281; text-align: center; color: #fff; position: absolute; right: 0; bottom: 0;}
+.addr_take-info .info-bottom button { width: auto; height: auto; padding: 0; color: #fff;}
+.addr_take-info .info-bottom button:hover { text-decoration: underline;}
+.addr_take-info .info-bottom button:active { color: #ccc;}
+
+/* 支付方式 */
+.payType { width: 100%; height: 80px; border-bottom: 1px solid #ccc;}
+.payType h3, .payType-merch { display: inline-block;}
+.payType h3 { line-height: 80px; margin-right: 40px;}
+.payType-merch { width: 168px; height: 32px; vertical-align: middle; margin-left: 22px; cursor: pointer;}
+.payType i.i_pType { vertical-align: middle;}
+.payType-merch input[type='radio'] { display: none;}
+.alipay, .unionpay { width: 118px; height: 31px; vertical-align: middle; margin-left: 10px;}
+
+/* 支付宝 */
+.alipay { background-position: -146px -392px;}
+
+/* 银联 */
+.unionpay { background-position: -146px -446px;}
+
+/* 订单信息 */
+.orderForm-info, .orderForm-info table, .orderForm-info .caa_info { margin-top: 20px;}
+.orderForm-info .w-320 { text-indent: 30px; text-align: left;}
+.orderForm-info .trea_count .getCount { color: #333;}
+.orderForm-info .deliver_date input { width: 100px; font-size: 15px; text-align: center; border: none; color: #888; cursor: pointer;}
+.orderForm-info .deliver_date input:hover { text-decoration: underline; color: #333;}
+
+/* 订单信息——结算信息 */
+.orderForm-info .caa_info { width: 100%; overflow: hidden;}
+.orderForm-info .caa_info > div { width: 280px; padding: 5px 20px; font-size: 18px; float: right; clear: right; margin-right: 20px;}
+.orderForm-info .caa_info label { width: 156px; text-align: right; display: inline-block;}
+.orderForm-info .caa_info .tips { font-size: 14px; color: #888;}
+.orderForm-info .caa_info .keyword { padding: 0 2px; font-size: 20px; font-weight: bold; color: #de3d36; display: inline-block;}
+.orderForm-info .caa_info .keyword.plusFont { font-size: 22px;}
+.orderForm-info .caa_info .inteScore { width: 40px; height: 30px; vertical-align: middle; font-size: 16px; position: relative; top: -1px;}
+.orderForm-info .caa_info > div.bm_line { padding-bottom: 8px; border-bottom: 1px solid #ccc;}
+.orderForm-info .caa_info > div.txt_c { text-align: center;}
+
+/*  订单信息——结算栏 */
+.orderForm-info .sc-payBar-right > div .gotoPay { width: 158px;}
+
+/**** 弹出框——地址新增及编辑 ****/
+.addrEdit .consignee, .addrEdit .detailAddr, .addrEdit .tel { height: 34px;}
+.addrEdit label{ display: block; margin: 8px 0;}
+/* 弹出框——地址新增及编辑——收货人 & 联系电话 */
+.addrEdit .consignee, .addrEdit .tel { width: 200px;}
+.addrEdit .select_custom { width: 100px;}
+.addrEdit .select_custom.ml-10 { margin-left: 10px;}
+/* 弹出框——地址新增及编辑——详细地址 */
+.addrEdit .detailAddr { width: 462px;}
+/* 弹出框——地址新增及编辑——设为默认地址 */
+.addrEdit .setDefault, .addrEdit .lbl_setDefault { display: inline-block;}
+.addrEdit .setDefault { float: right;}
+.addrEdit .i_setDefault { margin-right: 6px;}
+.addrEdit .rdo_setDefault { display: none;}
+.addrEdit .lbl_setDefault { position: relative; top: -2px; cursor: pointer;}
+
+/* 推荐商品 */
+.rcmdComod { margin-top: 180px;}
+.rcmdComod h2{ text-indent: 32px; font-size: 20px;}
+.rcmdComod-show { width: 100%; height: auto; overflow: hidden; margin-top: 36px;}
+.rcmdComod-show > .comodshow { float: left; margin-left: 35px; box-sizing: border-box;}
+.rcmdComod-show > .comodshow.ml-0 { margin-left: 0;}
+.rcmdComod-show > .comodshow div { width: 390px; height: 390px; overflow: hidden; box-sizing: border-box; border: 1px solid #ccc;}
+.rcmdComod-show > .comodshow div img { width: auto; height: 390px;}
+.rcmdComod-show > .comodshow p { text-align: center; margin-top: 10px;}
+.rcmdComod-show > .comodshow p span { font-size: 17px; display: inline-block;}
+.rcmdComod-show > .comodshow p span.price { font-size: 22px; margin-left: 36px; position: relative; top: 2px;}
+
+/* 订单信息——结算栏 */
+.orderForm-info .sc-payBar { width: 1156px; margin-left: -25px; margin-bottom: -25px;}
+.sc-payBar-right > div.mr-180 { margin-right: 180px;}
+.orderForm-info .sc-payBar-left a { text-decoration: none; font-size: 20px; color: #333; display: inline-block; margin-left: 40px;}
+.orderForm-info .sc-payBar-left a:hover { text-decoration: underline; color: #888;}
+
+/* 购物车表格细节布局设置 */
+.sc-content table th.w-320, .orderForm-info table th.w-320 { width: 320px; text-indent: 30px; text-align: left;}

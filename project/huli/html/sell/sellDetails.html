@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>出售详情</title>
+    <link rel="shortcut icon" href="../../resource/img/ele/favicon.ico">
+    <link rel="Bookmark" href="../../resource/img/ele/favicon_32X32.ico">
+    <link rel="stylesheet" href="../../resource/plugin/baseCSS-1.0.5.min.css">
+    <link rel="stylesheet" href="../../resource/css/base.css">
+    <link rel="stylesheet" href="../../resource/css/sell/sell.css">
+    <script type="text/javascript" src="../../resource/plugin/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <!-- main { -->
+    <div class="main">
+
+        <!-- header { -->
+        <div class="header">
+            <script type="text/javascript" src="../../resource/js/header.js"></script>
+        </div>
+        <!-- } header -->
+
+        <!-- content { -->
+        <div class="content">
+
+            <!-- 出售信息设置 { -->
+            <div class="sellInfoSet">
+                <!-- 家具信息 -->
+                <div id="furnitureInfo" class="furnitureInfo">
+                    <!-- 左侧字段 -->
+                    <div class="leftLabel">
+                        <label>上传家具资料</label>
+                        <i></i>
+                    </div>
+                    <!-- 气泡信息提示 -->
+                    <div class="tipsBox">
+                        <div class="tips">
+                            <div class="tips-arrow"></div>
+                            <div class="tips-content">
+                                <p>请点击右侧按钮上传家具资料<br>可同时添加多项信息</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 右侧信息 -->
+                    <div class="rightInfo">
+                        <!-- 新增信息 -->
+                        <!--<div class="newAddInfo">
+                            <div class="furnInfo-icon">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="furnInfo-ctrl">
+                                <a class="furnInfo-edit"></a>
+                                <a class="furnInfo-dele"></a>
+                            </div>
+                            <dl class="furnInfo-data"></dl>
+                        </div>-->
+                        <!-- 新增信息按钮 -->
+                        <a id="addfurnInfoBtn" class="addNewInfoBtn"></a>
+                    </div>
+                </div>
+
+                <!-- 卖家信息 -->
+                <div class="sellerInfo">
+                    <!-- 左侧字段 -->
+                    <div class="leftLabel">
+                        <label>上传个人信息</label>
+                        <i></i>
+                    </div>
+                    <!-- 气泡信息提示 -->
+                    <div class="tipsBox">
+                        <div class="tips">
+                            <div class="tips-arrow"></div>
+                            <div class="tips-content">
+                                <p>请点击右侧按钮上传个人信息</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 右侧信息 -->
+                    <div class="rightInfo">
+                        <!-- 新增信息 -->
+                        <!--<div class="newAddInfo">
+                            <div class="sellerInfo-icon">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="sellerInfo-ctrl">
+                                <a class="sellerInfo-edit"></a>
+                                <a class="sellerInfo-dele"></a>
+                            </div>
+                            <div class="sellerInfo-data"></div>
+                        </div>-->
+                        <!-- 新增信息按钮 -->
+                        <a id="addSellInfoBtn"  class="addNewInfoBtn"></a>
+                    </div>
+                </div>
+
+                <!-- 出售途径 -->
+                <div class="sellWay">
+                    <!-- 左侧字段 -->
+                    <div class="leftLabel">
+                        <label>选择售卖方式</label>
+                        <i></i>
+                    </div>
+                    <!-- 气泡信息提示 -->
+                    <div class="tipsBox w-260">
+                        <div class="tips">
+                            <div class="tips-arrow"></div>
+                            <div class="tips-content">
+                                <p>
+                                    <span>如果您需要我们提供仓储，选择“户里仓储”</span>
+                                    <span>如果您要把家具继续放在家中，选择“自留”</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 右侧信息 -->
+                    <div class="rightInfo">
+                        <div class="sellWay-choose">
+                            <div class="chooseWay">户里仓储</div>
+                            <p>我们为您提供物流仓储，省掉所有麻烦</p>
+                        </div>
+                        <div class="sellWay-choose ml-30">
+                            <div class="chooseWay">自留</div>
+                            <p>存放在家中，我们收到买家订单联系您</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- } 出售信息设置 -->
+
+            <!-- 底部操作栏 -->
+            <div class="ctrlBar-bottom mt-100">
+                <!--
+                    提交按钮激活条件：
+                    1.当以下任意一项操作执行添加（或选择）成功后判断另外两项内是否有数据（或选中）；
+                    2.上传家具资料、上传个人信息、选择售卖方式；
+                    3.若验证通过则执行方法“activateSubmit()”
+                -->
+                <button type="button" class="btn-large_inline subSellDetails disabled" disabled>提&nbsp;&nbsp;&nbsp;&nbsp;交</button>
+                <a href="startSell.html" class="btn-large_inline ml-100">返&nbsp;&nbsp;&nbsp;&nbsp;回</a>
+            </div>
+
+        </div>
+        <!-- } content -->
+
+        <!-- footer { -->
+        <div class="footer">
+            <script type="text/javascript" src="../../resource/js/footer.js"></script>
+        </div>
+        <!-- } footer -->
+    </div>
+    <!-- } main -->
+
+    <!-- JS引用 -->
+    <script type="text/javascript" src="../../resource/plugin/baseCSS-1.0.5.min.js"></script>
+    <script type="text/javascript" src="../../resource/js/commond.js"></script>
+    <script type="text/javascript" src="../../resource/js/sell/sell.js"></script>
+</body>
+
+</html>

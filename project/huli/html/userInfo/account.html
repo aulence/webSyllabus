@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>用户信息--个人账户</title>
+    <link rel="shortcut icon" href="../../resource/img/ele/favicon.ico">
+    <link rel="Bookmark" href="../../resource/img/ele/favicon_32X32.ico">
+    <link rel="stylesheet" href="../../resource/plugin/baseCSS-1.0.5.min.css">
+    <link rel="stylesheet" href="../../resource/css/base.css">
+    <link rel="stylesheet" href="../../resource/css/personInfo/personInfo.css">
+    <script type="text/javascript" src="../../resource/plugin/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <!-- main { -->
+    <div class="main">
+
+        <!-- header { -->
+        <div class="header">
+            <script type="text/javascript" src="../../resource/js/header.js"></script>
+        </div>
+        <!-- } header -->
+
+        <!-- content { -->
+        <div class="content pt-25">
+
+            <!-- 个人信息——板块选择 { -->
+            <div class="pesnInfo-choose">
+                <ul>
+                    <li>
+                        <a href="personInfo.html">个人信息</a>
+                    </li>
+                    <li>
+                        <a href="order.html">我的订单</a>
+                    </li>
+                    <li>
+                        <a href="mySell.html">我的出售</a>
+                    </li>
+                    <li>
+                        <a href="#" class="checked">个人账户</a>
+                    </li>
+                    <li>
+                        <a href="#">系统消息</a>
+                        <i></i>
+                    </li>
+                </ul>
+            </div>
+            <!-- } 个人信息——板块选择 -->
+
+            <!-- 个人账户 { -->
+            <div class="accountBox grayBg w-1150">
+                <h1>个人账户</h1>
+                <div class="myScore white-bg">
+                    <div class="scoreDisplay">
+                        <p>我的积分</p>
+                        <div>
+                            <span class="scoreNum">200</span>
+                            <span>分</span>
+                        </div>
+                    </div>
+                    <div class="scoreExplain">
+                        <p>您在户里网的任意消费都可获得积分，积分可直接抵扣商品金额</p>
+                    </div>
+                    <div class="gotoScoreRule">
+                        <p>
+                            <span>查看</span>
+                            <a href="#" class="link-blue">积分规则</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- } 个人账户 -->
+
+        </div>
+        <!-- } content -->
+
+        <!-- footer { -->
+        <div class="footer">
+            <script type="text/javascript" src="../../resource/js/footer.js"></script>
+        </div>
+        <!-- } footer -->
+    </div>
+    <!-- } main -->
+
+    <!-- JS引用 -->
+    <script type="text/javascript" src="../../resource/plugin/baseCSS-1.0.5.min.js"></script>
+    <script type="text/javascript" src="../../resource/js/commond.js"></script>
+    <script type="text/javascript" src="../../resource/js/personInfo/personInfo.js"></script>
+    <!-- 页面细节控制 -->
+    <script type="text/javascript">
+        // 性别选择
+        radio_custom(".sexSelect", ".sexSelect")
+    </script>
+</body>
+
+</html>

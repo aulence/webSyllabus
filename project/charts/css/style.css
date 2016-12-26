@@ -1,0 +1,35 @@
+@charset "utf-8";
+/**
+* 功能：普通页面样式设置
+**/
+/*********************************************/
+/* 样式初始化部分 */
+/*********************************************/
+html,body {
+    height: 100%;
+    margin: 0; padding: 0;
+    font: 20px "微软雅黑";
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	overflow: hidden;
+}
+/* 转换为IE盒子模型 */
+body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+    box-sizing: border-box;
+}
+/* 手型按钮 */
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a {
+    cursor: pointer;
+}
+button,input,textarea,select {
+    outline: none;
+}
+/* 设置图表样式 */
+au-charts {
+	width: 100%; height: 100%;
+	color: #b3b3b3;
+}
+
+

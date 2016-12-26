@@ -1,0 +1,119 @@
+@charset "utf-8";
+/**
+* 功能：统计图表样式
+**/
+/**** 图表自定义标签初始化部分 ****/
+au-charts, charts-body, charts-x, charts-y, charts-zone, charts-legend {
+	display: block;
+}
+charts-x, charts-x > div, charts-y, charts-y > div {
+	box-sizing: border-box;
+	position: absolute;
+	overflow: hidden
+}
+charts-zone, charts-zone > div, charts-zone > div bar  {
+	box-sizing: border-box;
+}
+charts-body, charts-zone > div, charts-zone > div bar {
+	position: relative;
+}
+charts-zone, charts-zone > div bar, charts-legend, charts-zone > div bar > span {
+	position: absolute;
+}
+/* 图表容器 */
+au-charts {
+	width: 96%; height: 420px;
+	background-color: #1c1d1f;
+	margin: auto;
+	box-sizing: border-box;
+	color: #b3b3b3;
+}
+/* 表体 */
+charts-body {
+	width: 100%; height: 100%;
+	font-size: 16px;
+}
+/* X轴 */
+charts-x {
+	width: 90%; height: 8%;
+	border-top: 1px solid #fefefe;
+	left: 6%; bottom: 0;
+}
+charts-x > div {
+	height: 100%;
+	text-align: center;
+	line-height: 30px;
+	top: 0px;
+}
+/* Y轴 */
+charts-y {
+	width: 6%; height: 80%;
+	border-right: 1px solid #fefefe;
+	overflow: visible;
+	left: 0; top: 12%;
+}
+charts-y > div {
+	width: 100%; height: 24px;
+	text-align: right;
+	padding-right: 6px;
+	left: 0px;
+}
+/* 表格数据区间 */
+charts-zone {
+	width: 90%; height: 80%;
+	left: 6%; top: 12%;
+}
+charts-zone > div {
+	height: 100%;
+	float: left;
+}
+charts-zone > div bar {
+	height: 0;
+	bottom: 0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+	transition: 0.6s cubic-bezier(.19, .55, .58, 1.3);
+	/* 默认值设置 */
+	background-color: #606060;
+	border: 1px solid #cdcdcd;
+	box-shadow: 0 0 5px #606060;
+}
+charts-zone > div bar:hover {
+	z-index: 10;
+}
+charts-zone > div bar > span {
+	left: 50%; top: -36px;
+	transform: translateX(-50%);
+	font: 32px "Algerian","Arail";
+	opacity: 0;
+}
+charts-zone > div bar > span.animation {
+	animation: dataValue 0.6s forwards;
+}
+
+/* 图注 */
+charts-legend {
+	top: 10px; right: 4%;
+}
+charts-legend i,charts-legend span {
+	display: inline-block;
+	vertical-align: middle;
+}
+charts-legend i {
+	width: 24px; height: 16px;
+	border-radius: 3px;
+	margin-left: 12px; margin-right: 6px;
+	background-color: #606060;
+	border: 1px solid #cdcdcd;
+}
+/**** 图表动画部分 ****/
+@keyframes dataValue {
+	0% { opacity: 0;}
+	100% { opacity: 1;}
+}
+
+
+
+
+

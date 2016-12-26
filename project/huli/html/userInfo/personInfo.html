@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>用户信息--个人信息</title>
+    <link rel="shortcut icon" href="../../resource/img/ele/favicon.ico">
+    <link rel="Bookmark" href="../../resource/img/ele/favicon_32X32.ico">
+    <link rel="stylesheet" href="../../resource/plugin/baseCSS-1.0.5.min.css">
+    <link rel="stylesheet" href="../../resource/css/base.css">
+    <link rel="stylesheet" href="../../resource/css/personInfo/personInfo.css">
+    <script type="text/javascript" src="../../resource/plugin/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <!-- main { -->
+    <div class="main">
+
+        <!-- header { -->
+        <div class="header">
+            <script type="text/javascript" src="../../resource/js/header.js"></script>
+        </div>
+        <!-- } header -->
+
+        <!-- content { -->
+        <div class="content">
+
+            <!-- 个人信息查看及设置 { -->
+            <div class="pesnInfo">
+                <!-- 个人信息——板块选择 { -->
+                <div class="pesnInfo-choose">
+                    <ul>
+                        <li>
+                            <a href="#" class="checked">个人信息</a>
+                        </li>
+                        <li>
+                            <a href="order.html">我的订单</a>
+                        </li>
+                        <li>
+                            <a href="mySell.html">我的出售</a>
+                        </li>
+                        <li>
+                            <a href="account.html">个人账户</a>
+                        </li>
+                        <li>
+                            <a href="systemMessage.html">系统消息</a>
+                            <i>3</i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- } 个人信息——板块选择 -->
+
+                <!-- 个人信息设置 { -->
+                <div class="pesnInfo-set">
+
+                    <div>
+                        <label>联系人</label>
+                        <input type="text" placeholder="姓名" class="w-132">
+                        <input type="text" placeholder="电话号码" class="w-256">
+                    </div>
+
+                    <div>
+                        <label>性别</label>
+                        <p class="sexSelect">
+                            <input id="" type="radio" value="0" checked>
+                            <i class="rdo-checked_custom"></i>
+                            <label for="">男</label>
+                        </p>
+                        <p class="sexSelect ml-46">
+                            <input id="" type="radio" value="0">
+                            <i class="rdo_custom"></i>
+                            <label for="">女</label>
+                        </p>
+                    </div>
+
+                    <div>
+                        <label>生日</label>
+                        <div class="select_custom set-year">
+                            <i data-value="0">2015</i>
+                            <dl>
+                                <dt data-value="0">1910</dt>
+                                <dt data-value="1">1911</dt>
+                                <dt data-value="2">1912</dt>
+                                <dt data-value="3">1913</dt>
+                                <dt data-value="4">1914</dt>
+                                <dt data-value="noSet">...</dt>
+                                <dt data-value="105">2015</dt>
+                            </dl>
+                        </div>
+                        <div class="select_custom set-mooth">
+                            <i data-value="0">01</i>
+                            <dl>
+                                <dt data-value="0">01</dt>
+                                <dt data-value="1">02</dt>
+                                <dt data-value="2">03</dt>
+                                <dt data-value="3">04</dt>
+                                <dt data-value="4">05</dt>
+                                <dt data-value="5">06</dt>
+                                <dt data-value="6">07</dt>
+                                <dt data-value="7">08</dt>
+                                <dt data-value="8">09</dt>
+                                <dt data-value="9">10</dt>
+                                <dt data-value="10">11</dt>
+                                <dt data-value="11">12</dt>
+                            </dl>
+                        </div>
+                        <div class="select_custom set-date">
+                            <i data-value="0">01</i>
+                            <dl>
+                                <dt data-value="0">01</dt>
+                                <dt data-value="1">02</dt>
+                                <dt data-value="2">03</dt>
+                                <dt data-value="3">04</dt>
+                                <dt data-value="4">05</dt>
+                                <dt data-value="5">06</dt>
+                                <dt data-value="6">07</dt>
+                                <dt data-value="7">08</dt>
+                                <dt data-value="8">09</dt>
+                                <dt data-value="9">10</dt>
+                                <dt data-value="10">11</dt>
+                                <dt data-value="11">12</dt>
+                                <dt data-value="12">13</dt>
+                                <dt data-value="noSet">...</dt>
+                                <dt data-value="29">30</dt>
+                                <dt data-value="30">31</dt>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>家居偏好</label>
+                        <div class="select_custom fitmentStyle">
+                            <i data-value="105">现代简约</i>
+                            <dl>
+                                <dt data-value="0">现代简约</dt>
+                                <dt data-value="1">恬淡田园</dt>
+                                <dt data-value="2">现代中式</dt>
+                                <dt data-value="3">东南亚风格</dt>
+                                <dt data-value="4">欧式古典</dt>
+                                <dt data-value="5">地中海</dt>
+                                <dt data-value="6">美式乡村</dt>
+                                <dt data-value="7">美式古典</dt>
+                                <dt data-value="8">时尚混搭</dt>
+                                <dt data-value="9">其它</dt>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>教育程度</label>
+                        <div class="select_custom eduDegree">
+                            <i data-value="105">初中</i>
+                            <dl>
+                                <dt data-value="0">初中</dt>
+                                <dt data-value="1">高中</dt>
+                                <dt data-value="2">大专</dt>
+                                <dt data-value="3">本科</dt>
+                                <dt data-value="4">硕士</dt>
+                                <dt data-value="5">博士</dt>
+                                <dt data-value="6">其它</dt>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>所在行业</label>
+                        <div class="select_custom industry">
+                            <i data-value="0">机构组织</i>
+                            <dl>
+                                <dt data-value="0">机构组织</dt>
+                                <dt data-value="1">农林牧渔</dt>
+                                <dt data-value="2">医药卫生</dt>
+                                <dt data-value="3">建筑建材</dt>
+                                <dt data-value="4">冶金矿产</dt>
+                                <dt data-value="5">石油化工</dt>
+                                <dt data-value="6">信息产业</dt>
+                                <dt data-value="7">交通运输</dt>
+                                <dt data-value="8">信息产业</dt>
+                                <dt data-value="9">机械机电</dt>
+                                <dt data-value="10">轻工食品</dt>
+                                <dt data-value="11">服装纺织</dt>
+                                <dt data-value="12">安全防护</dt>
+                                <dt data-value="13">环保绿化</dt>
+                                <dt data-value="14">其它</dt>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="region">
+                        <label>所在地区</label>
+                        <div class="select_custom">
+                            <i data-value="0">四川</i>
+                            <dl>
+                                <dt data-value="0">四川</dt>
+                                <dt data-value="1">北京</dt>
+                                <dt data-value="2">上海</dt>
+                                <dt data-value="3">深圳</dt>
+                                <dt data-value="4">其他地区</dt>
+                            </dl>
+                        </div>
+                        <div class="select_custom ml-10">
+                            <i data-value="0">成都市</i>
+                            <dl>
+                                <dt data-value="0">成都市</dt>
+                                <dt data-value="1">绵阳市</dt>
+                                <dt data-value="2">自贡市</dt>
+                                <dt data-value="3">攀枝花市</dt>
+                                <dt data-value="4">泸州市</dt>
+                                <dt data-value="5">其它市</dt>
+                            </dl>
+                        </div>
+                        <div class="select_custom ml-10">
+                            <i data-value="0">锦江区</i>
+                            <dl>
+                                <dt data-value="0">锦江区</dt>
+                                <dt data-value="1">金牛区</dt>
+                                <dt data-value="2">武侯区</dt>
+                                <dt data-value="3">青羊区</dt>
+                                <dt data-value="4">高新区</dt>
+                                <dt data-value="5">成华区</dt>
+                                <dt data-value="6">双流县</dt>
+                                <dt data-value="7">金堂县</dt>
+                                <dt data-value="8">新津县</dt>
+                                <dt data-value="9">大邑县</dt>
+                                <dt data-value="10">蒲江县</dt>
+                                <dt data-value="11">郫县</dt>
+                                <dt data-value="12">其它</dt>
+                            </dl>
+                        </div>
+                        <div class="select_custom ml-10">
+                            <i data-value="0">三环以内</i>
+                            <dl>
+                                <dt data-value="0">三环以内</dt>
+                                <dt data-value="1">三环以外绕城以内</dt>
+                                <dt data-value="2">绕城西</dt>
+                                <dt data-value="3">绕城南</dt>
+                                <dt data-value="4">绕城东</dt>
+                                <dt data-value="5">绕城北</dt>
+                            </dl>
+                        </div>
+                        <br>
+                        <input type="text" placeholder="街道门牌号" class="w-557 mt-10">
+                    </div>
+
+                    <div class="mt-80">
+                        <!--
+                        -- 为其添上样式“active”即可出现可点击的效果
+                        -- 请外还需注意设置“disabled”属性
+                        -- 方便用于以后的数据验证功能
+                        -->
+                        <button type="button" class="pesnInfo_btn" disabled>提交</button>
+                        <!--<button type="button" class="pesnInfo_btn active">提交</button>-->
+                    </div>
+                </div>
+                <!-- } 个人信息设置 -->
+
+
+            </div>
+            <!-- } 个人信息查看及设置 -->
+
+        </div>
+        <!-- } content -->
+
+        <!-- footer { -->
+        <div class="footer">
+            <script type="text/javascript" src="../../resource/js/footer.js"></script>
+        </div>
+        <!-- } footer -->
+    </div>
+    <!-- } main -->
+
+    <!-- JS引用 -->
+    <script type="text/javascript" src="../../resource/plugin/baseCSS-1.0.5.min.js"></script>
+    <script type="text/javascript" src="../../resource/js/commond.js"></script>
+    <script type="text/javascript" src="../../resource/js/personInfo/personInfo.js"></script>
+    <!-- 页面细节控制 -->
+    <script type="text/javascript">
+        // 性别选择
+        radio_custom(".sexSelect", ".sexSelect")
+    </script>
+</body>
+
+</html>

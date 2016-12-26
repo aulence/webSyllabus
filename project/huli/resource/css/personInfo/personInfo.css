@@ -1,0 +1,471 @@
+@charset "utf-8";
+/**
+* 功能：个人信息样式设置
+* 最后修改日期：2015年8月13日
+* 作者：魏叶
+**/
+
+/***********************************
+            集体声明属性
+***********************************/
+
+/* 块元素居中显示 */
+.pesnInfo,
+.pesnInfo_btn,
+.grayBg,
+.pesnInfo-choose,
+.ctrlBar-top,
+.ctrlBar-bottom,
+.ctrlNeedKnow {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 超链接下划线下划线消除 */
+.pesnInfo-choose li a {
+    text-decoration: none;
+}
+/* 内联块显示 */
+.pesnInfo-choose li,
+.grayBg .subTitle,
+.order_info-detail .order_flowStatus label,
+.order_info-detail .order_flowStatus span,
+.order_flowStatus .statusInfo,
+.order_flowStatus .fp_status,
+.order_flowStatus .statusInfo > span,
+.order_flowStatus .flowPath-arrow,
+.base_table .disc_info,
+.base_table .img_thumbnail,
+.sysMesgBox .mesgSelect .selector,
+.cancelSell_baseCtrl .cancelCtrl .selector,
+.reducPrice_baseCtrl .reducInfo p > label,
+.reducPrice_baseCtrl .reducCtrl p > label,
+.cancelSell_baseCtrl .cancelInfo p label{
+    display: inline-block;
+}
+/* 行块显示 */
+.pesnInfo-choose li a,
+.pesnInfo-set label,
+.pesnInfo-choose li i,
+.sysMesgBox .mesgSelect label,
+.sysMesgBox .mesgContent .mesgTxt,
+.sysMesgBox .mesgContent .mesgDatetime {
+    display: block;
+}
+/* 隐藏 */
+.pesnInfo-set .sexSelect input[type='radio'],
+.reducPrice_baseCtrl .reducCtrl input[type='checkbox'],
+.cancelSell_baseCtrl .cancelCtrl input[type='checkbox']{
+    display: none;
+}
+/* 左浮动 */
+.sysMesgBox .mesgContent,
+.sysMesgBox .mesgContent .mesgTxt,
+.reducPrice_baseCtrl .reducInfo,
+.reducPrice_baseCtrl .reducCtrl,
+.cancelSell_baseCtrl .cancelInfo,
+.cancelSell_baseCtrl .cancelCtrl,
+.accountBox .myScore > div{
+    float: left;
+}
+/* 垂直居中显示 */
+.base_table .img_thumbnail,
+.base_table .disc_info {
+    vertical-align: middle;
+}
+/* 文本居中显示 */
+.pesnInfo-choose li,
+.pesnInfo-choose li i{
+    text-align: center;
+}
+/* 相对定位 */
+.pesnInfo-choose li,
+.sysMesgBox .mesgSelect label,
+.sysMesgBox .mesgContent,
+.sysMesgBox .mesgSelect .selector,
+.cancelSell_baseCtrl .cancelCtrl .selector {
+    position: relative;
+}
+/* 绝对定位 */
+.pesnInfo-choose li i {
+    position: absolute;
+}
+
+/* 超出范围裁切显示 */
+.sysMesgBox .mesgList,
+.sysMesgBox .mesgList .mesgItem,
+.accountBox .myScore { overflow: hidden;}
+
+/* 手型按钮 */
+.pesnInfo-set .sexSelect label,
+.sysMesgBox .mesgContent,
+.sysMesgBox .mesgSelect,
+.cancelSell_baseCtrl .cancelCtrl label{
+    cursor: pointer;
+}
+
+/***********************************
+            页面具体设置
+***********************************/
+
+/* 个人信息查看及设置 */
+.pesnInfo {
+    width: 1190px;
+    padding: 25px;
+}
+/* 个人信息--板块选择 */
+.pesnInfo-choose {
+    width: 1190px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.pesnInfo-choose li {
+    width: auto;
+    line-height: 40px;
+    margin-left: 26px;
+    margin-right: 30px;
+}
+.pesnInfo-choose li a {
+    padding: 0 10px;
+    border-bottom: 2px solid transparent;
+    font-size: 20px;
+    color: #666;
+}
+.pesnInfo-choose li a:hover,
+.pesnInfo-choose li a.checked {
+    border-bottom: 2px solid #de3d36;
+    color: #de3d36;
+}
+/* 个人信息--模块选择--消息数 */
+.pesnInfo-choose li i {
+    width: auto; height: 14px;
+    min-width: 14px;
+    background-color: #de3d36;
+    padding: 1px;
+    line-height: 14px;
+    border-radius: 10px;
+    font-style: normal;
+    font-size: 12px;
+    color: #fff;
+    right: -12px; top: -6px;
+}
+/* 个人信息--设置 */
+.pesnInfo-set {
+    width: 100%;
+    padding: 30px 26px;
+    box-sizing: border-box;
+}
+.pesnInfo-set > div {
+    margin-bottom: 20px;
+}
+.pesnInfo-set label {
+    line-height: 40px;
+    font-size: 18px;
+}
+.pesnInfo-set input {
+    height: 38px;
+}
+/* 个人信息--设置--性别 */
+.pesnInfo-set .sexSelect,
+.pesnInfo-set .sexSelect label {
+    display: inline-block;
+}
+.pesnInfo-set .sexSelect.ml-46 {
+    margin-left: 46px;
+}
+/* 个人信息--设置--生日 */
+.pesnInfo-set .set-year {
+    width: 130px;
+}
+.pesnInfo-set .set-mooth,
+.pesnInfo-set .set-date {
+    width: 80px;
+    margin-left: 10px;
+}
+/* 个人信息--设置--家居偏好、教育程度、所在行业 */
+.pesnInfo-set .fitmentStyle,
+.pesnInfo-set .eduDegree,
+.pesnInfo-set .industry {
+    width: 180px;
+}
+/* 个人信息--设置--所在地区 */
+.pesnInfo-set .region .select_custom {
+    width: 120px;
+}
+/* 订单信息--信息详情 */
+.order_info-detail {
+    background-color: #fff;
+    padding: 20px 26px;
+    margin-top: 16px;
+}
+.order_info-detail .infoContent {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+.order_info-detail .infoContent label,
+.order_info-detail .infoContent span {
+    line-height: 30px;
+}
+.order_info-detail .infoContent label.ml-100 {
+    margin-left: 100px;
+}
+/* 订单流程及状态 */
+.order_flowStatus .fp_status,
+.order_flowStatus .flowPath-arrow {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+.order_flowStatus .fp_status {
+    width: 16px;
+    height: 16px;
+    background-position: -270px -321px;
+}
+.order_flowStatus .fp_status.pass {
+    background-position: -299px -321px;
+}
+.order_flowStatus .flowPath-arrow {
+    width: 40px;
+    height: 8px;
+    background-position: -335px -325px;
+    margin: 0 26px;
+}
+.order_flowStatus .flowPath-arrow.pass {
+    background-position: -392px -325px;
+}
+/* 订单信息--订单售后--售后须知 */
+.order_info .as_notice p {
+    line-height: 140%;
+    padding: 5px 0;
+    font-size: 16px;
+}
+.order_info .agreementLink {
+    color: #888;
+}
+/* 提交保存按钮 */
+button.pesnInfo_btn {
+    width: 400px;
+    height: 64px;
+    background-color: #838281;
+    border: none;
+    text-align: center;
+    font: normal 32px/64px "微软雅黑";
+    color: #fff;
+    cursor: not-allowed;
+    display: block;
+}
+button.pesnInfo_btn.active {
+    background-color: #82c353;
+    cursor: pointer;
+}
+/* 灰色背景容器 */
+.grayBg {
+    width: 1106px;
+    background-color: #dededd;
+    padding: 20px;
+    margin-top: 38px;
+}
+/* 灰色背景容器--特殊设置 */
+.grayBg.w-1150 {
+    width: 1150px;
+}
+.grayBg.mt-24 {
+    margin-top: 24px;
+}
+/* 顶、底部操作栏 */
+.ctrlBar-top, .ctrlBar-bottom {
+    width: 1146px;
+}
+.ctrlBar-top.w-1190 {
+    width: 1190px;
+}
+/* 标题字号 */
+.grayBg h1 {
+    font-size: 22px;
+}
+.grayBg h2 {
+    font-size: 20px;
+}
+.grayBg .subTitle {
+    font-size: 20px;
+    color: #de3d36;
+    margin-left: 20px
+}
+/* 系统消息--消息列表 */
+.sysMesgBox .mesgList {
+    width: 100%; height: auto;
+    margin-top: 16px;
+    overflow: hidden;
+}
+.sysMesgBox .mesgList .mesgItem {
+    height: auto;
+    margin-bottom: 14px;
+}
+/* 系统消息--消息列表--消息内容 */
+.sysMesgBox .mesgContent {
+    width: 968px; height: 100%;
+    background-color: #fff;
+}
+.sysMesgBox .mesgContent .mesgTxt {
+    width: 654px; height: 20px;
+    line-height: 140%;
+    padding: 34px 56px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sysMesgBox .mesgContent .mesgDatetime {
+    width: auto; height: 20px;
+    padding: 34px 56px;
+}
+/* 系统消息--消息列表--消息选择 */
+.sysMesgBox .mesgSelect {
+    width: auto; height: 100%;
+    margin-left: 968px;
+}
+.sysMesgBox .mesgSelect label {
+    top: 30px;
+    margin-left: 36px;
+    cursor: inherit;
+}
+.sysMesgBox .mesgSelect .selector, .cancelSell_baseCtrl .cancelCtrl .selector {
+    width: 16px; height: 16px;
+    background-position: -444px -46px;
+    top: 2px;
+    margin-right: 10px;
+}
+.sysMesgBox .mesgSelect .selector.checked, .cancelSell_baseCtrl .cancelCtrl .selector.checked {
+    background-position: -444px -74px;
+}
+/* 系统消息删除按钮 */
+.ctrlBar-bottom .deleSysMesg {
+    margin-right: 0;
+}
+/* 无系统消息的提示 */
+.notSysMesgTip {
+    line-height: 316px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/**** 我的出售 ****/
+/* 出售按钮 */
+.sell_info .toSell, .reducPriceApply .toSell {
+    margin-left: 0; margin-top: 20px;
+}
+/* 我的出售操作按钮 */
+.sellInfo_baseCtrl a {
+    text-decoration: none;
+}
+
+/* 无出售内容显示 */
+.sellInfo_baseCtrl .grayBg {
+    width: 100%; height: 356px;
+    line-height: 356px;
+    text-align: center;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+/* 我的出售--降价/取消申请列表 */
+.reducPrice_baseCtrl .reducInfo, .cancelSell_baseCtrl .cancelInfo  {
+    width: 200px;
+    text-align: left;
+    margin-left: 180px;
+}
+.reducPrice_baseCtrl .reducInfo p,.cancelSell_baseCtrl .cancelInfo p {
+    line-height: 140%;
+    font-size: 15px;
+}
+.reducPrice_baseCtrl .reducInfo p > label, .reducPrice_baseCtrl .reducCtrl p label, .cancelSell_baseCtrl .cancelInfo p > label {
+    width: 78px;
+    margin-right: 10px;
+}
+.reducPrice_baseCtrl .reducCtrl {
+    width: 260px; height: 63px;
+    margin-left: 180px; margin-top: 0px;
+}
+.reducPrice_baseCtrl .reducCtrl p {
+    height: 30px; line-height: 30px;
+    text-align: left;
+    font-size: 15px;
+    color: #de3d36;
+}
+.reducPrice_baseCtrl .reducCtrl p input[type='text'] {
+    width: 90px; height: 30px;
+    font-size: 15px;
+    color: #de3d36;
+    padding: 4px;
+}
+.reducPrice_baseCtrl .reducCtrl > span {
+    line-height: 63px;
+    text-align: left;
+    text-indent: 50px;
+    display: block;
+}
+.cancelSell_baseCtrl .cancelCtrl {
+    width: 160px;
+    margin-left: 180px; margin-top: 22px;
+}
+/* 操作须知 */
+.ctrlNeedKnow {
+    width: 1190px;
+    margin-top: 16px; margin-bottom: 180px;
+}
+.ctrlNeedKnow p {
+    float: right;
+    font-size: 14px;
+    color: #888;
+}
+
+/**** 个人账户 ****/
+
+/* 个人账户--我的积分 */
+.accountBox .myScore {
+    height: 88px;
+    padding: 50px;
+    padding-left: 80px; padding-right: 80px;
+    margin-top: 15px;
+}
+/* 个人账户--我的积分--积分显示 */
+.accountBox .myScore .scoreDisplay {
+    width: 240px;
+}
+.accountBox .myScore .scoreDisplay > p {
+    font: bold 18px/100% "微软雅黑";
+}
+.accountBox .myScore .scoreDisplay .scoreNum {
+    font-family: Arial;
+    font-size: 60px;
+}
+/* 个人账户--我的积分--积分说明 */
+.accountBox .myScore .scoreExplain {
+    width: 526px; height: 24px;
+    text-align: center;
+    color: #888;
+    margin-top: 54px;
+}
+/* 个人账户--我的积分--积分规则 */
+.accountBox .myScore .gotoScoreRule {
+    width: 222px; height: 24px;
+    margin-top: 54px;
+}
+.accountBox .myScore .gotoScoreRule p {
+    width: 100%;
+    color: #888;
+    text-align: right;
+}
+
+
+/**** 其他设置 *****/
+.pesnInfo-set input.w-132 {
+    width: 132px;
+}
+.pesnInfo-set input.w-256 {
+    width: 256px;
+}
+.pesnInfo-set input.w-557 {
+    width: 557px;
+}

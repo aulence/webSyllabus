@@ -1,0 +1,277 @@
+/**
+ * 功能：商品分类样式设置
+ * 最后修改日期：2015年8月9日
+ * 作者：魏叶
+ **/
+
+/***********************************
+            集体声明属性
+***********************************/
+
+/* 盒子模型设置*/
+.goodsChoose > a { box-sizing: border-box;}
+
+/* 块元素居中显示 */
+.classify_banner, ul.subnav li a, .classifyFilter, .goodsChoose, .sale_banenr { margin-left: auto; margin-right: auto;}
+
+/* 内联块显示 */
+.goodsChoose .goodsBaseInfo > span, .goodsChoose .goodsBaseInfo > span.goodsPrice .oldPrice { display: inline-block;}
+
+/* 行块显示 */
+ul.subnav li, ul.subnav li a, .classifyFilter a.filter, .classifyFilter > div:hover ul, .goodsChoose > a, .goodsChoose.timeLimit a, .goodsChoose .goodsImg { display: block;}
+
+/* 左浮动 */
+.classifyFilter > div, .goodsChoose > a, .goodsChoose.timeLimit a { float: left;}
+
+/* 隐藏 */
+.classifyFilter > div ul { display: none;}
+
+/* 垂直居中显示 */
+.goodsChoose .goodsBaseInfo > span { vertical-align: middle;}
+
+/* 文本居中显示 */
+.classify_banner h1, ul.subnav li a, .searchResult, .goodsChoose .goodsBaseInfo, .goodsChoose .goodsBaseInfo > span, .goodsChoose.timeLimit h1, .goodsChoose.timeLimit .goodsBaseInfo > span { text-align: center;}
+
+/* 绝对定位 */
+.classify_banner h1, ul.subnav,
+.searchResult { position: absolute;}
+
+/* 相对定位 */
+.classify_banner, .goodsChoose .goodsBaseInfo > span.goodsPrice .oldPrice { position: relative;}
+
+/* 超链接下划线下划线消除 */
+ul.subnav li a, .classifyFilter > div a, .classifyFilter > div, .goodsChoose > a { text-decoration: none;}
+
+/* 手型按钮 */
+.classifyFilter > div a, .classifyFilter > div li, .classifyFilter > div, .goodsChoose > a { cursor: pointer;}
+
+/***********************************
+            页面具体设置
+***********************************/
+
+/* 商品分类Banner */
+.classify_banner {
+    width: 1190px; height: 245px;
+    background: url(../../img/bg/classifyBanner_1190dpi.jpg) no-repeat 100% 100%;
+    margin-top: 38px;
+}
+.classify_banner h1 {
+    width: 100%;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    font-weight: bold;
+    font-size: 40px;
+    color: #ffffff;
+    left: 0; top: 50%;
+    margin-top: -30px;
+}
+
+/* 商品分类Banner--子导航 */
+ul.subnav {
+    width: 88%; height: 40px;
+    padding: 0 6%;
+    bottom: 12px;
+}
+ul.subnav.multicol-most {
+    width: 98%;
+    padding: 0 1%;
+}
+ul.subnav.multicol {
+    width: 94%;
+    padding: 0 3%;
+}
+ul.subnav li {
+    overflow: hidden;
+    float: left;
+}
+ul.subnav li a {
+    width: 108px; height: 40px;
+    background-color: #838280;
+    border-radius: 3px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+ul.subnav li a:hover {
+    background-color: #77b74b;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+ul.subnav li a:active { background-color: #6ba841;}
+
+/* 搜索结果 */
+.searchResult {
+    min-width: 140px;
+    padding: 10px 8px;
+    background-color: #da251d;
+    border-radius: 3px;
+    font-size: 18px;
+    color: #fff;
+    left: 50%; bottom: 16px;
+    margin-left: -70px;
+}
+
+/* 商品分类筛选 */
+.classifyFilter {
+    width: 1190px; height: 64px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 50px;
+    position: absolute;
+    left: 50%;
+    margin-left: -595px;
+    z-index: 10;
+}
+.classifyFilter > div {
+    width: 98px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    padding: 0 14px;
+    margin-right: 12px;
+}
+.classifyFilter > div:hover {
+    border: 1px solid #ccc;
+}
+.classifyFilter a.filter {
+    width: 100%; height: 62px;
+    line-height: 62px;
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+.classifyFilter a.filter.active {
+    color: #d8170e;
+}
+.classifyFilter > div ul {
+    border-top: 1px solid transparent;
+    padding: 10px 0;
+    transition: border 0.6s;
+}
+.classifyFilter > div:hover ul {
+    border-top: 1px solid #f09b97;
+}
+.classifyFilter > div li {
+    text-align: center;
+    line-height: 46px;
+    font-size: 18px;
+}
+.classifyFilter > div li:hover {
+    color: #eb5a53;
+}
+.classifyFilter > div li:active, .classifyFilter > div li.active {
+    color: #d8170e;
+}
+
+/* 商品选择 */
+.goodsChoose {
+    width: 1190px; height: auto;
+    margin-top: 138px;
+    overflow: hidden;
+}
+.goodsChoose > a {
+    width: 366px;
+    margin-right: 46px; margin-bottom: 26px;
+    border: 3px solid transparent;
+    color: #333;
+    overflow: hidden;
+    transition: border-color,background-color 0.6s,0.6s;
+}
+.goodsChoose > a:hover {
+    background-color: #ecf2e9;
+    border: 3px solid #82c353;
+}
+/* 商品选择--产品图片 */
+.goodsChoose .goodsImg {
+    width: 366px; height: 366px;
+    background-color: #acacac;
+    overflow: hidden;
+}
+.goodsChoose .goodsImg img {
+    width: 100%; height: auto;
+}
+/* 商品选择--基本信息 */
+.goodsChoose .goodsBaseInfo {
+    height: 64px;
+    line-height: 64px;
+    white-space: nowrap;
+}
+.goodsChoose .goodsBaseInfo span.goodsName {
+    font-size: 18px;
+}
+/* 商品选择--基本信息--商品价格 */
+.goodsChoose .goodsBaseInfo span.goodsPrice {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 16px;
+}
+.goodsChoose .goodsBaseInfo span.goodsPrice .newPrice {
+    margin-left: 16px;
+    color: #d8170e;
+}
+/* 商品选择--基本信息--商品价格--价格删除线 */
+.goodsBaseInfo span.goodsPrice .deleOldPrice {
+    width: 110%; height: 1px;
+    border-bottom: 2px solid #eb1212;
+    position: absolute;
+    top: 31px; left: -5%;
+    -webkit-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+/**** 显示特卖 ****/
+
+/* banner */
+.sale_banenr {
+    width: 1190px; height: 382px;
+    background: url(../../img/bg/banner-sale.jpg) no-repeat 100% 100%;
+    margin-top: 30px;
+}
+/* 限时特卖 */
+.goodsChoose.timeLimit {
+    margin-top: 0;
+}
+.goodsChoose.timeLimit h1 {
+    font-weight: bold;
+    font-size: 36px;
+    color: #da251d;
+    margin-top: 60px; margin-bottom: 24px;
+    clear: both;
+}
+.timeLimit .timeLimitGroup a {
+    width: 566px; height: auto;
+    margin-right: 46px;
+    border: 3px solid transparent;
+    color: #333;
+    transition: border-color,background-color 0.6s,0.6s;
+}
+.timeLimit .timeLimitGroup a:hover {
+    background-color: #ecf2e9;
+    border: 3px solid #82c353;
+}
+.timeLimit .timeLimitGroup > a .goodsImg {
+    width: 100%; height: 366px;
+}
+.timeLimit .timeLimitGroup > a .goodsImg img {
+    width: 100%; height: 100%;
+}
+
+/***********************************
+            页面动画效果
+***********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

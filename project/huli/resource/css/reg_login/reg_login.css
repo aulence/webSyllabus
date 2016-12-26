@@ -1,0 +1,52 @@
+@charset "utf-8";
+/**
+* 功能：用户登录注册设置
+* 最后修改日期：2015年6月22日
+* 作者：魏叶
+**/
+
+/* 大标题 */
+h1 { width: 100%; text-align: center; font: normal 32px/140% "微软雅黑"; color: #333;}
+
+/* 副标题和页面内的超链接样式 */
+.subhead { text-align: center; font: normal 18px/140% "微软雅黑";  color: #888;}
+.subhead a, .notReceiveEmail p a { color: #4375ad;}
+.subhead a:hover, .notReceiveEmail p a:hover { color: #679bd4;}
+
+/* 登陆框 */
+.loginBox { width: 402px; height: auto; margin-bottom: 180px;}
+
+/* 字段样式 */
+.loginBox label { line-height: 200%; font-size: 18px; }
+
+/* 文本&密码框样式 */
+.loginBox .baseStyle { width: 400px; height: 50px; font-size: 16px; font-family: "微软雅黑"; color: #555;}
+
+/* 忘记密码 */
+.loginBox p { text-align: right; margin-top: 15px;}
+.loginBox p a { text-decoration: underline; font-size: 18px; color: #333;}
+.loginBox p a:hover { color: #4375ad;}
+
+/* 提交、登录、注册、链接等按钮 */
+button.loginBtn, button.fondpwdBtn, button.modifBtn, button.regBtn, .goMyEmail a { width: 400px; height: 64px; background-color: #838281; border: none; text-align: center; font: normal 32px/64px "微软雅黑"; color: #fff; cursor: not-allowed;}
+button.loginBtn { margin-top: 40px;}
+button.fondpwdBtn, button.modifBtn, button.regBtn { margin-top: 80px;}
+.loginBtn.active, .fondpwdBtn.active, .modifBtn.active, .regBtn.active, .goMyEmail a:hover { background-color: #82c353; cursor: pointer;}
+.loginBtn.active:hover, .fondpwdBtn.active:hover, .modifBtn.active:hover, .regBtn.active:hover, .goMyEmail a:active { background-color: #97d967;}
+
+/* 邮件发出图标 */
+.email_sent { width: 400px; height: auto;}
+.email_sent i { width: 258px; height: 120px; background-position: 0 -250px;}
+.email_sent p { width: 100%; text-align: center; text-indent: 1em; letter-spacing: 0.1em; font-size: 18px; margin-top: 6px;}
+
+/* 登录邮箱查看邮件 */
+.goMyEmail { width: auto; height: auto; margin-top: 60px;}
+.goMyEmail p { text-align: center; font-size: 18px; color: #888;}
+.goMyEmail a { text-decoration: none; margin-top: 6px; cursor:pointer;}
+
+/* 没有收到邮件 */
+.notReceiveEmail { width: 400px; height: auto; margin-top: 60px; box-sizing: border-box; border: 1px solid #d3d3d3; padding: 20px;}
+.notReceiveEmail p { line-height: 160%; font-size: 18px; color: #888;}
+ { color: #4375ad;}
+
+

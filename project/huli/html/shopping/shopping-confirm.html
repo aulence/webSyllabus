@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>购物车——订单确认</title>
+    <link rel="shortcut icon" href="../../resource/img/ele/favicon.ico">
+    <link rel="Bookmark" href="../../resource/img/ele/favicon_32X32.ico">
+    <link rel="stylesheet" href="../../resource/plugin/baseCSS-1.0.5.min.css">
+    <link rel="stylesheet" href="../../resource/css/base.css">
+    <link rel="stylesheet" href="../../resource/css/shopping/shopping.css">
+    <script type="text/javascript" src="../../resource/plugin/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <!-- main { -->
+    <div class="main">
+
+        <!-- header { -->
+        <div class="header">
+            <script type="text/javascript" src="../../resource/js/header.js"></script>
+        </div>
+        <!-- } header -->
+
+        <!-- content { -->
+        <div class="content">
+
+            <!-- 购物车——确认订单信息 { -->
+            <div class="shopping-cart">
+                <h2>确认订单信息</h2>
+                <div class="orderForm">
+                    <h3>
+                        <span>收货人信息</span>
+                        <a class="addAddr">新增收货地址</a>
+                    </h3>
+
+                    <!-- 收货地址 { -->
+                    <div class="addr_take">
+                        <div class="addr_take-info">
+                            <span>暂无收货地址</span>
+                        </div>
+
+                        <div class="addr_take-info checked">
+                            <div class="info-top">
+                                <span>四川成都</span>
+                                <span>谭巴巴</span>
+                                <span>13800138000</span>
+                            </div>
+                            <div class="info-content">
+                                <span>四川省成都市武侯区三环内高升桥路2号瑞金广场6楼</span>
+                            </div>
+                            <div class="info-bottom">
+                                <button type="button">默认地址</button>
+                            </div>
+                        </div>
+
+                        <div class="addr_take-info">
+                            <div class="info-top">
+                                <span>四川成都</span>
+                                <span>谭巴巴</span>
+                                <span>13800138000</span>
+                            </div>
+                            <div class="info-content">
+                                <span>四川省成都市武侯区三环内高升桥路2号瑞金广场6楼</span>
+                            </div>
+                            <div class="info-bottom">
+                                <button type="button">设为默认</button>
+                                <span>/</span>
+                                <button type="button">编辑</button>
+                            </div>
+                        </div>
+
+                        <div class="addr_take-info">
+                            <div class="info-top">
+                                <span>四川成都</span>
+                                <span>谭巴巴</span>
+                                <span>13800138000</span>
+                            </div>
+                            <div class="info-content">
+                                <span>四川省成都市武侯区三环内高升桥路2号瑞金广场6楼</span>
+                            </div>
+                            <div class="info-bottom">
+                                <button type="button">设为默认</button>
+                                <span>/</span>
+                                <button type="button">编辑</button>
+                            </div>
+                        </div>
+
+                        <div class="addr_take-info">
+                            <div class="info-top">
+                                <span>四川成都</span>
+                                <span>谭巴巴</span>
+                                <span>13800138000</span>
+                            </div>
+                            <div class="info-content">
+                                <span>四川省成都市武侯区三环内高升桥路2号瑞金广场6楼</span>
+                            </div>
+                            <div class="info-bottom">
+                                <button type="button">设为默认</button>
+                                <span>/</span>
+                                <button type="button">编辑</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- } 收货地址 -->
+
+                    <!-- 支付方式 { -->
+                    <div class="payType">
+                        <h3>
+                            <span>支付方式</span>
+                        </h3>
+
+                        <div class="payType-merch">
+                            <input name="payType" type="radio" value="0" checked>
+                            <i class="i_pType rdo-checked_custom"></i>
+                            <span class="alipay"></span>
+                        </div>
+
+                        <div class="payType-merch">
+                            <input name="payType" type="radio" value="1">
+                            <i class="i_pType rdo_custom"></i>
+                            <span class="unionpay"></span>
+                        </div>
+                    </div>
+                    <!-- } 支付方式 -->
+
+                    <!-- 订单信息 { -->
+                    <div class="orderForm-info">
+                        <h3>
+                            <span>订单信息</span>
+                        </h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="w-320">商品信息</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>金额</th>
+                                    <th>送货日期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="tren_info">
+                                        <div>
+                                            <img src="../../resource/img/other/example_0.jpg">
+                                            <p>
+                                                <a href="#">家具名称</a>
+                                            </p>
+                                        </div>
+                                        <div class="disc_info">
+                                            <p>产品尺寸</p>
+                                            <p>产品材质</p>
+                                            <p>产品颜色</p>
+                                        </div>
+                                    </td>
+                                    <td>￥668</td>
+                                    <td class="trea_count">
+                                        <span class="getCount">3</span>
+                                    </td>
+                                    <td>$668</td>
+                                    <td class="deliver_date">
+                                        <input type="text" value="2015.7.15" disabled>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tren_info">
+                                        <div>
+                                            <img src="../../resource/img/other/example_5.jpg">
+                                            <p>
+                                                <a href="#">家具名称</a>
+                                            </p>
+                                        </div>
+                                        <div class="disc_info">
+                                            <p>产品尺寸</p>
+                                            <p>产品材质</p>
+                                            <p>产品颜色</p>
+                                        </div>
+                                    </td>
+                                    <td>￥668</td>
+                                    <td class="trea_count">
+                                         <span class="getCount">1</span>
+                                    </td>
+                                    <td>$668</td>
+                                    <td class="deliver_date">
+                                        <input type="text" value="2015.7.20" disabled>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- 结算信息 { -->
+                        <div class="caa_info">
+                            <div class="txt_c">
+                                <span class="tips">商品总金额899免费送货</span>
+                            </div>
+                            <div>
+                                <label><span class="keyword">3件</span>商品总金额：</label>
+                                <span><strong>￥2004.00</strong></span>
+                            </div>
+                            <div>
+                                <label>运费：</label>
+                                <span>$0.00</span>
+                            </div>
+                            <div>
+                                <!-- 此处只需保证属性for和id相同即可，可以随意更改-->
+                                <label for="integral">积分抵扣：</label>
+                                <input id="integral" class="inteScore" type="text" value="50">
+                                <span>分</span>
+                            </div>
+                            <div class="bm_line txt_c">
+                                <span class="tips">可用积分<span>100</span>分，本次最多抵扣<span>50</span>分</span>
+                            </div>
+                            <div>
+                                <label>订单实际支付：</label>
+                                <span><strong class="keyword plusFont">￥1954.00</strong></span>
+                            </div>
+                        </div>
+                        <!-- } 结算信息 -->
+
+                        <!-- 结算栏 { -->
+                        <div class="sc-payBar">
+
+                            <!-- 左侧 -->
+                            <div class="sc-payBar-left">
+                                <div>
+                                    <a href="shopping.html">返回购物车修改</a>
+                                </div>
+                            </div>
+
+                            <!-- 右侧 -->
+                            <div class="sc-payBar-right">
+                                <div class="mr-180">
+                                    <p>
+                                        <span class="plusFont va_m">订单实际支付</span>:
+                                    </p>
+                                    <span class="monney">￥1954.00</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="gotoPay">提交订单</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- } 结算栏 -->
+                    </div>
+                    <!-- } 订单信息 -->
+                </div>
+            </div>
+            <!-- } 购物车——确认订单信息 -->
+
+        </div>
+        <!-- } content -->
+
+        <!-- footer { -->
+        <div class="footer">
+            <script type="text/javascript" src="../../resource/js/footer.js"></script>
+        </div>
+        <!-- } footer -->
+    </div>
+    <!-- } main -->
+
+    <!-- JS引用 -->
+    <script type="text/javascript" src="../../resource/plugin/baseCSS-1.0.5.min.js"></script>
+    <script type="text/javascript" src="../../resource/js/commond.js"></script>
+    <script type="text/javascript" src="../../resource/js/shopping/shopping.js"></script>
+    <!-- 页面细节控制 -->
+    <script type="text/javascript">
+        // 收货地址相关功能
+        addr_take_ctrl();
+
+        // 支付方式选择功能
+        radio_custom(".payType-merch", ".payType-merch");
+
+        // 地址编辑和新增
+        addrEdit();
+
+        // 设置默认地址控制
+        setDefaultAddr();
+    </script>
+</body>
+
+</html>
