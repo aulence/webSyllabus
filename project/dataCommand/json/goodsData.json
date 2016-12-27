@@ -40,3 +40,29 @@
         "command": "<a class=\"decribe\">查看</a><a class=\"delete\">删除</a>"
     }
 ]
+
+
+{
+	name:["a","b","c"],
+	age:[23,23,24],
+	gender: [1,0,1]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
