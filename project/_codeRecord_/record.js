@@ -12,8 +12,8 @@ function qr(ident) {
 	var selector,
 		sType = ident.slice(0,1),
 		identTxt = ident.slice(1);
-	if(/^[#\.]/.test(sType)) {
-		if(sType == "#") {
+	if (/^[#\.]/.test(sType)) {
+		if (sType == "#") {
 			selector = document.getElementById(identTxt);
 		}
 		else if(sType == ".") {
