@@ -1,0 +1,152 @@
+<root data-root="JavaScript事件">
+    <!-- 概述 -->
+    <section class="mt0">
+    	<h3>JavaScript事件概述</h3>
+    	<p>事件是可以被 JavaScript 侦测到的行为。网页中的每个DOM元素都可以产生某些可以触发JavaScript函数的事件。简单的说，就是当用户对页面的元素进行操作的时候，页面发生的一些可见或不可见的变化。</p>
+    	<p>传统的页面交互是通过CSS实现的，不过CSS只能实现一些临时的、视觉上的简单交互。但随着互联网技术的发展，只停留在页面上的这些简单交互早已不能满足时代发展的要求了。这个时候JavaScript事件的出现很大程度地提升了界面的可交互性，这种交互不仅是停留在视觉上的，还可以是数据上的交互，可以临时的，通过和服务器端的配合也可以实现永久的页面样式和数据改变，从而更大程度地提升了用户体验。</p>
+    	<p>JavaScript的事件主要包括鼠标事件、键盘事件、表单事件、文档事件及这些事件提供的一系列处理机制，在HTML5规范确立的过程中又出现了触摸事件、拖拽事件、进度事件等一系列，本章的主要内容就是对这些事件进行介绍。</p>
+	</section>
+	<!-- 事件的添加 -->
+	<section>
+		<h3>事件的添加</h3>
+		<p>事件一定要添加在某个页面元素后才会生效，包括window对象和document对象。事件的添加主要有三种方式：</p>
+		<dl class="attrExplain">
+			<dt>通过页面DOM元素的属性添加</dt>
+			<dd></dd>
+
+			<dt>通过实例化过后的Element对象添加</dt>
+			<dd></dd>
+
+			<dt>对实例化过后的Element对象进行监听</dt>
+			<dd></dd>
+		</dl>
+	</section>
+	<!-- 鼠标事件 -->
+	<section>
+		<h3>鼠标事件</h3>
+		<p>电脑鼠标所触发的事件。</p>
+		<dl class="attrExplain">
+			<dt>click事件和dblclick事件</dt>
+			<dd>当用户在Element节点、document节点、window对象上单击鼠标（或者按下回车键）时，click事件触发。用户在同一个位置完成一次mousedown动作和mouseup动作。它们的触发顺序是：mousedown首先触发，mouseup接着触发，click最后触发。</dd>
+			<dd>dblclick事件当用户在element、document、window对象上，双击鼠标时触发。该事件会在mousedown、mouseup、click之后触发</dd>
+
+			<dt>mouseup事件、mousedown事件</dt>
+			<dd>mouseup事件在释放按下的鼠标键时触发。</dd>
+			<dd>mousedown事件在按下鼠标键时触发</dd>
+			<dd>mousemove事件当鼠标在一个节点内部移动时触发。当鼠标持续移动时，该事件会连续触发。为了避免性能问题，建议对该事件的监听函数做一些限定，比如限定一段时间内只能运行一次代码。</dd>
+
+			<dt>mouseover事件和mouseenter事件</dt>
+			<dd>mouseover事件和mouseenter事件，都是鼠标进入一个节点时触发。</dd>
+			<dd>两者的区别是，mouseenter事件只触发一次，而只要鼠标在节点内部移动，mouseover事件会在子节点上触发多次。</dd>
+
+			<dt>mouseout事件和mouseleave事件</dt>
+			<dd>mouseout事件和mouseleave事件，都是鼠标离开一个节点时触发。</dd>
+			<dd>两者的区别是，mouseout事件会冒泡，mouseleave事件不会。子节点的mouseout事件会冒泡到父节点，进而触发父节点的mouseout事件。mouseleave事件就没有这种效果，所以离开子节点时，不会触发父节点的监听函数。</dd>
+
+			<dt>contextmenu事件</dt>
+			<dd>contextmenu事件在一个节点上点击鼠标右键时触发。</dd>
+		</dl>
+		<p>通常鼠标具有三个键，即左键（主键）、右键和中间滚轮键，当他们被点击后事件的“button”属性会获得一个值，从而可以判断出用户点击的是哪一个键。当这个属性返回“0”时表示按下左键，返回“1”时表示中间滚轮，返回“2”时表示右键，返回“-1”时表示什么都没有按。</p>
+		<p>另外，还有4个属性用户判断但鼠标点击时是否按住了指定的控制键，它们会返回一个布尔值。</p>
+		<ul class="indent">
+			<li>altKey属性：alt键</li>
+			<li>ctrlKey属性：key键</li>
+			<li>metaKey属性：Meta键（Win键）</li>
+			<li>shiftKey属性：Shift键</li>
+		</ul>
+		<p>鼠标还提供与指针位置相关的一些属性</p>
+		<dl class="attrExplain">
+			<dt>clientX，clientY</dt>
+			<dd>clientX属性返回鼠标位置相对于浏览器窗口左上角的水平坐标，单位为像素。</dd>
+			<dd>clientY属性返回鼠标位置相对于浏览器窗口左上角的垂直坐标，单位为像素。</dd>
+
+			<dt>movementX，movementY</dt>
+			<dd>movementX属性返回一个水平位移，单位为像素，表示当前位置与上一个mousemove事件之间的水平距离。在数值上，等于currentEvent.movementX = currentEvent.screenX - previousEvent.screenX。</dd>
+			<dd>movementY属性返回一个垂直位移，单位为像素，表示当前位置与上一个mousemove事件之间的垂直距离。在数值上，等于currentEvent.movementY = currentEvent.screenY - previousEvent.screenY。</dd>
+
+			<dt>screenX，screenY</dt>
+			<dd>screenX属性返回鼠标位置相对于屏幕左上角的水平坐标，单位为像素。</dd>
+			<dd>screenY属性返回鼠标位置相对于屏幕左上角的垂直坐标，单位为像素。</dd>
+		</dl>
+	</section>
+	<!-- 键盘事件 -->
+	<section>
+		<h3>键盘事件</h3>
+		<p>键盘事件用来描述键盘行为，主要有keydown、keypress、keyup三个事件。</p>
+		<dl class="attrExplain">
+			<dt>keydown事件</dt>
+			<dd>按下键盘时触发该事件。</dd>
+
+			<dt>keypress事件</dt>
+			<dd>只要按下的键并非Ctrl、Alt、Shift和Meta，就接着触发keypress事件。</dd>
+
+			<dt>keyup事件</dt>
+			<dd>松开键盘时触发该事件。</dd>
+		</dl>
+		<p>如果用户一直不松开键盘，键盘事件就会按照这样的顺序连续触发：keydown -&gt; keypress -&gt; keydown-&gt; keypress -&gt; ... （松开键盘后）-&gt; keyup。</p>
+		<p>当用户在按下键盘的过程中（keydown事件和keyup事件）可以通过<em>keyCode</em>属性获取当前键盘的值，返回的值是一个数字。可以根据获取的数字做出判断来完成特定的事件函数。</p>
+	</section>
+	<!-- 表单事件 -->
+	<section>
+		<h3>表单事件</h3>
+		<p>表单事件表示的是当HTML的&lt;form&gt;标签内的元素被操作后发生的事件，在HTML中常见的表单标签有&lt;input&gt;（不同的“type”属性支持的事件可能会有区别）、&lt;select&gt;、&lt;textarea&gt;、&lt;button&gt;等，这些元素在内容在被操作或值发生改变时都会触发事件。</p>
+		<p>表单元素主要有以下事件：</p>
+		<dl class="attrExplain">
+			<dt>input事件</dt>
+			<dd>input事件当&lt;input&gt;、&lt;textarea&gt;的值发生变化时触发。此外，将contenteditable属性设置为“true”的非表单元素，只要值发生变化，也会触发input事件。input事件的一个特点，就是会连续触发，比如用户每次按下一次按键，就会触发一次input事件。</dd>
+
+			<dt>select事件</dt>
+			<dd>select事件当在&lt;input&gt;、&lt;textarea&gt;中选中文本时触发。</dd>
+
+			<dt>Change事件</dt>
+			<dd>Change事件当&lt;input&gt;（单选框和复选框）、&lt;select&gt;、&lt;textarea&gt;（需要失去焦点时触发）的值发生变化时触发。它与input事件的最大不同，就是不会连续触发，只有当全部修改完成时才会触发，而且input事件必然会引发change事件。</dd>
+
+			<dt>reset事件</dt>
+			<dd>reset事件只能发生在表单元素&lt;form&gt;上，当表单重置（所有表单成员变回默认值）时触发。</dd>
+
+			<dt>submit事件</dt>
+			<dd>submit事件只能发生在表单元素&lt;form&gt;上，当表单数据向服务器提交时触发。注意，submit事件的发生对象是&lt;form&gt;，而不是&lt;button&gt;，因为提交的是表单，而不是按钮。</dd>
+		</dl>
+	</section>
+	<!-- 文档事件 -->
+	<section>
+		<h3>文档事件</h3>
+		<p>文档事件就是DOM元素在特定的操作下一种事件，有的时候并非需要人为的操作，如页面加载时就会触发加载事件，页面将关掉时会触发卸载事件。又如，元素在获得焦点时会触发获得焦点事件，失去焦点又会触发失去焦点事件等。</p>
+		<dl class="attrExplain">
+			<dt>load事件和error事件</dt>
+			<dd>load事件在页面加载成功时触发，error事件在页面加载失败时触发。页面从浏览器缓存加载，并不会触发load事件。</dd>
+			<dd>这两个事件实际上属于进度事件，不仅发生在document对象，还发生在各种外部资源上面。浏览网页就是一个加载各种资源的过程，图像、样式表、脚本、视频、音频、Ajax请求等等。这些资源和document对象、window对象、XMLHttpRequestUpload对象，都会触发load事件和error事件。</dd>
+
+			<dt>unload事件</dt>
+			<dd>unload事件在窗口关闭或者document对象将要卸载时触发，发生在window、body、frameset等对象上面。它的触发顺序排在beforeunload、pagehide事件后面。unload事件只在页面没有被浏览器缓存时才会触发，换言之，如果通过按下“前进/后退”导致页面卸载，并不会触发unload事件。</dd>
+
+			<dt>DOMContentLoaded事件</dt>
+			<dd>当HTML文档下载并解析完成以后，就会在document对象上触发DOMContentLoaded事件。这时，仅仅完成了HTML文档的解析（整张页面的DOM生成），所有外部资源（样式表、脚本、iframe等等）可能还没有下载结束。也就是说，这个事件比load事件，发生时间早得多。</dd>
+			<dd>需要注意的是，网页的JavaScript脚本是同步执行的，所以定义DOMContentLoaded事件的监听函数，应该放在所有脚本的最前面。否则脚本一旦发生堵塞，将推迟触发DOMContentLoaded事件。</dd>
+
+			<dt>readystatechange事件</dt>
+			<dd>readystatechange事件发生在Document对象和XMLHttpRequest对象加载完成后，当它们的readyState属性发生变化时触发。</dd>
+			<dd>IE8不支持DOMContentLoaded事件，但是支持这个事件。因此，可以使用readystatechange事件，在低版本的IE中代替DOMContentLoaded事件。</dd>
+
+			<dt>scroll事件</dt>
+			<dd>scroll事件在文档或文档元素滚动时触发，可以是鼠标滚轮触发的滚动，也可以是用户用鼠标拖动滚动条。</dd>
+
+			<dt>resize事件</dt>
+			<dd>resize事件在改变浏览器窗口大小时触发，可以发生在window、body对象上面。</dd>
+
+			<dt>focus事件和focusin事件</dt>
+			<dd>当元素（主要是&lt;a&lt;和表单元素）在获得焦点的时候触发，区别在于focus事件不会冒泡，而focusin事件（老版火狐浏览器不支持）会冒泡。focusin事件发生在focus事件之前。</dd>
+			<dd>这两个事件对象都含有一个<em>target</em>属性，返回当前执行事件元素的元素节点。</dd>
+
+			<dt>blur事件和focusout事件</dt>
+			<dd>当元素在去焦点的时候触发，区别在于blur事件不会冒泡，而focusout事件（老版火狐浏览器不支持）会冒泡。focusout事件发生在blur事件之前。</dd>
+			<dd>这两个事件对象也含有一个target属性，返回内容同上。</dd>
+		</dl>
+	</section>
+</root>
+
+
+
+
+
+

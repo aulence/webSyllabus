@@ -1,147 +1,397 @@
-<root data-root="JavaScript DOM">
+<root data-root="JavaScript函数对象">
     <!-- 概述 -->
     <section class="mt0">
-    	<h3>JavaScript DOM概述</h3>
-    	<p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删标签和操作属性等）。</p>
-    	<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，下一代版本DOM 4正在拟定中。</p>
-    	<p>严格地说，DOM不属于JavaScript，但是操作DOM是JavaScript最常见的任务，而JavaScript也是最常用于DOM操作的语言。DOM的最小组成单位叫做节点。文档的树形结构，就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。一个文档的所有节点，按照所在的层级，可以抽象成一种树状结构。这种树状结构就是DOM。</p>
+    	<h3>JavaScript函数对象概述</h3>
+    	<p>JavaScript不仅允许开发者自定义函数，还允许开发者通过原型类（prototype）来扩展原生JS对象的功能。除此以外，JavaScript还提供了很多系统内置的函数对象，这些函数对象是JavaScript的一个重要功能组成部分，它们的实现基本上没有可替代方案，如延时函数“setTimeout()”、定时执行函数“setInterval()”、时间日期函数“Date()”、数学计算函数对象“Math”、正则表达式函数“RegExp()”，还JavaScript对象表示法的“JSON”对象等等。</p>
+    	<p>由于JavaScript任何数据都是对象的这一理念，上面这些以函数形式出现的字符实质上都是对象，它们都具有对象所具有的公共方法和各自的一些私有方法，所以在本章中，我们都将其笼统地称作“<em>函数对象</em>”。</p>
+    	<p>JavaScript正是因为有了这些函数对象，才可能让JavaScript功能更加的丰富强大，成为一门独立的编程语言。上面列出的这些系统内置的函数对象还只是JavaScript中的一部分，随着ECMAScript标准的推进，已经出现了一些新的函数对象。但由于各种客观因素，不可能对所有的JavaScript函数对象都进行完全的掌握，本章内容主要是针对一些常用的系统函数对象进行讲解。</p>
 	</section>
-	<!-- DOM节点 -->
+	<!-- 延时执行函数 -->
 	<section>
-		<h3>DOM节点</h3>
-		<p>DOM在JavaScript中的实例就是document，该对象具有以下属性：</p>
-		<dl class="attrExplain">
-			<dt>Node.ownerDocument</dt>
-			<dd>Node.ownerDocument属性返回当前节点所在的顶层文档对象，即document对象。document对象本身的ownerDocument属性，返回null。</dd>
-
-			<dt>Node.nextSibling</dt>
-			<dd>Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
-
-			<dt>Node.previousSibling</dt>
-			<dd>previousSibling属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</dd>
-
-			<dt>Node.parentNode</dt>
-			<dd>parentNode属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：element节点、document节点和documentfragment节点。</dd>
-			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点，父节点也是null。</dd>
-
-			<dt>Node.parentElement</dt>
-			<dd>parentElement属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</dd>
-			<dd>在IE浏览器中，只有Element节点才有该属性，其他浏览器则是所有类型的节点都有该属性。</dd>
-
-			<dt>Node.childNodes</dt>
-			<dd>childNodes属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
-
-			<dt>Node.firstChild，Node.lastChild</dt>
-			<dd>firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
-		</dl>
-		<p>节点对象有这样一些方法：</p>
-		<dl class="attrExplain">
-			<dt>Node.appendChild()</dt>
-			<dd>Node.appendChild()方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。</dd>
-
-			<dt>Node.hasChildNodes()</dt>
-			<dd>Node.hasChildNodes()方法返回一个布尔值，表示当前节点是否有子节点。</dd>
-
-			<dt>Node.cloneNode()</dt>
-			<dd>Node.cloneNode()方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
-			<dd>克隆一个节点之后，DOM树有可能出现两个有相同ID属性的HTML元素，这时应该修改其中一个HTML元素的ID属性。</dd>
-
-			<dt>Node.insertBefore()</dt>
-			<dd>Node.insertBefore()方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是所要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
-			<dd>如果insertBefore()方法的第二个参数为null，则新节点将插在当前节点的最后位置，即变成最后一个子节点。如果所要插入的节点是当前DOM现有的节点，则该节点将从原有的位置移除，插入新的位置。</dd>
-
-			<dt>Node.removeChild()</dt>
-			<dd>Node.removeChild()方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
-
-			<dt>Node.replaceChild()</dt>
-			<dd>Node.replaceChild()方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。</dd>
-
-			<dt>Node.contains()</dt>
-			<dd>Node.contains()方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。</dd>
-
-			<dt>Node.isEqualNode()</dt>
-			<dd>isEqualNode()方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</dd>
-
-			<dt>Node.normalize()</dt>
-			<dd>normailize方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
-		</dl>
+		<h3>延时函数setTimeout()</h3>
+		<p>内容已经讲解，课件内容后续补上。</p>
 	</section>
-	<!-- DOM节点查询 -->
+	<!-- 定时执行函数 -->
 	<section>
-		<h3>DOM节点查询</h3>
-		<p>对于DOM的查询，document提供了以下方法：</p>
-		<dl class="attrExplain">
-			<dt>getElementById()</dt>
-			<dd>getElementById()方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
-
-			<dt>document.getElementsByTagName()</dt>
-			<dd>document.getElementsByTagName()方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection对象，可以实时反映HTML文档的变化。如果没有任何匹配的元素，就返回一个空集。</dd>
-			<dd>HTML元素本身也定义了getElementsByTagName()方法，返回该元素的后代元素中符合指定标签的元素。也就是说，这个方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
-
-			<dt>document.getElementsByClassName()</dt>
-			<dd>document.getElementsByClassName()方法返回一个类似数组的对象（HTMLCollection实例对象），包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。</dd>
-			<dd>与getElementsByTagName方法一样，getElementsByClassName方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
-
-			<dt>document.getElementsByName()</dt>
-			<dd>document.getElementsByName()方法用于选择拥有name属性的HTML元素，返回一个类似数组的的对象，因为name属性相同的元素可能不止一个。</dd>
-
-			<dt>document.querySelector()，document.querySelectorAll()</dt>
-			<dd>document.querySelector()方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。</dd>
-			<dd>document.querySelectorAll()方法与querySelector()用法类似，区别是返回一个NodeList对象，包含所有匹配给定选择器的节点。</dd>
-			<dd>这两个方法都支持复杂的CSS选择器。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。</dd>
-
-			<dt>Element.closest()</dt>
-			<dd>Element.closest()方法返回当前元素节点的最接近的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器。如果不满足匹配，则返回null。</dd>
-		</dl>
+		<h3>延时函数setInterval()</h3>
+		<p>内容已经讲解，课件内容后续补上。</p>
 	</section>
-	<!-- DOM节点的生成 -->
+	<!-- 日期函数 -->
 	<section>
-		<h3>DOM节点的生成</h3>
-		<p>以下反方可以用于生成DOM的节点：</p>
-		<dl class="attrExplain">
-			<dt>document.createElement()</dt>
-			<dd>document.createElement方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
-
-			<dt>document.createTextNode()</dt>
-			<dd>document.createTextNode()方法用来生成文本节点，参数为所要生成的文本节点的内容。</dd>
-
-			<dt>document.createAttribute()</dt>
-			<dd>document.createAttribute()方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
-		</dl>
+		<h3>日期函数Date()</h3>
+		<p>Date对象是JavaScript用于获取日期和时间的函数操作接口。它能表现的日期时间范围是1970年1月1日00:00:00前后的各1亿天（单位为毫秒）。它可以作为普通函数直接被调用，返回的结果是一个日期时间详细信息的字符串。</p>
+		<code class="indent">
+            <img src="img/code/jscode/code-js-223.jpg">
+        </code>
+        <p>Date()函数不接收任何参数（任何有效数据作为参数都会被忽略），当Date()函数被直接调用时，返回的总是当前的系统日期时间。该函数还可以被当做是构造函数使用，即在函数前添加一个关键字“new”作为命令，它会返回一个对象的实例（即不需要像函数那样调用，可以通过方法的形式去访问了）。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-224.jpg">
+        </code>
+        <p>当Date对象作为构造函数的时候，它是可以接收参数的。它接收的参数类型可以为数值型（当然也可以是算术运算的表达式），表示从1970年1月1日00:00:00这一时间点开始的毫秒数，正数是向后，负数是向前。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-225.jpg">
+        </code>
+        <p>另外，Date对象的参数还可以是字符串，但这个字符串必须得符合日期的一些基本格式，如例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-226.jpg">
+        </code>
+        <p>详细地说，当Date函数对象的参数为数值的时候，它最多可以接收的参数个数有7个，分别是：年、月、日、时、分、秒、毫秒。但当字符串只能有一个参数，且最多只能表示年、月、日（用逗号分隔），否则会返回“Invalid Date”，表示无效的日期格式。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-227.jpg">
+        </code>
+        <p>需要注意的是，Date对象的月份是从0月开始计算的，从上例中可以发现，在“年份”的参数位上配置的是“2016”，“月份”的参数位上配置的数为“12”，但在实际出来的结果中，年份已经变成了“2017”，而月份本应是“Dec”（December），却变成了“Jan”（January），这是“进制”导致的。如月份为“13”的时候会被算成次年的2月份，如果月份为“14”的时候会被算成次年的3月份，以此类推。这是在以后日期计算中要非常的注意的地方。而且还有一点需要注意的是，参数不能为单独的“年份”，否则会被解析成毫秒数。如果是需要返回的结果中的年份和参数一致，那记得要给该参数加上一对引号，如：new Date("2016")。</p>
+        <p>两个Date对象可以进行计算，如果是相减，返回的两者之间相差的毫秒数（可以为负数）。如果为相加，返回的是两个对象的字符串拼接结果。</p>
+        <code>
+            <img src="img/code/jscode/code-js-228.jpg">
+        </code>
+        <p>Date对象作为了一个对象，自然会有自己的原型类（prototype）方法，如：返回一个完整的日期字符串“Date.prototype.toString()”、返回对应的UTC时间“Date.prototype.toUTCString()”、返回对应时间的ISO8601写法“Date.prototype.toISOString()”、返回一个符合JSON格式的ISO格式的日期字符串“Date.prototype.toJSON()”、返回日期字符串“Date.prototype.toDateString()”、返回时间字符串“Date.prototype.toTimeString()”等等。</p>
+        <p>Date对象的专用方法不可谓不多，但若开发的是本土的项目，有两个Date原型类的方法可加以利用，一个是返回当地日期格式的“toLocaleDateString()”，一个是返回当地时间格式的“toLocaleTimeString()”。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-229.jpg">
+        </code>
+        <p>虽然我们可以利用字符串操作的方法截取Date对象返回值中我们需要的部分，但操作起来会十分不便，增加很多无谓的工作量。实际上Date对象已经提供了专门获取对象中某一个方面的值的“<em>get*()</em>”方法。</p>
+        <ul class="indent">
+        	<li>getFullYear()，返回四位的年份</li>
+        	<li>getMonth()，返回月份（0表示1月，1表示2月...11表示12月）</li>
+        	<li>getDate()，返回当月的第几号</li>
+        	<li>getHours()，返回时（24小时制，0~23）</li>
+        	<li>getMinutes()，返回分</li>
+        	<li>getSeconds()，返回秒</li>
+        	<li>getMilliseconds()，返回毫秒（1000进制）</li>
+        	<li>getDay()，返回星期几（星期日为0，星期一为1...星期六为6）</li>
+        </ul>
+        <p>来看一下这些方法的使用示例：（由于代码运行时间段不一致，分钟单位之后的运行结果会比完整字符串显示的时间略有推迟）</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-230.jpg">
+        </code>
+        <p>Date拥有的“get*()”方法除了上述方法外，还有用于返回距离1970年1月1日00:00:00的毫秒数“getTime()”和用于返回距离1900的年数“getYear()”等方法，但考虑到实际使用并不是很多，在这里并没有举出示例。</p>
+        <p>有了“get*()”方法，Date对象自然也提供了“<em>set*()</em>”的方法，可以对现有的Date对象进行修改。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-231.jpg">
+        </code>
+        <p>“set*()”方法和“get*()”方法配合使用，并进行一些简单计算来达到一些项目的特殊需求。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-232.jpg">
+        </code>
+        <p>如果是对已经生成的时间字符串进行比较，最好的办法是将时间字符串转换成相对于“1970年1月1日00:00:00”的毫秒数进行计算，可以使用“Date.parse()”方法进行转换，这种转换方式不仅可以接受标准的字符串作为参数，还能用于接受多个数值型的时间参数以及日期的构造函数实例，如例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-266.jpg">
+        </code>
 	</section>
-	<!-- 属性的操作 -->
-	<section>
-		<h3>属性的操作</h3>
-		<p>对于一个HTML标签可能会有一个或者多个的属性，这些属性都是可以操作的，JavaScript对操作属性提供了以下方法：</p>
-		<dl class="attrExplain">
-			<dt>Element.getAttribute()</dt>
-			<dd>Element.getAttribute()方法返回当前元素节点的指定属性。如果指定属性不存在，则返回null。参数为指定的属性名称。</dd>
-
-			<dt>Element.setAttribute()</dt>
-			<dd>Element.setAttribute()方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法含有两个参数，第一个参数表示属性名，第二个参数表示需要对属性设置的值。</dd>
-
-			<dt>Element.hasAttribute()</dt>
-			<dd>Element.setAttribute()方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
-
-			<dt>Element.removeAttribute()</dt>
-			<dd>Element.removeAttribute()方法用于从当前元素节点移除属性。</dd>
-
-			<dt>dataset属性</dt>
-			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*）,该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的。</dd>
-		</dl>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>计算出今年中最后一天（到今年最后一天的23时59分59秒999毫秒）到今天...</p>
+		<p>1、...的天数；</p>
+		<p>2、...的小时数；</p>
+		<p>3、...的分钟数；</p>
+		<p>4、...的秒数；</p>
+		<p>并通过一个定时执行函数实时地将完整信息显示于页面内。</p>
+		<p>&lt;提示&gt;可以用“Math.ceil()”方法向上取整</p>
 	</section>
-	<!-- class属性的操作 -->
+	<!-- 数学函数 -->
 	<section>
-		<h3>Class属性的操作</h3>
-		<p>每个Element都具有两个关于Class的属性：“Element.className”和“Element.classList”。className属性用来读写当前元素节点的class属性。它的值是一个字符串，每个class之间用空格分割。classList属性则返回一个类似数组的对象，当前元素节点的每个class就是这个对象的一个成员。</p>
-		<p>classList对象有下列方法：</p>
+		<h3>数学计算对象Math</h3>
+		<p>该对象提供了一系列的数学常数和计算方法。该对象不是构造函数，不能通过构造函数生成实例，它的所有方法都只有通过Math对象去进行调用。</p>
+		<p>Math对象提供以下属性来表示数学中的数值形态：</p>
 		<ul class="indent">
-			<li>add()：增加一个class。</li>
-			<li>remove()：移除一个class。</li>
-			<li>contains()：检查当前元素是否包含某个class。</li>
-			<li>toggle()：将某个class移入或移出当前元素。</li>
-			<li>item()：返回指定索引位置的class。</li>
-			<li>toString()：将class的列表转为字符串。</li>
+			<li>Math.E，常数E</li>
+			<li>Math.LN2，2的自然对数</li>
+			<li>Math.LN10，10的自然对数</li>
+			<li>Math.LOG2E，以2为底e的对数</li>
+			<li>Math.LOG10E，以10为底的e的对数</li>
+			<li>Math.PI，圆周率π</li>
+			<li>Math.SQRT1_2，0.5的平方根</li>
+			<li>Math.SQRT2，2的平方根</li>
+		</ul>
+		<p>这些属性在控制台中直接运行后结果如下：</p>
+		<code class="indent">
+            <img src="img/code/jscode/code-js-233.jpg">
+        </code>
+        <p>Math对象除了上面的属性，还提供了一些较为实用的方法：</p>
+        <ul class="indent">
+			<li>Math.abs()，绝对值</li>
+			<li>Math.ceil()，向上取整</li>
+			<li>Math.floor()，向下取整</li>
+			<li>Math.round()，四舍五入</li>
+			<li>Math.max()，最大值</li>
+			<li>Math.min()，最小值</li>
+			<li>Math.pow()，指数运算</li>
+			<li>Math.sqrt()，平方根</li>
+			<li>Math.log()，自然对数</li>
+			<li>Math.exp()，e的指数</li>
+			<li>Math.random()，随机数</li>
+		</ul>
+		<p>下面就来通过一些简单的示例来观察这些方法的作用。</p>
+		<dl class="attrExplain">
+			<dt>Math.abs()</dt>
+			<dd>对一个数求绝对值。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-234.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.ceil()</dt>
+			<dd>对一个小数求向上取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-235.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.floor()</dt>
+			<dd>对一个小数求向下取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-236.jpg">
+				</code>
+			</dd>
+
+			<dt>>Math.round()</dt>
+			<dd>对一个小数“四舍五入”取整。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-238.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.max()</dt>
+			<dd>对参数列表中的数字求最大值，参数必须全部为数值型（或能转换为数值的字符串），否则会返回NaN。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-237.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.min()</dt>
+			<dd>对参数列表中的数字求最小值，参数同样必须全部为数值型，否则会返回NaN。原理和“Math.max()”一致，这里不再提供示例。</dd>
+
+			<dt>Math.pow()</dt>
+			<dd>该方法允许两个参数，第一个参数表示底数，第二个参数表示幂。即第二个参数是第一个参数的n次方，然后返回结果。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-239.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.sqrt()</dt>
+			<dd>返回一个数的平方根，如果是一个负数会返回NaN。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-240.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.log()</dt>
+			<dd>返回以e为底的自然对数值。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-241.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.exp()</dt>
+			<dd>返回常数e的参数次方。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-242.jpg">
+				</code>
+			</dd>
+
+			<dt>Math.random()</dt>
+			<dd>返回一个0~1之间的<em title="计算机中的随机数都是伪随机数">伪随机数</em>，包含0，但不包含1。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-243.jpg">
+				</code>
+			</dd>
+		</dl>
+		<p>Math对象提供的这些方法中的某些方法单独存在似乎没有什么意义，需要进行配合使用才能发挥其真正的价值。如现在需要返回一个从0到5之间的随机数，那需要保证的是数字不能出现小数，但又必须覆盖到数字“0”和数字“5”，这个时候向下取整和向上取整的方法都是不可行的，就只有配合“四舍五入”的方法了。示例如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-244.jpg">
+		</code>
+		<p>但倘若需要返回的是某一段数值之间的随机数，那公式应该是“Math.round(Math.random() * (max - min)) + min”的形式，例如现在我们要取出2~6之间的随机数的，那写法就应该如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-245.jpg">
+		</code>
+		<p>返回数值是Math.random()基本功能，利用它的实现原理和字符串或者数组的特性，我还可以取出随机的其它数据格式，如字符串中的某一个字符，或者数组中的某一个元素。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-246.jpg">
+		</code>
+		<p>Math对象还提供了一组求取三角函数值的方法，参数均为0~1之间（包括0和1）的浮点数：</p>
+		<ul class="indent">
+			<li>Math.sin()，返回参数的正弦</li>
+			<li>Math.cos()，返回参数的余弦</li>
+			<li>Math.tan()，返回参数的正切</li>
+			<li>Math.asin()，返回参数的反正弦</li>
+			<li>Math.acos()，返回参数的反余弦</li>
+			<li>Math.atan()，返回参数的反正切</li>
+		</ul>
+		<p>这组方法在目前的网站或应用中使用得并不是很多，但在HTML5的三维图形技术WebGL技术中比较常见（在“CSS transform变形转换”一章中的“矩阵”也有涉及），这里可以暂时作为了解即可。它们的使用方法如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-247.jpg">
+		</code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习二&gt;</h3>
+		<p>编写一个函数，功能为随机生成一串字符范围为“A~Z”、“a~z”以及“0~9”的“不确定位数”的验证码，验证码生成的位数由函数的参数决定。</p>
+		<p>&lt;提供数据&gt;</p>
+		<p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</p>
+	</section>
+	<!-- 正则表达式 -->
+	<section>
+		<h3>正则表达式RegExp对象</h3>
+		<p>正则表达式（regular expression）是一种表达字符串结构的方法。它现在的主要用途就是给定一个模式，然后让指定字符串来匹配这个模式。常见的用途有“关键字过滤”、“用户表单输入”、“数据内容筛选”等。JavaScript的正则表达式是参照<em title="一种计算机程序语言，类似于C、sed、awk、shell等语言">Perl</em>的第5版设定的。</p>
+		<p>新建一个正则表达式有两种方法，一种是将需要匹配的字符放置于双斜杠“<em>//</em>”内，一种是利用构造函数“new RegExp()”创建。而这两种方法基本上是等价的，它们的差别在于：第一种方法在编译时新建正则表达式，第二种方法在运行时新建正则表达式。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-248.jpg">
+		</code>
+		<p>正则表达式本身也是一种对象。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-249.jpg">
+		</code>
+		<p>正则表达式可以接收第二个参数。这些参数可以单独使用，也可组合使用。</p>
+		<ul class="indent">
+			<li>i，表示忽略大小写</li>
+			<li>g，表示全局匹配，否则只返回第一个匹配的值</li>
+			<li>m，表示多行匹配</li>
+		</ul>
+		<p>使用示例如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-250.jpg">
+		</code>
+		<p>正则表达式提供了一个可读写的“<em>lastIndex</em>”属性来获取或设置开始匹配的位置。该属性生效的前提是表达式内具有“<em>g</em>”这个参数。同时也提供了一个只可读的“<em>source</em>”属性来返回正则表达式的字符串形式。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-251.jpg">
+		</code>
+		<p>正则表达式提供了两个方法来匹配字符串返回结果的方式。</p>
+		<dl class="attrExplain">
+			<dt>test()方法</dt>
+			<dd>该方法返回的是一个布尔值，表示是否匹配某一个字符串，若匹配返回true，否则返回false。若加上参数“g”，则每一次test()方法都从上一次结束的位置开始向后匹配。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-252.jpg">
+				</code>
+			</dd>
+			<dd>若手动设置lastIndex属性的值，那对字符串的匹配会按照lastIndex属性设置的开始下标位置进行匹配，若能匹配到完整的字符就返回true，否则返回false。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-253.jpg">
+				</code>
+			</dd>
+
+			<dt>exec()方法</dt>
+			<dd>该方法可以返回匹配的结果，如果匹配就返回一个数组，数组元素是所有匹配的字符串的结果，若无匹配就返回null。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-254.jpg">
+				</code>
+			</dd>
+			<dd>exec()方法还拥有两个属性，“<em>input</em>”属性会返回整个匹配的字符串，“<em>index</em>”属性会返回匹配成功开始的位置。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-255.jpg">
+				</code>
+			</dd>
+		</dl>
+		<p>除了利用正则表达式提供的方法，我们还可以利用字符串对象（即“String.prototype”）提供的方法来完成正则匹配，部分内容我们在字符串操作一章节中已经实例演示过了。可以通过我们接下的正则表达式学习来深化之前所学的字符串操作的相关内容。</p>
+		<p>正则表达式的匹配的字符有两种，一种称作“<em>字面量字符</em>”，一种称作“<em>元字符</em>”。</p>
+		<p>所谓“字面量字符”指的就是实实在在的字符，它们可以是相连的英文字母、数字或符号。如：“/abc/”匹配的就是英文字母中相连的三个字母“abc”，少一个字母或顺序多一个都不能匹配成功，如例：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-256.jpg">
+		</code>
+		<p>所谓的“元字符”指的是用一些规定的符号来表示特定的字符。如点字符“.”匹配除回车“\r”、换行“\n”、行分隔符“\u2028”和段分隔符“\u2029”以外的所有字符。如例：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-257.jpg">
+		</code>
+		<p>上面的点字符“.”表示的就是除上述那些符号的任意一个字符，只要在“c”和“t”之间出现非指定的任意字符，那最终的匹配结果都会返回“true”，表示匹配成功。当然元字符还有很多，如：^、$、|、\\、\*、+、?、()、[]、{}等，我们将在后续的课程中进行学习。</p>
+		<p>由于原字符的存在，如果需要匹配的字面量字符中含有一些特殊符号，那需要进行转义，转义符的写法为“<em>\</em>”，在正则表达式中，需要转义的字符有12个：<em>^</em>、<em>.</em>、<em>[</em>、<em>$</em>、<em>(</em>、<em>)</em>、<em>|</em>、<em>*</em>、<em>+</em>、<em>?</em>、<em>{</em>和<em>\\</em>。需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-258.jpg">
+		</code>
+		<p>当然，除了上述的那些需要转义才能显示为字面量的元字符外，字符串中的一些常用的转义符在此仍然是生效的（如换行符“\n”、回车符“\r”等），如果需要匹配这些特殊字符，同样是需要通过转义的。接下来我们对正则表达式中的那些元字符进行归纳说明：</p>
+		<dl class="attrExplain">
+			<dt>开始位置字符或脱字符“^”</dt>
+			<dd>若该符号直接放置于正则表达式内，表示“限定开始”，也就是说，限定了某个字符的内容只能由正则表达式内“^”之后的内容开始。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-259.jpg">
+				</code>
+			</dd>
+			<dd>但若该方法出现在“[]”内部，表示“否定”，也就是表示除了这些字符，其它字符都可以匹配。而且这些字符不一定需要连续出现，如：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-260.jpg">
+				</code>
+			</dd>
+
+			<dt>结束位置字符“$”</dt>
+			<dd>表示“限定结束”，某个字符的内容只能由正则表达式内“$”之前的内容结束，如：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-261.jpg">
+				</code>
+			</dd>
+			<dd>有的时候“^”和“$”需要搭配起来使用，表示限定段字符只能由规则中限定的字符开始且结束，如：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-262.jpg">
+				</code>
+			</dd>
+
+			<dt>字符选择“[]”</dt>
+			<dd>参与匹配的字符只要有其中一个与“[]”相同，那就会匹配成功，可以是一个字符，也可以是一组字符。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-263.jpg">
+				</code>
+			</dd>
+
+			<dt>选择符“|”</dt>
+			<dd>竖线符号“|”在正则表达式中表示“或”。如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-264.jpg">
+				</code>
+			</dd>
+			<dd>该元字符可以多个连用，如判断电话号码段的情景。</dd>
+
+			<dt>连字符“-”</dt>
+			<dd>该字符表示一个连续的范围，它用于表示ASCII编码的一个字符范围，如“A-Z”、“a-z”、“0-9”等，但需要注意的是“A-Z”和“a-z”不能直接写成“A-z”，因为在ASCII编码中英文大小写字母之间还有其他字符，如果不需要精确区分大小写字符，记得还需要加上正则表达式的第二个参数“i”。而且作为连字符必须放置在[]内，否则只是表示字面量的意思。使用方法如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-265.jpg">
+				</code>
+			</dd>
+
+			<dt>匹配组“()”</dt>
+			<dd>内容准备中...</dd>
+
+			<dt>匹配次数限制“{}”</dt>
+			<dd>内容准备中...</dd>
+
+			<dt>匹配零次或一次“？”</dt>
+			<dd>内容准备中...</dd>
+
+			<dt>匹配零次或多次“*”</dt>
+			<dd>内容准备中...</dd>
+
+			<dt>至少匹配一次“+”</dt>
+			<dd>内容准备中...</dd>
+
+		</dl>
+		<p>预定义模式（简写模式）。</p>
+		<ul class="indent">
+			<li><em>\d</em> 匹配0-9之间的任一数字，相当于[0-9]。</li>
+			<li><em>\D</em> 匹配所有0-9以外的字符，相当于[^0-9]。</li>
+			<li><em>\w </em>匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。</li>
+			<li><em>\W</em> 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。</li>
+			<li><em>\s</em> 匹配空格（包括制表符、空格符、断行符等），相等于[\t\r\n\v\f]</li>
+			<li><em>\S</em> 匹配非空格的字符，相当于[^\t\r\n\v\f]。</li>
+			<li><em>\b</em> 匹配词的边界。</li>
+			<li><em>\B</em> 匹配非词边界，即在词的内部。</li>
 		</ul>
 	</section>
 </root>
