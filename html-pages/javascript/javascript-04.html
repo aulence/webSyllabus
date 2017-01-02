@@ -175,6 +175,12 @@
                 </code>
             </dd>
             <dd>函数testForReturn()内的if语句相当于是一个前置判断，当条件成立时才会返回特定的结果“str + ！”，也就是说如果这个条件不成立时，数组内的元素应该全部会添加进“str”这个变量，而且函数的返回值应该为默认隐式设置的undefined。而且一旦return得到执行，函数会立即中止，并返回值，所以不要企图用一个循环来多次通过return来返回一个值。</dd>
+            <dd>关于return使用的作用域需要特别注意的是，return这个关键字<em>不能出现在全局作用域里</em>，否则浏览器会报错。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-291.jpg">
+                </code>
+            </dd>
 	    </dl>
 	</section>
 	<!-- 中断和跳出的标签 -->
