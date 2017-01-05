@@ -233,6 +233,18 @@
 		</code>
     </section>
     <section>
+    	<h3>toLowerCase()和toUpperCase()方法</h3>
+    	<p>toLowerCase()方法用于将一个字符串全部转为小写，toUpperCase()则是全部转为大写。它们都返回一个新字符串，不改变原字符串。</p>
+    	<p>这两个方法在中文网站里的最大作用就是用于处理一些程序中会返回首字母大写的方法（如：Object.ptopotype.toString.call()方法返回数组中的第二个单词），或返回结果为全部字母大写的属性（如：Event.target.tagName），由于某些方法的返回结果在不同时期和厂家的浏览器上可能会有所差异，考虑到JavaScript是一种对英文大小写敏感的语言，所以有的时候会利用转换大小写的方式让其统一表现，或利于做逻辑判断。</p>
+    	<code class="indent">
+			<img src="img/code/jscode/code-js-292.jpg">
+		</code>
+		<p>它们在String原型链中对应的方法是：<em>String.prototype.toUpperCase.call()</em>和<em>String.prototype.toUpperCase.call()</em>，利用这一点，我们可以通过<em>bind()</em>方法可以改变“this指针”的特性去简写这两个方法：</p>
+   <code class="indent">
+			<img src="img/code/jscode/code-js-293.jpg">
+		</code>
+    </section>
+    <section>
         <h3>字符串方法的组合使用</h3>
         <p>关于字符串的方法需要说明一点，就是这些方法很多都是可以互相嵌套使用的。例如，现在想获取浏览器地址栏内某些信息以助于对浏览器地址信息的更改，就可以用到一个这样的字符串方法的组合：</p>
         <code class="indent">
