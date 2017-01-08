@@ -1,149 +1,235 @@
-<root data-root="JavaScript DOM">
-    <!-- 概述 -->
+<root data-root="数据类型--内置对象">
+    <!-- 函数详解 -->
     <section class="mt0">
-    	<h3>JavaScript DOM概述</h3>
-    	<p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删标签和操作属性等）。</p>
-    	<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，下一代版本DOM 4正在拟定中。</p>
-    	<p>严格地说，DOM不属于JavaScript，但是操作DOM是JavaScript最常见的任务，而JavaScript也是最常用于DOM操作的语言。DOM的最小组成单位叫做节点。文档的树形结构，就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。一个文档的所有节点，按照所在的层级，可以抽象成一种树状结构。这种树状结构就是DOM。</p>
-	</section>
-	<!-- DOM节点 -->
-	<section>
-		<h3>DOM节点</h3>
-		<p>DOM在JavaScript中的实例就是document，该对象具有以下属性：</p>
-		<dl class="attrExplain">
-			<dt>Node.ownerDocument</dt>
-			<dd>Node.ownerDocument属性返回当前节点所在的顶层文档对象，即document对象。document对象本身的ownerDocument属性，返回null。</dd>
+        <h3>函数详解</h3>
+        <p>所谓“函数”，就是使用关键字“<em>function</em>”定义的一段有<em>独立作用域</em>，能被<em>反复执行</em>的语句块。它在JavaScript中也是以一种“值”的方式存在的（JS允许的六种数据类型之一），和其它数据类型相比，它是一种可以接收“<em>参数</em>”的，可运行的值，除此之外，它并没有任何的不同。</p>
+        <p>但JavaScript作为一个“面向对象”和“函数式编程”的语言，“函数”部分自然是一个重点，而且也有一些区别于其它语言，即可以称为特色的地方。接下来我们就对JS中的“函数”进行详细的学习。</p>
+        <p>首先，要提到的就是函数的声明方式，主要有四种：</p>
+        <dl class="attrExplain">
+            <dt>利用关键字“function”声明</dt>
+            <dd>基本语法格式为：<em>function fnName(param list) {...}</em></dd>
+            <dd>function关键字后空格紧跟一个自定义的<em>函数名</em>，该名称的命名方式、要求与变量的命名方式、要求基本一致（即避免出现特殊符号，不使用关键字、保留字，名称开头不使用数字等），名称后发紧跟一对小括号“<em>()</em>”，小括号内部可以根据需求配置一个或多个<em>参数</em>，小括号后方又得跟一对花括号“<em>{}</em>”花括号，函数内所有的语句都需要放置于该花括号内部。</dd>
 
-			<dt>Node.nextSibling</dt>
-			<dd>Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
+            <dt>利用函数表达式进行赋值声明</dt>
+            <dd>基本语法格式为：<em>var fnName = function(param list) {...};</em></dd>
+            <dd>这种函数的声明方式是将函数当做了一个表达式，然后将表达式赋给了函数名，这和“var num = 2 + 3;”、“var str = "这是第" + num + "行字符串";”等这些表达式并没有什么不同。</dd>
+            <dd>但通过表达式声明的函数需要注意两点。第一点，这样声明的函数，需要先声明后调用，否则像上面的函数名的值将为undefined;第二点，表达式内部的function后方不需要再空格+函数名了，如果这样写，function后方的函数名只能被函数内部调用，在外部是无法使用的，如例：</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-183.jpg">
+                </code>
+            </dd>
+            <dd>除了上述需要注意的两点外，这种方式声明的函数和利用funciton关键字定义的函数并没有什么区别。</dd>
 
-			<dt>Node.previousSibling</dt>
-			<dd>previousSibling属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</dd>
+            <dt>利用构造函数“Function”声明</dt>
+            <dd>基本语法格式为：<em>var fnName = new Function(param list, ...);</em></dd>
+            <dd>这种写法是将参数列表和函数体放置在了一起同样作为了参数。构造函数内的参数无论有多少个，始终会将其最后一个参数作为函数体去执行，如果只有一个参数，那这个参数就是函数体内部的代码。但使用这种方式需要注意的是，就算是参数和函数体的语句也是要作为字符串去呈现的，即需要给参数和函数体执行的代码都加上引号，否则会报“未定义”的错误。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-184.jpg">
+                </code>
+            </dd>
+            <dd>这种将参数和函数体内的语句糅杂在一起的写法非常不直观，实际开发中并不推荐使用。</dd>
 
-			<dt>Node.parentNode</dt>
-			<dd>parentNode属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：element节点、document节点和documentfragment节点。</dd>
-			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点，父节点也是null。</dd>
+            <dt>自调用函数（即时执行函数）</dt>
+            <dd>基本语法格式为：<em>(function() {...})(param);</em></dd>
+            <dd>这种函数声明方式的最大特点是“即时性”。它不需要任何调用，即可立即执行。它可以有函数名，通常也可无函数名。它执行的原理是利用小括号将函数自身括起来，以到达提升括号内函数表达式优先级的作用，括号内部的函数生效后，又紧接着后面的括号进行函数的调用，从而实现自我调用的效果。如下例：</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-222.jpg">
+                </code>
+            </dd>
+            <dd>这种函数的声明方式和其它函数的声明方式一样，它仍然有自己的独立<em>作用域</em>。自调用函数还有一个特点就是，它的运行虽然还是在程序的<em>独立线程</em>完成的，但是却可以达到程序在<em>主线程</em>完成的效果。（这一点在“函数的作用域”一节中进行讲解）</dd>
+        </dl>
+        <p>每一个函数都会有一个返回值，这个返回值可以通过关键字“<em>return</em>”进行设置，若未<em title="编程技术中的术语，相对于“隐式”">显示</em>地设置函数的返回值，那函数会默认返回一个<em>undefined</em>值。如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-216.jpg">
+        </code>
+        <p>但若手动地设置了函数的返回值，即手动地设置了关键字“return”空格之后的值后，函数将不再会返回undefined了，而是返回开发者手动设置的那个值：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-217.jpg">
+        </code>
+        <p>上例中，通过手动设置了关键字return之后的值后，undefined就没有再出现了。但在手动设置函数返回值的时候需要注意的一点就是，代码一旦执行完成“return”这行语句后，代码就会跳出整个函数，即不再执行当前函数的后续语句，这一点可以善加利用，特别是在一些条件语句内部使用。如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-218.jpg">
+        </code>
+        <p>根据上例返回的结果可以发现，函数“fn()”内的控制台输出“4”和“5”并没有执行，是因为代码执行return之后，该函数也就结束了，函数执行完后，还是会依次执行之后的语句。但在这里还需要补充一点，就是“return”之后的值只能有一个。如果尝试返回多个值，那得到的结果始终是最后一个值：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-219.jpg">
+        </code>
+        <p>在有的使用场景中，如果真的需要函数返回多个值，那就只有将值组合成一个对象进行返回了，然后再通过访问函数的属性去获取返回的具体值，如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-220.jpg">
+        </code>
+        <p>也可以改成这种形式：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-221.jpg">
+        </code>
+        <p>和声明和一个变量一样，在同一个作用域内，若函数重复声明，后声明的函数会覆盖之前声明过的函数，使之前声明过的任何同名函数无效。所以在大型网站/应用中，声明函数也应该要有和命名变量那样的“命名空间”的思维，即将函数当做对象中的一个方法那样去使用。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-185.jpg">
+        </code>
+        <p>上面的函数改成“对象”的方法后再次执行，表现和结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-186.jpg">
+        </code>
+        <p>这样写虽然在很大程度上避免了函数名的重名，从而导致部分函数无效的情况。但需要提醒的是，只要是通过表达式赋值声明的方式都会面对一个问题，就是声明和调用的次序问题。我们来看几个例子：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-187.jpg">
+        </code>
+        <p>通过上例可以发现，通过函数表达式的方式声明的函数，在先调用和声明的时候报错了。当然这种后声明不管是通过一个变量声明还是通过一个对象内的属性声明，结果都是一样的，会报错。所以，在大型网站/应用中需要使用对象方法来定义一个函数的，但又不希望将所有函数都放置于JS文件开头（这样一来所有的事件和事件处理的逻辑都得放置于JS文件的后方，实际操作起来非常不方便），可以使用JS提供的一个事件“<em>window.onload = function() {...加载执行完成后的事件...}</em>”，这个事件的作用是保证页面所有文档（包括图片）都加载完成之后执行的代码，或使用jQuery中的“$(document).ready(function() {...加载执行完成后的事件...})”（简写为：“$(function(...加载执行完成后的事件...) {...})”）,这个事件的作用是保证页面所有文档（不包括图片）加载完成后执行的代码。</p>
+        <p>我们通过一个这样的示例就明白了：（由于涉及到“事件的调用”，我们的代码编写部分在编辑器内进行）</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-188.jpg">
+        </code>
+        <p>在控制台中运行的结果就是：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-189.jpg">
+        </code>
+        <p>但若将外层的事件“window.onload”去掉之后，程序就会报错了，会告诉你函数“fnExp_1”和“fnExp_2”未定义。但千万不要认为将函数定义在程序后面会有这么多麻烦就放弃使用这种方式了。其实将函数定义在后面，而在代码的前面进行调用有诸多好处。其中一点，就是可以让您的代码像一本书一样具有“目录”（前提是有良好的注释），可以通过简单的事件方便地查找到函数的原始定义部分（现在绝大多数的编辑器都提供类似于“跳转到函数定义部分”的功能），让开发者在维护代码的时候更加清晰地认识所定义的函数在代码中所起的作用。</p>
+        <p>函数可以在页面中的任何地方声明定义，但根据ECMAScript的规范，函数是不能在条件语句内声明的，这点在使用的过程中需要特别注意。虽然现在现代的浏览器已经允许了这种行为，但为了浏览器兼容考虑还是应该尽量避免这种做法：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-206.jpg">
+        </code>
+        <p>如果实在是要这么做，最好是使用函数表达式的声明方式去进行从定义，这样可以达到最好的浏览器兼容性。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-207.jpg">
+        </code>
+    </section>
+    <!-- 函数的参数 -->
+    <section>
+        <h3>函数的参数</h3>
+        <p>在很早之前我们就接触过了函数的<em>参数</em>，它是让函数<em>可复用</em>的关键性存在。就是当程序里很多地方都在做着同样一件事件，但只是部分需要呈现的内容不同的时候，我们就可以使用配置参数的形式来完成一个函数的功能。如在学习JavaScript之初，我们就会接触到的“<em>alert()</em>”函数和“console.log()”方法一样，我们只需要在使用它们的时候往该函数或方法的括号内添加我们需要显示的内容即可让它实现其功能。我们在往括号里添加显示内容的这一个过程就叫做“配置参数”（亦作“传入参数”、“提供参数”等），而对于JavaScript设计这些方法的时候为其括号内添加的参数的这一过程，叫做“设置参数”（亦作“定义参数”、“预留参数”等）。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-190.jpg">
+        </code>
+        <p>对于参数的理解，可以简单理解为函数内部定义的变量，当调用该函数时，参数配置的是何值，那函数内运行的这几个变量就为何值。它和变量相比只有两点不同：</p>
+        <ul class="indent">
+            <li>参数没有关键字“var”的显示声明，而变量可以用“var”声明，也可以不用“var”声明（不推荐这样，因为这样就是全局变量了，而且没有<em>变量提升</em>的效果）</li>
+            <li>参数是在调用函数时配置它的值的，而变量可以在任何时候配置它的值</li>
+        </ul>
+        <p>可以这样去理解参数的传递：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-191.jpg">
+        </code>
+        <p>当然，被调用的函数的内部参数还可以是变量：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-192.jpg">
+        </code>
+        <p>既然参数可以是变量，那也可以为表达式，也可以为任意JavaScript允许的的数据类型（JS的六种数据类型），这和我们之前所接触的JavaScript提供的各种数据操作方法并没有什么不一样。所以，这样一来，参数的配置和参数的设置需要一一对位，即配置参数的顺序和函数定义参数时的顺序一致。根据这个要求参数的配置又可以分为另外几种特殊（异常）情况。</p>
+        <ul class="indent">
+            <li>为函数配置了多余的参数</li>
+            <li>配置的参数少于预置的参数</li>
+            <li>配置的参数多于预置的参数</li>
+            <li>配置的参数与预置的参数没有对位</li>
+        </ul>
+        <p>针对以上情况，我们在控制台中举几个例子进行说明帮助理解。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-193.jpg">
+        </code>
+        <p>上面这种调用函数并传递参数的方式统称为“<em>对位传参</em>”。这种传递方式，在函数定义的时候，函数体内部有几个变量，那括号内就需要出现几个参数（位置没有要求，只需要保证括号内的参数名和函数体内部的变量名一致即可）。如果括号内的参数多设置了，没有什么影响，但括号内没有声明的参数，在函数内进行了使用，除非这个变量是个全局变量（或父级函数的变量，这在“闭包”中会讲到），否则就会报出变量未定义的错误。如果参数列表内已经设置了某项参数，但是在调用函数并配置参数的时候没有对该参数进行设置，那该参数的值就为undefined。如同上例中的最后一个例子（配置的参数实际上是“a”，但参数“a”并没有参与到函数内部去）。</p>
+        <p>像上例中最后一个例子，我们想让函数将参数变量“b”返回，那我们得明文地将参数变量“a”进行设置，但设置为任何值都没有影响。如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-194.jpg">
+        </code>
+        <p>我们之前提到过，参数实际上也是变量。在这个例子中，参数变量“a”无论为何值，它都没有参与到函数体的语句中去，所以函数最终的返回结果自然与它无关了。当然，函数也不会因为不曾使用过某个已经声明的变量而报错的。</p>
+        <p>但从上面的“对位传参”的例子中可以发现一个问题，就是有的时候我们想省略某一项参数的时候，必须为省略参数至少配置一个有效值，哪怕是本来没有什么意义的“undefined”，否则会像上例中最后一个运行结果那样产生“无效标识符”的报错。这使得我们在调用一个函数时会做很多“无用功”。</p>
+        <p>像这样一个应用场景，我们需要对至多5个数进行求和：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-195.jpg">
+        </code>
+        <p>可以发现，函数在被定义之后，我们每次调用这个函数的时候都需要给没有参与计算部分的参数传一个“0”的数值，否则它们的值将会是undefined，那么得出的运算结果就能预知得到应该是一个NaN了。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-196.jpg">
+        </code>
+        <p>为了解决这样的问题，我们最稳妥的做法，就是一开始就为这些参数在函数内部就设定好默认值，如果在调用阶段开发者（在用户界面上的话，是由用户决定的）配置了该参数再去使用开发者配置的数值。上面的函数经过修改后如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-197.jpg">
+        </code>
+        <p>这样一来，就完成了参数传递在5个以内的时候，无论是几个参数都能正确累加出结果的函数了。但在注释的时候就需要写明，最大支持的参数个数，但这通常是由项目的需求决定的（例如信用卡分期后的还款总额，其中的“分期数”就是我们参数列表中的最大值。现在一般最大的分期数是“24期”，也就是说，要实现一个不指定分期数的总额求和的函数，实际上允许最大参数个数是24个-_-!。当然，这里只是做一个参数功能的比喻，实现该功能肯定有更好的办法）。</p>
+        <p>其实上例中的参数配置只是实现了“<em>依次</em>”的对位传参，也就是说，在只传递了1一个参数的时候，对应的是参数列表中的“a”；传递了2个参数，对一个参数对应的是“a”，第二个参数对应的是“b”，然后以此类推。这在处理数值求和运算的时候似乎是没有什么问题的，但若是用于处理类似于用户表单填写（有必填项，也有非必填项）的时候，问题就会出现了。我们还是先来看一次正常的对位传参的情况：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-198.jpg">
+        </code>
+        <p>如果，现在我们现在只想提供其中某几项信息，其它的不填写，就会出现下面的情况了：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-199.jpg">
+        </code>
+        <p>通过这个例子可以发现，除非我们依次对位地填写参数，否则出现的配置结果并不会乖乖的出现在应有的位置上。可以预知的是，就算我们給它配置好默认值，它们也不会按照开发者的“意念”出现在指定的位置。要解决这样的问题，我们只能采用唯一一种可行的方式了，那就是“<em>对象传参法</em>”，对象传参法在定义函数的时候只需要配置唯一的一个参数，而在调用的时候配置的参数是一个对象。首先我们来看一个将对象作为参数传递的完整示例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-200.jpg">
+        </code>
+        <p>我们先来做一个分析对比。这次函数定义的参数部分和之前通过“a,b,c...”设置参数列表的方式不同，这次使用了一个自定义单词“param”（译为：参数）作为参数，而参数内部也不再是那些“a,b,c...”的字母，而全是改成了<em>“param”（参数里列表内的那个词） + “.” + “自定义名称”</em>的形式。如果你对之前学习过的“对象型数据类型”还算熟悉的话，应该不难判断，这个变量就是一个对象。而在下方调用该函数时，函数内的参数应证了这一点。函数内配置的参数就是一个对象，而对象内的属性名正好与函数定时，函数体内部“param.”之后的名称正好一一对应。为了证明函数调用时的对象属性名和函数内属性名的名称是对应的，我们来做这样一个实验，就是在调用的时候更改一下配置的顺序，再观察结果。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-201.jpg">
+        </code>
+        <p>通过运行的结果可以清晰地对应出来，调用的时候无论怎么更改属性的顺序，函数最终的运行结果始终是按照函数内定义的顺序进行的。单是这一点“对位传参法”就已经是办不到的了。为了提升程序的“健壮性”，我们需要对函数中的所有值都定义一个默认值，防止函数在被调用的时候没有配置对象的某一项参数（某一个属性）也能显示出“适当”的结果。</p>
+        <p>函数声明定义部分如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-202.jpg">
+        </code>
+        <p>调用函数并传递其中某些“参数”后，运行结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-203.jpg">
+        </code>
+        <p>上例中，对未配置的参数属性都进行了默认值的强制显示，若不需要显示配置的参数属性，在表达式的“或”逻辑运算符“||”后方用一对空引号""替代即可。用逻辑运算符处理默认字符只限于配置属性值为“非零”（也包括会在条件语句中不会自动转换成false的值）的时候，若配置的参数对象内会出现数值计算，或需要显示数值的时候（如工龄、请假次数、迟到次数），这些值都很可能为数值0。逻辑运算符都会将其自动转换为false，直接就去使用我们默认配置的值（但默认值又是一个非0的数），这显然是一个bug。如果是这样的情况，还是建议使用“三元表达式”的形式对undefined进行严格等于的比较运算进行判断更为稳妥。下面就是当参数内的属性传递的是数值0的时候出现的异常结果。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-204.jpg">
+        </code>
+        <p>但是在通过对象传递参数的时候千万不要忘记一个问题，就是作为参数时值的类型仍然要分为原始值类型的“<em title="数值型、字符串和布尔型">传值传递</em>”和复合值类型的“<em title="数组对象、普通对象和函数">地址传递</em>”。再次进行说明，凡是是需要进行包装才能成为对象的，即通过“Object()”方法转换后的值不等于自身的，那它们进行的赋值操作就是“传值传递”。凡是通过“Object()”方法转换后的值仍然等于自身的，那它们进行的赋值操作就是“地址传递”。这一理论，在数据作为参数时仍然成立（其实在任何语境中都成立），需要加以注意。</p>
+        <p>如果参数出现同名，和对变量的处理一样，采用同名参数中最后一个参数的值。</p>
 
-			<dt>Node.parentElement</dt>
-			<dd>parentElement属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</dd>
-			<dd>在IE浏览器中，只有Element节点才有该属性，其他浏览器则是所有类型的节点都有该属性。</dd>
-
-			<dt>Node.childNodes</dt>
-			<dd>childNodes属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
-
-			<dt>Node.firstChild，Node.lastChild</dt>
-			<dd>firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
-		</dl>
-		<p>节点对象有这样一些方法：</p>
-		<dl class="attrExplain">
-			<dt>Node.appendChild()</dt>
-			<dd>Node.appendChild()方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。</dd>
-
-			<dt>Node.hasChildNodes()</dt>
-			<dd>Node.hasChildNodes()方法返回一个布尔值，表示当前节点是否有子节点。</dd>
-
-			<dt>Node.cloneNode()</dt>
-			<dd>Node.cloneNode()方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
-			<dd>克隆一个节点之后，DOM树有可能出现两个有相同ID属性的HTML元素，这时应该修改其中一个HTML元素的ID属性。</dd>
-
-			<dt>Node.insertBefore()</dt>
-			<dd>Node.insertBefore()方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是所要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
-			<dd>如果insertBefore()方法的第二个参数为null，则新节点将插在当前节点的最后位置，即变成最后一个子节点。如果所要插入的节点是当前DOM现有的节点，则该节点将从原有的位置移除，插入新的位置。</dd>
-
-			<dt>Node.removeChild()</dt>
-			<dd>Node.removeChild()方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
-
-			<dt>Node.replaceChild()</dt>
-			<dd>Node.replaceChild()方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。</dd>
-
-			<dt>Node.contains()</dt>
-			<dd>Node.contains()方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。</dd>
-
-			<dt>Node.isEqualNode()</dt>
-			<dd>isEqualNode()方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</dd>
-
-			<dt>Node.normalize()</dt>
-			<dd>normailize方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
-		</dl>
-	</section>
-	<!-- DOM节点查询 -->
-	<section>
-		<h3>DOM节点查询</h3>
-		<p>对于DOM的查询，document提供了以下方法：</p>
-		<dl class="attrExplain">
-			<dt>getElementById()</dt>
-			<dd>getElementById()方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
-
-			<dt>document.getElementsByTagName()</dt>
-			<dd>document.getElementsByTagName()方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection对象，可以实时反映HTML文档的变化。如果没有任何匹配的元素，就返回一个空集。</dd>
-			<dd>HTML元素本身也定义了getElementsByTagName()方法，返回该元素的后代元素中符合指定标签的元素。也就是说，这个方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
-
-			<dt>document.getElementsByClassName()</dt>
-			<dd>document.getElementsByClassName()方法返回一个类似数组的对象（HTMLCollection实例对象），包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。</dd>
-			<dd>与getElementsByTagName方法一样，getElementsByClassName方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
-
-			<dt>document.getElementsByName()</dt>
-			<dd>document.getElementsByName()方法用于选择拥有name属性的HTML元素，返回一个类似数组的的对象，因为name属性相同的元素可能不止一个。</dd>
-
-			<dt>document.querySelector()，document.querySelectorAll()</dt>
-			<dd>document.querySelector()方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。</dd>
-			<dd>document.querySelectorAll()方法与querySelector()用法类似，区别是返回一个NodeList对象，包含所有匹配给定选择器的节点。</dd>
-			<dd>这两个方法都支持复杂的CSS选择器。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。</dd>
-
-			<dt>Element.closest()</dt>
-			<dd>Element.closest()方法返回当前元素节点的最接近的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器。如果不满足匹配，则返回null。</dd>
-		</dl>
-	</section>
-	<!-- DOM节点的生成 -->
-	<section>
-		<h3>DOM节点的生成</h3>
-		<p>以下反方可以用于生成DOM的节点：</p>
-		<dl class="attrExplain">
-			<dt>document.createElement()</dt>
-			<dd>document.createElement方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
-
-			<dt>document.createTextNode()</dt>
-			<dd>document.createTextNode()方法用来生成文本节点，参数为所要生成的文本节点的内容。</dd>
-
-			<dt>document.createAttribute()</dt>
-			<dd>document.createAttribute()方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
-		</dl>
-	</section>
-	<!-- 属性的操作 -->
-	<section>
-		<h3>属性的操作</h3>
-		<p>对于一个HTML标签可能会有一个或者多个的属性，这些属性都是可以操作的，JavaScript对操作属性提供了以下方法：</p>
-		<dl class="attrExplain">
-			<dt>Element.getAttribute()</dt>
-			<dd>Element.getAttribute()方法返回当前元素节点的指定属性。如果指定属性不存在，则返回null。参数为指定的属性名称。</dd>
-
-			<dt>Element.setAttribute()</dt>
-			<dd>Element.setAttribute()方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法含有两个参数，第一个参数表示属性名，第二个参数表示需要对属性设置的值。</dd>
-
-			<dt>Element.hasAttribute()</dt>
-			<dd>Element.setAttribute()方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
-
-			<dt>Element.removeAttribute()</dt>
-			<dd>Element.removeAttribute()方法用于从当前元素节点移除属性。</dd>
-
-			<dt>dataset属性</dt>
-			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*）,该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的。</dd>
-		</dl>
-	</section>
-	<!-- class属性的操作 -->
-	<section>
-		<h3>Class属性的操作</h3>
-		<p>每个Element都具有两个关于Class的属性：“Element.className”和“Element.classList”。className属性用来读写当前元素节点的class属性。它的值是一个字符串，每个class之间用空格分割。classList属性则返回一个类似数组的对象，当前元素节点的每个class就是这个对象的一个成员。</p>
-		<p>classList对象有下列方法：</p>
-		<ul class="indent">
-			<li>add()：增加一个class。</li>
-			<li>remove()：移除一个class。</li>
-			<li>contains()：检查当前元素是否包含某个class。</li>
-			<li>toggle()：将某个class移入或移出当前元素。</li>
-			<li>item()：返回指定索引位置的class。</li>
-			<li>toString()：将class的列表转为字符串。</li>
-		</ul>
-	</section>
+        <p>函数也具有<em>length</em>属性，但这个属性不是用来获取函数的个数的，而是用来表示函数内参数的个数的。这个属性显示的结果是函数在定义时预置的参数个数，与被调用的时候使用的参数个数没有关系。如例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-205.jpg">
+        </code>
+        <p>上例中，需要注意，运行后的那个结果并不是值函数运算结果，而是该函数的“length”属性的运算结果。可以发现，无论调用函数的时候怎么去配置函数的参数，最终结果都是3，表示的是函数定义时内部的三个参数“a,b,c”。</p>
+        <p>在某些特定的情况下，我们根本不知道函数在调用的时候到底需要配置几个参数，如刚开始我们在讲解通过配置参数来进行求和的那个例子（最多只能配置5个参数），但在实际调用时，可能用到的参数不到5个，或者或者会超出5个。这个时候无论通过普通的“对位传参”再处理默认值的方式，还是通过“对象传参”再处理默认值的方式都基本上是行不通的。为了应对这种情况，JavaScript对函数提供了一个“arguments”对象来应对以上情况。</p>
+        <p>我们首先要对“arguments”这个对象进行一个基本概念的了解。“arguments”对象只能出现在函数内部，在“全局空间”里该对象是无效的。该对象包含了函数运行时的所有参数，arguments[0]就是第一个参数，arguments[1]就是第二个参数，以此类推。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-208.jpg">
+        </code>
+        <p>示例运行后，每次函数被调用后最后的结果都会有一个undefined，这是函数的默认返回值，我们不必理会。我们只用观察每次在调用函数“numFn()”时，为其配置的不同参数。还记得，之前我们在通过“对位传参”的方式调用函数时，超出原始函数预设的参数个数后，超出预设参数个数部分的参数会被忽略掉，但这次显然是没有的。因为，这次的预设参数就一个“param”，但是我们在后面进行了2次配置3个参数的调用和1次配置2个参数的调用（最后一个结果为undefined应是在清理之中）都没有出现异常，arguments对象在这里的作用想必应该能分析得出来了，也就是说它能会忽视函数定义时参数定义的个数，以实际调用时配置的参数为准，也就是说函数的括号内哪怕没有预置参数都是可以的。我们通过arguments对象的“length”属性（之前的length属性是对函数名使用的）来再次证明这一点。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-209.jpg">
+        </code>
+        <p>通过这个例子我们就已经证明了，哪怕声明定义函数的时候没有设置参数，在调用的时候仍然可以为其配置参数（但是在实际开发中仍然建议保留那个参数，以用于说明该函数的运行是依赖参数实现的）。根据上面两个例子总结出来的特点，再根据我们之前所学的知识点，实现一个不确定位数的“求和函数”应该就不那么困难了。</p>
+        <p>arguments对象除了可以读取参数，还可以为参数赋值。但在严格模式下不支持这种做法。</p>
+        <p>需要注意的是，虽然arguments很像数组，但它是一个对象（其实它是一个“类似数组”）。数组专有的方法（比如push()、pop()和forEach()等方法），不能在arguments对象上直接使用。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-210.jpg">
+        </code>
+        <p>如果你对数组的操作方法学习得足够牢固的话，应该还记得在数组操作中有一个方法，它可以把“类似数组”转化成一个真正的数组，那就是使用“slice()”方法在数组原型类中的子方法“call()”。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-211.jpg">
+        </code>
+        <p>那问题来了，将arguments对象转换成一个数组的意义是什么呢？之前我们提到过（在上例中也有一定程度的表现），就是在arguments对象转化成一个数组对象之后，它可以使用数组的专用方法。通过目前已经学习过6种数据类型可以发现，数组的操作方法是最多的，这也成就了数组的操作是最为灵活的，最为方便的。其它数据格式不能完成的操作，在通过特定方式转换为数组之后都成为了可能。比如我们现在拿一个本不能修改其内容的字符串来进行举例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-212.jpg">
+        </code>
+        <p>通过上例可以发现，字符串拥有和数组一样的“length”属性，也可以像数组那样通过下标对值进行访问，但是却不能通过下标对位地去修改字符串内的值。但若将字符串转换为数组后，情况就有所改观了。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-213.jpg">
+        </code>
+        <p>虽然这个示例中的行为显得有些多余，在实际操作中我们只需要将变量“var str = "baidu"; str = "google"”即可完成这个操作，但这里的示例希望的是发现数组的操作性是强是弱的问题。示例展示了一个通过下标本不能修改的字符串“baidu”通过转换为数组后硬是修改为了“google”的过程。</p>
+        <p>根据数组可操作性的特点，我们再来尝试一个，对传入任意数量参数的值求平均值的例子：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-214.jpg">
+        </code>
+        <p>将上面的代码定义的函数在控制台内进行多次不同的参数配置调用，观察函数运行后返回的结果。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-215.jpg">
+        </code>
+    </section>
+    <!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+        <p>1、通过“arguments”对象+“for循环”的方式编写一个不确定参数个数的求和计数器函数；</p>
+        <p>2、在不使用“arguments”对象和“for循环”的前提下，完成对传入参数个数不确定时的平均值计算；</p>
+        <p>3、配置参数的统一格式为“functionName（param）”的格式,“functionName”为自定义函数名，“（param）”为函数声明时自定义名称的参数。函数被调用时，参数为不限制个数的数值型数据，多个参数用“,”进行分割。</p>
+        <p>&lt;扩展功能&gt;</p>
+        <p>当调用函数时，参数列表内任意一个值不为数字，函数执行后返回的结果为“参数只能为数字，请检查参数的配置！”</p>
+    </section>
 </root>
 
 

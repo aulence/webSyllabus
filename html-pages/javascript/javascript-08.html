@@ -1,399 +1,189 @@
-<root data-root="JavaScript函数对象">
-    <!-- 概述 -->
+<root data-root="数据类型--内置对象">
+    <!-- 对象详解 -->
     <section class="mt0">
-    	<h3>JavaScript函数对象概述</h3>
-    	<p>JavaScript不仅允许开发者自定义函数，还允许开发者通过原型类（prototype）来扩展原生JS对象的功能。除此以外，JavaScript还提供了很多系统内置的函数对象，这些函数对象是JavaScript的一个重要功能组成部分，它们的实现基本上没有可替代方案，如延时函数“setTimeout()”、定时执行函数“setInterval()”、时间日期函数“Date()”、数学计算函数对象“Math”、正则表达式函数“RegExp()”，还JavaScript对象表示法的“JSON”对象等等。</p>
-    	<p>由于JavaScript任何数据都是对象的这一理念，上面这些以函数形式出现的字符实质上都是对象，它们都具有对象所具有的公共方法和各自的一些私有方法，所以在本章中，我们都将其笼统地称作“<em>函数对象</em>”。</p>
-    	<p>JavaScript正是因为有了这些函数对象，才可能让JavaScript功能更加的丰富强大，成为一门独立的编程语言。上面列出的这些系统内置的函数对象还只是JavaScript中的一部分，随着ECMAScript标准的推进，已经出现了一些新的函数对象。但由于各种客观因素，不可能对所有的JavaScript函数对象都进行完全的掌握，本章内容主要是针对一些常用的系统函数对象进行讲解。</p>
-	</section>
-	<!-- 延时执行函数 -->
-	<section>
-		<h3>延时函数setTimeout()</h3>
-		<p>内容已经讲解，课件内容后续补上。</p>
-	</section>
-	<!-- 定时执行函数 -->
-	<section>
-		<h3>延时函数setInterval()</h3>
-		<p>内容已经讲解，课件内容后续补上。</p>
-	</section>
-	<!-- 日期函数 -->
-	<section>
-		<h3>日期函数Date()</h3>
-		<p>Date对象是JavaScript用于获取日期和时间的函数操作接口。它能表现的日期时间范围是1970年1月1日00:00:00前后的各1亿天（单位为毫秒）。它可以作为普通函数直接被调用，返回的结果是一个日期时间详细信息的字符串。</p>
-		<code class="indent">
-            <img src="img/code/jscode/code-js-223.jpg">
-        </code>
-        <p>Date()函数不接收任何参数（任何有效数据作为参数都会被忽略），当Date()函数被直接调用时，返回的总是当前的系统日期时间。该函数还可以被当做是构造函数使用，即在函数前添加一个关键字“new”作为命令，它会返回一个对象的实例（即不需要像函数那样调用，可以通过方法的形式去访问了）。</p>
+        <h3>对象详解</h3>
+        <p>对象（object）是JavaScript的核心概念，也是最重要的数据类型。JavaScript的所有数据都可以被视为对象。简单说，所谓对象，就是一种无序的数据集合，由若干个“键值对”（key-value，亦称属性名值对、成员等）构成。下面展示了两种对象的书写方法：</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-224.jpg">
+            <img src="img/code/jscode/code-js-148.jpg">
         </code>
-        <p>当Date对象作为构造函数的时候，它是可以接收参数的。它接收的参数类型可以为数值型（当然也可以是算术运算的表达式），表示从1970年1月1日00:00:00这一时间点开始的毫秒数，正数是向后，负数是向前。</p>
+        <p>两种写法的引号可为双引号，也可以为单引号。若有多个键值对，每个键值对后面都需要加上英文逗号“,”作为分割符，否则程序会报错，最后一个键值对后方可加，也可不加。第一种写法为常用写法，是程序中最常用的写法，第二种写法叫做严格写法，这种严格模式的写法通常用于<em>JSON</em>文件的编写。但实际上第二种写法在某些情况下是一种必要手段，就是当属性名（键名）为数字外加其它内容等一些非严格命名模式的时候。如果为数字（包括科学计数法、浮点数、进制数），数字会被自动转换成字符串，如果是出现数字+其它字母、字母+空格+字母、字母+其它符号等的时候，就必须要手动加上引号了，否则程序会报错。 </p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-225.jpg">
+            <img src="img/code/jscode/code-js-149.jpg">
         </code>
-        <p>另外，Date对象的参数还可以是字符串，但这个字符串必须得符合日期的一些基本格式，如例：</p>
+        <p>其实哪怕就是从我们编辑器（示例采用编辑器为“Adobe Brackets”）的代码颜色来看，第二种写法也明显不符合语法规范，键名出现了颜色不正常的现象，放置于控制台运行，可以更加清晰地看到运行的结果。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-226.jpg">
+            <img src="img/code/jscode/code-js-150.jpg">
         </code>
-        <p>详细地说，当Date函数对象的参数为数值的时候，它最多可以接收的参数个数有7个，分别是：年、月、日、时、分、秒、毫秒。但当字符串只能有一个参数，且最多只能表示年、月、日（用逗号分隔），否则会返回“Invalid Date”，表示无效的日期格式。</p>
+        <p>另外，JavaScript内的关键字和保留字也可以作为属性名，并且不需要加上引号也能正常使用。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-227.jpg">
+            <img src="img/code/jscode/code-js-151.jpg">
         </code>
-        <p>需要注意的是，Date对象的月份是从0月开始计算的，从上例中可以发现，在“年份”的参数位上配置的是“2016”，“月份”的参数位上配置的数为“12”，但在实际出来的结果中，年份已经变成了“2017”，而月份本应是“Dec”（December），却变成了“Jan”（January），这是“进制”导致的。如月份为“13”的时候会被算成次年的2月份，如果月份为“14”的时候会被算成次年的3月份，以此类推。这是在以后日期计算中要非常的注意的地方。而且还有一点需要注意的是，参数不能为单独的“年份”，否则会被解析成毫秒数。如果是需要返回的结果中的年份和参数一致，那记得要给该参数加上一对引号，如：new Date("2016")。</p>
-        <p>两个Date对象可以进行计算，如果是相减，返回的两者之间相差的毫秒数（可以为负数）。如果为相加，返回的是两个对象的字符串拼接结果。</p>
-        <code>
-            <img src="img/code/jscode/code-js-228.jpg">
-        </code>
-        <p>Date对象作为了一个对象，自然会有自己的原型类（prototype）方法，如：返回一个完整的日期字符串“Date.prototype.toString()”、返回对应的UTC时间“Date.prototype.toUTCString()”、返回对应时间的ISO8601写法“Date.prototype.toISOString()”、返回一个符合JSON格式的ISO格式的日期字符串“Date.prototype.toJSON()”、返回日期字符串“Date.prototype.toDateString()”、返回时间字符串“Date.prototype.toTimeString()”等等。</p>
-        <p>Date对象的专用方法不可谓不多，但若开发的是本土的项目，有两个Date原型类的方法可加以利用，一个是返回当地日期格式的“toLocaleDateString()”，一个是返回当地时间格式的“toLocaleTimeString()”。</p>
+        <p>对象允许的值可以是JavaScript种的任何类型（6种类型），可以是一个表达式，也可以为一个函数，当一个属性的值为一个函数的时候，通常把这个对象的属性称作“方法”（如操作字符串或数组的各种方法），它可以像使用其它对象内的属性一样使用，但是需要在后方加上一对括号。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-229.jpg">
+            <img src="img/code/jscode/code-js-152.jpg">
         </code>
-        <p>虽然我们可以利用字符串操作的方法截取Date对象返回值中我们需要的部分，但操作起来会十分不便，增加很多无谓的工作量。实际上Date对象已经提供了专门获取对象中某一个方面的值的“<em>get*()</em>”方法。</p>
-        <ul class="indent">
-        	<li>getFullYear()，返回四位的年份</li>
-        	<li>getMonth()，返回月份（0表示1月，1表示2月...11表示12月）</li>
-        	<li>getDate()，返回当月的第几号</li>
-        	<li>getHours()，返回时（24小时制，0~23）</li>
-        	<li>getMinutes()，返回分</li>
-        	<li>getSeconds()，返回秒</li>
-        	<li>getMilliseconds()，返回毫秒（1000进制）</li>
-        	<li>getDay()，返回星期几（星期日为0，星期一为1...星期六为6）</li>
-        </ul>
-        <p>来看一下这些方法的使用示例：（由于代码运行时间段不一致，分钟单位之后的运行结果会比完整字符串显示的时间略有推迟）</p>
+        <p>定义了这样一个包含了对象之后，就可以在程序中使用了（作用域仍然只分全局和函数的作用域）。为了直观展现运行结果，我们依次对上面定义的这个对象的各个属性在控制台运行程序后进行访问或使用。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-230.jpg">
+            <img src="img/code/jscode/code-js-153.jpg">
         </code>
-        <p>Date拥有的“get*()”方法除了上述方法外，还有用于返回距离1970年1月1日00:00:00的毫秒数“getTime()”和用于返回距离1900的年数“getYear()”等方法，但考虑到实际使用并不是很多，在这里并没有举出示例。</p>
-        <p>有了“get*()”方法，Date对象自然也提供了“<em>set*()</em>”的方法，可以对现有的Date对象进行修改。</p>
+        <p>可以发现，我们现在对象中定义属性直接可以被像一个变量一样使用了，只不过是使用的时候多了一个点“.”，将普通变量的“=”号换成了“:”号而已，除此之外基本没有任何不同。</p>
+        <p>当然，和作为数组形式展现的对象一样，普通对象也可以先声明再设置属性。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-231.jpg">
+            <img src="img/code/jscode/code-js-154.jpg">
         </code>
-        <p>“set*()”方法和“get*()”方法配合使用，并进行一些简单计算来达到一些项目的特殊需求。</p>
+        <p>根据对象的这个特性，我们就可以根据当前的使用场景（如满足一定的条件语句后），动态地为对象添加需要的属性了。但需要注意的是，对象数据类型是引用型数据，也就是说当一个对象赋值给另外一个变量后，它们指向的内存地址是相同的（这和数组一样），如例：</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-232.jpg">
+            <img src="img/code/jscode/code-js-155.jpg">
         </code>
-        <p>如果是对已经生成的时间字符串进行比较，最好的办法是将时间字符串转换成相对于“1970年1月1日00:00:00”的毫秒数进行计算，可以使用“Date.parse()”方法进行转换，这种转换方式不仅可以接受标准的字符串作为参数，还能用于接受多个数值型的时间参数以及日期的构造函数实例，如例：</p>
+        <p>但是有一点需要注意，也就是任何一个对象取消对值的引用，之前已经引用过该值的对象是的值仍旧会保留。</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-266.jpg">
+            <img src="img/code/jscode/code-js-156.jpg">
         </code>
-	</section>
-	<!-- 章节练习 -->
-	<section class="unitPractice">
-		<h3>&lt;章节练习一&gt;</h3>
-		<p>计算出今年中最后一天（到今年最后一天的23时59分59秒999毫秒）到今天...</p>
-		<p>1、...的天数；</p>
-		<p>2、...的小时数；</p>
-		<p>3、...的分钟数；</p>
-		<p>4、...的秒数；</p>
-		<p>并通过一个定时执行函数实时地将完整信息显示于页面内。</p>
-		<p>&lt;提示&gt;可以用“Math.ceil()”方法向上取整</p>
-	</section>
-	<!-- 数学函数 -->
-	<section>
-		<h3>数学计算对象Math</h3>
-		<p>该对象提供了一系列的数学常数和计算方法。该对象不是构造函数，不能通过构造函数生成实例，它的所有方法都只有通过Math对象去进行调用。</p>
-		<p>Math对象提供以下属性来表示数学中的数值形态：</p>
-		<ul class="indent">
-			<li>Math.E，常数E</li>
-			<li>Math.LN2，2的自然对数</li>
-			<li>Math.LN10，10的自然对数</li>
-			<li>Math.LOG2E，以2为底e的对数</li>
-			<li>Math.LOG10E，以10为底的e的对数</li>
-			<li>Math.PI，圆周率π</li>
-			<li>Math.SQRT1_2，0.5的平方根</li>
-			<li>Math.SQRT2，2的平方根</li>
-		</ul>
-		<p>这些属性在控制台中直接运行后结果如下：</p>
-		<code class="indent">
-            <img src="img/code/jscode/code-js-233.jpg">
+        <p>对于对象属性的读取，主要有两种方式，一种是“对象.属性”的格式，另一种是“对象[属性]”的格式。但是这两种方法在有些情况下并非等价的，就是如果属性是<em>数值型</em>的话不能采用第一种加“.”的形式，只能写成第二种形式。如果属性是<em>字符串</em>的话，两种形式都可以使用，但是使用第二种的话需要再在方括号内加上一对引号，否则会被视作一个变量。正确示例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-157.jpg">
         </code>
-        <p>Math对象除了上面的属性，还提供了一些较为实用的方法：</p>
-        <ul class="indent">
-			<li>Math.abs()，绝对值</li>
-			<li>Math.ceil()，向上取整</li>
-			<li>Math.floor()，向下取整</li>
-			<li>Math.round()，四舍五入</li>
-			<li>Math.max()，最大值</li>
-			<li>Math.min()，最小值</li>
-			<li>Math.pow()，指数运算</li>
-			<li>Math.sqrt()，平方根</li>
-			<li>Math.log()，自然对数</li>
-			<li>Math.exp()，e的指数</li>
-			<li>Math.random()，随机数</li>
-		</ul>
-		<p>下面就来通过一些简单的示例来观察这些方法的作用。</p>
-		<dl class="attrExplain">
-			<dt>Math.abs()</dt>
-			<dd>对一个数求绝对值。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-234.jpg">
-				</code>
-			</dd>
+        <p>错误示例：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-158.jpg">
+        </code>
+        <p>这两种访问属性的方法的区别还不止于此，通过“.”访问的属性不能是变量，不能是运算表达式，但是用“[attr]”这种方式可以接受变量，亦可以接受运算表达式。在对象的属性不是很确定的时候，用“[variable]”作为一个对象的载体是一个非常不错的选择。</p>
+        <p>比如现在，我们在一个虚拟出来的“书籍”对象内配置一个简单的方法，用于输出一个对象内指定属性的值，就可以这样去写：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-159.jpg">
+        </code>
+        <p>在控制台中进行传参调用后的结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-160.jpg">
+        </code>
+        <p>如果讲上例中的“book[link]”换成“book.link”的话，该功能是无法完成的，无论配置任何参数返回的都将是undefined。正是因为使用“[]”的形式有接收变量的作用，这为我们以后封装具有对象的函数提供了便利。但若所使用对象不涉及到变量，还是建议使用“.”的形式对属性访问更加便捷高效。</p>
+        <p>对于使用“[]”访问对象的属性还有一点需要补充，就是若对象是一个数组的话还可以使用<em>运算表达式</em>去访问数组内的内容。这对于实现一些复杂的需求会有一定程度的帮助，我们看来这几个简单例子：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-161.jpg">
+        </code>
+        <p>示例中最后三个完全一样的表达式“arr[Math.round(Math.random() * (arr.length - 1))]”得出的结果却不相同，是因为里面用到了<em>Math</em>函数内的取0~1之间的随机数方法<em>random()</em>，外层用该函数的“四舍五入”方法<em>round()</em>保证取出的数是整数。整个“[]”取出的数为整个数组下标从0到length-1（最大下标）之间的随机下标。</p>
+        <p>和查看所有数组的下标一样，利用<em>Object.keys(obj)</em>方法可以查看对象所有的属性名，返回的结果是一个数组。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-162.jpg">
+        </code>
+        <p>通过上面的示例可以发现，利用这个内置对象Object的keys()方法，我们可以“玩出”非常多的花样，不仅可以像数组那样通过“length”属性（对象本身是没有length这个属性的）获取到对象的属性个数，还可以像数组那样，通过下标去访问对象内的属性值。单是获取对象属性个数这一点来讲，这个方法会被我们用“计数器”+“for-in遍历”要显得“干净”得多。</p>
+        <p>对于数据操作来讲，无非就是四种操作“增、删、改、查”。对于对象来讲，“增”就是为一个对象新增一个之前不存在的属性名，然后进行赋值；“改”就是对对象已经存在的属性名进行从新赋值，达到一个修改原始对象的效果；而“查”就是简单地通过对象的属性名访问即可（当然也可以通过对“[]”传变量实现访问）。这些我们之前都讲解过，但对于“<em>删</em>”来讲稍微有些特殊，需要用到关键字“<em>delete</em>”进行操作，为了说明问题，我们还是对这些操作进行回顾并在其中列出“delete”的使用方式。原数组如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-163.jpg">
+        </code>
+        <dl class="attrExplain">
+            <dt>增</dt>
+            <dd>新增一个“出版社”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-164.jpg">
+                </code>
+            </dd>
 
-			<dt>>Math.ceil()</dt>
-			<dd>对一个小数求向上取整。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-235.jpg">
-				</code>
-			</dd>
+            <dt>删</dt>
+            <dd>删除“出版装订类型”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-165.jpg">
+                </code>
+            </dd>
+            <dd>注意，该方法在执行成功后会返回一个布尔值<em>true</em>，只有当正在删除的对象属性不存在或不能删除（如继承的属性：toString、valueOf等）时才会返回false值。</dd>
 
-			<dt>>Math.floor()</dt>
-			<dd>对一个小数求向下取整。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-236.jpg">
-				</code>
-			</dd>
+            <dt>改</dt>
+            <dd>修改“图书页数”和“出版时间”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-166.jpg">
+                </code>
+            </dd>
 
-			<dt>>Math.round()</dt>
-			<dd>对一个小数“四舍五入”取整。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-238.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.max()</dt>
-			<dd>对参数列表中的数字求最大值，参数必须全部为数值型（或能转换为数值的字符串），否则会返回NaN。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-237.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.min()</dt>
-			<dd>对参数列表中的数字求最小值，参数同样必须全部为数值型，否则会返回NaN。原理和“Math.max()”一致，这里不再提供示例。</dd>
-
-			<dt>Math.pow()</dt>
-			<dd>该方法允许两个参数，第一个参数表示底数，第二个参数表示幂。即第二个参数是第一个参数的n次方，然后返回结果。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-239.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.sqrt()</dt>
-			<dd>返回一个数的平方根，如果是一个负数会返回NaN。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-240.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.log()</dt>
-			<dd>返回以e为底的自然对数值。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-241.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.exp()</dt>
-			<dd>返回常数e的参数次方。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-242.jpg">
-				</code>
-			</dd>
-
-			<dt>Math.random()</dt>
-			<dd>返回一个0~1之间的<em title="计算机中的随机数都是伪随机数">伪随机数</em>，包含0，但不包含1。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-243.jpg">
-				</code>
-			</dd>
-		</dl>
-		<p>Math对象提供的这些方法中的某些方法单独存在似乎没有什么意义，需要进行配合使用才能发挥其真正的价值。如现在需要返回一个从0到5之间的随机数，那需要保证的是数字不能出现小数，但又必须覆盖到数字“0”和数字“5”，这个时候向下取整和向上取整的方法都是不可行的，就只有配合“四舍五入”的方法了。示例如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-244.jpg">
-		</code>
-		<p>但倘若需要返回的是某一段数值之间的随机数，那公式应该是“Math.round(Math.random() * (max - min)) + min”的形式，例如现在我们要取出2~6之间的随机数的，那写法就应该如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-245.jpg">
-		</code>
-		<p>返回数值是Math.random()基本功能，利用它的实现原理和字符串或者数组的特性，我还可以取出随机的其它数据格式，如字符串中的某一个字符，或者数组中的某一个元素。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-246.jpg">
-		</code>
-		<p>Math对象还提供了一组求取三角函数值的方法，参数均为0~1之间（包括0和1）的浮点数：</p>
-		<ul class="indent">
-			<li>Math.sin()，返回参数的正弦</li>
-			<li>Math.cos()，返回参数的余弦</li>
-			<li>Math.tan()，返回参数的正切</li>
-			<li>Math.asin()，返回参数的反正弦</li>
-			<li>Math.acos()，返回参数的反余弦</li>
-			<li>Math.atan()，返回参数的反正切</li>
-		</ul>
-		<p>这组方法在目前的网站或应用中使用得并不是很多，但在HTML5的三维图形技术WebGL技术中比较常见（在“CSS transform变形转换”一章中的“矩阵”也有涉及），这里可以暂时作为了解即可。它们的使用方法如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-247.jpg">
-		</code>
-	</section>
-	<!-- 章节练习 -->
-	<section class="unitPractice">
-		<h3>&lt;章节练习二&gt;</h3>
-		<p>编写一个函数，功能为随机生成一串字符范围为“A~Z”、“a~z”以及“0~9”的“不确定位数”的验证码，验证码生成的位数由函数的参数决定。</p>
-		<p>&lt;提供数据&gt;</p>
-		<p>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</p>
-	</section>
-	<!-- 正则表达式 -->
-	<section>
-		<h3>正则表达式RegExp对象</h3>
-		<p>正则表达式（regular expression）是一种表达字符串结构的方法。它现在的主要用途就是给定一个模式，然后让指定字符串来匹配这个模式。常见的用途有“关键字过滤”、“用户表单输入”、“数据内容筛选”等。JavaScript的正则表达式是参照<em title="一种计算机程序语言，类似于C、sed、awk、shell等语言">Perl</em>的第5版设定的。</p>
-		<p>新建一个正则表达式有两种方法，一种是将需要匹配的字符放置于双斜杠“<em>//</em>”内，一种是利用构造函数“new RegExp()”创建。而这两种方法基本上是等价的，它们的差别在于：第一种方法在编译时新建正则表达式，第二种方法在运行时新建正则表达式。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-248.jpg">
-		</code>
-		<p>正则表达式本身也是一种对象。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-249.jpg">
-		</code>
-		<p>正则表达式可以接收第二个参数。这些参数可以单独使用，也可组合使用。</p>
-		<ul class="indent">
-			<li>i，表示忽略大小写</li>
-			<li>g，表示全局匹配，否则只返回第一个匹配的值</li>
-			<li>m，表示多行匹配</li>
-		</ul>
-		<p>使用示例如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-250.jpg">
-		</code>
-		<p>正则表达式提供了一个可读写的“<em>lastIndex</em>”属性来获取或设置开始匹配的位置。该属性生效的前提是表达式内具有“<em>g</em>”这个参数。同时也提供了一个只可读的“<em>source</em>”属性来返回正则表达式的字符串形式。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-251.jpg">
-		</code>
-		<p>正则表达式提供了两个方法来匹配字符串返回结果的方式。</p>
-		<dl class="attrExplain">
-			<dt>test()方法</dt>
-			<dd>该方法返回的是一个布尔值，表示是否匹配某一个字符串，若匹配返回true，否则返回false。若加上参数“g”，则每一次test()方法都从上一次结束的位置开始向后匹配。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-252.jpg">
-				</code>
-			</dd>
-			<dd>若手动设置lastIndex属性的值，那对字符串的匹配会按照lastIndex属性设置的开始下标位置进行匹配，若能匹配到完整的字符就返回true，否则返回false。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-253.jpg">
-				</code>
-			</dd>
-
-			<dt>exec()方法</dt>
-			<dd>该方法可以返回匹配的结果，如果匹配就返回一个数组，数组元素是所有匹配的字符串的结果，若无匹配就返回null。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-254.jpg">
-				</code>
-			</dd>
-			<dd>exec()方法还拥有两个属性，“<em>input</em>”属性会返回整个匹配的字符串，“<em>index</em>”属性会返回匹配成功开始的位置。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-255.jpg">
-				</code>
-			</dd>
-		</dl>
-		<p>除了利用正则表达式提供的方法，我们还可以利用字符串对象（即“String.prototype”）提供的方法来完成正则匹配，部分内容我们在字符串操作一章节中已经实例演示过了。可以通过我们接下的正则表达式学习来深化之前所学的字符串操作的相关内容。</p>
-		<p>正则表达式的匹配的字符有两种，一种称作“<em>字面量字符</em>”，一种称作“<em>元字符</em>”。</p>
-		<p>所谓“字面量字符”指的就是实实在在的字符，它们可以是相连的英文字母、数字或符号。如：“/abc/”匹配的就是英文字母中相连的三个字母“abc”，少一个字母或顺序多一个都不能匹配成功，如例：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-256.jpg">
-		</code>
-		<p>所谓的“元字符”指的是用一些规定的符号来表示特定的字符。如点字符“.”匹配除回车“\r”、换行“\n”、行分隔符“\u2028”和段分隔符“\u2029”以外的所有字符。如例：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-257.jpg">
-		</code>
-		<p>上面的点字符“.”表示的就是除上述那些符号的任意一个字符，只要在“c”和“t”之间出现非指定的任意字符，那最终的匹配结果都会返回“true”，表示匹配成功。当然元字符还有很多，如：^、$、|、\\、\*、+、?、()、[]、{}等，我们将在后续的课程中进行学习。</p>
-		<p>由于原字符的存在，如果需要匹配的字面量字符中含有一些特殊符号，那需要进行转义，转义符的写法为“<em>\</em>”，在正则表达式中，需要转义的字符有12个：<em>^</em>、<em>.</em>、<em>[</em>、<em>$</em>、<em>(</em>、<em>)</em>、<em>|</em>、<em>*</em>、<em>+</em>、<em>?</em>、<em>{</em>和<em>\\</em>。需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-258.jpg">
-		</code>
-		<p>当然，除了上述的那些需要转义才能显示为字面量的元字符外，字符串中的一些常用的转义符在此仍然是生效的（如换行符“\n”、回车符“\r”等），如果需要匹配这些特殊字符，同样是需要通过转义的。接下来我们对正则表达式中的那些元字符进行归纳说明：</p>
-		<dl class="attrExplain">
-			<dt>开始位置字符或脱字符“^”</dt>
-			<dd>若该符号直接放置于正则表达式内，表示“限定开始”，也就是说，限定了某个字符的内容只能由正则表达式内“^”之后的内容开始。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-259.jpg">
-				</code>
-			</dd>
-			<dd>但若该方法出现在“[]”内部，表示“否定”，也就是表示除了这些字符，其它字符都可以匹配。而且这些字符不一定需要连续出现，如：</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-260.jpg">
-				</code>
-			</dd>
-
-			<dt>结束位置字符“$”</dt>
-			<dd>表示“限定结束”，某个字符的内容只能由正则表达式内“$”之前的内容结束，如：</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-261.jpg">
-				</code>
-			</dd>
-			<dd>有的时候“^”和“$”需要搭配起来使用，表示限定段字符只能由规则中限定的字符开始且结束，如：</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-262.jpg">
-				</code>
-			</dd>
-
-			<dt>字符选择“[]”</dt>
-			<dd>参与匹配的字符只要有其中一个与“[]”相同，那就会匹配成功，可以是一个字符，也可以是一组字符。</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-263.jpg">
-				</code>
-			</dd>
-
-			<dt>选择符“|”</dt>
-			<dd>竖线符号“|”在正则表达式中表示“或”。如例：</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-264.jpg">
-				</code>
-			</dd>
-			<dd>该元字符可以多个连用，如判断电话号码段的情景。</dd>
-
-			<dt>连字符“-”</dt>
-			<dd>该字符表示一个连续的范围，它用于表示ASCII编码的一个字符范围，如“A-Z”、“a-z”、“0-9”等，但需要注意的是“A-Z”和“a-z”不能直接写成“A-z”，因为在ASCII编码中英文大小写字母之间还有其他字符，如果不需要精确区分大小写字符，记得还需要加上正则表达式的第二个参数“i”。而且作为连字符必须放置在[]内，否则只是表示字面量的意思。使用方法如下：</dd>
-			<dd>
-				<code>
-					<img src="img/code/jscode/code-js-265.jpg">
-				</code>
-			</dd>
-
-			<dt>匹配组“()”</dt>
-			<dd>内容准备中...</dd>
-
-			<dt>匹配次数限制“{}”</dt>
-			<dd>内容准备中...</dd>
-
-			<dt>匹配零次或一次“？”</dt>
-			<dd>内容准备中...</dd>
-
-			<dt>匹配零次或多次“*”</dt>
-			<dd>内容准备中...</dd>
-
-			<dt>至少匹配一次“+”</dt>
-			<dd>内容准备中...</dd>
-
-		</dl>
-		<p>预定义模式（简写模式）。</p>
-		<ul class="indent">
-			<li><em>\d</em> 匹配0-9之间的任一数字，相当于[0-9]。</li>
-			<li><em>\D</em> 匹配所有0-9以外的字符，相当于[^0-9]。</li>
-			<li><em>\w </em>匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。</li>
-			<li><em>\W</em> 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。</li>
-			<li><em>\s</em> 匹配空格（包括制表符、空格符、断行符等），相等于[\t\r\n\v\f]</li>
-			<li><em>\S</em> 匹配非空格的字符，相当于[^\t\r\n\v\f]。</li>
-			<li><em>\b</em> 匹配词的边界。</li>
-			<li><em>\B</em> 匹配非词边界，即在词的内部。</li>
-		</ul>
-	</section>
+            <dt>查</dt>
+            <dd>查询“书名”、“作者”和“页数”属性。</dd>
+            <dd>
+                <code>
+                    <img src="img/code/jscode/code-js-167.jpg">
+                </code>
+            </dd>
+        </dl>
+        <p>当不知一个对象的属性是否声明过，使用<em>in</em>运算符来进行判断是再好不过的选择了（选用对象仍是之前的“书籍”）。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-168.jpg">
+        </code>
+    </section>
+    <!-- 对象操作 -->
+    <section>
+        <h3>对象操作</h3>
+        <p>JavaScript原生提供一个Object对象，所有其他对象都继承自这个对象。Object本身也是一个构造函数，可以直接通过它来生成新对象。基本语法为：</p>
+        <p><em>var obj = new Object();</em></p>
+        <p>对象型数据有一个比较有趣的特点就是它具有<em>原型类</em>（prototype），任何对象都能通过原型类来拓展自己的功能，这一点，我们在“数组操作”一节中的“数组求和”功能里就已经见识到了。数组之所以可以通过原型类来扩展自己的功能，是因为数组本身也属于“对象”。我们再来看一个关于内置对象通过原型类扩展自己的<em>方法</em>的简单例子，基本代码如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-169.jpg">
+        </code>
+        <p>在控制台中被调用后的返回值结果如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-170.jpg">
+        </code>
+        <p>上面的代码中，首先是给内置对象Object添加了一个原型类的方法，该方法内“keys()”方法的作用我们在上一节“对象详解”中已经学习过，是用于讲对象的属性名进行返回，然后形成一个数组。而在该方法之前有一个关键字<em>this</em>，它表示使用该原型方法的对象的本身，如“obj1”在使用“showAttr()”方法时，“this”指的就是“obj1”。</p>
+        <p>showAttr()这个方法是我们的一个自定义名称，我们可以根据需要，给原型类添加任意的自定义方法。这样一来，以后所有的新建对象都可以使用这些方法，大大地减少了代码量和也减少了对方法参数的配置。可以把原型类内我们自定义新建的方法理解为对象的公共方法，任何对象在同一个作用域内都可以对其进行使用。</p>
+        <p>其实，也并非只有数组（Array）和普通对象（Object）才是所谓的“对象”，可以将JavaScript任何允许的数据类型放置于<em>Object()</em>方法的参数内都可以转换成为一个对象，这样的对象称作“<em title="变量的赋值操作是对值的引用">包装对象</em>”，这在我们上一章的课程内。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-171.jpg">
+        </code>
+        <p>但如果，使用Object()方法为参数内配置一个JavaScript的“<em title="变量的赋值操作是对内存地址的引用">内置对象</em>”，那返回的就是该对象本身。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-172.jpg">
+        </code>
+        <p>为了证明这一点，我们对刚才的这些内置对象做了一次“严格等于”运算符的比较运算。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-173.jpg">
+        </code>
+        <p>像“对象”这种复合型的值，通过普通方式来判断它是否为一个“内置对象”比较困难，像判断数值和判断数组都有类似于“isNaN()”和“isArray()”这样的方法，但是对象却没有，直接使用我们猜测存在的方法“isObject()”只会是这种下场：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-174.jpg">
+        </code>
+        <p>但好消息是，这并不妨碍我们自己根据对象已经暴露的一些特性给它创建一个“原生方法”：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-175.jpg">
+        </code>
+        <p>调用我们自定义的原型类方法后，在控制台中的返回值结果分别如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-176.jpg">
+        </code>
+        <p>上一章我们在讲解“字符串操作”的时候提到过一个方法“<em>String()</em>”，它可以将任何类型的数据都转换成字符串，但在转换数组和对象时，出现了点特殊情况（可以自行回顾该章节的内容），即其它类型的数据都变成了和原始声明时基本一样的数据，只是加上了引号，而对象出现的结果却是“<em>[object Object]</em>”，其实这里的第一个值表示该值是一个对象（之前提到过，JavaScript中任何值都可以成为对象），第二个值为该类型值的构造函数（有些对象是通过包装而来的）。当然，除了将需要转换字符串的内容放置于String()方法的参数内，还能通过对象属性的方式来使用该方法，它的写法是“toString()”，不需要配置参数。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-177.jpg">
+        </code>
+        <p>可以从运行结果中看出来，这和我们上次使用的“String()”方法得出的结果完全一样。但其实作为一个对象的属性的“toString()”方法来讲自然会有一些不同的。它其实是对象原型类的一个方法，语法如下：</p>
+        <p><em>Object.prototype.toString</em></p>
+        <p>既然是原型类的方法，那很多时候它们还有自己的“<em title="内部的实现相当于一个函数闭包">子方法</em>”，如“<em>call()</em>”方法。基本使用方法如下：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-178.jpg">
+        </code>
+        <p>通过示例可以发现，除了特殊的自身不等于自身的“NaN”值以外，其它的值都在返回结果的第二个值中表现出了自己真实的“值类型”，这最大程度地弥补了“typeof()”方法（通常情况下，typeof()方法还是首选）的不足。但是单是发现了这个原型方法的特性还没有什么用，要真正地将该特性利用起来，还得我们自己写成一个方法函数。</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-179.jpg">
+        </code>
+        <p>通过在控制台中调用该函数进行测试：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-180.jpg">
+        </code>
+        <p>经过简单测试，自定义的方法完美地实现了数组类型的精确判定。另外，上例中出现了一个陌生的方法啊，已经在注释内进行说明了，就是将英文转换成<em>小写字母</em>的方法“<em>toLowerCase()</em>”，和将英文转换为<em>大写字母</em>的方法“<em>toUpperCase()</em>”，但这在中文网站或应用内并不常用，只需明白有这两个方法（实际上还有个每个单词首字符都大写的方法），需要使用时再进行查询即可。</p>
+        <p>明白了这些特性后，我们还可以发挥自己的想象能力玩一些更为“高端的操作”，如：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-181.jpg">
+        </code>
+        <p>通过在控制台中调用自定义的对象的方法进行测试：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-182.jpg">
+        </code>
+    </section>
+    <!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习&gt;</h3>
+        <p>通过已经学习过的方法完成以下数组和对象的“克隆”，克隆后的数组和对象的值发生改变后，对原数组和对象的值不产生影响：</p>
+        <p>1、数组：["HTML","CSS","JavaScript"]；</p>
+        <p>2、对象：{name: "JS", fullName: "JavaScript", duty: "行为控制"}</p>
+    </section>
 </root>
 
 

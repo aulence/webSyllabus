@@ -11,7 +11,7 @@ document.onreadystatechange = function() {
 			axisY: [
 				{
 					typeName: "餐饮",
-					value: [156,100,278,143,112,79,133]
+					value: [156,100,278,143,112,79,123]
 				},
 				{
 					typeName: "生活用品",
