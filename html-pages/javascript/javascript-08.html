@@ -1,7 +1,7 @@
 <root data-root="数据类型--内置对象">
-    <!-- 对象详解 -->
+    <!-- 对象概述 -->
     <section class="mt0">
-        <h3>对象详解</h3>
+        <h3>对象概述</h3>
         <p>对象（object）是JavaScript的核心概念，也是最重要的数据类型。JavaScript的所有数据都可以被视为对象。简单说，所谓对象，就是一种无序的数据集合，由若干个“键值对”（key-value，亦称属性名值对、成员等）构成。下面展示了两种对象的书写方法：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-148.jpg">
@@ -18,16 +18,22 @@
         <code class="indent">
             <img src="img/code/jscode/code-js-151.jpg">
         </code>
-        <p>对象允许的值可以是JavaScript种的任何类型（6种类型），可以是一个表达式，也可以为一个函数，当一个属性的值为一个函数的时候，通常把这个对象的属性称作“方法”（如操作字符串或数组的各种方法），它可以像使用其它对象内的属性一样使用，但是需要在后方加上一对括号。</p>
+	</section>
+    <section>
+    	<h3>对象的属性值类型</h3>
+        <p>对象允许的值可以是JavaScript种的任何类型（6种类型），可以是一个表达式，也可以为一个函数，当一个属性的值为一个函数的时候，通常把这个对象的属性称作“<em>方法</em>”（如操作字符串或数组的各种方法），它可以像使用其它对象内的属性一样使用，但是需要在后方加上一对括号。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-152.jpg">
         </code>
-        <p>定义了这样一个包含了对象之后，就可以在程序中使用了（作用域仍然只分全局和函数的作用域）。为了直观展现运行结果，我们依次对上面定义的这个对象的各个属性在控制台运行程序后进行访问或使用。</p>
+        <p>定义了这样一个包含了各种类型数据的对象之后，就可以在程序中使用了（作用域仍然只分全局和函数的作用域）。为了直观展现运行结果，我们依次对上面定义的这个对象的各个属性在控制台运行程序后进行访问或使用。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-153.jpg">
         </code>
         <p>可以发现，我们现在对象中定义属性直接可以被像一个变量一样使用了，只不过是使用的时候多了一个点“.”，将普通变量的“=”号换成了“:”号而已，除此之外基本没有任何不同。</p>
-        <p>当然，和作为数组形式展现的对象一样，普通对象也可以先声明再设置属性。</p>
+	</section>
+    <section>
+    	<h3>对象的赋值</h3>
+        <p>作为数组形式展现的对象一样，普通对象也可以先声明再设置属性。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-154.jpg">
         </code>
@@ -39,6 +45,9 @@
         <code class="indent">
             <img src="img/code/jscode/code-js-156.jpg">
         </code>
+	</section>
+    <section>
+    	<h3>对象属性值读取的两种方式</h3>
         <p>对于对象属性的读取，主要有两种方式，一种是“对象.属性”的格式，另一种是“对象[属性]”的格式。但是这两种方法在有些情况下并非等价的，就是如果属性是<em>数值型</em>的话不能采用第一种加“.”的形式，只能写成第二种形式。如果属性是<em>字符串</em>的话，两种形式都可以使用，但是使用第二种的话需要再在方括号内加上一对引号，否则会被视作一个变量。正确示例：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-157.jpg">
@@ -57,16 +66,50 @@
             <img src="img/code/jscode/code-js-160.jpg">
         </code>
         <p>如果讲上例中的“book[link]”换成“book.link”的话，该功能是无法完成的，无论配置任何参数返回的都将是undefined。正是因为使用“[]”的形式有接收变量的作用，这为我们以后封装具有对象的函数提供了便利。但若所使用对象不涉及到变量，还是建议使用“.”的形式对属性访问更加便捷高效。</p>
+        <p>看完上面的示例后，请自己做一个试验，将“book”这个对象仿照的写一遍，然后将对象内的“showInfo()”这个方法内的“book”一词改为“this”，然后传递对象内其它的属性名的字符串作为参数调用该方法，观察是什么样的结果。</p>
         <p>对于使用“[]”访问对象的属性还有一点需要补充，就是若对象是一个数组的话还可以使用<em>运算表达式</em>去访问数组内的内容。这对于实现一些复杂的需求会有一定程度的帮助，我们看来这几个简单例子：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-161.jpg">
         </code>
         <p>示例中最后三个完全一样的表达式“arr[Math.round(Math.random() * (arr.length - 1))]”得出的结果却不相同，是因为里面用到了<em>Math</em>函数内的取0~1之间的随机数方法<em>random()</em>，外层用该函数的“四舍五入”方法<em>round()</em>保证取出的数是整数。整个“[]”取出的数为整个数组下标从0到length-1（最大下标）之间的随机下标。</p>
+	</section>
+    <section>
+    	<h3>属性名数组Object.keys()</h3>
         <p>和查看所有数组的下标一样，利用<em>Object.keys(obj)</em>方法可以查看对象所有的属性名，返回的结果是一个数组。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-162.jpg">
         </code>
         <p>通过上面的示例可以发现，利用这个内置对象Object的keys()方法，我们可以“玩出”非常多的花样，不仅可以像数组那样通过“length”属性（对象本身是没有length这个属性的）获取到对象的属性个数，还可以像数组那样，通过下标去访问对象内的属性值。单是获取对象属性个数这一点来讲，这个方法会被我们用“计数器”+“for-in遍历”要显得“干净”得多。</p>
+        <p>现在我们通过在对象的原型链上添加一个“eq()”方法来模仿像<em>jQuery</em>那样通过“eq(index)”方法（方法内的“index”表示对象下标）来访问jQuery对象的指定元素。仍旧采用上面的“book”对象进行演示：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-296.jpg">
+        </code>
+        <p>通过示例可以发现，现在的对象已经可以使用下标进行访问了，再加上通过Object.keys()方法本身就可以间接去获取对象的属性个数（获取到属性名集合的长度属性），这就使得通过普通的循环语句（非for-in语句）来遍历一个对象成为了可能。</p>
+	</section>
+	<!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习一&gt;</h3>
+        <p>声明一个名为“roleInfo”的对象：</p>
+        <p>1、属性名分别为：id、name、attack、defense、speed、hp、mp、skill；</p>
+        <p>2、值分别是：lol-119、"德玛西亚之力"、36、42、66、2400、null、["坚韧（被动）","致命打击","勇气","审判","德玛西亚正义"];</p>
+        <p>3、通过在原型链上添加一个“eq()”方法，然后通过Object.keys()方法来获取对象的“长度”，最后通过for循环将对象内的所有值输出在页面内一个id为“galen”的&lt;div&gt;里。</p>
+        <p>&lt;注意&gt;若值为“null”，在页面内应该显示为“无”，若值为一个数组（通过方法“Array.isArray()”进行判定），需要将数组内的项单独输出来，而不是输出整个数组。</p>
+        <p>页面中的DIV结构如下：</p>
+		<pre>
+&lt;div id="galen"&gt;
+	&lt;label&gt;ID：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;角色名：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;攻击力：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;防御力：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;速度：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;血量：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;魔法：&lt;/label&gt;&lt;span&gt;&lt;span&gt;
+	&lt;label&gt;技能：&lt;/label&gt;&lt;span&gt;&lt;span&gt;;span&gt;&lt;span&gt;;span&gt;&lt;span&gt;span&gt;&lt;span&gt;span&gt;&lt;span&gt;
+&lt;/div&gt;
+		</pre>
+    </section>
+    <section>
+    	<h3>对象的“增、删、改、查”</h3>
         <p>对于数据操作来讲，无非就是四种操作“增、删、改、查”。对于对象来讲，“增”就是为一个对象新增一个之前不存在的属性名，然后进行赋值；“改”就是对对象已经存在的属性名进行从新赋值，达到一个修改原始对象的效果；而“查”就是简单地通过对象的属性名访问即可（当然也可以通过对“[]”传变量实现访问）。这些我们之前都讲解过，但对于“<em>删</em>”来讲稍微有些特殊，需要用到关键字“<em>delete</em>”进行操作，为了说明问题，我们还是对这些操作进行回顾并在其中列出“delete”的使用方式。原数组如下：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-163.jpg">
@@ -105,17 +148,37 @@
                 </code>
             </dd>
         </dl>
-        <p>当不知一个对象的属性是否声明过，使用<em>in</em>运算符来进行判断是再好不过的选择了（选用对象仍是之前的“书籍”）。</p>
+	</section>
+    <section>
+        <h3>判断一个属性是否存在于对象</h3>
+        <p>当不知一个对象的属性是否声明过（或不知某个属性是否存在于指定的对象内），使用“<em>in</em>”运算符来进行判断是再好不过的选择了（选用对象仍是之前的“书籍”）。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-168.jpg">
         </code>
+        <p>in运算符返回一个布尔值，它不区分该属性是对象自身的属性，还是继承的属性。若要区分该属性是实例化对象的属性，还是继承而来的属性需要使用“hasOwnProperty()”方法，该方法返回的仍然是一个布尔值。例如现在我们先给对象原型链添加一个属性，并创建一个对象：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-297.jpg">
+        </code>
+        <p>然后在控制台中输出所有的属性值，然后再通过该方法进行判断：</p>
+        <code class="indent">
+            <img src="img/code/jscode/code-js-298.jpg">
+        </code>
+        <p>通过观察示例可以发现，虽然无论是对象本身的属性还是继承而来的属性都可以正常输出结果值，但是区别在于本来存在于对象中的属性“brand”和“price”通过hasOwnProperty()方法判断后返回的布尔值是true，而通过对象的原型链继承而来的属性“effect”执行方法后返回的布尔值为false。</p>
+        <p>这样一来，我们就可以在执行for-in遍历语句的时候决定是否应该对继承而来的属性进行指定的操作了。</p>
+    </section>
+    <!-- 章节练习 -->
+    <section class="unitPractice">
+        <h3>&lt;章节练习二&gt;</h3>
+        <p>模仿上例，为对象原型链添加一个方法，并自定义一个对象：</p>
+        <p>1、通过for-in遍历语句在控制内输出对象的全部属性的值；</p>
+        <p>2、通过for-in遍历语句在控制内输出对象的非继承属性的值。</p>
     </section>
     <!-- 对象操作 -->
     <section>
-        <h3>对象操作</h3>
+        <h3>对象的原型链</h3>
         <p>JavaScript原生提供一个Object对象，所有其他对象都继承自这个对象。Object本身也是一个构造函数，可以直接通过它来生成新对象。基本语法为：</p>
         <p><em>var obj = new Object();</em></p>
-        <p>对象型数据有一个比较有趣的特点就是它具有<em>原型类</em>（prototype），任何对象都能通过原型类来拓展自己的功能，这一点，我们在“数组操作”一节中的“数组求和”功能里就已经见识到了。数组之所以可以通过原型类来扩展自己的功能，是因为数组本身也属于“对象”。我们再来看一个关于内置对象通过原型类扩展自己的<em>方法</em>的简单例子，基本代码如下：</p>
+        <p>对象型数据有一个比较有趣的特点就是它具有<em>原型链</em>（prototype，也有称“原型类”），任何对象都能通过原型链来拓展自己的功能。我们来看一个关于内置对象通过原型链扩展自己的<em>方法</em>的简单例子，基本代码如下：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-169.jpg">
         </code>
@@ -123,13 +186,16 @@
         <code class="indent">
             <img src="img/code/jscode/code-js-170.jpg">
         </code>
-        <p>上面的代码中，首先是给内置对象Object添加了一个原型类的方法，该方法内“keys()”方法的作用我们在上一节“对象详解”中已经学习过，是用于讲对象的属性名进行返回，然后形成一个数组。而在该方法之前有一个关键字<em>this</em>，它表示使用该原型方法的对象的本身，如“obj1”在使用“showAttr()”方法时，“this”指的就是“obj1”。</p>
-        <p>showAttr()这个方法是我们的一个自定义名称，我们可以根据需要，给原型类添加任意的自定义方法。这样一来，以后所有的新建对象都可以使用这些方法，大大地减少了代码量和也减少了对方法参数的配置。可以把原型类内我们自定义新建的方法理解为对象的公共方法，任何对象在同一个作用域内都可以对其进行使用。</p>
-        <p>其实，也并非只有数组（Array）和普通对象（Object）才是所谓的“对象”，可以将JavaScript任何允许的数据类型放置于<em>Object()</em>方法的参数内都可以转换成为一个对象，这样的对象称作“<em title="变量的赋值操作是对值的引用">包装对象</em>”，这在我们上一章的课程内。</p>
+        <p>上面的代码中，首先是给内置对象Object添加了一个原型链的方法，该方法内“keys()”方法的作用我们在上一节“对象详解”中已经学习过，是用于讲对象的属性名进行返回，然后形成一个数组。而在该方法之前有一个关键字<em>this</em>，它表示使用该原型方法的对象的本身，如“obj1”在使用“showAttr()”方法时，“this”指的就是“obj1”。</p>
+        <p>showAttr()这个方法是我们的一个自定义名称，我们可以根据需要，给原型链添加任意的自定义方法。这样一来，以后所有的新建对象都可以使用这些方法，大大地减少了代码量和也减少了对方法参数的配置。可以把原型链内我们自定义新建的方法理解为对象的公共方法，任何对象在同一个作用域内都可以对其进行使用。</p>
+	</section>
+    <section>
+        <h3>内置对象</h3>
+        <p>其实，也并非只有数组（Array）和普通对象（Object）才是所谓的“对象”，可以将JavaScript任何允许的数据类型放置于<em>Object()</em>方法的参数内都可以转换成为一个对象，这样的对象称作“<em title="变量的赋值操作是对值的引用">包装对象</em>”，这在我们上一章的课程里已经见过了。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-171.jpg">
         </code>
-        <p>但如果，使用Object()方法为参数内配置一个JavaScript的“<em title="变量的赋值操作是对内存地址的引用">内置对象</em>”，那返回的就是该对象本身。</p>
+        <p>但如果使用Object()方法为参数内配置一个数据，或该数据的变量，如果返回的是该数据本身的值，那我们将其称作“<em title="变量的赋值操作是对内存地址的引用">内置对象</em>”。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-172.jpg">
         </code>
@@ -145,17 +211,21 @@
         <code class="indent">
             <img src="img/code/jscode/code-js-175.jpg">
         </code>
-        <p>调用我们自定义的原型类方法后，在控制台中的返回值结果分别如下：</p>
+        <p>调用我们自定义的原型链方法后，在控制台中的返回值结果分别如下：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-176.jpg">
         </code>
+        <p>这样一来，就可以通过我们给对象原型链新增的这个isObject()方法来判断一个操作数或变量是否为一个“内置对象”了。上面的自定义方法，是将需要判定对象类型的变量放置于参数内，思考一下若需要将变量或对应的数据放置于方法之前作为一个对象的操作形式应该这么做（即：obj.isObject()的格式）。</p>
+	</section>
+    <section>
+        <h3>数据类型的精确判定</h3>
         <p>上一章我们在讲解“字符串操作”的时候提到过一个方法“<em>String()</em>”，它可以将任何类型的数据都转换成字符串，但在转换数组和对象时，出现了点特殊情况（可以自行回顾该章节的内容），即其它类型的数据都变成了和原始声明时基本一样的数据，只是加上了引号，而对象出现的结果却是“<em>[object Object]</em>”，其实这里的第一个值表示该值是一个对象（之前提到过，JavaScript中任何值都可以成为对象），第二个值为该类型值的构造函数（有些对象是通过包装而来的）。当然，除了将需要转换字符串的内容放置于String()方法的参数内，还能通过对象属性的方式来使用该方法，它的写法是“toString()”，不需要配置参数。</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-177.jpg">
         </code>
-        <p>可以从运行结果中看出来，这和我们上次使用的“String()”方法得出的结果完全一样。但其实作为一个对象的属性的“toString()”方法来讲自然会有一些不同的。它其实是对象原型类的一个方法，语法如下：</p>
+        <p>可以从运行结果中看出来，这和我们上次使用的“String()”方法得出的结果完全一样。但其实作为一个对象的属性的“toString()”方法来讲自然会有一些不同的。它其实是对象原型链的一个方法，语法如下：</p>
         <p><em>Object.prototype.toString</em></p>
-        <p>既然是原型类的方法，那很多时候它们还有自己的“<em title="内部的实现相当于一个函数闭包">子方法</em>”，如“<em>call()</em>”方法。基本使用方法如下：</p>
+        <p>既然是原型链的方法，那很多时候它们还有自己的“<em title="内部的实现相当于一个函数闭包">子方法</em>”，如“<em>call()</em>”方法。基本使用方法如下：</p>
         <code class="indent">
             <img src="img/code/jscode/code-js-178.jpg">
         </code>
@@ -179,10 +249,11 @@
     </section>
     <!-- 章节练习 -->
     <section class="unitPractice">
-        <h3>&lt;章节练习&gt;</h3>
+        <h3>&lt;章节练习三&gt;</h3>
         <p>通过已经学习过的方法完成以下数组和对象的“克隆”，克隆后的数组和对象的值发生改变后，对原数组和对象的值不产生影响：</p>
         <p>1、数组：["HTML","CSS","JavaScript"]；</p>
-        <p>2、对象：{name: "JS", fullName: "JavaScript", duty: "行为控制"}</p>
+        <p>2、对象：{name: "JS", fullName: "JavaScript", duty: "行为控制"}；</p>
+        <p>3、实现一个自定义的方法用于判定一个变量是否是一个内置对象，需要使用“data.isBuiltinObject()”的形式，其中data为你需要判断的数据。</p>
     </section>
 </root>
 

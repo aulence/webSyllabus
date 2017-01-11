@@ -59,7 +59,7 @@
 	</section>
 	<!-- 数组判断 -->
 	<section>
-		<h3>isArray()方法</h3>
+		<h3>Array.isArray()方法</h3>
 		<p>对于数组，之前我们已经谈到过，虽然它有自己的一套格式，也有自己一套独立的方法，但在JavaScript里，它仍然只是一个object的类型（可以通过类型判断输出方法typeof()得出），若要判断一个值是否为数组，可以使用“Array.isArray()”方法来进行判断，它的返回值是一个布尔值，true表示是一个数组，否者返回false。</p>
 		<code class="indent">
 			<img src="img/code/jscode/code-js-112.jpg">
@@ -141,7 +141,7 @@
 		<code class="indent">
 			<img src="img/code/jscode/code-js-126.jpg">
 		</code>
-		<p>利用该方法的原理可以达到向指定位置<em>插入数组元素</em>的效果。第一个参数仍然是表示开始下标，第二个参数设为0，这样后续设置的参数就会出现在第一个参数下标位置之后：</p>
+		<p>利用该方法的原理可以达到向指定位置<em>插入数组元素</em>的效果。第一个参数仍然是表示开始下标，第二个参数设为0，这样后续设置的参数就会出现在第一个参数下标位置之前：</p>
 		<code class="indent">
 			<img src="img/code/jscode/code-js-127.jpg">
 		</code>
