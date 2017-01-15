@@ -1,4 +1,4 @@
-<root data-root="数据类型--内置对象">
+<root data-root="JavaScript对象">
     <!-- 对象概述 -->
     <section class="mt0">
         <h3>对象概述</h3>
@@ -249,7 +249,7 @@
         </code>
         <p>为什么会出现这样的执行结果呢，我们再来看一个这样的小测试：</p>
         <code class="indent">
-            <img src="img/code/jscode/code-js-300.jpg">
+            <img src="img/code/jscode/code-js-301.jpg">
         </code>
         <p>可以发现，window是一个当前全局环境里的“<em>根对象</em>”，所有设置在全局里的变量都是它的属性，所以我们可以通过以上形式对设置在全局内的变量进行访问。通过这一点，我们再去联系之前示例的运行结果应该更好理解。就是当call()方法的参数是一些非指定变量名的时候，或window对象的时候，函数testCall()内的this都是指向全局内的“name”变量的，而当call()方法内的参数为全局下的对象“obj”的时候，this指向的就是“obj”了，通过运行函数，返回的值相当于是“obj.name”了。</p>
         <p>明白了这些特性后，我们还可以发挥自己的想象能力玩一些更为“高端的操作”，如：</p>

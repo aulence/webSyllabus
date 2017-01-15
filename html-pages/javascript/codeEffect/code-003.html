@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript代码示例</title>
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		html, body {
+			margin: 0; padding: 0;
+		}
+		body {
+			height: 240px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		button {
+			width: 100px; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		#testRecursion {
+			width: 960px; height: 180px;
+		}
+		#testRecursion, #testRecursion div {
+			border: 1px solid #0091de;
+			border-radius: 10px;
+			box-sizing: border-box;
+		}
+		#testRecursion div {
+			height: calc(100% - 20px);
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<button type="button" onclick="matrix()">执行递归</button>
+	<div id="testRecursion">
+		<div></div>
+	</div>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js">
+	</script><script src="../../../js/iframe.min.js"></script>
+	<script>
+
+		var testDiv = document.getElementById("testRecursion");
+		function matrix() {
+			console.time("测试时间");
+			// 获取当前的子节点
+			testDiv = testDiv.children[0];
+			// 写入新的子节点
+			testDiv.innerHTML = "<div></div>";
+			// 获取最新子节点的高度
+			var currentNode= testDiv.children[0],
+				currentNodeHeight = currentNode.clientHeight;
+			// 如果高度到达到一个较小值停止递归，否则继续递归
+			if(currentNodeHeight <= 20) {
+				currentNode.style.background = "linear-gradient(to right,#3ac2ff,#04435f,#3ac2ff)";
+				return;
+			}
+			else {
+				matrix();
+			}
+			console.timeEnd("测试时间");
+		}
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
