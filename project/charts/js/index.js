@@ -23,7 +23,7 @@ document.onreadystatechange = function() {
 				},
 				{
 					typeName: "其它",
-					value: [103,177,166,120,293,141,180]
+					value: [103,177,166,120,499,141,180]
 				}
 			]
 		});

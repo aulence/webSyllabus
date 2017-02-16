@@ -13,12 +13,159 @@
     		<li>navigator：浏览器信息导航对象</li>
     		<li>screen：浏览器屏幕对象</li>
     	</ul>
-    	<p>除了这些属性，window对象还提供了一些方法函数，如：open()、close()、setTimeout()、clearTimeout()、setIntelval()、clearInterval()等。</p>
+    	<p>除了这些属性，window对象还提供了一些方法函数，如：alert()、open()、close()、setTimeout()、clearTimeout()、setIntelval()、clearInterval()等。</p>
+    	<p>BOM到现在都没有一个组织对其进行标准化，JavaScript语法的标准化组织是ECMA，DOM的标准化组织是W3C，但这并不妨碍浏览器厂商们对其的支持。随着Web编程技术的发展，浏览器厂商在很多BOM的内容上都达成了共识，这使得很多没有标准的属性和方法也可以在大多数现代浏览器上正常的使用。</p>
+    	<p>在全局环境下，window对象以下几种表示法：</p>
+    	<ul class="indent">
+    		<li>window</li>
+    		<li>this</li>
+    		<li>self</li>
+    		<li>fremes</li>
+    	</ul>
+    	<p>它们在全局环境下都是指向window对象：</p>
+    	<code class="indent">
+			<img src="img/code/jscode/code-js-335.jpg">
+		</code>
     	<p>window对象下的属性和方法非常之多，多至现在也没有一份权威的统计表明window下到底有多少个属性和方法，这个只需要打开Google Chrome（主要推荐，但也可以是其它非IE系列的主流浏览器）的控制台（ctrl+shift+J），然后输入“window.”（后面需要加上“点”）就可以看到window下的属性们了，而且里面很多属性下还包含二级、三级甚至更多级的属性。也就是说想要完全去掌握window下的所有属性和方法肯定是不现实的，我们只需要掌握一些常用的，对我们实际项目开发中有一定帮助的即可。接下来我们我们开始对window的这些主要属性和方法进行讲解。</p>
 	</section>
+	<!-- 打开和关闭窗口 -->
 	<section>
-		<h3>新增章节，内容敬请期待...</h3>
+		<h3>window.open()和window.close()</h3>
+		<p>window.open()方法用于打开一个新的窗口（或标签页），而window.close()用于关闭当前窗口，他们同样可以将方法前的window对象省略不写，也能达到同样的方法效果。</p>
+		<p>相比于close()方法用于直接关闭浏览器窗口，open()方法就要稍微复杂一些，该方法有4个可选参数，它们的作用分别是：</p>
+		<dl class="attrExplain">
+			<dt>URL</dt>
+			<dd>新窗口的URL，为一个字符串。</dd>
+
+			<dt>名称</dt>
+			<dd>新窗口的名称，为一个字符串。</dd>
+
+			<dt>窗口特性</dt>
+			<dd>新窗口的URL，为一个字符串。具体可以配置以下内容：</dd>
+			<dd>
+				<ul>
+					<li>width：窗口宽度，值为一个像素数值</li>
+					<li>height：窗口高度，值为一个像素数值</li>
+					<li>left：窗口的屏幕X坐标，值为一个像素数值</li>
+					<li>top：窗口的屏幕Y坐标，值为一个像素数值</li>
+					<li>channelmode：是否“影院模式”显示窗口，值：yes/no（默认）</li>
+					<li>fullscreen：是否全屏显示，处于全屏模式的窗口必须同时处于剧院模式，值：yes/no（默认）</li>
+					<li>directories：是否添加目录按钮，值：yes（默认）/no</li>
+					<li>location：是否显示地址字段，值：yes（默认）/no</li>
+					<li>menubar：是否显示菜单栏，值：yes（默认）/no</li>
+					<li>resizable：窗口是否可以调整尺寸，值：yes（默认）/no</li>
+					<li>scrollbars：是否显示滚动条，值：yes（默认）/no</li>
+					<li>status：是否显示状态栏，值：yes（默认）/no</li>
+					<li>titlebar：是否显示标题栏，值：yes（默认）/no</li>
+					<li>toolbar：是否显示工具栏，值：yes（默认）/no</li>
+				</ul>
+			</dd>
+			<dd>在这些配置项中，各浏览器的支持情况都不是很理想，在目前标准（包括HTML5标准和ECMAScript标准）支持最好的Google Chrome上也只支持上面的前四个配置。所以，如非定制浏览器开发，否则没有必要去进行配置。</dd>
+
+			<dt>记录</dt>
+			<dd>在浏览器历史中替换或新建记录，为一个布尔值。true为替换，false为新建。</dd>
+		</dl>
+		<p class="noindent">通过这样一个示例来简单了解该方法的配置方式，HTML代码如下：</p>
+		<code>
+			<img src="img/code/jscode/code-js-331.jpg">
+		</code>
+		<p class="noindent">JavaScript代码：</p>
+		<code>
+			<img src="img/code/jscode/code-js-332.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-004.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-004.html"></iframe>
 	</section>
+
+	<!-- document -->
+	<section>
+		<h3>document对象</h3>
+		<p>对于window对象来说，document和DOM里面的document还是稍稍有些区别的，window对象的document子对象只有一个属性，就是“all”属性，它可以返回当前页面的标签集合，组成一个类似数组。</p>
+		<p>我们现在先新建一个只有基本文档结构的HTML页面：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-333.jpg">
+		</code>
+		<p>然后在这个页面的控制台里测试这个属性：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-334.jpg">
+		</code>
+		<p>该属性已经被，标准化的DOM操作所代替，不过在一些较老的项目里仍然可以看到其身影。</p>
+	</section>
+
+	<!-- frames -->
+	<section>
+		<h3>frames对象</h3>
+		<p>在这一章的第一节中通过例子我们已经见到过，frames和window是严格相等的，实际上，frames只是window的别名，它们表示的应用场景是不一样的。但只要window具有的属性，frames也具有，反之也成立。</p>
+		<p>为了证明上述，我们先在一个新建的HTML文件中写如三个带有name属性的&lt;iframe&gt;标签：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-336.jpg">
+		</code>
+		<p>然后我们就当前的页面在控制台中做一些测试：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-337.jpg">
+		</code>
+		<p>通过这个测试可以发现，window对象和frames对象完全是同一个对象，它们都是内存里那个window对象的引用，其中一个对象的属性发生变化，和它相关的对象随之变化。</p>
+		<p>其实在之前我们的HTML课程中就提到过，&lt;iframe&gt;标签就是“浏览器窗口中嵌入的浏览器窗口”。像上面那3个已经具有了name属性的&lt;iframe&gt;标签我们可以通过这样的形式去访问：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-338.jpg">
+		</code>
+		<p>通过这个测试又可以发现，不仅可以简单地通过frames对象简单地去访问这些iframe;，而且它们返回的结果和之前我们看到的window等同引用的对象的返回结果基本是一样的，注意这里说的是“基本一样”，因为从最后三个测试结果可以发现，这三个iframe是互不相等的。</p>
+		<p>要访问页面内指定的iframe除了上面提供的方法外，还可以用索引下标或中括号字符串的形式去访问。比如说现在我们要访问刚才那个name属性为“iframe2”的&lt;iframe&gt;标签，还可以使用下面两种形式：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-339.jpg">
+		</code>
+		<p>在Ajax不盛行的年代，&lt;iframe&gt;标签是在页面内嵌入网站的最好选择，单随着JavaScript相关编程技术的高速发展，使用&lt;iframe&gt;标签嵌套子页面的形式已经开始不被推荐，而是用Ajax的异步加载的形式去请求“<em title="不是整个HMLT页面，而是只包含基本HTML标签的HTML页面，而且不包含&lt;body&gt;标签">文档片段</em>”，这样可以使得页面不需要再去加载子页面内的整个个css和js等文件，和一些不必要的标签（包括整个&lt;head&gt;标签和文档声明）。这样一来就使得页面加载的速度得到很大提升，页面也不会因为跳转刷新出现短暂白屏的情况，从而使得用户体验得到提升。不需要页面跳转，网站所有功能都通过一个页面完成的页面现在的术语叫法为“<em>SPA</em>”（single page application，译为：单页面应用程序。也有叫“SPWA”，其中的“W”表示“web”），是现在Web互联网应用开发的一个主流趋势。</p>
+	</section>
+
+	<!-- 屏幕 -->
+	<section>
+		<h3>屏幕相关对象</h3>
+		<p>屏幕对象和相关的属性都是只读的，它们返回浏览器相对于当前计算机屏幕的数据信息。</p>
+		<p>screen对象是用于描述当前浏览器相对于屏幕信息的主要对象，所含属性如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-340.jpg">
+		</code>
+		<p>其中availWidth和availHeight表示的是当前的浏览器窗口相对于屏幕而言的可用宽度和高度，而colorDepth和pixelDepth表示的是颜色深度和像素深度这些色彩图形学上的东西。</p>
+		<p>和屏幕相关的还有以下属性：</p>
+		<ul class="indent">
+			<li>screenLeft：返回当前浏览器窗口距离屏幕左侧的像素数值</li>
+			<li>screenTop：返回当前浏览器窗口距离屏幕上侧的像素数值</li>
+			<li>screenX：作用和screenLeft相同</li>
+			<li>screenY：作用和screenTop相同</li>
+		</ul>
+		<p>之所以出现这样同功能的属性归根到底，还是因为BOM一直没有一个标准造成的，根据资料显示支持screenLeft和screenTop的浏览器有：IE、Chrome、Safari、Opera，但Firxfox不支持。而支持screenX和screenY的浏览器有：Firxfox、Chrome、Safari、Opera，但IE不支持。</p>
+		<p>为了解决这样兼容性问题，我们可以用一个自定义的三元表达式的办法来解决：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-341.jpg">
+		</code>
+		<p>现在我们就尝试多次调整浏览器窗口来试验一下刚才自定义的“属性”：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-342.jpg">
+		</code>
+		<p>但是需要注意的是使用我们自定义变量来接收浏览器屏幕信息需要每次窗口移动后都要进行一次表达值赋值，否则我们的“属性值”永远是第一次取到的值。显然这样的做法并不好，但由于BOM标准的问题，这也是一种不得已而为之的办法，只是一种浏览器兼容性的方案。</p>
+	</section>
+
+	<!-- 窗口 -->
+	<section>
+		<h3>浏览器窗口属性</h3>
+		<p>用于描述当前浏览器窗口的相关属性，这对于现在这个屏幕小到“160x160”（如智能手表），大到“4096×2160”（4K屏幕）的互联网时代来说，要做到同一个项目在不同分辨率屏幕的设备上做出响应式的设计一直是前端开发工程师头痛的问题。虽然说现在已经有很多CSS框架都或多或少的能帮上一些忙，但它们都有各自的局限性，而且还存在一些学习成本。但是如果能掌握原生JavaScript一些关于浏览器窗口的属性，对于我们做响应式设计也有不小的帮助。</p>
+		<p>浏览器窗口相关的主要属性有以下（数值表示的统一为像素）：</p>
+		<ul class="indent">
+			<li>window.innerWidth：浏览器窗口的可见宽度</li>
+			<li>window.innerHeight：浏览器窗口的可见高度</li>
+			<li>window.outerWidth：浏览器窗口的实际宽度（包括浏览器菜单和边框）</li>
+			<li>window.outerHeight：浏览器窗口的实际高度（包括浏览器菜单和边框）</li>
+			<li>window.pageXOffset：浏览器窗口滚动条水平滚动的距离</li>
+			<li>window.pageYOffset：浏览器窗口滚动条垂直滚动的距离</li>
+		</ul>
+		<p>现在我们在HTML里放入一些标签内容（内容略），并缩放浏览器窗口到一个任意的大小和将出现的水平和垂直滚动条都进行一定程度的拖动，然后在控制台输出这些属性（省略了window对象）：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-343.jpg">
+		</code>
+		<p>需要注意的是innerWidth、innerHeight、outerWidth、outerHeight都会包含滚动条的宽度。</p>
+		<p>这些属性都是只读的，它们会根据当前浏览器的尺寸或内容的变化而动态地跟随变化。</p>
+	</section>
+
 	<!-- 延时执行函数 -->
 	<!--<section>
 		<h3>延时函数setTimeout()</h3>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript代码示例</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		button {
+			width: 100px; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="nothing" type="button">新窗口</button>
+	<button id="openBaidu" type="button">百度</button>
+	<button id="w3school" type="button">w3school</button>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js">
+	</script><script src="../../../js/iframe.min.js"></script>
+	<script>
+		var nothing = document.getElementById("nothing");
+		var openBaidu = document.getElementById("openBaidu");
+		var w3school = document.getElementById("w3school");
+		// 第一个按钮
+		nothing.onclick = function() {
+			open();
+		}
+		// 第二个按钮
+		openBaidu.onclick = function() {
+			open("https://www.baidu.com", "百度", "width=960, height=560, left=100, top=10");
+		}
+		// 第三个按钮
+		w3school.onclick = function() {
+			open("http://www.w3school.com.cn", "w3school", "channelmode=yes, fullscreen=yes, location=no, menubar=yes, scrollbars=no, toolbar=yes");
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
