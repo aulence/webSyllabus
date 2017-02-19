@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 70px;
+		}
+		button {
+			width: 100px; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		div {
+			color: #2397fd;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<button id="test" onclick="testTimeout()">结果为</button>
+	<button id="clear" onclick="clearTestTimeout()">取消</button>
+	<div id="res"></div>
+	<!-- JavaScript部分 -->
+	<script>
+		var res = document.getElementById("res");
+		// 定义需要函数
+		function printTxt() {
+			res.textContent = "这是执行的结果"
+		}
+		// 用于接受延时函数作为值
+		var timeout;
+		// 执行延时结果计算函数
+		function testTimeout() {
+			timeout = setTimeout(printTxt, 2000);
+		}
+		// 取消延时函数的执行
+		function clearTestTimeout() {
+			clearTimeout(timeout);
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

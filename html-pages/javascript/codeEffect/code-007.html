@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 280px;
+		}
+		iframe {
+			width: 460px; height: 160px;
+			border: 1px solid #999;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+			display: block;
+			margin-top: 10px;
+		}
+		p {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 主页面HTML -->
+	<div id="mainDiv">
+		<p>&lt;iframe&gt;内容为：</p>
+	</div>
+	<iframe id="testIframe" src="code-007-1.html"></iframe>
+	<!-- 主页面JavaScript -->
+	<script>
+		setTimeout(function() {
+			var mainDiv = document.getElementById("mainDiv");
+			var testIframe = document.getElementById("testIframe");
+			var div1 = testIframe.getElementsByTagName("div")[0],
+				div2 = testIframe.getElementsByTagName("div")[1],
+				div3 = testIframe.getElementsByTagName("div")[2];
+			mainDiv.innerHTML += `
+					<p>${div1}</p>
+					<p>${div2}</p>
+					<p>${div3}</p>
+			`;
+		},100);
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

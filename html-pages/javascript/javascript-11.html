@@ -165,17 +165,180 @@
 		<p>需要注意的是innerWidth、innerHeight、outerWidth、outerHeight都会包含滚动条的宽度。</p>
 		<p>这些属性都是只读的，它们会根据当前浏览器的尺寸或内容的变化而动态地跟随变化。</p>
 	</section>
-
+	<!-- navigator -->
+	<section>
+		<h3>navigator对象</h3>
+		<p>这个对象用来包含浏览器详细信息的对象，通常用于做浏览器兼容性处理和设备的响应设计。可以打开浏览器输入这个navigator对象的名称来查看不同的浏览器的相关属性，这里我们还是以现在国内使用量<a href="http://tongji.baidu.com/data/browser" target="_blank">排行第一</a>（并且也是最长时间来对<a href="http://html5test.com/" target="_blank">HTML5</a>和<a href="https://kangax.github.io/compat-table/es6/" target="_blank">ECMAScript 6</a>支持最好的浏览器）的Google Chrome进行测试：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-344.jpg">
+		</code>
+		<p>在控制台输出的内容为一个对象，对象展开后会包含比较多的属性（由于测试环境分辨率问题，没有展开对象，可自行实践），其中“<em title="直译为“用户代理”，但通常不用翻译">userAgent</em>”是一个比较重要的属性。在早期作浏览器判断都是依靠这个属性，不过随着浏览器版本的发展，再用这个属性去区分不同的浏览器已经行不通了。可以可以尝试地在控制台输入这个属性进行观察：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-345.jpg">
+		</code>
+		<p>通过观察，可以在里面发现一些其它浏览器的信息，如“Mozilla”（FireFox浏览器厂商）和“Safari”（苹果浏览器）这些额外的信息，所以想通过它来判断当前浏览器究竟是哪个浏览器是不可能了，但是使用这个属性还是可以用于判断当前的设备是PC端还是移动端的。现在我们通过谷歌开发者工具将当前环境模拟为移动端环境，然后再次在控制内输入navigator.userAgent这个属性观察：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-346.jpg">
+		</code>
+		<p>通过肉眼对比已经可以发现两端代码的长度是不一样的了，认真对比还会发现里面有些内容被替换了，而且还新增了一些字符，如“iPhone”、“iPhone OS 9_1”、“Mobile”等字符。利用这一点我们可以用来很好地解决一些跨平台的代码兼容性问题，或者开发针对设备的特殊交互效果。</p>
+		<p>现在我们利用navigator.userAgent来编写一段用于判断当前环境是否为移动端并且是否是“iPhone”手机的代码：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-347.jpg">
+		</code>
+		<p>然后我们就几种情况进行测试。</p>
+		<p>PC端：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-348.jpg">
+		</code>
+		<p>iPhone 4：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-349.jpg">
+		</code>
+		<p>Samsung Note 3：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-350.jpg">
+		</code>
+		<p>若在PC端判断当前的浏览器厂商也提供了一个属性，就是“navigator.<em>vendor</em>”。虽然这个属性得到了现在主流浏览器的支持，但除了谷歌会返回“Google Inc.”的字符串结果外，其它浏览器目前返回的仍然是一个空字符串（以Google Chrome 57版本同期时段为例），相信以后更多浏览器厂商会加上这个信息。</p>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>1、创建一个含有一个&lt;main&gt;标签的html页面，标签内添加任意文本内容，&lt;head&gt;内包含一个id为“setCSS”的&lt;link&gt;标签；</p>
+		<p>2、在根目录下新建一个css文件夹，文件夹内包含三个CSS文件，名称分别为“sytle-large.css”、“style-small.css”和“style-mobile.css”；</p>
+		<p>3、当页面分比率宽度大于1366像素，使用样式“sytle-large.css”，分辨率宽度小于1366像素使用样式“style-small.css”，当检测到设备为移动端时，使用样式“style-mobile.css”；</p>
+		<p>4、“sytle-large.css”为默认的样式表，大体内容为：&lt;main&gt;宽度为1280像素，标签水平居中，字体大小为16像素，字体为红色；</p>
+		<p>5、“style-small.css”大体内容为：&lt;main&gt;宽度为960像素，标签水平居中，字体大小为14像素，字体颜色为蓝色；</p>
+		<p>6、“style-mobile.css”大体内容为：&lt;main&gt;宽度为100%，有12个像素的内间距，字体大小为16像素，字体颜色为中灰色。</p>
+		<p>页面不需要响应分辨率的变化，能保证页面每次载入时准确执行功能即可。</p>
+		<p>&lt;扩展功能&gt;</p>
+		<p>在样式表没有确定之前，考虑到网络加载及性能问题，页面上的内容不能显示出来，需要等到确认了样式表再显示出页面内容。</p>
+	</section>
+	<!-- 页面打印 -->
+	<section>
+		<h3>window.print()方法</h3>
+		<p>在PC端很多网站的《XXX服务条款》或需要用传统笔来填写和签名的表格都会有一个“打印”按钮，用于连接有打印机的设备打印当前的页面。这个时候只需要简单一句代码即可实现，如例：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-351.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-005.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-005.html"></iframe>
+		<p>在点击了绑定“print()”按钮之后只需要按照平时页面打印的常规设置即可使用打印机进行打印。这里需要注意的一个小细节是，在打印页面最上方会有两段小的文字，一个是当前电脑上的月份和日期，后面一个是写在HTML的&lt;head&gt;标签里&lt;title&gt;标签内的文本内容，可以根据需要设置。</p>
+	</section>
+	<!-- 选中的内容 -->
+	<section>
+		<h3>window.getSelection()方法</h3>
+		<p>getSelection()方法返回一个返回一个Selection对象，表示用户现在选中的文本。而用这个方法的toString()方法可以用于返回被选中的文本。我们来通过一个简单的示例来了解该方法的实际运用：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-352.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-006.html" target="_blank">运行效果</a>（请先点击下面的测试窗体，再通过鼠标选中文本观察效果）：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-006.html"></iframe>
+		<p>示例中使用了一个“<em>onmouseup</em>”事件来激活用户选择文本的操作，该事件触发条件是用户松开鼠标左键的时候。通过我们后面章节学习的“JavaScript事件”可以利用该方法来完成一些有意思的功能，也可以用来简化界面操作，提升用户体验。</p>
+	</section>
+	<!-- iframe -->
+	<section>
+		<h3>iframe元素对象</h3>
+		<p>之前我们已经多次提到过，&lt;iframe&gt;实质上就是嵌入到页面里的页面，但是原则上它们是两个不相同的页面。也就是说是不能用常规的方法通过在父页面上通过一般的DOM操作去操作&lt;iframe&gt;的元素的。如这样一个例子。</p>
+		<p>主页面的代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-353.jpg">
+		</code>
+		<p>&lt;iframe&gt;页面的内容如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-354.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-007.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-007.html"></iframe>
+		<p>通过示例可以发现，&lt;iframe&gt;标签内页面的&lt;div&gt;都没有获取到。其实这个结果也不难猜到，因为&lt;iframe&gt;标签包含页面用的是一个“src”属性，也就是说当前的标签对里面的页面只是一个资源引用，就和&lt;img&gt;标签的“src”属性一个原理。</p>
+		<p>在示例的代码中我们使用了ECMAScript 2015（简称ES6）中的“<em>模版字符串</em>”功能来简化代码，上例中的“mainDiv.innerHTML”ES5和ES6写法的对比如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-355.jpg">
+		</code>
+		<p>通过对比可以发发现ES6的写法会简洁很多，管理起来也更加方便，这相当于是原封不动地将HTML代码复制过来就可以用，只需根据需要用“${variate}”替换变量部分即可。随着代码的复杂度增加，这种写法会越来越有优势，现在最新版的主流浏览器都支持这种写法。</p>
+		<p>另外，需要解释的一点是，代码里所用的延迟执行函数setTimeout()在这里的作用。因为页面加载的顺序首先是整个文档结构，然后才是资源文件。这和网速比较慢（或资源体积较大）的时候去浏览器一些网站，整个页面以及样式表和脚本文件（页面加载的一些事件已经执行）已经加载完成了，但是里面的图片却还在缓缓地加载是一个道理。也就是说，如果在当前主页面非资源文件一加载完成就直接用JS去访问资源文件是访问不到的，这个时候资源文件尚未开始加载，然而用window.onload事件又经常会出现一些“不可把控”的问题（但在绝大多数时候还是最好的选择），所以这里才采用了这个事件来处理。当然，这里用setTimeout(function() {...},100)延迟加载只是为了简化逻辑，在实际项目中并不推荐使用，因为你永远不知道主页面加载所需要的时间，如果主页面还没有加载完成，子页面是不会开始加载的。</p>
+		<p>说了这么多，我们的主要问题还是没有解决，就是怎么通过主页面去访问&lt;iframe&gt;标签内的页面，其实可以通过实例化的iframe的Element对象的<em>contentWindow</em>属性和<em>contentDocument</em>属性去做这这件事。</p>
+		<p>contentWindow属性获得iframe节点包含的window对象，而contentDocument属性获得得iframe节点包含的document对象。子页面的不变，我们修改一下主页面的代码，再观察输出结果。</p>
+		<p>主页面的代码经过修改后如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-356.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-008.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-008.html"></iframe>
+		<p>这样一来我们就可以通过主页面去访问&lt;iframe&gt;标签内页面的window或document对象了，倘若iframe内还继续包含iframe页面的话，只需要链式地继续向下层访问即可。</p>
+		<p>既然主页面可以访问子页面，那iframe内的页面也是可以访问父页面的，只需要用“<em>window.parent</em>”即可，我们来看下面的例子。</p>
+		<p>主页面的内容：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-357.jpg">
+		</code>
+		<p>iframe页面的内容：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-358.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-009.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-009.html"></iframe>
+		<p>需要指出的是，如果当前页面已经没有“parent”了，那“window.parent”返回的就是它自身。如本来就是需要返回自身，除了直接使用“window”以外，还可以使用“<em>window.self</em>”，关于“self”的内容在本章已经讲解过。另外，如果一个页面内包含多层iframe的话，最内层的iframe页面需要访问，最外层的父级就可以使用“<em>window.top</em>”。</p>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习二&gt;</h3>
+		<p>编写一个包含两个iframe的页面：</p>
+		<p>1、第一个iframe页面的内容为三个文本框，三个文本框已经有值，分别是：“战斗暴龙兽”、“终极体”和“战斗龙卷风”；</p>
+		<p>2、第二个iframe页面内的内容为“宝贝”、“形态”、“技能”已经一个名为“激活”的按钮；</p>
+		<p>3、点击第二个iframe里的按钮，使第二个iframe里面的字段右方对应显示出第一个iframe内三个文本框的内容值。</p>
+		<p>&lt;提示1&gt;主页面和iframe涉及到跨域限制，需要通过启动本地服务器进行测试</p>
+		<p>&lt;提示2&gt;可以结合“parent”和“frames[n]”来解决这个问题</p>
+	</section>
 	<!-- 延时执行函数 -->
-	<!--<section>
+	<section>
 		<h3>延时函数setTimeout()</h3>
-		<p>内容已经讲解，课件内容后续补上。</p>
-	</section>-->
+		<p>在一个稍微复杂一点的项目中，很多时候我们是需要控制代码执行的时间的，也就是需要控制代码执行的顺序。单纯地调整代码执行的位置很多时候在满满都是各种回调函数的程序里面是行不通的,这个时候我们就需要用到延时函数又称“延迟函数”）“<em>setTimeout()</em>”。</p>
+		<p>这个函数包含两个参数，第一个参数接收一个function数据类型的值（也可以是“函数名+()”的字符串），第二个参数表示延时执行的时间，单位为“毫秒”。</p>
+		<p>这个函数的简单用法我们在课件的很多地方都已经见过了，本节主要讲解的是这个函数的几种用法和它的一些简单的特性。</p>
+		<p>第一种用法就是直接将需要执行的函数的名称作为第一个参数，或写成需要执行的“函数名+()”的字符串形式，如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-359.jpg">
+		</code>
+		<p>如果需要执行的函数没有参数，可以采用上例的第一种写法，如果需要带参数的话，就需要采用上例的第二种写法，但是采用上例的第二种写法需要注意，带进括号的参数也属于字符串的一部分，不能使用字符串拼接。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-360.jpg">
+		</code>
+		<p>关于setTimeout()函数的第二种写法就是直接将第一个参数设为一个匿名函数，然后再在里面编写语句或调用方法。在功能比较复杂的项目中，这种写法更被推崇。因为这样可以让一个延时函数执行多个函数或方法，一定程度上降低了代码的耦合度，参数的配置也更符合我们平时开发的习惯。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-361.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-010.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-010.html"></iframe>
+		<p>在实际开发中还有一种需求，就是需要延时执行的代码因为某种条件的成立需要取消执行，这个时候就可以用到“与之配套”的“<em>clearTimeout()</em>函数”，它可以清除正处于延时过程中的函数，使之不再执行。它的参数为延时函数的实例化对象（变量）名称。也就是说，哪怕将setTimeout()函数赋给一个变量它也是也能执行的。我们来看下面的例子：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-362.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-011.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-011.html"></iframe>
+		<p>对于将一个延时函数赋给一个变量的方式需要说明一点，就是这样的做法不需要任何事件去触发，它也是会执行的。所以不要企图将一个延时函数存为一个变量，待需要的时候才去调用这个变量。</p>
+	</section>
 	<!-- 定时执行函数 -->
-	<!--<section>
-		<h3>延时函数setInterval()</h3>
-		<p>内容已经讲解，课件内容后续补上。</p>
-	</section>-->
+	<section>
+		<h3>定时函数setInterval()</h3>
+		<p>该函数的代码结构及大体功能和setTimeout()函数一样，但区别是该函数会根据设置的第二个参数的毫秒数作为间隔来<em>重复执行</em>，它同样有一个配套的中止函数方法“<em>clearInterval()</em>”。</p>
+		<p>我们将上一节setTimeout()函数的最后一个例子稍作修改来学习setInterval()函数的使用方法：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-363.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-012.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-012.html"></iframe>
+		<p>定时执行函数在现在的项目中有有非常多的用处，基本每个项目都会有所涉及，常用于开发如图片轮播，倒计时，定时数据更新，计时关闭跳转页面等功能，务必要熟悉其使用方法。</p>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习三&gt;</h3>
+		<p>制作一个简单的banner图片轮播效果：</p>
+		<p>1、图片必须占满当前浏览器窗口的100%宽度；</p>
+		<p>2、图片的高度自定（建议在320~560像素之间）；</p>
+		<p>3、图片的必须要维持原图比例；</p>
+		<p>4、图片为元素的背景图片（不使用&lt;img&gt;）；</p>
+		<p>5、图片数量大于2张。</p>
+		<p>&lt;注&gt;可以不需要切换过程的动画。</p>
+	</section>
 </root>
 
 

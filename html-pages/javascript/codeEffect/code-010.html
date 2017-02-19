@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		button {
+			width: 100px; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<button id="test" onclick="testTimeout()">结果为</button>
+	<span id="res"></span>
+	<!-- JavaScript部分 -->
+	<script>
+		var res = document.getElementById("res");
+		// 定义3个计算函数
+		function printTxt1(param) { return param + 1 }
+		function printTxt2(param) { return param + 2 }
+		function printTxt3(param) { return param + 3 }
+		// 定义延时结果计算函数
+		function testTimeout() {
+			setTimeout(function() {
+				res.textContent = printTxt1(10) + printTxt2(10) + printTxt3(10);
+			}, 1500);
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

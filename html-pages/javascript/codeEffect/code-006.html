@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			#selection {
+				margin-bottom: 16px;
+			}
+			#resText span:last-child {
+				color: #2397fd;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<div id="selection">这是一段用于测试被选中的内容的文本。</div>
+		<div id="resText">
+			<span>您选中的是：</span>
+			<span></span>
+		</div>
+		<!-- JavaScript部分 -->
+		<script>
+			var selection = document.getElementById("selection");
+			var resText = document.getElementById("resText");
+			selection.onmouseup = function() {
+				var sltObj = getSelection(),
+					sltTxt = sltObj.toString();
+				var resShow = resText.getElementsByTagName("span")[1];
+				resShow.textContent = sltTxt;
+			}
+		</script>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

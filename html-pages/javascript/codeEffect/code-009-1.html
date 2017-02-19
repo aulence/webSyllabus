@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 280px;
+			padding: 20px;
+			color: #666;
+		}
+		p {
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- iframe HTML -->
+	<div id="mainDiv">
+		<p>主页面的内容为：</p>
+	</div>
+	<!-- iframe JavaScript -->
+	<script>
+		setTimeout(function() {
+			var mainDiv = document.getElementById("mainDiv");
+			var parentWin = window.parent,
+				parentDoc = parentWin.document;
+			var parentMainDiv = parentDoc.getElementById("mainDiv");
+			mainDiv.innerHTML = `
+				<p>父页面的宽度和高度分别是</p>
+				<p>${parentWin.innerWidth}像素和${parentWin.innerHeight}像素</p>
+				<p>内容是</p>
+				<p>${parentMainDiv.getElementsByTagName("p")[0].textContent}</p>
+				<p>${parentMainDiv.getElementsByTagName("p")[1].textContent}</p>
+				<p>${parentMainDiv.getElementsByTagName("p")[2].textContent}</p>
+			`;
+		},2000);
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
