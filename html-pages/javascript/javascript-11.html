@@ -204,9 +204,9 @@
 	<section class="unitPractice">
 		<h3>&lt;章节练习一&gt;</h3>
 		<p>1、创建一个含有一个&lt;main&gt;标签的html页面，标签内添加任意文本内容，&lt;head&gt;内包含一个id为“setCSS”的&lt;link&gt;标签；</p>
-		<p>2、在根目录下新建一个css文件夹，文件夹内包含三个CSS文件，名称分别为“sytle-large.css”、“style-small.css”和“style-mobile.css”；</p>
-		<p>3、当页面分比率宽度大于1366像素，使用样式“sytle-large.css”，分辨率宽度小于1366像素使用样式“style-small.css”，当检测到设备为移动端时，使用样式“style-mobile.css”；</p>
-		<p>4、“sytle-large.css”为默认的样式表，大体内容为：&lt;main&gt;宽度为1280像素，标签水平居中，字体大小为16像素，字体为红色；</p>
+		<p>2、在根目录下新建一个css文件夹，文件夹内包含三个CSS文件，名称分别为“style-large.css”、“style-small.css”和“style-mobile.css”；</p>
+		<p>3、当页面分比率宽度大于1366像素，使用样式“style-large.css”，分辨率宽度小于1366像素使用样式“style-small.css”，当检测到设备为移动端时，使用样式“style-mobile.css”；</p>
+		<p>4、“style-large.css”为默认的样式表，大体内容为：&lt;main&gt;宽度为1280像素，标签水平居中，字体大小为16像素，字体为红色；</p>
 		<p>5、“style-small.css”大体内容为：&lt;main&gt;宽度为960像素，标签水平居中，字体大小为14像素，字体颜色为蓝色；</p>
 		<p>6、“style-mobile.css”大体内容为：&lt;main&gt;宽度为100%，有12个像素的内间距，字体大小为16像素，字体颜色为中灰色。</p>
 		<p>页面不需要响应分辨率的变化，能保证页面每次载入时准确执行功能即可。</p>
@@ -338,6 +338,193 @@
 		<p>4、图片为元素的背景图片（不使用&lt;img&gt;）；</p>
 		<p>5、图片数量大于2张。</p>
 		<p>&lt;注&gt;可以不需要切换过程的动画。</p>
+	</section>
+	<!-- location -->
+	<section>
+		<h3>location对象</h3>
+		<p>该对象同样属于window对象中的一个子对象，它用于描述当前页面的<em>地址信息</em>。首先我们拿百度首页来做这个对象的测试，简单观察该对象的相关属性属性。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-364.jpg">
+		</code>
+		<p>现在我们就按照对象返回属性的这个顺序开始简单地讲解这个对象，我们首先来看里面的属性：</p>
+		<dl class="attrExplain">
+			<dt>hash</dt>
+			<dd>地址栏的“<em>哈希值</em>”，返回或设置当前地址的哈希值，如果没有哈希值则返回空字符串。返回和设置的值以“#”号开始，后面接一段字符或简单符号组成的字符，如当前课件地址栏中的“#”+英文字母的部分。这个属性是现在SPA页面做页面路由常用的一个属性。</dd>
+
+			<dt>host</dt>
+			<dd>设置或返回当前URL主机名和端口号（如果有的话）。通过设置这个属性可以达到跳转页面的效果。如现在有一个URL“http://www.auelnce.com/”，将其host设置为“baidu.com”的话，它会跳转到“https://www.baidu.com/”这个URL对应的页面。</dd>
+
+			<dt>hostname</dt>
+			<dd>设置或返回当前URL的主机名。除了不能返回端口号，该属性作用和host属性基本一致。</dd>
+
+			<dt>href</dt>
+			<dd>设置或返回完整的URL。相对于host等属性来说，href的表达更加完整，是经常用于做页面跳转的属性。</dd>
+			<dd>该属性在项目的很多地方都会涉及。如这样一个场景：当一个用户进入一个有账户系统的网站去点击名为“个人中心”的导航按钮。这个时候我们就需要做出如下判断：通过一个设置在全局里值为布尔型的对象属性判断当前用户是否登录，如果登录了，那直接跳转向“个人中心”获取并显示该用户的相关信息；如果判断出该用户还没有登录，那将跳转向“用户登录”所在的页面。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-365.jpg">
+				</code>
+			</dd>
+			<dd>当然，在本例中使用的跳转只是跳转“<em>同域</em>”。如果有特殊需要也可以跳转向其它域名，这个时候就需要输入类似于“http://www.?????（注册域名名称）.com”这样的URL地址了。</dd>
+
+			<dt>origin</dt>
+			<dd>表面看上去它和href属性没有什么区别，但若当地址里面带有“?”及后面的参数的时候就不一样了，该属性只会返回“?”之前的内容，而href会将完整的URL返回（这一点可以进入任意电子商务网站，点击超链接进入用户登录的页面，观察地址栏）。</dd>
+
+			<dt>pathname</dt>
+			<dd>设置或返回当前URL的路径部分。在我们上面输出百度的location属性时看到这个属性返回的值为“/”，这是因为现在处于这个网站的根目录下。也就是说如果进入这个网站的更深一级目录，再去访问这个属性的时候即可看到当前所在的路径了（如果HTTP服务器设置的默认页面名不为“index.html”的话，那这个字符串也会被返回）。</dd>
+
+			<dt>port</dt>
+			<dd>设置或返回当前URL的端口号。</dd>
+
+			<dt>protocol</dt>
+			<dd>设置或返回当前URL的协议，常见如“http:”、“https:”、“file:” 等。现在通常用来做网站协议类型“http”升级到“https”之后的重定向，帮助用户点击浏览器收藏夹或复制而来的网址都能正常地跳转向“https”协议的地址。</dd>
+
+			<dt>search</dt>
+			<dd>设置或返回从问号“？”开始的URL，及查询部分。</dd>
+		</dl>
+		<p>除了这些属性外，location对象包含了三个方法：</p>
+		<dl class="attrExplain">
+			<dt>assign()</dt>
+			<dd>加载新的Web文档，除了“属性”和“方法”使用上的区别外，它和location.href的用途基本是完全一样的。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-366.jpg">
+				</code>
+			</dd>
+
+			<dt>reload()</dt>
+			<dd>重新加载当前Web页面。相当于按下了键盘上的“F5”按键或点击浏览器刷新按钮的功能。该方法有一个可选参数，为一个布尔值。当值为true的时候，当前的页面将不会从浏览器缓存去加载当前的页面，而是去服务器端获取相关的资源，而值为false（默认）的时候，页面会从浏览器缓存里去获取相关资源。</dd>
+
+			<dt>replace()</dt>
+			<dd>该方法的使用和assign()一样，区别是该方法不会留下历史记录。因为从名称可以大概明白它的实现方式是用一个页面“替换”掉当前的Web页面，这样不会留下历史记录，即通过点击浏览器的返回按钮无法回到之前的页面。</dd>
+		</dl>
+	</section>
+	<!-- 历史记录 -->
+	<section>
+		<h3>history对象</h3>
+		<p>浏览器有一个history对象，这个对象用于保存页面浏览通过超链接或程序链接跳转的记录，通常会将其直译为“<em>历史记录</em>”对象。首先，按照我们“一贯的作风”，首先将这个对象在浏览器的控制台进行一次输出观察。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-367.jpg">
+		</code>
+		<p>可以发现，这个对象只有3个属性，分别是：记录长度、记录回滚和状态，但实际上这个这个对象的真正实用的方法都是“藏”在了原型里，我将“__proto__”展开后再看看这些方法。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-368.jpg">
+		</code>
+		<p>细心一点可以发现，这个原型里面基本不包含属性（有也只是之前的那3个属性），基本都是以方法的形式存在的。我们首先来看一下这个对象常用的3个原型方法：</p>
+		<dl class="attrExplain">
+			<dt>history.back()</dt>
+			<dd>返回到上一个访问页面，等同于浏览器的后退键。用于制作手机客户端左上角的返回按钮是个不错的选择。不要将返回的按钮设置为一个超链接，因为有的时候不知道是从哪个页面跳到这个页面的，如果用超链接的方式有时是无法正确回到上一个页面的。</dd>
+
+			<dt>history.forward()</dt>
+			<dd>前进到下一个访问页面，等同于浏览器的前进键。</dd>
+
+			<dt>history.go()</dt>
+			<dd>相对当前记录后退或前进到第几个记录，参数为一个“正负整数”。如例说明：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-369.jpg">
+				</code>
+			</dd>
+		</dl>
+		<p>另外，HTML5后还新增了pushState()和replaceState()这两个方法，它们用于新增和修改当前的历史记录，这两个方法都包含三个参数：</p>
+		<ul class="indent">
+			<li>state：一个与指定网址相关的状态对象，popstate事件触发时，该对象会传入回调函数。如果不需要这个对象，此处可以填null。</li>
+			<li>title：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。</li>
+			<li>url：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。</li>
+		</ul>
+		<p>“state”这个里面的popstate事件是当同一个文档的history对象出现变化时才会触发。但是，仅仅调用pushState()方法或replaceState()方法 ，并不会触发该事件，只有用户点击浏览器倒退按钮和前进按钮，或者使用JavaScript调用back()、forward()、go()方法时才会触发。另外，该事件只针对同一个文档，如果浏览历史的切换，导致加载不同的文档，该事件也不会触发。</p>
+		<p>通过上面的描述，我们基本可以大致能归类出pushState()和replaceState()这两个方法的一个用途了，就是如果当前网站采用的是Ajax的SPA页面的话，可以使用这两个方法来模拟出页面的跳转（实际上页面并没有跳转，只是通过Ajax导入了新的内容，而这些内容正是这两个方法URL参数里对应的页面而已）。</p>
+		<p>由于我们还没有正式地开始学习Ajax的相关内容，这两个方法现在就暂时不作深入的讲解了，在以后学习Ajax后再将这两个方法拿来做实际运用的例子。</p>
+	</section>
+	<!-- 本地存储 -->
+	<section>
+		<h3>Web Storage机制</h3>
+		<p>“<em>Web Storage</em>”是HTML5新增的一种数据存储机制，随着浏览器对HTML5的支持度不断增加，在新建的项目中基本已经取代了<em>cookie</em>，它是服务器保存在浏览器的一小段文本信息，每个Cookie的大小一般不能超过4KB，超过这个长度的Cookie，将被忽略，不会被设置。</p>
+		<p>“Web Storage”更像是cookie的强化版，能够动用大得多的存储空间。目前，每个域名的存储上限视浏览器而定，Chrome是2.5MB，Firefox和Opera是5MB，IE是10MB。其中，Firefox的存储空间由一级域名决定，而其他浏览器没有这个限制。也就是说，在Firefox中，“https://music.baidu.com”和“https://zhidao.baidu.com”共享5MB的存储空间。另外，与Cookie一样，它们也受同域限制。某个网页存入的数据，只有同域下的网页才能读取。</p>
+		<p>“Web Storage”存储机制包含<em>sessionStorage</em>和<em>localStorage</em>这两个对象，从名称上直译，可以将其称作“<em>会话存储</em>”和“<em>本地存储</em>”。它们存储值的方式和JavaScript中对象属性储存值的方式一样，都是以“键值对”存在的，这两个对象的区别是：会话存储（sessionStorage）的键值在浏览器关闭后会被清除，而本地存储（localStorage）存储的键值会一直存在于浏览器中，除非被手动清除或使用clear()方法清除。需要注意，浏览器自带的“历史记录”清除功能也无法将其清除。这样一来我们Web前端开发者也可以达到“数据持久化存储”的目的了。接下来我们看学习这两个对象的使用方式。</p>
+		<dl class="attrExplain">
+			<dt>window.sessionStorage</dt>
+			<dd>学习这个对象首先要从<em>setItem()</em>这个方法开始，这个方法包含两个参数，第一个参数为这个对象的键名（属性名），第二个参数为这个对象的键值（属性值），配置和访问方法如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-370.jpg">
+				</code>
+			</dd>
+			<dd>这样一来我们就将这个属性名为“author”的键值对存入了浏览器。除了直接输出sessionStorage这个对象以外，我们还可以在开发者工具的“Application”中“Storage”一栏的“Session Storage”子菜单中去查看存储的值。</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-371.jpg">
+				</code>
+			</dd>
+			<dd>这个值现在已经被存入浏览器，只要不关闭浏览器，当前域名下的这个值就始终是存在的，关闭浏览器后再次打开浏览器会发现这个键值对已经被销毁了。</dd>
+			<dd>如果是要读取已经存储于浏览器内的sessionStorage的值就需要用到<em>getItem()</em>这个方法了，方法参数为指定的键名，如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-372.jpg">
+				</code>
+			</dd>
+			<dd>如果需要清除指定的键值对可以使用<em>removeItem()</em>，方法参数为指定的键名，如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-373.jpg">
+				</code>
+			</dd>
+			<dd>这个时候再去开发者工具“Application”栏里去查看刚才存储的值，发现“author”键值对已经不存在了。</dd>
+			<dd>如果是要一次性清除所有sessionStorage对象存储的键值对，可以使用<em>clear()</em>方法，该方法不需要参数。</dd>
+
+			<dt>window.localStorage</dt>
+			<dd>该对象的所有方法和sessionStorage完全一致。在浏览器查看的位置位于开发者工具中“Application”栏中“Storage”一栏的“Local Storage”子菜单中。它们的区别在于，localStorage可以真正地实现数据的“永久存储”，即使用户关闭浏览器，或使用清除浏览历史等功能，通过localStorage存储的数据仍然存在。</dd>
+		</dl>
+		<p>这两个存储对象可以通过<em>key()</em>方法遍历出所有的键名，现在以localStorage为例先创建几个键值对，然后对其进行键名的遍历存入一个数组：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-374.jpg">
+		</code>
+		<p>当储存的数据发生变化时，会触发storage事件。我们可以为window添加监听函数来监听“Web Storage”的两个对象发生值变化事件，通过回调函数来执行相应的函数操作，回调函数接受一个event对象作为参数。这个event对象主要包含4个属性：</p>
+		<ul class="indent">
+			<li>key：保存发生变化的键名</li>
+			<li>oldValue：更新前的值。如果该键为新增加，则这个属性为null</li>
+			<li>newValue：更新后的值。如果该键被删除，则这个属性为null</li>
+			<li>url：原始触发storage事件的那个网页的网址</li>
+		</ul>
+		<p>监听函数的格式如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-375.jpg">
+		</code>
+		<p>值得特别注意的是，该事件不在导致数据变化的当前页面触发。如果浏览器同时打开一个域名下面的多个页面，当其中的一个页面改变sessionStorage或localStorage的数据时，其他所有页面的storage事件会被触发，而原始页面并不触发storage事件。可以通过这种机制，实现多个窗口之间的通信。所有浏览器之中，只有IE浏览器除外，它会在所有页面触发storage事件。</p>
+		<p>对于“Web Storage”还有一点需要补充说明的是，它们只能存储字符串的值。存储为数值和布尔值的值，在读取的时候都是一个布尔值，若需要进行数值计算和条件判断的时候记得需要进行数据类型转换。而存储为数组形式的值，在读取的也是一段用逗号分隔的字符串的字符串，也需要用split(",")方法重新转换回数组的形式。但如果是存储内容为一个对象的时候，返回的是"[object Object]"的字符串，如下。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-376.jpg">
+		</code>
+		<p>这个时候我们需要用JSON提供的两个方法来完成“Web Storage”对对象的存储，即：parse()和stringify()方法，使用方法如例：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-377.jpg">
+		</code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习四&gt;</h3>
+		<p>在根目录下新建两个HTML文件，通过“Web Storage”完成一个跨页面的数据访问的手机支付App功能：</p>
+		<p>1、第一个HTML文件名称为“pay.html”；</p>
+		<p>2、第二个HTML文件名称为“pay-success.html”；</p>
+		<p>3、第一个页面的HTML内容大致如下：</p>
+		<pre>
+&lt;page id="pay"&gt;
+	&lt;div&gt;请输入转账金额：&lt;/div&gt;
+	&lt;input id="payCount" type="number"&gt;
+	&lt;button id="btnPay" type="button"&gt;支付&lt;/div&gt;
+&lt;/page&gt;
+		</pre>
+		<p>4、第二个页面的HTML内容大致如下；</p>
+		<pre>
+&lt;page id="pay-success"&gt;
+	&lt;i class="ico-success"&gt;&lt;!--支付成功图标--&gt;&lt;/i&gt;
+	&lt;div&gt;成功向对方支付&lt;/div&gt;
+	&lt;div&gt;￥&lt;span id="payMoney"&gt;0.00&lt;/span&gt;&lt;/div&gt;
+&lt;/page&gt;
+		</pre>
+		<p>5、其中&lt;i class="ico-success"&gt;&lt;/i&gt;需放置一个表示“成功状态”的图标，&lt;div&gt;￥&lt;span id="payMoney"&gt;0.00&lt;/span&gt;&lt;/div&gt;中的数值为&lt;page id="pay"&gt;页面文本框中输入的值，需要保留两位小数。</p>
+		<p>&lt;扩展功能&gt;</p>
+		<p>支付成功页面倒计时5秒跳转到任意页面。</p>
 	</section>
 </root>
 
