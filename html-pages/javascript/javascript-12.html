@@ -9,61 +9,158 @@
 	<!-- DOM节点 -->
 	<section>
 		<h3>DOM节点</h3>
-		<p>DOM在JavaScript中的实例就是document，该对象具有以下属性：</p>
+		<p>所有节点对象都是浏览器内置的<em>Node</em>（包括元素节点、属性节点、文本节点等等）对象的实例，继承了Node属性和方法。这是所有节点的共同特征。以下属性与节点对象本身的特征相关：</p>
+		<dl class="attrExplain">
+			<dt>Node.nodeName和Node.nodeType</dt>
+			<dd>Node.nodeName返回节点的名称，而Node.nodeType返回的是一个整数作为类型的代号（nodeType这个设计一直让人很费解）。节点一共有7种类型，相应的对照如下表：</dd>
+			<dd>
+				<table class="normal alignLeft">
+					<tr>
+						<th>节点对象类型</th>
+						<th>NnodeName</th>
+						<th>nodeType</th>
+					</tr>
+					<tr>
+						<td>ELEMENT_NODE（元素节点）</td>
+						<td>大写的HTML元素名</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>ATTRIBUTE_NODE（属性节点）</td>
+						<td>等同于Attr.name</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>TEXT_NODE（文本节点）</td>
+						<td>#text</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>COMMENT_NODE（注释节点）</td>
+						<td>#comment</td>
+						<td>8</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_NODE（文档节点）</td>
+						<td>#document</td>
+						<td>9</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_TYPE_NODE（文档类型节点）</td>
+						<td>等同于DocumentType.name</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_FRAGMENT_NODE（文档碎片节点）</td>
+						<td>#document-fragment</td>
+						<td>11</td>
+					</tr>
+				</table>
+			</dd>
+			<dd>我们来看一个示例说明这两个属性的使用方式：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-378.jpg">
+				</code>
+			</dd>
+			<dd>然后在该页面的控制台查看输出的代码：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-379.jpg">
+				</code>
+			</dd>
+			<dd>虽然nodeType是没有那么“语义化”，但通常用于判断节点的类型还是一个不错的选择。</dd>
+
+			<dt>Node.nodeValue</dt>
+			<dd>读取或设置当前节点的文本值。对于HTML来讲，只有“文本节点”和“注释节点”才能设置这个值，其它类型的节点返回的值为null。我们还是以nodeName和nodeType那个文件为例，访问其中几个节点的nodeValue进行测试：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-380.jpg">
+				</code>
+			</dd>
+
+			<dt>Node.textContent</dt>
+			<dd>该属性返回当前节点和它的所有后代节点的文本内容，它会自动忽略当前节点内部的HTML标签，返回所有文本内容。并且该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对HTML标签转义。这很适合用于用户提供的内容。</dd>
+			<dd>比如说现在页面里面有一个包含一段文本内容的div元素，我们使用该属性做一些简单的操作来说明它的用法：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-381.jpg">
+				</code>
+			</dd>
+			<dd>但需要注意的是，document节点和doctype节点的textContent属性为null。如果要读取整个文档的内容，可以使用document.documentElement.textContent。</dd>
+
+			<dt>Node.baseURI</dt>
+			<dd>该属性用于返回当前网页的绝对路径。如果无法取到这个值，则返回null。浏览器根据这个属性，计算网页上的相对路径的URL。该属性为只读。不同节点都可以调用这个属性，通常它们的值是相同的。但考虑到代码的语义，我们一般都是使用“<em>document.baseURI</em>”。</dd>
+			<dd>该属性的值一般由当前网址的URL（即window.location相关属性）决定，但是可以使用HTML的&lt;base&gt;标签，改变该属性的值。</dd>
+		</dl>
+		<p>DOM在JavaScript中的实例就是document，document是有一系列的Node组成的，和Node相关的属性如下：</p>
 		<dl class="attrExplain">
 			<dt>Node.ownerDocument</dt>
-			<dd>Node.ownerDocument属性返回当前节点所在的顶层文档对象，即document对象。document对象本身的ownerDocument属性，返回null。</dd>
+			<dd>该属性返回当前节点所在的顶层文档对象，即document对象。document对象本身的ownerDocument属性，返回null。</dd>
 
 			<dt>Node.nextSibling</dt>
-			<dd>Node.nextSibling属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
+			<dd>该属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
+
+			<dt>Node.nextElementSibling</dt>
+			<dd>该属性用于返回紧跟在当前节点后面的第一个同级Element节点，也就是说它不会返回文本节点（包括空格或换行的文本节点）。它属于ECMAScript 5标准新增的属性。</dd>
 
 			<dt>Node.previousSibling</dt>
-			<dd>previousSibling属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</dd>
+			<dd>该属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</dd>
+
+			<dt>Node.previousElementSibling</dt>
+			<dd>该属性用于返回紧跟在当前节点前面的第一个同级Element节点，它同样不会返回文本节点（包括空格或换行的文本节点）。它属于ECMAScript 5标准新增的属性。</dd>
 
 			<dt>Node.parentNode</dt>
-			<dd>parentNode属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：element节点、document节点和documentfragment节点。</dd>
+			<dd>该属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：element节点、document节点和documentfragment节点。</dd>
 			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点，父节点也是null。</dd>
 
 			<dt>Node.parentElement</dt>
-			<dd>parentElement属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</dd>
+			<dd>该属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</dd>
 			<dd>在IE浏览器中，只有Element节点才有该属性，其他浏览器则是所有类型的节点都有该属性。</dd>
 
 			<dt>Node.childNodes</dt>
-			<dd>childNodes属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
+			<dd>该属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
 
-			<dt>Node.firstChild，Node.lastChild</dt>
-			<dd>firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
+			<dt>Node.childElementCount</dt>
+			<dd>该属性返回的是当前元素节点内子元素Element节点的个数，而通过上面的Node.childNodes.length返回的节点会包含文本节点和注释节点。它属于ECMAScript 5的内容。</dd>
+
+			<dt>Node.firstChild和Node.lastChild</dt>
+			<dd>Node.firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
+
+			<dt>Node.firstElementChild和Node.lastElementChild</dt>
+			<dd>firstElementChild属性返回当前节点的第一个Element子节点，如果当前节点没有子节点，则返回null。Node.lastElementChild属性返回当前节点的最后一个Element子节点，如果当前节点没有子节点，则返回null。它们同样属于ECMAScript 5标准新增的属性。</dd>
 		</dl>
 		<p>节点对象有这样一些方法：</p>
 		<dl class="attrExplain">
 			<dt>Node.appendChild()</dt>
-			<dd>Node.appendChild()方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。</dd>
+			<dd>该方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。</dd>
 
 			<dt>Node.hasChildNodes()</dt>
-			<dd>Node.hasChildNodes()方法返回一个布尔值，表示当前节点是否有子节点。</dd>
+			<dd>该方法返回一个布尔值，表示当前节点是否有子节点。</dd>
 
 			<dt>Node.cloneNode()</dt>
-			<dd>Node.cloneNode()方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
+			<dd>该方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
 			<dd>克隆一个节点之后，DOM树有可能出现两个有相同ID属性的HTML元素，这时应该修改其中一个HTML元素的ID属性。</dd>
 
 			<dt>Node.insertBefore()</dt>
-			<dd>Node.insertBefore()方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是所要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
+			<dd>该方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是所要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
 			<dd>如果insertBefore()方法的第二个参数为null，则新节点将插在当前节点的最后位置，即变成最后一个子节点。如果所要插入的节点是当前DOM现有的节点，则该节点将从原有的位置移除，插入新的位置。</dd>
+			<dd>由于不存在insertAfter()方法，如果要插在当前节点的某个子节点后面，可以用insertBefore方法结合nextSibling属性模拟。</dd>
 
 			<dt>Node.removeChild()</dt>
-			<dd>Node.removeChild()方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
+			<dd>该方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
 
 			<dt>Node.replaceChild()</dt>
-			<dd>Node.replaceChild()方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。</dd>
+			<dd>该方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。</dd>
 
 			<dt>Node.contains()</dt>
-			<dd>Node.contains()方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。</dd>
+			<dd>该方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。需要注意的是，如果将当前节点传入contains方法，也会返回true。</dd>
 
 			<dt>Node.isEqualNode()</dt>
-			<dd>isEqualNode()方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</dd>
+			<dd>该方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</dd>
 
 			<dt>Node.normalize()</dt>
-			<dd>normailize方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
+			<dd>该方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
 		</dl>
 	</section>
 	<!-- DOM节点查询 -->
@@ -72,26 +169,26 @@
 		<p>对于DOM的查询，document提供了以下方法：</p>
 		<dl class="attrExplain">
 			<dt>getElementById()</dt>
-			<dd>getElementById()方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
+			<dd>该方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
 
 			<dt>document.getElementsByTagName()</dt>
-			<dd>document.getElementsByTagName()方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection对象，可以实时反映HTML文档的变化。如果没有任何匹配的元素，就返回一个空集。</dd>
+			<dd>该方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection对象，可以实时反映HTML文档的变化。如果没有任何匹配的元素，就返回一个空集。</dd>
 			<dd>HTML元素本身也定义了getElementsByTagName()方法，返回该元素的后代元素中符合指定标签的元素。也就是说，这个方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
 
 			<dt>document.getElementsByClassName()</dt>
-			<dd>document.getElementsByClassName()方法返回一个类似数组的对象（HTMLCollection实例对象），包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。</dd>
+			<dd>该方法返回一个类似数组的对象（HTMLCollection实例对象），包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。</dd>
 			<dd>与getElementsByTagName方法一样，getElementsByClassName方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
 
 			<dt>document.getElementsByName()</dt>
-			<dd>document.getElementsByName()方法用于选择拥有name属性的HTML元素，返回一个类似数组的的对象，因为name属性相同的元素可能不止一个。</dd>
+			<dd>该方法用于选择拥有name属性的HTML元素，返回一个类似数组的的对象，因为name属性相同的元素可能不止一个。</dd>
 
 			<dt>document.querySelector()，document.querySelectorAll()</dt>
-			<dd>document.querySelector()方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。</dd>
+			<dd>该方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。</dd>
 			<dd>document.querySelectorAll()方法与querySelector()用法类似，区别是返回一个NodeList对象，包含所有匹配给定选择器的节点。</dd>
 			<dd>这两个方法都支持复杂的CSS选择器。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。</dd>
 
 			<dt>Element.closest()</dt>
-			<dd>Element.closest()方法返回当前元素节点的最接近的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器。如果不满足匹配，则返回null。</dd>
+			<dd>该方法返回当前元素节点的最接近的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器（可以是CSS3高级选择器）。如果不满足匹配，则返回null。</dd>
 		</dl>
 	</section>
 	<!-- DOM节点的生成 -->
@@ -100,13 +197,13 @@
 		<p>以下反方可以用于生成DOM的节点：</p>
 		<dl class="attrExplain">
 			<dt>document.createElement()</dt>
-			<dd>document.createElement方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
+			<dd>该方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
 
 			<dt>document.createTextNode()</dt>
-			<dd>document.createTextNode()方法用来生成文本节点，参数为所要生成的文本节点的内容。</dd>
+			<dd>该方法用来生成文本节点，参数为所要生成的文本节点的内容。</dd>
 
 			<dt>document.createAttribute()</dt>
-			<dd>document.createAttribute()方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
+			<dd>该方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
 		</dl>
 	</section>
 	<!-- 属性的操作 -->
@@ -115,20 +212,28 @@
 		<p>对于一个HTML标签可能会有一个或者多个的属性，这些属性都是可以操作的，JavaScript对操作属性提供了以下方法：</p>
 		<dl class="attrExplain">
 			<dt>Element.getAttribute()</dt>
-			<dd>Element.getAttribute()方法返回当前元素节点的指定属性。如果指定属性不存在，则返回null。参数为指定的属性名称。</dd>
+			<dd>该方法返回当前元素节点的指定属性。如果指定属性不存在，则返回null。参数为指定的属性名称。</dd>
 
 			<dt>Element.setAttribute()</dt>
-			<dd>Element.setAttribute()方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法含有两个参数，第一个参数表示属性名，第二个参数表示需要对属性设置的值。</dd>
+			<dd>该方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法含有两个参数，第一个参数表示属性名，第二个参数表示需要对属性设置的值。</dd>
 
 			<dt>Element.hasAttribute()</dt>
-			<dd>Element.setAttribute()方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
+			<dd>该方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
 
 			<dt>Element.removeAttribute()</dt>
-			<dd>Element.removeAttribute()方法用于从当前元素节点移除属性。</dd>
+			<dd该方法用于从当前元素节点移除属性。</dd>
 
 			<dt>dataset属性</dt>
 			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*）,该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的。</dd>
 		</dl>
+	</section>
+	<section>
+		<h3>style对象</h3>
+		<p>每一个网页元素对应一个DOM节点对象。这个对象的style属性可以直接操作，用来读写行内CSS样式。style对象的属性值都是字符串，设置时必须包括单位，但是不含规则结尾的分号。比如，divStyle.width不能写为100，而要写为100px。</p>
+		<p>style对象的<em>cssText</em>属性属性允许直接以字符串的形式来设置一个元素的样式，可以设置一个样式，也可以是多个，其语法与CSS文件选择器内部的语法完全一致。</p>
+		<p>另外，我们还可以使用“document.body.style.CSS样式属性名”或“document.body.style["CSS样式属性名"]”的方式来检测当前的浏览器是否支持某一CSS样式，只要返回的值是一个非undefined的值，就说明当前浏览器是支持该CSS样式的。</p>
+		<p>此外，部分浏览器（Firefox 22+, Chrome 28+, Opera 12.1+）目前部署了supports API，可以返回一个布尔值，表示是否支持某条CSS规则。但是，这个API还没有成为标准。语法如下：</p>
+		<p><em>CSS.supports("属性名", "属性值")</em> 或 <em>CSS.supports("(属性名1: 属性值2) and (属性名1: 属性值2)")</em></p>
 	</section>
 	<!-- class属性的操作 -->
 	<section>

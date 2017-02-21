@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 70px;
+		}
+		button {
+			width: 100px; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		div {
+			color: #2397fd;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<main>
+		<ul>
+			<!-- 导航列表 -->
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+		</ul>
+	</main>
+	<!-- JavaScript部分 -->
+	<script>
+		var main = document.getElementsByTagName("main")[0],
+			mfc = main.childNodes[0];
+		var ul = document.getElementsByTagName("ul")[0],
+			usc = ul.childNodes[1];
+		console.log(`main的节点名称为:${main.nodeName}，节点值为:${main.nodeType}。`);
+		console.log(`mfc的节点名称为:${mfc.nodeName}，节点值为:${mfc.nodeType}。`);
+		console.log(`ul的节点名称为:${ul.nodeName}，节点值为:${ul.nodeType}。`);
+		console.log(`usc的节点名称为:${usc.nodeName}，节点值为:${usc.nodeType}。`);
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
