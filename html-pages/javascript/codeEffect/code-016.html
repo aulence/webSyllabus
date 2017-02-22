@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 236px;
+		}
+		#div {
+			width: 300px; height: 100px;
+			background-color: #8484ff;
+			padding-top: 30px;
+		}
+		#p {
+			width: 200px; height: 70px;
+			background-color: #0828d4;
+			margin: auto;
+			cursor: pointer;
+		}
+		#p:hover {
+			background-color: #294afa;
+		}
+		#p:active {
+			background-color: #0828d4;
+		}
+		p {
+			line-height: 26px;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<div id="div">
+		<p id="p"></p>
+	</div>
+	<div id="showMMS"></div>
+	<!-- JavaScript部分 -->
+	<script>
+		var div = document.getElementById("div"),
+			p = document.getElementById("p");
+		var showMMS = document.getElementById("showMMS");
+
+		div.addEventListener("click", showInfo, false);
+		p.addEventListener("click", showInfo, false);
+		div.addEventListener("click", showInfo, true);
+		p.addEventListener("click", showInfo, true);
+
+		function showInfo(e) {
+			showMMS.innerHTML += `
+				<p>&lt;${e.target.tagName.toLocaleLowerCase()}&gt;
+				标签触发微秒段${performance.now()}</p>
+			`;
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

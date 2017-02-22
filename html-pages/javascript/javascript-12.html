@@ -168,7 +168,7 @@
 		<h3>DOM节点查询</h3>
 		<p>对于DOM的查询，document提供了以下方法：</p>
 		<dl class="attrExplain">
-			<dt>getElementById()</dt>
+			<dt>document.getElementById()</dt>
 			<dd>该方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
 
 			<dt>document.getElementsByTagName()</dt>
@@ -227,6 +227,61 @@
 			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*）,该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的。</dd>
 		</dl>
 	</section>
+
+	<!-- document对象 -->
+	<!--<section>
+		<h3>document对象</h3>
+		<p>内容尚待完善...</p>
+	</section>-->
+
+	<!-- HTML元素对象 -->
+	<section>
+		<h3>Element节点对象</h3>
+		<p>Element对象实际上是一个构造函数的实例化对象，该对象包含了一系列的属性和方法来返回或设置当前对象指向元素的相关信息。</p>
+		<dl class="attrExplain">
+			<dt>Element.attributes</dt>
+			<dd>该属性返回当前元素所有属性节点的一个类似数组对象。</dd>
+
+			<dt>Element.id</dt>
+			<dd>该属性返回指定元素的id属性，是一个可读可写的属性。</dd>
+
+			<dt>Element.tagName</dt>
+			<dd>该属性返回指定元素的大写标签名，与nodeName属性的值相等。但在<em>事件对象</em>（event）上通常使用tagName更加常见。</dd>
+
+			<dt>Element.innerHTML</dt>
+			<dd>属性返回该元素包含的HTML代码。该属性可读可写，常用来设置某个Element节点的内容。如果将该属性设为空字符串，等于删除了它包含的所有节点。</dd>
+
+			<dt>Element.outerHTML</dt>
+			<dd>该属性返回一个字符串，内容为指定元素节点的所有HTML代码，包括它自身和包含的所有子元素。该属性是同样是可读可写的，对它进行赋值，等于替换掉当前元素。</dd>
+			<dd>但是如果该Element节点已经被赋值给一个变量了，在使用outerHTML替换原来的标签后，之前的变量值还是能够访问，也就是说被替换掉的内容依然保存于内存。</dd>
+
+			<dt>Element.match()</dt>
+			<dd>该方法用于匹配当前的Element节点是否匹配方法参数内的CSS选择器字符串，和querySelector()和querySelectorAll()的参数一样，CSS选择器必须是完整的选择符（如id前需要加上“#”，class前面要加上“.”，属性选择器要用“[]”括起来等）。它返回的是一个布尔值。</dd>
+
+			<dt>Element.insertAdjacentHTML()</dt>
+			<dd>该方法解析HTML字符串，然后将生成的节点插入DOM树的指定位置。该方法带有两个参数，第一个参数表示插入位置，第二个参数表示插入的字符串（可以是HTML标签）。</dd>
+			<dd>第一个插入参数允许的值如下：</dd>
+			<dd>
+				<ul>
+					<li>beforebegin：在当前元素节点的前面。</li>
+					<li>afterbegin：在当前元素节点的里面，插在它的第一个子元素之前。</li>
+					<li>beforeend：在当前元素节点的里面，插在它的最后一个子元素之后。</li>
+					<li>afterend：在当前元素节点的后面。</li>
+				</ul>
+			</dd>
+
+			<dt>Element.scrollIntoView()</dt>
+			<dd>该方法滚动当前元素，进入浏览器的可见区域，类似于设置window.location.hash的效果。</dd>
+			<dd>该方法可以接受一个布尔值作为参数。如果为true，表示元素的顶部与当前区域的可见部分的顶部对齐（前提是当前区域可滚动）；如果为false，表示元素的底部与当前区域的可见部分的尾部对齐（前提是当前区域可滚动）。如果没有提供该参数，默认为true。</dd>
+
+			<dt>Element.focus()</dt>
+			<dd>该方法可以上元素获得焦点。用户使用键盘Tab键可以切换获得焦点的元素，都可以使用该方法来获得焦点。</dd>
+
+			<dt>Element.remove()</dt>
+			<dd>该方法用于删除当前的子节点，并且不再存在于DOM树内和内存里。</dd>
+		</dl>
+	</section>
+	<!-- style对象 -->
 	<section>
 		<h3>style对象</h3>
 		<p>每一个网页元素对应一个DOM节点对象。这个对象的style属性可以直接操作，用来读写行内CSS样式。style对象的属性值都是字符串，设置时必须包括单位，但是不含规则结尾的分号。比如，divStyle.width不能写为100，而要写为100px。</p>
@@ -238,7 +293,7 @@
 	<!-- class属性的操作 -->
 	<section>
 		<h3>Class属性的操作</h3>
-		<p>每个Element都具有两个关于Class的属性：“Element.className”和“Element.classList”。className属性用来读写当前元素节点的class属性。它的值是一个字符串，每个class之间用空格分割。classList属性则返回一个类似数组的对象，当前元素节点的每个class就是这个对象的一个成员。</p>
+		<p>每个Element节点对象都具有两个关于Class的属性：“Element.className”和“Element.classList”。className属性用来读写当前元素节点的class属性。它的值是一个字符串，每个class之间用空格分割。classList属性则返回一个类似数组的对象，当前元素节点的每个class就是这个对象的一个成员。</p>
 		<p>classList对象有下列方法：</p>
 		<ul class="indent">
 			<li>add()：增加一个class。</li>

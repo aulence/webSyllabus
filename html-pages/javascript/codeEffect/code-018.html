@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 190px;
+		}
+		ol {
+			margin: 0; padding: 0;
+		}
+		li {
+			line-height: 30px;
+			cursor: pointer;
+		}
+		button {
+			width: 90px; height: 30px;
+			font-size: 18px;
+			margin-top: 10px;
+		}
+		div {
+			color: #12e300;
+		}
+	</style>
+</head>
+<body>
+	<!-- HTML部分 -->
+	<ol id="roleName">
+		<li>战斗暴龙兽</li>
+		<li>钢铁加鲁鲁</li>
+		<li>圣神天使兽</li>
+	</ol>
+	<button id="addSprit" type="button">新增</button>
+	<div id="newSprit"></div>
+	<!-- JavaScript部分 -->
+	<script>
+		var roleName = document.getElementById("roleName");
+		var nameLi = roleName.getElementsByTagName("li");
+		var addSprit = document.getElementById("addSprit");
+		addSprit.onclick = function() {
+			roleName.innerHTML += `<li>蔷薇兽</li>`;
+		}
+		var newSprit = document.getElementById("newSprit");
+		for(var i = 0; i < nameLi.length; i++) {
+			nameLi[i].onclick = function() {
+				newSprit.innerHTML = this.textContent;
+			}
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

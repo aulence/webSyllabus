@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 70px;
+		}
+		button {
+			width: auto; height: 30px;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		div {
+			color: #2397fd;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<button id="btn">测试监听函数</button>
+	<div id="div"></div>
+	<!-- JavaScript部分 -->
+	<script>
+		var btn = document.getElementById("btn");
+		var div = document.getElementById("div");
+
+		btn.addEventListener("click", fn, false);
+		btn.addEventListener("click", fn, false);
+
+		function fn() {
+			div.innerHTML += "监听函数";
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

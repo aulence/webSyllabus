@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		#div {
+			width: 360px; height: 120px;
+			padding: 20px;
+			border: 1px solid #666;
+			box-sizing: border-box;
+		}
+		p {
+			background-color: #333;
+			padding: 10px;
+			line-height: 30px;
+			margin: 0;
+			color: #fff;
+			cursor: pointer;
+		}
+		p:hover {
+			background-color: #555;
+		}
+		p:active {
+			background-color: #333;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- HTML部分 -->
+	<div id="div">
+		<p>这里是p标签的内容，我的点击事件由父级元素&lt;div&gt;代理</p>
+	</div>
+	<!-- JavaScript部分 -->
+	<script>
+		var div = document.getElementById("div");
+		div.onclick = function(e) {
+			var targetEle = e.target.tagName.toLocaleLowerCase();
+			if(targetEle == "p") {
+				this.style.cssText = `
+					background-color: #92e2f5;
+					border-radius: 15px;
+				`;
+			}
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

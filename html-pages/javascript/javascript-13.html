@@ -9,18 +9,155 @@
 	<!-- 事件的添加 -->
 	<section>
 		<h3>事件的添加</h3>
-		<p>事件一定要添加在某个页面元素后才会生效，包括window对象和document对象。事件的添加主要有三种方式：</p>
+		<p>事件一定要添加在某个页面元素后才会生效，包括window对象和document对象。事件的添加主要有四种方式：</p>
 		<dl class="attrExplain">
-			<dt>通过页面DOM元素的属性添加</dt>
-			<dd></dd>
+			<dt>通过页面标签元素添加</dt>
+			<dd>在页面标签元素的“on-*”属性上添加，如例：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-382.jpg">
+				</code>
+			</dd>
+			<dd>这种做法简化了代码量，但违背结构层和行为层分离的原则，除非是用于测试，在实际开发环境中并不被推荐。</dd>
+
+			<dt>通过DOM元素添加</dt>
+			<dd>直接通过document对象下的Element自对象进行事件绑定，如例：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-383.jpg">
+				</code>
+			</dd>
+			<dd>这种做法代码可读性不高，而且不利于DOM元素的重复读取和事件绑定的设置，也不被推荐。</dd>
 
 			<dt>通过实例化过后的Element对象添加</dt>
-			<dd></dd>
+			<dd>将通过将document对象下的Element实例化为一个对象，在该对象的变量名上添加事件，如例：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-384.jpg">
+				</code>
+			</dd>
+			<dd>这种做法看似比前两种方式多了一些代码，但由于将Element实例化为了一个对象存储于内存内，每次的访问和事件的绑定设置都是从内存去读取，无需再对DOM进行查询，很大程度上提高了代码的运行效率。而且在需要单元素多事件绑定的情况下，这种写法反而可以让代码更加的精简，节省了很多次对DOM查询消耗的代码字节。所以，这种方式在实际项目中是被大量使用的，也是比较推荐的一种方式。</dd>
 
 			<dt>对实例化过后的Element对象进行监听</dt>
-			<dd></dd>
+			<dd>这种方式和上面一种方式的形式一样，同样是对实例化的Element对象进行事件绑定，但这种绑定的方式一般叫做添加“<em>监听函数</em>”，需要使用Element的addEventListener()方法，而且事件名称不需要前缀“on”。表示方法如下：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-385.jpg">
+				</code>
+			</dd>
+			<dd>和普通事件的区别在于，监听函数可以为同一个实例化的Element对象添加同一个事件，而普通事件再次绑定同一个事件，后面的同名事件会覆盖之前的事件，使得之后最后一个事件才有效，之前的所有同名事件都会失效。具体我们会在后续小节里讲解。</dd>
 		</dl>
 	</section>
+
+	<!-- 事件的监听 -->
+	<section>
+		<h3>事件监听</h3>
+		<p>事件监听依赖的主要内容是“监听函数”，而监听函数是事件发生时，程序所要执行的函数。它是事件驱动编程模式的主要编程方式。</p>
+		<p>在本章“事件的添加”一节中我们已经知道了监听函数的表示方法，并且明白了监听函数和普通函数在功能上的最大区别就是监听函数不会覆盖同名事件名称的函数，但是，若多个监听函数调用的是同一个函数，那代码也只会执行一次，这点需要注意区分。我们通过两个例子来说明这一点。</p>
+		<p>当对同一个按钮元素执行同一个事件的不同监听函数：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-386.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-014.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-014.html"></iframe>
+		<p>当对同一个按钮元素执行同一个事件的同一个监听函数：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-387.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-015.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-015.html"></iframe>
+
+		<p>监听函数的3个参数具体作用如下：</p>
+		<ul class="indent">
+			<li>事件名称，用字符串表示，不需要“on”前缀</li>
+			<li>执行函数，可以是一个函数名（不能是字符串，且不需要函数后面的“()”），也可以是一个匿名函数</li>
+			<li>表示监听函数是在<em>捕获阶段</em>触发还在<em>冒泡阶段</em>触发，用一个布尔值表示。true表示在冒泡阶段触发，false（默认）表示在捕获阶段触发。老式浏览器规定该参数必写，较新版本的浏览器允许该参数可选。为了保持兼容，建议总是写上该参数。</li>
+		</ul>
+		<p>和普通函数还有一点区别就是，监听函数是可以移除的。要移除监听函数需要使用<em>removeEventListener()</em>方法，移除监听函数的参数必须和添加静听函数完全一致，否则无效。基本表示如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-388.jpg">
+		</code>
+		<p>另外需要指出的是，在IE10及之前的版本并不支持addEventListener()方法，要达到同样的效果需要使用attachEvent()方法，事情名称需要加上“on”前缀，而且没有第三个布尔值的参数。而且还有一点需要注意的是这个方法内部的“this”不是指向实例化的元素，而是指向“window”。但IE11终于不再支持这个方法，接受了通用的DOM标准，开始使用了addEventListener()方法。</p>
+	</section>
+
+	<!-- 事件对象 -->
+	<section>
+		<h3>事件对象</h3>
+		<p>“<em>事件对象</em>”值的是当一个事件产生后，会在事件函数内部生成一个“<em>Event</em>”的对象实例，并且将这个示例作为事件函数的参数（通常命名为“e”或“event”，IE下需要做兼容处理），我们尝试在一个事件中输出这个Event对象：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-389.jpg">
+		</code>
+		<p>点击该该按钮后在控制台中查看输出的Event对象：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-390.jpg">
+		</code>
+		<p>通过这个输出的事件对象Event，非常详细地反应了在这一次点击过程中的事件和被事件触发的对象之间的关系。包括了一系列重要的信息，如：点击时鼠标的X/Y坐标位置，事件是否冒泡，点击时是否按下了Ctrl/Alt/Shift键，被点击目标的相关信息等内容。但在实际开发过程中，我们只需要部分信息，这个时候就可以通过刚才我们实例化的那个“e”来进行选择性的输出：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-391.jpg">
+		</code>
+		<p>点击按钮后在控制台中查看到的结果：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-392.jpg">
+		</code>
+		<p>利用事件对象，我们可以在一次事件中做出更精细的判断，从而帮我们解决一些复杂的逻辑流程，实现更丰富的程序功能。</p>
+	</section>
+
+	<!-- 事件的传播 -->
+	<section>
+		<h3>事件的传播</h3>
+		<p>当一个事件发生以后，它会在不同的DOM节点之间传播,这种传播会使得一个事件在多个节点上触发。事件传播分成三个阶段：</p>
+		<ul class="indent">
+			<li>第一阶段：从window对象传导到目标节点，称为“<em>捕获阶段</em>”</li>
+			<li>第二阶段：在目标节点上触发，称为“<em>目标阶段</em>”</li>
+			<li>第三阶段：从目标节点传导回window对象，称为“<em>冒泡阶段</em>”</li>
+		</ul>
+		<p>由于事件传播的机制，会使得同一个事件也会在同一个元素上多次触发。我们来看一个这样的例子：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-393.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-016.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-016.html"></iframe>
+		<p>上面的代码被触发了4次，p节点的捕获阶段和冒泡阶段各1次，div节点的捕获阶段和冒泡阶段各1次。具体过程如下：</p>
+		<ul class="indent">
+			<li>捕获阶段：事件从&lt;div&gt;向&lt;p&gt;传播时，触发&lt;div&gt;的click事件；</li>
+			<li>目标阶段：事件从&lt;div&gt;到达&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
+			<li>目标阶段：事件离开&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
+			<li>冒泡阶段：事件从&lt;p&gt;传回&lt;div&gt;时，再次触发&lt;div&gt;的click事件。</li>
+		</ul>
+		<p>事件传播的最上层对象是window，接着依次是document，html（document.documentElement）和body（document.dody）。也就是说，如果&lt;body&gt;元素中有一个&lt;div&gt;元素，点击该元素。事件的传播顺序，在捕获阶段依次为:window -&gt; document -&gt; html -&gt; body -&gt; div，在冒泡阶段依次为div -&gt; body -&gt; html -&gt; document -&gt; window。</p>
+		<p>使用事件对象的<em>event.stopPropagation()</em>方法可以让事件传播到当前的节点为止，不再继续传播。语法结构如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-397.jpg">
+		</code>
+		<p>但是，stopPropagation()方法只会阻止当前监听函数的传播，不会阻止&lt;p&gt;节点上的其他click事件的监听函数。如果想要不再触发那些监听函数，可以使用stopImmediatePropagation()方法。语法与stopPropagation()方法一致。</p>
+	</section>
+
+	<!-- 事件的代理 -->
+	<section>
+		<h3>事件代理</h3>
+		<p>“<em>事件代理</em>”又叫做“事件委托”，这种用法由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。我们先来看一个简单的事件代理的实例：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-394.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-017.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-017.html"></iframe>
+		<p>从这个示例我可以总结出两个结论：第一个结论就是由于事件传播的捕获特性，父级元素可以为其子级元素绑定事件；第二个结论就是事件中的this仍然是指向最初绑定事件的那个元素，这点需要留心。</p>
+		<p>利用事件代理我们可以处理程序中很多的“麻烦事”，比如说这样一个应用场景：当前有一个数据列表，只有3条数据，并且这3条数据都绑定了同一个事件。后面我们又新增了一条数据，但是由于这条数据是后面才生成的，没有办法在之前就给它绑定事件。如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-395.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-018.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-018.html"></iframe>
+		<p>在点击“新增”按钮之前，原列表的列表项的点击功能能够执行，但点击新增按钮之后，新增的一项内容点击之后并没有效果。而且再去点击之前的项会发现，之前的项的功能也没有了。这是因为列表区域由于DOM操作执行了浏览器的“重排”和“重绘”操作，这就导致现在看到的列表的内容已经不再是原来document里面的内容了（虽然视觉上原来的文本还是一样）。</p>
+		<p>遇到这样的问题我们就可以使用事件代理去处理，我们把上例的代码修改为由父级代理执行的形式再试：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-396.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-019.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-019.html"></iframe>
+		<p>可以发现，之前的“bug”已经修复，并且新增的信息项也能正常地执行功能了，不再需要使用循环去绑定事件。</p>
+	</section>
+
 	<!-- 鼠标事件 -->
 	<section>
 		<h3>鼠标事件</h3>
