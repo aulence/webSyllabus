@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 152px;
+		}
+		button {
+			font-size: 18px;
+		}
+		p {
+			margin: 0; padding: 0;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<!-- HTML部分 -->
+	<main id="main">
+		<button id="btn" type="button">执行</button>
+	</main>
+
+	<!-- JavaScript部分 -->
+	<script>
+		let main = document.querySelector("main");
+		let btn = document.querySelector("#btn");
+		btn.onclick = function() {
+			main.innerHTML += `<p>这是第一段内容</p>`;
+			main.innerHTML += `<p>这是第二段内容</p>`;
+			alert("我阻塞了后续的代码运行");
+			main.innerHTML += `<p>这是第三段内容</p>`;
+			main.innerHTML += `<p>这是第四段内容</p>`;
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

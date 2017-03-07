@@ -1,0 +1,179 @@
+<root data-root="JavaScript AJAX">
+    <!-- 概述 -->
+    <section class="mt0">
+    	<h3>JavaScript AJAX</h3>
+    	<p>AJAX（Asynchronous JavaScript and XML，异步的JavaScript和XML）不是新的编程语言，而是一种使用现有标准的新方法。它最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
+    	<p>AJAX最早的理念出现是在1998年左右（JavaScript诞生后的第三年），是由微软的Exchange Server团队开发的，并很快成为了Internet Explorer 4.0（IE4）的一部分。部分观察家认为，Outlook Web Access是第一个应用了Ajax技术的成功的商业应用程序。</p>
+    	<p>但从AJAX这个技术在JavaScript中的实现开始，长达六七年的时间都不被开发者们关注。在2005年，AJAX的“伯乐”出现了，那就是今天IT界内领头羊之一的Google公司。Google公司在自己的搜索引擎、搜索建议、Gmail上开始大量的使用AJAX这种技术方案，特别是在Google Map（谷歌地图）上的使用可以说是真正地将AJAX带上了那个开发者时代的风头浪尖。所以说，现在很多关于AJAX的技术教程里面，谈到这个技术都会有一句类似这样的话：“...这样一来就可以像谷歌地图那样实现异步的局部刷新了”。</p>
+    	<p>谈到AJAX最大的特点，就是它的<em>异步</em>特性（Asynchronous）。何为“异步”？简单的说，就是程序在实现某一个功能的时候，同时也能去做另外一件事件，而在做另外一件事情的时候不会对当前的程序造成<em>阻塞</em>。就好比，一个人要需要做两件事——唱歌和跳舞。他可以先跳完舞，然后再唱歌。但用异步的方式去解决的话，它就可以在跳舞的时候同时唱歌。</p>
+    	<p>刚才说到了“阻塞”，什么又叫做阻塞呢？可以来看看下面两个例子。</p>
+    	<p>一个造成代码运行阻塞的例子：</p>
+    	<code class="indent">
+			<img src="img/code/jscode/code-js-398.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-020.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-020.html"></iframe>
+		<p>通过示例可以发现，当点击“执行”按钮的时候，如果不按下弹出框的确定键，那后续的代码是无法执行的，这就是用于alert()函数对代码运行所产生的阻塞效果。（示例中代码运行的顺序和通过断点调试顺序上在不同浏览器有差异，在Chrome浏览器中，由于任务队列的优化机制，DOM渲染会在代码运行完后一并执行，所以在点击按钮后本来应该显示的第一段和第二段内容并没有马上显示，但是用断点调试工具逐步运行，可以看到正确的运行流程。在除了Chrome以外的浏览器中，该功能流程都能正常显示。）</p>
+		<p>接下来再看一个不会产生阻塞的代码例子：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-399.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-021.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-021.html"></iframe>
+		<p>在这个例子里面使用了一个延时函数，在延时函数的内部有一个回调函数，回调函数从结构上讲，就是包含在一个函数内部的函数。JavaScript运行程序的第一遍会忽略所有“内层函数”，当第一层的所有代码和被调用的函数都运行完成后，才会去按顺序（从上到下的次序）运行“第二层”函数，当第二层函数按照顺序运行完成后才会去依次运行第三层（如果有的话）函数，以此类推。所以，利用回调函数是不会对代码的运行造成阻塞的。</p>
+		<p>但需要说明的是，是回调函数和异步执行并不是一样的东西，因为回调函数只是对当前流程不会阻塞，但一旦进入到回调函数内部后，也有一个任务队列，也可能会造成代码阻塞（如长时间的循环语句）。而异步不一样，异步的执行和主流程的运行是否阻塞无关，主线程是否阻塞和产生错误，对异步执行的程序不会造成直接的影响，可以把它理解为另外一个线程上的东西（但JavaScript本身始终是一个单线程脚本语言）。</p>
+		<p>在异步线程上可以读取和使用全局或函数内已经定义好的变量和函数，反之则不行，这和变量的全局/函数作用域是同一个原理。</p>
+		<p>总之，AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件。不过这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有<em>HTTP协议</em>的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的，这里需要注意。</p>
+		<p>一次完整的AJAX请求大致需要经历以下步骤：</p>
+		<ul class="indent">
+			<li>创建AJAX对象</li>
+			<li>创建AJAX请求</li>
+			<li>发送AJAX请求</li>
+			<li>接收所请求的数据并进行处理</li>
+		</ul>
+		<p>由于第四步配置在异步操作中是一个回调函数，所以很多时候会调整到第二步去写，而把“创建AJAX请求”和“发送AJAX请求”写在后面。所以在以后在遇到这样的写法的时候也不要觉得诧异，功能的完整性和流程都不会受到影响。</p>
+	</section>
+	<!-- XMLHttpRequest -->
+	<section>
+		<h3>XMLHttpRequest对象</h3>
+		<p>XMLHttpRequest对象是实现AJAX的最基本对象，后续的所有AJAX属性和方法都是从这个对象上开始。（在IE5、IE6上使用的是“ActiveXObject("Microsoft.XMLHTTP")”，但考虑到现在互联网上已经鲜有这样老版本浏览器的踪影，所以这个只作为了解即可，也无需再做相关兼容性的处理。）</p>
+		<p>XMLHttpRequest对象实质上也是一个JavaScript内置的构造函数，这点我们可以在控制台进行输出进行观察。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-400.jpg">
+		</code>
+		<p>要进行AJAX的相关操作通常我们都是将XMLHttpRequest这个构造函数实例化为一个对象，然后再对我们实例化出的对象进行操作，就像这样：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-401.jpg">
+		</code>
+		<p>从我们之前学习过的JavaScript的经验来看，里面凡是带“on*”开头的键名都应该是XHR对象（XMLHttpRequest的简称）的方法，而不带“on*”的都是XHR的属性。也就是说，我们的所有AJAX操作都是对这些方法和属性（部分方法存在于该对象的原型内，示例中没有展开）进行访问和设置，已达到我们程序的功能需求。后文我们会对这些方法和属性进行功能说明。</p>
+	</section>
+	<!-- open() -->
+	<section>
+		<h3>创建请求open()</h3>
+		<p>按照我们一次AJAX请求的正常步骤，当一个XHR对象被实例化后，就应该要创建一个请求了，创建请求使用的方法为<em>open()</em>（这里要注意区分window对象和Document对象里面的open()方法），该方法共有5个参数，如下：</p>
+		<dl class="attrExplain">
+			<dt>method</dt>
+			<dd>必选，字符串。表示请求的方式，常用的有："<em>GET</em>"和"<em>POST</em>"（注意大小写），另外还有不常用的"PUT"和"DELETE"。</dd>
+			<dd>使用"GET"和"POST"的语法结构和功能基本相似，只是在某些具体设置上和应用场合会有所区别。</dd>
+			<dd>"GET"相对于"POST"来说，传输性能更好，也就是说会执行得更快，会将参数明文地显示在URL内的“?”之后。在传输上也有2048个字节的限制。</dd>
+			<dd>而"POST"请求的所带的参数是放置于<em>send()</em>方法内，通过一般方法无法获取，所以说这种请求方式更加安全，它对传输的字节也没有限制。但相对于"GET"方式来说，这种方式的性能会差很多。</dd>
+			<dd>总得来说，一般我们的AJAX请求都是使用"GET"方式，除非要传输大段的文本或者图像二进制文件等数据的时候，我们才去考虑使用"POST"。</dd>
+
+			<dt>url</dt>
+			<dd>必须，字符串。表示请求的相对路径或绝对路径的URL。当第一个参数为"GET"的时候，可以选择性地在现有路径只后的“?”后添加参数或不添加，第一个参数为"POST"的时候不能添加参数。</dd>
+
+			<dt>async</dt>
+			<dd>可选，布尔值。true（默认）表示“异步请求”，false表示“同步请求”。当为同步请求的时候，创建请求和发送请求的方法必须放置于接收和处理请求信息之前。需要注意的是，现在使用同步请求在现代浏览器的控制台内会输出一条警告信息，大致意思是：同步请求影响用户体验，请替换为异步的方式，同步的方式已经被废弃，不再建议使用。</dd>
+
+			<dt>user</dt>
+			<dd>可选，字符串。默认为空字符串，表示用于认证的用户名。</dd>
+
+			<dt>password</dt>
+			<dd>可选，字符串。默认为空字符串，表示用于认证的密码。</dd>
+		</dl>
+		<p>以下为open()方法在实际运用过程中的几种格式：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-402.jpg">
+		</code>
+	</section>
+	<!-- send -->
+	<section>
+		<h3>发送请求send()</h3>
+		<p>该方法就是将之前创建的请求发送给服务器，如果使用的是"GET"方式不需要参数，也可以给一个null作为参数以用于说明请求的方式，增加代码的可读性（这样在检查代码的时候更容易检查出这里到底是忘记写参数了还是使用的就是"GET"方式）。如果使用的是"POST"的方式，则通常需要在这个方法内写出参数，这个参数可以是字符串（或被转换为字符串的字符），也可以是一个变量。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-403.jpg">
+		</code>
+		<p>通过AJAX传输的数据类型目前有六种，其中文本字符串是最常见的，AJAX传输的数据类型不同于JavaScript的数据类型，我们在后续的章节里面会进行讲解。</p>
+		<!-- ""（空字符串）/"text"/"json"/"arraybuffer"/"blob"/"document" -->
+	</section>
+	<!-- 请求状态 -->
+	<section>
+		<h3>请求状态onreadystatechange</h3>
+		<p>AJAX的请求是需要时间的（就算在本地服务器环境），而这个时间很多时候是取决于当前的网络状况，也就是说，一个请求正在进行，我们是没有办法立即就对假设已经获取到的数据进行操作的，如下面的例子。</p>
+		<p>HTML部分代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-404.jpg">
+		</code>
+		<p>JavaScript部分代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-405.jpg">
+		</code>
+		<p>JSON文件代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-408.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-022.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-022.html"></iframe>
+		<p>在该页面点击示例中的按钮发现没有反应，点击示例上面的超链接“运行效果”，进入单独的示例页面后，打开控制台，再去点击按钮会发现一个“Uncaught SyntaxError（不能捕获的语法错误）”报错信息。这是因为现在数据还没有请求完成，就去对一个空字符串（这个时候“xhr.responseText”没有请求到数据，还是一个空的字符串）进行了“JSON.parse()”方法的操作，所以报错。</p>
+		<p>要解决这个问题，主要有两种方案可选，第一种，将穿件的请求改为同步的方式。其它代码不变，只为open()方法添加第三个参数“false”，如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-406.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-023.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-023.html"></iframe>
+		<p>这次点击按钮，数据被正常的请求了过来，并被我们用DOM操作将数据用模版字符串的方式添加进了页面内。但是这样做却存在一个问题，还是通过刚才打开单独页面的方式去看看控制台内的输出。</p>
+		<code>
+			<img src="img/code/jscode/code-js-407.jpg">
+		</code>
+		<p>可以看到浏览器提出了一个“[Deprecation]（不赞成）”的意见，翻译过来的意思就和我们上面提到的那样“在主线程上同步XMLHttpRequest弃用,因为其不利影响最终用户的体验，更多帮助...”。也就是说这种做法是不被推荐的，而且这样做，显然也失去了AJAX所具有的“异步”特点和这一点带来的优势。</p>
+		<p>要解决现在面临的问题，就可以使用AJAX对象内提供的<em>onreadystatechange()</em>事件，可以为这个事件添加监听函数来检测请求的各个状态。首先，我们就这个事件改写一下上面的例子。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-409.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-024.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-024.html"></iframe>
+		<p>可以发现，点击按钮后功能和上一个例子的效果一样，但在控制台内不再会出现刚才的那些警告建议了。</p>
+		<p>在这次的代码改动中首先是为原来获取到的数据和对数据操作的部分扩上了一层onreadystatechange的事件，在这个事件内部还多了两个属性：“<em>readyState</em>”和“<em>status</em>”，这两个属性正是这个事情成功执行获取请求数据和对数据进行操作的关键。</p>
+		<p>其实onreadystatechange这个事件在这段代码中是会执行3次的，我们可以就刚才这段代码，加上一个计数器来进行观察控制台内的输出结果。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-410.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-025.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-025.html"></iframe>
+		<p>在新打开页面中，当我们点击“请求数据”按钮后，在控制中会出现以下结果：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-411.jpg">
+		</code>
+		<p>出现这样的结果其实是因为“readyState”属性的状态值在变化，该属性共有5个值，其中值为“2、3、4”的时候会触发onreadystatechange事件（可自行在该事件内用console.log(xhr.readyState)进行输出观察），这5个值表示的状态分别如下：</p>
+		<ul class="indent">
+			<li>0，对应常量"UNSENT"，表示XMLHttpRequest实例已经生成，但是open()方法还没有被调用</li>
+			<li>1，对应常量"OPENED"，表示send()方法还没有被调用，仍然可以使用setRequestHeader()，设定HTTP请求的头信息</li>
+			<li>2，对应常量"HEADERS_RECEIVED"，表示send()方法已经执行，并且头信息和状态码已经收到</li>
+			<li>3，对应常量"LOADING"，表示正在接收服务器传来的body部分的数据，如果responseType属性是text或者空字符串，responseText就会包含已经收到的部分信息</li>
+			<li>4，对应常量"DONE"，表示服务器数据已经完全接收，或者本次接收已经失败了</li>
+		</ul>
+		<p>在刚才的例子中，我们的都是用数字来表示的状态，其实用大写的字符串常量也可以达到一样的效果，如：“readyState == 4”也可以写成“readyState == "DONE"”，但考虑到单词容易拼写错误和效率上的问题，国内开发者通常用数字来表示AJAX请求时的状态值。</p>
+		<p>在刚才的例子中，除了“readyState”还有一个“status”，这个属性反应的是请求的结果的状态值，它有以下可能的值：</p>
+		<ul class="indent">
+			<li>200, 对应常量"OK"，访问正常</li>
+			<li>301, 对应常量"Moved Permanently"，永久移动</li>
+			<li>302, 对应常量"Move temporarily"，暂时移动</li>
+			<li>304, 对应常量"Not Modified"，未修改</li>
+			<li>307, 对应常量"Temporary Redirect"，暂时重定向</li>
+			<li>401, 对应常量"Unauthorized"，未授权</li>
+			<li>403, 对应常量"Forbidden"，禁止访问</li>
+			<li>404, 对应常量"Not Found"，未发现指定网址</li>
+			<li>500, 对应常量"Internal Server Error"，服务器发生错误</li>
+		</ul>
+		<p>虽然这个属性的状态值很多，但真正表示请求成功，并且达到此次请求的目的的也就只有“200”这个状态值了，所以，在判断语句中，我们只需要判断该属性的值是否为“200”即可，非“200”的状态值我们都无需做任何操作。和之前的“readyState”一样，“status”的状态值也可以用后面的英文字母常量表示，如：“status == 200”也可写作“status == "ok"”。</p>
+		<p>需要补充的一点是，“readyState”的值为“4”（服务器数据已经完全接收）的时候，并不代表此次的数据请求就一定成功了，数据就是我们所需要的，它只是表示数据请求完成而且，所以，一般情况下我们会用嵌套的方式来做更“健壮”的判断，如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-412.jpg">
+		</code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>用AJAX相关知识完成以下功能：</p>
+		<p>1、创建一个HTML页面，页面内有一个nav导航栏（包含在&lt;header&gt;标签内），导航栏内有三个超链接按钮；</p>
+		<p>2、页面内的三个超链接按钮都要触发浏览器地址栏的“哈希值”改变（名称自定）；</p>
+		<p>3、创建3个不同的JSON文件，每个JSON文件内包含一个3个键值对的对象（键名和值名自定）；</p>
+		<p>4、当点击HTML页面上的3个导航按钮后，分别对应地在页面下方的&lt;main&gt;标签内显示出JSON文件内对象的所有属性值（通过for-in语句进行输出），分三行显示。</p>
+	</section>
+</root>
+
+
+
+
+
+

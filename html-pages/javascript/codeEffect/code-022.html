@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			height: 122px;
+		}
+		button {
+			font-size: 18px;
+		}
+		p {
+			margin: 0; padding: 0;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<!-- HTML部分 -->
+	<main id="main">
+		<button id="requestBtn" type="button">请求数据</button>
+	</main>
+
+	<!-- JavaScript部分 -->
+	<script>
+		var main = document.getElementById("main");
+		var requestBtn = document.getElementById("requestBtn");
+		requestBtn.onclick = function() {
+			// 创建AJAX对象
+			var xhr = new XMLHttpRequest();
+			// 创建AJAX请求
+			xhr.open("GET", "../../../resource/testJSON.json");
+			// 发送请求
+			xhr.send();
+			// 接收JSON格式文本字符串
+			var jsonTxt = xhr.responseText;
+			// 将JSON字符串解析为JS对象
+			var jsObj = JSON.parse(jsonTxt);
+			// 在页面的<main>内添加数据
+			main.innerHTML += `
+				<p>${jsObj.name}</p>
+				<p>${jsObj.createDate}</p>
+				<p>${jsObj.author}</p>
+			`;
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
