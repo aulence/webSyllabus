@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+
+	</style>
+</head>
+<body>
+	<!-- HTML部分 -->
+	<main id="main">
+		<button id="btnTest" class="normal">测试</button>
+	</main>
+
+	<!-- JavaScript部分 -->
+	<script>
+		let main = document.getElementById("main"),
+			btnTest = document.getElementById("btnTest");
+		let perNow = performance.now();
+		btnTest.onclick = function() {
+			main.innerHTML += `<span>页面已经启动了 ${perNow} 毫秒</span>`;
+		}
+	</script>
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

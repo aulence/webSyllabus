@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript测试文件</title>
+	<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+	<link rel="stylesheet" href="../../../css/iframe.min.css">
+	<style>
+		body {
+			width: 800px;
+			height: 294px;
+		}
+		fieldset {
+			border: none;
+			padding: 0;
+		}
+		figure {
+			margin: 0;
+			font-size: 0;
+		}
+		figure img {
+			width: 25%;
+		}
+		#resCount {
+			height: 30px;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<!-- HTML部分 -->
+	<main id="main">
+		<button id="btnTest" class="normal">测试</button>
+		<fieldset>
+			<figure>
+				<img src="../../../img/other/img-1.jpg">
+				<img src="../../../img/other/img-2.jpg">
+				<img src="../../../img/other/img-3.jpg">
+				<img src="../../../img/other/img-4.jpg">
+			</figure>
+		</fieldset>
+		<div id="resCount"></div>
+	</main>
+
+
+
+	<!-- JS部分 -->
+	<script src="../../../plugin/jquery-3.1.0.min.js"></script>
+	<script src="../../../js/iframe.min.js"></script>
+	<!-- JavaScript部分 -->
+	<script>
+		let btnTest = document.getElementById("btnTest"),
+			resCount = document.getElementById("resCount");
+		let perEntries = performance.getEntries();
+		btnTest.onclick = function() {
+			resCount.innerHTML +=
+				`<span>页面HTTP请求了 ${perEntries.length} 次</span>`;
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
