@@ -289,6 +289,9 @@
 		<p>另外，我们还可以使用“document.body.style.CSS样式属性名”或“document.body.style["CSS样式属性名"]”的方式来检测当前的浏览器是否支持某一CSS样式，只要返回的值是一个非undefined的值，就说明当前浏览器是支持该CSS样式的。</p>
 		<p>此外，部分浏览器（Firefox 22+, Chrome 28+, Opera 12.1+）目前部署了supports API，可以返回一个布尔值，表示是否支持某条CSS规则。但是，这个API还没有成为标准。语法如下：</p>
 		<p><em>CSS.supports("属性名", "属性值")</em> 或 <em>CSS.supports("(属性名1: 属性值2) and (属性名1: 属性值2)")</em></p>
+		<p>除此之外，如果想获取一个元素的CSS样式（不是标签上的style属性）属性的值，则可以使用window对象下的<em>getComputedStyle()</em>方法，通过访问该方法下指定的CSS属性名来获得属性值。该方法获取的CSS内容不一定是CSS文件里明文自定义的属性，也可以是默认状态的属性。</p>
+		<p>该方法带有两个参数，第一个参数为需要获取CSS属性值的Element对象，第二个参数为伪类（如“:after”），如果不需要判断伪类，可以将其设置为null。语法格式如下：</p>
+		<p><em>getComputedStyle(Element, Pseudo-classes).CSS属性名;</em></p>
 	</section>
 	<!-- class属性的操作 -->
 	<section>
