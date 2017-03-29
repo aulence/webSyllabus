@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>通讯录管理</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <h1>添加通讯录</h1>
+        <div id="content">
+            <div>
+                <label>姓名：</label>
+                <input id="name" type="text" placeholder="请输入姓名">
+            </div>
+            <div>
+                <label>手机：</label>
+                <input id="telNum" type="text" placeholder="请输入手机号码">
+            </div>
+            <div>
+                <label>公司：</label>
+                <input id="company" type="text" placeholder="请输入公司名称">
+            </div>
+            <div>
+                <button id="createData" class="normal" type="button"></button>
+            </div>
+        </div>
+        <div id="result">
+            <span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>姓名</th>
+                            <th>手机</th>
+                            <th>公司</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </span>
+        </div>
+        <div id="check">
+            <div class="searchCtrl">
+                <label>输入手机号码：</label>
+                <input id="searchContent" type="text" placeholder="输入手机号码查询">
+                <button id="searchData" type="button" class="normal"></button>
+            </div>
+            <span>
+                <table>
+                    <thead>
+                        <tr>
+						<th>序号</th>
+						<th>姓名</th>
+						<th>手机</th>
+						<th>公司</th>
+						<th>添加时间</th>
+						<th>操作</th>
+					</tr>
+                    </thead>
+					<tbody></tbody>
+				</table>
+            </span>
+            <script src="plugin/jquery.min.js"></script>
+            <script src="js/indexedDB.js"></script>
+        </div>
+    </main>
+</body>
+</html>
+
