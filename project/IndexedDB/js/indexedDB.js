@@ -17,6 +17,9 @@ let COUNT = 0;
 /* 页面加载完成后执行部分 */
 /*************************************************/
 $(function () {
+	// IndexedDB核心功能函数调用
+	indexedDBCore();
+
 	// 创建并插入数据
 	$("#createData").on("click", function () {
 		insertDB(InfoDB);
@@ -41,8 +44,6 @@ $(function () {
 		//$("#check input").val("");
 	});
 
-	// IndexedDB核心功能函数调用
-	indexedDBCore();
 });
 
 /*************************************************/
@@ -82,8 +83,8 @@ function indexedDBCore() {
 				// 创建students对象存储空间;指定keyPath选项为id（即主键为id）
 				let objectStore = InfoDB.createObjectStore(OBJ_SPASE_NAME, {keyPath: "telNum"});
 				// 参数1：索引名
-				// 参数2：创建索引的列（即keyPath,索引属性字段名）
-				// 参数3：索引选项(索引属性值是否唯一:true or false)
+				// 参数2：创建索引的列（即keyPath，索引属性字段名）
+				// 参数3：索引选项(索引属性值是否唯一：true or false)
 				objectStore.createIndex("telNum", "telNum", {unique: true});
 			}
 		}
@@ -109,7 +110,7 @@ function insertDB(InfoDB) {
 	// 使用事务
 	// 参数1：事务操作的对象存储空间名
 	// 参数2：事务模式:'readwrite'可读写模式;READ_ONLY只读模式;VERSION_CHANGE版本升级模式
-	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, 'readwrite');
+	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, "readwrite");
 	// 2.1、当事务中的所有操作请求都被处理完成时触发
 	transaction.oncomplete = function (event) {
 		console.debug("数据插入/新增事务请求完成");
@@ -136,7 +137,7 @@ function insertDB(InfoDB) {
  * 参数：1、数据库实例对象； 2、搜索的数据
  **/
 function searchContent(InfoDB, searchData) {
-	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, 'readwrite');
+	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, "readwrite");
 	transaction.oncomplete = function (event) {
 		console.debug("查询数据事务请求完成");
 	};
@@ -197,9 +198,8 @@ function deleteData(InfoDB, telNumber) {
  * 参数：数据库实例对象
  **/
 function byCursorGet(InfoDB) {
-	let tbContnet = '';
-	let i = 0;
-	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, 'readwrite');
+	let tbContnet = "";
+	let transaction = InfoDB.transaction(OBJ_SPASE_NAME, "readwrite");
 	transaction.oncomplete = function (event) {
 		console.debug("游标遍历事务请求完成");
 	};
@@ -234,20 +234,20 @@ function byCursorGet(InfoDB) {
 				COUNT = "P-" + COUNT;
 			}
 			tbContnet += `
-					<tr>
-						<!-- 这里的“COUNT”是一个全局计数器 -->
-						<td>${COUNT}</td>
-						<td>${obj.name}</td>
-						<td class="p">${obj.telNum}</td>
-						<td>${obj.company}</td>
-						<td>${obj.date}</td>
-						<td><button type="button" class="delData">删除</button></td>
-					</tr>
-				`;
+				<tr>
+					<!-- 这里的“COUNT”是一个全局计数器 -->
+					<td>${COUNT}</td>
+					<td>${obj.name}</td>
+					<td class="p">${obj.telNum}</td>
+					<td>${obj.company}</td>
+					<td>${obj.date}</td>
+					<td><button type="button" class="delData">删除</button></td>
+				</tr>
+			`;
 			cursor.continue();
 		} else {
-			console.debug('遍历完成');
-			// 创建表头和表格数据
+			console.debug("遍历完成");
+			// 添加遍历出来的表格数据
 			$("#result table > tbody").html(tbContnet)
 		}
 	}
@@ -258,5 +258,5 @@ function byCursorGet(InfoDB) {
  InfoDB.close();
  //删除数据库
  window.indexedDB.deleteDatabase(DB_NAME);
- }, 1000);*/
+ },1500);*/
 
