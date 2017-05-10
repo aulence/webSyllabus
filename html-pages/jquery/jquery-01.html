@@ -17,20 +17,36 @@
     		<li>工具函数</li>
     		<li>Ajax请求</li>
     	</ul>
-    	<p>jQuery所能做的，也正是它的特色所在。</p>
+    	<p>jQuery所能做的，也正是它的特色所在。表面上看上去这些平时不就是我们用JavaScript所做的事吗？是的，它要做的事和JavaScript是一样的。但是我们又为什么要花时间来学习jQuery呢？下一节会告诉你答案。</p>
     </section>
     <section>
     	<h3>为什么要学习使用jQuery？</h3>
-		<p>对于这个问题，我们得先来看这样一个简单的模拟需求，实现一个对象序列化的函数。</p>
+    	<p>我们先来看这样一个全球网站使用框架（或库）统计的<a href="https://w3techs.com/technologies/overview/javascript_library/all" target="_blank" title="jQuery使用情况统计">数据</a>。</p>
+    	<code class="indent">
+			<img src="img/content/jquery/jquery-useing.jpg">
+		</code>
+		<p>统计图表右下角是统计的时间：2017年5月10日。</p>
+		<p>从统计结果可以发现，虽然全球仍有24.7%的网站没有任何库或框架（包括只使用HTML+CSS和只使用HTML+CSS+JavaScript两种情况），在全部的参与统计的网站中有72.4%使用了jQuery，但只要使用了库或框架的网站96.2%的都选择了jQuery，这个数据相对于某知名网站在2013年12月28日统计的结果——全部网站57.5%的使用率和使用框架网站93.0%的使用率来讲，还有一定程度的增加。下面是该网站的部分截图：</p>
+		<code class="indent">
+			<img src="img/content/jquery/jquery-useing2.jpg">
+		</code>
+		<p>从以上两个数据的对比完全击破近些年来互联网上流传的“jQuery已死”的“谣言”。对于一个这么好用，比较有“背景”，并且还在不断进步的JavaScript类库来讲怎么可能这么容易“死”。相信也只是某些库和框架团队为了挽回其产品使用率不高的局面，而创造的“段子”而已，我们只需要相信数据是不会撒谎的这个道理即可。</p>
+		<p>对于一个使用率如此之高，长期盘踞着互联网软件开发环境下No.1的库来说，我们没有理由不去学习。熟练地使用jQuery也是现在的互联网企业招聘前端开发的必备技能条件之一，如果一个开发者不会jQuery，那他和“前端工程师”这几个字是没有什么关系了。</p>
+		<p>如果是从和原生JavaScript语法比较的角度出发，我们可以来看这样一个简单的模拟需求：实现一个需要对AJAX传参对象进行序列化的函数。</p>
     	<p>原生的JavaScript应该是这样写的：</p>
     	<code class="indent">
 			<img src="img/code/jqcode/code-jq-001.jpg">
 		</code>
-    	<p>而jQuery只需要这样写：</p>
+    	<p>而jQuery要得出同样的结果只需要这样写：</p>
     	<code class="indent">
 			<img src="img/code/jqcode/code-jq-002.jpg">
 		</code>
    		<p>稍加观察就可以发现，使用jQuery完全省略了上面函数定义的部分，而是直接使用了一个叫做“$.param()”的函数就完成这件事。（从原理上来讲“param”也只是“$”对象，一般称作“JQ对象”。）当然，这只是jQuery的冰山一角，他对JavaScript的封装堪称神奇，再以后我们自然会体会到。</p>
+   		<p>然后再从文件体积来说，jquery-3.2.1这个版本的“<em title="也称压缩版、mini版">线上版</em>”传输只有不到85kb，对于一些现有的动则200kb起价的框架和库来说已经算是非常小的了，甚至是一些只能完成单一职能的插件都远远大于这个数（如ECharts 3最精简的“阉割”版也有240kb的传输体积）。</p>
+   		<code class="indent">
+			<img src="img/content/jquery/jquery-size.jpg">
+		</code>
+   		<p>所以，那些说jQuery文件体积过大的言论显然也是站不住脚的，但以讹传讹，现在仍有些团队项目的负责人以jQuery文件体积过大为由，拒绝下属提出的使用jQuery的要求。对于这种“霸权主义”来讲，我们作为一个优秀的开发者一定要听之任之，不不，是要与其争辩出一个高下。如果一定要说比较个小的，现在也只有同期的<em title="一个轻量级的MVVM框架">vue.js</em>的mini版的75kb可以拿来说说了，虽然他们的“职责”和分类都不太一样。</p>
     </section>
     <section>
     	<h3>jQuery和JavaScript的关系</h3>
