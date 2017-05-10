@@ -1,11 +1,36 @@
 <root data-root="jQuery概述">
     <section class="mt0">
-    	<h3>jQuery是什么</h3>
-    	<p></p>
+    	<h3>jQuery是什么？</h3>
+    	<p>jQuery是一套<em>跨浏览器</em>的JavaScript库，简化HTML与JavaScript之间的操作。所谓的“跨浏览器”指的就是它使得同一个方法只需要写一次就能兼容几乎所有的主流浏览器，而不需要再像原生的JavaScript那样做很多浏览器兼容性的判断，因为在jQuery的内部都已经帮你做了。另外jQuery对JavaScript中很多操作繁琐的属性和方法都做了不同程度的封装，这使得开发者使用非常少的代码就实现足够多的功能。</p>
+
+    	<p>jQuery的第一个版本是在2006年1月发布的，至今也有十余年的时间了。截止本课件落笔时间，jQuery的最新版本是3.2.1。它从第2版开始就逐渐的放弃了“IE系列”的浏览器，到第3版的时候已经完全放弃了IE浏览器。如果需要项目兼容到IE8或更低的版本，请使用1.x版本。</p>
+
+    	<p>使用jQuery可以满足前端开发的以下需求，并使代码更加简单：</p>
+    	<ul class="indent">
+    		<li>跨浏览器的DOM元素选择</li>
+    		<li>DOM的遍历与更改</li>
+    		<li>事件处理及事件队列</li>
+    		<li>CSS的获取和设置</li>
+    		<li>各种特效和动画</li>
+    		<li>链式操作</li>
+    		<li>属性操作</li>
+    		<li>工具函数</li>
+    		<li>Ajax请求</li>
+    	</ul>
+    	<p>jQuery所能做的，也正是它的特色所在。</p>
     </section>
     <section>
-    	<h3>为什么要学习使用jQuery</h3>
-		<p></p>
+    	<h3>为什么要学习使用jQuery？</h3>
+		<p>对于这个问题，我们得先来看这样一个简单的模拟需求，实现一个对象序列化的函数。</p>
+    	<p>原生的JavaScript应该是这样写的：</p>
+    	<code class="indent">
+			<img src="img/code/jqcode/code-jq-001.jpg">
+		</code>
+    	<p>而jQuery只需要这样写：</p>
+    	<code class="indent">
+			<img src="img/code/jqcode/code-jq-002.jpg">
+		</code>
+   		<p>稍加观察就可以发现，使用jQuery完全省略了上面函数定义的部分，而是直接使用了一个叫做“$.param()”的函数就完成这件事。（从原理上来讲“param”也只是“$”对象，一般称作“JQ对象”。）当然，这只是jQuery的冰山一角，他对JavaScript的封装堪称神奇，再以后我们自然会体会到。</p>
     </section>
     <section>
     	<h3>jQuery和JavaScript的关系</h3>
@@ -13,7 +38,11 @@
     </section>
     <section>
     	<h3>安装使用jQuery</h3>
-		<p></p>
+		<p>可以通过jQuery的官方网站<a href="http://jquery.com/" title="前往jQuery官网" target="_blank">http://jquery.com</a>找到环境需要版本的链接进行下载。也可以通过<em>npm</em>（推荐）进行下载。</p>
+    	<p>通过npm下载最新版本的方式：</p>
+    	<code class="cmd indent">npm install -g jquery</code>
+    	<p>下载指定版本（第1.x版的最新版本）：</p>
+    	<code class="cmd indent">npm install -g jquery@1</code>
     </section>
     <section>
     	<h3>为什么要学习使用jQuery</h3>
