@@ -19,7 +19,10 @@ $(function() {
         var attrHref = $(this).attr("data-href");
         if(attrHref == "index") {
             $("page[data-page]:nth-of-type(3)").css("right", "-100%");
-        }
+        } else if(attrHref == "pay") {
+			$("#inputMoney").val("");
+			$("page[data-page]:nth-of-type(4)").css("right", "-100%");
+		}
     });
 
     /* 支付按钮触发的事件 */
@@ -85,7 +88,22 @@ $(function() {
                 if(count == 6) {
                     // 密码正确的时候
                     if(validPwd == userPwd.join("")) {
-                        alert("支付成功！");
+						// 获取转账金额
+						var payMoney = $(".payInfoBox .money span").text();
+						// 消除密码组件
+						$(".maskLayer,.payInfoBox").fadeOut(300,function() {
+							$(this).remove();
+						});
+						$("div[data-keyboard-number]").slideUp(300,function() {
+							$(this).remove();
+						});
+						// 结果页面
+						var resPage = $("page[data-page='支付结果']");
+						resPage.css("right", "0px");
+						$.get("pages/result.html",function(doc) {
+							resPage.children("main").html(doc);
+							$("#successMoney").text(payMoney);
+						});
                     }
                     // 密码错误的时候
                     else {

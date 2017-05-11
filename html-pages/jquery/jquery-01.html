@@ -50,19 +50,38 @@
     </section>
     <section>
     	<h3>jQuery和JavaScript的关系</h3>
-		<p></p>
+		<p>简单地说，jQuery就是对JavaScript进行封装而出来的一个库。这和我们以前用JavaScript来写函数和方法，让一段段的语句有更强的可复用性和可维护性是一样的，只是jQuery把这件事情做得更加的极致了而已。</p>
+   		<p>jQuery的原理就是用它自定的一个变量名“jQuery”作为对象名，然后再赋值给“<em>$</em>”这个变量，并且还提供了一个noConflict()方法回调来允许开发自定义变量名从而防止和其它框架库命名的冲突。以下是从jQuery为压缩的源码里稍作调整截来的代码片段：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-003.jpg">
+		</code>
+   		<p>从这段代码里可以大概看得出，它通过将同一个函数实例化后的对象“jQuery”赋值给了“$”（），并且将其添加进“window”对象，使得它们成为了一个全局对象。这样一来我们就可以在接下来的代码中去使用“$”（或jQuery）这个对象的各种方法了。</p>
+   		<p>其实两者的区别从本章上一节的那个代码示例就可以看出来，JavaScript部分的代码中函数的定义是我们自己写的，而jQuery部分的代码则分成了两部分，一部分是jQuery代码内部帮我们处理了，我们只需要做第二部分，就是$.param()方法的调用。</p>
+   		<p>好吧，为了满足开发者们的求知欲，现在就将jQuery关于param()方法实现部分的代码贴出来：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-004.jpg">
+		</code>
+   		<p>这里面的代码也就是平时我们使用的原生JavaScript代码而已，只有“jQuery.each”这个方法是它调用的自身的方法。</p>
+   		<p>通过这些介绍，相信大家也基本能明白jQuery和JavaScript到底是怎么样一种关系了。以后在使用jQuery的各种方法的时候也请抽点时间来思考一下这个方法如果要我们用原生的JavaScript去写，应该怎么实现。这使得我们可以做到<em title="即不依赖于jQuery也能写出jQuery一样代码">jQuery-free</em>，也能更加透彻地去理解jQuery的架构思维，以助于我们在能力足够的时候也能写出自主研发的JS库或框架。</p>
     </section>
     <section>
     	<h3>安装使用jQuery</h3>
-		<p>可以通过jQuery的官方网站<a href="http://jquery.com/" title="前往jQuery官网" target="_blank">http://jquery.com</a>找到环境需要版本的链接进行下载。也可以通过<em>npm</em>（推荐）进行下载。</p>
+		<p>可以通过jQuery的官方网站<a href="http://jquery.com/" title="前往jQuery官网" target="_blank">http://jquery.com</a>找到环境需要版本的链接进行下载。</p>
+  		<code class="indent">
+			<img src="img/content/jquery/jquery-home.jpg">
+		</code>
+  		<code class="indent">
+			<img src="img/content/jquery/jquery-download.jpg">
+		</code>
+   		<p>也可以通过<em>npm</em>（推荐）进行下载。</p>
     	<p>通过npm下载最新版本的方式：</p>
     	<code class="cmd indent">npm install -g jquery</code>
     	<p>下载指定版本（第1.x版的最新版本）：</p>
     	<code class="cmd indent">npm install -g jquery@1</code>
-    </section>
-    <section>
-    	<h3>为什么要学习使用jQuery</h3>
-		<p></p>
+    	<p>下载完成后的结果大致是下面这样，由于示例环境里面配置了npm的cache（缓存），所以就算删掉jQuery重新下载也会省略掉，如果是第一次下载输出的信息应该会比较多。复制输出信息倒数第二行的那个路径可以帮你快速地定位到下载jQuery的文件目录下，下载的jQuery文件夹包含在一个叫做“node_modules”的文件夹下。</p>
+    	<code class="indent">
+			<img src="img/content/jquery/jquery-npmdownload.jpg">
+		</code>
     </section>
     <section>
     	<h3>jQuery在页面中的引用</h3>
