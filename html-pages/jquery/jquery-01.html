@@ -87,6 +87,7 @@
     	<h3>jQuery在页面中的引用</h3>
 		<p>随着Web前端技术的发展，对一个框架库的引用方式越来越多样化了。我们这里主要介绍3种方式：</p>
    		<dl class="attrExplain">
+
    			<dt>直接文件引用</dt>
    			<dd>将下载完成的jQuery的主文件，放在项目下的指定目录，然后通过&lt;script&gt;标签的src属性进行相对路径的引用，和&lt;img&gt;标签引用一张图片一样简单。</dd>
    			<dd>
@@ -94,23 +95,101 @@
 					<img src="img/code/jqcode/code-jq-005.jpg">
 				</code>
   			</dd>
+
+  			<dt>AMD模式下的依赖请求</dt>
+  			<dd>如果项目使用<em titile="Asynchronous Module Definition，即异步模块家在机制">AMD</em>模式，那只需要在你需要使用jQuery的JS文件或者入口JS文件开始的地方加上这样一句话即可：</dd>
+  			<dd>
+  				<code class="cmd">require("jquery");</code>
+  			</dd>
+  			<dd>如果需要使用模块化的jQuery来保证最终生成的文件最小化，那还可以require有各自“职责”的jQuery的模块文件。这在我们以后的“前端自动化构建工具之webpack”里会涉及到，现在我们不需要这样做，而且也暂时不具备这样的技术条件环境。</dd>
+
+  			<dt>使用<em title="Content Delivery Network，即内容分发网络">CDN</em>引用</dt>
+  			<dd>首先我们来看一下【维基百科】上对CDN的阐述:</dd>
+  			<dd>
+				<cite class="paragraph">内容分发网络（Content delivery network或Content distribution network，缩写：CDN）是指一种通过互联网互相连接的电脑网络系统，利用最靠近每位用户的服务器，更快、更可靠地将音乐、图片、视频、应用程序及其他文件发送给用户，来提供高性能、可扩展性及低成本的网络内容传递给用户。</cite>
+				<cite class="paragraph">内容分发网络的总承载量可以比单一骨干最大的带宽还要大。这使得内容分发网络可以承载的用户数量比起传统单一服务器多。也就是说，若把有100Gbps处理能力的服务器放在只有10Gbps带宽的数据中心，则亦只能发挥出10Gbps的承载量。但如果放到十个有10Gbps的地点，整个系统的承载量就可以到10*10Gbps。</cite>
+				<cite class="paragraph">同时，将服务器放到不同地点，可以减少互连的流量，进而降低带宽成本。</cite>
+			</dd>
+  			<dd>在国内，可以通过比较著名的CDN网站<a href="http://www.bootcdn.cn/" target="_blank">http://www.bootcdn.cn</a>查找自己需要的资源。</dd>
+  			<dd>
+  				<code>
+					<img src="img/content/jquery/bootcdn-1.jpg">
+				</code>
+  			</dd>
+  			<dd>输入jquery后，在下方找到需要的jquery，如图所示：</dd>
+  			<dd>
+  				<code>
+					<img src="img/content/jquery/bootcdn-2.jpg">
+				</code>
+  			</dd>
+  			<dd>选择图中“自适应”按钮，然后复制需要的版本链接。</dd>
+  			<dd>
+  				<code>
+					<img src="img/content/jquery/bootcdn-3.jpg">
+				</code>
+  			</dd>
+  			<dd>然后就可以像我们第一种引用方式那样引用了。</dd>
+  			<dd>
+				<code>
+					<img src="img/code/jqcode/code-jq-006.jpg">
+				</code>
+  			</dd>
+			<dd>关于CDN的使用需要注意两点：</dd>
+  			<dd>第一，在客户端环境下，特别是支持离线应用的<em title="即生成手机能安装的app">webAPP</em>里最好不要使用这种方式，因为使用CDN就算再快也是需要网络的，如果网络情况不好或没有网的情况下会导致jQuery文件无法正常加载，导致程序失效，而且在webAPP里引用本地资源肯定是最好的选择。在生产环境下，更是没有必要这样做。</dd>
+  			<dd>第二，就是解释一下刚才为什么要求选择“自适应”的CDN，因为有的网站只支持http，有的又支持https，有的两种都支持，如果不加上“//”前面的协议名称CDN服务器会根据当前网站的协议类型自动选择需要引用的资源，这种做法更为“以不变应万变”一些。</dd>
    		</dl>
+   		<p>但需要记得的是，无论采用哪一种引用方式，在我们自己写代码时都应该保证在jQuery引用地方的后面，否则都不能访问到jQuery主对象，从而产生控制台报错。这就和我们平时定义一个全局变量一样，需要先声明然后再使用是一回事。</p>
     </section>
     <section>
     	<h3>第一句jQuery代码</h3>
-		<p></p>
+		<p>好了，上面的基本理论如果了解了，那我们现在开始创建一个项目的基本目录结构，并创建必须的文件。这里我们使用上一节中讲到的第一种引用方式，把jQuery文件引用到我们的index.html文件里，并在引用jQuery文件的后面引用我们自己创建的一个空的index.js文件。像这样：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-007.jpg">
+		</code>
+   		<p>需要注意的是，作为学习阶段我们引用的jQuery文件最好是完整未压缩版的。这样一方面方便我们随时去阅读源码，在遇到报错的时候也能更好地排错。但切记在线上环境的时候一定要使用压缩后的jQuery，它比完整版的体积要小60%以上，特别是在使用GZIP压缩后，传输体积会更加的小。</p>
+   		<p>基本准备工作完成，可以开始写我们的第一句jQuery代码了。首先在HTML文件里创建一个列表，并在下方创建一个如下图的div标签：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-008.jpg">
+		</code>
+   		<p>现在我们要做的事是当点击列表项中的任意一项后在下方div的span标签里把选择的内容显示在里面。到这里先停一停，深入思考一下如果我们用JavaScript来写应该是一个怎么样的流程。</p>
+   		<p>而用jquery我们只需要在index.js文件里写上一段以下代码即可：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-009.jpg">
+		</code>
+   		<h4><a href="html-pages/jquery/codeEffect/code-001.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-001.html" ></iframe>
+   		<p>什么感觉？是不是看起来和读普通文字一样顺畅直观。在这段代码里既没有JS那种大篇幅的循环绑定，又没有DOM那种繁琐的节点操作，连事件名都省掉了“on”的前缀。也就是说，写jQuery可以更加贴近我们的思维流程，把抽象的事做得更加的形象，更加的简便，减少了我们组织思维和组织代码的时间。</p>
     </section>
     <section>
     	<h3>防止其它库和jQuery冲突</h3>
-		<p></p>
+		<p>我们知道，变量的命名可以以英文字母、下划线和$符开头。英文字符的命名容易产生重名，下划线美观度又不够。所以很多编程语言，以至于很多JS框架或库都喜欢用“$”符来作为变量名，jQuery就是其中的“著名代表”。这样一来就造成一个问题，如果一个项目中若采用多种第三方的插件、框架和类库难免会产生“$”名称的冲突，而使用“jQuery”这个默认对象作为名称书写起来又比较麻烦，且容易写错。为了解决这个问题，jQuery使用了一个<em title="意为不冲突">noConflict()</em>方法来让开发者可以自定义jQuery对象（$对象）的名称。</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-010.jpg">
+		</code>
+   		<p>这样一来我们就可以使用“jq”作为我们全局的jQuery对象名了。但若我们开发的项目只使用了jQuery这个库，或者使用的其它第三方程序与jQuery没有名称上的冲突，那是完全没有必要这要做的。毕竟技术的一些关键名称会形成开发者的一些习惯，也是团队间无声的交流语言。如果只是图一个个性，把这个名字改了，只会给团队开发造成一些不必要的困扰。</p>
     </section>
     <section>
     	<h3>将jQuery对象转为JS对象</h3>
-		<p></p>
-    </section>
-    <section>
-    	<h3>创建自定义jQuery方法和函数</h3>
-		<p></p>
+		<p>要说明本节的问题，我们得先明白一个基本理论，就是通过DOM的节点选择器和jQuery的选择器选择出来的结果其实并不是同样的东西现在我们就拿上节中的那个代码来举例，分别用DOM的选择器和jQuery的选择器进行选择，并在控制台内输出。</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-011.jpg">
+		</code>
+   		<p>通过输出的结果对比可以发现，虽然DOM和jQuery输出的结果的类型都是对象，但它们专业术语的叫法却不同。DOM选择器选择出的结果叫做“<em>节点对象</em>”（也称“Element对象”），而jQuery选择器选择出的对象叫做“<em>JQ对象</em>”。再从输出的选择结果来看，DOM输出的结果看上就好像是一个普通的HTML标签（实际上是document对象树的一个分支），而jQuery的输出结果像是一个数组，然而，这并不是真正的数组，因为他不能直接去使用JavaScript的数组提供的方法，它就是一个名为“JQ对象”的类似数组。</p>
+   		<p>明白这个道理之后，我们就需要知道既然对象种类都不一样，那需要使用的属性和方法就不一样了。我们针对这个问题来做一个小测试：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-012.jpg">
+		</code>
+   		<p>通过测试发现，无论是DOM去使用jQuery的方法，还是jQuery去使用DOM的属性都会产生刺眼的报错。也就是说，虽说jQuery是一个基于JavaScript、基于DOM的类库，但很多时候它们的语法也并非一定是互通的。</p>
+   		<p>但我们在学习jQuery初级阶段的时候，肯定不可能了解它所有的方法（jQuery的绝大部分操作都是使用对象的形式），可能有时需要使用原生的JavaScript或DOM来帮助我们完成特定的功能，但又不想使用DOM冗长的操作语句怎么办呢？实际上是有个小技巧可以利用的。</p>
+   		<p>我们稍微修改一下刚才控制台的代码，大家再观察一下产生的结果：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-013.jpg">
+		</code>
+   		<p>此时浏览器里HTML被修改的列表内容已经变成了红色的字体：</p>
+   		<code class="indent">
+			<img src="img/code/jqcode/code-jq-014.jpg">
+		</code>
+   		<p>那大家有没有观察出是那里的代码修改之后让本来报错的代码产生效果了呢？由于代码不多，这个我就不指明了。以后凡是需要用到JS或者DOM的属性或方法的时候都可以使用这样的方式来处理。但当对jQuery足够熟悉后还是要避免这种做法，以免给团队协作带来一些不必要的麻烦，也不至于“抹杀”掉jQuery本来具有的一些“优质特性”（如无需循环绑定事件的机制）。</p>
     </section>
 </root>
 

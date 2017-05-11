@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+	</head>
+	<body>
+		<ul>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+			<li>jQuery</li>
+		</ul>
+		<div>您选择的是：<span></span></div>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script>
+			$("li").click(function() {
+				var thisTxt = $(this).text();
+				$("div span").text(thisTxt);
+			});
+		</script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
