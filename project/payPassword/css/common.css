@@ -10,6 +10,14 @@ html,body {
     margin: 0; padding: 0;
     font: 18px "微软雅黑";
 }
+main#root {
+	width: 100%; height: 100%;
+	padding: 0;
+	border: none;
+	overflow: hidden;
+	position: relative;
+	left: 0; top: 0;
+}
 /* 转换为IE盒子模型 */
 body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
     box-sizing: border-box;
@@ -131,6 +139,7 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
 /* 支付信息框 */
 .payInfoBox {
     width: 100%; height: calc(100% - 200px);
+	left: 0; top: 0;
     z-index: 11;
 }
 .payInfoBox-main {
