@@ -1,11 +1,46 @@
 <root data-root="jQuery选择器">
     <section class="mt0">
+    	<h3>jQuery选择器概述</h3>
+    	<p>jQuery的选择器实现的根源当然还是DOM，但对选择器简化的灵感来源却是CSS，jQuery发展到现在这个版本，CSS3能做到的，jQuery基本上都能做到（:before、:after除外），如：元素选择器，ID选择器、class选择器、属性选择器、结构选择器、状态选择器，UI伪元素选择器等等。不仅如此，jQuery还提供了一些CSS办不到，JavaScript+DOM也不能一句话搞定的选择器。如：文本包含选择器、标签包含选择器、包含元素筛选选择器等。</p>
+    	<p>由于jQuery“诞生”的日子比较早（2006年），它的很多做法受到了其它各类库的效仿，当然jQuery也从其它库的身上“要来”不少东西，如火热一时的<em title="该库目前已经在朝着Web应用框架方向转型了">MooTools</em>。jQuery的设计模式刚出来的时候就收到业界的高度重视，在它诞生的第二年，其内容就成为很多计算机高校必修或选修的课程，这种情况就现在看来都是不可思议的。</p>
+    	<p>选择器作为jQuery的核心内容，更是被很多JS库所效仿。甚至可以很不负责任的说，就连原生的JavaScript和DOM都深受其影响，如getElementsByClassName这个ECMAScript 2010（简称ES5）才出现的选择器，以及紧跟着出现的querySelector()和querySelectorAll()这两个像极了jQuery的DOM选择器。</p>
+    	<p><em>Sizzle</em>是jQuery的开发者John Resig新编写的一个JavaScript选择器，速度号称业界第一。它在2009年1月14日的时候导入了jQuery的核心，使得jQuery更加的强大。该作者根据ES5及一些外来的灵感在2012年8月9日的时候发布了重写的Sizzle，这使得jQuery的性能更加强大。当然，Sizzle一直也作为独立的版本存在着，如果不想使用jQuery，也可以单独下载Sizzle，它的体积比jQuery要小得多。</p>
+    	<p>和DOM选择器一样，jQuery的选择器参数部分是以字符串的形式存在的，所以允许变量或字符串与变量拼接的形式。如：</p>
+    	<p>
+<code class="ideCode">var ele;
+$("#" + ele).text("元素文本内容");
+var tagname = "div";
+$(tagname).html("div文本内容");
+</code>
+   		</p>
+    </section>
+    <section>
     	<h3>元素选择器</h3>
-    	<p></p>
+    	<p>基本语法：</p>
+    	<p>
+<code class="ideCode">$(TagName).method(function() {
+	// 需要做的事
+});</code>
+   		</p>
+   		<p>示例中的“TagName”指的是标签名，在实际使用中记得加上引号。如果有多个标签名，可以用英文逗号进行分割，如例：</p>
+   		<p>
+<code class="ideCode">$("div,p,span").css("color", "#3d3d3d");</code>
+   		</p>
+   		<p>上例的实现的效果是，同时将div、p和span三个标签的字体颜色设置为“#3d3d3d”。</p>
     </section>
     <section>
     	<h3>ID选择器</h3>
-		<p></p>
+		<p>基本语法：</p>
+    	<p>
+<code class="ideCode">$("#" + ID).method(function() {
+	// 需要做的事
+});</code>
+		</p>
+   		<p>和标签选择器一样，如果要对多个ID进行操作需要用英文逗号进行分割，如例：</p>
+   		<p>
+<code class="ideCode">$("#userName,#userPwd").val("");</code>
+   		</p>
+   		<p>上例的实现的效果是，将ID为“userName”和“userPwd”的输入框（只有表单元素才能使用val()方法）的值置空。</p>
     </section>
     <section>
     	<h3>Class选择器</h3>
@@ -60,7 +95,7 @@
 		<p></p>
     </section>
     <section>
-    	<h3>文本或标签包含选择器</h3>
+    	<h3>标签包含选择器</h3>
 		<p></p>
     </section>
     <section>
@@ -72,9 +107,6 @@
 		<p></p>
     </section>
 </root>
-
-
-
 
 
 
