@@ -26,14 +26,59 @@
 .m_blogWin { width: 100%; height: 100%; border: 1px solid #bfbfbe;}
 
 /* 幻灯片列表区 */
-.imgLink_area .slideList {
+.imgLink_area,.imgLink_area .slideList {
     position: relative;
 }
 .imgLink_area .slideList img {
     position: absolute;
     left: 0;
-    display: none;
+    visibility: hidden;
+	opacity: 0;
+	transition: all 2s;
 }
 .imgLink_area .slideList img.show {
-    display: block;
+    visibility: visible;
+	opacity: 1;
+	animation: imgScale 6s linear;
+}
+/* 设置图片放大原点 */
+.imgLink_area .slideList img.enlarge-1 {
+	transform-origin: 10% 10%;
+}
+.imgLink_area .slideList img.enlarge-2 {
+	transform-origin: 90% 10%;
+}
+.imgLink_area .slideList img.enlarge-3 {
+	transform-origin: 90% 90%;
+}
+.imgLink_area .slideList img.enlarge-4 {
+	transform-origin: 10% 90%;
+}
+/* 控制点 */
+.slideList-point {
+	position: absolute;
+	left: 20px; bottom: 16px;
+}
+.slideList-point > i {
+	width: 12px; height: 12px;
+	background-color: transparent;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	float: left;
+	display: block;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	margin-right: 12px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.slideList-point > i.ckd {
+	background-color: #fff;
+}
+.slideList-point > i:hover {
+	border: 2px solid #b6ccff;
+	background-color: #b6ccff;
+}
+@keyframes imgScale {
+	0% { transform: scale(1); }
+	100% { transform: scale(1.2) }
 }
