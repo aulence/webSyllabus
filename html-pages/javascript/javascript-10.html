@@ -459,6 +459,27 @@
 			<li><em>\B</em> 匹配非词边界，即在词的内部。</li>
 		</ul>
 	</section>
+	<section class="unitPractice">
+		<h3>&lt;章节练习三&gt;</h3>
+		<p>分析以下HTML代码，完成正则匹配功能：</p>
+<pre>
+&lt;div class="skillList"&gt;
+	&lt;ul&gt;
+		&lt;li style="color: #2396fd; font-weight: bold" class="ckd normal"&gt;HTML&lt;/li&gt;
+		&lt;li&gt;CSS&lt;/li&gt;
+		&lt;li&gt;JavaScript&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+		<p>&lt;基本需求&gt;</p>
+		<p>1、将以上代码在自己的浏览器中显示，需要保证和上例中的结构完全一致（颜色不需要一致）</p>
+		<p>2、通过String.match()方法找出代码中所有的HTML标签（结果是一个数组）</p>
+		<p>3、去掉String.match()匹配结果数组中的重复项，最终的结果保存到一个新的数组</p>
+		<p>4、将所有的标签都变成“#f76d6c”的字体色，不包括标签内的文本内容（和代码编辑器“monokai”主题的代码显示效果类似）</p>
+		<p>&lt;扩展需求&gt;</p>
+		<p>1、将标签内的属性名变为“#8bd12e”的字体色</p>
+		<p>2、将标签内的属性值变为“#ece077”的字体色</p>
+	</section>
 </root>
 
 
