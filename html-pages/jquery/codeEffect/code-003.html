@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			.skill-list {
+				cursor: pointer;
+			}
+			.skill-list > li {
+				line-height: 40px;
+			}
+			.skill-list > li:hover {
+				color: #888;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="skill-list">
+			<li class="html">HTML</li>
+			<li class="css">CSS</li>
+			<li class="js">JavaScript</li>
+			<li class="jq">jQuery</li>
+			<li class="ng">Angular</li>
+			<li class="rc">React</li>
+			<li class="v">Vue</li>
+		</ul>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			$(".skill-list > li").click(function() {
+				$(this).prevAll().css("color", "#f80");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
