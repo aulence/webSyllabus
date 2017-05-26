@@ -472,13 +472,18 @@
 &lt;/div&gt;
 </pre>
 		<p>&lt;基本需求&gt;</p>
-		<p>1、将以上代码在自己的浏览器中显示，需要保证和上例中的结构完全一致（颜色不需要一致）</p>
+		<p>1、将以上代码通过&lt;code&gt;比起爱你在自己的浏览器中保持结构显示出来（包括缩进，代码字体颜色自定义），代码区域的字体为“font-family: Consolas,Monaco,"宋体";”，&lt;code&gt;的背景色为“#333”</p>
 		<p>2、通过String.match()方法找出代码中所有的HTML标签（结果是一个数组）</p>
 		<p>3、去掉String.match()匹配结果数组中的重复项，最终的结果保存到一个新的数组</p>
 		<p>4、将所有的标签都变成“#f76d6c”的字体色，不包括标签内的文本内容（和代码编辑器“monokai”主题的代码显示效果类似）</p>
 		<p>&lt;扩展需求&gt;</p>
 		<p>1、将标签内的属性名变为“#8bd12e”的字体色</p>
 		<p>2、将标签内的属性值变为“#ece077”的字体色</p>
+		<p>&lt;提示&gt;：使用CCS中“white-space”的“pre”属性可以保持代码中的空格、Tab和换行。“tab-size”属性可以一次Tab键代码缩进的空格数（默认为8），一般设置为2或4即可。</p>
+		<p>&lt;结果大致如图&gt;</p>
+		<p>
+			<img src="img/content/javascript/codeset-regexp.jpg" title="代码效果示例图" style="border:1px solid #eee;">
+		</p>
 	</section>
 </root>
 
