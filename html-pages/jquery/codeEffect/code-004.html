@@ -37,9 +37,9 @@
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 点击列表项后使之前的列表项编程橙色
+			// 点击CSS之后的列表项，CSS项都会变成蓝色，而点击CSS或之前的项则不会有任何效果
 			$(".skill-list > li").click(function() {
-				$(this).prevAll().css("color", "#f80");
+				$(this).prevAll(".css").css("color", "#00f");
 			});
 		</script>
 	</body>
