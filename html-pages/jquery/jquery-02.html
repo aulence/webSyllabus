@@ -10,6 +10,7 @@
     	<p>
 <code class="ideCode-js">var ele;
 $("#" + ele).text("元素文本内容");
+
 var div1 = "div";
 $(div1).html("div文本内容");
 </code>
@@ -89,10 +90,63 @@ $("input[placeholder*='请输入']");
 		</p>
    		<p>也就是说，只要CSS能使用的属性选择器，jQuery也能使用。只需要将CSS的选择器直接复制过来就能使用，当然，不要忘了jQuery的所有选择器都需要用一对引号括起来，变量例外，不过得保证变量也是一个字符串。</p>
     </section>
-    <!-- 后代和子选择器 -->
+    <!-- 子元素和后代选择器 -->
     <section>
-    	<h3>后代和子选择器</h3>
-		<p></p>
+    	<h3>子元素和后代选择器</h3>
+		<p>基本语法：</p>
+		<p>
+<code class="ideCode-js">// 子元素选择器
+$(selector &gt; selector).method();
+// 后代元素选择器
+$(selector selector).method();
+
+// 子元素选择器实例
+$("div > p > a").click(function() {
+	// 要处理的事件2
+});
+// 后代元素选择器实例
+$("form input[type='radio']").focus(function() {
+	// 要处理的事件1
+});</code>
+		</p>
+		<p>这和我们平时使用CSS选择器也是一样的，而jQuery提供的后代选择器方法和子元素选择器方法则有所不同，它可以处理更多的未知性，并且有一定的查询作用。jQuery查询子元素主要提供两个方法：</p>
+		<dl class="attrExplain">
+			<dt>子元素查询children()</dt>
+			<dd>基本语法</dd>
+			<dd>
+<code class="ideCode-js">// 子元素查询
+$(selector).children(param);
+
+// 查找form标签下的div下的全部input表单元素，并添加获得焦点事件
+$("form div").children("input").focus(function() {
+	// 需要处理的事件
+});
+
+// 将div下面所有标签的字体大小设置为16像素
+$("div").children().css("font-size", "16px");
+</code>
+			</dd>
+			<dd>该方法的参数是一个可选项，当不给参数的时候，它能选择当前元素下的“直接子元素”，这相当于是CSS里的“parent &gt; child”，不同的是CSS必须给出“child”的选择器名，而jQuery则不用。这个区别产生的实际意义就是，CSS必须指定某个子元素，而不能选择全部子元素，而jQuery可以指定某个子元素，也可以选择全部子元素</dd>
+
+			<dt>后代元素查询find()</dt>
+			<dd>基本语法</dd>
+			<dd>
+<code class="ideCode-js">// 子元素查询
+$(selector).find(param);
+
+// 查找header内是在单独窗口打开超链接的a标签，并添加一个类名newWin
+$("header").find("a[target='_blank']").addClass("newWin");
+
+// 将ul内所有li（可能存在列表嵌套）找出并添加点击后弹出当前li文本的功能
+$("ul").find("li").click(function(){
+	var liText = $(this).text();
+	alert(liText);
+});
+</code>
+			</dd>
+			<dd>和children方法一样该方法的参数是一个可选项，当不给参数的时候，它能选择当前元素下的所有子元素，这相当于是CSS里的“parent child”，至于区别也和children方法与CSS之间是一样的。</dd>
+			<dd>但这里需要特别说明，由于find方法会将当前元素的所有子元素节点都进行一次遍历，也就说当前元素子元素节点数量过大的话，带来的性能损耗是相当大的，有的时候宁愿连续用两次children方法都不要用一次find方法，从代码节点控制的严谨性上来讲，children方法也是要优于find方法的。</dd>
+		</dl>
     </section>
     <section>
     	<h3>同级选择器</h3>
@@ -108,21 +162,21 @@ $("input[placeholder*='请输入']");
    		<p>这和我们使用CSS的选择符进行元素的选择没有任何区别。但实际上，这两个选择符在jQuery里面是很少出现的，因为jQuery有更好的选择器同级元素的方法，而且性能表现上由于会省略掉正则判断一环，所以是一种更佳的选择器。</p>
    		<p>接下来我们就来介绍jQuery里的这些同级元素选择器。</p>
    		<dl class="attrExplain">
-   			<dt>同级上一个元素prev()</dt>
+   			<dt>上一个同级元素prev()</dt>
    			<dd>基本语法：</dd>
    			<dd>
 <code class="ideCode-js">$(selector).prev();</code>
    			</dd>
    			<dd>该方法不需要参数，因为这个方法能选到的元素节点是唯一的。如果找不到上一个元素节点，则会返回一个length为0的jQuery对象。没有办法使用现有的CSS选择器来实现该功能。</dd>
 
-			<dt>同级下一个元素next()</dt>
+			<dt>下一个同级元素next()</dt>
 			<dd>基本语法：</dd>
 			<dd>
 <code class="ideCode-js">$(selector).next();</code>
 			</dd>
 			<dd>该方法和prev()相比，只是选择的是当前元素的下一个元素节点，其它特性基本一致。</dd>
 
-			<dt>同级之前的元素prevAll()</dt>
+			<dt>之前的同级元素prevAll()</dt>
 			<dd>基本语法：</dd>
 			<dd>
 <code class="ideCode-js">$(selector).prevAll(param);</code>
@@ -155,6 +209,7 @@ $(".skill-list > li").click(function() {
 			<dd>
 <code class="ideCode-js">// 点击CSS之后的列表项，CSS项都会变成蓝色，而点击CSS或之前的项则不会有任何效果
 $(".skill-list > li").click(function() {
+	// prevAll方法内只能传入一个CSS选择器
 	$(this).prevAll(".css").css("color", "#00f");
 });</code>
 			</dd>
@@ -162,15 +217,61 @@ $(".skill-list > li").click(function() {
 				<h4><a href="html-pages/jquery/codeEffect/code-004.html" target="_blank">运行效果</a>：</h4>
 		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-004.html" ></iframe>
 			</dd>
-			<dd>如果当前元素之前没有元素节点，则会返回一个length为0的jQuery对象。</dd>
+			<dd>如果当前元素之前没有元素节点，则会返回一个length为0的jQuery对象。另外，还需要注意的一个小细节就是这类方法（后面出现的nextAll、prevUntil、nextUntil也是一样的）的匹配结果的顺序是从当前标签开始的一个“由近到远”的jQuery对象数组。例如，点击上例中的“jQuery”列表项并使用prevAll不带参数的遍历，出来的结果是“JavaScript → CSS → HTML”这样的顺序，了解这点，对我们以后实现一些复杂需求有思维上的帮助。</dd>
 
-			<dt>同级之后的元素nextAll()</dt>
+			<dt>之后的同级元素nextAll()</dt>
 			<dd>基本语法：</dd>
 			<dd>
 <code class="ideCode-js">$(selector).nextAll(param);</code>
 			</dd>
 			<dd>方法和prevAll()相比，只是选择的是当前元素之后的元素节点，其它特性基本一致。</dd>
-   		</dl>
+
+			<dt>之前的第一个同级匹配元素prevUntil()</dt>
+			<dd>该方法用于匹配当前元素之前一直到满足匹配条件之间（不包括这个元素）的同级元素，基本语法：</dd>
+			<dd>
+<code class="ideCode-js">$(selector).prevUntil(param);</code>
+			</dd>
+			<dd>该方法的参数虽然是可选项，但总是建议传入参数，否则它和不带参数的prevAll方法几乎没有区别，也达不到我们使用它的目的。我们用这个方法来实现一个如下一个功能。</dd>
+			<dd>HTML代码示例：</dd>
+			<dd>
+<code class="ideCode-html">&lt;main&gt;
+	&lt;h3&gt;水果类&lt;/h3&gt;
+	&lt;p&gt;苹果&lt;/p&gt;
+	&lt;p&gt;梨子&lt;/p&gt;
+	&lt;p&gt;香蕉&lt;/p&gt;
+	&lt;p class="describe"&gt;补充维生素ABCDEFG&lt;/p&gt;
+	&lt;h3&gt;零食类&lt;/h3&gt;
+	&lt;p&gt;辣条&lt;/p&gt;
+	&lt;p&gt;薯片&lt;/p&gt;
+	&lt;p&gt;饼干&lt;/p&gt;
+	&lt;p class="describe"&gt;杀死维生素ABCDEFG&lt;/p&gt;
+	&lt;h3&gt;肉类&lt;/h3&gt;
+	&lt;p&gt;牛肉&lt;/p&gt;
+	&lt;p&gt;猪肉&lt;/p&gt;
+	&lt;p&gt;羊肉&lt;/p&gt;
+	&lt;p class="describe"&gt;补充蛋白质、能量、纤维素&lt;/p&gt;
+&lt;/main&gt;</code>
+			</dd>
+			<dd>jQuery代码示例：</dd>
+			<dd>
+<code class="ideCode-js">// 点击当前p元素之后，一直到h3为止的元素都变成紫色
+$("p").click(function() {
+	$(this).prevUntil("h3").css("color","#f0f");
+});
+</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-005.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-005.html" ></iframe>
+			</dd>
+			<dt>后前的第一个同级匹配元素nextUntil()</dt>
+			<dd>该方法用于匹配当前元素之后一直到满足匹配条件之间（不包括这个元素）的同级元素，基本语法：</dd>
+			<dd>
+<code class="ideCode-js">$(selector).nextUntil(param);</code>
+			</dd>
+			<dd>该方法和prevUntil特性完全一样，只是匹配的元素是从当前元素开始之后的元素而已。</dd>
+			<dt>同级兄弟节点siblings()</dt>
+    	</dl>
     </section>
     <!-- 父级选择器 -->
     <section>

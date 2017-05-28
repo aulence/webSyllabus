@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			h3 {
+				font-size: 20px;
+				margin: 10px 0 5px;
+			}
+			p {
+				width: 200px;
+				margin: 0;
+				line-height: 1.6;
+				cursor: pointer;
+			}
+			.describe {
+				font-style: italic;
+				font-size: 16px;
+				color: #666;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h3>水果类</h3>
+			<p>苹果</p>
+			<p>梨子</p>
+			<p>香蕉</p>
+			<p class="describe">补充维生素ABCDEFG</p>
+			<h3>零食类</h3>
+			<p>辣条</p>
+			<p>薯片</p>
+			<p>饼干</p>
+			<p class="describe">杀死维生素ABCDEFG</p>
+			<h3>肉类</h3>
+			<p>牛肉</p>
+			<p>猪肉</p>
+			<p>羊肉</p>
+			<p class="describe">补充蛋白质、能量、纤维素</p>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 点击当前p元素之后，一直到h3为止的元素都变成紫色
+			$("p").click(function() {
+				$(this).prevUntil("h3").css("color","#f0f");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
