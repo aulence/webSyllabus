@@ -21,8 +21,8 @@ $(div1).html("div文本内容");
 			<li>“<em>变量名</em>”代码颜色用<i class="diamond" style="background-color:#ee6aff"></i>色进行表示</li>
 			<li>“<em>方法名</em>”代码颜色用<i class="diamond" style="background-color:#51ebff"></i>色进行表示</li>
 			<li>“<em>字符串</em>”代码颜色用<i class="diamond" style="background-color:#ece077"></i>色进行表示</li>
-			<li>“<em>代码注释</em>”代码颜色用<i class="diamond" style="background-color:#00d86c"></i>色进行表示</li>
-			<li>“抽象词”或“特殊词”代码颜色用<i class="diamond" style="background-color:#87ff87"></i>色进行表示（“抽象词”就是用于概括表示某一类代码的词，并非真正的功能性代码，实际使用中需替换为正确格式的代码单词或字符串，而“特殊词”指有一定特殊含义的词）</li>
+			<li>“<em>代码注释</em>”代码颜色用<i class="diamond" style="background-color:#00ff7f"></i>色进行表示</li>
+			<li>“抽象词”或“特殊词”代码颜色用<i class="diamond" style="background-color:#b9ff00"></i>色进行表示（“抽象词”就是用于概括表示某一类代码的词，并非真正的功能性代码，实际使用中需替换为正确格式的代码单词或字符串，而“特殊词”指有一定特殊含义的词）</li>
 		</ul>
     </section>
     <!-- 元素选择器 -->
@@ -203,7 +203,7 @@ $(".skill-list > li").click(function() {
 			</dd>
 			<dd>
 				<h4><a href="html-pages/jquery/codeEffect/code-003.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-003.html" ></iframe>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-003.html" ></iframe>
 			</dd>
 			<dd>效果还是比较直观的，点击列表项的时候，当前项没有效果，当前项之前的列表项都会生效。现在我们为prevAll方法加上一个".css"选择器作为参数，这样无论点击class为“css”之后的哪一项，拥有“css”的项都会生效颜色变化代码。</dd>
 			<dd>
@@ -215,7 +215,7 @@ $(".skill-list > li").click(function() {
 			</dd>
 			<dd>
 				<h4><a href="html-pages/jquery/codeEffect/code-004.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-004.html" ></iframe>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-004.html" ></iframe>
 			</dd>
 			<dd>如果当前元素之前没有元素节点，则会返回一个length为0的jQuery对象。另外，还需要注意的一个小细节就是这类方法（后面出现的nextAll、prevUntil、nextUntil也是一样的）的匹配结果的顺序是从当前标签开始的一个“由近到远”的jQuery对象数组。例如，点击上例中的“jQuery”列表项并使用prevAll不带参数的遍历，出来的结果是“JavaScript → CSS → HTML”这样的顺序，了解这点，对我们以后实现一些复杂需求有思维上的帮助。</dd>
 
@@ -262,7 +262,7 @@ $("p").click(function() {
 			</dd>
 			<dd>
 				<h4><a href="html-pages/jquery/codeEffect/code-005.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-005.html" ></iframe>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-005.html" ></iframe>
 			</dd>
 			<dt>后前的第一个同级匹配元素nextUntil()</dt>
 			<dd>该方法用于匹配当前元素之后一直到满足匹配条件之间（不包括这个元素）的同级元素，基本语法：</dd>
@@ -271,6 +271,42 @@ $("p").click(function() {
 			</dd>
 			<dd>该方法和prevUntil特性完全一样，只是匹配的元素是从当前元素开始之后的元素而已。</dd>
 			<dt>同级兄弟节点siblings()</dt>
+			<dd>基本语法：</dd>
+			<dd>
+<code class="ideCode-js">$(selector).siblings(param);</code>
+			</dd>
+			<dd>该方法的参数也是可选的，当不配置参数的时候该方法会匹配到除当前选择器节点以外的其它节点，而配置参数之后，那它就会去配置参数内配置的选择器节点。该方法在很多场合下都非常好用，如制作一个拥有被点选效果的按钮组或导航。</dd>
+			<dd>HTML代码示例：</dd>
+			<dd>
+<code class="ideCode-html">&lt;nav&gt;
+	&lt;!-- 默认让列表中第一项“选中”（其实只是一个CSS样式而已）--&gt;
+	&lt;ul class="mainNav"&gt;
+		&lt;li class="checked"&gt;英雄联盟&lt;/li&gt;
+		&lt;li&gt;王者荣耀&lt;/li&gt;
+		&lt;li&gt;穿越火线&lt;/li&gt;
+		&lt;li&gt;地下城与勇士&lt;/li&gt;
+		&lt;li&gt;魔兽世界&lt;/li&gt;
+		&lt;li&gt;梦幻西游&lt;/li&gt;
+		&lt;li&gt;炉石传说&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/nav&gt;</code>
+			</dd>
+			<dd>jQuery代码示例：</dd>
+			<dd>
+<code class="ideCode-js">// 当行点击选中效果
+$("nav > ul.mainNav > li").click(function() {
+	// 当前元素添加指定class，其它所有兄弟元素则移除这个class
+	// “checked”这个class是我们在CSS里预先设置好样式的
+	$(this).addClass("checked").siblings().removeClass("checked");
+});
+</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-006.html" target="_blank">运行效果</a>：</h4>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-006.html" ></iframe>
+			</dd>
+			<dd>这样一个功能，若要用原生的JavaScript去进行还原，单是第一个选择器部分“$("nav > ul.mainNav > li")”就得耗费不少代码，还得考虑用一个循环给这些节点绑定事件。进入到添加/移除选中效果的时候还得用一个循环或者节点精确查找的方式去移除上一次被选中选中的class。各种循环判断下来，初步估计5行或以上的代码是少不了的，而且由于JS语法属性名称关系，每行的字节量还不会少。然而，这样一个需要涉及多处小逻辑的功能，用jQuery竟然两行有效代码就搞定了，这里面“siblings()”方法“功不可没”。</dd>
+			<dd>请在自己的编辑器里进行实践以加深对本节方法的理解，并务必花时间思考这些方法在实际运用中可以帮助我们完成那些工作。</dd>
     	</dl>
     </section>
     <!-- 父级选择器 -->
@@ -278,6 +314,66 @@ $("p").click(function() {
     	<h3>父级选择器</h3>
 		<p></p>
     </section>
+    <!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>根据本章之前所学的知识点，完成一个“手风琴菜单”功能，需求细节如下：</p>
+		<p>&lt;HTML代码结构&gt;（为节约时间直接复制该段代码即可）</p>
+<pre>&lt;div class="leftNavMenu"&gt;
+	&lt;ul&gt;
+		&lt;li class="checked"&gt;
+			&lt;a&gt;域名管理&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="#"&gt;添加域名&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;启动CDN&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;修改所属项目&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;访问控制&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;高级配置&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a&gt;缓存刷新&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="#"&gt;URL刷新&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;目录刷新&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;操作记录&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a&gt;统计分析&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="#"&gt;使用量统计&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;访问情况统计&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;状态码统计&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;源站统计&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;全网状态监控&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;运营月报&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a&gt;高级工具&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="#"&gt;证书管理&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;流量包管理&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a&gt;诊断工具&lt;/a&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="#"&gt;节点IP归属查询&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#"&gt;自动故障诊断&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+		<p>可以<a href="html-pages/jquery/codeEffect/code-007.css" download="selector-01">点击此处</a>下载该示例所需CSS文件，也可以根据自己的能力选择去写属于自己的CSS样式或对下载的CSS文件进行修改。</p>
+		<p>主要完成的功能就是：当鼠标点击任意一项的时候，当前列表项“展开”，其它列表项则“收拢”。</p>
+		<p>&lt;最终效果大致如图所示&gt;</p>
+		<p>
+			<img src="img/content/jquery/accordion-menu.gif" title="代码效果示例图" style="border:1px solid #eee;">
+		</p>
+	</section>
     <!-- 奇偶选择器 -->
     <section>
     	<h3>奇偶选择器</h3>

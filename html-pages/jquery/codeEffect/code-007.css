@@ -1,0 +1,57 @@
+@charset "utf-8";
+/**
+* 功能：jQuery选择器——章节练习一样式
+**/
+html,body {
+	margin: 0;
+	padding: 10px;
+}
+body {
+	font-size: 18px;
+	color: #555;
+}
+ul {
+	margin: 0; padding: 0;
+	list-style: none;
+}
+.leftNavMenu > ul > li {
+	width: 200px;
+	border: 1px solid #acacac;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	overflow: hidden;
+}
+.leftNavMenu > ul > li > a {
+	padding: 8px 12px;
+	background-color: #e6e6e6;
+	display: block;
+	transition: all 0.3s linear;
+}
+.leftNavMenu > ul > li > a:hover {
+	background-color: #f6f6f6;
+}
+/* 每个按钮下方隐藏的菜单 */
+.leftNavMenu > ul > li > ul {
+	height: 0;
+	overflow: hidden;
+}
+.leftNavMenu > ul > li > ul a {
+	padding: 6px 22px;
+	text-decoration: none;
+	font-size: 16px;
+	display: block;
+	color: #666;
+}
+.leftNavMenu > ul > li > ul a:hover {
+	text-decoration: underline;
+	color: #2397fe;
+}
+/* 当该项被选中时 */
+.leftNavMenu > ul > li.checked > a {
+	background-color: #ffffff;
+	color: #333;
+}
+.leftNavMenu > ul > li.checked > ul {
+	height: auto;
+}

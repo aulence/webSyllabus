@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ul {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				list-style: none;
+			}
+			ul li {
+				height: 40px;
+				padding: 0 20px;
+				line-height: 40px;
+				text-align: center;
+				float: left;
+				cursor: pointer;
+			}
+			ul li:hover {
+				color: #8a1eb2;
+			}
+			ul li.checked {
+				background-color: #8a1eb2;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<ul class="mainNav">
+				<li class="checked">英雄联盟</li>
+				<li>王者荣耀</li>
+				<li>穿越火线</li>
+				<li>地下城与勇士</li>
+				<li>魔兽世界</li>
+				<li>梦幻西游</li>
+				<li>炉石传说</li>
+			</ul>
+		</nav>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 当行点击选中效果
+			$("nav > ul.mainNav > li").click(function() {
+				// 当前元素添加指定class，其它所有兄弟元素则移除这个class
+				// “checked”这个class是我们在CSS里预先设置好样式的
+				$(this).addClass("checked").siblings().removeClass("checked");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

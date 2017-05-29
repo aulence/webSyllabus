@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			body {
+				padding: 10px;
+				font-size: 18px;
+				color: #555;
+			}
+			ul {
+				margin: 0; padding: 0;
+				list-style: none;
+			}
+			.leftNavMenu > ul > li {
+				width: 200px;
+				border: 1px solid #acacac;
+				border-radius: 5px;
+				margin-bottom: 5px;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			.leftNavMenu > ul > li > a {
+				padding: 8px 12px;
+				background-color: #e6e6e6;
+				display: block;
+				transition: all 0.3s linear;
+			}
+			.leftNavMenu > ul > li > a:hover {
+				background-color: #f6f6f6;
+			}
+			/* 每个按钮下方隐藏的菜单 */
+			.leftNavMenu > ul > li > ul {
+				height: 0;
+				overflow: hidden;
+			}
+			.leftNavMenu > ul > li > ul a {
+				padding: 6px 22px;
+				text-decoration: none;
+				font-size: 16px;
+				display: block;
+				color: #666;
+			}
+			.leftNavMenu > ul > li > ul a:hover {
+				text-decoration: underline;
+				color: #2397fe;
+			}
+			/* 当该项被选中时 */
+			.leftNavMenu > ul > li.checked > a {
+				background-color: #ffffff;
+				color: #333;
+			}
+			.leftNavMenu > ul > li.checked > ul {
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="leftNavMenu">
+			<ul>
+				<li class="checked">
+					<a>域名管理</a>
+					<ul>
+						<li><a href="#">添加域名</a></li>
+						<li><a href="#">启动CDN</a></li>
+						<li><a href="#">修改所属项目</a></li>
+						<li><a href="#">访问控制</a></li>
+						<li><a href="#">高级配置</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>缓存刷新</a>
+					<ul>
+						<li><a href="#">URL刷新</a></li>
+						<li><a href="#">目录刷新</a></li>
+						<li><a href="#">操作记录</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>统计分析</a>
+					<ul>
+						<li><a href="#">使用量统计</a></li>
+						<li><a href="#">访问情况统计</a></li>
+						<li><a href="#">状态码统计</a></li>
+						<li><a href="#">源站统计</a></li>
+						<li><a href="#">全网状态监控</a></li>
+						<li><a href="#">运营月报</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>高级工具</a>
+					<ul>
+						<li><a href="#">证书管理</a></li>
+						<li><a href="#">流量包管理</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>诊断工具</a>
+					<ul>
+						<li><a href="#">节点IP归属查询</a></li>
+						<li><a href="#">自动故障诊断</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			$(".leftNavMenu > ul > li > a").click(function() {
+				$(this).parent().addClass("checked").siblings().removeClass("checked");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
