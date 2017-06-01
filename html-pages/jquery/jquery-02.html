@@ -441,6 +441,30 @@ $(".btn").click(function() {
 			</dd>
 			<dd>效果稍加观察一目了然，“div.t-4”的边框发生了改变，但class同样含有“b”的“div.t-3”却不会有任何反应。需要注意的是由于字体颜色是一个会继承的CSS属性，导致“div.t-5”内的div字体也发生了改变。不管是现在的closest还是之前的parent和parents在做一些样式操作的时候都要考虑到CSS的继承性问题或父级元素可能对子元素（子元素集）造成的影响。</dd>
 			<dd>相对于parents方法来说，closest方法在性能表现上更优。parents是jQuery 1.6版本新增的方法，而closest是jQuery 1.7版本新增的方法，closest方法的出现就是为了解决parents方法会一直遍历到&lt;html&gt;标签带来的性能问题和代码安全度问题。所以，不管从性能角度出发，还是功能的实际需求，如果不是查询当前元素的直接父级，首选都应该是closest方法。</dd>
+
+			<dt>到指定父级为止parentsUntil()</dt>
+			<dd>基本语法</dd>
+			<dd>
+<code class="ideCode-js">$(selector).parentsUntil(param);</code>
+			</dd>
+			<dd>如果你对之前的prevUntil()和nextUntil()这两个方法还有印象，应该就能猜出parentsUntil()在这里的作用。</dd>
+			<dd>首先，该方法通常会设置一个参数，作为遍历停止的节点，并且不包含这个节点。我们仍旧用上例的HTML，从新做一个例子之后就会明白该方法的作用。</dd>
+			<dd>jQuery代码：</dd>
+			<dd>
+<code class="ideCode-js">// 对从当前按钮开始直到“.t-2”为止的父级进行样式设置
+$(".btn").click(function() {
+	// 边框变为实线，边框颜色和字体颜色都变成变为紫色
+	$(this).parentsUntil(".t-2").css({
+		borderStyle: "solid",
+		borderColor: "#f0f",
+		color: "#f0f"
+	});
+});</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-011.html" target="_blank">运行效果</a>：</h4>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-011.html"></iframe>
+			</dd>
 		</dl>
     </section>
     <!-- 章节练习 -->
@@ -506,7 +530,6 @@ $(".btn").click(function() {
     <!-- 奇偶选择器 -->
     <section>
     	<h3>奇偶选择器</h3>
-		<p>奇偶选择器通常是帮助我们完成表格隔行变色、两列布局时左右功能区分时的一个重要的选择器。当然，CSS3的结构选择器也能完成这一点，并且在jQuery选择器中也可以“照搬”使用，但用于国内浏览器版本使用的情况并不是很理想，CSS3没法在所有的场合中使用。所以，使用jQuery提供的奇偶选择器就是一个非常好的选择了。</p>
 		<p>基本语法：</p>
 		<p>
 <code class="ideCode-js">/* 不推荐的形式 */
@@ -522,11 +545,93 @@ $(selector + ":odd");
 $(selector + ":even");
 </code>
 		</p>
+		<p>奇偶选择器通常是帮助我们完成表格隔行变色、两列布局时左右功能区分时的一个重要的选择器。当然，CSS3的结构选择器也能完成这一点，并且在jQuery选择器中也可以“照搬”使用，但用于国内浏览器版本使用的情况并不是很理想，CSS3没法在所有的场合中使用。所以，使用jQuery提供的奇偶选择器就是一个非常好的选择了。</p>
+		<p>但是有一点是需要注意的，就是CSS里“nth-child”计算奇偶数和我们日常生活中一样，第一个数是从“1”，开始的。而jQuery的奇偶选择器则是计算机语言一贯的风格<em>从0开始计数</em>，也就是说odd（奇数）实际上是我们看到的偶数，而even（偶数）则是我们实际上看到的奇数。在使用的时候千万不要忘记这一点。</p>
+		<p>HTML代码：</p>
+<code class="ideCode-html"><main class="centerMain">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+</main></code>
+		<p>CSS代码：</p>
+		<p>
+<code class="ideCode-css">main.centerMain {
+	width: 960px;
+	margin: 0 auto;
+	border: 1px solid #792c8b;
+	overflow: hidden;
+}
+main.centerMain > div {
+	width: 48%;
+	height: 50px;
+	margin: 10px 0;
+	text-align: center;
+	font-size: 32px;
+	line-height: 50px;
+	color: #fff;
+	float: left;
+}</code>
+	</p>
+	<p>jQuery代码：</p>
+	<p>
+<code class="ideCode-js">// 设置索引值为奇数的（CSS中的偶数）div元素的样式
+$("main.centerMain > div:odd").css("backgroundColor", "#8b2c54");
+
+// 设置索引值为偶数的（CSS中的偶数）div元素的样式
+$("main.centerMain > div:even").css({
+	backgroundColor: "#2c498b",
+	marginRight: "4%"
+});</code>
+		</p>
+		<p>
+			<h4><a href="html-pages/jquery/codeEffect/code-012.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-012.html"></iframe>
+		</p>
+		<p>当然，我们这只是一个jQuery奇偶选择器的例子，实际项目中我们的原则是：能用CSS简单解决的，就不要用JS（这当然包括JS的各种库和框架），能用CSS2解决的，就不要用CSS3（因为存在更多的IE兼容性问题）。</p>
+		<p>像上面这个例子，如果用CSS2的方式去做（假设是要兼容IE的情况），就需要给奇偶不同的DIV挂上不同种类的Class，数量少能行得通，但当数量庞大或者是这些DIV标签是动态生成的时候，那还是得用JS去解决。</p>
     </section>
     <!-- 结构性伪类选择器 -->
     <section>
     	<h3>结构性伪类选择器</h3>
-		<p></p>
+		<p>结构性伪类选择器其实指的就是CSS3中的这类选择器，但是部分写法在jQuery中有所简化，只要CSS3这部分的选择器掌握了，那jQuery这类选择器也就掌握了。下面我们以&lt;li&gt;标签为例，列出这些结构性伪类选择器。</p>
+		<p>
+<code class="ideCode-js">// 各个父级下的第一个子元素
+$("li:first");
+$("li").first();
+$("li:first-child");
+// 各个父级下的第一个子元素的类型
+$("li:first-of-type");
+
+// 各个父级下的最后一个子元素
+$("li:last");
+$("li").last();
+$("li:last-child");
+// 各个父级下的最后一个子元素的类型
+$("li:last-of-type");
+
+// 各个父级下排除指定的子元素
+$("li:not(select)");
+
+// 各个父级下的第n个元素
+$("li:nth-child(n)");
+// 各个父级下的第n个类型的元素
+$("li:nth-of-type(n)");
+
+// 各个父级下的倒数第n个元素
+$("li:nth-last-child(n)");
+// 各个父级下的倒数第n个类型的元素
+$("li:nth-last-of-type(n)");
+
+// 各个父级下唯一的元素
+$("li:only-child");
+// 各个父级下唯一类型的元素
+$("li:only-of-type");
+</code>
+		</p>
+		<p>这些选择器多而杂，没必要完全地记住每一个，只需要记住简单，更符合jQuery语法结构，且兼容性比较好的即可，拿前两类的来说：“$("li").first()”和“$("li").last()”更符合jQuery的语法格式，兼容性也比较不错。“$("li:first")”这样的类型更简单，兼容性和前者也一样，但可读性不如前者。当然，这只是推荐，实际运用中可根据个人的编码风格决定，但原则是，无论写什么样的代码都应该保证代码的<em>可读性</em>和<em>兼容性</em>。</p>
     </section>
     <!-- 状态选择器 -->
     <section>
@@ -561,12 +666,18 @@ $(selector + ":even");
     <!-- 文本包含选择器 -->
     <section>
     	<h3>文本包含选择器</h3>
-		<p></p>
+		<p>$("div:contains");</p>
     </section>
     <!-- 标签包含选择器 -->
     <section>
     	<h3>标签包含选择器</h3>
-		<p></p>
+		<p>$("div:has(p)");</p>
+		<p>$("div").has(p);</p>
+    </section>
+    <!-- 文本或标签包含选择器 -->
+    <section>
+    	<h3>文本或标签包含选择器</h3>
+		<p>$("div:parent");</p>
     </section>
     <!-- 包含元素筛选选择器 -->
     <section>
