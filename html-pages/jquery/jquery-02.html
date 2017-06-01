@@ -8,22 +8,33 @@
     	<p><em>Sizzle</em>是jQuery的开发者John Resig新编写的一个JavaScript选择器，速度号称业界第一。它在2009年1月14日的时候导入了jQuery的核心，使得jQuery更加的强大。该作者根据ES5及一些外来的灵感在2012年8月9日的时候发布了重写的Sizzle，这使得jQuery的性能更加强大。当然，Sizzle一直也作为独立的版本存在着，如果不想使用jQuery，也可以单独下载Sizzle，它的体积比jQuery要小得多。</p>
     	<p>和DOM选择器一样，jQuery的选择器参数部分是以字符串的形式存在的，所以允许变量或字符串与变量拼接的形式。如：</p>
     	<p>
-<code class="ideCode-js">var ele;
-$("#" + ele).text("元素文本内容");
+<code class="ideCode-js">// 置空所有的文本框的值
+$("input").val("");
 
-var div1 = "div";
-$(div1).html("div文本内容");
-</code>
+// 将用户名输入框的值设置为“aulence”
+var getName = "aulence";
+$("#userName").val(getName);
+
+// 将id为“userInfo”元素的文本内容设置为“用户信息”
+var ele = "userInfo";
+$("#" + ele).text("用户信息");
+
+// 将class为“showParg”的元素的HTML内容替换为一个“&lt;p&gt;段落文本内容&lt;/p&gt;”的p标签
+var parag = ".showParg";
+$(parag).html("&lt;p&gt;段落文本内容&lt;/p&gt;");</code>
    		</p>
-   		<p>&lt;关于jQuery课程中“代码显示器”（JS部分）中的代码颜色说明&gt;</p>
+   		<p>关于jQuery课程中“代码显示器”（JS部分）中的代码颜色的一些约定规则：</p>
 		<ul class="indent">
 			<li>“<em>关键字</em>”代码颜色用<i class="diamond" style="background-color:#ff3f77"></i>色进行表示</li>
+			<li>“<em>内置对象</em>”（包括BOM/DOM/函数）代码颜色用<i class="diamond" style="background-color:#ff6d6d"></i>色进行表示</li>
 			<li>“<em>变量名</em>”代码颜色用<i class="diamond" style="background-color:#ee6aff"></i>色进行表示</li>
 			<li>“<em>方法名</em>”代码颜色用<i class="diamond" style="background-color:#51ebff"></i>色进行表示</li>
+			<li>“<em>对象属性名（键名）</em>”代码颜色用<i class="diamond" style="background-color:#6c9fff"></i>色进行表示</li>
 			<li>“<em>字符串</em>”代码颜色用<i class="diamond" style="background-color:#ece077"></i>色进行表示</li>
 			<li>“<em>代码注释</em>”代码颜色用<i class="diamond" style="background-color:#00ff7f"></i>色进行表示</li>
 			<li>“抽象词”或“特殊词”代码颜色用<i class="diamond" style="background-color:#b9ff00"></i>色进行表示（“抽象词”就是用于概括表示某一类代码的词，并非真正的功能性代码，实际使用中需替换为正确格式的代码单词或字符串，而“特殊词”指有一定特殊含义的词）</li>
 		</ul>
+		<p>当然，这些规定不需要去记忆。只是当无法区分某段代码中的某个代码单词的作用时可以方便在这里查询。</p>
     </section>
     <!-- 元素选择器 -->
 	<section>
@@ -102,11 +113,11 @@ $(selector selector).method();
 
 // 子元素选择器实例
 $("div > p > a").click(function() {
-	// 要处理的事件2
+	// 要处理的事件1
 });
 // 后代元素选择器实例
 $("form input[type='radio']").focus(function() {
-	// 要处理的事件1
+	// 要处理的事件2"
 });</code>
 		</p>
 		<p>这和我们平时使用CSS选择器也是一样的，而jQuery提供的后代选择器方法和子元素选择器方法则有所不同，它可以处理更多的未知性，并且有一定的查询作用。jQuery查询子元素主要提供两个方法：</p>
@@ -312,7 +323,125 @@ $("nav > ul.mainNav > li").click(function() {
     <!-- 父级选择器 -->
     <section>
     	<h3>父级选择器</h3>
-		<p></p>
+		<p>在CSS中没有可以选择父级的选择器，所以jQuery也没有办法像之前的选择器那样提供可以查询父级的CSS选择器，但是jQuery提供了三个方法来查询选择父级（祖先级）元素，这三个方法配合之前所学选择器方法基本可以应付各种节点选择的情况了。</p>
+		<dl class="attrExplain">
+			<dt>选择直接父级parent()</dt>
+			<dd>基本语法：</dd>
+			<dd>
+<code class="ideCode-js">$(selector).parent();</code>
+			</dd>
+			<dd>该方法不需要加上参数，因为每个节点的父级是唯一的。若加上了一个选择器字符串作为参数，如果参数指的就是父级那和不加参数没有任何区别，若参数指的不是当前节点的父级，那返回的是一个length为0的jQuery对象。虽然说可以利用这一点来判断一个元素的父级是否是某个元素，但并不推荐这样用。一般我们都是用<em>is()</em>方法来判断当前元素是否是我们制定的某个元素，这在我们本章中会进行讲解。</dd>
+
+			<dt>选择全部或指定父级集合parents()</dt>
+			<dd>基本语法：</dd>
+			<dd>
+<code class="ideCode-js">$(selector).parents(param);</code>
+			</dd>
+			<dd>该方法除了有一个可选参数（通常都会设置该参数），和直接父元素选择器parent相比，这个方法只是多了一个字母“s”，由此可见，该方法返回的是一个集合。当然，这个集合和我们对JS中数组的理解还是有些差别的，因为如果使用jQuery方法来操作这个集合也是不需要进行循环的。我们还是通过一个例子来进行说明：</dd>
+			<dd>HTML代码示例：</dd>
+			<dd>
+<code class="ideCode-html">&lt;body&gt;
+	&lt;main class="a"&gt;
+		&lt;article class="a b"&gt;
+			&lt;h1&gt;文章的标题&lt;/h1&gt;
+			&lt;section class="a b c"&gt;
+				&lt;h2&gt;二级标题&lt;/h2&gt;
+				&lt;p&gt;正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...&lt;/p&gt;
+				&lt;p&gt;正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...&lt;/p&gt;
+			&lt;/section&gt;
+			&lt;section class="a b c"&gt;
+				&lt;h2&gt;二级标题&lt;/h2&gt;
+				&lt;p&gt;正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...&lt;/p&gt;
+				&lt;p&gt;正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...&lt;/p&gt;
+			&lt;/section&gt;
+		&lt;/article&gt;
+	&lt;/main&gt;
+&lt;/body&gt;</code>
+			</dd>
+			<dd>jQuery代码示例：</dd>
+			<dd>
+<code class="ideCode-js">// 点击段落为所有的父级添加红色边框
+$("p").click(function() {
+	$(this).parents().css("border","1px solid #f00");
+	// 观察点击事件后控制台中输出的结果
+	console.log($(this).parents());
+});</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-008.html" target="_blank">运行效果</a>：</h4>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-008.html"></iframe>
+			</dd>
+			<dd>通过示例可以发现（在浏览器开发者工具中的“Elements”中观察结构详情），当段落标签被点击之后，只要是p标签父级的元素都加上的红色的边框，而且在控制台中输出了这个父级的集合。</dd>
+			<dd>在开发者工具中可以清晰地看到HTML（document）的层次结构：</dd>
+			<dd><img src="img/content/jquery/parents-list.jpg" title="Google Chrome控制台Elements" style="border:1px solid #eee;"></dd>
+			<dd>再来看一个例子：</dd>
+			<dd>
+<code class="ideCode-js">// 点击段落让main的宽度设为760像素，背景色变为墨绿色，且水平居中
+$("p").click(function() {
+	$(this).parents("main.a").css({
+		width: "760px",
+		backgroundColor: "#08957f",
+		margin: "0 auto"
+	});
+	// 观察点击事件后控制台中输出的结果
+	console.log($(this).parents("main.a"));
+});</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-009.html" target="_blank">运行效果</a>：</h4>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-009.html"></iframe>
+			</dd>
+			<dd>这回输出的结果只有一个，因为满足parents方法内参数选择器既是main标签，而且Class又是“a”的，从当前的结构上来讲只有唯一的一个。由此，可以自行完成一个小测试，将class为“b”的元素设置为1像素实线的红色边框，并在控制台中将这个parents的集合输出来看看。（由于保证示例显示效果，代码中已经设置过每个元素的padding值，这里自行设置即可）</dd>
+
+			<dt>选择指定父级closest()</dt>
+			<dd>基本语法</dd>
+			<dd>
+<code class="ideCode-js">$(selector).closest(param);</code>
+			</dd>
+			<dd>该方法同样是选择父级，但参数是一个<em>必填项</em>，否则将返回一个length为0的空jQuery对象，也无法实现我们预期的功能了。closest方法选择父级有2个特点：</dd>
+			<ul>
+				<li>所需查询的父级不一定是当前元素节点的直接父级</li>
+				<li>查询顺序是从当前节点开始，遇到的第一个符合条件的父级，也就是说结果是唯一的</li>
+			</ul>
+			<dd>还是通过一个示例来了解closest()方法，HTML如下：</dd>
+			<dd>
+<code class="ideCode-html">&lt;div class="t-1 a"&gt;
+	&lt;div&gt;t-1&lt;/div&gt;
+	&lt;div class="t-2 a"&gt;
+		&lt;div&gt;t-2&lt;/div&gt;
+		&lt;div class="t-3 b"&gt;
+			&lt;div&gt;t-3&lt;/div&gt;
+			&lt;div class="t-4 b"&gt;
+				&lt;div&gt;t-4&lt;/div&gt;
+				&lt;div class="t-5"&gt;
+					&lt;div&gt;t-5&lt;/div&gt;
+					&lt;button class="btn" type="button"&gt;按钮&lt;/button&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+			</dd>
+			<dd>在该页面的CSS里已经为所有DIV设置好了2像素的dotted线，并设置好了一定的padding，以便于观察效果。</dd>
+			<dd>jQuery代码：</dd>
+			<dd>
+<code class="ideCode-js">// 对从当前按钮开始遇到的第一个class为“b”的父级进行样式设置
+$(".btn").click(function() {
+	// 边框变为实线，颜色变为绿色，字体成红色
+	$(this).closest(".b").css({
+		borderStyle: "solid",
+		borderColor: "#0f0",
+		color: "#f00"
+	});
+});</code>
+			</dd>
+			<dd>
+				<h4><a href="html-pages/jquery/codeEffect/code-010.html" target="_blank">运行效果</a>：</h4>
+				<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-010.html"></iframe>
+			</dd>
+			<dd>效果稍加观察一目了然，“div.t-4”的边框发生了改变，但class同样含有“b”的“div.t-3”却不会有任何反应。需要注意的是由于字体颜色是一个会继承的CSS属性，导致“div.t-5”内的div字体也发生了改变。不管是现在的closest还是之前的parent和parents在做一些样式操作的时候都要考虑到CSS的继承性问题或父级元素可能对子元素（子元素集）造成的影响。</dd>
+			<dd>相对于parents方法来说，closest方法在性能表现上更优。parents是jQuery 1.6版本新增的方法，而closest是jQuery 1.7版本新增的方法，closest方法的出现就是为了解决parents方法会一直遍历到&lt;html&gt;标签带来的性能问题和代码安全度问题。所以，不管从性能角度出发，还是功能的实际需求，如果不是查询当前元素的直接父级，首选都应该是closest方法。</dd>
+		</dl>
     </section>
     <!-- 章节练习 -->
 	<section class="unitPractice">
@@ -377,7 +506,22 @@ $("nav > ul.mainNav > li").click(function() {
     <!-- 奇偶选择器 -->
     <section>
     	<h3>奇偶选择器</h3>
-		<p></p>
+		<p>奇偶选择器通常是帮助我们完成表格隔行变色、两列布局时左右功能区分时的一个重要的选择器。当然，CSS3的结构选择器也能完成这一点，并且在jQuery选择器中也可以“照搬”使用，但用于国内浏览器版本使用的情况并不是很理想，CSS3没法在所有的场合中使用。所以，使用jQuery提供的奇偶选择器就是一个非常好的选择了。</p>
+		<p>基本语法：</p>
+		<p>
+<code class="ideCode-js">/* 不推荐的形式 */
+// 使用CSS3方式的奇数选择
+$(selector + ":nth-child(odd)");
+// 使用CSS3方式的偶数选择
+$(selector + ":nth-child(even)");
+
+/* 推荐的形式 */
+// “状态式”奇数选择
+$(selector + ":odd");
+// “状态式”偶数选择
+$(selector + ":even");
+</code>
+		</p>
     </section>
     <!-- 结构性伪类选择器 -->
     <section>
@@ -408,6 +552,11 @@ $("nav > ul.mainNav > li").click(function() {
     <section>
     	<h3>哈希目标选择器</h3>
 		<p></p>
+    </section>
+    <!-- 元素判断 -->
+    <section>
+    	<h3>元素判断</h3>
+		<p>is()</p>
     </section>
     <!-- 文本包含选择器 -->
     <section>

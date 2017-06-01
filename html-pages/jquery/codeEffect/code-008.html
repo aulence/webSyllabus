@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			*,html {
+				box-sizing: border-box;
+			}
+			body {
+				height: 454px;
+				font-size: 18px;
+				color: #333;
+			}
+			body, main, article, section {
+				padding: 10px;
+			}
+			h2,p {
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="a">
+			<article class="a b">
+				<h1>文章的标题</h1>
+				<section class="a b c">
+					<h2>二级标题</h2>
+					<p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...</p>
+					<p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...</p>
+				</section>
+				<section class="a b c">
+					<h2>二级标题</h2>
+					<p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...</p>
+					<p>正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容正文内容...</p>
+				</section>
+			</article>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 点击段落为所有的父级添加红色边框
+			$("p").click(function() {
+				$(this).parents().css("border","1px solid #f00");
+				// 观察点击事件后控制台中输出的结果
+				console.log($(this).parents());
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			*,html {
+				box-sizing: border-box;
+			}
+			body {
+				font-size: 18px;
+				color: #333;
+			}
+			div {
+				background-color: #fff;
+			}
+			.t-1, div:nth-child(2) {
+				padding: 0 12px 12px;
+				border: 2px dotted #acacac;
+				transition: all 0.6s;
+			}
+			button {
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="t-1 a">
+			<div>t-1</div>
+			<div class="t-2 a">
+				<div>t-2</div>
+				<div class="t-3 b">
+					<div>t-3</div>
+					<div class="t-4 b">
+						<div>t-4</div>
+						<div class="t-5">
+							<div>t-5</div>
+							<button class="btn" type="button">按钮</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 对从当前按钮开始遇到的第一个class为“b”的父级进行样式设置
+			$(".btn").click(function() {
+				// 边框变为实线，颜色变为绿色，字体成红色
+				$(this).closest(".b").css({
+					borderStyle: "solid",
+					borderColor: "#0f0",
+					color: "#f00"
+				});
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
