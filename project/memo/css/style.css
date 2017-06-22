@@ -1,0 +1,234 @@
+@charset "utf-8";
+/**
+* 功能：备忘录样式
+* 日期：2017/3/22
+**/
+/*****************************************/
+/* 样式初始化部分 */
+/*****************************************/
+html, body, p, ul, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+html, body, main-page, edit-page {
+	width: 100%; height: 100%;
+}
+body {
+    font: 16px "微软雅黑";
+    overflow: hidden;
+}
+
+/*****************************************/
+/* 样式元件部分 */
+/*****************************************/
+
+/* 绝对定位 */
+edit-page, #editList, #cancelEdit, #addMemoire, #deleteCkdItem, #saveMemoire, #enableEdit, #memoireList li div, #memoireList li i {
+    position: absolute;
+}
+/* 相对定位 */
+main-page > header, edit-page > header, main-page > footer, edit-page > footer  {
+    position: relative;
+}
+/* 块级元素 */
+
+/* border-box */
+main-page > main, button, #memoireContent {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* 统一特殊元素字号 */
+textarea, button {
+    font-size: 1rem;
+    outline: none;
+}
+/* 统一按钮形态 */
+button {
+    height: 100%;
+    padding: 0 12px;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+}
+/* 按钮公共样式 */
+.leftBtn, .rightBtn {
+    background: center center no-repeat;
+    background-size: 44%;
+    color: #e9b114;
+}
+/* 页头页脚右侧按钮 */
+.rightBtn {
+    top: 0;
+    right: 0;
+    color: #e9b114;
+}
+
+/*****************************************/
+/* 细节设置部分 */
+/*****************************************/
+/* 主页和编辑页 */
+main-page, edit-page {
+    background: #fff url("../img/bg.jpg") repeat;
+    display: block;
+}
+
+/*************** 主页页头 *****************/
+main-page > header {
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+main-page > header > h1 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.9rem;
+    line-height: 40px;
+}
+#editList, #cancelEdit, #saveMemoire {
+    top: 0;
+    right: 0;
+    color: #e9b114;
+}
+#cancelEdit {
+    display: none;
+}
+#editList:disabled {
+    color: #dddddd;
+    text-shadow: 0 -1px 0px #aaa;
+}
+
+/********* 主页中的主要内容设置 ***********/
+main-page > main {
+    height: calc(100% - 82px);
+    padding-bottom: 30px;
+    margin-left: 12px;
+    margin-right: 12px;
+    overflow-y: auto;;
+}
+/* 备忘录列表 */
+#memoireList li {
+    padding: 6px 0;
+    line-height: 24px;
+    border-bottom: 1px solid #dddddd;
+}
+#memoireList li p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333333;
+}
+#memoireList li p:last-child {
+    font-size: 0.9rem;
+    color: #888888;
+}
+/* 选择列表复选框模拟 */
+#memoireList li div {
+    width: 0px;
+    height: 48px;
+    overflow: hidden;
+}
+#memoireList li i {
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    line-height: 16px;
+    color: #ffffff;
+    left: 0;
+    top: 15px;
+    cursor: pointer;
+}
+#memoireList li i.ckd {
+    background-color: #e9b114;
+    border-color: #e9b114;
+}
+
+/*********** 主页中的页脚设置 *************/
+main-page > footer {
+    height: 40px;
+    border-top: 1px solid #ddd;
+}
+main-page > footer > h2 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 40px;
+}
+/* 新增备忘 */
+#addMemoire {
+    width: 50px;
+    background-image: url("../img/edit.png");
+}
+/* 删除选中项 */
+#deleteCkdItem {
+    display: none;
+}
+
+/************** 编辑页设置 ***************/
+edit-page {
+    top: 0;
+    left: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1;
+}
+/************* 编辑页页头 *************/
+edit-page > header {
+    height: 40px;
+}
+/* 返回主页按钮 */
+#backMainPage i, #backMainPage span {
+    display: inline-block;
+    vertical-align: middle;
+}
+#backMainPage i {
+    width: 20px;
+    height: 20px;
+}
+#backMainPage i:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url("../img/prev.png") no-repeat;
+    -webkit-background-size: 100%;
+    background-size: cover;
+}
+/************* 编辑页主体内容 *************/
+edit-page > main {
+    height: calc(100% - 80px);
+    margin-left: 12px;
+    margin-right: 12px;
+    overflow-y: auto;;
+}
+/************* 编辑页页脚部分 *************/
+edit-page > footer {
+    height: 40px;
+}
+/* 允许编辑 */
+#enableEdit {
+    width: 50px;
+    background-image: url("../img/edit.png");
+}
+#saveMemoire:disabled {
+    color: #dddddd;
+    text-shadow: 0 -1px 0px #aaa;
+}
+/* 备忘录编辑框 */
+#memoireContent {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    resize: none;
+    overflow-y: auto;
+    font: lighter 16px/1.6 "微软雅黑";
+}
+::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 3px;
+}

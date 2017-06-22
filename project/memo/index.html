@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="Bookmark" href="img/favicon.ico">
+	<title>备忘录</title>
+	<link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+	<!-- 主页 -->
+	<main-page>
+		<header>
+			<h1>备忘录</h1>
+			<button id="editList" type="button" disabled>编辑</button>
+			<button id="cancelEdit" type="button">取消</button>
+		</header>
+		<main>
+			<ul id="memoireList">
+				<!--<li>
+					<div>
+						<i>√</i>
+					</div>
+					<p>这是列表的内容1，这是列表的内容1，这是列表的内容1，这是列表的内容1，这是列表的内容，这是列表的内容，这是列表的内容，这是列表的内容，这是列表的内容，这是列表的内容。</p>
+					<p>2017-3-22 18:27</p>
+				</li>-->
+			</ul>
+		</main>
+		<footer>
+			<h2>无备忘录</h2>
+			<button id="addMemoire" type="button" class="rightBtn"></button>
+			<button id="deleteCkdItem" type="button" class="rightBtn">删除</button>
+		</footer>
+	</main-page>
+
+	<!-- 编辑页 -->
+	<edit-page>
+		<header>
+			<button id="backMainPage" type="button" class="leftBtn">
+				<i></i>
+				<span>备忘录</span>
+			</button>
+			<button id="saveMemoire" type="button" class="rightBtn" disabled>保存</button>
+		</header>
+		<main>
+			<textarea id="memoireContent" spellcheck="false"></textarea>
+		</main>
+		<footer>
+			<button id="enableEdit" type="button" class="rightBtn"></button>
+		</footer>
+	</edit-page>
+
+	<!-- JS部分-->
+	<script src="js/bundle.js"></script>
+</body>
+</html>

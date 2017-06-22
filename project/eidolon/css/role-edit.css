@@ -1,0 +1,111 @@
+@charset "utf-8";
+/**
+ * 功能：角色编辑样式设置
+ * 日期：2017/4/3
+ **/
+/* 表格基本设置 */
+table {
+    margin-top: 20px;
+    /*user-select: none;*/
+    cursor: default;
+}
+table thead tr {
+    background-color: #8064ad;
+}
+table tbody tr:nth-child(even) {
+    background-color: #ebe6f4;
+}
+table tbody tr:last-child {
+    border-bottom: 1px solid #8064ad;
+}
+table.table thead th, table.table thead td {
+    padding: 6px;
+}
+table th {
+    font-weight: normal;
+    color: #ffffff;
+}
+table td {
+    color: #666666;
+}
+/* 表格基本元素样式设置 */
+table td button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+    margin-right: 6px;
+    outline: none;
+}
+table td button:last-child {
+    margin-right: 0;
+}
+table td button.edit {
+    color: #4c7ec3;
+}
+table td button.edit:hover {
+    color: #539feb;
+}
+table td button.dele {
+    color: #e45f60;
+}
+table td button.dele:hover {
+    color: #ff7a7a;
+}
+/**** 角色属性设置 ****/
+table .property span, table .skill span {
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #ffffff;
+}
+/* 角色属性设置——普通 */
+table .property span.normal {
+    background-color: #666666;
+}
+/* 角色属性设置——水 */
+table .property span.water {
+    background-color: #2396fd;
+}
+/* 角色属性设置——火 */
+table .property span.fire {
+    background-color: #fd5026;
+}
+/* 角色属性设置——土 */
+table .property span.soil {
+    background-color: #a26d23;
+}
+/* 角色属性设置——木 */
+table .property span.wood {
+    background-color: #79b042;
+}
+/* 角色属性设置——钢 */
+table .property span.steel {
+    background: linear-gradient(180deg, #acacac, #d3d3d3, #acacac);
+}
+/* 角色属性设置——雷 */
+table .property span.thunder {
+    background-color: #635da2;
+}
+/* 角色属性设置——光 */
+table .property span.light {
+    background-color: #ffa031;
+}
+/* 角色属性设置——暗 */
+table .property span.dark {
+    background-color: #372b35;
+}
+/* 角色属性设置——飞行 */
+table .property span.fly {
+    background-color: #72897f;
+}
+/**** 攻防体敏设置 ****/
+.attack, .defense, .constitution, .agility {
+    font: 20px arial;
+}
+/**** 角色技能设置 ****/
+table .skill span {
+    background-color: #ffffff;
+    border: 1px solid #634b85;
+    color: #634b85;
+}

@@ -1,0 +1,71 @@
+@charset "utf-8";
+/**
+ * 功能：数据分页公共样式设置
+ * 日期：2017/4/1
+ **/
+body {
+    font: normal 16px "微软雅黑";
+    padding-bottom: 120px;
+    overflow-y: scroll;
+}
+main {
+    width: 1200px;
+    min-width: 1170px;
+}
+main.container {
+    padding: 0;
+}
+header {
+    width: 100%;
+    height: 60px;
+    min-width: 1200px;
+    background-color: #6f5499;
+    line-height: 60px;
+}
+header nav {
+    width: 1200px;
+    margin: 0 auto;
+}
+header nav.container {
+    padding: 0;
+}
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+header nav ul li {
+    padding: 0 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+header nav ul li:hover {
+    background-color: #8267ad;
+}
+header nav ul li.ckd {
+    background-color: #9579c1;
+}
+tamplate h2 {
+    height: 36px;
+    padding-right: 30px;
+    border-bottom: 1px solid #d2bdee;
+    font-size: 26px;
+    color: #6f5499;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar { width: 6px;}
+::-webkit-scrollbar-track-piece {
+    background-color: #dad4eb;
+    box-shadow: inset 0 0 4px rgba(111, 84, 153, 0.2);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #6f5499;
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: #8c6fc1;
+}
+

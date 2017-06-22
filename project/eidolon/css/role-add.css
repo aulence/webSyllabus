@@ -1,0 +1,136 @@
+@charset "utf-8";
+/**
+ * 功能：创建数据库表单样式
+ * 日期：2017/3/30
+ **/
+
+/**************************************************/
+/* 样式初始化设置部分 */
+/**************************************************/
+/*消除行内块间距 */
+form div {
+    font-size: 0;
+}
+label, input, select, div[data-form-item] {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+}
+#abc {
+    color: #ff0000;
+}
+label {
+    font-weight: normal;
+}
+form > div input:focus, form > div select:focus, form > div textarea:focus {
+    border: 1px solid #8064ad;
+    box-shadow: 0 0 10px rgba(128, 100, 173, 0.81);
+}
+input, button, select, textarea {
+    width: 324px;
+    padding: 6px;
+    font: lighter 18px "微软雅黑";
+    border: 1px solid #999;
+    border-radius: 3px;
+    color: #5f4485;
+    box-sizing: border-box;
+    outline: none;
+}
+button {
+    cursor: pointer;
+}
+
+/**************************************************/
+/* 细节样式设置部分 */
+/**************************************************/
+form  {
+    margin-top: 10px;
+}
+form > div {
+    line-height: 50px;
+}
+form > div > label:first-child {
+    width: 120px;
+    text-align: right;
+}
+/* 特殊表单项 */
+div[data-form-item] {
+    display: inline-block;
+    line-height: normal;
+    font-size: 0;
+}
+div[data-form-item] button, div[data-form-item] button input[type="radio"] {
+    margin: 0;
+    padding: 0;
+}
+/* 性别选择 */
+div[data-form-item] button {
+    width: 104px;
+    height: 32px;
+    border:none;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 6px;
+}
+div[data-form-item] button.ckd {
+    background-color: #8064ad;
+}
+div[data-form-item] button label {
+    font-size: 18px;
+    color: #ffffff;
+}
+div[data-form-item] button input[type="radio"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+/* 属性选择 */
+.property select {
+    width: 104px;
+    margin-right: 6px;
+}
+/* 攻防体敏 */
+.diathesis select {
+    width: 76px;
+    margin-right: 6.6px;
+}
+/* 技能名称 */
+.skillName label, .skillName textarea {
+    vertical-align: top;
+}
+.skillName textarea {
+    height: 137px;
+    line-height: 25px;
+    position: relative;
+    top: 6px;
+    resize: none;
+}
+/* 创建按钮 */
+.buttonGroup {
+    margin-top: 30px;
+}
+.buttonGroup button {
+    width: 176px;
+    height: 40px;
+    background-color: #8064ad;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+}
+.buttonGroup button:hover {
+    background-color: #9e7dd5;
+}
+.buttonGroup button:active {
+    background-color: #8064ad;
+}
+.buttonGroup button:first-child {
+    margin-left: 120px;
+}
+/* 占位提示符字体样式 */
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #a2adba;
+}
