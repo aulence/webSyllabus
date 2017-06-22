@@ -1,0 +1,12 @@
+@charset "utf-8";
+/**
+ * 功能：索引页样式设置
+ * 日期：2017/4/15
+**/
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #35495e;
+}
+

@@ -1,0 +1,127 @@
+@charset "utf-8";
+/**
+ * 功能：公共页面样式
+ * 日期：2017/4/17
+**/
+/****************************************/
+/* 初始化 */
+/****************************************/
+html,body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #41b883;
+}
+a:hover {
+    color: #35495e;
+}
+button {
+    outline: none;
+}
+button.btn:focus, button.btn:active {
+    outline: none;
+}
+.list-group-item {
+    border-color: #aaaaaa;
+}
+/****************************************/
+/* 样式元件 */
+/****************************************/
+/* 外间距 */
+.ml-50 {
+    margin-left: 50px;
+}
+.ml-100 {
+    margin-left: 100px;
+}
+.mr-50 {
+    margin-right: 50px;
+}
+.mr-100 {
+    margin-right: 100px;
+}
+/* 宽度 */
+.w-164 {
+    width: 164px;
+}
+input.form-control, select.form-control {
+    height: auto;
+    font-size: 20px;
+}
+.pointer {
+    cursor: pointer;
+}
+.transion_0_3 {
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+.section_h2 {
+    font-size: 16px;
+    color: #999999;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.fz-24 {
+    font-size: 24px !important;
+}
+.fz-28 {
+    font-size: 28px !important;
+}
+.fz-30 {
+    font-size: 30px !important;
+}
+.fz-32 {
+    font-size: 32px !important;
+}
+.gif-img {
+    width: auto;
+    height: 256px;
+    background: #eeeeee url("../img/img-loader.jpg") center center no-repeat;
+    background-size: contain;
+    display: block;
+}
+/****************************************/
+/* 细节设置 */
+/****************************************/
+body {
+    background-color: #f3f3f3;
+    font: normal 24px/1.6 "Microsoft YaHei UI";
+    padding-bottom: 50px;
+}
+main {
+    width: 960px;
+    margin: 0 auto;
+}
+main article {
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+main article h1, main section {
+    border-bottom: 1px solid #aaaaaa;
+}
+main article h1 {
+    padding: 10px 0;
+   /* background-color: #35495E;
+    color: #41B883;*/
+    background-color: #41B883;
+    color: #35495E;
+    text-align: center;
+    line-height: 50px;
+    margin: 0;
+}
+main section {
+    background-color: #fff;
+    padding: 10px;
+}
+main section:last-child {
+    border-bottom: none;
+}
+main section ul li {
+    color: #2aa3e1;
+}
+
+input,select,textarea,button.btn {
+    font-size: 22px;
+}

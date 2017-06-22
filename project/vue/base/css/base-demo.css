@@ -1,0 +1,17 @@
+@charset "utf-8";
+/**
+ * 功能：Vue基础总结DEMO
+ * 日期：2017/4/21
+**/
+
+.createInfo {
+    margin-bottom: 20px;
+}
+
+table.table th, table.table td {
+    font-size: 20px;
+}
+table.table button.btn {
+    font-size: 18px;
+    padding: 4px 16px;
+}
