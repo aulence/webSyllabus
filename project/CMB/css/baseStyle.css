@@ -1,0 +1,22 @@
+@charset "utf-8";
+/**
+* 功能：基本样式控制
+* 日期：2014年9月24日
+* 作者：Verning Aulence
+**/
+body { font-family: "宋体"; color: #3c3c3c; overflow-y: scroll; box-sizing: border-box; }
+
+/* 弹出框 */
+.maskLayer { opacity: .9; background-color: #3c3c3c; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 10;}
+.popupContent { width: auto; height: auto; max-width: 24%; min-width: 180px; line-height: 140%; background-color: #dbe5ef; border: 1px solid #fff; box-shadow:0px 5px 10px rgba(41, 41, 44, 0.83); border-radius: 3px; text-align: center; font-size: 16px; color: #3c3c3c; position: fixed; padding: 50px 80px 50px 109px; z-index: 11;}
+.popupBox .icon-info2 { padding-right: 5px; font-size: 24px; color: #1c8cfc; position: relative; top: 4px; margin-left: -29px;}
+
+/* 栏目组 */
+.columnGroup { width: auto; height: auto; line-height: 160%; padding: 15px 20px 30px; margin-bottom: 20px; border: 1px solid #7ccced;}
+.columnGroup legend { padding: 0 10px; font:normal 18px/20px "微软雅黑";  color: #5cacdd; /*display: inline-block;*/}
+
+/* 用户输入框 */
+.userInput { height: 24px; padding: 0px 4px; background-color: #fff; border: 1px solid #acacac; text-align: center; color: #5cacdd; outline: none;}
+
+/* 无值提示文本 */
+.noneVal { color: #999;}
