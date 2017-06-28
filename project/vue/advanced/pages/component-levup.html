@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Vue组件进阶</title>
+	<link rel="shortcut icon" href="../../source/favicon.ico">
+	<link rel="bookmark" href="../../source/favicon.ico">
+	<link rel="stylesheet" href="../plugin/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<style>
+		#app-9 span{
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.resStyle {
+			padding: 0 12px;
+			background-color: #eb981e;
+			border: 1px solid #9d6416;
+			border-radius: 5px;
+			text-align: center;
+			font-size: 32px;
+			line-height: 45px;
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="breadcrumb">
+				<li><a href="../index.html">首页</a></li>
+				<li class="active">Vue组件进阶</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<article>
+			<h1>Vue组件进阶</h1>
+
+			<section id="app-1">
+				<h2 class="section_h2">#app-1：通过该例子来再次认识组件</h2>
+				<div>
+					<input
+						class="form-control"
+						v-model="newPoetryText"
+						@keyup.enter="addNewPoetry"
+						placeholder="添加内容后按下Enter键"
+					>
+					<ul class="mt-10">
+						<li
+							is="poetry-item"
+							v-for="(poetry, index) in poetryList"
+							:prop="poetry"
+							@remove="poetryList.splice(index, 1)"
+							:key="poetry.id"
+						></li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="app-2">
+				<h2 class="section_h2">#app-2：再从基础认识组件</h2>
+				<base-component></base-component>
+			</section>
+
+			<section id="app-3">
+				<h2 class="section_h2">#app-3：通过一个外部对象创建局部组件</h2>
+				<local-component></local-component>
+			</section>
+
+			<section id="app-4">
+				<h2 class="section_h2">#app-4：组件在一些限制了HTML结构内的表示方法（带属性传值）</h2>
+				<table class="table table-bordered">
+					<thead class="bg-theme">
+						<tr>
+							<td>姓名</td>
+							<td>国家</td>
+							<td>尾兽</td>
+							<td>技能</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr is="table-row" v-for="naruto in tdData" :prop="naruto" :key="naruto.id"></tr>
+					</tbody>
+				</table>
+				<!-- 另外还有列表的“ul-li”、“ul-li”和下拉菜单的“select-option”这些固定的结构，都需要用“is”属性去代替组件名 -->
+			</section>
+
+			<section id="app-5">
+				<h2 class="section_h2">{{smallHead}}：组件在一些限制了HTML结构内的表示方法（带属性传值）</h2>
+				<!-- 组件复用5次，只是使用不同的class样式 -->
+				<data-component :class="buttonStyle.primary"></data-component>
+				<data-component :class="buttonStyle.success"></data-component>
+				<data-component :class="buttonStyle.info"></data-component>
+				<data-component :class="buttonStyle.warning"></data-component>
+				<data-component :class="buttonStyle.danger"></data-component>
+			</section>
+
+			<section id="app-6">
+				<h2 class="section_h2">{{smallHead}}：父子组件的通信</h2>
+				<child-component communicate="通过“communicate”属性来完成父子组件的解耦"></child-component>
+				<!-- 这里需要注意组件属性的两种命名的转换，即组件属性中的camelCased（驼峰式）命名在HTML中要转换为kebab-case（连线式）命名，否则将会出现Vue的警告，功能也会失效 -->
+				<child-component communicate="这样组件就可以独立了" style-prop="color:#239feb; font: 36px '华文隶书','隶书','宋体'"></child-component>
+			</section>
+
+			<section id="app-7">
+				<h2 class="section_h2">{{smallHead}}：通过组件属性来实现属性的动态双向数据绑定</h2>
+				<input type="text" class="form-control" v-model="parentMsg1"/>
+				<bind-component :parent-message="parentMsg1"></bind-component>
+				<bind-component :parent-message="parentMsg2"></bind-component>
+				<!-- 这里需要区分组件属性前面加冒号“:”和不加分别是什么情况下的，即字面量和动态（变量）的值 -->
+			</section>
+
+			<section id="app-8">
+				<h2 class="section_h2">{{smallHead}}：当Vue的组件在团队中使用时，属性的数据类型验证提示</h2>
+				<!-- 尝试修改组件属性的值，可选值有：str（字符串）、num（数字）和bool（布尔值）,然后观察浏览器控制台 -->
+				<check-component :prop-string="str"></check-component>
+			</section>
+
+			<section id="app-9">
+				<h2 class="section_h2">{{smallHead}}：自定义事件的触发器</h2>
+				<button-calc-add @add-self="calcResult"></button-calc-add>
+				<span>+</span>
+				<button-calc-add @add-self="calcResult"></button-calc-add>
+				<span>=</span>
+				<span class="resStyle">{{res}}</span>
+			</section>
+
+		</article>
+	</main>
+
+	<script src="../plugin/vue.min.js"></script>
+	<script src="../js/component-levup.js"></script>
+</body>
+</html>

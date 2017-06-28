@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="author" content="Auelnce,aulence@foxmail.com">
+	<title>Vue计算属性</title>
+	<link rel="shortcut icon" href="../../source/favicon.ico">
+	<link rel="bookmark" href="../../source/favicon.ico">
+	<link rel="stylesheet" href="../plugin/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="breadcrumb">
+				<li><a href="../index.html">首页</a></li>
+				<li class="active">Vue计算属性</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main id="app">
+		<article>
+			<h1>Vue计算属性</h1>
+
+			<section id="app-1">
+				<h2 class="section_h2">#app-1：字符翻转</h2>
+				<p @click="flipContent" class="pointer transion_0_3">{{content}}</p>
+			</section>
+
+			<section id="app-2">
+				<h2 class="section_h2">#app-2：计算属性</h2>
+				<p @click="getComputedNowTime" class="pointer transion_0_3">{{nowtime}}</p>
+			</section>
+
+			<section id="app-3">
+				<h2 class="section_h2">#app-3：事件触发</h2>
+				<p @click="getNowTime" class="pointer transion_0_3">{{nowtime}}</p>
+			</section>
+
+			<section id="app-4">
+				<h2 class="section_h2">#app-4：watch回调（尝试在控制台修改数据模型，然后再用输入框绑定数据模型进行修改）</h2>
+				<p>{{fullName}}</p>
+				<p>
+					<input type="text" v-model="fullName" class="form-control">
+				</p>
+			</section>
+
+			<section id="app-5">
+				<h2 class="section_h2">#app-5：用计算属性替代watch回调（尝试在控制台修改数据模型，然后再用输入框绑定数据模型进行修改）</h2>
+				<p>{{fullName}}</p>
+				<p>
+					<input type="text" v-model="fullName" class="form-control">
+				</p>
+			</section>
+
+			<section id="app-6">
+				<h2 class="section_h2">#app-6：计算属性的set方法</h2>
+				<p>{{fullName}}</p>
+				<p>
+					<input type="text" v-model="fullName" class="form-control">
+				</p>
+			</section>
+
+			<section id="app-7">
+				<p>
+					Ask a yes/no question:
+					<input v-model="question">
+				</p>
+				<p>{{ answer }}</p>
+				<p>
+					<img v-bind:src="getImg" class="gif-img">
+				</p>
+			</section>
+		</article>
+	</main>
+
+	<script src="../plugin/vue.min.js"></script>
+	<script src="../plugin/axios.js"></script>
+	<script src="../plugin/lodash.min.js"></script>
+	<script src="../js/computed.js"></script>
+</body>
+</html>

@@ -48,13 +48,4 @@ let app3 = new Vue({
 		document.getElementsByClassName('content')[0].textContent = `${this.name}，${this.prop}。`;
 	}
 });
-/*
-let array = [1,2,3,4,5];
-function revers(array){
-	let len = array.length;
-	for(let i = 0;i<array.length;i++){
-		array.push(array[len-1]);
-		array.splice((len-1),1);
-		len--;
-	}
-}*/
+

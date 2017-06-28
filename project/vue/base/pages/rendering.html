@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="author" content="Auelnce,aulence@foxmail.com">
+	<title>Vue渲染方式</title>
+	<link rel="shortcut icon" href="../../source/favicon.ico">
+	<link rel="bookmark" href="../../source/favicon.ico">
+	<link rel="stylesheet" href="../plugin/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="breadcrumb">
+				<li><a href="../index.html">首页</a></li>
+				<li class="active">Vue渲染方式</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<article>
+			<h1>Vue渲染方式</h1>
+
+			<section id="app-1" >
+				<h2 class="section_h2">#app-1：数组和对象的遍历方式</h2>
+				<ul>
+					<li class="list-none">列表的数组渲染方式：</li>
+					<li v-for="item in listRender_arr">{{ item }}</li>
+					<li class="list-none mt-50">表格的对象渲染方式：</li>
+				</ul>
+				<table class="table table-bordered">
+					<thead class="bg-theme text-weight-normal">
+						<tr>
+							<th>星宿</th>
+							<th>头衔</th>
+							<th>姓名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="tr in listRender_obj">
+							<td>{{ tr.star }}</td>
+							<td>{{ tr.title }}</td>
+							<td>{{ tr.name }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="app-2" >
+				<h2 class="section_h2">#app-2：父级信息遍历及键名遍历（如果是数组则是索引）</h2>
+				<table class="table table-bordered">
+					<thead class="bg-theme text-weight-normal">
+						<tr>
+							<th>星宿</th>
+							<th>头衔</th>
+							<th>姓名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(tr, key) in listRender_obj">
+							<td>{{indexString + key + starName + tr.star}}</td>
+							<td>{{indexString + key + titleName + tr.title}}</td>
+							<td>{{indexString + key + nameIs + tr.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="app-3">
+				<h2 class="section_h2">#app-3：对象属性访问</h2>
+				<table class="table table-bordered">
+					<thead class="bg-theme text-weight-normal">
+						<tr>
+							<th>索引</th>
+							<th>键名</th>
+							<th>值名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(value, key, index) in roleInfo">
+							<td>{{index}}</td>
+							<td>{{key}}</td>
+							<td>{{value}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="app-4" >
+				<h2 class="section_h2">#app-4：模版遍历法</h2>
+				<template v-for="food in dlInfo">
+					<dl>
+						<dt>{{food.type}}</dt>
+						<dd>{{food.name}}</dd>
+					</dl>
+				</template>
+				<h3 class="section_h3">其实上例也可以这样写（细节请查看本节对应HTML文件）：</h3>
+				<dl v-for="food in dlInfo">
+					<dt>{{food.type}}</dt>
+					<dd>{{food.name}}</dd>
+				</dl>
+			</section>
+
+			<section id="app-5" style="height: 332px;">
+				<h2 class="section_h2">#app-5：动态条件渲染</h2>
+				<form class="form-group">
+					<label class="checkbox-inline" v-for="checkbox in hobbyList">
+						<input name="hobby" type="checkbox" :value="checkbox.name" v-model="checkbox.showStatus" :checked="checkbox.showStatus">
+						<span>{{checkbox.name}}</span>
+					</label>
+				</form>
+				<ul>
+					<li class="list-none">您的爱好是：</li>
+					<li v-for="hobby in hobbyList" v-if="hobby.showStatus">{{hobby.name}}</li>
+					<!--<template v-if="hobby.showStatus">
+						<li v-for="hobby in hobbyList">{{hobby.name}}</li>
+					</template>-->
+				</ul>
+			</section>
+
+			<section id="app-6">
+				<h2 class="section_h2">#app-6：逻辑判断渲染</h2>
+				<form class="form-group">
+					<label class="checkbox-inline" v-for="radio in types">
+						<input name="hobby" type="radio" v-model="selectItem" :value="radio" v-if="radio === '萌宠'" checked>
+						<input name="hobby" type="radio" v-model="selectItem" :value="radio" v-else>
+						<span>{{radio}}</span>
+					</label>
+				</form>
+				<div class="album" v-if="selectItem === '萌宠'">
+					<img :style="imgStyle" v-for="url in albums.pet" :src="url"/>
+				</div>
+				<div class="album" v-else-if="selectItem === '风景'">
+					<img :style="imgStyle" v-for="url in albums.scenery" :src="url"/>
+				</div>
+				<div class="album"  v-else-if="selectItem === '汽车'">
+					<img :style="imgStyle" v-for="url in albums.car" :src="url"/>
+				</div>
+				<div class="album" v-else>
+					<img :style="imgStyle" v-for="url in albums.girl" :src="url"/>
+				</div>
+			</section>
+
+		</article>
+	</main>
+
+	<script src="../plugin/vue.min.js"></script>
+	<script src="../js/rendering.js"></script>
+</body>
+</html>

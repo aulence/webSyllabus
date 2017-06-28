@@ -41,14 +41,48 @@ button.btn:focus, button.btn:active {
 .mr-100 {
     margin-right: 100px;
 }
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-50 {
+    margin-top: 50px;
+}
 /* 宽度 */
 .w-164 {
     width: 164px;
 }
+/* 主题色 */
+.bg-theme {
+    background-color: #41B883;
+    color: #ffffff;
+}
+/* 无效果列表 */
+.list-none {
+    list-style: none;
+    color: #666666;
+    position: relative;
+    left: -40px;
+}
+/* 字体控制 */
+.text-weight-normal, .text-weight-normal th, .text-weight-normal td {
+    font-weight: normal;
+}
+/* bootstrap表单控件重定义 */
 input.form-control, select.form-control {
     height: auto;
     font-size: 20px;
 }
+.checkbox-inline input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: -2px;
+}
+.checkbox-inline input[type="checkbox"],.checkbox-inline span {
+    vertical-align: middle;
+    display: inline-block;
+}
+/* 手型效果 */
 .pointer {
     cursor: pointer;
 }
@@ -61,6 +95,12 @@ input.form-control, select.form-control {
     color: #999999;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.section_h3 {
+    font-size: 18px;
+    color: #666666;
+    margin-top: 36px;
+    margin-bottom: 12px;
 }
 .fz-24 {
     font-size: 24px !important;
@@ -86,7 +126,7 @@ input.form-control, select.form-control {
 /****************************************/
 body {
     background-color: #f3f3f3;
-    font: normal 24px/1.6 "Microsoft YaHei UI";
+    font: normal 20px/1.6 "Microsoft YaHei UI";
     padding-bottom: 50px;
 }
 main {
@@ -124,4 +164,19 @@ main section ul li {
 
 input,select,textarea,button.btn {
     font-size: 22px;
+}
+
+/* 列表末尾删除按钮 */
+.li-delete {
+    padding: 0 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #999999;
+}
+.li-delete:hover {
+    color: #d67676;
+}
+.li-delete:active {
+    color: #b1441c;
 }

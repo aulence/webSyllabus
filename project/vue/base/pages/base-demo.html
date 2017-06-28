@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Vue基础总结练习</title>
+	<link rel="shortcut icon" href="../../source/favicon.ico">
+	<link rel="bookmark" href="../../source/favicon.ico">
+	<link rel="stylesheet" href="../plugin/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/base-demo.css">
+</head>
+<body>
+<header>
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="../index.html">首页</a></li>
+			<li class="active">Vue基础总结练习</li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<article>
+		<h1>Vue基础总结练习</h1>
+
+		<section id="app">
+			<form class="createInfo">
+				<div class="form-group">
+					<label>序号：</label>
+					<input type="text" v-model="newRole.id" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>角色名：</label>
+					<input type="text" v-model="newRole.name" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>系列：</label>
+					<select v-model="newRole.series" class="form-control">
+						<template v-for="value in seriesDefined">
+							<option v-html="value"></option>
+						</template>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>擅长：</label>
+					<select v-model="newRole.strongPoint" class="form-control">
+						<template v-for="value in strongPointDefined">
+							<option v-html="value"></option>
+						</template>
+					</select>
+				</div>
+				<div class="text-right">
+					<button type="button" class="btn btn-success" @click="createRole">{{buttonName}}</button>
+				</div>
+			</form>
+			<table class="table table-bordered">
+				<thead class="bg-theme">
+					<tr>
+						<th>序号</th>
+						<th>角色名</th>
+						<th>系列</th>
+						<th>擅长</th>
+						<th class="w-164">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(info, index) in roleInfo">
+						<td v-html="info.id"></td>
+						<td v-html="info.name"></td>
+						<td v-html="info.series"></td>
+						<td v-html="info.strongPoint"></td>
+						<td>
+							<button type="button" class="btn btn-warning" @click="editRole(index)">修改</button>
+							<button type="button" class="btn btn-danger" @click="deleteRole(index)">删除</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="text-right">
+				<button type="button" class="btn btn-success" @click="ascending">升序</button>
+				<button type="button" class="btn btn-success" @click="descending">降序</button>
+			</div>
+		</section>
+	</article>
+</main>
+
+	<script src="../plugin/vue.min.js"></script>
+	<script src="../js/base-demo.js"></script>
+</body>
+</html>

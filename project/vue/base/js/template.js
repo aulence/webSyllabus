@@ -50,7 +50,6 @@ btn2.onclick = function () {
 btn3.onclick = function () {
 	app4.state = true;
 };
-
 let app5 = new Vue({
 	el: '#app-5',
 	data: {
@@ -59,7 +58,10 @@ let app5 = new Vue({
 		skillArr: ['Angular', 'React', 'Vue'],
 		obj: {
 			quantifier:	'个',
-			personName: '小罗耗'
+			personName: '葫芦娃'
+		},
+		fn: function (a,b) {
+			return a * b;
 		}
 	}
 });
@@ -68,6 +70,13 @@ let app6 = new Vue({
 	el: '#app-6',
 	data: {
 		gender: ''
+	}
+});
+
+let app7 = new Vue({
+	el: '#app-7',
+	data: {
+		hoby: []
 	}
 });
 

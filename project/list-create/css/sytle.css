@@ -1,0 +1,131 @@
+@charset "utf-8";
+body {
+	margin: 0; padding: 0;
+}
+/* 设置面板 */
+.setPanel {
+	background-color: #e3e3e3;
+	padding: 10px;
+}
+/* 设置面板按钮 */
+.toggleSet, .setContent button {
+	padding: 4px 10px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	outline: none;
+	font-size: 18px;
+	cursor: pointer;
+	color: #555;
+}
+.toggleSet:hover, .setContent button:hover {
+	background-color: #fefefe;
+}
+.toggleSet:active, .setContent button:active {
+	background-color: #f3f3f3;
+	color: #333;
+}
+/* 设置内容面板 */
+.setContent {
+	width: 360px; 
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	white-space: nowrap;
+	display: none;
+	box-sizing: border-box;
+	position: absolute;
+	top: 54px; left: 10px;
+	z-index: 2;
+}
+.setContent > div {
+	margin-bottom: 16px;
+}
+.setContent > div:last-child {
+	margin-bottom: 0px;
+}
+.setContent input, .setContent textarea, .setContent button {
+	font: 18px "微软雅黑";
+	color: #555;
+}
+/* 设置内容面板内的标签元素 */
+.setContent label, .setContent input, .setContent textarea {
+	display: inline-block;
+	outline: none;
+}
+.setContent label {
+	font-size: 20px;
+}
+.setContent label, .setContent input {
+	vertical-align: middle;
+}
+.setContent label, .setContent textarea {
+	vertical-align: top;
+}
+.setContent input, .setContent textarea {
+	width: 229px;
+	padding: 4px 6px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	font-size: 18px;
+}
+.setContent textarea {
+	height: 106px;
+	resize: vertical;
+}
+/* 设置内容面板按钮 */
+.setContent button {
+	width: 330px;
+	display: block;
+	margin: 0 auto;
+}
+/* 内容无序列表 */
+.contentUl {
+	list-style: none;
+	padding-left: 10px;
+}
+.contentUl li {
+	width: 460px;
+	background-color: #f3f3f3;
+	padding: 10px;
+	border: 1px solid #999;
+	color: #888;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+/* 被点选的列表状态 */
+.contentUl li.checked {
+	background-color: #fff;
+	color: #333;
+}
+/* 列表项标题 */
+.contentUl li > a {
+	line-height: 30px;
+	display: block;
+	position: relative;
+	cursor: pointer;
+}
+.contentUl li > a i {
+	width: 32px; height: 100%;
+	position: absolute;
+	right: 0; top: 0;
+}
+.contentUl li > a i:after {
+	content: "";
+	width: 16px; height: 16px;
+	background-color: #d46565;
+	border-radius: 50%;
+	position: absolute;
+	left: 8px; top: 8px;
+	transition: all 0.15s;
+	opacity: 0;
+}
+.contentUl li > a i:hover:after {
+	opacity: 1;
+}
+/* 列表项内容 */
+.contentUl li > div {
+	font: lighter 18px "微软雅黑";
+	padding: 10px 0;
+	display: none;
+}

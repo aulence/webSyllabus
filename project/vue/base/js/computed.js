@@ -10,7 +10,7 @@ let app1 = new Vue({
 	},
 	computed: {
 		reversedContent: function () {
-			return this.content.split('').reverse().join('')
+			return this.content.split('').reverse().join('');
 		}
 	},
 	methods: {
@@ -26,7 +26,6 @@ let app1 = new Vue({
 let app2 = new Vue({
 	el: '#app-2',
 	data: {
-		//nowtime: '上午9:00'
 		nowtime: new Date().toLocaleString()
 	},
 	computed: {
@@ -114,7 +113,7 @@ let app6 = new Vue({
 	}
 });
 
-var app7 = new Vue({
+let app7 = new Vue({
 	el: '#app-7',
 	data: {
 		question: '',
@@ -139,7 +138,7 @@ var app7 = new Vue({
 					qa.answer = '输入的问题必须要包含“？”的哟';
 					return;
 				}
-				qa.answer = '构思中...'
+				qa.answer = '构思中...';
 				axios.get('https://yesno.wtf/api')
 					.then(function (response) {
 						qa.answer = response.data.answer;

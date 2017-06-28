@@ -18,7 +18,7 @@ window.onload = function () {
 	let app2 = new Vue({
 		el: '#app-2',
 		data: {
-			money: 234659
+			money: 234659.34565
 		}
 	});
 	
@@ -58,7 +58,10 @@ cvFilter('lowerCase',function (value) {
 // 货币符号
 cvFilter('currency',function (value) {
 	if(typeof value === 'number') {
-		value = '￥' + value.toFixed(2);
+		value = '￥' + parseFloat(value.toFixed(2)).toLocaleString();
+		if(value.lastIndexOf('\.') === -1) {
+			value += ".00"
+		}
 	}
 	return value;
 });

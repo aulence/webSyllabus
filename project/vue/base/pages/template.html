@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="author" content="Auelnce,aulence@foxmail.com">
+	<title>Vue构造实例</title>
+	<link rel="shortcut icon" href="../../source/favicon.ico">
+	<link rel="bookmark" href="../../source/favicon.ico">
+	<link rel="stylesheet" href="../plugin/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="breadcrumb">
+				<li><a href="../index.html">首页</a></li>
+				<li class="active">Vue模版语法</li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<article>
+			<h1>Vue模版语法</h1>
+
+			<section id="app-1" @click="modifContent">
+				<h2 class="section_h2">#app-1</h2>
+				<p v-once>{{content}}</p>
+				<p>{{content}}</p>
+			</section>
+
+			<section id="app-2">
+				<h2 class="section_h2">#app-2</h2>
+				<p>{{content1}}</p>
+				<p v-html="content2"></p>
+			</section>
+
+			<section id="app-3">
+				<h2 class="section_h2">>#app-3</h2>
+				<p v-html="content1"></p>
+				<p>{{content2}}</p>
+				<p v-html="content3"></p>
+			</section>
+
+			<section id="app-4">
+				<h2 class="section_h2">#app-4</h2>
+				<p>
+					<button id="app-4-btn1" type="button" v-bind:disabled="state" class="btn btn-default">被操作状态的按钮</button>
+					<button id="app-4-btn2" type="button" class="btn btn-info">激活按钮</button>
+					<button id="app-4-btn3" type="button" class="btn btn-warning">禁用按钮</button>
+				</p>
+			</section>
+
+			<section id="app-5">
+				<h2 class="section_h2">#app-5：</h2>
+				<p>Vue供了完全的JavaScript表达式支持，如下：</p>
+				<p>{{total / 5}}</p>
+				<p>{{state === '正确' ? '开启状态' : '关闭状态'}}</p>
+				<p>{{state != '正确' ? '开启状态' : '关闭状态'}}</p>
+				<p>{{skillArr[2]}}</p>
+				<p>{{fn(7,8)}}</p>
+				<p v-html="(total - 200) + obj.quantifier + obj.personName"></p>
+			</section>
+
+			<section id="app-6">
+				<h2 class="section_h2">#app-6</h2>
+				<p>
+					<label>
+						男
+						<input name="gender" type="radio" v-model="gender" value="男">
+					</label>
+					<label>
+						女
+						<input name="gender" type="radio" v-model="gender" value="女">
+					</label>
+					<label>
+						保密
+						<input name="gender" type="radio" v-model="gender" value="保密">
+					</label>
+					<!--<input type="radio" name="gender" v-bind:checked="gender">-->
+				</p>
+			</section>
+
+			<section id="app-7">
+				<h2 class="section_h2">#app-7</h2>
+				<p>
+					<label>
+						游戏
+						<input name="hoby" type="checkbox" v-model="hoby" value="游戏">
+					</label>
+					<label>
+						旅游
+						<input name="hoby" type="checkbox" v-model="hoby" value="旅游">
+					</label>
+					<label>
+						电影
+						<input name="hoby" type="checkbox" v-model="hoby" value="电影">
+					</label>
+					<label>
+						美食
+						<input name="hoby" type="checkbox" v-model="hoby" value="美食">
+					</label>
+				</p>
+			</section>
+		</article>
+	</main>
+
+	<script src="../plugin/vue.min.js"></script>
+	<script src="../js/template.js"></script>
+</body>
+</html>
