@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			*,html {
+				box-sizing: border-box;
+			}
+			main.centerMain {
+				width: 960px;
+				margin: 0 auto;
+				border: 1px solid #792c8b;
+				overflow: hidden
+			}
+			main.centerMain > div {
+				width: 48%; height: 50px;
+				margin: 10px 0;
+				text-align: center;
+				font-size: 32px;
+				line-height: 50px;
+				color: #fff;
+				float: left;
+			}
+			form > div {
+				padding: 10px;
+				line-height: 1;
+			}
+			form > div > input:not([type="radio"]) {
+				height: auto;
+				padding: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="centerMain">
+			<form name="modifUserInfo">
+				<div>
+					<label>邮箱：</label>
+					<input name="emial" type="email" value="aulence@foxmail.com" disabled="disabled">
+				</div>
+				<div>
+					<label>昵称：</label>
+					<input name="nicename" type="text" value="欧冷斯">
+				</div>
+				<div>
+					<label>性别：</label>
+					<label>
+						<input name="gender" type="radio" checked="checked" disabled="disabled">
+						<span>男</span>
+					</label>
+					<label>
+						<input name="gender" type="radio" disabled="disabled">
+						<span>女</span>
+					</label>
+				</div>
+			</form>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 设置索引值为奇数的（CSS中的偶数）div元素的样式
+			$("main.centerMain > div:odd").css("backgroundColor", "#8b2c54");
+
+			// 设置索引值为偶数的（CSS中的偶数）div元素的样式
+			$("main.centerMain > div:even").css({
+				backgroundColor: "#2c498b",
+				marginRight: "4%"
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

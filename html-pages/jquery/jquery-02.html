@@ -636,7 +636,42 @@ $("li:only-of-type");
     <!-- 状态选择器 -->
     <section>
     	<h3>状态选择器</h3>
-		<p>状态选择器同样</p>
+		<p>状态选择器同样可以使用CSS3中提供的4个选择器，他们分别是：“:enabled”、“:disabled”、“:checked”和“:selected”，而它们的作用分别表示表单的元素的“可用状态”、“禁用状态”、“选中状态”和“选择状态”，其中“选中状态”用于单选、多选表单元素，而“选择状态”只能用于下拉菜单元素。</p>
+		<p>它的语法和上两节的“奇偶选择器”和“结构性伪类选择器”是差不多的：</p>
+		<p>
+<code class="ideCode-js">// 可用的表单元素
+$("input:enabled");
+// 不可用的表单元素
+$("input:disabled");
+// 被选中的单选按钮
+$("input[type='radio']:checked");
+// 被选择的下拉列表项
+$("select option:selected");
+</code>
+		</p>
+		<p>它们的使用方式都差不多，我们以“:disabled”为例来看看它们是实际项目中的简单运用。HTML代码如下：</p>
+<code class="ideCode-html"><form name="modifUserInfo">
+	<div>
+		<label>邮箱：</label>
+		<input name="emial" type="email" value="aulence@foxmail.com" disabled="disabled">
+	</div>
+	<div>
+		<label>昵称：</label>
+		<input name="nicename" type="text" value="欧冷斯">
+	</div>
+	<div>
+		<label>性别：</label>
+		<label>
+			<input name="gender" type="radio" checked="checked" disabled="disabled">
+			<span>男</span>
+		</label>
+		<label>
+			<input name="gender" type="radio" disabled="disabled">
+			<span>女</span>
+		</label>
+	</div>
+</form>
+</code>
     </section>
     <!-- 表单元素选择器 -->
     <section>
