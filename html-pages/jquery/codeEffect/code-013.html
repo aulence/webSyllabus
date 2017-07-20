@@ -64,13 +64,12 @@
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 设置索引值为奇数的（CSS中的偶数）div元素的样式
-			$("main.centerMain > div:odd").css("backgroundColor", "#8b2c54");
-
-			// 设置索引值为偶数的（CSS中的偶数）div元素的样式
-			$("main.centerMain > div:even").css({
-				backgroundColor: "#2c498b",
-				marginRight: "4%"
+			// 修改禁用元素的显示样式
+			$("input:disabled").css({
+				"backgroundColor": "#eeeeee",
+				"borderColor": "#dddddd",
+				"color": "#acacac",
+				"cursor": "not-allowed"
 			});
 		</script>
 	</body>

@@ -635,7 +635,12 @@ $("li:only-of-type");
     </section>
     <!-- 状态选择器 -->
     <section>
-    	<h3>状态选择器</h3>
+    	<h3>表单元素选择器</h3>
+		<p></p>
+    </section>
+    <!-- 表单元素选择器 -->
+	<section>
+		<h3>状态选择器</h3>
 		<p>状态选择器同样可以使用CSS3中提供的4个选择器，他们分别是：“:enabled”、“:disabled”、“:checked”和“:selected”，而它们的作用分别表示表单的元素的“可用状态”、“禁用状态”、“选中状态”和“选择状态”，其中“选中状态”用于单选、多选表单元素，而“选择状态”只能用于下拉菜单元素。</p>
 		<p>它的语法和上两节的“奇偶选择器”和“结构性伪类选择器”是差不多的：</p>
 		<p>
@@ -672,13 +677,22 @@ $("select option:selected");
 	</div>
 </form>
 </code>
-    </section>
-    <!-- 表单元素选择器 -->
-    <section>
-    	<h3>表单元素选择器</h3>
-		<p></p>
-    </section>
-    <!-- 索引选择器 -->
+		<p>jQuery的代码如下：</p>
+		<p>
+<code class="ideCode-js">// 修改禁用元素的显示样式
+$("input:disabled").css({
+	backgroundColor: "#eeeeee",
+	borderColor: "#dddddd",
+	color: "#acacac",
+	cursor: "not-allowed"
+});
+</code>
+		</p>
+		<h4><a href="html-pages/jquery/codeEffect/code-013.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-013.html"></iframe>
+		<p>由于表单元素禁用之后事件会失效的特点，所以这里没办法通过事件去演示示例，只有通过设置样式的方式去体现被jQuery选择器选中的带有状态的元素。在以后我们学习了jQuery的<em>属性操作</em>方法后再来细讨表单元素状态的切换。</p>
+	</section>
+	<!-- 索引选择器 -->
     <section>
     	<h3>索引选择器</h3>
 		<p></p>
