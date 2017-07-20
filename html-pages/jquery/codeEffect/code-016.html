@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			*,html {
+				box-sizing: border-box;
+			}
+			body {
+				font: 20px "微软雅黑";
+				user-select: none;
+			}
+			main.centerMain {
+				width: auto;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			button {
+				padding: 6px 20px;
+				background-color: #efefef;
+				border: 1px solid #acacac;
+				border-radius: 3px;
+				font: 18px "微软雅黑";
+				margin-right: 20px;
+				box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			}
+			button:active {
+				background-color: #d3d3d3;
+				box-shadow: 0 0 0 rgba(0,0,0,0.2);
+			}
+			.animateDiv {
+				width: 128px;
+				height: 128px;
+				border: 1px solid #ff8800;
+				margin-top: 20px;
+				transform: rotate(0deg);
+			}
+		</style>
+	</head>
+	<body>
+		<main class="centerMain">
+			<!-- 操作按钮组 -->
+			<div>
+				<button class="runDiv" type="button">运行</button>
+				<button class="refics" type="button">作色</button>
+			</div>
+			<!-- 运行动画的元素 -->
+			<div class="animateDiv"></div>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 运行
+			$("button.runDiv").click(function () {
+				// 让不在执行动画状态的div执行动画（正在执行动画则不会生效）
+				$(".animateDiv:not(:animated)").animate({
+					width: "100%"
+				},3000);
+			});
+			// 作色
+			$("button.refics").click(function () {
+				$("div:animated").css("backgroundColor", "#ff8800");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
