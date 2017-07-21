@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			*,html {
+				box-sizing: border-box;
+			}
+			body {
+				font: 20px "微软雅黑";
+				user-select: none;
+			}
+			main.centerMain {
+				width: auto;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			p {
+				margin: 0;
+				padding: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="centerMain">
+			<p>这是青蛙吗？</p>
+			<p>这显然不是青蛙</p>
+			<p>那是一只什么蛙？</p>
+			<p>其实这是癞蛤蟆</p>
+			<p>哦，原来如此</p>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 将含有“这是”二字的p标签进行字体和颜色设置
+			$("p:contains('这是')").css({
+				fontSize: "28px",
+				fontFamily: "华文隶书",
+				color: "#f368fe"
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
