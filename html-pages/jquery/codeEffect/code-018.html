@@ -20,48 +20,29 @@
 				margin: 0 auto;
 				overflow: hidden;
 			}
-			ul {
+			p {
 				margin: 0;
-				padding: 0;
-				list-style: none;
-				overflow: hidden;
-			}
-			ul li {
 				padding: 6px;
-				margin: 6px 0;
-				cursor: pointer;
 			}
 		</style>
 	</head>
 	<body>
 		<main class="centerMain">
-			<ul class="list-span">
-				<li><span>span1</span></li>
-				<li><span>span1</span>-<span>span2</span></li>
-				<li><span>span1</span>-<span>span2</span>-<span>span3</span></li>
-				<li><span>span1</span>-<span>span2</span>-<span>span3</span>-<span>span4</span></li>
-			</ul>
+			<p>这是青蛙吗？</p>
+			<p>这显然不是青蛙</p>
+			<p>那是一只什么蛙？</p>
+			<p>其实这是癞蛤蟆</p>
+			<p>哦，原来如此</p>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 通过点击li触发事件判断
-			$("ul.list-span > li").click(function() {
-				// 用is()方法得出一个布尔值
-				var isTwoSpan = $(this).is(function() {
-					// 在this(即“li”)里含有两个span标签条件成立的布尔值
-					return $("span", this).length === 2;
-				});
-
-				// 如果含有两个span标签的li变为蓝色背景
-				if (isTwoSpan) {
-					$(this).css("background-color", "#64bcfd");
-				}
-				// 否则变为红色背景
-				else {
-					$(this).css("background-color", "#fe7589");
-				}
+			// 将含有“这是”二字的p标签进行字体和颜色设置
+			$("p:contains('这是')").css({
+				fontSize: "28px",
+				fontFamily: "华文隶书",
+				color: "#f368fe"
 			});
 		</script>
 	</body>

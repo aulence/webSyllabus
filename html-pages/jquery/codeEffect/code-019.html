@@ -20,30 +20,42 @@
 				margin: 0 auto;
 				overflow: hidden;
 			}
-			p {
-				margin: 0;
+			li {
+				width: 216px;
 				padding: 6px;
 			}
 		</style>
 	</head>
 	<body>
 		<main class="centerMain">
-			<p>这是青蛙吗？</p>
-			<p>这显然不是青蛙</p>
-			<p>那是一只什么蛙？</p>
-			<p>其实这是癞蛤蟆</p>
-			<p>哦，原来如此</p>
+			<ul class="has">
+				<li>
+					<span>文本内容标签span1</span>
+				</li>
+				<li>
+					<a href="https://www.baidu.com" class="disabledLink" target="_blank">超链接内容标签a1</a>
+				</li>
+				<li>
+					<span>文本内容标签span2</span>
+				</li>
+				<li>
+					<a href="https://www.baidu.com" target="_blank">超链接内容标签a2</a>
+				</li>
+			</ul>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 将含有“这是”二字的p标签进行字体和颜色设置
-			$("p:contains('这是')").css({
-				fontSize: "28px",
-				fontFamily: "华文隶书",
-				color: "#f368fe"
+			// 将含有指定标签的元素背景设置为浅灰色
+			// 将子元素的设置为不可点击，没有下划线的灰色字体
+			$("li").has("a.disabledLink").css("backgroundColor","#eeeeee").children().css({
+				pointerEvents: "none",
+				textDecoration: "none",
+				color: "#999999"
 			});
+			// 上方的选择器的写法也可以写成以下形式
+			// $("li:has(a.disabledLink)");
 		</script>
 	</body>
 </html>

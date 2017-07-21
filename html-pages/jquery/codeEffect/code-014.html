@@ -11,65 +11,111 @@
 			*,html {
 				box-sizing: border-box;
 			}
+			body {
+				font: 20px "微软雅黑";
+				user-select: none;
+			}
 			main.centerMain {
-				width: 960px;
+				width: auto;
 				margin: 0 auto;
-				border: 1px solid #792c8b;
 				overflow: hidden
 			}
-			main.centerMain > div {
-				width: 48%; height: 50px;
-				margin: 10px 0;
-				text-align: center;
-				font-size: 32px;
-				line-height: 50px;
-				color: #fff;
+			ul.week, ul.weather {
+				padding: 10px;
+				margin: 0;
+				list-style: none;
+				overflow: hidden;
+			}
+			ul.week > li, ul.weather > li {
 				float: left;
 			}
-			form > div {
-				padding: 10px;
-				line-height: 1;
+			/* 周列表 */
+			ul.week > li {
+				padding: 6px 12px;
+				border: 1px solid #acacac;
+				border-right: none;
+				cursor: pointer;
 			}
-			form > div > input:not([type="radio"]) {
-				height: auto;
-				padding: 6px;
+			/* 周列表--选中效果 */
+			ul.week > li.checked {
+				background-color: #acacac;
+				color: #ffffff;
+			}
+			ul.week > li:last-child {
+				border-right: 1px solid #9c9c9c;
+			}
+			/* 天气列表 */
+			ul.weather > li {
+				padding: 12px 20px;
+				border: 1px solid #acacac;
+				border-radius: 15px;
+				font-size: 32px;
+				display: none;
+			}
+			/* 恢复“列表项”的显示类型 */
+			ul.weather > li.show {
+				display: list-item;
 			}
 		</style>
 	</head>
 	<body>
 		<main class="centerMain">
-			<form name="modifUserInfo">
-				<div>
-					<label>邮箱：</label>
-					<input name="emial" type="email" value="aulence@foxmail.com" disabled="disabled">
-				</div>
-				<div>
-					<label>昵称：</label>
-					<input name="nicename" type="text" value="欧冷斯">
-				</div>
-				<div>
-					<label>性别：</label>
-					<label>
-						<input name="gender" type="radio" checked="checked" disabled="disabled">
-						<span>男</span>
-					</label>
-					<label>
-						<input name="gender" type="radio" disabled="disabled">
-						<span>女</span>
-					</label>
-				</div>
-			</form>
+			<!-- 周选择列表 -->
+			<ul class="week">
+				<li class="checked">周一</li>
+				<li>周二</li>
+				<li>周三</li>
+				<li>周四</li>
+				<li>周五</li>
+				<li>周六</li>
+				<li>周日</li>
+			</ul>
+			<!-- 日期列表 -->
+			<ul class="weather">
+				<li class="show">
+					<span>多云</span>
+					<span>16℃~21℃</span>
+				</li>
+				<li>
+					<span>晴天</span>
+					<span>15℃~28℃</span>
+				</li>
+				<li>
+					<span>晴天</span>
+					<span>19℃~29℃</span>
+				</li>
+				<li>
+					<span>小雨</span>
+					<span>18℃~24℃</span>
+				</li>
+				<li>
+					<span>中雨</span>
+					<span>15℃~20℃</span>
+				</li>
+				<li>
+					<span>多云</span>
+					<span>17℃~22℃</span>
+				</li>
+				<li>
+					<span>晴天</span>
+					<span>16℃~21℃</span>
+				</li>
+			</ul>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 修改禁用元素的显示样式
-			$("input:disabled").css({
-				"backgroundColor": "#eeeeee",
-				"borderColor": "#dddddd",
-				"color": "#acacac",
-				"cursor": "not-allowed"
+			// 点击选择日期
+			$("ul.week li").click(function () {
+				// 获取索引下标
+				var idx = $(this).index();
+				// 为当前节点添加选中效果的class，移除兄弟节点中带有这个class元素的“checked”样式
+				$(this).addClass("checked").siblings("li.checked").removeClass("checked");
+				// 移除带有“show”这个class元素的“show”样式
+				$("ul.weather li.show").removeClass("show");
+				// 为对应索引值的“天气”列表项添加“show”（显示为列表项）这个样式
+				$("ul.weather li").eq(idx).addClass("show");
 			});
 		</script>
 	</body>

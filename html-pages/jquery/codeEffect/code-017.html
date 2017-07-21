@@ -26,108 +26,43 @@
 				list-style: none;
 				overflow: hidden;
 			}
-			ul > li {
-				padding: 10px 24px;
-				float: left;
-			}
-			nav li.checked {
-				background-color: #2396ef;
-			}
-			nav li.checked a {
-				color: #ffffff;
-			}
-			nav a {
-				text-decoration: none;
-				color: #888888;
-				outline: none;
-			}
-			nav a:hover {
-				color: #2396ef;
-			}
-			.pages {
-				min-height: 68px;
-				margin-top: 20px;
-				position: relative;
-			}
-			.pages li {
-				min-height: 48px;
-			}
-			.pages li:not(.loading) {
-				display: none;
-			}
-			.pages .loading {
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
-			.pages .loading img {
-				display: block;
-				animation: loading 1.2s linear infinite;
-			}
-			@keyframes loading {
-				0% { transform: rotate(0deg); }
-				100% { transform: rotate(360deg); }
+			ul li {
+				padding: 6px;
+				margin: 6px 0;
+				cursor: pointer;
 			}
 		</style>
 	</head>
 	<body>
 		<main class="centerMain">
-			<!-- 页面导航 -->
-			<nav>
-				<ul>
-					<li class="checked">
-						<a href="#home">首页</a>
-					</li>
-					<li>
-						<a href="#product">产品</a>
-					</li>
-					<li>
-						<a href="#server">服务</a>
-					</li>
-					<li>
-						<a href="#about">关于</a>
-					</li>
-				</ul>
-			</nav>
-			<!-- 页面内容 -->
-			<ul class="pages">
-				<li class="loading"><img src="../../../img/content/loading_48.png"></li>
-				<li id="home">首页的内容，首页的内容，...,首页的内容</li>
-				<li id="product">产品的内容,产品的内容,...,产品的内容</li>
-				<li id="server">服务的内容,服务的内容,...,服务的内容</li>
-				<li id="about">关于的内容,关于的内容,...,关于的内容</li>
+			<ul class="list-span">
+				<li><span>span1</span></li>
+				<li><span>span1</span>-<span>span2</span></li>
+				<li><span>span1</span>-<span>span2</span>-<span>span3</span></li>
+				<li><span>span1</span>-<span>span2</span>-<span>span3</span>-<span>span4</span></li>
 			</ul>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 设置默认的hash元素为“home”
-			location.hash = "home";
+			// 通过点击li触发事件判断
+			$("ul.list-span > li").click(function() {
+				// 用is()方法得出一个布尔值
+				var isTwoSpan = $(this).is(function() {
+					// 在this(即“li”)里含有两个span标签条件成立的布尔值
+					return $("span", this).length === 2;
+				});
 
-			// 存储导航按钮节约查询性能
-			var navButton = $("nav a");
-
-			// 页内切换等待载入
-			navButton.click(function () {
-				// 切换选中效果
-				$(this).parent().addClass("checked").siblings().removeClass("checked");
-
-				// 隐藏所有“页面”，除了载入效果
-				$(".pages li:not(.loading)").css("display", "none");
-				// 显示载入效果
-				$(".pages .loading").css("display", "list-item");
-
-				// 这里加入延时函数是因为JS执行的时机会先于浏览器（大多数）的行为，而我们需要保证浏览器行为完成后再执行我们的代码。可以利用这点做页面内的载入等待效果
-				setTimeout(function () {
-					// “载入完成”后隐藏载入效果
-					$(".loading").css("display", "none");
-					$("li:target").css("display", "list-item").siblings(":not(.loading)").css("display", "none");
-				}, 1200);
+				// 如果含有两个span标签的li变为蓝色背景
+				if (isTwoSpan) {
+					$(this).css("background-color", "#64bcfd");
+				}
+				// 否则变为红色背景
+				else {
+					$(this).css("background-color", "#fe7589");
+				}
 			});
-
-			// 触发“首页”导航按钮的点击事件
-			navButton.eq(0).trigger("click");
 		</script>
 	</body>
 </html>

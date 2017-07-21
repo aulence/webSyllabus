@@ -20,53 +20,114 @@
 				margin: 0 auto;
 				overflow: hidden;
 			}
-			button {
-				padding: 6px 20px;
-				background-color: #efefef;
-				border: 1px solid #acacac;
-				border-radius: 3px;
-				font: 18px "微软雅黑";
-				margin-right: 20px;
-				box-shadow: 0 4px 4px rgba(0,0,0,0.2);
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				overflow: hidden;
 			}
-			button:active {
-				background-color: #d3d3d3;
-				box-shadow: 0 0 0 rgba(0,0,0,0.2);
+			ul > li {
+				padding: 10px 24px;
+				float: left;
 			}
-			.animateDiv {
-				width: 128px;
-				height: 128px;
-				border: 1px solid #ff8800;
+			nav li.checked {
+				background-color: #2396ef;
+			}
+			nav li.checked a {
+				color: #ffffff;
+			}
+			nav a {
+				text-decoration: none;
+				color: #888888;
+				outline: none;
+			}
+			nav a:hover {
+				color: #2396ef;
+			}
+			.pages {
+				min-height: 68px;
 				margin-top: 20px;
-				transform: rotate(0deg);
+				position: relative;
+			}
+			.pages li {
+				min-height: 48px;
+			}
+			.pages li:not(.loading) {
+				display: none;
+			}
+			.pages .loading {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.pages .loading img {
+				display: block;
+				animation: loading 1.2s linear infinite;
+			}
+			@keyframes loading {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
 			}
 		</style>
 	</head>
 	<body>
 		<main class="centerMain">
-			<!-- 操作按钮组 -->
-			<div>
-				<button class="runDiv" type="button">运行</button>
-				<button class="refics" type="button">作色</button>
-			</div>
-			<!-- 运行动画的元素 -->
-			<div class="animateDiv"></div>
+			<!-- 页面导航 -->
+			<nav>
+				<ul>
+					<li class="checked">
+						<a href="#home">首页</a>
+					</li>
+					<li>
+						<a href="#product">产品</a>
+					</li>
+					<li>
+						<a href="#server">服务</a>
+					</li>
+					<li>
+						<a href="#about">关于</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- 页面内容 -->
+			<ul class="pages">
+				<li class="loading"><img src="../../../img/content/loading_48.png"></li>
+				<li id="home">首页的内容，首页的内容，...,首页的内容</li>
+				<li id="product">产品的内容,产品的内容,...,产品的内容</li>
+				<li id="server">服务的内容,服务的内容,...,服务的内容</li>
+				<li id="about">关于的内容,关于的内容,...,关于的内容</li>
+			</ul>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 运行
-			$("button.runDiv").click(function () {
-				// 让不在执行动画状态的div执行动画（正在执行动画则不会生效）
-				$(".animateDiv:not(:animated)").animate({
-					width: "100%"
-				},3000);
+			// 设置默认的hash元素为“home”
+			location.hash = "home";
+
+			// 存储导航按钮节约查询性能
+			var navButton = $("nav a");
+
+			// 页内切换等待载入
+			navButton.click(function () {
+				// 切换选中效果
+				$(this).parent().addClass("checked").siblings().removeClass("checked");
+
+				// 隐藏所有“页面”，除了载入效果
+				$(".pages li:not(.loading)").css("display", "none");
+				// 显示载入效果
+				$(".pages .loading").css("display", "list-item");
+
+				// 这里加入延时函数是因为JS执行的时机会先于浏览器（大多数）的行为，而我们需要保证浏览器行为完成后再执行我们的代码。可以利用这点做页面内的载入等待效果
+				setTimeout(function () {
+					// “载入完成”后隐藏载入效果
+					$(".loading").css("display", "none");
+					$("li:target").css("display", "list-item").siblings(":not(.loading)").css("display", "none");
+				}, 1200);
 			});
-			// 作色
-			$("button.refics").click(function () {
-				$("div:animated").css("backgroundColor", "#ff8800");
-			});
+
+			// 触发“首页”导航按钮的点击事件
+			navButton.eq(0).trigger("click");
 		</script>
 	</body>
 </html>
