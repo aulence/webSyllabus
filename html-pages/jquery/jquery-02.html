@@ -19,7 +19,7 @@ $("#userName").val(getName);
 var ele = "userInfo";
 $("#" + ele).text("用户信息");
 
-// 将class为“showParg”的元素的HTML内容替换为一个“&lt;p&gt;段落文本内容&lt;/p&gt;”的p标签
+// 将class为“showParg”的元素的内容替换为一个“段落文本内容”的p标签
 var parag = ".showParg";
 $(parag).html("&lt;p&gt;段落文本内容&lt;/p&gt;");</code>
    		</p>
@@ -111,20 +111,25 @@ $("input[placeholder*='请输入']");
 		<p>基本语法：</p>
 		<p>
 <code class="ideCode-js">// 子元素选择器
-$("selector &gt; selector").method();
+$("selector &gt; selector").method(function() {
+	// 需要处理事件A
+});
 
 // 后代元素选择器
-$("selector selector").method();
+$("selector selector").method(function() {
+	// 需要处理事件B
+});
 
 // 子元素选择器实例
-$("div &gt; p").click(function() {
-	// 要处理的事件1
+$("div &gt; p").method(function() {
+	// 要处理的事件C
 });
 
 // 后代元素选择器实例
-$("form input[type='radio']").focus(function() {
-	// 要处理的事件2"
-});</code>
+$("form input").method(function() {
+	// 需要处理事件D
+});
+</code>
 		</p>
 		<p>这和我们平时使用CSS选择器也是一样的，而jQuery提供的后代选择器方法和子元素选择器方法则有所不同，它可以处理更多的未知性，并且有一定的查询作用。jQuery查询子元素主要提供两个方法：</p>
 		<dl class="attrExplain">
@@ -273,7 +278,7 @@ $(".skill-list > li").click(function() {
 			<dd>
 <code class="ideCode-js">// 点击当前p元素之后，一直到h3为止的元素都变成紫色
 $("p").click(function() {
-	$(this).prevUntil("h3").css("color","#f0f");
+	$(this).prevUntil("h3").css("color", "#f0f");
 });
 </code>
 			</dd>
@@ -369,7 +374,7 @@ $("nav > ul.mainNav > li").click(function() {
 			<dd>
 <code class="ideCode-js">// 点击段落为所有的父级添加红色边框
 $("p").click(function() {
-	$(this).parents().css("border","1px solid #f00");
+	$(this).parents().css("border", "1px solid #f00");
 	// 观察点击事件后控制台中输出的结果
 	console.log($(this).parents());
 });</code>
@@ -654,14 +659,14 @@ $("li:only-of-type");
     	<h3>表单元素选择器</h3>
 		<p>表单元素选择器有点像是CSS标签选择器+[type="form-element"]的形式，基本语法如下：</p>
 		<p>
-<code class="ideCode-js">// 所有input元素
-$(":input");
-
-// 文本框
+<code class="ideCode-js">// 文本框
 $("input:text");
 
 // 密码框
 $("input:password");
+
+// 类型为按钮的按钮元素（按钮有“button/reset/submit”几种类型）
+$("button:button");
 </code>
 		</p>
 		<p>到目前为止，jQuery中所有可用的表单元素选择器如下：</p>
@@ -847,10 +852,10 @@ $("ul.week li").click(function () {
 		<p>可以点击上面“运行效果”链接打开新的页面，然后通过在浏览开发者工具内的“sources”栏里打开HTML文件打断点观察上例代码中的“idx”变量每次在点击日期后运行出来的值，从而深入地理解index和eq这两个方法。</p>
 		<p>“eq”索引选择器其实英文单词“equal”的缩写，表示“等于、相等”的意思，也就是说既然有等于就有大于和小于了。的确，在jQuery中用于查询小于当前索引值的选择器是<em>:lt(n)</em>，而大于当前索引值的选择器是<em>:gt(n)</em>。也许你已经注意到了，它们和eq()不一样，它们不是方法，而且在jQuery中也没有这两个方法，它们的基本语法是：</p>
 <code class="ideCode-js">// 把索引值小于3（即0、1、2）的li的字体颜色设为红色
-$("ul li:lt(3)").css("color","#ff0000");
+$("ul li:lt(3)").css("color", "#ff0000");
 
 // 把索引值大于4的li的字体颜色设为蓝色
-$("ul li:gt(4)").css("color","#0000ff");
+$("ul li:gt(4)").css("color", "#0000ff");
 </code>
 		<p>遗憾的是jQuery中并没有“小于等于”、“大于等于”的选择器或方法，所以要实现类似“大于等于”这样是选择的时候只有自行去实现了。当然如果要将:lt(n)和:gt(n)以方法的形式表现，那去用next()和prev()方法系列就是。（“系列”如：next()、nextAll()、nextUnitl()、prev()等，它们在本章的“同级选择器”一节里有详细讲解）</p>
     </section>
@@ -1102,7 +1107,7 @@ $("div:has(p)");</code>
 		<p>jQuery的代码如下：</p>
 <code class="ideCode-js">// 将含有指定标签的元素背景设置为浅灰色
 // 将子元素的设置为不可点击，没有下划线的灰色字体
-$("li").has("a.disabledLink").css("backgroundColor","#eeeeee").children().css({
+$("li").has("a.disabledLink").css("backgroundColor", "#eeeeee").children().css({
 	pointerEvents: "none",
 	textDecoration: "none",
 	color: "#999999"

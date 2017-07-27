@@ -1,7 +1,62 @@
 <root data-root="jQuery界面元素">
 	<section class="mt0">
 		<h3>元素样式设置</h3>
-		<p></p>
+		<p>在原生的JavaScript里，要获取一个文档元素（Element）的样式有些麻烦，因为要做出区分，是手动或通过JavaScript代码设置在元素标签的“style”属性上的样式，还是设置在CSS样式表里的样式，所使用的方式也不一样。我们先来回顾一下原生JavaScript获取样式的两种方式，以一个ID为“test”的文档元素为例：</p>
+<code class="ideCode-js">// 存储“test”节点
+var testElement = document.getElementById("test");
+
+// 获取设置于“style”属性上的color样式属性
+var theStyleColor = testElement.style.color;
+// 将“style”属性上的color样式属性的值设置为“灰色”
+testElement.style.color = "#888888";
+// 或者写成（可用“removeProperty”方法移除指定样式属性）
+testElement.style.setProperty("color", "#888888");
+
+// 一次性设置多个CSS行内样式
+testElement.style.cssText = "font-zize: 32px;" +
+"color:#888888;" +
+"font-family: '微软雅黑'";
+
+// 获取元素的高度（无论是否设置过该属性），精确到小数点后4位（浏览器缩放后会元素设置的像素等单位会产生变化）
+var theAccurateHeight = window.getComputedStyle(testElement).getPropertyValue("height");
+
+// 获取CSS样式表里的color样式属性
+var theCSSColor = window.getComputedStyle(testElement).color;
+</code>
+		<p>除此之外原生JavaScript对样式的操作还有很多方法和属性，在ES5之后（ECMAScript 2010）有些方法甚至能直接操作CSS样式表，不过这些方法和属性不在我们本节内容的讨论范围之内。有兴趣的可以<a href="http://javascript.ruanyifeng.com/dom/css.html" target="_blank">点击参考</a>这一篇文章，了解原生JavaScript对CSS的各种操作。 </p>
+		<p>在上一章内容“jQuery选择器”中我们已经接触过了jQuery对于行内样式的操作，也就是说之前我们所见到的css()方法对于样式的设置对象是标签中的style属性的设置，实际上这个方法还可以获取指定元素在CSS样式表中的样式，基本语法如下：</p>
+<code class="ideCode-js">// 获取id为“test”的元素的color样式（行内样式或CSS样式表）
+$("#test").css("color");
+
+// 将id为test的元素的行内color属性的值设置为“#3a3b3c”
+$("#test").css("color", "#3a3b3c");
+
+// 对id为test的元素进行多个行内样式属性的设置
+$("#test").css({
+	backgroundColor: "#fafbfc",
+	border: "1px solid #5a5b5c",
+	fontSize: "32px",
+	color: "#3a3b3c"
+});
+// 上面为一个元素设置多个样式的写法还能写成这样
+$("#test").css({
+	"background-color": "#fafbfc",
+	"border": "1px solid #5a5b5c",
+	"font-size": "32px",
+	"color": "#3a3b3c"
+});
+$("div").click(function() {
+	$(this).css({
+		width: function(index, value) {
+			return parseFloat(value) * 1.2;
+		},
+		height: function(index, value) {
+			return parseFloat(value) * 1.2;
+		}
+	});
+});
+</code>
+		<p>对于jQuery设置多个样式这里的两种写法需要说明一下，虽然这两种写法都会生效，但是仍然建议采用第一种写法，这种写法CSS属性名的引号可加可不加（无论我们加不加这个引号，程序编译后都会加上），第二种写法由于含有“-”符，不符合对象属性的命名规则，所以必须要加上引号。第一种写法和JavaScript操作元素样式的写法是一样的，都是采用“驼峰命名法”，更便于移植和理解，从性能角度考虑也会更胜一筹。</p>
 	</section>
 	<section>
 		<h3>元素在文档内的位置</h3>
