@@ -11,16 +11,40 @@
             margin: 0; padding: 0;
             height: 100%;
         }
+		body {
+			font: lighter 20px/1.8 "全新硬笔行书简","华文行楷","微软雅黑",sans-serif;
+			color: #9c9c9c;
+		}
         div {
-            width: 560px; height: 160px;
-            background: url("img/content/404.png");
             position: absolute;
             left: 50%; top: 50%;
-            margin-left: -280px; margin-top: -80px;
+			transform: translate(-50%, -50%);
         }
+		div > p {
+			margin: 0;
+		}
+		div > p > a {
+			text-decoration: none;
+			color: #2396fd;
+		}
+		div > p > a:hover {
+			text-decoration: underline;
+			color: #65befd;
+		}
+		.normalFont-EN {
+			font-family: Consolas,Monaco,sans-serif;
+		}
+		.normalFont-ZH-CN {
+			font-family: "宋体",sans-serif;
+		}
     </style>
 </head>
 <body>
-    <div></div>
+    <div>
+		<p>对不起，您要看的页面真的没有！</p>
+		<p>如果您是想查看本站的项目实例，请邮件至：</p>
+		<p class="normalFont-EN">aulence@foxmail.com</p>
+		<p>或者<a href="https://www.aulence.com" target="_self" class="normalFont-ZH-CN">回到主页</a>浏览其它内容。</p>
+	</div>
 </body>
 </html>
