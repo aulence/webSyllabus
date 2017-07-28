@@ -9,13 +9,16 @@
 		<link rel="stylesheet" href="../../../css/iframe.min.css">
 		<style>
 			body {
-				height: 280px;
+				height: 356px;
 				overflow: auto;
 				user-select: none;
 			}
 			main {
 				width: 400px;
 				overflow: hidden;
+				position: absolute;
+				left: 50px;
+				top: 50px;
 			}
 			main > div {
 				width: 200px;
@@ -27,7 +30,7 @@
 				float: left;
 				color: #ffffff;
 			}
-			.offsetTest {
+			.positionTest {
 				background-color: #0b9f55;
 			}
 		</style>
@@ -35,9 +38,7 @@
 	<body>
 		<main>
 			<div></div> <div></div>
-			<div></div> <div></div>
-			<div></div> <div class="offsetTest"></div>
-			<div></div> <div></div>
+			<div></div> <div class="positionTest"></div>
 			<div></div> <div></div>
 		</main>
 
@@ -45,12 +46,12 @@
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
 			// 存储查询对象
-			var offsetTest = $("div.offsetTest");
-			// 获取偏移对象
-			var offsetNum = offsetTest.offset();
-			// 这里用parseInt方法是因为offset方法会精确到浮点数
-			offsetTest.html("距离页面左边" + parseInt(offsetNum.left) +
-				"<br>距离页面顶部" +  parseInt(offsetNum.top));
+			var positionTest = $("div.positionTest");
+			// 获取相对于定位父级元素的偏移值
+			var positionNum = positionTest.position();
+
+			positionTest.html("距离父级左边" + parseInt(positionNum.left) +
+				"<br>距离父级顶部" +  parseInt(positionNum.top));
 		</script>
 	</body>
 </html>

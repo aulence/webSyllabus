@@ -60,11 +60,79 @@ $("div").click(function() {
 	</section>
 	<section>
 		<h3>元素在文档内的位置</h3>
-		<p>有的时候我们需要知道某一个元素在当前文档的位置，以便于我们接下来做一些交互效果。比如说，有一个用户名输入框，当用户切入光标后我们希望在这个输入框上面显示一个“小气泡”，但这个输入框又没有</p>
+		<p>有的时候我们需要知道某一个元素在当前文档的位置，以便于我们接下来做一些交互效果。比如说，有一个用户名输入框，当用户切入光标后我们希望在这个输入框上面显示一个“小气泡”对话框，但这个输入框又没有任何布局（margin）或定位（position）的属性，这个时候要怎么去获取这个元素的位置从而来进行“小气泡”的位置设置呢？</p>
+		<p>遇到类似这样的情况，我们就可以使用jQuery提供的<em>offset()</em>方法来帮助我们获取指定元素在文档中的位置，该方法不带参数。需要注意的是该方法比较特殊，它返回的结果是一个对象，为了节省性能查询性能，一般情况下我们都需要把得出的这个对象赋值给一个变量来进行“left”和“top”两个属性值的获取。另外一点需要注意的是，得出的两个方向的值都是相对于当前文档而言，页面就算有滚动条也不会影响到该值。</p>
+		<p>我们来看一个实例帮助进行理解，HTML代码如下：</p>
+<code class="ideCode-html"><!-- 创建10个DIV元素，为其中一个加上类名 -->
+<main>
+	<div></div> <div></div>
+	<div></div> <div></div>
+	<div></div> <div class="offsetTest"></div>
+	<div></div> <div></div>
+	<div></div> <div></div>
+</main>
+</code>
+		<p>主要CSS代码如下：</p>
+<code class="ideCode-css">main {
+	width: 400px;
+	overflow: hidden;
+}
+main > div {
+	width: 200px;
+	height: 100px;
+	background-color: #8bc1a9;
+	border: 1px solid #3e6643;
+	text-align: center;
+	line-height: 48px;
+	float: left;
+	color: #ffffff;
+}
+.offsetTest {
+	background-color: #0b9f55;
+}</code>
+		<p>jQuery代码如下：</p>
+<code class="ideCode-js">// 存储查询对象
+var offsetTest = $("div.offsetTest");
+// 获取偏移对象
+var offsetNum = offsetTest.offset();
+// 这里用取整方法是因为offset方法会精确到浮点数
+offsetTest.html("距离页面左边" + parseInt(offsetNum.left) +
+"&lt;br&gt;距离页面顶部" +  parseInt(offsetNum.top));</code>
+		<h4><a href="html-pages/jquery/codeEffect/code-021.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-021.html" ></iframe>
+		<p>上例在CSS中已经将盒子模型给设置成了“border-box”来消除元素内间隙和边框宽度值对元素实际尺寸造成的影响，以便于将人为计算和代码计算出的结果进行比较。而且也将这个例子的显示容器特地设置出了带滚动条的样式，以此用来说明页面产生的滚动条对这个方法取到的值基本是没有影响的。</p>
 	</section>
 	<section>
 		<h3>元素在定位父级内的位置</h3>
-		<p></p>
+		<p>上一节中讲到了offset方法获取元素位置是相对于文档而言，而本节中的<em>position()</em>方法获取元素位置则是相对于最邻近的、拥有值不为“static”的“position”CSS属性的父级元素而言的。也就是说，使用该方法的jQuery对象会从直接父节点开始遍历，一直到&lt;HTML&gt;标签为止，如果都找不到拥有设置有定位属性的元素的话，那这个方法和offset()方法所产生的结果是一样的。</p>
+		<p>本例稍微对HTML和CSS进行了一点修改，大家可以观察其中差异并总结出这两个方法的使用场景。HTML如下：</p>
+<code class="ideCode-html"><!-- 创建6个DIV元素，为其中一个加上类名 -->
+<main>
+	<div></div> <div></div>
+	<div></div> <div class="positionTest"></div>
+	<div></div> <div></div>
+</main>
+</code>
+		<p>其他CSS代码不变，&lt;main&gt;的样式修改如下：</p>
+<code class="ideCode-css">main {
+	width: 400px;
+	overflow: hidden;
+	position: absolute;
+	left: 50px;
+	top: 50px;
+}</code>
+		<p>jQuery代码如下：</p>
+<code class="ideCode-js">// 存储查询对象
+var positionTest = $("div.positionTest");
+// 获取相对于定位父级元素的偏移值
+var positionNum = positionTest.position();
+
+positionTest.html("距离父级左边" + parseInt(positionNum.left) +
+"&lt;br&gt;距离父级顶部" +  parseInt(positionNum.top));
+</code>
+		<h4><a href="html-pages/jquery/codeEffect/code-022.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-022.html" ></iframe>
+		<p>只要掌握offset和position这两个方法，基本上判断元素在页面内位置的所有需求基本上都能完成了。最后还要加以区分记忆的是，这两个方法返回的值是一个对象，要让它变得有意义需要访问的是返回的这个方法内部的两个值，这和jQuery其它绝大部分的方法是不一样的。</p>
 	</section>
 	<section>
 		<h3>获取和设置元素滚动条位置</h3>
