@@ -8,70 +8,48 @@
 		<title>代码示例</title>
 		<link rel="stylesheet" href="../../../css/iframe.min.css">
 		<style>
-			*,html {
-				box-sizing: border-box;
-			}
 			body {
-				font: 20px "微软雅黑";
+				height: 280px;
+				overflow: auto;
 				user-select: none;
 			}
-			main.centerMain {
-				width: auto;
-				margin: 0 auto;
+			main {
+				width: 400px;
 				overflow: hidden;
 			}
-
-			ul.infoCard {
-				width: 480px;
-				list-style: none;
-				margin: 0 auto;
-				padding: 0;
-				padding-bottom: 12px;
+			main > div {
+				width: 200px;
+				height: 100px;
+				background-color: #8bc1a9;
+				border: 1px solid #3e6643;
+				text-align: center;
+				line-height: 48px;
+				float: left;
+				color: #ffffff;
 			}
-			ul.infoCard li.hasContent {
-				padding: 6px 12px;
-				background-color: #f0e9ca;
-				border: 1px solid #f5f0e5;
-				border-radius: 15px;
-				color: #666666;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-				margin-bottom: 20px;
-			}
-			ul.infoCard li.hasContent h3 {
-				color: #333333;
-				margin: 10px 0;
-			}
-			ul.infoCard li.hasContent:last-of-type {
-				margin-bottom: 0;
+			.offsetTest {
+				background-color: #0b9f55;
 			}
 		</style>
 	</head>
 	<body>
-		<main class="centerMain">
-			<ul class="infoCard">
-				<li>
-					<div>
-						<h3>塞上曲送元美</h3>
-						<p>白羽如霜出塞寒，胡烽不断接长安。</p>
-						<p>城头一片西山月，多少征人马上看。</p>
-					</div>
-				</li>
-				<li></li>
-				<li>
-					<div>
-						<h3>立春偶成</h3>
-						<p>律回岁晚冰霜少，春到人间草木知。</p>
-						<p>便觉眼前生意满，东风吹水绿参差。</p>
-					</div>
-				</li>
-			</ul>
+		<main>
+			<div></div> <div></div>
+			<div></div> <div></div>
+			<div></div> <div class="offsetTest"></div>
+			<div></div> <div></div>
+			<div></div> <div></div>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
 			// 为含有标签或文本的li元素添加“卡片”效果的class
-			$("ul.infoCard li:parent").addClass("hasContent");
+			var offsetTest = $("div.offsetTest");
+			var offsetNum = offsetTest.offset();
+			// 这里用parseInt方法是因为offset方法会精确到浮点数
+			offsetTest.html("距离页面左边" + parseInt(offsetNum.left) +
+				"<br>距离页面顶部" +  parseInt(offsetNum.top));
 		</script>
 	</body>
 </html>
