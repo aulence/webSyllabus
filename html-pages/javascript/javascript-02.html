@@ -9,9 +9,9 @@
             <li>1 + 3;&nbsp;&nbsp;&nbsp;&nbsp;// 4</li>
             <li>"apple";&nbsp;&nbsp;&nbsp;&nbsp;// "apple"</li>
             <li>2&lt;3;&nbsp;&nbsp;&nbsp;&nbsp;// true</li>
-            <li>a = b + c;&nbsp;&nbsp;&nbsp;&nbsp;// “b + c”的结果,“b”和“c”都必须为一个数字，否则返回“NaN”</li>
-            <li>d = 5 * f;&nbsp;&nbsp;&nbsp;&nbsp;// “5 * f”的结果，“f”都必须为一个数字，否则返回“NaN”</li>
-            <li>e == 6;&nbsp;&nbsp;&nbsp;&nbsp;// 如果“e”为6结果为“true”，否则为“false”</li>
+            <li>a = b + c;&nbsp;&nbsp;&nbsp;&nbsp;// “b + c”的结果,“b”和“c”都必须为一个数字，否则只是将这两个变量所代表的值拼接起来。</li>
+            <li>d = 5 * f;&nbsp;&nbsp;&nbsp;&nbsp;// “5 * f”的结果，“f”都必须为一个数字（或能转换为数值的数据类型），否则返回“NaN”</li>
+            <li>e == 6;&nbsp;&nbsp;&nbsp;&nbsp;// 如果“e”为6，那么结果为“true”，否则为“false”</li>
             <li>;&nbsp;&nbsp;&nbsp;&nbsp;// 空语句</li>
         </ul>
         <p>有些语句单独出现并没有什么意义（如上列表中的“1+3”，“apple”等），它必须要在特定环境内使用才能产生对程序的实际意义，否则它们只会成为你程序中的“<em title="对程序无用的代码，也包括被注释掉的程序或在控制台打印测试的代码。它们只会让你的程序体积更大，让代码更佳难以阅读。">僵尸代码</em>”。</p>
@@ -20,7 +20,17 @@
         <code class="indent">
             <img src="img/content/javascript/baseGrammar.jpg">
         </code>
-    </section>
+		<p>但需要作出区分的是JavaScript的“数据类型”和“数据值类型”这两个词语，在JavaScript中按照值的类型分为两类数据：</p>
+		<dl class="attrExplain">
+			<dt>基本类型</dt>
+			<dd>值的表示比较简单，如：123、“字符串”、true、false等。它们分别是：<em>Number</em>、<em>String</em>、
+				<em>Boolean</em>、<em>NaN</em>、<em>Null</em>和<em>Undefined</em>，前面三个类型都有一定的表现形式，而后面三个数据类型的值都是其本身。</dd>
+
+			<dt>复合型</dt>
+			<dd>由多种“基本类型”数据组成的有一定结构的数据类型，这种类型的代表只有一个，那就是<em>object</em>。这种值由于可能会比较复杂只能存在于计算机的内存中，程序中对它的使用是一种引用关系，所以这种数据类型又称作<em>引用型</em>。</dd>
+		</dl>
+		<p>对于这个理论现在还没有去纠结，在我们以后的学习中基本上就是和以上这些类型打交道，慢慢的就熟悉了。</p>
+	</section>
     <!-- 注释 -->
     <section>
         <h3>JavaScript中的注释</h3>
@@ -73,6 +83,7 @@
         <code>
             <img src="img/code/jscode/code-js-005.jpg">
         </code>
+		<p>但在实际变量定义中，为了提高代码的可读性，我们建议最好还是将实际意义为一类（一个或多个）用一个“var”定义，而多个种类的还是用多个“var”来定义。这是一种平衡“字节数”和“可读性”的<em title="编程术语中常用词，表示这种做法经过大量实践应证是最佳的做法">最佳实践</em>。</p>
     </section>
     <section>
         <h3>局部变量和全局变量</h3>
@@ -80,7 +91,7 @@
         <code>
             <img src="img/code/jscode/code-js-009.jpg">
         </code>
-        <p>而“全局变量”，它的值可以被所有的方法或函数获取到。通常将一个变量写在所有函数的外部的变量，就叫做“全局变量”，但是在函数内部，若忘记在变量名前加上“var”的话，该变量也会成为全局变量，从而不小心被其它函数将值给误改了，所以在函数内部一定要记得在变量名前加上关键字“var”来定义一个变量。</p>
+        <p>而“全局变量”，它的值可以被所有的方法或函数获取到。通常将一个变量写在所有函数的外部的变量，就叫做“全局变量”，但是在函数内部，若忘记在变量名前加上“var”的话，该变量也会成为全局变量（但是不会进行<em>变量提升</em>），从而不小心被其它函数将值给误改了，所以在函数内部一定要记得在变量名前加上关键字“var”来定义一个变量。</p>
         <code>
             <img src="img/code/jscode/code-js-010.jpg">
         </code>
