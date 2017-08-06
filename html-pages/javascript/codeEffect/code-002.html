@@ -57,6 +57,23 @@
             }
         }
     }
+    // 鼠标悬浮计算结果
+    var saveValue;
+    document.body.onmouseover = function (e) {
+    	var currentDiv = e.target;
+        if(currentDiv.tagName === "DIV" && currentDiv.className !== "line") {
+			saveValue = currentDiv.textContent;
+			var calcVal = saveValue.split("×");
+			calcVal = calcVal[0] * calcVal[1];
+			currentDiv.textContent = calcVal;
+        }
+	};
+	document.body.onmouseout = function (e) {
+		var currentDiv = e.target;
+		if(currentDiv.tagName === "DIV" && currentDiv.className !== "line") {
+			currentDiv.textContent = saveValue;
+		}
+	};
 </script>
 </html>
 
