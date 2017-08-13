@@ -90,23 +90,30 @@
     <section class="unitPractice">
         <h3>&lt;章节练习一&gt;</h3>
         <p>声明一个名为“roleInfo”的对象：</p>
-        <p>1、属性名分别为：id、name、attack、defense、speed、hp、mp、skill；</p>
-        <p>2、值分别是："lol-119"、"德玛西亚之力"、36、42、66、2400、null、["坚韧（被动）","致命打击","勇气","审判","德玛西亚正义"];</p>
-        <p>3、通过在原型链上添加一个“eq()”方法，然后通过Object.keys()方法来获取对象的“长度”，最后通过for循环将对象内的所有值输出在页面内一个id为“galen”的&lt;div&gt;里。</p>
-        <p>&lt;注意&gt;若值为“null”，在页面内应该显示为“无”，若值为一个数组（通过方法“Array.isArray()”进行判定），需要将数组内的项单独输出来，而不是输出整个数组。</p>
-        <p>页面中的DIV结构如下：</p>
+        <ol>
+            <li>属性名分别为：id、name、attack、defense、speed、hp、mp、skill</li>
+            <li>值分别是："lol-119"、"德玛西亚之力"、36、42、66、2400、null、["坚韧（被动）","致命打击","勇气","审判","德玛西亚正义"]</li>
+            <li>通过在原型链上添加一个“attrVal()”方法，然后通过Object.keys()方法来获取对象的“长度”，最后通过for循环将对象内的所有值输出在页面内一个id为“galen”的&lt;div&gt;里</li>
+            <li>字段通过这个数组 ["ID","角色名","攻击力","防御力","速度","血量","魔法","技能"] 在循环结构内进行输出</li>
+        </ol>
+        <p>&lt;注意&gt;若值为“null”，在页面内应该显示为“无”，若值为一个数组（通过方法“Array.isArray()”进行判定），需要将转换为字符串输出，而不是输出整个数组，每项之间用空格分隔。另外，需要注意的是初始的HTML内容只有一个ID为“galen”的div标签，标签内不含任何内容。</p>
+        <p>最终输出到HTML页面的大致结果如下（需要给每行嵌套上一个div或者p标签分行显示）：</p>
 		<pre>
 &lt;div id="galen"&gt;
-	&lt;label&gt;ID：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;角色名：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;攻击力：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;防御力：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;速度：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;血量：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
+	&lt;label&gt;ID：&lt;/label&gt;&lt;span&gt;lol-119&lt;/span&gt;
+	&lt;label&gt;角色名：&lt;/label&gt;&lt;span&gt;德玛西亚之力&lt;/span&gt;
+	&lt;label&gt;攻击力：&lt;/label&gt;&lt;span&gt;36&lt;/span&gt;
+	&lt;label&gt;防御力：&lt;/label&gt;&lt;span&gt;42&lt;/span&gt;
+	&lt;label&gt;速度：&lt;/label&gt;&lt;span&gt;66&lt;/span&gt;
+	&lt;label&gt;血量：&lt;/label&gt;&lt;span&gt;2400&lt;/span&gt;
 	&lt;label&gt;魔法：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;
-	&lt;label&gt;技能：&lt;/label&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+	&lt;label&gt;技能：&lt;/label&gt;&lt;span&gt;坚韧（被动）&nbsp;&nbsp;致命打击&nbsp;&nbsp;勇气&nbsp;&nbsp;审判&nbsp;&nbsp;德玛西亚正义&lt;/span&gt;
 &lt;/div&gt;
 		</pre>
+        <p>浏览器显示结果示例图：</p>
+        <p>
+            <img src="img/content/javascript/object.keys.example.jpg">
+        </p>
     </section>
     <section>
     	<h3>对象的“增、删、改、查”</h3>
