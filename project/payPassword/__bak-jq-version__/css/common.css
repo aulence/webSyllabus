@@ -5,14 +5,10 @@
 /*********************************************/
 /* 样式初始化部分 */
 /*********************************************/
-/* 转换为IE盒子模型 */
-* {
-    box-sizing: border-box;
-}
 html,body {
     height: 100%;
     margin: 0; padding: 0;
-    font: 16px "微软雅黑";
+    font: 18px "微软雅黑";
 }
 main#root {
 	width: 100%; height: 100%;
@@ -22,19 +18,16 @@ main#root {
 	position: relative;
 	left: 0; top: 0;
 }
+/* 转换为IE盒子模型 */
+body,header,footer,main,nav,section,article,aside,div,p,span,input,select,textarea,button,a,ul,ol,li,h1,h2,h3,h4,h5,h6 {
+    box-sizing: border-box;
+}
 /* 手型按钮 */
 button,input[type="button"],input[type="submit"],input[type="reset"],input[type="radio"],input[type="checkbox"],a {
     cursor: pointer;
 }
 button,input,textarea,select {
     outline: none;
-}
-input,select {
-	padding: 6px;
-	font: 1.2rem sans-serif;
-}
-button {
-	font: 1.2rem "微软雅黑";
 }
 
 /*********************************************/
@@ -45,7 +38,7 @@ page[data-page] {
     display: block;
 }
 /* 绝对定位 */
-page[data-page], header, main, footer, header span.backPrevPage,.payInfoBox-main,.closeBox{
+page[data-page], header, main, footer, header span[data-href],.payInfoBox-main,.closeBox{
     position: absolute;
 }
 /* 固定定位 */
@@ -55,15 +48,6 @@ page[data-page], header, main, footer, header span.backPrevPage,.payInfoBox-main
 /* 溢出显示裁切 */
 body,page[data-page], .payInfoBox-main .payPwd {
     overflow: hidden;
-}
-/* 文本居中 */
-.txt-center {
-	text-align: center;
-}
-
-/* 人民币符号 */
-.RMBChar {
-	font-size: 1.6rem;
 }
 
 /*********************************************/
@@ -79,7 +63,7 @@ page[data-page] {
 header,footer {
     background-color: #35343a;
     text-align: center;
-    font: 1.4rem/50px "微软雅黑";
+    font: 22px/50px "微软雅黑";
     color: #fff;
 }
 header {
@@ -87,17 +71,17 @@ header {
     left: 0px; top: 0px;
 }
 /* 返回按钮 */
-header span.backPrevPage {
+header span[data-href] {
     line-height: 50px;
     left: 10px;
-    font-size: 1.2rem;
+    font-size: 20px;
     color: #fff;
     cursor: pointer;
 }
 main {
     width: 100%; height: calc(100% - 100px);
     padding: 10px;
-    background-color: #f6f6f6;
+    background-color: #fff;
     border-left: 1px solid #aaa;
     top: 50px;
 }
@@ -119,19 +103,12 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     right: -100%;
     z-index: 1;
 }
-/*支付密码控件 */
-.passwordComponet {
-	position: absolute;
-	left: 0; top: 0;
-	z-index: 11;
-}
-
 /* 遮罩层 */
 .maskLayer {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     left: 0; top: 0; right: 0; bottom: 0;
-    z-index: 1;
+    z-index: 10;
 }
 /* 数字键盘 */
 [data-keyboard-number] {
@@ -139,7 +116,7 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     background-color: #fff;
     border-top: 1px solid #888;
     left: 0; bottom: 0;
-    z-index: 2;
+    z-index: 20;
     overflow: hidden;
 }
 [data-keyboard-number] > div {
@@ -147,7 +124,7 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     border-right: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
     text-align: center;
-    font: 2rem/50px "arial";
+    font: 32px/50px "arial";
     float: left;
     cursor: pointer;
 }
@@ -158,49 +135,48 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     background-color: #eee;
     cursor: default;
 }
+
 /* 支付信息框 */
 .payInfoBox {
     width: 100%; height: calc(100% - 200px);
 	left: 0; top: 0;
-	z-index: 2;
+    z-index: 11;
 }
 .payInfoBox-main {
-    width: 90%; height: 240px;
+    width: 280px; height: 220px;
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #eee;
-    left: 50%;
-    top: 50%;
-	transform: translate(-50%, -50%);
+    left: calc(50% - 140px);
+    top: calc(50% - 108px);
 }
 .payInfoBox-main p {
     margin: 0;
 }
 .payInfoBox-main p:first-of-type {
     border-bottom: 1px solid #b6ccaf;
-    font-size: 1.2rem;
+    font-size: 20px;
     line-height: 40px;
     text-align: center;
 }
 /* 支付对象姓名 */
 .payInfoBox-main .objName {
     text-align: center;
-    line-height: 46px;
-	margin-top: 12px;
+    line-height: 40px;
 }
 /* 支付金额 */
 .payInfoBox-main .money {
     text-align: center;
-    font-size: 2.2rem;
-    font-family: sans-serif;
-    line-height: 56px;
+    font-size: 40px;
+    font-family: arial;
+    line-height: 50px;
 }
 /* 密码错误信息提示 */
 .payInfoBox-main .erro {
-    height: 26px;
+    height: 20px;
     text-align: center;
-    font-size: 1.1rem;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 20px;
     color: #e63434;
 }
 /* 密码框 */
@@ -209,6 +185,7 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     border: 1px solid #aaa;
     border-radius: 3px;
     margin: 0 auto;
+    margin-top: 10px;
 }
 .payInfoBox-main .payPwd > div {
     width: 40px; height: 100%;
@@ -229,7 +206,7 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
 /* 关闭按钮 */
 .closeBox {
     left: 12px; top: 2px;
-    font-size: 1.8rem;
+    font-size: 24px;
     color: #999;
     cursor: pointer
 }
@@ -237,84 +214,13 @@ page[data-page]:nth-of-type(3),page[data-page]:nth-of-type(4) {
     color: #333;
 }
 
-/* 好友列表 */
-ul.friendsList {
-	margin: 0;
-	padding: 0;
-}
-ul.friendsList li {
-	padding: 10px 0;
-	border-top: 1px solid #ffffff;
-	border-bottom: 1px solid #cbcbcb;
-	cursor: pointer;
-}
-ul.friendsList li:first-child {
-	border-top: 1px solid #cbcbcb;
-}
-ul.friendsList li img, .friendsList li span {
-	display: inline-block;
-	vertical-align: middle;
-}
-ul.friendsList li img {
-	width: 48px; height: 48px;
-	border-radius: 50%;
-}
-.friendsList li span {
-	font-size: 1em;
-	margin-left: 12px;
+
+/**** 特殊处理 ****/
+button,input,textarea,select {
+    font: 20px "微软雅黑";
 }
 
-/* 收款人信息 */
-.payeeInfo {
-	padding: 12px 0;
-	text-align: center;
-	font-size: 1.2rem;
-}
-.payee {
-	letter-spacing: 2px;
-	font-size: 1.3rem;
-	color: #01aa01;
-}
-/* 密码控件内的收款人字体重设 */
-#payee-componet {
-	font-size: 1rem;
-	letter-spacing: 1px;
-}
-/* 普通按钮样式 */
-button.normal {
-    width: 100%; height: 42px;
-    background-color: #01aa01;
-    border-radius: 3px;
-    border: none;
-    color: #fff;
-    display: block;
-    margin-top: 50px;
-}
-/* 支付成功文本 */
-.txtPaySuccess,.txtSuccessMesg {
-	text-align: center
-}
-.txtPaySuccess {
-	text-align: center;
-	font-size: 1.4rem;
-	color: #44d13a;
-	margin-top: 30px;
-}
-.txtPaySuccess img, .txtPaySuccess span {
-	vertical-align: middle;
-}
-.txtSuccessMesg {
-	font-size: 1rem;
-	margin-top: 50px;
-}
-.txtSuccessMesg p {
-	line-height: 1.6;
-	margin: 0;
-}
-.txtSuccessMesg p .moneyVal {
-	font-size: 1.8rem;
-	color: #f18f13;
-}
+
 
 
 

@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
-	<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+	<link rel="Bookmark" href="http://aulence.com/img/other/favicon.ico">
     <title>手机密码支付</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<main id="root">
@@ -19,23 +18,54 @@
 	    <page data-page="首页">
 	        <header>首页</header>
 	        <main>
-	            <button type="button" class="gotoPay">前往支付页面</button>
+	            <ul id="friendsList" class="friendsList"></ul>
 	        </main>
 	        <footer></footer>
 	    </page>
 	    <page data-page="支付页面">
-	        <header><span data-href="index">返回</span>支付页面</header>
-	        <main></main>
+	        <header><span class="backPrevPage">返回</span>支付页面</header>
+	        <main>
+	        	<div data-page-content="支付页面">
+	        		<!-- 支付对象 -->
+	        		<div class="payeeInfo">
+	        			您将向<span id="payee" class="payee">对方</span>支付
+	        		</div>
+					<!-- 金额输入 -->
+					<div class="txt-center">
+						<label class="RMBChar">￥</label>
+						<input id="inputMoney" type="number" placeholder="请输入支付金额">
+					</div>
+					<button id="alertPayComp" type="button" class="normal">支付</button>
+					
+					<!-- 支付密码控件 -->
+					<div class="passwordComponet"></div>
+				</div>
+	        </main>
 	        <footer></footer>
 	    </page>
 	    <page data-page="支付结果">
-	        <header><span data-href="pay">返回</span>支付结果</header>
-	        <main></main>
+	        <header><span class="backPrevPage">返回</span>支付结果</header>
+	        <main>
+	        	<div class="txtPaySuccess">
+					<img src="img/success_32px.png">
+					<span>支付成功</span>
+	        	</div>
+	        	<div class="txtSuccessMesg">
+	        		<p>您已成功向</p>
+	        		<p>
+	        			<span class="payee"></span>
+	        		</p>
+        			<p>
+        				支付了：
+        				￥<span class="moneyVal"></span>
+        			</p>
+	        	</div>
+	        </main>
 	        <footer></footer>
 	    </page>
 	</main>
-
-    <script src="plugin/jquery.js"></script>
+	
+    <script src="data/userdata.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>
