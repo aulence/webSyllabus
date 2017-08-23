@@ -2,11 +2,12 @@
     <!-- 概述 -->
     <section class="mt0">
     	<h3>JavaScript BOM概述</h3>
-    	<p><em>BOM</em>（Browers Object Model，浏览器对象模型）是浏览器为JavaScript提供的一个<em>API</em>（Application Programming Interface，应用编程接口），所以它不是原生JavaScript提供的。通过BOM我们可以访问和设置浏览器的一些属性和函数。</p>
+    	<p><em>BOM</em>（Browers Object Model，浏览器对象模型）是浏览器为JavaScript提供的一个<em>API</em>（Application Programming Interface，应用编程接口），所以它不是JavaScript的标准ECMAScript提供的。通过BOM我们可以访问和设置浏览器的一些属性和函数。</p>
     	<p>对于BOM的几乎所有操作都以依赖一个<em>全局对象</em>，那就是“<em>window</em>”对象。由于它是一个全局对象，所以很多时候在访问它内部的子对象的属性和方法的时候都是可以将window一词省略不写的，如“window.screen”可以直接写成“screen”也正常访问该子对象。</p>
+    	<p>但是需要稍加注意的是现在很多HTML5的API也是集成在了window对象里的，可以根据这些API所提供的功能去区分它们是否属于BOM。本章有些对象并非是属于BOM的东西，但是由于它们<em title="JS中有些操作是可以不依赖浏览器的，如node.js的实现">只能</em>依赖浏览器去实现的，所以才将它们放在本章来讲，如“Web Storage”（Web存储机制），而setTimeout和setInterval这两个函数也是因为一些JavaScript的历史原因被列为BOM的内容，但它们是已经标准化了的函数。</p>
     	<p>window对象下主要包含了以下子对象：</p>
     	<ul class="indent">
-    		<li>document：文档对象</li>
+    		<li>document：文档对象（和DOM里的document有区别）</li>
     		<li>frames：浏览器的框架（如iframe和现在废弃了的frameset）</li>
     		<li>history：浏览器浏览历史对象</li>
     		<li>location：浏览器页面所处位置对象</li>
@@ -26,19 +27,19 @@
     	<code class="indent">
 			<img src="img/code/jscode/code-js-335.jpg">
 		</code>
-    	<p>window对象下的属性和方法非常之多，多至现在也没有一份权威的统计表明window下到底有多少个属性和方法，这个只需要打开Google Chrome（主要推荐，但也可以是其它非IE系列的主流浏览器）的控制台（ctrl+shift+J），然后输入“window.”（后面需要加上“点”）就可以看到window下的属性们了，而且里面很多属性下还包含二级、三级甚至更多级的属性。也就是说想要完全去掌握window下的所有属性和方法肯定是不现实的，我们只需要掌握一些常用的，对我们实际项目开发中有一定帮助的即可。接下来我们我们开始对window的这些主要属性和方法进行讲解。</p>
+    	<p>window对象下的属性和方法非常之多，多至现在也没有一份权威的统计表明window下到底有多少个属性和方法，因为不同厂商的浏览器有区别，而且同一厂商浏览器不同的版本又经常在变化。这个只需要打开Google Chrome（主要推荐，但也可以是其它非IE系列的主流浏览器）的控制台（ctrl+shift+J），然后输入“window.”（后面需要加上“点”）就可以看到window下的属性们了，而且里面很多属性下还包含二级、三级甚至更多级的属性。也就是说想要完全去掌握window下的所有属性和方法肯定是不现实的，我们只需要掌握一些常用的，对我们实际项目开发中有一定帮助的即可。接下来我们我们开始对window的这些主要属性和方法进行讲解。</p>
 	</section>
 	<!-- 打开和关闭窗口 -->
 	<section>
 		<h3>window.open()和window.close()</h3>
-		<p>window.open()方法用于打开一个新的窗口（或标签页），而window.close()用于关闭当前窗口，他们同样可以将方法前的window对象省略不写，也能达到同样的方法效果。</p>
+		<p>window.open()方法用于打开一个新的窗口（或标签页），而window.close()用于关闭当前窗口（只能关闭由open方法打开的窗口，普通窗口该方法无效），他们同样可以将方法前的window对象省略不写，也能达到同样的方法效果。</p>
 		<p>相比于close()方法用于直接关闭浏览器窗口，open()方法就要稍微复杂一些，该方法有4个可选参数，它们的作用分别是：</p>
 		<dl class="attrExplain">
 			<dt>URL</dt>
 			<dd>新窗口的URL，为一个字符串。</dd>
 
 			<dt>名称</dt>
-			<dd>新窗口的名称，为一个字符串。</dd>
+			<dd>新窗口的名称，为一个字符串。也可以像超链接&lt;a&gt;那样或指向一个&lt;iframe&gt;，允许的值和它们两个标签一样，有"_self"、"_blank"、"_parent"、"_top"等几个值。</dd>
 
 			<dt>窗口特性</dt>
 			<dd>新窗口的URL，为一个字符串。具体可以配置以下内容：</dd>
@@ -109,12 +110,12 @@
 		<code class="indent">
 			<img src="img/code/jscode/code-js-338.jpg">
 		</code>
-		<p>通过这个测试又可以发现，不仅可以简单地通过frames对象简单地去访问这些iframe;，而且它们返回的结果和之前我们看到的window等同引用的对象的返回结果基本是一样的，注意这里说的是“基本一样”，因为从最后三个测试结果可以发现，这三个iframe是互不相等的。</p>
+		<p>通过这个测试又可以发现，不仅可以简单地通过frames对象简单地去访问这些iframe;，而且它们返回的结果和之前我们看到的window等同引用的对象的返回结果基本是一样的，注意这里说的是“基本一样”，因为从最后三个测试结果可以发现，这三个iframe是互不相等的，因为他们的name属性不相等（这里指对象的属性，而非HTML的属性），通过后面的代码示例图可以发现。</p>
 		<p>要访问页面内指定的iframe除了上面提供的方法外，还可以用索引下标或中括号字符串的形式去访问。比如说现在我们要访问刚才那个name属性为“iframe2”的&lt;iframe&gt;标签，还可以使用下面两种形式：</p>
 		<code class="indent">
 			<img src="img/code/jscode/code-js-339.jpg">
 		</code>
-		<p>在Ajax不盛行的年代，&lt;iframe&gt;标签是在页面内嵌入网站的最好选择，单随着JavaScript相关编程技术的高速发展，使用&lt;iframe&gt;标签嵌套子页面的形式已经开始不被推荐，而是用Ajax的异步加载的形式去请求“<em title="不是整个HMLT页面，而是只包含基本HTML标签的HTML页面，而且不包含&lt;body&gt;标签">文档片段</em>”，这样可以使得页面不需要再去加载子页面内的整个个css和js等文件，和一些不必要的标签（包括整个&lt;head&gt;标签和文档声明）。这样一来就使得页面加载的速度得到很大提升，页面也不会因为跳转刷新出现短暂白屏的情况，从而使得用户体验得到提升。不需要页面跳转，网站所有功能都通过一个页面完成的页面现在的术语叫法为“<em>SPA</em>”（single page application，译为：单页面应用程序。也有叫“SPWA”，其中的“W”表示“web”），是现在Web互联网应用开发的一个主流趋势。</p>
+		<p>在Ajax不盛行的年代，&lt;iframe&gt;标签是在页面内嵌入网站的最好选择，但随着JavaScript相关编程技术的高速发展，使用&lt;iframe&gt;标签嵌套子页面的形式已经开始不被推荐，而是用Ajax的异步加载的形式去请求“<em title="不是整个HMLT页面，而是只包含基本HTML标签的HTML页面，而且不包含&lt;body&gt;标签">文档片段</em>”或通过JSON数据配合DOM动态生成页面，这样可以使得页面不需要再去加载子页面内的整个个css和js等文件，和一些不必要的标签（包括整个&lt;head&gt;标签和文档声明）。这样一来就使得页面加载的速度得到很大提升，页面也不会因为跳转刷新出现短暂白屏的情况，从而使得用户体验得到提升。不需要页面跳转，网站所有功能都通过一个页面完成的页面现在的术语叫法为“<em>SPA</em>”（single page application，译为：单页面应用程序。也有叫“SPWA”，其中的“W”表示“web”），是现在Web互联网应用开发的一个主流趋势。</p>
 	</section>
 
 	<!-- 屏幕 -->
