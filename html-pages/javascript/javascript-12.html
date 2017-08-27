@@ -2,13 +2,13 @@
     <!-- 概述 -->
     <section class="mt0">
     	<h3>JavaScript DOM概述</h3>
-    	<p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删标签和操作属性等）。</p>
-    	<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，下一代版本DOM 4正在拟定中。</p>
+    	<p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删标签和操作属性等），它现在由W3C组织负责维护和进行标准制定。</p>
+    	<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，而DOM 4已经在2015年11月19日发布了“正式推荐标准”。</p>
     	<p>严格地说，DOM不属于JavaScript，但是操作DOM是JavaScript最常见的任务，而JavaScript也是最常用于DOM操作的语言。DOM的最小组成单位叫做节点。文档的树形结构，就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。一个文档的所有节点，按照所在的层级，可以抽象成一种树状结构。这种树状结构就是DOM。</p>
 	</section>
-	<!-- DOM节点 -->
+	<!-- DOM节点的属性 -->
 	<section>
-		<h3>DOM节点</h3>
+		<h3>DOM节点的属性</h3>
 		<p>所有节点对象都是浏览器内置的<em>Node</em>（包括元素节点、属性节点、文本节点等等）对象的实例，继承了Node属性和方法。这是所有节点的共同特征。以下属性与节点对象本身的特征相关：</p>
 		<dl class="attrExplain">
 			<dt>Node.nodeName和Node.nodeType</dt>
@@ -100,67 +100,241 @@
 
 			<dt>Node.nextSibling</dt>
 			<dd>该属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
-
-			<dt>Node.nextElementSibling</dt>
-			<dd>该属性用于返回紧跟在当前节点后面的第一个同级Element节点，也就是说它不会返回文本节点（包括空格或换行的文本节点）。它属于ECMAScript 5标准新增的属性。</dd>
+			<dd>我们通过一个示例来了解该属性的“运作”方式：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-420.jpg">
+				</code>
+			</dd>
+			<dd>代码运行后在控制台返回的结果如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-421.jpg">
+				</code>
+			</dd>
+			<dd>通过返回的对象类型我们可以看到各个节点的详细类型，也就是说只要是这些对象类型所具有的属性和方法都能够对它们使用，如：Element（在上例中对应的是“HTMLLIElement”节点）的textContent、innerHTML、remove()等等。</dd>
 
 			<dt>Node.previousSibling</dt>
-			<dd>该属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回null。</dd>
+			<dd>该属性和nextSibling的作用相同，它们都是查找兄弟节点，只不过它查找的节点是当前节点的之前的节点，其它特性及语法结构都相同。</dd>
+			
+			<dt>Node.nextElementSibling</dt>
+			<dd>该属性用于返回紧跟在当前节点后面的第一个同级<em title="所有标签元素节点">Element</em>节点，它不会返回文本节点（包括空格、换行、注释节点）。也就是说，它对于实际项目中的简单DOM操作会更加实用。它属于ECMAScript 5标准新增的属性。</dd>
+
 
 			<dt>Node.previousElementSibling</dt>
-			<dd>该属性用于返回紧跟在当前节点前面的第一个同级Element节点，它同样不会返回文本节点（包括空格或换行的文本节点）。它属于ECMAScript 5标准新增的属性。</dd>
+			<dd>该属性和“nextElementSibling”一样，同样是查找兄弟元素（Element）节点，只不过查找的是当前元素之前的元素节点，其它特性及语法结构都相同。它同样属于ECMAScript 5标准新增的属性。</dd>
+			<dd>这是它们的使用方式：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-422.jpg">
+				</code>
+			</dd>
+			<dd>在控制台中返回的结果为：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-423.jpg">
+				</code>
+			</dd>
+			<dd>另外，它们还能够链式使用，用于连续查找之前或之后的相邻的元素节点。如：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-424.jpg">
+				</code>
+			</dd>
 
 			<dt>Node.parentNode</dt>
-			<dd>该属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：element节点、document节点和documentfragment节点。</dd>
-			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点，父节点也是null。</dd>
+			<dd>该属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：Element节点、document节点（&lt;html&gt;标签的父节点）和<em title="文档碎片，只存在于DOM内，而不存在于HTML内，是一种虚拟DOM，需要依靠特定的DOM方法才能将其渲染到HTML文档内">documentfragment</em>节点。</dd>
+			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点（通过document.createElement()方法创建的元素，本段中提到的documentfragment也由该方法创建的元素组成，后面会讲到），父节点也是null。</dd>
 
 			<dt>Node.parentElement</dt>
-			<dd>该属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</dd>
+			<dd>该属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。对于一个Element节点来讲，使用parentNode和使用parentElement是没有什么区别的，但从语境（context）上来讲，如果是一个非Element的节点则使用parentNode，而Element节点则使用parentElement，这样会让代码的语义联系更清楚。</dd>
 			<dd>在IE浏览器中，只有Element节点才有该属性，其他浏览器则是所有类型的节点都有该属性。</dd>
+			<dd>另外，需要稍微注意的是任何一个元素，只要存在父节点，那这个父节点是唯一的，也就是说一个元素不可能存在多个父节点，对于HTML文件内的&lt;html&gt;内的节点来讲，无论使用那个属性来访问父元素，得到的都是一个Element对象（区别于由Element组成的数组的形式）。</dd>
 
 			<dt>Node.childNodes</dt>
-			<dd>该属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
+			<dd>该属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点，其实就和我们之前介绍的nextSibling的那个示例返回的结果那样。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
+			<dd>我们通过这个示例来再次深化一下印象：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-425.jpg">
+				</code>
+			</dd>
+			<dd>我们将控制台中返回的结果展开如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-426.jpg">
+				</code>
+			</dd>
+			<dd>但是这个属性存在一个问题，就是在IE8及以下的版本中，它只会返回Element节点，也就是相当于下面会讲到的children属性了。</dd>
+
+			<dt>Node.children</dt>
+			<dd>该属性会返回一个由Element节点组成的集合（哪怕只有一个元素），如果没有子节点元素它会返回一个空的类似数组（length为0）。需要注意的是，它不再包含文本节点和注释节点了，它没有childNodes存在浏览器版本兼容性的问题。所以它用于元素的子节点DOM操作是再适合不过了。</dd>
+			<dd>和对某个元素节点使用getElementsByTagName或getElementsByClassName等“筛选性”的方法相比，children属性会返回所有的元素节点，如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-427.jpg">
+				</code>
+			</dd>
+			<dd>在控制台中返回的结果如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-428.jpg">
+				</code>
+			</dd>
 
 			<dt>Node.childElementCount</dt>
-			<dd>该属性返回的是当前元素节点内子元素Element节点的个数，而通过上面的Node.childNodes.length返回的节点会包含文本节点和注释节点。它属于ECMAScript 5的内容。</dd>
+			<dd>该属性返回的是当前元素节点内子元素Element节点的个数，而通过上面的Node.childNodes.length返回的节点会包含文本节点和注释节点。而使用Node.children.length得到的结果和该属性是一样的，所以这个属性算是Node.children.length的一种改良写法，更被各种技术文著广泛的推荐。</dd>
 
 			<dt>Node.firstChild和Node.lastChild</dt>
 			<dd>Node.firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
 
 			<dt>Node.firstElementChild和Node.lastElementChild</dt>
-			<dd>firstElementChild属性返回当前节点的第一个Element子节点，如果当前节点没有子节点，则返回null。Node.lastElementChild属性返回当前节点的最后一个Element子节点，如果当前节点没有子节点，则返回null。它们同样属于ECMAScript 5标准新增的属性。</dd>
+			<dd>firstElementChild属性返回当前节点的第一个Element子节点，如果当前节点没有子节点，则返回null。Node.lastElementChild属性返回当前节点的最后一个Element子节点，如果当前节点没有子节点，则返回null。同样的，如果是用于普通的DOM元素的操作，这两个属性是更加被推荐的，因为它们会忽略任何和Element节点无关的节点。</dd>
+			<dd>使用示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-429.jpg">
+				</code>
+			</dd>
+			<dd>控制台返回结果如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-430.jpg">
+				</code>
+			</dd>
+			<dd>由于这两个属性返回的结果是一个Element对象，所以也可以结合nextElementSibling或previousSibling等属性一起做链式操作，找到第二个或倒数第二个Element对象。</dd>
 		</dl>
-		<p>节点对象有这样一些方法：</p>
+	</section>
+	<!-- DOM节点的方法 -->
+	<section>
+		<h3>DOM节点的方法</h3>
+		<p>上一节讲解了DOM内节点对象的属性，而作为对象，通常也会具有一些方法，如下所列：</p>
 		<dl class="attrExplain">
 			<dt>Node.appendChild()</dt>
-			<dd>该方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。</dd>
+			<dd>该方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。该方法通常的用法是先通过document.createElement()方法创建一个新的元素节点，然后再通过appendChild()将这个创建的新元素节点添加到指定元素的子元素列表末尾。</dd>
+			<dd>它还有一个鲜为人知的用法就是可以将现有节点的某个字节点提取出来添加到另外一个元素的子节点中去，这个过程也会在视图中（HTML文档）中反应出来。</dd>
+			<dd>值得注意的是该方法由于是在现有的“document树”上进行节点的操作，所以它不会触发“重排”操作。为了证明这一点，我们来看这样一个例子。</dd>
+			<dd>HTML内容如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-431.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript内容如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-432.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-030.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-030.html"></iframe>
+			<dd>从上例中可以发现，整个操作过程都没有涉及到节点的“移除操作”（节点的移除方法是Node.remove()），但每次点击按钮，第二个列表中的元素项都会被移除，然后加入到第一个列表中，并且所有列表项原先绑定的点击事件仍然还是生效的，这里起到关键作用的就是appendChild()方法。</dd>
 
 			<dt>Node.hasChildNodes()</dt>
-			<dd>该方法返回一个布尔值，表示当前节点是否有子节点。</dd>
+			<dd>该方法返回一个布尔值，表示当前节点是否有子节点。使用这个方法需要注意的就是空格和换行符都属于一个“ChildNode”，在进行HTML的DOM操作时该方法很容易“误判”，所以如果是判断子元素的个数还是推荐使用元素节点的childElementCount属性，通过获取它的值是否为0来判断是否存在子元素更为稳妥。</dd>
 
 			<dt>Node.cloneNode()</dt>
 			<dd>该方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
 			<dd>克隆一个节点之后，DOM树有可能出现两个有相同ID属性的HTML元素，这时应该修改其中一个HTML元素的ID属性。</dd>
-
+			<dd>来看看这个方法的运用实例，HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-433.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-434.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-031.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-031.html"></iframe>
+			
 			<dt>Node.insertBefore()</dt>
-			<dd>该方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是所要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
+			<dd>该方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是将要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
+			<dd>我们还是通过一个实例来理解这个方法的用法吧。HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-435.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-436.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-032.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-032.html"></iframe>
+			
 			<dd>如果insertBefore()方法的第二个参数为null，则新节点将插在当前节点的最后位置，即变成最后一个子节点。如果所要插入的节点是当前DOM现有的节点，则该节点将从原有的位置移除，插入新的位置。</dd>
 			<dd>由于不存在insertAfter()方法，如果要插在当前节点的某个子节点后面，可以用insertBefore方法结合nextSibling属性模拟。</dd>
+			<dd>我们利用Node对象的原型链来创建一个JS并没有提供的insertAfter()方法，HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-437.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-438.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-033.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-033.html"></iframe>
 
 			<dt>Node.removeChild()</dt>
 			<dd>该方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
 
 			<dt>Node.replaceChild()</dt>
-			<dd>该方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。</dd>
+			<dd>该方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。它的语法结构和insertBefore()方法非常相似。我们还是通过一个实例来了解她的用法。</dd>
+			<dd>HTML的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-439.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-440.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-034.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-034.html"></iframe>
 
 			<dt>Node.contains()</dt>
-			<dd>该方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。需要注意的是，如果将当前节点传入contains方法，也会返回true。</dd>
+			<dd>该方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。需要注意的是，如果将当前节点传入contains方法，也会返回true，也就是收该方法会包含自身。语法结构请看下例。</dd>
+			<dd>HTML的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-441.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-442.jpg">
+				</code>
+			</dd>
 
 			<dt>Node.isEqualNode()</dt>
-			<dd>该方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</dd>
+			<dd>该方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。它的语法结构和contains()方法完全一致。用它来处理<em title="一种利用事件传播机制给子元素绑定事件的模式">事件代理</em>会是一个不错的选择（事件一章中会有讲解）。</dd>
+			<dd>虽然暂时没有深入的接触过事件代理，我们仍然可以通过一个实例来理解它的用法。这里只需要提示的是“e.target”表示这次点击事件的目标是哪个节点，也就是说，是哪个节点触发了这次事件。这个节点必须是绑定了这个事件的节点对象（这里是“ul”节点）的子节点或自身。</dd>
+			<dd>完整的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-443.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-036.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-036.html"></iframe>
 
 			<dt>Node.normalize()</dt>
 			<dd>该方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
+			<dd>该方法需要结合后续会讲解的document.createTextNode()方法一起去理解。这里只需要知道，每次向document树内添加文本节点，节点的总长度都会加1，而使用了normalize()方法后，当前节点内无论存在多少个文本子节点都会合并为1个文本节点。</dd>
 		</dl>
 	</section>
 	<!-- DOM节点查询 -->
@@ -169,32 +343,70 @@
 		<p>对于DOM的查询，document提供了以下方法：</p>
 		<dl class="attrExplain">
 			<dt>document.getElementById()</dt>
-			<dd>该方法返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
+			<dd>这个方法我们应该是再熟悉不过了，它会返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
 
 			<dt>document.getElementsByTagName()</dt>
-			<dd>该方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection对象，可以实时反映HTML文档的变化。如果没有任何匹配的元素，就返回一个空集。</dd>
-			<dd>HTML元素本身也定义了getElementsByTagName()方法，返回该元素的后代元素中符合指定标签的元素。也就是说，这个方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
+			<dd>该方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection实例对象集合，可以实时反应HTML文档的变化。</dd>
+			<dd>如果没有任何匹配的元素，就返回一个空的类似数组。</dd>
 
 			<dt>document.getElementsByClassName()</dt>
-			<dd>该方法返回一个类似数组的对象（HTMLCollection实例对象），包括了所有class名字符合指定条件的元素，元素的变化实时反映在返回结果中。</dd>
-			<dd>与getElementsByTagName方法一样，getElementsByClassName方法不仅可以在document对象上调用，也可以在任何元素节点上调用。</dd>
+			<dd>该方法同样返回一个类似数组的HTMLCollection实例对象集合，包括了所有class名字符合指定条件的元素，元素的变化实时反应在返回结果中。需要注意该方法是在DOM3后新增的标准方法，在IE8及以下版本的浏览器中是不支持的，如果项目需要兼容它们，请使用其他DOM节点的查询方法。</dd>
+			<dd>如果没有任何匹配的元素，也会返回一个空的类似数组。</dd>
 
 			<dt>document.getElementsByName()</dt>
-			<dd>该方法用于选择拥有name属性的HTML元素，返回一个类似数组的的对象，因为name属性相同的元素可能不止一个。</dd>
+			<dd>该方法用于选择拥有name属性的HTML元素，返回一个类似数组的的NodeList实例对象，因为name属性相同的元素可能不止一个。</dd>
+			<dd>如果没有任何匹配的元素，还是会返回一个空的类似数组。</dd>
 
-			<dt>document.querySelector()，document.querySelectorAll()</dt>
-			<dd>该方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。</dd>
-			<dd>document.querySelectorAll()方法与querySelector()用法类似，区别是返回一个NodeList对象，包含所有匹配给定选择器的节点。</dd>
-			<dd>这两个方法都支持复杂的CSS选择器。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。</dd>
+			<dt>document.querySelector()，</dt>
+			<dd>该方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有一个或多个节点对象满足匹配条件，也只会返回第一个匹配的节点对象。如果没有发现匹配的节点，则返回null。</dd>
+			<dd>完整的代码示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-444.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-037.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-037.html"></iframe>
+			
+			<dt>document.querySelectorAll()</dt>
+			<dd>该方法与querySelector()用法类似，区别是返回一个NodeList对象集合，包含所有匹配给定选择器的节点。</dd>
+			<dd>完整的代码示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-445.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-038.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-038.html"></iframe>
+			<dd>这里需要注意的是，使用querySelectorAll()方法后，代码中所有的查询结果都需要加上下标索引，哪怕本来就是唯一的ID查询，否则浏览器都会报错。</dd>
+			<dd>还需要注意的是，querySelector()和querySelectorAll()这两个方法虽然都支持复杂的CSS选择器（包括CSS3新增的高级选择器）。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。另外，值得高兴的是，据<a href="http://www.runoob.com/jsref/met-document-queryselector.html" target="_blank">资料显示</a>这两个方法是支持IE8及以上版本的，但需要注意的是，对于IE8本身就不支持的CSS3选择器，还是不能够使用，这点可以到CSS和JavaScript支持情况最权威的网站<a href="http://caniuse.com/#feat=queryselector" target="_blank">Can I Use</a>上进行查询。</dd>
 
 			<dt>Element.closest()</dt>
-			<dd>该方法返回当前元素节点的最接近的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器（可以是CSS3高级选择器）。如果不满足匹配，则返回null。</dd>
+			<dd>该方法返回当前元素节点的最接近匹配结果的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器（可以是CSS3高级选择器），不设置参数会报错。如果不满足匹配，则返回null。它的使用方式和querySelector()方法是一样的，仍然支持链式使用。</dd>
+			<dd>CSS的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-446.jpg">
+				</code>
+			</dd>
+			<dd>HTML和JavaScript代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-447.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-039.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-039.html"></iframe>
 		</dl>
+		<p>对于本节所有的查询方法来讲，都不能直接对返回结果为一个类似数组（任何类型的集合）的对象去绑定事件，而只能对其中某项绑定事件（在其后添加下标索引），哪怕返回的集合中只有一个元素，否则浏览器都会报出“TypeError”的错误。所以需要去区分总结哪些方法返回的是一个元素/节点对象，哪些方法返回的又是一个集合（主要包括HTMLCollection和NodeList）。</p>
 	</section>
 	<!-- DOM节点的生成 -->
 	<section>
 		<h3>DOM节点的生成</h3>
-		<p>以下反方可以用于生成DOM的节点：</p>
+		<p>DOM可以创建元素节点、文本节点和属性节点，然后将创建好的节点通过配合Node.appendChild()、Node.insertBefore()等方法添加到指定节点，并最后添加到视图中已经存在的HTML标签元素中。它和我们平时常使用的Element.innerHTML属性相比就是它并不会对document进行“重排”操作，导致原本存在于该document树上的内存地址发生改变，导致事件失效的问题。</p>
+		<p>从频繁操作一个Element元素及其子元素的性能角度来讲，DOM节点的生成操作全部是在JS引擎内部完成的，只会最终将结果渲染到视图（HTML文档）上，而innerHTML属性需要频繁的和视图层发生联系转换。所以，在这个层面上DOM原生提供的节点生成操作会更加优秀。但它的缺点就是代码操作过于繁琐，对流程的严谨性要求更高。</p>
+		<p>而且我们应该了解，innerHTML并非任何组织制定的一个标准，它实际上是属于BOM的东西，最早是由IE提出支持并使用的。由于早期IE的“江湖地位”比较高，其它浏览器也纷纷支持了该属性，这也使得该属性成为了非明文的标准。</p>
+		<p>以下方法可以用于生成DOM的节点：</p>
 		<dl class="attrExplain">
 			<dt>document.createElement()</dt>
 			<dd>该方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
@@ -204,7 +416,11 @@
 
 			<dt>document.createAttribute()</dt>
 			<dd>该方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
+
+			<dt>Element.setAttributeNode()</dt>
+			<dd>使用该方法可以将createAttribute()创建的属性设置到已经通过createElement()创建好的Element节点对象（或其它方式获取到的Element节点对象）上去。</dd>
 		</dl>
+		<p>最后，需要为innerHTML属性辩解的是，虽然它对同级元素具有“破坏性”的操作，但对于涉及到同级元素内还嵌套有子元素的情况来讲还是比较“安全”的。例如，通过innerHTML叠加表格行的操作，实际上是不会影响到&lt;tr&gt;元素内&lt;td&gt;及其子元素的事件绑定的。所以，从开发效率上考虑，很多时候innerHTML属性仍是节点生成操作的首选。</p>
 	</section>
 	<!-- 属性的操作 -->
 	<section>
@@ -221,10 +437,10 @@
 			<dd>该方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
 
 			<dt>Element.removeAttribute()</dt>
-			<dd该方法用于从当前元素节点移除属性。</dd>
+			<dd>该方法用于从当前元素节点移除属性。</dd>
 
 			<dt>dataset属性</dt>
-			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*）,该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的。</dd>
+			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*），该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的（因为它是一个属性，而非方法）。</dd>
 		</dl>
 	</section>
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			div {
+				border: 1px dashed #aaa;
+				padding: 20px;
+				box-sizing: border-box;
+			}
+			.div1 {
+				width: 220px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<div class="div1">
+			div-1
+			<div class="div2">
+				div-2
+				<div class="div3">div-3</div>
+			</div>
+		</div>
+		<!-- JavaScript部分 -->
+		<script>
+			// 通过div3去找到div1（父级的父级）
+			var div1 = document.querySelector(".div3").closest(".div1");
+			// 将div1的边框设置为5像素、实线、红色
+			div1.style.border = "5px solid #f00";
+		</script>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

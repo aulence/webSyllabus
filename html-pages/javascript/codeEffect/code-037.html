@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ul {
+				width: 220px;
+				margin: 0;
+				padding: 10px 40px;
+				border: 1px solid #999;
+			}
+			ul > li {
+				cursor: pointer;
+			}
+			ul > li:hover {
+				color: #677691;
+			}
+			ul > li:active {
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ul id="mainUL">
+			<li class="item">列表项-1</li>
+			<li class="item">列表项-2</li>
+			<li class="item">列表项-3</li>
+			<li class="item checked">列表项-4</li>
+			<li class="item">列表项-5</li>
+		</ul>
+		<!-- JavaScript部分 -->
+		<script>
+			// 查找ul
+			var mainUL = document.querySelector("#mainUL");
+			// 背景设置为深黑色，字体设置为白色
+			mainUL.style.cssText = "background-color:#333;color:#fff";
+			// 只能找到class名为item的第一个元素节点
+			var item = document.querySelector("#mainUL > .item");
+			// 字体设置为绿色
+			item.style.color = "#5af25a";
+			// 查找class内既有item又有checked的节点
+			var checkedItem = document.querySelector(".item.checked");
+			// 字体设置为水蓝色
+			checkedItem.style.color = "#2397fd";
+		</script>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

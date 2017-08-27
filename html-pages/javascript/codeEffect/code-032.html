@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			body {
+				height: 230px;
+			}
+			ol {
+				width: 220px;
+				padding: 10px 40px;
+				border: 1px solid #999;
+				float: left;
+				margin-right: 20px;
+			}
+			ol > li {
+				cursor: pointer;
+			}
+			ol > li:hover {
+				color: #677691;
+			}
+			ol > li:active {
+				color: #333;
+			}
+			button {
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ol id="roleName">
+			<li>关羽</li>
+			<li>马超</li>
+		</ol>
+		<ol id="candidate">
+			<li>张飞</li>
+			<li>赵云</li>
+			<li>黄忠</li>
+		</ol>
+		<button id="btnInsert-role" type="button" class="normal">插入角色</button>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<!-- JavaScript部分 -->
+		<script>
+			// 原英雄列表
+			var roleName = document.getElementById("roleName");
+			// 候选英雄列表
+			var candidate = document.getElementById("candidate");
+			
+			// 绑定插入角色按钮事件
+			var btnInsertRole = document.getElementById("btnInsert-role");
+			btnInsertRole.onclick = function() {
+				// 候选英雄列表如果不为0
+				if(candidate.childElementCount) {
+					// 在“马超”之前插入候选英雄
+					roleName.insertBefore(candidate.firstElementChild, roleName.lastElementChild);
+				}
+				else {
+					alert("已经没有候选英雄了！");
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

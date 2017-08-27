@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ul {
+				width: 160px;
+				padding: 10px 40px;
+				border: 1px solid #999;
+			}
+			ul > li {
+				cursor: pointer;
+			}
+			ul > li:hover {
+				color: #677691;
+			}
+			ul > li:active {
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ul id="ul">
+			<li>no</li>
+			<li id="ok">yes</li>
+			<li>no</li>
+		</ul>
+		<!-- JavaScript部分 -->
+		<script>
+			// 元素节点
+			var ul = document.getElementById("ul");
+			var ok = document.getElementById("ok");
+			// 给ul列表绑定点击事件
+			ul.onclick = function(e) {
+				if(e.target.isEqualNode(ok)) {
+					alert("执行指定事件");
+				}
+			}
+		</script>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

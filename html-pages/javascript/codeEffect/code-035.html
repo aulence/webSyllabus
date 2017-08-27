@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<div id="div-1">
+			<p id="p-1">段落1</p>
+		</div>
+		<div id="div-2">
+			<p id="p-2">段落1</p>
+		</div>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<!-- JavaScript部分 -->
+		<script>
+			(function(){
+				
+				// 元素节点
+				var div1 = document.getElementById("div-1");
+				var p1 = document.getElementById("p-1");
+				var div2 = document.getElementById("div-2");
+				var p2 = document.getElementById("p-2");
+				// 会返回true的情况
+				div1.contains(div1);
+				div2.contains(div2);
+				div1.contains(p1);
+				div2.contains(p2);
+				// 会返回false的情况
+				div1.contains(p2);
+				div2.contains(p1);
+				
+			})();
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

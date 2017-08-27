@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ul {
+				width: 220px;
+				padding: 10px 40px;
+				border: 1px solid #999;
+			}
+			ul > li {
+				cursor: pointer;
+			}
+			ul > li:hover {
+				color: #677691;
+			}
+			ul > li:active {
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ul id="roleName">
+			<li>关羽</li>
+			<li>张飞</li>
+		</ul>
+		<ul id="new-roleName">
+			<li>赵云</li>
+			<li>黄忠</li>
+			<li>马超</li>
+		</ul>
+		<button id="btnAddRole" type="button" class="normal">添加角色</button>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<!-- JavaScript部分 -->
+		<script>
+			// 为所有英雄绑定点击事件
+			var roleItem = document.getElementsByTagName("li"),
+				roleItem_leng = roleItem.length;
+			for(var i = 0; i < roleItem_leng; i++) {
+				roleItem[i].onclick = function() {
+					alert("英雄：" + this.textContent);
+				}
+			}
+			// 添加英雄列表
+			var btnAddRole = document.getElementById("btnAddRole");
+			btnAddRole.onclick = function() {
+				// 存储新英雄列表
+				var newRoleList = document.getElementById("new-roleName");
+				// 如果新英雄列表还存在英雄
+				if(newRoleList.childElementCount) {
+					// 存储原有英雄列表
+					var roleName = document.getElementById("roleName");
+					// 将新英雄添加到现有英雄列表
+					roleName.appendChild(newRoleList.firstElementChild);
+				}
+				else {
+					alert("已经没有新英雄可以添加了");
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ol {
+				width: 220px;
+				padding: 10px 40px;
+				border: 1px solid #999;
+				float: left;
+				margin-right: 20px;
+			}
+			ol > li {
+				cursor: pointer;
+			}
+			ol > li:hover {
+				color: #677691;
+			}
+			ol > li:active {
+				color: #333;
+			}
+			button {
+				display: block;
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ol id="roleName">
+			<li>盖伦</li>
+			<li>提莫</li>
+			<li>亚索</li>
+			<li>赵信</li>
+			<li>阿狸</li>
+		</ol>
+		<ol id="candidate">
+			<li>阿卡丽</li>
+			<li>潘森</li>
+			<li>莫甘娜</li>
+			<li>凯特琳</li>
+			<li>瑞文</li>
+		</ol>
+		<button id="btnReplace-role" type="button" class="normal">替换英雄</button>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<!-- JavaScript部分 -->
+		<script>
+			(function(){
+				// 原英雄列表
+				var roleName = document.getElementById("roleName");
+				// 候选替换英雄列表
+				var candidate = document.getElementById("candidate");
+				// 候选列表剩余英雄个数
+				var heroCount_static = candidate.childElementCount;
+
+				// 绑定替换角色按钮事件
+				var btnReplaceRole = document.getElementById("btnReplace-role");
+				btnReplaceRole.onclick = function() {
+					// 当前候选列表剩余英雄个数
+					var heroCount_dynamic = candidate.childElementCount;
+					// 如果候选替换英雄列表还不为零
+					if(heroCount_dynamic) {
+						roleName.replaceChild(
+							candidate.firstElementChild,
+							// 这里的下标相当于用5减去候选列表内剩余的项数，分别是5/4/3/2/1
+							roleName.children[heroCount_static - heroCount_dynamic]
+						);
+					} else {
+						alert("已经没有可以替换的英雄了");
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

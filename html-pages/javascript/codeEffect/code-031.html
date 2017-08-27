@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cmn-Hans-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			ul {
+				width: 220px;
+				padding: 10px 40px;
+				border: 1px solid #999;
+				margin-right: 20px;
+				float: left;
+			}
+			ul > li {
+				cursor: pointer;
+			}
+			ul > li:hover {
+				color: #677691;
+			}
+			ul > li:active {
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML部分 -->
+		<ul id="roleName">
+			<li>关羽</li>
+			<li>张飞</li>
+			<li>赵云</li>
+			<li>黄忠</li>
+			<li>马超</li>
+		</ul>
+		<ul id="roleName-clone"></ul>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<!-- JavaScript部分 -->
+		<script>
+			// 为所有英雄绑定点击克隆事件
+			var roleItem = document.getElementsByTagName("li"),
+				roleItem_leng = roleItem.length;
+			for(var i = 0; i < roleItem_leng; i++) {
+				roleItem[i].onclick = function() {
+					// 克隆该节点（如果这里不设置参数或者将参数设置为false，都无法克隆文本节点）
+					var cloneLi = this.cloneNode(true);
+					// 克隆元素存放列表
+					var roleNameClone = document.getElementById("roleName-clone");
+					// 如果该英雄不存在于克隆列表内
+					if(!(new RegExp(cloneLi.textContent).test(roleNameClone.textContent))) {
+						// 将克隆好的元素添加进去
+						roleNameClone.appendChild(cloneLi);
+				    } else {
+						alert("该英雄已经存在");
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
