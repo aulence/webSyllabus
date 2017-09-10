@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript测试文件</title>
+		<link rel="shortcut icon" href="../../../img/other/favicon.ico">
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			body {
+				height: 222px;
+			}
+			.center-block {
+				width: 340px;
+				margin: 0 auto;
+			}
+			.center-block form > div {
+				padding-top: 20px;
+			}
+			.center-block form button {
+				padding: 4px 24px;
+				font-size: 18px;
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<main id="main">
+			<!-- HTML部分 -->
+		</main>
+		
+		<!-- JavaScript部分 -->
+		<script>
+			// 调用“文本文件的GET请求”函数
+			getText("doc-snippet.html", function(doc) {
+				// 获取到main元素
+				var main = document.getElementById("main");
+				// 为main写入文档片段的HTML内容
+				main.innerHTML = doc;
+			});
+			
+			/**
+			* 功能：文本文件的GET请求
+			* 参数1: URL（String）
+			* 参数2: 回调函数（Function）
+			**/
+			function getText(url, callback) {
+				var xhr = new XMLHttpRequest();
+				// 这里只简单保留两个必要参数即可，URL需要进行配置
+				xhr.open("GET",url);
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState === 4 && xhr.status === 200) {
+						var data = xhr.responseText;
+						// 以往我们对请求的数据都是在这里进行操作
+						// 现在将它作为一个回调函数来实现更高的复用性
+						callback(data);
+					}
+				}
+			}
+		</script>
+
+		<!-- JS部分 -->
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

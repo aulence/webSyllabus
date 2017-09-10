@@ -1,0 +1,14 @@
+{
+	"mainboard": "主板",
+	"cpu": "CPU",
+	"internalStrage": "内存",
+	"graphicsCard": "显卡",
+	"soundCard": "声卡",
+	"hardDisk": "硬盘",
+	"computerCase": "机箱",
+	"power": "电源",
+	"dispay": "显示器",
+	"keyboard": "键盘",
+	"mouse": "鼠标",
+	"loudspeaker": "音箱"
+}
