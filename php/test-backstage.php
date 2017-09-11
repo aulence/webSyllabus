@@ -5,6 +5,8 @@
     // 获取序列化参数属性
     $usrname = $_GET['name'];
     $usrstel = $_GET['tel'];
-    // <注意>：echo输出的结果必须是双引号
+    // 在前端页面输出以下结果
     echo "您好：{$usrname}，你的手机号是：{$usrstel}";
 ?>
+
+
