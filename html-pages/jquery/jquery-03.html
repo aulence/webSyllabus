@@ -149,8 +149,9 @@ $("div.content").scrollLeft(300);
 </code>
 	</section>
 	<section>
-		<h3>元素的盒子模型</h3>
-		<p></p>
+		<h3>元素盒子模型尺寸</h3>
+		<p>jQuery提供了获取和设置元素尺寸（宽和高）的快捷方法，相比原生JS的实现方式，jQuery的方法名更加直观，和CSS盒子模型的“content-box”、“padding-box”和“border-box”刚好形成了对应关系，记忆起来也比较容易。</p>
+		<p>获取元素内容的宽度和高度（content）：</p>
 <code class="ideCode-js">// 获取当前元素的内容的宽度和高度
 $("div.content").width();
 $("div.content").height();
@@ -159,12 +160,8 @@ $("div.content").height();
 $("div.content").width(480);
 // 将当前元素的内容高度设置为320像素
 $("div.content").height(320);
-
-// 或将参数设置为字符串的形式
-$("div.content").width("480px");
-$("div.content").height("320px");
 </code>
-		<p></p>
+		<p>获取元素内容加内间距的宽度和高度（content+padding）：</p>
 <code class="ideCode-js">// 获取当前元素内部的宽度和高度
 $("div.content").innerWidth();
 $("div.content").innerHeight();
@@ -173,13 +170,8 @@ $("div.content").innerHeight();
 $("div.content").innerWidth(480);
 // 将当前元素内部的高度设置为320像素
 $("div.content").innerHeight(320);
-
-// 或将参数设置为字符串的形式
-$("div.content").innerWidth("480px");
-$("div.content").innerHeight("320px");
-$("div.content").outerHeight("320px");
 </code>
-		<p></p>
+		<p>获取元素内实际占有的宽度和高度（content+padding+border）：</p>
 <code class="ideCode-js">// 获取当前元素整体的宽度和高度
 $("div.content").outerWidth();
 $("div.content").outerHeight();
@@ -188,15 +180,44 @@ $("div.content").outerHeight();
 $("div.content").outerWidth(480);
 // 将当前元素整体的高度设置为320像素
 $("div.content").outerHeight(320);
-
-// 或将参数设置为字符串的形式
-$("div.content").outerWidth("480px");
-$("div.content").outerHeight("320px");
 </code>
-	</section>
+		<p>对这个类型的方法进行像素设置的时候还可以传入带像素单位的字符串作为，像这样：</p>
+<code class="ideCode-js">$("div.content").width("480px");
+$("div.content").height("320px");
+$("div.content").innerHeight("612px");
+$("div.content").outerWidth("540px");
+</code>
+		<p>另外，鲜为人知的，这类的方法的参数还可以是一个函数，这个函数带有两个参数。第一个参数是该元素在自身所处集合中的索引值，第二参数表示元素当前的宽度值。</p>
+		<p>我们来看这样一个例子，HTML代码如下：</p>
+<code class="ideCode-html"><!-- 自增盒子 -->
+<div class="incrementBox"></div>
+<button class="increaseWidth normal" type="button">增加宽度</button>
+</code>
+		<p>jQuery代码如下：</p>
+<code class="ideCode-js">// 每点击一次按钮，元素的宽度加10像素，直到元素宽度大于400后停止
+$(".increaseWidth").click(function () {
+	$(".incrementBox").width(function (index, currentWidth) {
+		if(currentWidth < 400) {
+			return currentWidth + 10;
+		}
+	});
+});</code>
+		<h4><a href="html-pages/jquery/codeEffect/code-023.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-023.html" ></iframe>
+</section>
 	<!-- 章节练习 -->
 	<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
+		<p>通过本章所学的内容，制作一个简易的“懒加载”页面，具体要求如下：</p>
+		<ol>
+			<li>页面由图片和文本组成的多个section组成，至少让内容撑出两屏以上的滚动条长度</li>
+			<li>保证页面载入完成后当前窗口内容显示完整</li>
+			<li>后续的section只有当出现在页面底部1/3左右的时候才渐显出来，稍加延迟后里面的内容都会有一种“上浮”的视觉效果</li>
+			<li>图片和文本自行选择</li>
+			<li>内容无需通过AJAX加载，默认就写在section里，只是视窗以下的内容暂时隐藏</li>
+		</ol>
+		<p>&lt;提示1&gt;：减小页面内容的宽度会让滚动条更早出现，而且变得更长，以便于测试效果。</p>
+		<p>&lt;提示2&gt;：“上浮”的效果可以先让未显示的元素的默认位置拥有一定垂直向下的“translateY”距离，并配合过渡或者动画来实现这个效果。</p>
 		<pre></pre>
 	</section>
 </root>
