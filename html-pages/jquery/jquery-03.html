@@ -137,10 +137,62 @@ positionTest.html("距离父级左边" + parseInt(positionNum.left) +
 	<section>
 		<h3>获取和设置元素滚动条位置</h3>
 		<p></p>
+<code class="ideCode-js">// 获取当前元素滚动条距离顶部的位置
+$("div.content").scrollTop();
+// 将当前元素滚动条的位置设置为距离顶部300像素的位置
+$("div.content").scrollTop(300);
+
+// 获取当前元素滚动条距离左边的位置
+$("div.content").scrollLeft();
+// 将当前元素滚动条的位置设置为距离左边300像素的位置
+$("div.content").scrollLeft(300);
+</code>
 	</section>
 	<section>
 		<h3>元素的盒子模型</h3>
 		<p></p>
+<code class="ideCode-js">// 获取当前元素的内容的宽度和高度
+$("div.content").width();
+$("div.content").height();
+
+// 将当前元素的内容宽度设置为480像素
+$("div.content").width(480);
+// 将当前元素的内容高度设置为320像素
+$("div.content").height(320);
+
+// 或将参数设置为字符串的形式
+$("div.content").width("480px");
+$("div.content").height("320px");
+</code>
+		<p></p>
+<code class="ideCode-js">// 获取当前元素内部的宽度和高度
+$("div.content").innerWidth();
+$("div.content").innerHeight();
+
+// 将当前元素内部的宽度设置为480像素
+$("div.content").innerWidth(480);
+// 将当前元素内部的高度设置为320像素
+$("div.content").innerHeight(320);
+
+// 或将参数设置为字符串的形式
+$("div.content").innerWidth("480px");
+$("div.content").innerHeight("320px");
+$("div.content").outerHeight("320px");
+</code>
+		<p></p>
+<code class="ideCode-js">// 获取当前元素整体的宽度和高度
+$("div.content").outerWidth();
+$("div.content").outerHeight();
+
+// 将当前元素整体的宽度设置为480像素
+$("div.content").outerWidth(480);
+// 将当前元素整体的高度设置为320像素
+$("div.content").outerHeight(320);
+
+// 或将参数设置为字符串的形式
+$("div.content").outerWidth("480px");
+$("div.content").outerHeight("320px");
+</code>
 	</section>
 	<!-- 章节练习 -->
 	<section class="unitPractice">
