@@ -1,29 +1,57 @@
 <root data-root="jQuery属性操作">
     <section class="mt0">
-    	<h3>获取属性</h3>
-    	<p></p>
+    	<h3>获取和设置属性</h3>
+    	<p>基本语法：</p>
+<code class="ideCode-js">// 获取元素的属性
+$("form input").attr("type");
+
+// 设置元素的属性
+$("form input").attr("type", "password");
+</code>
     </section>
     <section>
-    	<h3>设置属性</h3>
-    	<p></p>
+    	<h3>获取和设置状态属性</h3>
+		<p><em>状态属性</em>和之前的普通属性都是HTML标签上的属性，区别在于状态属性在HTML5规范里是没有值的，而在严格模式的XHTML中它的值和它自身相等。这类属性在表单元素内比较常见，如：checked、disabled、readonly等，另外还有HTML5规范中新增的hidden、data-*，这些属性都是可以不用设置值的。而HTML5规范中新增的draggable和spellcheck这两个需要设置true和false值的属性，他们同样也属于是状态属性。</p>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 获取元素的状态属性
+$("form input:checkbox").prop("checked");
+$("form input:text").prop("readonly");
+
+// 设置元素的状态属性
+$("form input:checkbox").prop("checked", true);
+$("form button").prop("disabled", false);
+</code>
+		<p>通过attr()方法也能设置状态属性，但是却不能切换状态（true和false之间切换），也就是说它可以让一个多选框被选中，却不能让它取消选中，所以要去做类似的状态切换操作需要用到prop()这个方法。</p>
     </section>
     <section>
-    	<h3>获取属性（状态）</h3>
-    	<p></p>
+    	<h3>移除属性和状态属性</h3>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 移除元素的属性
+$("div").removeAttr("style");
+
+// 移除元素的状态属性
+$("form input:checkbox").removeProp("disabled");
+</code>
     </section>
     <section>
-    	<h3>获取和设置元素滚动条位置</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>元素的盒子模型</h3>
-    	<p></p>
+    	<h3>添加和移除Class</h3>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 为元素添加Class
+$("nav ul a").addClass("active");
+
+// 移除元素的Class
+$("nav ul a").removeClass("active");
+</code>
+		<p>对于Class的操作，jQuery还提供了一个非常方便的方法，该方法的作用是，如果该元素含有参数内的Class则移除，否则添加参数内的Class，这样一来就可以省略掉一些条件判断，让代码的可读性和可维护性都更高。它基本语法如下：</p>
+<code class="ideCode-js">// 如果含有active这个Class则移除，否则添加这个Class
+$("nav ul a").toggleClass("active");
+</code>
     </section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 
