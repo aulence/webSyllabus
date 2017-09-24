@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			body {
+				height: 258px;
+			}
+			main > p {
+				color: #999999;
+			}
+			.family {
+				width: 360px;
+				padding: 0 20px;
+				border: 1px solid #aaa;
+				border-radius: 5px;
+			}
+			.family > p {
+				width: 320px;
+				padding: 20px;
+				margin: 20px 0;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				color: #2398fd;
+			}
+			#runAppendTo {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<p class="newItem">这是一个将被提取的段落</p>
+			<div class="family">
+				<p class="oldItem">热烈欢迎新的段落元素加入！</p>
+			</div>
+			<button id="runAppendTo" class="normal" type="button">执行操作</button>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 点击按钮后将DIV外面的P标签加进来
+			$("#runAppendTo").on("click", function () {
+				$("p.newItem").appendTo(".family");
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+

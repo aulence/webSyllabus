@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" href="http://aulence.com/img/other/favicon.ico">
+		<link rel="Bookmark" href="ittp://aulence.com/img/other/favicon.ico">
+		<title>代码示例</title>
+		<link rel="stylesheet" href="../../../css/iframe.min.css">
+		<style>
+			.incrementBox {
+				width: 100px;
+				height: 100px;
+				background-color: #8078ff;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<!-- 自增盒子 -->
+			<div class="incrementBox"></div>
+			<button class="increaseWidth normal" type="button">增加宽度</button>
+		</main>
+
+		<script src="../../../plugin/jquery.min.js"></script>
+		<script src="../../../js/iframe.min.js"></script>
+		<script>
+			// 每点击一次按钮，元素的宽度加10像素，直到元素宽度大于400后停止
+			$(".increaseWidth").click(function () {
+				$(".incrementBox").width(function (index, currentWidth) {
+					if(currentWidth < 400) {
+						return currentWidth + 10;
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
