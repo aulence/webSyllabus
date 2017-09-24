@@ -9,46 +9,43 @@
 		<link rel="stylesheet" href="../../../css/iframe.min.css">
 		<style>
 			body {
-				height: 258px;
+				height: 164px;
 			}
-			main > p {
-				color: #999999;
-			}
-			.family {
-				width: 360px;
-				padding: 0 20px;
-				border: 1px solid #aaa;
-				border-radius: 5px;
-			}
-			.family > p {
-				width: 320px;
-				padding: 20px;
-				margin: 20px 0;
-				border: 1px solid #ddd;
-				border-radius: 5px;
-				color: #2398fd;
-			}
-			#runAppendTo {
-				margin-top: 20px;
+			#box > p {
+				width: 250px; height: 160px;
+				padding: 0;
+				margin: 0;
+				background-color: #eee;
+				border: 1px solid #999;
+				text-align: center;
+				line-height: 160px;
+				transition: width 0.3s;
 			}
 		</style>
 	</head>
 	<body>
 		<main>
-			<p class="newItem">这是一个将被提取的段落</p>
-			<div class="family">
-				<p class="oldItem">热烈欢迎新的段落元素加入！</p>
-			</div>
-			<button id="runAppendTo" class="normal" type="button">执行操作</button>
+			<div id="box"></div>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 点击按钮后将DIV外面的P标签加进来
-			$("#runAppendTo").on("click", function () {
-				$("p.newItem").appendTo(".family");
-			});
+			// 将一个新的P标签进行一些列的事件绑定，然后添加DIV内
+			$("<p>默认的文本内容</p>").on({
+				click: function () {
+					// 元素的宽度变为500（原来为250）
+					$(this).css("width", "500px");
+				},
+				mouseenter: function () {
+					// 添加文本
+					$(this).text("请用鼠标点击该元素");
+				},
+				mouseleave: function () {
+					// 清空文本
+					$(this).text("");
+				}
+			}).appendTo("#box");
 		</script>
 	</body>
 </html>

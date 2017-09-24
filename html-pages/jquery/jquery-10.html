@@ -1,25 +1,127 @@
 <root data-root="jQuery工具函数">
     <section class="mt0">
     	<h3>$.extend()</h3>
-    	<p></p>
+    	<p>扩展对象，相当于是合并对象，但是和ES6新增的合并对象的assign方法相比，它会改变原对象。</p>
+    </section>
+    <section>
+    	<h3>$.trim()</h3>
+    	<p>去掉字符串两端的空白，和ES5新增的trim方法功能一致。</p>
     </section>
     <section>
     	<h3>$.grep()</h3>
-    	<p></p>
-    </section>
+    	<p>过滤数组方法，该方法接受三个参数，第一参数为需要过滤的数组，第二个参数是一个函数，第三个参数为一个布尔值。</p>
+		<p>第二个参数的函数带有两个参数，和JavaScript的很多数组方法一样，第一个表示遍历到的当前数组项，第二个参数表示当前数组项的索引，这个函数会返回布尔为true的结果为一个新数组。</p>
+		<p>第三个参数默认为false，可以缺省，如果值为true的话，则对结果取反，即返回遍历中每一次结果为false的元素。</p>
+<code class="ideCode-js">// 定义一个数组
+var arr = [ "拉布拉多犬", "秋田犬", "边境牧羊犬", "暹罗猫", "咖菲猫", "英短蓝猫" ];
+
+// 遍历出满足条件的数组
+$.grep( arr, function(item, index){
+	return /犬/.test(item);
+});
+
+// 返回结果
+[ "拉布拉多犬", "秋田犬", "边境牧羊犬" ]
+
+// 遍历出不满足条件的数组
+$.grep( arr, function(item, index){
+return /犬/.test(item);
+}, true);
+
+// 返回
+[ "暹罗猫", "咖菲猫", "英短蓝猫" ]
+</code>
+</section>
     <section>
     	<h3>$.when()</h3>
-    	<p></p>
+    	<p>该方法会让参数内的代码有序的执行，并且会将要执行的代码延迟到代码运行的最后去执行。我们通过一个实例来说明这个问题.</p>
+		<p>首先定义两个对象，并设置好它们的方法，然后再按两种方式来运行代码，会得到不太一样的结果：</p>
+<code class="ideCode-js">var first = {
+	fn: function () {
+		console.log(1);
+	}
+};
+var second = {
+	fn: function () {
+		console.log(2);
+	}
+};
+
+// 正常的执行流程
+first.fn();
+second.fn();
+console.log(3);
+console.log(4);
+
+// 控制台按顺序返回结果
+1
+2
+3
+4
+
+// 通过when方法回调延时的执行流程
+$.when(first,second).then(function () {
+	second.fn();
+	first.fn();
+});
+console.log(3);
+console.log(4);
+
+// 控制台会返回这样的结果
+3
+4
+2
+1
+</code>
+		<p>这个方法在帮助我们处理一些需要异步回调执行的功能的时候非常有帮助。</p>
     </section>
     <section>
     	<h3>$.each()</h3>
-    	<p></p>
+    	<p>该方法和JavaScript里面的forEach方法比较相似，但JavaScript里的forEach方法只能遍历数组，而jQuery里的each方法还可以变量。它有两种不同的表示写法：</p>
+<code class="ideCode-js">// 用工具方法的形式（数组）
+$.each(
+	[ 1, 3, 5, 7 ],
+	function(index, item) {
+		console.log(index + "：" + item);
+	}
+);
+
+// 用工具方法的形式（对象）
+$.each(
+	{
+		name: "aulence",
+		profession: "Web前端工程师"
+	},
+	function(key, val) {
+		console.log(key + "：" + val);;
+	}
+);
+
+// 将each作为方法来使用的时候
+$("ul li").each(function(index, item) {
+	// 为将当前元素的文本设置为它的索引值
+	$(item).text(index);
+});
+
+// 用工具方法的形式来实现和上面一样的效果
+$.each(
+	$("ul li"),
+	function(index, item) {
+		$(item).text(index);
+	}
+);
+</code>
+		<p>这两个表示法在绝大多数时候都能实现相同的目的，具体使用哪种就仁者见仁了。</p>
     </section>
+	<section>
+		<h3>其它工具函数</h3>
+		<p>jQuery的工具方法当然还不止这些，由于篇幅有限，很多方法并没有列出来，但是很多方法也存在兼容性的问题，并不是所有浏览器都能使用，如果需要进一步了解jQuery的其它工具方法可以自行搜索相关资料。</p>
+	</section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 

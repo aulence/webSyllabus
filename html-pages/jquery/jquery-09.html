@@ -1,17 +1,72 @@
 <root data-root="自定义的方法和函数">
     <section class="mt0">
-    	<h3>自定义jQuery方法</h3>
-    	<p></p>
+		<h3>自定义data数据</h3>
+		<p></p>
     </section>
     <section>
-    	<h3>自定义jQuery函数</h3>
-    	<p></p>
+    	<h3>扩展jQuery工具方法</h3>
+    	<p>工具方法就是不需要jQuery选择器对元素进行选择，而直接就可以使用的方法，如下：</p>
+<code class="ideCode-js">// 扩展出求最大值和最小值的两个工具方法
+$.extend({
+	// 求最小值
+	min: function(param) {
+		// 将参数类似数组转换为真正的数组
+		var parArr = Array.from(arguments);
+		var minVal = Math.min(...parArr);
+		return minVal;
+	},
+	// 求最大值
+	max: function(a, b) {
+		var parArr = Array.from(arguments);
+		var maxVal = Math.max(...parArr);
+		return maxVal;
+	}
+});
+
+// 使用语法
+
+$.min(31, 6, 82, 99, 55);
+// 返回结果：6
+
+$.max(31, 6, 82, 99, 55);
+// 返回结果：99
+</code>
+		<p>常用的内置jQuery工具方法会在下一章讲解。</p>
+    </section>
+    <section>
+		<h3>自定义jQuery方法</h3>
+		<p>jQuery的自定义方法和JavaScript设置原型链的方法非常类似。如下：</p>
+<code class="ideCode-js">// 扩展自定义jQuery方法
+$.fn.extend({
+	// 元素固定定位的居中显示
+	centered: function () {
+		$(this).css({
+			position: "fixed",
+			left: "50%",
+			top: "50%",
+			transform: "translate(-50%, -50%)",
+			zIndex: 100
+		});
+	},
+	// 禁用表单元素
+	disable: function () {
+		$(this).prop("disabled", true).css({
+			backgroundColor: "#eee",
+			cursor: "not-allowed"
+		});
+	}
+});
+
+// 使用语法
+$("div.pupupBox").centered();
+$("div.pupupBox").disable();
+</code>
     </section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 

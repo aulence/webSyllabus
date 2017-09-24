@@ -17,7 +17,11 @@
     </section>
     <section>
     	<h3>delay</h3>
-    	<p></p>
+    	<p>该方法会让“动画效果链”有间隔的相继执行，像这样：</p>
+<code class="ideCode-js">// 让信息通过300毫秒“淡入”，保持显示2秒后再通过300毫秒“淡出”
+$('div.info').fadeIn(300).delay(2000).fadeOut(300);
+</code>
+		<p>可以利用这个方法来实现一些页面内简短的提示信息。</p>
     </section>
     <section>
     	<h3>animate</h3>
@@ -25,21 +29,47 @@
     </section>
     <section>
     	<h3>stop和finish</h3>
-    	<p></p>
+    	<p>stop方法会停止指定元素的动画，元素会保留当前样式的状态。jQuery并没有提供继续“播放”动画的方法，因为只要再次执行之前触发这个动画的事件就能达到继续播放动画的目的。</p>
+    	<p>finish方法会直接结束指定元素的动画，元素会直接变成动画执行完成之后的状态。</p>
     </section>
     <section>
     	<h3>$.fx.off</h3>
-    	<p></p>
+    	<p>将该属性的值设置为true的时候，页面内所有的动画效果都会被关闭，但动画方法animate内设置的CSS效果仍然会生效，只是不会产生过渡效果而已。如果你的动画影响了用户体验，可以对该属性进行设置。</p>
     </section>
     <section>
     	<h3>动画事件队列</h3>
-    	<p></p>
+    	<p>每个本章中每个动画效果元素，都可以通过给该方法的参数列表最后添加一个函数来实现动画事件队列，让后续的需要执行的语句不是马上执行，而是在动画执行完毕后才执行。</p>
+		<p>像这样：</p>
+<code class="ideCode-js">// 元素刚准备执行淡出动画就被移除，用户看不到这个淡出效果
+$(".mesgBox").fadeOut(600);
+$(".mesgBox").remve();
+
+// 待600毫秒的动画执行完毕之后再移除该元素
+$(".mesgBox").fadeOut(600, function() {
+	$(this).remve();
+});
+</code>
+		<p>可以使用事件队列回调函数的方法有：</p>
+		<ul class="indent">
+			<li>show</li>
+			<li>hide</li>
+			<li>toggle</li>
+			<li>fadeIn</li>
+			<li>fadeOut</li>
+			<li>fadeTo</li>
+			<li>slideUp</li>
+			<li>slideToggle</li>
+			<li>slideDown</li>
+			<li>slideUp</li>
+			<li>slideToggle</li>
+			<li>animate</li>
+		</ul>
     </section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 

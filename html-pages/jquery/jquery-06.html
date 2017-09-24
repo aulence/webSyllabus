@@ -1,81 +1,133 @@
 <root data-root="jQuery事件">
     <section class="mt0">
-    	<h3>ready</h3>
+    	<h3>页面加载完成后执行事件ready</h3>
+    	<p>将任意jQuery语句放置于该方法内，可以让方法内的语句在页面载入完成后执行，该方法区别于JavaScript的“window.onload”事件。因为页面加载共分为四个阶段：</p>
+		<ul class="indent">
+			<li>1、页面尚未开始加载</li>
+			<li>2、页面加载中</li>
+			<li>3、页面DOM内容载入完成，但图片等资源尚未加载</li>
+			<li>4、所有页面内容载入完成（但不包含音频和视频等文件）</li>
+		</ul>
+		<p>“window.onload”事件内执行的代码是在以上的第四个阶段完成后执行，而jQuery document的ready方法是在第三个阶段完成后就开始执行，它相当于是DOM里document里的“readyState”的值为“interactive”的时候，或是document的监听函数“DOMContentLoaded”开始执行时，这样会让代码更早的执行，让界面可以与用户更早的交互，而无需让用户去等待“漫长”的图片资源加载完成。</p>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 原本的写法
+$(document).ready(function() {
+	// 页面加载完成后需要执行的代码
+});
+
+// 简写
+$(function() {
+	// ...
+});
+</code>
+    </section>
+    <section>
+    	<h3>鼠标点击事件click</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>click</h3>
+    	<h3>鼠标双击事件dblclick</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>dblclick</h3>
+    	<h3>鼠标悬浮事件hover</h3>
+    	<p>该事件的需要带两个参数，而这两个参数都是一个匿名函数。第一个函数表示鼠标移入需要执行的事件，第二个函数表示鼠标移开时需要执行的事件。</p>
+		<p>另外需要说明的是，这两个函数内的this（应该写作“$(this)”）仍然是指向当前选择器匹配的元素的。</p>
+    </section>
+    <section>
+    	<h3>鼠标按下mousedown和鼠标松开mouseup</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>hover</h3>
+    	<h3>鼠标移入mouseover和mouseenter</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>mousedown和mouseup</h3>
+    	<h3>鼠标移出mouseout和mouseleave</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>mouseover和mouseenter</h3>
+    	<h3>键盘事件keydown、keyup和keypress</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>mouseout和mouseleave</h3>
+    	<h3>窗口缩放事件resize</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>keydown、keyup和keypress</h3>
+    	<h3>滚动条事件scroll</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>resize</h3>
+    	<h3>获得焦点事件focus和focusin</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>scroll</h3>
+    	<h3>失去焦点事件blur和focusout</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>focus和focusin</h3>
+    	<h3>表单元素值改变事件change</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>blur和focusout</h3>
+    	<h3>下拉菜单选择事件select</h3>
     	<p></p>
     </section>
     <section>
-    	<h3>change</h3>
+    	<h3>表单提交事件submit</h3>
     	<p></p>
     </section>
+	<section>
+		<h3>只执行一次的事件one</h3>
+		<p></p>
+	</section>
+	<section>
+		<h3>绑定和解绑事件on和off</h3>
+		<p></p>
+	</section>
     <section>
-    	<h3>select</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>submit</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>on和off</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>one</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>trigger和triggerHandler</h3>
-    	<p></p>
-    </section>
+		<h3>事件触发器trigger和triggerHandler</h3>
+		<p>trigger触发当前元素指定的事件。</p>
+		<p>triggerHandler触发当前元素指定的事件，但不会执行浏览器默认动作，也不会产生事件冒泡。</p>
+	</section>
+	<section>
+		<h3>绑定具有命名空间的事件</h3>
+		<p>在使用on方法进行事件绑定时，还可以添加事件的<em>命名空间</em>，方便触发器精确的触发这类事件中的指定事件函数（可以是一个，也可以是一类）。像这样：</p>
+<code class="ideCode-js special">// 将该元素的字体颜色设置为绿色
+$("#ele").on("click.font.color",function (e) {
+	$(this).css("color", "#0f0");
+});
+
+// 将该元素的字体大小设置为36像素
+$("#ele").on("click.font.size",function (e) {
+	$(this).css("font-size", "36px");
+});
+
+// 将该元素的背景色设置为暗黑色
+$("#ele").on("click.background.color",function (e) {
+	$(this).css("backgroundColor", "#333");
+});
+
+// 触发这个元素的所有点击事件
+$("#ele").trigger("click");
+
+// 触发这个元素的改变“字体”部分的事件
+$("#ele").trigger("click.font");
+
+// 触发这个元素的改变“字体大小”部分的事件
+$("#ele").trigger("click.font.size");
+
+// 触发这个元素的改变“背景”部分的事件
+$("#ele").trigger("click.background");
+</code>
+		<p>但是如果触发的事件是用户触发的，那该元素上绑定的所有同名事情会全部正常依次执行。</p>
+	</section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 

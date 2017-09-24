@@ -8,31 +8,46 @@
 		<title>代码示例</title>
 		<link rel="stylesheet" href="../../../css/iframe.min.css">
 		<style>
-			.incrementBox {
-				width: 100px;
-				height: 100px;
-				background-color: #8078ff;
-				margin-bottom: 20px;
+			body {
+				height: 258px;
+			}
+			main > p {
+				color: #999999;
+			}
+			.family {
+				width: 360px;
+				padding: 0 20px;
+				border: 1px solid #aaa;
+				border-radius: 5px;
+			}
+			.family > p {
+				width: 320px;
+				padding: 20px;
+				margin: 20px 0;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				color: #2398fd;
+			}
+			#runAppendTo {
+				margin-top: 20px;
 			}
 		</style>
 	</head>
 	<body>
 		<main>
-			<!-- 自增盒子 -->
-			<div class="incrementBox"></div>
-			<button class="increaseWidth normal" type="button">增加宽度</button>
+			<p class="newItem">这是一个将被提取的段落</p>
+			<div class="family">
+				<p class="oldItem">热烈欢迎新的段落元素加入！</p>
+			</div>
+			<button id="runAppendTo" class="normal" type="button">执行操作</button>
 		</main>
 
 		<script src="../../../plugin/jquery.min.js"></script>
 		<script src="../../../js/iframe.min.js"></script>
 		<script>
-			// 每点击一次按钮，元素的宽度加10像素，直到元素宽度大于400后停止
-			$(".increaseWidth").click(function () {
-				$(".incrementBox").width(function (index, currentWidth) {
-					if(currentWidth < 400) {
-						return currentWidth + 10;
-					}
-				});
+			// 点击按钮后将DIV外面的P标签加进来
+			$("#runAppendTo").on("click", function () {
+				$("p.newItem").appendTo(".family");
 			});
 		</script>
 	</body>

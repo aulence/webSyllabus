@@ -1,57 +1,199 @@
 <root data-root="jQuery文档处理">
     <section class="mt0">
-    	<h3>text</h3>
-    	<p></p>
+		<h3>获取和设置元素文本</h3>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 获取元素内的文本内容
+$("article section p").text();
+
+// 将元素内的文本内容设置为指定字符串
+$("article section p").text("这是我要为当前元素设置的新文本内容");
+</code>
+		<p>该方法的参数可以是一个匿名函数，函数内带两个参数。和大部分的jQuery方法的参数为函数一样，这个函数的第一个参数表示当前jQuery对象在这个对象集合内的索引值，第二个参数表示原来的值（这里是原来的文本）。表示形式如下：</p>
+<code class="ideCode-js">// 为一个div元素添加一段文本
+$("div > p.fruit-list").text("这是：");
+
+// 定义一个水果数组（假设该数组是动态获取的）
+var fruitList = [ "蓝莓", "草莓", "蔓越莓", "梅西", "杨梅", "青梅" ];
+
+// 将之前的元素再添加一段数组内的字符串
+$("div > p.fruit-list").text(function(index, oldVal) {
+return oldVal + fruitList[3] + "！";
+});
+
+// 这个元素的文本内容是：
+"这是：梅西！"
+</code>
     </section>
-    <section>
-    	<h3>html</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>prepend</h3>
-    	<p></p>
+	<section>
+		<h3>获取和设置元素HTML内容</h3>
+		<p>这个方法的基本语法和text()方法一致，只不过获取的是HTML内容（当然也包含文本），由于该方法在内部的操作过程比text()更长，而且实现的过程本身就比前者消耗的性能更多，所以，如果只是用于获取文本内容仍然还是使用text()最好，而只有当需要操作的jQuery对象的内容含有HTML标签的时候才使用html()方法。</p>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 获取元素内的HTML内容
+$("article section").html();
+
+// 设置元素内的HTML内容
+$("article section").text("&lt;p&gt;替换掉原有的HTML内容为这个P标签&lt;/p&gt;");
+</code>
+		<p>同样的，该方法的参数也能接受函数，函数的功能及参数与text()方法的一致（函数的第一个参数表示索引值，第二个参数表示原来的值）。</p>
+	</section>
+	<section>
+		<h3>获取和设置表单元素的值</h3>
+		<p>在我们以前学习JavaScript的时候就应该知道，对于表单元素而言无论是input标签还是以标签对呈现的button和textarea元素，要去获取到他们的值都是通过“value”属性去获取的，而在jQuery中，获取和设置表单元素的值都是通过val()方法。它的基本语法如下：</p>
+<code class="ideCode-js">// 获取表单元素的值
+$("form input").val();
+
+// 设置表单元素的值
+$("form input").val("aulence");
+</code>
+		<p>该方法的参数也能为一个函数，函数的功能及参数与text()方法的一致。</p>
+	</section>
+	<section>
+    	<h3>prepend方法</h3>
+		<p>该方法可以为当前元素的第一个子元素之前插入新元素，这个新元素可以的单个HTML标签，也可以是带有嵌套结构的HTML标签。它的作用类似于DOM里的insertBefore很相似，但却又简单很多。它的基本语法如下：</p>
+<code class="ideCode-js">// 获取表单元素的值
+$("table").prepend("&lt;thead&gt;&lt;tr&gt;&lt;td&gt;编号&lt;/td&gt;&lt;td&gt;名称&lt;/td&gt;&lt;td&gt;售价&lt;/td&gt;&lt;td&gt;操作&lt;/td&gt;&lt;/tr&gt;&lt;/thead&gt;");
+
+// 为增强代码的可读性，也可以行写成
+$("table").prepend(
+	"&lt;thead&gt;" +
+		"&lt;tr&gt;" +
+			"&lt;td&gt;编号&lt;/td&gt;" +
+			"&lt;td&gt;名称&lt;/td&gt;" +
+			"&lt;td&gt;售价&lt;/td&gt;" +
+			"&lt;td&gt;操作&lt;/td&gt;" +
+		"&lt;/tr&gt;" +
+	"&lt;/thead&gt;"
+);
+</code>
+		<p>当然如果会使用<em title="ECMAScript代码版本转换工具">Babel</em>的话，也可以直接使用ES6的“模版字符串”来作为该方法的参数，这会让代码的书写更简单，可读性更好。</p>
+		<p>该方法的参数同样能接受一个函数，该函数和本章之前的所有方法的参数都是一样的，第一位表示当前元素在这个集合内的索引，第二个参数表示原来的值。之后的append、before、after这三个方法的参数为函数时都是这样的，后面就不再赘述。</p>
     </section>
     <section class="mt0">
-    	<h3>append</h3>
-    	<p></p>
+    	<h3>append方法</h3>
+    	<p>该方法的语法结构和功能与prepend方法方法基本一样，不同的是，这个方法是向当前元素的最后一个子元素之后插入新的元素，这和被浏览器“标准化”的innerHTML属性的作用非常相似。</p>
     </section>
     <section>
-    	<h3>before</h3>
-    	<p></p>
+    	<h3>before方法</h3>
+    	<p>该方法不同于之前两节中的prepend和append方法，它们都是将元素插入到子元素列表内，这个方法是将元素插入到当前元素之前，但使用语法结构也没有什么区别。如下：</p>
+<code class="ideCode-js">// 在label标签的前方加上一段错误提示信息标签
+$("form div label:first").before("&lt;p class='erroMesg'&gt;对不起您输入的账号不正确，请重新输入&lt;/p&gt;");
+</code>
     </section>
     <section>
-    	<h3>after</h3>
-    	<p></p>
+    	<h3>after方法</h3>
+    	<p>该方法和before方法语法结构完全一致，不同的是该方法是向当前元素之后插入新的元素。</p>
     </section>
     <section>
-    	<h3>appendTo</h3>
-    	<p></p>
+    	<h3>appendTo方法</h3>
+    	<p>该方法和DOM里的appendChild方法有些相似，它拥有“提取节点”的作用，可以将一个节点提取到另外一个节点内。我们可以来看这样一个例子：</p>
+		<p>HTML代码：</p>
+<code class="ideCode-html"><p class="newItem">这是一个将被提取的段落</p>
+<div class="family">
+	<p class="oldItem">热烈欢迎新的段落元素加入！</p>
+</div>
+<button id="runAppendTo" class="normal" type="button">执行操作</button>
+</code>
+		<p>jQuery代码：</p>
+<code class="ideCode-js">// 点击按钮后将DIV外面的P标签加进来
+$("#runAppendTo").on("click", function () {
+	$("p.newItem").appendTo(".family");
+});
+</code>
+		<h4><a href="html-pages/jquery/codeEffect/code-024.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-024.html" ></iframe>
+		<p>其实这个方法还有一种和DOM里先通过createElement方法创建一个元素，然后经过一些列的属性或方法的设置后再使用appendChild方法添加进指定元素的用法，如下例：</p>
+		<p>HTML代码：</p>
+<code class="ideCode-html"><!--只有一个空的div标签-->
+<div id="box"></div>
+</code>
+		<p>动态生成的P标签的CSS样式已经预定义好，jQuery代码如下：</p>
+<code class="ideCode-js">// 将一个新的P标签进行一些列的事件绑定，然后添加DIV内
+$("&lt;p&gt;默认的文本内容&lt;/p&gt;").on({
+	click: function () {
+		// 点击后元素的宽度变为500（原来为250）
+		$(this).css("width", "500px");
+	},
+	mouseenter: function () {
+		// 鼠标移进来添加文本
+		$(this).text("请用鼠标点击该元素");
+	},
+	mouseleave: function () {
+		// 鼠标移出清空文本
+		$(this).text("");
+	}
+}).appendTo("#box");
+</code>
+		<h4><a href="html-pages/jquery/codeEffect/code-025.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-025.html" ></iframe>
+		<p>利用这样的方式来创建一些带各种功能的元素将是一个不错的选择，而且这样做就无需用事件代理来处理这个在页面载入之初并不存在于HTML内的元素的事件了。</p>
     </section>
     <section>
-    	<h3>wrap</h3>
-    	<p></p>
+    	<h3>wrap方法</h3>
+    	<p>该方法是为当前元素嵌套上一个父级元素。基本语法如下：</p>
+<code class="ideCode-js">// 为P标签嵌套上一个DIV标签
+$("p").wrap("&lt;div class='wrap'&gt;&lt;/div&gt;");
+</code>
     </section>
     <section>
-    	<h3>unwrap</h3>
-    	<p></p>
+    	<h3>unwrap方法</h3>
+    	<p>移除当前元素的父级元素（解除元素嵌套），该方法不需要带参数，因为每个元素的父级元素是唯一的，这和当前元素的父级元素是什么标签和带有什么属性都没有关系。基本语法如下：</p>
+<code class="ideCode-js">// 移除掉P标签的父级DIV标签
+$("p").unwrap();
+</code>
+		<p>也就是相当于这样：</p>
+<code class="ideCode-html"><!-- 原来的HTML元素 -->
+	<div>
+		<p>HTML</p>
+		<p>CSS</p>
+		<p>JavaScript</p>
+	</div>
+
+	<!-- 在使用了unwrap方法后会变成这样 -->
+	<p>HTML</p>
+	<p>CSS</p>
+	<p>JavaScript</p>
+</code>
     </section>
     <section>
-    	<h3>wrapAll</h3>
-    	<p></p>
+    	<h3>wrapAll方法</h3>
+    	<p>该方法同样是用于为指定元素嵌套标签，但它和wrap方法的区别在于，wrap方法会给选择器匹配的每一个元素都嵌套上设定的标签，而wrapAll会为选择器匹配的集合整体嵌套上一个标签。通过以下HTML代码的变动可能会更好理解：</p>
+<code class="ideCode-html"><!-- 这是原来的标签 -->
+<p>HTML</p>
+<p>CSS</p>
+<p>JavaScript</p>
+
+<!-- 在使用了wrap方法之后 -->
+<div>
+	<p>HTML</p>
+</div>
+<div>
+	<p>CSS</p>
+</div>
+<div>
+	<p>JavaScript</p>
+</div>
+
+<!-- 而在使用了wrapAll方法之后 -->
+<div>
+	<p>HTML</p>
+	<p>CSS</p>
+	<p>JavaScript</p>
+</div>
+</code>
     </section>
     <section>
-    	<h3>remove</h3>
-    	<p></p>
+    	<h3>remove方法</h3>
+    	<p>该方法可以移除掉匹配的jQuery元素对象，和DOM中的使用方式和功能remove()完全一样。我们只需要了解他们只是内部实现有差别，一个是移除Element对象，一个是移除jQuery对象而已。</p>
     </section>
     <section>
-    	<h3>clone</h3>
-    	<p></p>
+    	<h3>clone方法</h3>
+    	<p>该方法和DOM里的clone方法的使用和功能也是一样的，都是去克隆指定元素。但需要注意的是该方法会默认有一个“false”作为参数，它表示不会去克隆该元素的事件绑定，而当将它的参数设置为“true”时，会连同该元素的事件绑定一起被克隆。</p>
     </section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 

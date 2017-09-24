@@ -1,69 +1,76 @@
 <root data-root="jQuery事件对象">
     <section class="mt0">
     	<h3>event.currentTarget</h3>
-    	<p></p>
+    	<p>在事件冒泡阶段中的当前DOM元素。通俗点讲就是该属性总是返回最开始绑定事件的那个jQuery对象元素，结果是一个Element对象。若要让当前对象可以使用jQuery方法需要写成“$(event.currentTarget)”的形式，凡是返回结果为一个Element对象的形式都可以通过这种方式转换为jQuery对象，让它可以使用jQuery的方法，后面就不在赘述。</p>
     </section>
     <section>
     	<h3>event.target</h3>
-    	<p></p>
+    	<p>触发这次事件的具体元素，结果是一个Element对象。</p>
     </section>
     <section>
     	<h3>event.data</h3>
-    	<p></p>
+    	<p>预先通过data属性设置在该元素上的数据</p>
     </section>
     <section>
     	<h3>event.preventDefault()</h3>
-    	<p></p>
+    	<p>阻止该元素的默认事件，和JavaScript内的同名方法功能相同。如：超链接的跳转事件、表单获得失去焦点事件、type属性为“submit”的按钮提交事件等</p>
     </section>
     <section>
     	<h3>event.isDefaultPrevented()</h3>
-    	<p></p>
+    	<p>该方法返回一个布尔值，true表示选择的元素使用过阻止默认事件的“preventDefault”方法，false则表示没有使用过。</p>
     </section>
-    <section>
-    	<h3>event.stopImmediatePropagation()</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>event.isImmediatePropagationStopped()</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>event.stopPropagation()</h3>
-    	<p></p>
-    </section>
-    <section>
-    	<h3>event.isPropagationStopped()</h3>
-    	<p></p>
-    </section>
+	<section>
+		<h3>event.stopPropagation()</h3>
+		<p>阻止事件冒泡，和JavaScript内的同名方法功能相同。如，现有一个这样的结构：</p>
+<code class="ideCode-html"><div>
+	<span>文本按钮</span>
+</div>
+</code>
+		<p>DIV标签上绑定了一个点击之后会将字体大小变成“36px”，而SPAN标签被点击之后会将字体颜色变成蓝色，当点击SPAN之后设置字体大小和改变字体颜色的代码都会生效。这样的的现象叫做“事件冒泡”，这是我们之前学习过的JavaScript的“事件传播机制”里讲解过的内容。</p>
+		<p>如果只想触发SPAN的点击事件而触发DIV的，那就需要在SPAN的点击事件内任意行（通常建议是第一行）加上该方法，这样一来事件都没有办法向上传播（事件冒泡），DIV的点击事件就不会被触发了。</p>
+	</section>
+	<section>
+		<h3>event.isPropagationStopped()</h3>
+		<p>该方法返回一个布尔值，true表示选择的元素使用过“stopPropagation”方法，false则表示没有使用过。</p>
+	</section>
+	<section>
+		<h3>event.stopImmediatePropagation()</h3>
+		<p>该方法可以阻止剩余的事件处理函数执行并且防止事件冒泡到DOM树上。和阻止事件冒泡的“stopPropagation”方法相比，这个方法只是多了一阻止剩余事件执行的功能，并没有其它语法结构和使用上的区别。</p>
+		<p>需要注意的是，这里的阻止剩余事件函数的执行不是指当前事件，而是当前元素后续绑定的其它事件。也就是说只要是比当前事件后执行的事件都会被阻止包括同名事件（jQuery绑定的事件会像JavaScirpt的addEventListener方法那样，它并不会去覆盖同名事件）。</p>
+	</section>
+	<section>
+		<h3>event.isImmediatePropagationStopped()</h3>
+		<p>该方法返回一个布尔值，true表示选择的元素使用过“stopImmediatePropagation”方法，false则表示没有使用过。</p>
+	</section>
     <section>
     	<h3>event.namespace</h3>
-    	<p></p>
+    	<p>该属性返回事件所在的命名空间。该属性只有在使用触发器时才能返回正确的结果，如果是用户事件触发的，则返回的结果为undefined。</p>
     </section>
     <section>
     	<h3>event.pageX和event.pageY</h3>
-    	<p></p>
+    	<p>这两个属性返回鼠标事件触发时鼠标指针相对于当前文档的位置。pageX表示鼠标指针相对于页面文档左侧的位置，而pageY表示鼠标指针相对于页面文档顶部的位置。</p>
     </section>
     <section>
     	<h3>event.relatedTarget</h3>
-    	<p></p>
+    	<p>在会产生冒泡的事件中（如mouseover和mouseout），该属性会返回所涉及到的Element对象。如在执行mouseover事件时，该方法会返回被离开的Element元素，在执行mouseout是会返回被进入的Element元素</p>
     </section>
     <section>
     	<h3>event.timeStamp</h3>
-    	<p></p>
+    	<p>该属性返回事件触发时距离1970年1月1日的毫秒数。利用该属性，我们可以判断出用户在界面中触发某些事件的先后顺序，从而利用这个来进一步提升用户体验。</p>
     </section>
     <section>
     	<h3>event.type</h3>
-    	<p></p>
+    	<p>该属性返回这次事件的类型（如：是“click”、“mouseenter”还是“keydown”）。该属性的用例是当多个事件都是由一个on方法统一绑定的时候，用于判断这次事件函数执行的具体事件类型。</p>
     </section>
     <section>
     	<h3>event.which</h3>
-    	<p></p>
+    	<p>该属性返回键盘触发的键值是多少，它统一了原来JavaScript中keyCode和charCode两个值，从而处理了浏览器的兼容性。但仍然需要注意的是keypress和keydown/keyup事件返回的值除了主键盘区的数字以外，其它字符和字母仍然是不一样的值。</p>
     </section>
 	<!-- 章节练习 -->
-	<section class="unitPractice">
+	<!--<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
 		<pre></pre>
-	</section>
+	</section>-->
 </root>
 
 
