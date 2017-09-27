@@ -1,0 +1,213 @@
+/**
+ * 功能：Gulp browser-sync
+ * 日期：2017/6/11
+**/
+// 变量定义部分
+@baseFont: normal 16px "微软雅黑";
+@min-width: 1200px;
+@themeBgColor-dark: #3d3d3d;
+@themeBgColor-green:#69bf2a;
+@themeColor: #dafeda;
+
+// 定义混合部分
+.center-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+.label-alpha {
+    @height: 60px;
+    width: 360px;
+    height: @height;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAA8CAYAAABLjSCAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkRFNzg3NjVERDdDMDExRTZBMTJERThEN0I5NTlCMUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkRFNzg3NjVFRDdDMDExRTZBMTJERThEN0I5NTlCMUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REU3ODc2NUJEN0MwMTFFNkExMkRFOEQ3Qjk1OUIxQUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6REU3ODc2NUNEN0MwMTFFNkExMkRFOEQ3Qjk1OUIxQUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6zlK6jAAABPklEQVR42uzUsQ2AQAwEQSPqoSBom4b4MlbPjHS55WCPmXnW7gEg5Vx71461yzsAWoEekQboBlqkAcKBFmmAcKBFGiAcaJEGCAdapAHCgRZpgHCgRRogHGiRBggHWqQBwoEWaYBwoEUaIBxokQYIB1qkAcKBFmmAcKBFGiAcaJEGCAdapAHCgRZpgHCgRRogHGiRBggHWqQBwoEWaYBwoEUaIBxokQYIB1qkAcKBFmmAcKBFGiAcaJEGCAdapAHCgRZpgHCgRRogHGiRBggHWqQBwoEWaYBwoEUaIBxokQYIB1qkAYGO3yfSgECLNIBAizTARoEWaUCgRRpAoEUaYLNAizQg0CININAiDbBZoEUaEGiRBhBokQbYLNAiDQi0SAMItEgDAi3SAAIt0gACLdKAQIs0gECLNPAPnwADAOItPKF1HomIAAAAAElFTkSuQmCC") no-repeat;
+    text-align: center;
+    line-height: @height;
+    position: absolute;
+    top: 50%; right: 0;
+    transform: translate(0, -50%);
+    a {
+        text-decoration: none;
+        font-size: 28px;
+        color: #ffffff;
+        cursor: pointer;
+        &:hover {
+            color: @themeColor;
+        }
+        &:active {
+            color: #ffffff;
+        }
+    }
+}
+
+// 细节样式部分
+* {
+    box-sizing: border-box;
+}
+html,body {
+    padding: 0;
+    margin: 0;
+}
+html {
+    body {
+        background: @themeBgColor-dark url("data:image/gif;base64,R0lGODlhCAAIAJEAAEVFRUlJST09PQAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNyAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjRFQUVCQkQ0RUExMTFFN0IxMjRGQkQxQzk3NkIxRUYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjRFQUVCQkU0RUExMTFFN0IxMjRGQkQxQzk3NkIxRUYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNEVBRUJCQjRFQTExMUU3QjEyNEZCRDFDOTc2QjFFRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyNEVBRUJCQzRFQTExMUU3QjEyNEZCRDFDOTc2QjFFRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAIAAgAAAIPlGAWl7KYVnOTTmkQZhsWADs=") repeat;
+        font: @baseFont;
+        color: @themeColor;
+        padding-bottom: 120px;
+    }
+}
+header {
+    background-color: @themeBgColor-dark;
+    padding-bottom: 6px;
+    border-bottom: 4px solid @themeBgColor-green;
+    .logo {
+        @header-height: 60px;
+        width: 100%;
+        height: @header-height;
+        min-width: @min-width;
+        i {
+            width: 256px; height: @header-height;
+            background: #3d3d3d url("../../img/kawasaki-logo.jpg") no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        & > .tel {
+            height: @header-height;
+            padding-right: 20px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font: normal 18px "微软雅黑";
+            line-height: @header-height;
+            color: @themeColor;
+        }
+    }
+    nav {
+        @height: 40px;
+        width: 100%;
+        min-width: @min-width;
+        padding: 10px 0;
+        height: @height;
+        border-bottom: 2px solid @themeBgColor-green;
+        overflow: hidden;
+        .center-block {
+            width: @min-width;
+            a {
+                padding: 0 16px;
+                border-right: 1px solid @themeColor;
+                text-decoration: none;
+                line-height: 20px;
+                color: @themeColor;
+                cursor: pointer;
+                display: block;
+                float: left;
+                &:last-child {
+                    border-right: none;
+                }
+                &:hover {
+                    text-decoration: underline;
+                    color: #ffffff;
+                }
+                &:active {
+                    text-decoration: underline;
+                    color: darken(@themeColor, 6%);
+                }
+            }
+        }
+    }
+}
+.banner {
+    width: 100%;
+    height: 512px;
+    background: lighten(@themeBgColor-dark,6%) url("../../img/kawasaki-bg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-bottom: 2px solid @themeBgColor-green;
+    overflow: hidden;
+    .showBannerImg {
+        width: @min-width;
+        height: 100%;
+        background-color: @themeBgColor-dark;
+        .center-block;
+        position: relative;
+        animation: greenLight 2s alternate ease-in infinite;
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 1.2s;
+        }
+        .show {
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+}
+
+.content {
+    width: @min-width;
+    margin: 30px auto 20px;
+    .picture {
+        img {
+            width: 100%;
+        }
+        position: relative;
+    }
+    .group-img {
+        margin-top: 30px;
+        overflow: hidden;
+        .group-img-block {
+            width: 33%;
+            margin-right: 0.33333333%;
+            margin-bottom: 4px;
+            float: left;
+            position: relative;
+            transition: all 0.1s ease-in;
+            &:hover {
+                transform: scale(1.02);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+                z-index: 2;
+            }
+            :nth-child(3n) {
+                margin-right: 0;
+            }
+            img {
+                width: 100%;
+                display: block;
+            }
+            a {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                text-align: center;
+                text-decoration: none;
+                font-size: 28px;
+                color: #ffffff;
+                line-height: 230px;
+                position: absolute;
+                z-index: 1;
+                transition: all 0.3s ease-in;
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0);
+                    text-decoration: underline;
+                    color: @themeColor;
+                }
+                &:active {
+                    background-color: rgba(0, 0, 0, 0.2);
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+@keyframes greenLight {
+    0% {
+        box-shadow: 0 0 320px darken(@themeBgColor-green, 20%);
+    }
+    100% {
+        box-shadow: 0 0 320px lighten(@themeBgColor-green, 20%);
+    }
+}
