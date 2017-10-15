@@ -24,7 +24,7 @@ var theAccurateHeight = window.getComputedStyle(testElement).getPropertyValue("h
 var theCSSColor = window.getComputedStyle(testElement).color;
 </code>
 		<p>除此之外原生JavaScript对样式的操作还有很多方法和属性，在ES5之后（ECMAScript 2010）有些方法甚至能直接操作CSS样式表，不过这些方法和属性不在我们本节内容的讨论范围之内。有兴趣的可以<a href="http://javascript.ruanyifeng.com/dom/css.html" target="_blank">点击参考</a>这一篇文章，了解原生JavaScript对CSS的各种操作。 </p>
-		<p>在上一章内容“jQuery选择器”中我们已经接触过了jQuery对于行内样式的操作，也就是说之前我们所见到的css()方法对于样式的设置对象是标签中的style属性的设置，实际上这个方法还可以获取指定元素在CSS样式表中的样式，基本语法如下：</p>
+		<p>在上一章内容“jQuery选择器”中我们已经接触过了jQuery对于行内样式的操作，也就是说之前我们所见到的css()方法对于样式的设置对象是标签中的style属性的设置，实际上这个方法还可以获取指定元素在CSS样式表中（准确的讲，它获取的是window对象下的计算属性“getComputedStyle”方法返回的对象内指定属性的值）的样式，基本语法如下：</p>
 <code class="ideCode-js">// 获取id为“test”的元素的color样式（行内样式或CSS样式表）
 $("#test").css("color");
 
