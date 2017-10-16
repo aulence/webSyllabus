@@ -1,4 +1,5 @@
 <root data-root="jQuery文档处理">
+    <!-- 获取和设置元素文本 -->
     <section class="mt0">
 		<h3>获取和设置元素文本</h3>
 		<p>基本语法：</p>
@@ -17,13 +18,15 @@ var fruitList = [ "蓝莓", "草莓", "蔓越莓", "梅西", "杨梅", "青梅" 
 
 // 将之前的元素再添加一段数组内的字符串
 $("div > p.fruit-list").text(function(index, oldVal) {
-return oldVal + fruitList[3] + "！";
+	return oldVal + fruitList[3] + "！";
 });
 
 // 这个元素的文本内容是：
 "这是：梅西！"
 </code>
     </section>
+    
+    <!-- 获取和设置元素HTML内容 -->
 	<section>
 		<h3>获取和设置元素HTML内容</h3>
 		<p>这个方法的基本语法和text()方法一致，只不过获取的是HTML内容（当然也包含文本），由于该方法在内部的操作过程比text()更长，而且实现的过程本身就比前者消耗的性能更多，所以，如果只是用于获取文本内容仍然还是使用text()最好，而只有当需要操作的jQuery对象的内容含有HTML标签的时候才使用html()方法。</p>
@@ -36,6 +39,8 @@ $("article section").text("&lt;p&gt;替换掉原有的HTML内容为这个P标签
 </code>
 		<p>同样的，该方法的参数也能接受函数，函数的功能及参数与text()方法的一致（函数的第一个参数表示索引值，第二个参数表示原来的值）。</p>
 	</section>
+	
+	<!-- 获取和设置表单元素的值 -->
 	<section>
 		<h3>获取和设置表单元素的值</h3>
 		<p>在我们以前学习JavaScript的时候就应该知道，对于表单元素而言无论是input标签还是以标签对呈现的button和textarea元素，要去获取到他们的值都是通过“value”属性去获取的，而在jQuery中，获取和设置表单元素的值都是通过val()方法。它的基本语法如下：</p>
@@ -47,6 +52,8 @@ $("form input").val("aulence");
 </code>
 		<p>该方法的参数也能为一个函数，函数的功能及参数与text()方法的一致。</p>
 	</section>
+	
+	<!-- prepend方法 -->
 	<section>
     	<h3>prepend方法</h3>
 		<p>该方法可以为当前元素的第一个子元素之前插入新元素，这个新元素可以的单个HTML标签，也可以是带有嵌套结构的HTML标签。它的作用类似于DOM里的insertBefore很相似，但却又简单很多。它的基本语法如下：</p>
@@ -68,10 +75,14 @@ $("table").prepend(
 		<p>当然如果会使用<em title="ECMAScript代码版本转换工具">Babel</em>的话，也可以直接使用ES6的“模版字符串”来作为该方法的参数，这会让代码的书写更简单，可读性更好。</p>
 		<p>该方法的参数同样能接受一个函数，该函数和本章之前的所有方法的参数都是一样的，第一位表示当前元素在这个集合内的索引，第二个参数表示原来的值。之后的append、before、after这三个方法的参数为函数时都是这样的，后面就不再赘述。</p>
     </section>
-    <section class="mt0">
+    
+    <!-- append方法 -->
+    <section>
     	<h3>append方法</h3>
     	<p>该方法的语法结构和功能与prepend方法方法基本一样，不同的是，这个方法是向当前元素的最后一个子元素之后插入新的元素，这和被浏览器“标准化”的innerHTML属性的作用非常相似。</p>
     </section>
+    
+    <!-- before方法 -->
     <section>
     	<h3>before方法</h3>
     	<p>该方法不同于之前两节中的prepend和append方法，它们都是将元素插入到子元素列表内，这个方法是将元素插入到当前元素之前，但使用语法结构也没有什么区别。如下：</p>
@@ -79,10 +90,14 @@ $("table").prepend(
 $("form div label:first").before("&lt;p class='erroMesg'&gt;对不起您输入的账号不正确，请重新输入&lt;/p&gt;");
 </code>
     </section>
+    
+    <!-- after方法 -->
     <section>
     	<h3>after方法</h3>
     	<p>该方法和before方法语法结构完全一致，不同的是该方法是向当前元素之后插入新的元素。</p>
     </section>
+    
+    <!-- appendTo方法 -->
     <section>
     	<h3>appendTo方法</h3>
     	<p>该方法和DOM里的appendChild方法有些相似，它拥有“提取节点”的作用，可以将一个节点提取到另外一个节点内。我们可以来看这样一个例子：</p>
@@ -127,13 +142,18 @@ $("&lt;p&gt;默认的文本内容&lt;/p&gt;").on({
 		<iframe data-iframe-coderun="" class="codeEffect" src="html-pages/jquery/codeEffect/code-025.html" ></iframe>
 		<p>利用这样的方式来创建一些带各种功能的元素将是一个不错的选择，而且这样做就无需用事件代理来处理这个在页面载入之初并不存在于HTML内的元素的事件了。</p>
     </section>
+    
+    <!-- wrap方法 -->
     <section>
     	<h3>wrap方法</h3>
     	<p>该方法是为当前元素嵌套上一个父级元素。基本语法如下：</p>
 <code class="ideCode-js">// 为P标签嵌套上一个DIV标签
 $("p").wrap("&lt;div class='wrap'&gt;&lt;/div&gt;");
 </code>
+    	<p>使用之后的效果可见“wrapAll方法”一章的代码示例。</p>
     </section>
+    
+    <!-- unwrap方法 -->
     <section>
     	<h3>unwrap方法</h3>
     	<p>移除当前元素的父级元素（解除元素嵌套），该方法不需要带参数，因为每个元素的父级元素是唯一的，这和当前元素的父级元素是什么标签和带有什么属性都没有关系。基本语法如下：</p>
@@ -154,6 +174,8 @@ $("p").unwrap();
 	<p>JavaScript</p>
 </code>
     </section>
+    
+    <!-- wrapAll方法 -->
     <section>
     	<h3>wrapAll方法</h3>
     	<p>该方法同样是用于为指定元素嵌套标签，但它和wrap方法的区别在于，wrap方法会给选择器匹配的每一个元素都嵌套上设定的标签，而wrapAll会为选择器匹配的集合整体嵌套上一个标签。通过以下HTML代码的变动可能会更好理解：</p>
@@ -181,19 +203,31 @@ $("p").unwrap();
 </div>
 </code>
     </section>
+    
+    <!-- remove方法 -->
     <section>
     	<h3>remove方法</h3>
     	<p>该方法可以移除掉匹配的jQuery元素对象，和DOM中的使用方式和功能remove()完全一样。我们只需要了解他们只是内部实现有差别，一个是移除Element对象，一个是移除jQuery对象而已。</p>
     </section>
+    
+    <!-- clone方法 -->
     <section>
     	<h3>clone方法</h3>
     	<p>该方法和DOM里的clone方法的使用和功能也是一样的，都是去克隆指定元素。但需要注意的是该方法会默认有一个“false”作为参数，它表示不会去克隆该元素的事件绑定，而当将它的参数设置为“true”时，会连同该元素的事件绑定一起被克隆。</p>
     </section>
+    
 	<!-- 章节练习 -->
-	<!--<section class="unitPractice">
+	<section class="unitPractice">
 		<h3>&lt;章节练习&gt;</h3>
+		<p>结合本章所学知识，完成一个简易的表单非空验证操作：</p>
+		<ol>
+			<li>制作一个简单的表单，包括“用户名”，“昵称”，“密码”三个表单输入框，以及一个“注册按钮”</li>
+			<li>若用户光标离开输入框之后该输入框内容为空，则在上方显示一行红色文字“XX的填写内容不能为空”（“XX”表示当前项名称）</li>
+			<li>若用户光标离开输入框之后该输入框已填写内容，则在输入框右方加上一个为绿色“√”的SVG图标 <a href="http://www.easyicon.net/iconsearch/checked/" target="_blank">&lt;素材地址&gt;</a></li>
+			<li>点击注册按钮后，也会触发这些输入框的验证事件，如果全部通过，则将当前页面跳转到任意可用的URL地址即可</li>
+		</ol>
 		<pre></pre>
-	</section>-->
+	</section>
 </root>
 
 
