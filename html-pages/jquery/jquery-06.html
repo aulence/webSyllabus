@@ -23,68 +23,147 @@ $(function() {
     </section>
     <section>
     	<h3>鼠标点击事件click</h3>
-    	<p></p>
+    	<p>当用户点击鼠标后触发的事件。</p>
+    	<p>基本语法：</p>
+<code class="ideCode-js">$("button").on("click", function () {
+	// 需要执行的事件
+});
+// 或者写成
+$("button").click(function () {
+	// ...
+});
+</code>
     </section>
     <section>
     	<h3>鼠标双击事件dblclick</h3>
-    	<p></p>
+    	<p>当用户连续两次快速点击（双击）鼠标后触发的事件。</p>
+    	<p>基本语法：</p>
+<code class="ideCode-js">$("button").on("dblclick", function () {
+	// 需要执行的事件
+});
+// 或者写成
+$("button").dblclick(function () {
+	// ...
+});
+</code>
     </section>
     <section>
     	<h3>鼠标悬浮事件hover</h3>
     	<p>该事件的需要带两个参数，而这两个参数都是一个匿名函数。第一个函数表示鼠标移入需要执行的事件，第二个函数表示鼠标移开时需要执行的事件。</p>
 		<p>另外需要说明的是，这两个函数内的this（应该写作“$(this)”）仍然是指向当前选择器匹配的元素的。</p>
+   		<p>基本语法：</p>
+<code class="ideCode-js">$("div").hover(function () {
+	// 鼠标移入时触发
+}, function() {
+	// 鼠标移出时触发
+});
+</code>
     </section>
     <section>
     	<h3>鼠标按下mousedown和鼠标松开mouseup</h3>
-    	<p></p>
+    	<p>mousedown是当用户按下鼠标后触发的事件，而mouseup是当用户松开鼠标后触发的事件，click事件触发的时机鉴于这两个事件触发的流程之间。</p>
+    	<p>基本语法：</p>
+<code class="ideCode-js">// 按下鼠标
+$("div").on("mousedown", function () {
+	// 需要执行的事件
+});
+// 或者写成
+$("div").mousedown(function () {
+	// ...
+});
+
+// 松开鼠标
+$("button").on("mouseup", function () {
+	// 执行松开鼠标事件
+});
+// 或写成
+$("button").mouseup(function () {
+	// ....
+});
+</code>
     </section>
     <section>
     	<h3>鼠标移入mouseover和mouseenter</h3>
-    	<p></p>
+    	<p>这两个事件都是鼠标移入元素时触发的事件，区别在于mouseover会产生元素节点间的事件冒泡，而mouseenter不会有这个问题，所以一般在实现这个类型的事件时优先选择mouseenter，从而节省程序运行的性能消耗。</p>
     </section>
     <section>
     	<h3>鼠标移出mouseout和mouseleave</h3>
-    	<p></p>
+    	<p>这两个事件和鼠标移入事件对应，是鼠标移出指定元素时触发，mouseout事件会产生事件冒泡，而mouseleave不会，所以在实现这个类型的事件时应该优先选择mouseleave，原因同上。</p>
     </section>
     <section>
     	<h3>键盘事件keydown、keyup和keypress</h3>
-    	<p></p>
+    	<p>keydown事件是用户按下键盘键时触发，keyup是用户松开键盘键时触发，而keypress比较像是键盘里的“click事件”，触发时机鉴于keydown和keyup之间，触发机制和原生JavaScript是一样的，可以参看“JavaScript”分类的“JavaScript事件”一章的“键盘事件”一节。</p>
     </section>
     <section>
     	<h3>窗口缩放事件resize</h3>
-    	<p></p>
+    	<p>当用户缩放窗口时触发的事件。需要注意的是，不管是常规的鼠标拖动浏览器窗口缩放还是按下“Ctrl键”滚动鼠标滚轮的缩放都会触发这个事件。另外，对于开发者而言，开发者工具栏的缩放也会触发这个事件。</p>
     </section>
     <section>
     	<h3>滚动条事件scroll</h3>
-    	<p></p>
+    	<p>当浏览器由于内容过多导致浏览器出现滚动条（无论是横向还是纵向的滚动条），并且通过鼠标或者其它手段让页面产生内容滚动的时候都会触发这个事件。</p>
     </section>
     <section>
     	<h3>获得焦点事件focus和focusin</h3>
-    	<p></p>
+    	<p>这两个事件都会是当元素获得焦点的时候触发，可以触发这个事件的元素通常是表单元素，区别在于focus不会产生事件冒泡，而focusin会，所以，一般我们都是优先选择前者，虽然表单元素出现事件冒泡的情况非常少见。</p>
     </section>
     <section>
     	<h3>失去焦点事件blur和focusout</h3>
-    	<p></p>
+    	<p>和获得焦点事件对应，这两个方法是元素在失去焦点的时候触发的，blur不会产生事件冒泡，而focusout会，所以我们一般都只使用blur，而使用focusout的情况比较少见。</p>
     </section>
     <section>
     	<h3>表单元素值改变事件change</h3>
-    	<p></p>
+    	<p>这个事件是用于表单的单选框（input的type属性值为radio的时候）、多选框（input的type属性值为checkbox的时候）以及下拉菜单(select标签)在发生值的改变的时候触发。</p>
     </section>
     <section>
     	<h3>下拉菜单选择事件select</h3>
-    	<p></p>
+    	<p>虽说change事件能够触发select标签选择值的事件，但是jQuery还是提供了一个更能对应这个用途的select事件。</p>
     </section>
     <section>
     	<h3>表单提交事件submit</h3>
-    	<p></p>
+    	<p>这个事件可以触发表单的提交，一般是用于前期将button（或者将input的type属性值设置为button）的type设置为“button”来方便我们做本地数据验证，而验证完成后让form表单执行的提交事件。</p>
     </section>
 	<section>
 		<h3>只执行一次的事件one</h3>
-		<p></p>
+		<p>让绑定在指定元素上的事件只执行一次的方法。</p>
+		<p>基本语法：</p>
+<code class="ideCode-js">// 绑定的事件名可以是jQuery已知的任何事件
+$("div").one("click", function () {
+	// 这个事件只会触发一次
+});
+</code>
 	</section>
 	<section>
 		<h3>绑定和解绑事件on和off</h3>
-		<p></p>
+		<p>on方法是为一个元素绑定一个jQuery已经提供的事件，而off方法是消除指定元素的指定事件名。</p>
+		<p>通常情况下我们只会使用on绑定一个事件，这也是现在版本jQuery官方比较推荐的形式，而不是传统的将事件名作为方法名，像这样：</p>
+<code class="ideCode-js">// 传统的jQuery事件绑定方式
+$("div").click(function () {
+	// 执行事件语句
+});
+
+// 现在更加推荐的方式
+$("div").on("click", function () {
+	// ...
+});
+</code>	
+		<p>推荐形式的写法在结构上会稍微复杂一些，但是却有一些传统写法无法替代的好处，主要体现有：</p>	
+		<ul class="indent">
+			<li>使用on方法绑定事件可以通过off方法随时取消绑定，让程序的可控性更高</li>
+			<li>由于jQuery的同名事件可以多次绑定，有时会让本只想执行一次的事件功能语句多次执行（这不是我们希望的），这个时候可以链式的先使用off方法先取消之前绑定的事件名，再用on方法绑定最新的同名事件，从而达到该名称事件只执行一次的作用</li>
+			<li>使用on方法可以为一个jQuery对象一次性绑定多个事件，有较高的整合度从而使得可维护性增强。而传统的绑定方式需要分开单独绑定，可能会出现过于分散的现象，导致维护性降低</li>
+			<li>jQuery的“便捷事件代理”也只能通过on方法去实现，而不需要去取事件对象来进行判断，传统的事件绑定方式是做不到的</li>
+			<li>在document对象里（即非HTML页面）生成一个虚拟DOM，也能通过on进行一个或多个事件的绑定，最后再配合appendTo方法添加进指定的HTML标签元素内</li>
+		</ul>
+		<p>如果在jQuery里，在一个事件内部再嵌套另一个事件，如果外部事件多次执行，会让内部的事件被多次绑定。这样产生的结果就是，当内部的事件被触发后，内部这个已经添加过事件绑定的元素会执行外部事件已经执行的次数。这个时候就可以在内部元素上先通过off方法解绑之前所有的指定名称事件，然后再用on方法来绑定一个新的事件来解决这个问题：</p>
+<code class="ideCode-js">// 如果这个按钮被点击多次，那ul里的第一个li相当于绑定了这个按钮点击次数的事件
+$("button").on("click", function() {
+	// 先将这个li上可能已经存在的所有点击事件解除，再绑定新的事件
+	$("ul li").off("click").on("click", function() {
+		// 需要执行的事件
+	});
+})
+</code>
+		<p>这样一来，无论button按钮点击了多少次，ul里的每个li的点击事件都只会执行一次。当然，也可以自行写一个类似的例子，将off方法部分去掉，通过一定的手段（如全局计数器）来观察内部事件执行的次数，从而理解这个代码示例。</p>
 	</section>
     <section>
 		<h3>事件触发器trigger和triggerHandler</h3>
