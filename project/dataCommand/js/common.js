@@ -23,7 +23,7 @@ $(function() {
             if(notCont) {
                 $("body").append(DATAC.loading);
             }
-            // 调用函数“获取商品信息并现实与页面”
+            // 调用函数“获取商品信息并显示于页面”
             setTimeout(function() {
                 // 清除原有数据
                 $("#dataTable tbody").html("");
@@ -46,6 +46,7 @@ $(function() {
     });
 
     // 表体内的选择框功能
+	// 其实这里的“$(document)”写成“$("#dataTable tbody")”会是最佳的写法
     $(document).on("change", "#dataTable tbody input:checkbox", function() {
         // 调用函数“数据行选择功能”
         dataTrCkd(this);
@@ -173,14 +174,14 @@ function dataTrCkd(ident) {
     // 全部都没有选中
     if(ckdCount == 0) {
         // 取消半选状态
-        ckbAll[0].indeterminate = false;
+		ckbAll.prop("indeterminate", false);
         // 取消全选复选框的选中效果
         ckbAll.prop("checked", false);
     }
     // 选中了部分
     else if(ckdCount < tr_len) {
         // 将全选复选框设置为半选中状态
-        ckbAll[0].indeterminate = true;
+		ckbAll.prop("indeterminate", true)
     }
     // 全部都选中
     else {
@@ -193,7 +194,7 @@ function dataTrCkd(ident) {
 
 /**
 * 功能：删除确认框
-* 参数：删除的类型（字符串），允许两个值“single”和“multiple”。如果为“single”的时候。
+* 参数：删除的类型（字符串），允许两个值“single”和“multiple”。
 * 参数“single”：表示单独删除一行的情况，由单元格内的删除按钮控制。需要配置参数“ident”的值为“this”。
 * 参数“multiple”：由“删除选中”按钮触发，一次性可以删除多个被选中的数据行。不需要配置“ident”参数
 **/
@@ -201,24 +202,27 @@ function deleteConfirm(deleteType, ident) {
     // 为单行删除时的情况
     if(deleteType == "single") {
         // 为该行数据添加一个保持命令状态的Class
-        $(ident).parents("tr").addClass("holdCommand");
+        //$(ident).closest("tr").addClass("holdCommand");
+		var thisTr = $(ident).closest("tr");
         // 调用弹出框组件并配置内容
         popBox({
             content: "您确定要删除本行数据吗？",
             confirm: function() {
-                $(".holdCommand").fadeOut(300, function() {
+				// 更简洁的方案
+				thisTr.remove();
+				// 动态设定当前全选按钮的状态
+				dataTrCkd(ident);
+				// 获取当前数据的条数
+				var data_len = $("#dataTable tbody").children().length;
+				// 如果为已经不存在数据了
+				if(data_len == 0) {
+					// 恢复排序箭头的指向
+					$("#dataTable thead i.arrow").removeClass("up down");
+				}
+                /*$(".holdCommand").fadeOut(300, function() {
                     // 移除当前行
                     $(this).remove();
-                    // 动态设定当前全选按钮的状态
-                    dataTrCkd(ident);
-                    // 获取当前数据的条数
-                    var data_len = $("#dataTable tbody").children().length;
-                    // 如果为已经不存在数据了
-                    if(data_len == 0) {
-                        // 恢复排序箭头的指向
-                        $("#dataTable thead i.arrow").removeClass("up down");
-                    }
-                });
+                });*/
             },
             cancel: function() {
                 $(".holdCommand").removeClass("holdCommand");
@@ -236,7 +240,7 @@ function deleteConfirm(deleteType, ident) {
                 ckd_tr.fadeOut(300, function() {
                     $(this).remove();
                     // 动态设定当前全选按钮的状态
-                    dataTrCkd(ident)
+                    dataTrCkd(ident);
                     // 获取当前数据的条数
                     var data_len = $("#dataTable tbody").children().length;
                     // 如果为已经不存在数据了

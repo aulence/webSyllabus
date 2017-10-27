@@ -6,7 +6,7 @@
 axios.get('data/tea-info.json')
 	.then(function (response) {
 		let teaInfo = document.getElementById('tea-info');
-		//console.log(response.data);
+		console.log(response);
 		const data = response.data,
 			data_length = data.length;
 		for(let i = 0; i < data_length; i++) {
