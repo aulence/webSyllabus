@@ -1,0 +1,191 @@
+[
+    {
+        "name": "JavaScript高级程序设计",
+        "describe": "《JavaScript高级程序设计(第3版)》是JavaScript超级畅销书的最新版。ECMAScript 5和HTML5在标准之争中双双胜出，使大量专有实现和客户端扩展正式进入规范，同时也为JavaScript增添了很多适应未来发展的新特性。《JavaScript高级程序设计(第3版)》这一版除增加5章全新内容外，其他章节也有较大幅度的增补和修订，新内容篇幅约占三分之一。全书从JavaScript语言实现的各个组成部分——语言核心、DOM、BOM、事件模型讲起，深入浅出地探讨了面向对象编程、Ajax与Comet服务器端通信，HTML5表单、媒体、Canvas（包括WebGL）及Web Workers、地理定位、跨文档传递消息、客户端存储（包括IndexedDB）等新API，还介绍了离线应用和与维护、性能、部署相关的开发实践。《JavaScript高级程序设计(第3版)》附录展望了未来的API和ECMAScript Harmony规范。",
+        "author": "Nicholas C. Zakas",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51CaeL3lLtL.jpg",
+        "price": 69.30
+    },
+    {
+        "name": "深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）",
+        "describe": "第1版两年内印刷近10次，4家网上书店的评论近4?000条，98%以上的评论全部为5星级的好评，是整个Java图书领域公认的经典著作和超级畅销书，繁体版在台湾也十分受欢迎。第2版在第1版的基础上做了很大的改进：根据最新的JDK 1.7对全书内容进行了全面的升级和补充；增加了大量处理各种常见JVM问题的技巧和实践；增加了若干与生产环境相结合的实战案例；对第1版中的错误和不足之处的修正；等等。第2版不仅技术更新、内容更丰富，而且实战性更强。",
+        "author": "周志明",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/5187D1yRGYL.jpg",
+        "price": 66.40
+    },
+    {
+        "name": "JavaScript语言精粹(修订版)",
+        "describe": "《JavaScript语言精粹（修订版）》内 容 简 介 JavaScript 曾是“世界上最被误解的语言”，因为它担负太多的特性，包括糟糕的交互和失败的设计，但随着Ajax 的到来，JavaScript“从最受误解的编程语言演变为最流行的语言”，这除了幸运之外，也证明了它其实是一门优秀的语言。Douglas Crockford 在本书中剥开了JavaScript 沾污的外衣，抽离出一个具有更好可靠性、可读性和可维护性的JavaScript 子集，让你看到一门优雅的、轻量级的和非常富有表现力的语言。作者从语法、对象、函数、继承、数组、正则表达式、方法、样式和优美的特性这9 个方面来呈现这门语言真正的精华部分，通过它们完全可以构建出优雅高效的代码。作者还通过附录列出了这门语言的毒瘤和糟粕部分，且告诉你如何避免它们。最后还介绍了JSLint，通过它的检验，能有效地保障我们的代码品质。",
+        "author": "Douglas Crockford",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/516O%2BcsMYDL.jpg",
+        "price": 46.60
+    },
+    {
+        "name": "深入理解ES6",
+        "describe": "ES6是迄今为止JavaScript内核首当其冲的一次重大更新。本书是领域大家Nicholas C. Zakas撰写的一份ES6的完整指南，书中详细讲解了ES 6在JavaScript对象类型、语法及其他方面激动人心的改变。每一章都含有可运行于任何JavaScript环境的示例代码，你可以利用这些代码测试、理解ES6中的新功能。无论你是Web开发者还是Node.js开发者，都可以通过本书来更好地理解和运用ES6，或是顺利地从ES5迁移到ES6。",
+        "author": "Nicholas C. Zakas",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51kEnK%2BWQ-L._SX365_BO1,204,203,200_.jpg",
+        "price": 68.30
+    },
+    {
+        "name": "Java开发实战经典",
+        "describe": "本书从初学者的角度，以丰富的实例、案例，通俗易懂的语言，简单的图示，详细地介绍了Java开发中重点用到的多种技术。全书分为21章，包括需要重点掌握的：环境搭建、简单Java程序、JAVA基础程序设计、数组与方法、面向对象（基础篇）、面向对象（高级篇）、异常的捕获及处理、包及访问控制权限、Java常用类库、Java IO、Java类集、Java数据库编程；需要理解掌握的：多线程、泛型、枚举、Java反射机制、Annotation、Eclipse开发工具；需要了解掌握的：图形界面、Java 网络编程、JAVA新IO等内容。本书适合Java技术的初学者，也适合作为培训中心、计算机相关专业的参考书。",
+        "author": "李兴华",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51TN9QA-eAL._SX346_BO1,204,203,200_.jpg",
+        "price": 70.00
+    },
+    {
+        "name": "编写可维护的JavaScript",
+        "describe": "《编写可维护的JavaScript》向开发人员阐述了如何在团队开发中编写具备高可维护性的JavaScript代码，书中详细说明了作为团队一分子，应该怎么写JavaScript。书中内容涵盖了编码风格、编程技巧、自动化、测试等几方面，既包括具体风格和原则的介绍，也包括示例和技巧说明，最后还介绍了如何通过自动化的工具和方法来实现一致的编程风格。",
+        "author": "Nicholas C. Zakas",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51V3g6KWOnL._SX375_BO1,204,203,200_.jpg",
+        "price": 36.30
+    },
+    {
+        "name": "JavaScript设计模式",
+        "describe": "设计模式是解决软件设计中常见问题的可复用方案。学习任何编程语言，设计模式都是一个令人兴奋和极具吸引力的话题。《JavaScript设计模式》是JavaScript设计模式的学习指南。全书分为14章。首先介绍了什么是模式、模式的结构、类别、模式的分类、如何编写模式等等；然后，集中介绍了很多流行的设计模式在JavaScript中的应用，包括Module(模块)模式、Observer(观察者)模式、Facade(外观)模式和Mediator(中介者)模式；最后，还探讨了模块化的JavaScript模式、jQuery及其插件中的设计模式。",
+        "author": "Addy Osmani",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51X5uXvHDVL._SX392_BO1,204,203,200_.jpg",
+        "price": 47.50
+    },
+    {
+        "name": "HTML5与CSS3基础教程(第8版) ",
+        "describe": "《HTML5与CSS3基础教程(第8版)》自第1版至今，一直是讲解HTML和CSS入门知识的经典畅销书，全面系统地阐述HTML5和CSS3基础知识以及实际运用技术，通过大量实例深入浅出地分析了网页制作的方方面面。最新第8版不仅介绍了文本、图像、链接、列表、表格、表单等网页元素，还介绍了如何为网页设计布局、添加动态效果等，另外还涉及调试和发布。《HTML5与CSS3基础教程(第8版)》提供了一个强大的配套网站，上面列出了书中的完整代码示例以及更多优秀实例及进阶参考资料，以供读者参考学习。 通过学习《HTML5与CSS3基础教程(第8版)》，零起点读者即可创建网站，而中高级水平的开发人员也可以快速了解HTML5新元素、CSS3的奇幻效果、响应式Web设计以及各种最佳实践。",
+        "author": "Elizabeth Castro & Bruce Hyslop",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/41JtpjqBBKL._SX446_BO1,204,203,200_.jpg",
+        "price": 45.50
+    },
+    {
+        "name": "响应式Web设计:HTML5和CSS3实战",
+        "describe": "移动互联网时代到来了。《响应式Web设计：HTML5和CSS3实战》将当前Web设计中热门的响应式设计技术与HTML5和CSS3结合起来，为读者全面深入地讲解了针对各种屏幕大小设计和开发现代网站的各种技术。不仅讨论了媒体查询、流式布局、相对字体、响应式媒体，更将HTML5和CSS3的相关知识点一并讲解，是学习最新Web设计技术不可多得的佳作。",
+        "author": "Ben Frain",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/516GI3E8NtL._SX396_BO1,204,203,200_.jpg",
+        "price": 40.70
+    },
+    {
+        "name": "图解HTTP",
+        "describe": "《图解HTTP》对互联网基盘——HTTP协议进行了全面系统的介绍。作者由HTTP协议的发展历史娓娓道来，严谨细致地剖析了HTTP协议的结构，列举诸多常见通信场景及实战案例，最后延伸到Web安全、技术动向等方面。《图解HTTP》的特色为在讲解的同时，辅以大量生动形象的通信图例，更好地帮助读者深刻理解HTTP通信过程中客户端与服务器之间的交互情况。读者可通过《图解HTTP》快速了解并掌握HTTP协议的基础，前端工程师分析抓包数据，后端工程师实现REST API、实现自己的HTTP服务器等过程中所需的HTTP相关知识点本书均有介绍。",
+        "author": "上野宣",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/41rIT5V1tiL._SX381_BO1,204,203,200_.jpg",
+        "price": 39.90
+    },
+    {
+        "name": "HTML+CSS网页设计与布局从入门到精通",
+        "describe": "《HTML+CSS网页设计与布局从入门到精通》紧密围绕网页设计师在制作网页过程中的实际需要和应该掌握的技术，全面介绍了使用HTML和CSS进行网页设计和制作的各方面内容和技巧。 《HTML+CSS网页设计与布局从入门到精通》共分4个部分21章和两个附录，包括网页设计基础、HTML基础、CSS基础、CSS高级技术和CSS布局技术等内容。全书遵循Web标准，强调“表现”与“内容”的分离，抛弃了那些过时的HTML标记和属性，从更规范的角度全面、系统地介绍了网页设计制作方法与技巧。附录收录了网站发布与管理的知识和160个应用CSS时出现频度较高的英文单词及其中文解释。书中给出了大量详细的案例，并对案例进行分析，便于读者在理解的基础上，直接修改后使用。《HTML+CSS网页设计与布局从入门到精通》作者具备扎实的实践功底，行文细腻，对每一个技术细节以及每一个实际工作中可能遇到的难点和错误都进行了详细的说明，并给出了解决方案。",
+        "author": "温谦",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51F-nb0%2B9xL._SX330_BO1,204,203,200_.jpg",
+        "price": 32.20
+    },
+    {
+        "name": "HTML与CSS入门经典(第8版)",
+        "describe": "《HTML与CSS入门经典(第8版)》是畅销图书《HTML与CSS入门经典》的最新版，和过去的版本相同，本书仍然采用直观、循序渐进的方法来为读者讲解使用HTML与CSS创建并发布网页的过程，以方便读者掌握。《HTML与CSS入门经典(第8版)》总共分为24章和1个附录，其涵盖的内容有理解Web的工作方式，如何发布Web内容，理解HTML与XHTML的关系，理解层叠样式单(CSS)，使用文本块和列表，使用字体，使用表格显示信息，使用外部和内部链接，使用颜色，创建用于Web上的对象，在网站中使用对象和多媒体，使用框架，使用边距、填充、对齐和浮动，理解CSS盒子模型和定位，使用CSS进一步控制列表和控制导航，使用鼠标操作修改文本显示，创建固定或者流动的布局，创建打印友好的网页，理解动态网站，使用基于Web的表单，组织和管理网站，以及帮助人们找到你的网站等内容。附录还提供了完整的XHTML1.1与CSS2快速参考。",
+        "author": "Julie C. Meloni Michael Morrison",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51iZUSz%2B0iL._SX350_BO1,204,203,200_.jpg",
+        "price": 48.80
+    },
+    {
+        "name": "Python编程快速上手:让繁琐工作自动化",
+        "describe": "如今，人们面临的大多数任务都可以通过编写计算机软件来完成。Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。通过Python编程，我们能够解决现实生活中的很多任务。 本书是一本面向实践的Python编程实用指南。本书的目的，不仅是介绍Python语言的基础知识，而且还通过项目实践教会读者如何应用这些知识和技能。本书的首部分介绍了基本Python编程概念，第二部分介绍了一些不同的任务，通过编写Python程序，可以让计算机自动完成它们。第二部分的每一章都有一些项目程序，供读者学习。每章的末尾还提供了一些习题和深入的实践项目，帮助读者巩固所学的知识。附录部分提供了所有习题的解答。", 
+        "author": "Al Sweigart",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51VWAiFgoWL._SX426_BO1,204,203,200_.jpg",
+        "price": 47.60
+    },
+    {
+        "name": "C语言接口与实现--创建可重用软件的技术",
+        "describe": "C语言接口与实现：创建可重用软件的技术》概念清晰、实例详尽，是一本有关设计、实现和有效使用C语言库函数，掌握创建可重用C语言软件模块技术的参考指南。书中提供了大量实例，重在阐述如何用一种与语言无关的方法将接口设计实现独立出来，从而用一种基于接口的设计途径创建可重用的API。",
+        "author": "David R. Hanson",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51yTmi-UkpL._SX396_BO1,204,203,200_.jpg",
+        "price": 63.10
+    },
+    {
+        "name": "流畅的Python",
+        "describe": "《流畅的Python》一书致力于帮助Python开发人员挖掘这门语言及相关程序库的优秀特性，避免重复劳动，同时写出简洁、流畅、易读、易维护，并且具有地道Python风格的代码。本书尤其深入探讨了Python语言的高级用法，涵盖数据结构、Python风格的对象、并行与并发，以及元编程等不同的方面。",
+        "author": "Luciano Ramalho",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/514dQDW9qUL._SX422_BO1,204,203,200_.jpg",
+        "price": 109.80
+    },
+    {
+        "name": "PHP编程基础与实例教程（第2版）",
+        "describe": "PHP简单易学且功能强大，是开发WEB应用程序理想的脚本语言。本书由浅入深、循序渐进，系统地介绍了PHP的相关知识及其在WEB应用程序开发中的实际应用，并通过具体案例，使读者巩固所学知识，更好地进行开发实践。本书共分为13章，涵盖了PHP开发环境的搭建、PHP语法、FORM表单、数据库设计、PHP与数据库连接、会话控制、界面设计等内容。",
+        "author": "孔祥盛",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/514ZBccTq3L._SX353_BO1,204,203,200_.jpg",
+        "price": 36.20
+    },
+    {
+        "name": "Linux环境编程：从应用到内核",
+        "describe": "本书的写作布局正是以APUE的章节作为参考，针对Linux环境，不仅对用户空间的接口进行阐述，同时还引导读者分析该接口在内核的源码实现，使得读者不仅可以知道接口怎么用，同时还可以理解接口是怎么工作的。对于Linux的系统调用，做到知其然，知其所以然。",
+        "author": "高峰 & 李彬",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/41wVm2di7uL._SX358_BO1,204,203,200_.jpg",
+        "price": 84.80
+    },
+    {
+        "name": "Linux系统编程(第2版)",
+        "describe": "系统编程是指编写系统软件，其代码在底层运行，直接跟内核和核心系统库对话。 　　《Linux系统编程(第2版)》是一本关于Linux系统编程的教程，也是一本介绍Linux系统编程的手册，还是一本如何实现更优雅更快代码的内幕指南。全书分为11章和2个附录，详细介绍了Linux系统编程基本概念、文件I/O、缓冲I/O、高级文件I/O、进程管理、高级进程管理、线程、文件和目录管理、信号和时间等主题。附录给出了gcc和GNU C提供的很多语言扩展，以及推荐阅读的相关书目。",
+        "author": "Robert Love",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51Ox8qer8cL._SX432_BO1,204,203,200_.jpg",
+        "price": 70.80
+    },
+    {
+        "name": "Java 8实战",
+        "describe": "本书全面介绍了Java 8 这个里程碑版本的新特性，包括Lambdas、流和函数式编程。有了函数式的编程特性，可以让代码更简洁，同时也能自动化地利用多核硬件。全书分四个部分：基础知识、函数式数据处理、高效Java 8 编程和超越Java 8，清晰明了地向读者展现了一幅Java 与时俱进的现代化画卷。",
+        "author": "Raoul-Gabriel Urma & Mario Fusco & Alan Mycroft",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51XtZYaWGPL._SX411_BO1,204,203,200_.jpg",
+        "price": 62.40
+    },
+    {
+        "name": "UNIX环境高级编程(第3版)",
+        "describe": "本书是被誉为UNIX编程“圣经”的Advanced Programming in the UNIX Environment一书的第3版。在本书第2版出版后的8年中，UNIX行业发生了巨大的变化，特别是影响UNIX编程接口的有关标准变化很大。本书在保持前一版风格的基础上，根据最新的标准对内容进行了修订和增补，反映了最新的技术发展。书中除了介绍UNIX文件和目录、标准I/O库、系统数据文件和信息、进程环境、进程控制、进程关系、信号、线程、线程控制、守护进程、各种I/O、进程间通信、网络IPC、伪终端等方面的内容，还在此基础上介绍了众多应用实例，包括如何创建数据库函数库以及如何与网络打印机通信等。此外，还在附录中给出了函数原型和部分习题的答案。",
+        "author": "W. Richard Stevens & Stephen A. Rago",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51-yjqb7oHL._SX331_BO1,204,203,200_.jpg",
+        "price": 101.10
+    },
+    {
+        "name": "Linux/UNIX系统编程手册(上、下册)",
+        "describe": "《Linux/UNIX系统编程手册(上、下册)》是介绍Linux与UNIX编程接口的权威著作。Linux编程资深专家Michael Kerrisk在书中详细描述了Linux/UNIX系统编程所涉及的系统调用和库函数，并辅之以全面而清晰的代码示例。《Linux/UNIX系统编程手册(上、下册)》涵盖了逾500个系统调用及库函数，并给出逾200个程序示例，另含88张表格和115幅示意图。",
+        "author": "Michael Kerrisk",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51tM%2BAYRc%2BL._SY498_BO1,204,203,200_.jpg",
+        "price": 104.30
+    },
+    {
+        "name": "Node.js实战",
+        "describe": "《Node.js实战》是Node.js的实战教程，涵盖了为开发产品级Node应用程序所需要的一切特性、技巧以及相关理念。从搭建Node开发环境，到一些简单的演示程序，到开发复杂应用程序所必不可少的异步编程。书中还介绍了HTTP API的应用技巧等。",
+        "author": "Mike Cantelon & Marc Harter",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51agRFdCcfL._SX446_BO1,204,203,200_.jpg",
+        "price": 54.60
+    },
+    {
+        "name": "Node.js进阶之路",
+        "describe": "本书内容涵盖了 Node.js高并发的原理、源码分析以及使用 Node.js开发应用所需要的不同层面的技术实践。具体来讲，本书包括 Node.js异步机制（配以源码分析）、编辑与调试、测试技术、Docker 部署、模块机制、V8 引擎与代码优化、Promise 和 ES6 Generator、LoopBack 开源框架、使用 C++ 编写扩展、JavaScript严格模式、编码规范等内容。在 LoopBack 章节，本书详细介绍了使用此框架开发企业级 Web 应用的步骤，帮助读者迅速掌握使用这个强大框架的诀窍。最后一章详细介绍了编写不同类型的 C++ 模块的知识，并对堆内存管理等内容做了深入探讨。",
+        "author": "尤嘉",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/61uocSHd7vL.jpg",
+        "price": 30.60
+    },
+    {
+        "name": "Node与Express开发",
+        "describe": "本书系统讲解了使用Express开发动态Web应用的流程和步骤。作者不仅讲授了开发公共站点及REST API的基础知识，同时还讲解了构建单页、多页及混合Web应用的规划方式及最佳实践。具体而言，第1~5章介绍Node 和Express，搭建一个示例网站的骨架，讨论测试和QA。第6~12章介绍Node中更重要的结构，讲解模板，介绍cookies、会话和表单处理器，探讨中间件以及从服务器发送电子邮件。第13~15章讨论持久化、URL路由、API的编写、流行的MVC范式。第18~22章讨论安全、社交媒体集成以及网站的调试、启用和维护。",
+        "author": "Ethan Brown",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51Uy66RHlsL._SX381_BO1,204,203,200_.jpg",
+        "price": 45.50
+    },
+    {
+        "name": "React全栈：Redux+Flux+webpack+Babel整合开发",
+        "describe": "本书从现代前端开发的标准、趋势和常用工具入手，由此引出了优秀的构建工具webpack 和JavaScript库React，之后用一系列的实例来阐述两者的特色、概念和基本使用方法。随着应用复杂度的增加，进而介绍了Flux 和Redux 两种架构思想，并且使用Redux 对现有程序进行改造，最后介绍了在开发过程中出现的反模式和性能优化方法。",
+        "author": "张轩 & 杨寒星",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51PoQs17xOL._SX397_BO1,204,203,200_.jpg",
+        "price": 44.85
+    },
+    {
+        "name": "Vue2实践揭秘",
+        "describe": "本书以Vue2的实践应用为根基，从实际示例入手，详细讲解Vue2的基础理论应用及高级组件开发，通过简明易懂的实例代码，生动地让读者快速、全方位地掌握Vue2的各种入门技巧以及一些在实际项目中的宝贵经验。本书除了全面、细致地讲述Vue2的生态结构、实际编程技巧和一些从实践中得到的经验，还重点介绍如何以组件化编程思想为指导，以前端工程化方法为实现手段来实践Vue2，通过组件的单元测试和E2E测试来保证工程质量。",
+        "author": "梁睿坤",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51hKaPSHWeL._SX378_BO1,204,203,200_.jpg",
+        "price": 51.35
+    },
+    {
+        "name": "Angular权威教程",
+        "describe": "本书堪称Angular领域的里程碑式著作，涵盖了关于Angular的几乎所有内容。对于没有经验的人，本书平实、通俗的讲解，递进、严密的组织，可以让人毫无压力地登堂入室，迅速领悟新一代Web应用开发的精髓。如果你有相关经验，那本书对Angular概念和技术细节的全面剖析，以及引人入胜、切中肯綮的讲解，将帮助你彻底掌握这个框架，在自己职业技术修炼之路上更进一步。",
+        "author": "Ari Lerner & Felipe Coury",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/5177xJOe07L._SX431_BO1,204,203,200_.jpg",
+        "price": 71.90
+    }
+]
