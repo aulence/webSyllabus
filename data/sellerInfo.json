@@ -1,0 +1,67 @@
+[
+    {
+        "image": "https://www.aulence.com/data/seller-iamge/log-001.jpg",
+        "name": "姐妹荷叶饭",
+        "star": 4912,
+        "pickup": true,
+        "salesCount": 4912,
+        "timeUsed": 38,
+        "distance": 1.8,
+        "startFee": 18,
+        "transportFee": 1,
+        "giveMeMoney": 500,
+        "activities": "<p><span class=\"red\">减</span>满20减8;满50减25;满80减45;满100减55</p><p><span class=\"purple\">减</span>新用户立减15元;首次使用银行卡支付半价</p>"
+    },
+    {
+        "image": "https://www.aulence.com/data/seller-iamge/log-002.jpg",
+        "name": "军魂干伴冒菜",
+        "star": 2613,
+        "pickup": false,
+        "salesCount": 2613,
+        "timeUsed": 52,
+        "distance": 2.4,
+        "startFee": 30,
+        "transportFee": 4,
+        "giveMeMoney": 400,
+        "activities": "<p><span class=\"red\">减</span>满20减8;满50减25;满80减45;满100减55</p> <p><span class=\"purple\">减</span>配送费立减1元</p>"
+    },
+    {
+        "image": "https://www.aulence.com/data/seller-iamge/log-003.jpg",
+        "name": "好吃得一哔（高新店）",
+        "star": 3656,
+        "pickup": false,
+        "salesCount": 3656,
+        "timeUsed": 33,
+        "distance": 1.6,
+        "startFee": 10,
+        "transportFee": 2,
+        "giveMeMoney": 300,
+        "activities": "<p><span class=\"red\">减</span>满20减8;满50减25;满80减45;满100减55</p> <p><span class=\"purple\">减</span>本店新用户立减1元，新用户立减15元</p>"
+    },
+    {
+        "image": "https://www.aulence.com/data/seller-iamge/log-004.jpg",
+        "name": "宜宾燃面",
+        "star": 9188,
+        "pickup": true,
+        "salesCount": 9188,
+        "timeUsed": 24,
+        "distance": 0.9,
+        "startFee": 8,
+        "transportFee": 1,
+        "giveMeMoney": 200,
+        "activities": "<p><span class=\"red\">减</span>满20减8;满50减25;满80减45;满100减55</p> <p><span class=\"purple\">减</span>新用户立减15元</p>"
+    },
+    {
+        "image": "https://www.aulence.com/data/seller-iamge/log-005.jpg",
+        "name": "正新鸡排",
+        "star": 3566,
+        "pickup": true,
+        "salesCount": 3566,
+        "timeUsed": 43,
+        "distance": 1.1,
+        "startFee": 20,
+        "transportFee": 0,
+        "giveMeMoney": 100,
+        "activities": "<p><span class=\"red\">减</span>满20减8;满50减25;满80减45;满100减55</p> <p><span class=\"purple\">减</span>本店新用户立减5元</p>"
+    }
+]
