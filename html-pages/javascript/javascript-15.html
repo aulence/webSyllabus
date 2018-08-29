@@ -1,98 +1,271 @@
-<root data-root="HTML5 API">
+<root data-root="JavaScript AJAX">
     <!-- 概述 -->
     <section class="mt0">
-    	<h3>HTML5 API概述</h3>
-    	<p>HTML5 API是HTML第5版本为JavaScript提供的API（应用程序编程接口），也就是说它们同样不属于JavaScript的一部分，但却可以被它的语法所操作，从而扩展原生JavaScript的功能。</p>
-    	<p>HTML5提供的API大致有如下：</p>
-    	<ul class="indent">
-    		<li>用于渲染图形或其他可视图像的新canvas元素所使用的2D绘图API</li>
-    		<li>支持离线Web应用程序的缓存API（即Web Storage）</li>
-    		<li>使用新&lt;video&gt;和&lt;audio&gt;元素来播放视频和音频的API</li>
-    		<li>支持浏览历史访问和添加页面历史的API</li>
-    		<li>draggable属性支持的拖放API</li>
-    		<li>contenteditable属性支持的编辑API</li>
-    		<li>使用Geolocation API进行地理定位</li>
-    		<li>让JavaScript获得独立线程的Web Worker API</li>
-    		<li>使浏览全屏的Fullscreen API</li>
-    		<li>是否可以访问用户摄像头和麦克风的getUserMedia API</li>
-    		<li>检测设备电池使用情况的Battery API</li>
-    		<li>预加载页面内容或文件的Link Prefetching API</li>
-    		<li>请求访问系统文件的FileSystem API</li>
-    		<li>对代码性能精确测试的Performance API</li>
-    		<li>用于浏览器接收语音输入的Web Speech API</li>
-    		<li>浏览器可缩放矢量图（SVG）API</li>
-    		<li>用于判断页面是否处于浏览器当前窗口的Page Visibility API</li>
-    		<li>浏览器用于定时循环操作的的requestAnimationFrame API</li>
-    		<li>定义页面模块组件的Web Components API</li>
-    		<li>实现网络实时通信的WebRTC API</li>
-    		<li>允许服务器端与客户端进行双向通信的WebSocket API</li>
-    		<li>允许服务器端向客户端单向通信的SSE（Server-Sent Events） API</li>
-    		<li>允许脚本文件向用户发送通知的Web Notification API</li>
-    		<li>一系列针对移动设备的API，如：Permission（用户许可）、Viewport（视窗属性，设置于&lt;meta&gt;标签）、Geolocation（用户地址位置）、watchPosition（监听用户位置的持续改变）、clearWatch（取消监听用户位置的持续改变）、Vibration（设备振动）、Luminosity（屏幕亮度调节）、Orientation（检测手机的横竖摆放）等</li>
-    	</ul>
-    	<p>由于学习时间成本的限制，这些列出来的HTML5 API都不可能再一一讲解了，只是作为需要涉及相应开发工作的时候，知道JavaScript还可以完成这些功能并进行使用方法查询即可。本章限于时间和篇幅的原因，只对其中一些API的使用进行讲解，并会在以后持续完善。</p>
+    	<h3>JavaScript AJAX</h3>
+    	<p>AJAX（Asynchronous JavaScript and XML，异步的JavaScript和XML）不是新的编程语言，而是一种使用现有标准的新方法。它最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
+    	<p>AJAX最早的理念出现是在1998年左右（JavaScript诞生后的第三年），是由微软的Exchange Server团队开发的，并很快成为了Internet Explorer 4.0（IE4）的一部分。部分观察家认为，Outlook Web Access是第一个应用了Ajax技术的成功的商业应用程序。</p>
+    	<p>但从AJAX这个技术在JavaScript中的实现开始，长达六七年的时间都不被开发者们关注。在2005年，AJAX的“伯乐”出现了，那就是今天IT界内领头羊之一的Google公司。Google公司在自己的搜索引擎、搜索建议、Gmail上开始大量的使用AJAX这种技术方案，特别是在Google Map（谷歌地图）上的使用可以说是真正地将AJAX带上了那个开发者时代的风头浪尖。所以说，现在很多关于AJAX的技术教程里面，谈到这个技术都会有一句类似这样的话：“...这样一来就可以像谷歌地图那样实现异步的局部刷新了”。</p>
+    	<p>谈到AJAX最大的特点，就是它的<em>异步</em>特性（Asynchronous）。何为“异步”？简单的说，就是程序在实现某一个功能的时候，同时也能去做另外一件事件，而在做另外一件事情的时候不会对当前的程序造成<em>阻塞</em>。就好比，一个人要需要做两件事——唱歌和跳舞。他可以先跳完舞，然后再唱歌。但用异步的方式去解决的话，它就可以在跳舞的时候同时唱歌。</p>
+    	<p>AJAX是一个无论前端还是后台开发者都需要掌握的技术点。在现在前后端分离的开发模式下，它相当于是前端开发者与后台开发者之间的<em>一座信息沟通的桥梁</em>，前端不仅能通过它获取到后台生成的数据，后台也能接收到前端事件处理之后发送的数据。</p>
+    	<p>刚才说到了“阻塞”，什么又叫做阻塞呢？可以来看看下面两个例子。</p>
+    	<p>一个造成代码运行阻塞的例子：</p>
+    	<code class="indent">
+			<img src="img/code/jscode/code-js-398.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-020.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-020.html"></iframe>
+		<p>通过示例可以发现，当点击“执行”按钮的时候，如果不按下弹出框的确定键，那后续的代码是无法执行的，这就是用于alert()函数对代码运行所产生的阻塞效果。（示例中代码运行的顺序和通过断点调试顺序上在不同浏览器有差异，在Chrome浏览器中，由于任务队列的优化机制，DOM渲染会在代码运行完后一并执行，所以在点击按钮后本来应该显示的第一段和第二段内容并没有马上显示，但是用断点调试工具逐步运行，可以看到正确的运行流程。在除了Chrome以外的浏览器中，该功能流程都能正常显示。）</p>
+		<p>接下来再看一个不会产生阻塞的代码例子：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-399.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-021.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-021.html"></iframe>
+		<p>在这个例子里面使用了一个延时函数，在延时函数的内部有一个回调函数，回调函数从结构上讲，就是包含在一个函数内部的函数。JavaScript运行程序的第一遍会忽略所有“内层函数”，当第一层的所有代码和被调用的函数都运行完成后，才会去按顺序（从上到下的次序）运行“第二层”函数，当第二层函数按照顺序运行完成后才会去依次运行第三层（如果有的话）函数，以此类推。所以，利用回调函数是不会对代码的运行造成阻塞的。</p>
+		<p>但需要说明的是，是回调函数和异步执行并不是一样的东西，因为回调函数只是对当前流程不会阻塞，但一旦进入到回调函数内部后，也有一个任务队列，也可能会造成代码阻塞（如长时间的循环语句）。而异步不一样，异步的执行和主流程的运行是否阻塞无关，主线程是否阻塞和产生错误，对异步执行的程序不会造成直接的影响，可以把它理解为另外一个线程上的东西（但JavaScript本身始终是一个单线程脚本语言）。</p>
+		<p>在异步线程上可以读取和使用全局或函数内已经定义好的变量和函数，反之则不行，这和变量的全局/函数作用域是同一个原理。</p>
+		<p>总之，AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件。不过这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有<em>HTTP协议</em>的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的，这里需要注意。</p>
+		<p>一次完整的AJAX请求大致需要经历以下步骤：</p>
+		<ul class="indent">
+			<li>创建AJAX对象</li>
+			<li>创建AJAX请求</li>
+			<li>发送AJAX请求</li>
+			<li>接收所请求的数据并进行处理</li>
+		</ul>
+		<p>由于第四步配置在异步操作中是一个回调函数，所以很多时候会调整到第二步去写，而把“创建AJAX请求”和“发送AJAX请求”写在后面。所以在以后在遇到这样的写法的时候也不要觉得诧异，功能的完整性和流程都不会受到影响。</p>
 	</section>
-	<!-- Performance API -->
+	<!-- XMLHttpRequest -->
 	<section>
-		<h3>Performance API</h3>
-		<p>这个API用于精确度量、控制、增强浏览器的性能表现。它为测量网站性能，提供以前没有办法做到的精度。</p>
-		<p>在以前，我们要测试一段代码的性能表现一般是用Date()函数的getTime()方法来获取一段程序的开始执行时间和结束执行时间的毫秒数，从而得到两值之差来作为代码运行的时间。但这种方法在实例化Date()对象的时候和进行方法查询的时候本身就会消耗一定的时间（虽然非常少），所以不会那么的精确。而后来console对象又提供了<em>time(param)</em>和<em>timeEnd(param)</em>这个“方法对”，用于安插在代码执行之前和代码执行之后来获取某段程序（如一次大面积的遍历、一个循环语句、一次复杂的DOM操作或一个事件的执行）执行的时间。这样一来就比通过Date()对象的getTime()方便了很多。但上面两种方法获取到的代码时间都是毫秒数，如果想获取更精确的值就无能为力了，而HTML5提供的Performance API可以办到，它的精度理论上可以达到1毫秒的千分之一。</p>
-		<p>这个API从IE10开始就已经被支持，现在新版本的主流浏览器对其支持自然也不在话下（Chrome 20+、Firefox 15+、IE 10+、Opera 15+）。</p>
-		<p>这个API主要提供了以下属性和方法：</p>
+		<h3>XMLHttpRequest对象</h3>
+		<p>XMLHttpRequest对象是实现AJAX的最基本对象，后续的所有AJAX属性和方法都是从这个对象上开始。（在IE5、IE6上使用的是“ActiveXObject("Microsoft.XMLHTTP")”，但考虑到现在互联网上已经鲜有这样老版本浏览器的踪影，所以这个只作为了解即可，也无需再做相关兼容性的处理。）</p>
+		<p>XMLHttpRequest对象实质上也是一个JavaScript内置的构造函数，这点我们可以在控制台进行输出进行观察。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-400.jpg">
+		</code>
+		<p>要进行AJAX的相关操作通常我们都是将XMLHttpRequest这个构造函数实例化为一个对象，然后再对我们实例化出的对象进行操作，就像这样：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-401.jpg">
+		</code>
+		<p>从我们之前学习过的JavaScript的经验来看，里面凡是带“on*”开头的键名都应该是XHR对象（XMLHttpRequest的简称）的方法，而不带“on*”的都是XHR的属性。也就是说，我们的所有AJAX操作都是对这些方法和属性（部分方法存在于该对象的原型内，示例中没有展开）进行访问和设置，已达到我们程序的功能需求。后文我们会对这些方法和属性进行功能说明。</p>
+	</section>
+	<!-- open() -->
+	<section>
+		<h3>创建请求open()</h3>
+		<p>按照我们一次AJAX请求的正常步骤，当一个XHR对象被实例化后，就应该要创建一个请求了，创建请求使用的方法为<em>open()</em>（这里要注意区分window对象和Document对象里面的open()方法），该方法共有5个参数，如下：</p>
 		<dl class="attrExplain">
-			<dt>timing属性</dt>
-			<dd>这个属性指向一个对象，它包含了各种与浏览器性能有关的时间数据，提供浏览器处理网页各个阶段的耗时。它包含一个<em>navigationStart</em>子属性，它是浏览器处理当前网页的启动时间，它是一个只读属性，它的值和读取的时间无关，它只记录网页启动的时的时间。</dd>
-			<code>
-				<img src="img/code/jscode/code-js-413.jpg">
-			</code>
-			<h4><a href="html-pages/javascript/codeEffect/code-027.html" target="_blank">运行效果</a>：</h4>
-			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-027.html"></iframe>
-			<dd>除此之外，timing属性还有很多子属性，我们下面例举出一些实用的：</dd>
-			<ul>
-				<li>loadEventStart：返回当前网页load事件的回调函数开始时的Unix毫秒时间戳。如果该事件还没有发生，返回0</li>
-				<li>loadEventEnd：返回当前网页load事件的回调函数运行结束时的Unix毫秒时间戳。如果该事件还没有发生，返回0</li>
-				<li>domainLookupStart：返回域名查询开始时的Unix毫秒时间戳</li>
-				<li>domainLookupEnd：返回域名查询结束时的Unix毫秒时间戳</li>
-				<li>connectStart：返回HTTP请求开始向服务器发送时的Unix毫秒时间戳</li>
-				<li>connectEnd：返回浏览器与服务器之间的连接建立时的Unix毫秒时间戳</li>
-				<li>responseStart：返回浏览器从服务器收到（或从本地缓存读取）第一个字节时的Unix毫秒时间戳</li>
-				<li>responseEnd：返回浏览器从服务器收到（或从本地缓存读取）最后一个字节时（如果在此之前HTTP连接已经关闭，则返回关闭时）的Unix毫秒时间戳</li>
-				<li>domLoading：返回当前网页DOM结构开始解析时（即Document.readyState属性变为“loading”、相应的readystatechange事件触发时）的Unix毫秒时间戳</li>
-				<li>domInteractive：返回当前网页DOM结构结束解析、开始加载内嵌资源时（即Document.readyState属性变为“interactive”、相应的readystatechange事件触发时）的Unix毫秒时间戳</li>
-			</ul>
-			<dd>根据上面这些属性，可以计算出网页加载各个阶段的耗时。我们来看一次timing属性在控制台中运行的输出结果：</dd>
-			<code>
-				<img src="img/code/jscode/code-js-414.jpg">
-			</code>
+			<dt>method</dt>
+			<dd>必选，字符串。表示请求的方式，常用的有："<em>GET</em>"和"<em>POST</em>"，另外还有不常用的"PUT"和"DELETE"。</dd>
+			<dd>使用"GET"和"POST"的语法结构和功能基本相似，只是在某些具体设置上和应用场合会有所区别。</dd>
+			<dd>"GET"相对于"POST"来说，传输性能更好，也就是说会执行得更快，会将参数明文地显示在URL内的“?”之后。在传输上也有2048个字节的限制。</dd>
+			<dd>而"POST"请求的所带的参数是放置于<em>send()</em>方法内，通过一般方法无法获取，所以说这种请求方式更加安全，它对传输的字节也没有限制。但相对于"GET"方式来说，这种方式的性能会差很多。</dd>
+			<dd>总得来说，一般我们的AJAX请求都是使用"GET"方式，除非要传输大段的文本或者图像二进制文件等数据的时候，我们才去考虑使用"POST"。</dd>
 
-			<dt>performance.now()方法</dt>
-			<dd>该方法返回当前网页自从performance.timing.navigationStart到当前时间之间的微秒数（毫秒的千分之一）。也就是说，它的精度可以达到100万分之一秒。</dd>
-			<dd>如例（小数点后方精确到微秒）：</dd>
-			<code>
-				<img src="img/code/jscode/code-js-415.jpg">
-			</code>
-			<h4><a href="html-pages/javascript/codeEffect/code-028.html" target="_blank">运行效果</a>：</h4>
-			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-028.html"></iframe>
+			<dt>url</dt>
+			<dd>必须，字符串。表示请求的相对路径或绝对路径的URL。当第一个参数为"GET"的时候，可以选择性地在现有路径只后的“?”后添加参数或不添加，第一个参数为"POST"的时候不能添加参数。</dd>
 
-			<dt>performance.getEntries()方法</dt>
-			<p>浏览器获取网页时，会对网页中每一个对象（脚本文件、样式表、图片、多媒体文件等等）发出一个HTTP请求。performance.getEntries()方法以数组形式，返回这些请求的时间统计信息，有多少个请求，返回数组就会有多少个成员。</p>
-			<code>
-				<img src="img/code/jscode/code-js-416.jpg">
-			</code>
-			<h4><a href="html-pages/javascript/codeEffect/code-029.html" target="_blank">运行效果</a>：</h4>
-			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-029.html"></iframe>
+			<dt>async</dt>
+			<dd>可选，布尔值。true（默认）表示“异步请求”，false表示“同步请求”。当为同步请求的时候，创建请求和发送请求的方法必须放置于接收和处理请求信息之前。需要注意的是，现在使用同步请求在现代浏览器的控制台内会输出一条警告信息，大致意思是：同步请求影响用户体验，请替换为异步的方式，同步的方式已经被废弃，不再建议使用。</dd>
 
-			<dt>performance.navigation对象</dt>
-			<dd>除了时间信息，performance还可以提供一些用户行为信息，主要都存放在performance.navigation对象上面。它有两个属性，<em>type</em>和<em>redirectCount</em>。</dd>
-			<dd>performance.navigation.type返回一个整数值，表示网页的加载来源，可能有以下4种情况：</dd>
-			<ul>
-				<li>0：网页通过点击链接、地址栏输入、表单提交、脚本操作等方式加载，相当于常数performance.navigation.TYPE_NAVIGATENEXT</li>
-				<li>1：网页通过“重新加载”按钮或者location.reload()方法加载，相当于常数performance.navigation.TYPE_RELOAD</li>
-				<li>2：网页通过“前进”或“后退”按钮加载，相当于常数performance.navigation.TYPE_BACK_FORWARD</li>
-				<li>255：任何其他来源的加载，相当于常数performance.navigation.TYPE_UNDEFINED</li>
-			</ul>
-			<dd>而performance.navigation.redirectCount表示当前网页经过了多少次重定向跳转，返回一个只读的数值。</dd>
+			<dt>user</dt>
+			<dd>可选，字符串。默认为空字符串，表示用于认证的用户名。</dd>
+
+			<dt>password</dt>
+			<dd>可选，字符串。默认为空字符串，表示用于认证的密码。</dd>
 		</dl>
+		<p>以下为open()方法在实际运用过程中的几种格式：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-402.jpg">
+		</code>
+	</section>
+	<!-- send -->
+	<section>
+		<h3>发送请求send()</h3>
+		<p>该方法就是将之前创建的请求发送给服务器，如果使用的是"GET"方式不需要参数，也可以给一个null作为参数以用于说明请求的方式，增加代码的可读性（这样在检查代码的时候更容易检查出这里到底是忘记写参数了还是使用的就是"GET"方式）。如果使用的是"POST"的方式，则通常需要在这个方法内写出参数，这个参数可以是字符串（或被转换为字符串的字符），也可以是一个变量。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-403.jpg">
+		</code>
+		<p>通过AJAX传输的数据类型目前有六种，其中文本字符串是最常见的，AJAX传输的数据类型不同于JavaScript的数据类型，我们在后续的章节里面会进行讲解。</p>
+		<!-- ""（空字符串）/"text"/"json"/"arraybuffer"/"blob"/"document" -->
+	</section>
+	<!-- 请求状态 -->
+	<section>
+		<h3>请求状态onreadystatechange</h3>
+		<p>AJAX的请求是需要时间的（就算在本地服务器环境），而这个时间很多时候是取决于当前的网络状况，也就是说，一个请求正在进行，我们是没有办法立即就对假设已经获取到的数据进行操作的，如下面的例子。</p>
+		<p>HTML部分代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-404.jpg">
+		</code>
+		<p>JavaScript部分代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-405.jpg">
+		</code>
+		<p>JSON文件代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-408.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-022.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-022.html"></iframe>
+		<p>在该页面点击示例中的按钮发现没有反应，点击示例上面的超链接“运行效果”，进入单独的示例页面后，打开控制台，再去点击按钮会发现一个“Uncaught SyntaxError（不能捕获的语法错误）”报错信息。这是因为现在数据还没有请求完成，就去对一个空字符串（这个时候“xhr.responseText”没有请求到数据，还是一个空的字符串）进行了“JSON.parse()”方法的操作，所以报错。</p>
+		<p>要解决这个问题，主要有两种方案可选，第一种，将穿件的请求改为同步的方式。其它代码不变，只为open()方法添加第三个参数“false”，如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-406.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-023.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-023.html"></iframe>
+		<p>这次点击按钮，数据被正常的请求了过来，并被我们用DOM操作将数据用模版字符串的方式添加进了页面内。但是这样做却存在一个问题，还是通过刚才打开单独页面的方式去看看控制台内的输出。</p>
+		<code>
+			<img src="img/code/jscode/code-js-407.jpg">
+		</code>
+		<p>可以看到浏览器提出了一个“[Deprecation]（不赞成）”的意见，翻译过来的意思就和我们上面提到的那样“在主线程上同步XMLHttpRequest弃用,因为其不利影响最终用户的体验，更多帮助...”。也就是说这种做法是不被推荐的，而且这样做，显然也失去了AJAX所具有的“异步”特点和这一点带来的优势。</p>
+		<p>要解决现在面临的问题，就可以使用AJAX对象内提供的<em>onreadystatechange()</em>事件（document对象上也有这个方法，但他们的状态值有些不一样），可以为这个事件添加监听函数来检测请求的各个状态。首先，我们就这个事件改写一下上面的例子。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-409.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-024.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-024.html"></iframe>
+		<p>可以发现，点击按钮后功能和上一个例子的效果一样，但在控制台内不再会出现刚才的那些警告建议了。</p>
+		<p>在这次的代码改动中首先是为原来获取到的数据和对数据操作的部分扩上了一层onreadystatechange的事件，在这个事件内部还多了两个属性：“<em>readyState</em>”和“<em>status</em>”，这两个属性正是这个事情成功执行获取请求数据和对数据进行操作的关键。</p>
+		<p>其实onreadystatechange这个事件在这段代码中是会执行3次的，我们可以就刚才这段代码，加上一个计数器来进行观察控制台内的输出结果。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-410.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-025.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-025.html"></iframe>
+		<p>在新打开页面中，当我们点击“请求数据”按钮后，在控制中会出现以下结果：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-411.jpg">
+		</code>
+		<p>出现这样的结果其实是因为“readyState”属性的状态值在变化，该属性共有5个值，其中值为“2、3、4”的时候会触发onreadystatechange事件（可自行在该事件内用console.log(xhr.readyState)进行输出观察），这5个值表示的状态分别如下：</p>
+		<ul class="indent">
+			<li>0，对应常量"UNSENT"，表示XMLHttpRequest实例已经生成，但是open()方法还没有被调用</li>
+			<li>1，对应常量"OPENED"，表示send()方法还没有被调用，仍然可以使用setRequestHeader()，设定HTTP请求的头信息</li>
+			<li>2，对应常量"HEADERS_RECEIVED"，表示send()方法已经执行，并且头信息和状态码已经收到</li>
+			<li>3，对应常量"LOADING"，表示正在接收服务器传来的body部分的数据，如果responseType属性是text或者空字符串，responseText就会包含已经收到的部分信息</li>
+			<li>4，对应常量"DONE"，表示服务器数据已经完全接收，或者本次接收已经失败了</li>
+		</ul>
+		<p>在刚才的例子中，我们的都是用数字来表示的状态，其实用大写的字符串常量也可以达到一样的效果，如：“readyState == 4”也可以写成“readyState == "DONE"”，但考虑到单词容易拼写错误和效率上的问题，国内开发者通常用数字来表示AJAX请求时的状态值。</p>
+		<p>在刚才的例子中，除了“readyState”还有一个“status”，这个属性反应的是请求的结果的状态值，它有以下可能的值：</p>
+		<ul class="indent">
+			<li>200, 对应常量"OK"，访问正常</li>
+			<li>301, 对应常量"Moved Permanently"，永久移动</li>
+			<li>302, 对应常量"Move temporarily"，暂时移动</li>
+			<li>304, 对应常量"Not Modified"，未修改</li>
+			<li>307, 对应常量"Temporary Redirect"，暂时重定向</li>
+			<li>401, 对应常量"Unauthorized"，未授权</li>
+			<li>403, 对应常量"Forbidden"，禁止访问</li>
+			<li>404, 对应常量"Not Found"，未发现指定网址</li>
+			<li>500, 对应常量"Internal Server Error"，服务器发生错误</li>
+		</ul>
+		<p>虽然这个属性的状态值很多，但真正表示请求成功，并且达到此次请求的目的的也就只有“200”这个状态值了，所以，在判断语句中，我们只需要判断该属性的值是否为“200”即可，非“200”的状态值我们都无需做任何操作。和之前的“readyState”一样，“status”的状态值也可以用后面的英文字母常量表示，如：“status == 200”也可写作“status == "ok"”。</p>
+		<p>需要补充的一点是，“readyState”的值为“4”（服务器数据已经完全接收）的时候，并不代表此次的数据请求就一定成功了，数据就是我们所需要的，它只是表示数据请求完成而且，所以，一般情况下我们会用嵌套的方式来做更“健壮”的判断，如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-412.jpg">
+		</code>
+	</section>
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习一&gt;</h3>
+		<p>用AJAX相关知识完成以下功能：</p>
+		<p>1、创建一个HTML页面，页面内有一个nav导航栏（包含在&lt;header&gt;标签内），导航栏内有三个超链接按钮；</p>
+		<p>2、页面内的三个超链接按钮都要触发浏览器地址栏的“哈希值”改变（名称自定）；</p>
+		<p>3、创建3个不同的JSON文件，每个JSON文件内包含一个3个键值对的对象（键名和值名自定）；</p>
+		<p>4、当点击HTML页面上的3个导航按钮后，分别对应地在页面下方的&lt;main&gt;标签内显示出JSON文件内对象的所有属性值（通过for-in语句进行输出），分三行显示。</p>
+	</section>
+	<!-- get和post对比 -->
+	<section>
+		<h3>GET和POST对比</h3>
+		<p>在之前的“创建请求open()”一章中我们已经提到了GET和POST这两种常用的请求的一些差异，但我们非常有必要更详细的区分它们的差异，这样我们才能在实际运用中选出当前功能需求中会表现得更好的方式。</p>
+		<p>从实际运用角度上来讲，它们主要有以下区别：</p>
+		<ul class="indent">
+			<li>性能：GET的性能比POST更好</li>
+			<li>缓存：GET能够缓存文件，而POST每次都必须从服务器更新数据。</li>
+			<li>数据量：GET发送的数据参数有大小限制（2048个字节），而POST没有这个限制，可以利用它来发送大量数据参数。</li>
+			<li>安全性：GET发送的参数是明文的，而POST发送的参数放在send方法内被加密，更加安全。</li>
+		</ul>
+		<p>但通常来讲，若不是为了传输敏感数据，或参数会比较长的数据，我们都尽可能的会用GET方法，只因为它的性能比POST更优。现在有的前端开发者，或者后台开发者来处理前端的时候，由于不能区分GET和POST，但使用的时候发现GET在有些情况下不能用，于是以后就“一如既往”的只用POST，这样的做法肯定是不太对的。</p>
+	</section>
+	
+	<!-- 可复用的AJAX请求 -->
+	<section>
+		<h3>可复用的AJAX请求</h3>
+		<p>通过之前我们对AJAX的认识可以发现，一次请求的过程需要经历4个步骤，而其中的“状态改变监听函数”（即“onreadystatechange”，区别于“eventListener”这种事件触发的监听函数）一步会随着这个实例出的AJAX对象（前例中的“xhr”）的“readyState”属性的改变而多次执行。这里我们首先要有一个认识，就是AJAX对象的“readyState”属性只要在AJAX被实例化为对象之后的那一刻起就能够访问到了（它是一个只读属性），它并非在“onreadystatechange”事件内才能访问，对于实例化对象后的其它属性和方法亦是如此，这里需要清楚认识。</p>
+		<p>虽然说多次书写是有助于我们快速的熟悉AJAX创建请求的复杂流程，但是若在实际项目还多次这样去写，肯定是过不了项目经理那一关的，代码的体积也会越来越臃肿。也千万不要有这种“反正以后我用框架就是了”的想法，因为现在很多对性能要求极高的客户还是希望你能用原生的代码去实现，而不是盲目地去使用第三方的插件、库或者框架。如以下一位已经进入前端工程师世界半年了的同志，他发表了这样一句感言：</p>
+		<code class="indent">
+			<img src="img/content/javascript/not-frameword.jpg">
+		</code>
+		<p>既然我们始终没有没有办法离开原生的JavaScript，那像AJAX这样繁复的代码多次的在项目中书写也显然是违背了程序设计思想里“可复用”的原则的，所以我们应该将AJAX封装起来。像jQuery里的各种AJAX的方法（$.ajax()、$.get()、$.getJSON()、$.getScript()、$.post()等），还有现在火热度很高的<em title="截止本章更改更改的时间2017年9月10日，该项目在GitHub上已经有26.7K的星数了，比作为JS三大主流框架的Angular的27.6K星数还高了1000多，而且这个差距还将继续被拉大">Axios</em>等的AJAX功能实现都是对于原生JavaScript中的AJAX进行系统化的封装来实现的。这些库或者插件里的AJAX功能都十分的完善，但在实际的项目中我们并不会用到AJAX那么多的特性，所以只需要简单封装即可，我们来看一个用于获取“文本类型”（json、html、txt等文件都属于文本文件）的GET封装的简单实现。</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-448.jpg">
+		</code>
+		<p>函数已经封装好了，接下来我们通过一个实例来调用该封装。先准备一个这样的<em title="仍然是一个HTML文件，但是不包含文档声明和body及以上层级的标签结构，包括CSS、JS等文件也可以由它的“载体”（也是一个HTML文件，但这个HTML文件是一个完整的HTML文件，即包含必要的文档声明等内容）来进行引用和执行">文档片段</em>：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-449.jpg">
+		</code>
+		<p>这个文档片段内不包含任何外部文件的引用，也没有进行任何样式的设置。现在我们又新建这样一个HTML文件：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-450.jpg">
+		</code>
+		<p>现在我们要做的事是通过刚才我们封装的getText函数去请求上方的那个文档片段，然后将它显示到我们后面新建的这个完整的HTML文件里显示出来，并设置一定的样式。</p>
+		<p>显示样式这个比较好办，我们只需要在这个完整的HTML文件里预先把还为请求到的文档片段内元素的样式写好即可（实际流程应该是先请求，再设置样式，不然就无法根据显示效果进行调整了）：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-451.jpg">
+		</code>
+		<p>而JavaScript的部分，除了刚才我们封装好的AJAX请求函数外，就只需要这样一段就可以了：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-452.jpg">
+		</code>
+		<h4><a href="html-pages/javascript/codeEffect/code-040.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-040.html"></iframe>
+		<p>当然，上例中调用的函数可以放置在一个事件内部去执行，比如说用它来实现多页面的“跳转”功能。这非常推荐去尝试一下，因为这种做法会让你看到一些以前的开发模式中从来没有看到过的东（bào）西(cùo)，这里得要卖一个关子，自己的体会更能留下深刻的印象。</p>
+		<p>现在流行的<em title="单页应用">SPA</em>开发模式就是以这样的形式为雏形的，单页应用需要用到“<em title="又称“router”">路由</em>”去管理页面的历史记录、CSS样式、JS功能、状态等内容，以此来达到超越传统通过超链接进行页面跳转的用户体验。SPA不需要进行页面跳转，使得视觉流畅度得到了很大的提升。另外SPA是依赖AJAX的<em title="异步的无阻塞特性和回调函数的灵活特性">异步回调</em>特性实现的，这也使得载入性能得到提升。如上例中的文档片段，没有文档声明（doctype）、head标签、body标签、一系列的mete配置、link引用、title标签、script标签等内容，一定程度也加快了页面的载入速度。</p>
+	</section>
+	
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习二&gt;</h3>
+		<p>仿照上一节的AJAX请求函数封装示例，封装一个名为getJSON的AJAX请求函数，并调用这个函数来显示要求的功能。具体要求如下：</p>
+		<ol>
+			<li>封装的AJAX函数只需预置两个参数，一个为URL，一个为回调函数</li>
+			<li>根据请求到的JSON文件的格式生成一个有一定美观度的列表（见下方的设计参考图）</li>
+			<li>当列表中的列表项被点击之后alter出当前列表的索引值及文本内容</li>
+			<li>使用提供的URL地址“https://www.aulence.com/data/hardware-info.json”</li>
+		</ol>
+		<p>列表设计参考图：</p>
+		<p>
+			<img src="img/content/javascript/list-design.jpg" title="代码效果示例图" style="border:1px solid #eee;">
+		</p>
+	</section>
+	
+	<!-- 参数的序列化 -->
+	<section>
+		<h3>参数的序列化</h3>
+		<p>AJAX不仅能用于向服务端发送请求来取得数据，还能向服务端发送数据，但是服务端有自己接收前端发送过来的数据的一套规则。举个例子，前端通过AJAX发送“name”和“tel”（用户名和电话号码）字段到服务端，而服务端用于接收这两个字段在后台页面（这里以PHP为例）中的完整代码如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-453.jpg">
+		</code>
+		<p>那么我们的问题来了，我们发送这两个字段的规则是什么呢，实际上在我们本章的“创建请求open()”和“发送请求send()”这两节的代码示例中就已经出现了这个规则，我们可以回过头去看一下。对于使用“GET”请求的，参数需要加在URL结束位置的“?”之后，“键”和“值”之间用“=”分割，而“键值对”之间用“&amp;”进行分割。而使用的是“POST”请求的时候，参数应该作为实例化后的AJAX对象的send方法的参数，且不需要开头的那个问号“?”了。</p>
+		<p>而通常情况下，我们得到的值不可能是这样的格式，也就是说我们需要通过一定的手段将现有的值转换为AJAX发送的参数，这一个过程就称作“<em title="或称：值的序列化">参数的序列化</em>”。在jQuery中提供了将对象序列化的“$.param()”方法和将表单内所有含有name属性的表单元素序列化的“$("form").serialize()”方法，另外还有一个和“serialize()”方法用法相同，但是是将值转换为JSON对象的方法。但是在原生的JavaScript中却没有这样的方法，所以需要我们自己去编写这样的方法。就拿“$.param()”方法为例，它的实现过程是这样的（该页面已经引用了jQuery库）：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-454.jpg">
+		</code>
+		<p>如该页面的控制台代码所示，这个方法能将一个对象进行参数的序列化，得到的这个结果就可以用AJAX对象的指定方法来向后台发送数据了。看到这里大家可能会有一个疑问，就这样一个简单的转换为什么需要用到一个方法？因为在一个项目中，会向后台发送数据的通常不止一处地方，而且我们要发送的这些数据的键名和值都是未知的，而且每处需要发送的键值对个数也是未知的。如果每处需要发送的数据都由我们手动去获取的话，势必会消耗掉一些宝贵的开发时间，而且由于序列化后的参数的可读性问题也很容易造成拼接过程中的一些细节错误。</p>
+		<p>关于参数序列化还有一个知识点需要进行说明，后台接受的参数里面是不能有ASC II码以外的字符的（中文属于Unicode码），所以如果参数里有非ASC II码的值，需要用“<em title="该函数可把字符串作为URI组件进行编码">encodeURIComponent()</em>”函数进行编码，但是它不会转换常规的ASC II字符，如果要对编译成URI组件的字符进行解码可以用“<em title="对URI组件进行解码">decodeURIComponent()</em>”函数。jQuery的“$.param()”也内置了该转换函数，具体如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-455.jpg">
+		</code>
+		<p>这两个函数虽然拼写有点复杂，但是应用场景却是非常多的。如表单内“昵称”、“地址”、“个人简介”等内容在国内基本都是以中文（非ASC II码）形式存在的，所以还是应该对它们进行归纳记识，便于在以后的实际项目中进行使用。</p>
+	</section>
+	
+	<!-- 章节练习 -->
+	<section class="unitPractice">
+		<h3>&lt;章节练习三&gt;</h3>
+		<p>以“objToParam”为名创建一个将对象序列化的函数，具体要求如下：</p>
+		<ol>
+			<li>该函数接受一个原生对象（非数组、Math、Date等对象）作为参数，当参数不为一个原生对象的时候在控制台用“console.error()”方法输出“该函数的参数只能是一个原生对象”的错误信息</li>
+			<li>将参数对象内的所有属性值都进行“URI组件”的编码，让后台能够正确的接收到任意主流编码类型（ASC II或Unicode）的值</li>
+			<li>函数正确运行后，会返回对象被序列化之后的字符串</li>
+		</ol>
+		<p>&lt;提示&gt;：可以对“Object.prototype.toString.call(param)”这个原型链方法返回的结果做一定的字符串方法的操作来获得数据的“精确类型”。</p>
 	</section>
 </root>
 

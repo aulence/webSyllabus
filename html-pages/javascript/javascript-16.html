@@ -1,0 +1,103 @@
+<root data-root="HTML5 API">
+    <!-- 概述 -->
+    <section class="mt0">
+    	<h3>HTML5 API概述</h3>
+    	<p>HTML5 API是HTML第5版本为JavaScript提供的API（应用程序编程接口），也就是说它们同样不属于JavaScript的一部分，但却可以被它的语法所操作，从而扩展原生JavaScript的功能。</p>
+    	<p>HTML5提供的API大致有如下：</p>
+    	<ul class="indent">
+    		<li>用于渲染图形或其他可视图像的新canvas元素所使用的2D绘图API</li>
+    		<li>支持离线Web应用程序的缓存API（即Web Storage）</li>
+    		<li>使用新&lt;video&gt;和&lt;audio&gt;元素来播放视频和音频的API</li>
+    		<li>支持浏览历史访问和添加页面历史的API</li>
+    		<li>draggable属性支持的拖放API</li>
+    		<li>contenteditable属性支持的编辑API</li>
+    		<li>使用Geolocation API进行地理定位</li>
+    		<li>让JavaScript获得独立线程的Web Worker API</li>
+    		<li>使浏览全屏的Fullscreen API</li>
+    		<li>是否可以访问用户摄像头和麦克风的getUserMedia API</li>
+    		<li>检测设备电池使用情况的Battery API</li>
+    		<li>预加载页面内容或文件的Link Prefetching API</li>
+    		<li>请求访问系统文件的FileSystem API</li>
+    		<li>对代码性能精确测试的Performance API</li>
+    		<li>用于浏览器接收语音输入的Web Speech API</li>
+    		<li>浏览器可缩放矢量图（SVG）API</li>
+    		<li>用于判断页面是否处于浏览器当前窗口的Page Visibility API</li>
+    		<li>浏览器用于定时循环操作的的requestAnimationFrame API</li>
+    		<li>定义页面模块组件的Web Components API</li>
+    		<li>实现网络实时通信的WebRTC API</li>
+    		<li>允许服务器端与客户端进行双向通信的WebSocket API</li>
+    		<li>允许服务器端向客户端单向通信的SSE（Server-Sent Events） API</li>
+    		<li>允许脚本文件向用户发送通知的Web Notification API</li>
+    		<li>一系列针对移动设备的API，如：Permission（用户许可）、Viewport（视窗属性，设置于&lt;meta&gt;标签）、Geolocation（用户地址位置）、watchPosition（监听用户位置的持续改变）、clearWatch（取消监听用户位置的持续改变）、Vibration（设备振动）、Luminosity（屏幕亮度调节）、Orientation（检测手机的横竖摆放）等</li>
+    	</ul>
+    	<p>由于学习时间成本的限制，这些列出来的HTML5 API都不可能再一一讲解了，只是作为需要涉及相应开发工作的时候，知道JavaScript还可以完成这些功能并进行使用方法查询即可。本章限于时间和篇幅的原因，只对其中一些API的使用进行讲解，并会在以后持续完善。</p>
+	</section>
+	<!-- Performance API -->
+	<section>
+		<h3>Performance API</h3>
+		<p>这个API用于精确度量、控制、增强浏览器的性能表现。它为测量网站性能，提供以前没有办法做到的精度。</p>
+		<p>在以前，我们要测试一段代码的性能表现一般是用Date()函数的getTime()方法来获取一段程序的开始执行时间和结束执行时间的毫秒数，从而得到两值之差来作为代码运行的时间。但这种方法在实例化Date()对象的时候和进行方法查询的时候本身就会消耗一定的时间（虽然非常少），所以不会那么的精确。而后来console对象又提供了<em>time(param)</em>和<em>timeEnd(param)</em>这个“方法对”，用于安插在代码执行之前和代码执行之后来获取某段程序（如一次大面积的遍历、一个循环语句、一次复杂的DOM操作或一个事件的执行）执行的时间。这样一来就比通过Date()对象的getTime()方便了很多。但上面两种方法获取到的代码时间都是毫秒数，如果想获取更精确的值就无能为力了，而HTML5提供的Performance API可以办到，它的精度理论上可以达到1毫秒的千分之一。</p>
+		<p>这个API从IE10开始就已经被支持，现在新版本的主流浏览器对其支持自然也不在话下（Chrome 20+、Firefox 15+、IE 10+、Opera 15+）。</p>
+		<p>这个API主要提供了以下属性和方法：</p>
+		<dl class="attrExplain">
+			<dt>timing属性</dt>
+			<dd>这个属性指向一个对象，它包含了各种与浏览器性能有关的时间数据，提供浏览器处理网页各个阶段的耗时。它包含一个<em>navigationStart</em>子属性，它是浏览器处理当前网页的启动时间，它是一个只读属性，它的值和读取的时间无关，它只记录网页启动的时的时间。</dd>
+			<code>
+				<img src="img/code/jscode/code-js-413.jpg">
+			</code>
+			<h4><a href="html-pages/javascript/codeEffect/code-027.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-027.html"></iframe>
+			<dd>除此之外，timing属性还有很多子属性，我们下面例举出一些实用的：</dd>
+			<ul>
+				<li>loadEventStart：返回当前网页load事件的回调函数开始时的Unix毫秒时间戳。如果该事件还没有发生，返回0</li>
+				<li>loadEventEnd：返回当前网页load事件的回调函数运行结束时的Unix毫秒时间戳。如果该事件还没有发生，返回0</li>
+				<li>domainLookupStart：返回域名查询开始时的Unix毫秒时间戳</li>
+				<li>domainLookupEnd：返回域名查询结束时的Unix毫秒时间戳</li>
+				<li>connectStart：返回HTTP请求开始向服务器发送时的Unix毫秒时间戳</li>
+				<li>connectEnd：返回浏览器与服务器之间的连接建立时的Unix毫秒时间戳</li>
+				<li>responseStart：返回浏览器从服务器收到（或从本地缓存读取）第一个字节时的Unix毫秒时间戳</li>
+				<li>responseEnd：返回浏览器从服务器收到（或从本地缓存读取）最后一个字节时（如果在此之前HTTP连接已经关闭，则返回关闭时）的Unix毫秒时间戳</li>
+				<li>domLoading：返回当前网页DOM结构开始解析时（即Document.readyState属性变为“loading”、相应的readystatechange事件触发时）的Unix毫秒时间戳</li>
+				<li>domInteractive：返回当前网页DOM结构结束解析、开始加载内嵌资源时（即Document.readyState属性变为“interactive”、相应的readystatechange事件触发时）的Unix毫秒时间戳</li>
+			</ul>
+			<dd>根据上面这些属性，可以计算出网页加载各个阶段的耗时。我们来看一次timing属性在控制台中运行的输出结果：</dd>
+			<code>
+				<img src="img/code/jscode/code-js-414.jpg">
+			</code>
+
+			<dt>performance.now()方法</dt>
+			<dd>该方法返回当前网页自从performance.timing.navigationStart到当前时间之间的微秒数（毫秒的千分之一）。也就是说，它的精度可以达到100万分之一秒。</dd>
+			<dd>如例（小数点后方精确到微秒）：</dd>
+			<code>
+				<img src="img/code/jscode/code-js-415.jpg">
+			</code>
+			<h4><a href="html-pages/javascript/codeEffect/code-028.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-028.html"></iframe>
+
+			<dt>performance.getEntries()方法</dt>
+			<p>浏览器获取网页时，会对网页中每一个对象（脚本文件、样式表、图片、多媒体文件等等）发出一个HTTP请求。performance.getEntries()方法以数组形式，返回这些请求的时间统计信息，有多少个请求，返回数组就会有多少个成员。</p>
+			<code>
+				<img src="img/code/jscode/code-js-416.jpg">
+			</code>
+			<h4><a href="html-pages/javascript/codeEffect/code-029.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-029.html"></iframe>
+
+			<dt>performance.navigation对象</dt>
+			<dd>除了时间信息，performance还可以提供一些用户行为信息，主要都存放在performance.navigation对象上面。它有两个属性，<em>type</em>和<em>redirectCount</em>。</dd>
+			<dd>performance.navigation.type返回一个整数值，表示网页的加载来源，可能有以下4种情况：</dd>
+			<ul>
+				<li>0：网页通过点击链接、地址栏输入、表单提交、脚本操作等方式加载，相当于常数performance.navigation.TYPE_NAVIGATENEXT</li>
+				<li>1：网页通过“重新加载”按钮或者location.reload()方法加载，相当于常数performance.navigation.TYPE_RELOAD</li>
+				<li>2：网页通过“前进”或“后退”按钮加载，相当于常数performance.navigation.TYPE_BACK_FORWARD</li>
+				<li>255：任何其他来源的加载，相当于常数performance.navigation.TYPE_UNDEFINED</li>
+			</ul>
+			<dd>而performance.navigation.redirectCount表示当前网页经过了多少次重定向跳转，返回一个只读的数值。</dd>
+		</dl>
+	</section>
+</root>
+
+
+
+
+
+

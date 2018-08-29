@@ -1,169 +1,179 @@
-<root data-root="JavaScript数值型">
-    <!-- 数值型详解 -->
+<root data-root="JavaScript DOM">
+    <!-- 概述 -->
     <section class="mt0">
-        <h3>数值型详解</h3>
-        <p>数值型作为JavaScript中一个<em title="这区别于“对象”这种引用数据类型">基本数据类型</em>在程序中是不可或缺的，程序中的逻辑实现、条件判断都直接或间接地需要数值才能实现。比如说对数组的操作，循环语句的实现，没有数值型这种数据类型是办不到的。当然，这只是指这种数据类型在程序中的运用。谈到实际的项目，像金融这一类的网站或应用，如果对数值型这个数据类型没有充分的了解，做出的成品是很难有质量保证的，其所表示的数据准确性也会饱受怀疑，在对互联网软件产品质量要求越来越高的今天，这样的产品是达不到上线要求的。</p>
-        <p>在JavaScript中，所有的数字都是以64位浮点数的形式存储的，就算是表面上看到的是一个整数，实质上它也是一个浮点数。如“1”和“1.0”完全是同一个数，他们的“1 === 1.0”会返回“true”的布尔值（在其它很多编程于语言里这样的表达式是不成立的）。其实在JavaScript语言的底层，根本没有整数（其他编程语言是“int”型）这个类型。但有的时候JavaScript的值的计算必须要整数才能完成，JavaScript的做法也只是将它64位的数值转换为32位再进行运算而已。</p>
+    	<h3>JavaScript DOM概述</h3>
+    	<p>DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删标签和操作属性等），它现在由W3C组织负责维护和进行标准制定。</p>
+    	<p>浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，而DOM 4已经在2015年11月19日发布了“正式推荐标准”。</p>
+    	<p>严格地说，DOM不属于JavaScript，但是操作DOM是JavaScript最常见的任务，而JavaScript也是最常用于DOM操作的语言。DOM的最小组成单位叫做节点。文档的树形结构，就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。一个文档的所有节点，按照所在的层级，可以抽象成一种树状结构。这种树状结构就是DOM。</p>
 	</section>
-    <!-- 数值型的精度问题 -->
-    <section>
-        <h3>数值型的精度问题</h3>
-        <p>浮点数始终是一个不精确的数，在进行浮点数运算的时候会出现一些意料外的情况。比如现在我们拿这几个浮点数在控制台内进行运算输出，观察结果：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-058.jpg">
-        </code>
-        <p>所以，在进行一些需要高精度的整数计算的时候，最好能对运算数使用保留小数点的方法“<em title="这是一个“Array”对象的原型方法，只能对存储为变量的数值型使用">toFiexd()</em>”再用对应的十分位数相乘转换回原始计算结果，该方法的括号内需要有一个参数，参数是一个数值型，如“toFiexd(2)”表示计算结果保留两位小数，然后将得出的结果乘以“100”即会得到一个相对精确的整数。</p>
-        <p>根据<em title="美国电气电子工程师学会，而“754”表示他们制立的二进位浮点数算术标准">IEEE 754</em>规定，有效数字第一位默认总是1，不保存在64位浮点数之中。在这64位中，第1到第12位表示数值的“指数”，剩余的52位是用二进制表示，也就是说JavaScript的有效数字是一个53位的二进制单位，这意味着JavaScript能精确表示的数值范围在-(2<sup>53</sup>-1)到2(2<sup>53</sup>-1)之间。在JavaScript中对数值求幂（N次方）的函数是“<em title="Math是一个用于数学计算的构造函数，提供了非常多的数学计算的方法">Math.pow(binary,power)</em>”，其中“binary”是指“底数”，函数中的参数意思就是“binary”的“power”次幂（次方），如“Math.pow(5,3)”得出的结果就是125，表示5的3次方。所以，针对上述原理，我们可以算出JavaScript最大能保留的精度数值，写作：Math.pow(2,53)。我们在控制台内做这样一个实验：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-059.jpg">
-        </code>
-        <p>从上面示例可以看到，大于2的53次方以后，整数运算的结果开始出现错误。所以，大于等于2的53次方的数值，都无法保持精度。而且大于该值位数的值都不能被保存，被会自动省略掉。</p>
-        <p>JavaScript还能采用科学计数法来表示一个数值，将数字写在“e”或“E”后方表示指数，如：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-060.jpg">
-        </code>
-        <p>如果是负数前面需要加上负号“-”，而正数时前面的正号“+”可加可不加。另外，有两种情况，JavaScript会将一个数值自动转换为科学计数法，一种是小数点前多于21位的数字，另外一种是小数点后连续出现6个或更多“0”的情况，如：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-061.jpg">
-        </code>
-        <p>当然，经过科学计数法计算后的结果也是能继续参与到连续的算术运算中去的。只要不超出JS计算的精度范围（即“-(2<sup>53</sup>-1)到2(2<sup>53</sup>-1)”以外），都是不用担心计算结果的问题的（浮点数的计算误差还是得考虑进去）。</p>
-	</section>
-    <!-- NaN -->
-    <section>
-    	<h3>不是数字的数字--NaN</h3>
-        <p>在数值型数据中，有一个特殊的存在“<em title="属于基本数据类型，typeof返回的值为“number”，是JavaScript中唯一的一个不等于自身的值">NaN</em>”，它表示的是“非数字”（Not a Number），但当用数据类型判断的方法“typeof()”对它进行类型判定时，得出的结果却是“number”。在比较运算符中“NaN == NaN”得出的值却是“false”，如：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-065.jpg">
-        </code>
-        <p>从控制台中返回的结果可以发现“NaN”基本不和任何类型的数据相等，要判断一个数据的值是否是“NaN”，JavaScript提供了一个方法：<em title="“param”表示参数,英文全称为“Parametric”">isNaN(param)</em>，将需要判断的值或变量作为参数放置于该方法内，即可根据返回的值判断该值或变量是否为一个“NaN”，该方法的返回值是一个布尔值，如果返回的值为true，表示值为NaN，如果返回的值为false，那就表示它的值不是NaN，如例：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-066.jpg">
-        </code>
-        <p>可以发现，其实直接对值类型进行判断的情况下，除了数值型（number）以外，返回的结果都是true，当然也包括它自身“isNaN(NaN)”，得出的结果同样是true。NaN产生的条件是：当参与<em>算术运算</em>的中的某个值不为数值型的值，那返回的结果就会为NaN。但“<em>+</em>”运算符比较特殊，因为有的时候它是可以作为<em>字符串拼接运算符</em>的。观察控制台中输出的结果：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-067.jpg">
-        </code>
-    </section>
-    <!-- 数值的转换 -->
-    <section>
-        <h3>数值的转换</h3>
-        <p>在实际的数值获取中，很多时候取到的数值并非是以数值存在的，如：字符串"3"，像素单位"30px"，单个数组元素[30]等，这些类型的值在参与和数值型算术运算时会产生意外的结果，如，一个数值在和一个字符串、像素单位值或单个数组进行“+”运算时，起到的是一个“字符串拼接”的作用，而在执行“-”、“×”或“÷”运算时又是进行基本算术运算。如例：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-068.jpg">
-        </code>
-        <p>当然，上面这些“非数值”的内容都还是一个数值内容，能通过程序自动转换的情况。倘若取到的值是一个带单位的（px、em、pt等），情况又有所不同了：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-069.jpg">
-        </code>
-	</section>
-	<!-- 数值型的进制 -->
-    <section>
-        <h3>数值型的进制</h3>
-        <p>作为一门计算机语言，JavaScript自然也支持四种基本的进制表示法，它们分别是：十进制、二进制、八进制和十六进制。</p>
-        <dl class="attrExplain">
-            <dt>十进制</dt>
-            <dd>也就是常用是数值，如阿拉伯数字：...-2,-1,0,1,2...（同时也包含每个数字之间的小数）</dd>
 
-            <dt>二进制</dt>
-            <dd>需要在数值之前加上<em>前导数</em>：“<em>0b</em>”或“<em>0B</em>”（后面的“b”或“B”是英文字母），且前导数后方的数值不能大于1，或是其它内容，否则浏览器会报错，如：</dd>
-            <dd>
-                <code>
-                    <img src="img/code/jscode/code-js-062.jpg">
-                </code>
-            </dd>
+	<!-- DOM节点查询 -->
+	<section>
+		<h3>DOM节点查询</h3>
+		<p>对于DOM的查询，document提供了以下方法：</p>
+		<dl class="attrExplain">
+			<dt>document.getElementById()</dt>
+			<dd>这个方法我们应该是再熟悉不过了，它会返回匹配指定id属性的元素节点。如果没有发现匹配的节点，则返回null。</dd>
 
-            <dt>八进制</dt>
-            <dd>需要在数值之前加上前导数：“<em>0o</em>”或“<em>0O</em>”，且前导数后方的数值不能大于7，或是其它内，否则浏览器会报错容，如：</dd>
-            <dd>
-                <code>
-                    <img src="img/code/jscode/code-js-063.jpg">
-                </code>
-            </dd>
+			<dt>document.getElementsByTagName()</dt>
+			<dd>该方法返回所有指定HTML标签的元素，返回值是一个类似数组的HTMLCollection实例对象集合，可以实时反应HTML文档的变化。</dd>
+			<dd>如果没有任何匹配的元素，就返回一个空的类似数组。</dd>
 
-            <dt>十六进制</dt>
-            <dd>需要在数值之前加上前导数：“<em>0x</em>”或“<em>0X</em>”，且前导数后方的数值不能大于f或F（相当于十进制内的15），或是其它内容，否则浏览器会报错，如：</dd>
-            <dd>
-                <code>
-                    <img src="img/code/jscode/code-js-064.jpg">
-                </code>
-            </dd>
-        </dl>
+			<dt>document.getElementsByClassName()</dt>
+			<dd>该方法同样返回一个类似数组的HTMLCollection实例对象集合，包括了所有class名字符合指定条件的元素，元素的变化实时反应在返回结果中。需要注意该方法是在DOM3后新增的标准方法，在IE8及以下版本的浏览器中是不支持的，如果项目需要兼容它们，请使用其他DOM节点的查询方法。</dd>
+			<dd>如果没有任何匹配的元素，也会返回一个空的类似数组。</dd>
+
+			<dt>document.getElementsByName()</dt>
+			<dd>该方法用于选择拥有name属性的HTML元素，返回一个类似数组的的NodeList实例对象，因为name属性相同的元素可能不止一个。</dd>
+			<dd>如果没有任何匹配的元素，还是会返回一个空的类似数组。</dd>
+
+			<dt>document.querySelector()，</dt>
+			<dd>该方法接受一个CSS选择器作为参数，返回匹配该选择器的元素节点。如果有一个或多个节点对象满足匹配条件，也只会返回第一个匹配的节点对象。如果没有发现匹配的节点，则返回null。</dd>
+			<dd>完整的代码示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-444.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-037.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-037.html"></iframe>
+			
+			<dt>document.querySelectorAll()</dt>
+			<dd>该方法与querySelector()用法类似，区别是返回一个NodeList对象集合，包含所有匹配给定选择器的节点。</dd>
+			<dd>完整的代码示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-445.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-038.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-038.html"></iframe>
+			<dd>这里需要注意的是，使用querySelectorAll()方法后，代码中所有的查询结果都需要加上下标索引，哪怕本来就是唯一的ID查询，否则浏览器都会报错。</dd>
+			<dd>还需要注意的是，querySelector()和querySelectorAll()这两个方法虽然都支持复杂的CSS选择器（包括CSS3新增的高级选择器）。但是，它们不支持CSS伪元素的选择器（比如:first-line和:first-letter）和伪类的选择器（比如:link和:visited），即无法选中伪元素和伪类。另外，值得高兴的是，据<a href="http://www.runoob.com/jsref/met-document-queryselector.html" target="_blank">资料显示</a>这两个方法是支持IE8及以上版本的，但需要注意的是，对于IE8本身就不支持的CSS3选择器，还是不能够使用，这点可以到CSS和JavaScript支持情况最权威的网站<a href="http://caniuse.com/#feat=queryselector" target="_blank">Can I Use</a>上进行查询。</dd>
+
+			<dt>Element.closest()</dt>
+			<dd>该方法返回当前元素节点的最接近匹配结果的父元素（或者当前节点本身），条件是必须匹配给定的CSS选择器（可以是CSS3高级选择器），不设置参数会报错。如果不满足匹配，则返回null。它的使用方式和querySelector()方法是一样的，仍然支持链式使用。</dd>
+			<dd>CSS的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-446.jpg">
+				</code>
+			</dd>
+			<dd>HTML和JavaScript代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-447.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-039.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-039.html"></iframe>
+		</dl>
+		<p>对于本节所有的查询方法来讲，都不能直接对返回结果为一个类似数组（任何类型的集合）的对象去绑定事件，而只能对其中某项绑定事件（在其后添加下标索引），哪怕返回的集合中只有一个元素，否则浏览器都会报出“TypeError”的错误。所以需要去区分总结哪些方法返回的是一个元素/节点对象，哪些方法返回的又是一个集合（主要包括HTMLCollection和NodeList）。</p>
 	</section>
-	<!-- parseInt() -->
+
+	<!-- DOM事件触发 -->
+	<!-- <section>
+		<h3>DOM事件触发</h3>
+		
+	</section> -->
+
+	<!-- 属性的操作 -->
 	<section>
-        <h3>整数转换parseInt()</h3>
-        <p>遇到上一节这样的情况，我们就只有通过JavaScript提供的全局方法“<em title="属于JS的内置函数，可以对任何数据类型使用">parseInt()</em>”来进行转换了。简单来说，该方法的作用是将一个字符串转换为一个数值，其实它还能将一个数组中的第一个数组元素（或称项）转换为一个数值。但这需要考虑实际情况，因为“parseInt()”方法转换的原理是单纯地将出现在方法内部前面的内容转换为数值，在进行一些不同单位的数值进行运算时，得出的值不是实际情况中的值，如一个像素单位和一个字符单位的数字进行运算的情况，而且此方法不能转换百分比数。大致如下：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-070.jpg">
-        </code>
-        <p>最后一个表达式报错的原因是，该方法内部的参数正在使用一个数值去进行取余操作，而取余的操作符必须保证前后都是一个数字，而现在取余操作后方跟的是一个“)”，这不符合这个算术运算符的语法规则，固然报出语法错误。</p>
-        <p>但如果该方法内的参数的前面不是一个数值，或参数的数值内参杂一些其它类型的字符（包括科学计数法为字符串的情况），转换的情况又不一样了：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-071.jpg">
-        </code>
-        <p>通过上面控制台输出的情况可以发现，“parseInt()”方法对内部的数值位依次向右转换，一旦遇到“非数字”的字符（甚至包含小数点“.”）立即会将之前取到的值返回。但如果第一位出现的字符就是“非数字”，那返回的结果就是NaN，除了为“正负号”的情况。</p>
-        <p>通过“parseInt()”方法对字符的转换，最终出现的结果只有两种情况，一种为一个十进制的数值，另外一种就是NaN。</p>
-        <p>当然，该方法对数值的转换有一种情况的例外，那就是对进制数的转换，它遇到前导数为“0b”、“0o”和“0x”时，不会像对科学计数法那样将“e”后方的内容省略掉，会将这些非十进制数转化为十进制的数，但所提供的进制数必须为该进制数值的合理值，否则浏览器会报错：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-072.jpg">
-        </code>
+		<h3>属性的操作</h3>
+		<p>对于一个HTML标签可能会有一个或者多个的属性，这些属性都是可以操作的，JavaScript对操作属性提供了以下方法：</p>
+		<dl class="attrExplain">
+			<dt>Element.getAttribute()</dt>
+			<dd>该方法返回当前元素节点的指定属性。如果指定属性不存在，则返回null。参数为指定的属性名称。</dd>
+
+			<dt>Element.setAttribute()</dt>
+			<dd>该方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。该方法含有两个参数，第一个参数表示属性名，第二个参数表示需要对属性设置的值。</dd>
+
+			<dt>Element.hasAttribute()</dt>
+			<dd>该方法返回一个布尔值，表示当前元素节点是否包含指定属性。参数为指定的属性名称。</dd>
+
+			<dt>Element.removeAttribute()</dt>
+			<dd>该方法用于从当前元素节点移除属性。</dd>
+
+			<dt>dataset属性</dt>
+			<dd>dataset属性用于获取或设置用户自定义的属性名（data-*），该属性设置属性名和setAttribute()方法不同，它是通过赋值的方式实现的（因为它是一个属性，而非方法）。</dd>
+		</dl>
 	</section>
-	<!-- parseFloat() -->
+
+	<!-- HTML元素对象 -->
 	<section>
-        <h3>浮点数转换parseFloat()</h3>
-        <p>在实际开发中，很多时候我们需要的数不仅限于整数，可能还需要更精确的“<em title="即代数中的小数">浮点数</em>”，这个时候“parseInt()”方法已经是不能满足需求了，那我们需要用到JavaScript对数值进行转换的另外一个全局方法“<em>parseFloat()</em>”。该方法的作用是可以将一个字符串或数组内的第一项转换为一个浮点数，它的大部分特性和“parseInt()”方法一样，但它能对字符串为一个科学计数法的值进行转换。</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-073.jpg">
-        </code>
+		<h3>Element节点对象</h3>
+		<p>Element对象实际上是一个构造函数的实例化对象，该对象包含了一系列的属性和方法来返回或设置当前对象指向元素的相关信息。</p>
+		<dl class="attrExplain">
+			<dt>Element.attributes</dt>
+			<dd>该属性返回当前元素所有属性节点的一个类似数组对象。</dd>
+
+			<dt>Element.id</dt>
+			<dd>该属性返回指定元素的id属性，是一个可读可写的属性。</dd>
+
+			<dt>Element.tagName</dt>
+			<dd>该属性返回指定元素的大写标签名，与nodeName属性的值相等。但在<em>事件对象</em>（event）上通常使用tagName更加常见。</dd>
+
+			<dt>Element.innerHTML</dt>
+			<dd>属性返回该元素包含的HTML代码。该属性可读可写，常用来设置某个Element节点的内容。如果将该属性设为空字符串，等于删除了它包含的所有节点。</dd>
+
+			<dt>Element.outerHTML</dt>
+			<dd>该属性返回一个字符串，内容为指定元素节点的所有HTML代码，包括它自身和包含的所有子元素。该属性是同样是可读可写的，对它进行赋值，等于替换掉当前元素。</dd>
+			<dd>但是如果该Element节点已经被赋值给一个变量了，在使用outerHTML替换原来的标签后，之前的变量值还是能够访问，也就是说被替换掉的内容依然保存于内存。</dd>
+
+			<dt>Element.match()</dt>
+			<dd>该方法用于匹配当前的Element节点是否匹配方法参数内的CSS选择器字符串，和querySelector()和querySelectorAll()的参数一样，CSS选择器必须是完整的选择符（如id前需要加上“#”，class前面要加上“.”，属性选择器要用“[]”括起来等）。它返回的是一个布尔值。</dd>
+
+			<dt>Element.insertAdjacentHTML()</dt>
+			<dd>该方法解析HTML字符串，然后将生成的节点插入DOM树的指定位置。该方法带有两个参数，第一个参数表示插入位置，第二个参数表示插入的字符串（可以是HTML标签）。</dd>
+			<dd>第一个插入参数允许的值如下：</dd>
+			<dd>
+				<ul>
+					<li>beforebegin：在当前元素节点的前面。</li>
+					<li>afterbegin：在当前元素节点的里面，插在它的第一个子元素之前。</li>
+					<li>beforeend：在当前元素节点的里面，插在它的最后一个子元素之后。</li>
+					<li>afterend：在当前元素节点的后面。</li>
+				</ul>
+			</dd>
+
+			<dt>Element.scrollIntoView()</dt>
+			<dd>该方法滚动当前元素，进入浏览器的可见区域，类似于设置window.location.hash的效果。</dd>
+			<dd>该方法可以接受一个布尔值作为参数。如果为true，表示元素的顶部与当前区域的可见部分的顶部对齐（前提是当前区域可滚动）；如果为false，表示元素的底部与当前区域的可见部分的尾部对齐（前提是当前区域可滚动）。如果没有提供该参数，默认为true。</dd>
+
+			<dt>Element.focus()</dt>
+			<dd>该方法可以上元素获得焦点。用户使用键盘Tab键可以切换获得焦点的元素，都可以使用该方法来获得焦点。</dd>
+
+			<dt>Element.remove()</dt>
+			<dd>该方法用于删除当前的子节点，并且不再存在于DOM树内和内存里。</dd>
+		</dl>
 	</section>
-	<!-- Number() -->
+	
+	<!-- style对象 -->
 	<section>
-        <h3>转换为数值Number()</h3>
-        <p>除了“parseInt()”方法和“parseFloat()”方法，在对数值的转换当中还有一个全局方法函数就是“<em>Number()</em>”（注意首字符是大写）。它是数值型的构造函数，也就是可以把其它数据类型的值都转换为一个数值型。它的使用方法如下：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-074.jpg">
-        </code>
-        <p>表面上看，它似乎是一个“parseInt()”方法和“parseFloat()”方法的结合体，能转换整数，也能转换浮点数，同时也能转换科学计数法，但它的实际作用并非如此。它的主要作用其实是将一个值转换为0（原为布尔值false）、1（true）或NaN（不能转换为数值型的其它数据），而且它不能像之前两个方法一样过滤到数值之后的其它字符返回数值。</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-075.jpg">
-        </code>
-    </section>
-	<!-- 数值的进制转换 -->
-	<section>
-		<h3>数值的进制转换</h3>
-		<p>在“整数转换parseInt()”一节中我们已经简单“见识”过parseInt()对二进制、八进制和十六进制数的转换，说明不同的进制数之间是可以互相转换的。但当需要转换的字符为一个字符串时，该方法只能对十六进制的数进行正确的转换。</p>
-		<code class="indent">
-            <img src="img/code/jscode/code-js-273.jpg">
-        </code>
-        <p>但我们在实际的项目操作中获取到的进制数大多都是以字符串的形式存在的，如颜色的十六进制“<color>#5393df</color>”或为了字符安全转换成其它进制数的十进制数，这个时候我们就需要用到parseInt()方法的第二个参数了，通过设置该方法的第二个参数，可以告诉该方法需要转换的字符是何种进制的，并将其转换为十进制的数，而且需要转换的字符不能再加上前导数了，否则除了十六进制转换都会为0（因为将前导数中的第二个字符识别为了非数字字符）。</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-274.jpg">
-        </code>
-        <p>实际上，parseInt()方法的第二个参数不单是是能转换成以上三种进制的数，它的范围是2~36之间的数值，只有在这个范围内才会返回有意义的数值，如果超出这个范围则会返回NaN。</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-275.jpg">
-        </code>
-        <p>利用该方法，我们可以将十六进制的颜色数转换为可以参与算术运算的十进制数。如下例，现在我们要获取一个不确定的十六进制颜色，获取到后要将其颜色“变量”为原来的140%。</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-276.jpg">
-        </code>
-        <p>在控制台中对该函数尝试传入不同的十六进制颜色参数返回的结果如下：</p>
-        <code class="indent">
-            <img src="img/code/jscode/code-js-277.jpg">
-        </code>
-        <p>上例中的substr()方法为字符串的截取方法，第一个参数表示开始截取的字符串下标位置，第二个参数表示需要截取的长度。toString()方法是将一个非字符串的字符转换为字符串，但若该方法内加入数值参数，会根据传入的数值参数对被转换字符进行参数中设置进制的方式进行转换。这些，在我们“JavaScript字符串”一章的内容中会进行讲解。而Math.round()方法是对一个数值进行小数点后的“四舍五入”，这在我们“JavaScript字符串”一章中有讲解。</p>
-        <p>以上这个功能可以用于一些不知道可能会出现什么颜色，但又需要为其添加鼠标交互效果的情况。如：“随机色的Metro按钮”，“随机色的图表（柱状图、折线图、饼状图等）”，“用户自定义色彩风格的操作界面”等。</p>
+		<h3>style对象</h3>
+		<p>每一个网页元素对应一个DOM节点对象。这个对象的style属性可以直接操作，用来读写行内CSS样式。style对象的属性值都是字符串，设置时必须包括单位，但是不含规则结尾的分号。比如，divStyle.width不能写为100，而要写为100px。</p>
+		<p>style对象的<em>cssText</em>属性属性允许直接以字符串的形式来设置一个元素的样式，可以设置一个样式，也可以是多个，其语法与CSS文件选择器内部的语法完全一致。</p>
+		<p>另外，我们还可以使用“document.body.style.CSS样式属性名”或“document.body.style["CSS样式属性名"]”的方式来检测当前的浏览器是否支持某一CSS样式，只要返回的值是一个非undefined的值，就说明当前浏览器是支持该CSS样式的。</p>
+		<p>此外，部分浏览器（Firefox 22+, Chrome 28+, Opera 12.1+）目前部署了supports API，可以返回一个布尔值，表示是否支持某条CSS规则。但是，这个API还没有成为标准。语法如下：</p>
+		<p><em>CSS.supports("属性名", "属性值")</em> 或 <em>CSS.supports("(属性名1: 属性值2) and (属性名1: 属性值2)")</em></p>
+		<p>除此之外，如果想获取一个元素的CSS样式（不是标签上的style属性）属性的值，则可以使用window对象下的<em>getComputedStyle()</em>方法，通过访问该方法下指定的CSS属性名来获得属性值。该方法获取的CSS内容不一定是CSS文件里明文自定义的属性，也可以是默认状态的属性。</p>
+		<p>该方法带有两个参数，第一个参数为需要获取CSS属性值的Element对象，第二个参数为伪类（如“:after”），如果不需要判断伪类，可以将其设置为null。语法格式如下：</p>
+		<p><em>getComputedStyle(Element, Pseudo-classes).CSS属性名;</em></p>
 	</section>
-	<!-- 章节练习 -->
-    <section class="unitPractice">
-        <h3>&lt;章节练习&gt;</h3>
-        <p>根据所学知识完成下面的需求：</p>
-        <p>1、完成一个在两个文本框中输入数字在右方得出相加结果的程序；</p>
-        <p>2、完成一个在两个文本框中输入数字在右方得出相乘结果的程序;</p>
-        <p>3、当文本框内没有输入任何内容的时候使其的默认值为0。</p>
-        <p>&lt;提示&gt;使用“oninput”可以触发文本框输入内容的事件（Element.oninput = function() {...}），参考效果如下：</p>
-        <img src="img/content/javascript/section5-exercise1.gif">
-    </section>
+
+	<!-- class属性的操作 -->
+	<section>
+		<h3>Class属性的操作</h3>
+		<p>每个Element节点对象都具有两个关于Class的属性：“Element.className”和“Element.classList”。className属性用来读写当前元素节点的class属性。它的值是一个字符串，每个class之间用空格分割。classList属性则返回一个类似数组的对象，当前元素节点的每个class就是这个对象的一个成员。</p>
+		<p>classList对象有下列方法：</p>
+		<ul class="indent">
+			<li>add()：增加一个class。</li>
+			<li>remove()：移除一个class。</li>
+			<li>contains()：检查当前元素是否包含某个class。</li>
+			<li>toggle()：将某个class移入或移出当前元素。</li>
+			<li>item()：返回指定索引位置的class。</li>
+			<li>toString()：将class的列表转为字符串。</li>
+		</ul>
+	</section>
 </root>
 
 

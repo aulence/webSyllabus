@@ -1,285 +1,371 @@
-<root data-root="JavaScript事件">
-    <!-- 概述 -->
-    <section class="mt0">
-    	<h3>JavaScript事件概述</h3>
-    	<p>事件是可以被 JavaScript 侦测到的行为。网页中的每个DOM元素都可以产生某些可以触发JavaScript函数的事件。简单的说，就是当用户对页面的元素进行操作的时候，页面发生的一些可见或不可见的变化。</p>
-    	<p>传统的页面交互是通过CSS实现的，不过CSS只能实现一些临时的、视觉上的简单交互。但随着互联网技术的发展，只停留在页面上的这些简单交互早已不能满足时代发展的要求了。这个时候JavaScript事件的出现很大程度地提升了界面的可交互性，这种交互不仅是停留在视觉上的，还可以是数据上的交互，可以临时的，通过和服务器端的配合也可以实现永久的页面样式和数据改变，从而更大程度地提升了用户体验。</p>
-    	<p>JavaScript的事件主要包括鼠标事件、键盘事件、表单事件、文档事件及这些事件提供的一系列处理机制，在HTML5规范确立的过程中又出现了触摸事件、拖拽事件、进度事件等一系列，本章的主要内容就是对这些事件进行介绍。</p>
-	</section>
-	<!-- 事件的添加 -->
+<root data-root="JavaScript DOM">
+	<!-- DOM节点的属性 -->
 	<section>
-		<h3>事件的添加</h3>
-		<p>事件一定要添加在某个页面元素后才会生效，包括window对象和document对象。事件的添加主要有四种方式：</p>
+		<h3>DOM节点的属性</h3>
+		<p>所有节点对象都是浏览器内置的<em>Node</em>（包括元素节点、属性节点、文本节点等等）对象的实例，继承了Node属性和方法。这是所有节点的共同特征。以下属性与节点对象本身的特征相关：</p>
 		<dl class="attrExplain">
-			<dt>通过页面标签元素添加</dt>
-			<dd>在页面标签元素的“on*”属性上添加，如例：</dd>
+			<dt>Node.nodeName和Node.nodeType</dt>
+			<dd>Node.nodeName返回节点的名称，而Node.nodeType返回的是一个整数作为类型的代号（nodeType这个设计一直让人很费解）。节点一共有7种类型，相应的对照如下表：</dd>
+			<dd>
+				<table class="normal alignLeft">
+					<tr>
+						<th>节点对象类型</th>
+						<th>NnodeName</th>
+						<th>nodeType</th>
+					</tr>
+					<tr>
+						<td>ELEMENT_NODE（元素节点）</td>
+						<td>大写的HTML元素名</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>ATTRIBUTE_NODE（属性节点）</td>
+						<td>等同于Attr.name</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>TEXT_NODE（文本节点）</td>
+						<td>#text</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>COMMENT_NODE（注释节点）</td>
+						<td>#comment</td>
+						<td>8</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_NODE（文档节点）</td>
+						<td>#document</td>
+						<td>9</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_TYPE_NODE（文档类型节点）</td>
+						<td>等同于DocumentType.name</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>DOCUMENT_FRAGMENT_NODE（文档碎片节点）</td>
+						<td>#document-fragment</td>
+						<td>11</td>
+					</tr>
+				</table>
+			</dd>
+			<dd>我们来看一个示例说明这两个属性的使用方式：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-378.jpg">
+				</code>
+			</dd>
+			<dd>然后在该页面的控制台查看输出的代码：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-379.jpg">
+				</code>
+			</dd>
+			<dd>虽然nodeType是没有那么“语义化”，但通常用于判断节点的类型还是一个不错的选择。</dd>
+
+			<dt>Node.nodeValue</dt>
+			<dd>读取或设置当前节点的文本值。对于HTML来讲，只有“文本节点”和“注释节点”才能设置这个值，其它类型的节点返回的值为null。我们还是以nodeName和nodeType那个文件为例，访问其中几个节点的nodeValue进行测试：</dd>
 			<dd>
 				<code>
-					<img src="img/code/jscode/code-js-382.jpg">
+					<img src="img/code/jscode/code-js-380.jpg">
 				</code>
 			</dd>
-			<dd>这种做法简化了代码量，但违背结构层和行为层分离的原则，除非是用于测试，在实际开发环境中并不被推荐。</dd>
 
-			<dt>通过DOM元素添加</dt>
-			<dd>直接通过document对象下的Element自对象进行事件绑定，如例：</dd>
+			<dt>Node.textContent</dt>
+			<dd>该属性返回当前节点和它的所有后代节点的文本内容，它会自动忽略当前节点内部的HTML标签，返回所有文本内容。并且该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对HTML标签转义。这很适合用于用户提供的内容。</dd>
+			<dd>比如说现在页面里面有一个包含一段文本内容的div元素，我们使用该属性做一些简单的操作来说明它的用法：</dd>
 			<dd>
-				<code >
-					<img src="img/code/jscode/code-js-383.jpg">
+				<code>
+					<img src="img/code/jscode/code-js-381.jpg">
 				</code>
 			</dd>
-			<dd>这种做法代码可读性不高，而且不利于DOM元素的重复读取和事件绑定的设置，也不被推荐。</dd>
+			<dd>但需要注意的是，document节点和doctype节点的textContent属性为null。如果要读取整个文档的内容，可以使用document.documentElement.textContent。</dd>
 
-			<dt>通过实例化过后的Element对象添加</dt>
-			<dd>将通过将document对象下的Element实例化为一个对象，在该对象的变量名上添加事件，如例：</dd>
+			<dt>Node.baseURI</dt>
+			<dd>该属性用于返回当前网页的绝对路径。如果无法取到这个值，则返回null。浏览器根据这个属性，计算网页上的相对路径的URL。该属性为只读。不同节点都可以调用这个属性，通常它们的值是相同的。但考虑到代码的语义，我们一般都是使用“<em>document.baseURI</em>”。</dd>
+			<dd>该属性的值一般由当前网址的URL（即window.location相关属性）决定，但是可以使用HTML的&lt;base&gt;标签，改变该属性的值。</dd>
+		</dl>
+		<p>DOM在JavaScript中的实例就是document，document是有一系列的Node组成的，和Node相关的属性如下：</p>
+		<dl class="attrExplain">
+			<dt>Node.ownerDocument</dt>
+			<dd>该属性返回当前节点所在的顶层文档对象，即document对象。document对象本身的ownerDocument属性，返回null。</dd>
+
+			<dt>Node.nextSibling</dt>
+			<dd>该属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回null。注意，该属性还包括文本节点和名称节点。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</dd>
+			<dd>我们通过一个示例来了解该属性的“运作”方式：</dd>
 			<dd>
-				<code >
-					<img src="img/code/jscode/code-js-384.jpg">
+				<code>
+					<img src="img/code/jscode/code-js-420.jpg">
 				</code>
 			</dd>
-			<dd>这种做法看似比前两种方式多了一些代码，但由于将Element实例化为了一个对象存储于内存内，每次的访问和事件的绑定设置都是从内存去读取，无需再对DOM进行查询，很大程度上提高了代码的运行效率。而且在需要单元素多事件绑定的情况下，这种写法反而可以让代码更加的精简，节省了很多次对DOM查询消耗的代码字节。所以，这种方式在实际项目中是被大量使用的，也是比较推荐的一种方式。</dd>
-
-			<dt>对实例化过后的Element对象进行监听</dt>
-			<dd>这种方式和上面一种方式的形式一样，同样是对实例化的Element对象进行事件绑定，但这种绑定的方式一般叫做添加“<em>监听函数</em>”，需要使用Element的addEventListener()方法，而且事件名称不需要前缀“on”。表示方法如下：</dd>
+			<dd>代码运行后在控制台返回的结果如下：</dd>
 			<dd>
-				<code >
-					<img src="img/code/jscode/code-js-385.jpg">
+				<code>
+					<img src="img/code/jscode/code-js-421.jpg">
 				</code>
 			</dd>
-			<dd>和普通事件的区别在于，监听函数可以为同一个实例化的Element对象添加同一个事件，而普通事件再次绑定同一个事件，后面的同名事件会覆盖之前的事件，使得之后最后一个事件才有效，之前的所有同名事件都会失效。具体我们会在后续小节里讲解。</dd>
+			<dd>通过返回的对象类型我们可以看到各个节点的详细类型，也就是说只要是这些对象类型所具有的属性和方法都能够对它们使用，如：Element（在上例中对应的是“HTMLLIElement”节点）的textContent、innerHTML、remove()等等。</dd>
+
+			<dt>Node.previousSibling</dt>
+			<dd>该属性和nextSibling的作用相同，它们都是查找兄弟节点，只不过它查找的节点是当前节点的之前的节点，其它特性及语法结构都相同。</dd>
+			
+			<dt>Node.nextElementSibling</dt>
+			<dd>该属性用于返回紧跟在当前节点后面的第一个同级<em title="所有标签元素节点">Element</em>节点，它不会返回文本节点（包括空格、换行、注释节点）。也就是说，它对于实际项目中的简单DOM操作会更加实用。它属于ECMAScript 5标准新增的属性。</dd>
+
+
+			<dt>Node.previousElementSibling</dt>
+			<dd>该属性和“nextElementSibling”一样，同样是查找兄弟元素（Element）节点，只不过查找的是当前元素之前的元素节点，其它特性及语法结构都相同。它同样属于ECMAScript 5标准新增的属性。</dd>
+			<dd>这是它们的使用方式：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-422.jpg">
+				</code>
+			</dd>
+			<dd>在控制台中返回的结果为：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-423.jpg">
+				</code>
+			</dd>
+			<dd>另外，它们还能够链式使用，用于连续查找之前或之后的相邻的元素节点。如：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-424.jpg">
+				</code>
+			</dd>
+
+			<dt>Node.parentNode</dt>
+			<dd>该属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：Element节点、document节点（&lt;html&gt;标签的父节点）和<em title="文档碎片，只存在于DOM内，而不存在于HTML内，是一种虚拟DOM，需要依靠特定的DOM方法才能将其渲染到HTML文档内">documentfragment</em>节点。</dd>
+			<dd>对于document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点（通过document.createElement()方法创建的元素，本段中提到的documentfragment也由该方法创建的元素组成，后面会讲到），父节点也是null。</dd>
+
+			<dt>Node.parentElement</dt>
+			<dd>该属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。对于一个Element节点来讲，使用parentNode和使用parentElement是没有什么区别的，但从语境（context）上来讲，如果是一个非Element的节点则使用parentNode，而Element节点则使用parentElement，这样会让代码的语义联系更清楚。</dd>
+			<dd>在IE浏览器中，只有Element节点才有该属性，其他浏览器则是所有类型的节点都有该属性。</dd>
+			<dd>另外，需要稍微注意的是任何一个元素，只要存在父节点，那这个父节点是唯一的，也就是说一个元素不可能存在多个父节点，对于HTML文件内的&lt;html&gt;内的节点来讲，无论使用那个属性来访问父元素，得到的都是一个Element对象（区别于由Element组成的数组的形式）。</dd>
+
+			<dt>Node.childNodes</dt>
+			<dd>该属性返回一个NodeList集合，成员包括当前节点的所有子节点。注意，除了HTML元素节点，该属性返回的还包括Text节点和Comment节点，其实就和我们之前介绍的nextSibling的那个示例返回的结果那样。如果当前节点不包括任何子节点，则返回一个空的NodeList集合。由于NodeList对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</dd>
+			<dd>我们通过这个示例来再次深化一下印象：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-425.jpg">
+				</code>
+			</dd>
+			<dd>我们将控制台中返回的结果展开如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-426.jpg">
+				</code>
+			</dd>
+			<dd>但是这个属性存在一个问题，就是在IE8及以下的版本中，它只会返回Element节点，也就是相当于下面会讲到的children属性了。</dd>
+
+			<dt>Node.children</dt>
+			<dd>该属性会返回一个由Element节点组成的集合（哪怕只有一个元素），如果没有子节点元素它会返回一个空的类似数组（length为0）。需要注意的是，它不再包含文本节点和注释节点了，它没有childNodes存在浏览器版本兼容性的问题。所以它用于元素的子节点DOM操作是再适合不过了。</dd>
+			<dd>和对某个元素节点使用getElementsByTagName或getElementsByClassName等“筛选性”的方法相比，children属性会返回所有的元素节点，如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-427.jpg">
+				</code>
+			</dd>
+			<dd>在控制台中返回的结果如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-428.jpg">
+				</code>
+			</dd>
+
+			<dt>Node.childElementCount</dt>
+			<dd>该属性返回的是当前元素节点内子元素Element节点的个数，而通过上面的Node.childNodes.length返回的节点会包含文本节点和注释节点。而使用Node.children.length得到的结果和该属性是一样的，所以这个属性算是Node.children.length的一种改良写法，更被各种技术文著广泛的推荐。</dd>
+
+			<dt>Node.firstChild和Node.lastChild</dt>
+			<dd>Node.firstChild属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回null。firstChild返回的除了HTML元素子节点，还可能是文本节点或名称节点。Node.lastChild属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</dd>
+
+			<dt>Node.firstElementChild和Node.lastElementChild</dt>
+			<dd>firstElementChild属性返回当前节点的第一个Element子节点，如果当前节点没有子节点，则返回null。Node.lastElementChild属性返回当前节点的最后一个Element子节点，如果当前节点没有子节点，则返回null。同样的，如果是用于普通的DOM元素的操作，这两个属性是更加被推荐的，因为它们会忽略任何和Element节点无关的节点。</dd>
+			<dd>使用示例如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-429.jpg">
+				</code>
+			</dd>
+			<dd>控制台返回结果如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-430.jpg">
+				</code>
+			</dd>
+			<dd>由于这两个属性返回的结果是一个Element对象，所以也可以结合nextElementSibling或previousSibling等属性一起做链式操作，找到第二个或倒数第二个Element对象。</dd>
 		</dl>
 	</section>
-
-	<!-- 事件的监听 -->
+	<!-- DOM节点的方法 -->
 	<section>
-		<h3>事件监听</h3>
-		<p>事件监听依赖的主要内容是“监听函数”，而监听函数是事件发生时，程序所要执行的函数。它是事件驱动编程模式的主要编程方式。</p>
-		<p>在本章“事件的添加”一节中我们已经知道了监听函数的表示方法，并且明白了监听函数和普通函数在功能上的最大区别就是监听函数不会覆盖同名事件名称的函数，但是，若多个监听函数调用的是同一个函数，那代码也只会执行一次，这点需要注意区分。我们通过两个例子来说明这一点。</p>
-		<p>当对同一个按钮元素执行同一个事件的不同监听函数：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-386.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-014.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-014.html"></iframe>
-		<p>当对同一个按钮元素执行同一个事件的同一个监听函数：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-387.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-015.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-015.html"></iframe>
-
-		<p>监听函数的3个参数具体作用如下：</p>
-		<ul class="indent">
-			<li>事件名称，用字符串表示，不需要“on”前缀</li>
-			<li>执行函数，可以是一个函数名（不能是字符串，且不需要函数后面的“()”），也可以是一个匿名函数</li>
-			<li>表示监听函数是在<em>捕获阶段</em>触发还在<em>冒泡阶段</em>触发，用一个布尔值表示。true表示在冒泡阶段触发，false（默认）表示在捕获阶段触发。老式浏览器规定该参数必写，较新版本的浏览器允许该参数可选。为了保持兼容，建议总是写上该参数。</li>
-		</ul>
-		<p>和普通函数还有一点区别就是，监听函数是可以移除的。要移除监听函数需要使用<em>removeEventListener()</em>方法，移除监听函数的参数必须和添加静听函数完全一致，否则无效。基本表示如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-388.jpg">
-		</code>
-		<p>另外需要指出的是，在IE10及之前的版本并不支持addEventListener()方法，要达到同样的效果需要使用attachEvent()方法，事情名称需要加上“on”前缀，而且没有第三个布尔值的参数。而且还有一点需要注意的是这个方法内部的“this”不是指向实例化的元素，而是指向“window”。但IE11终于不再支持这个方法，接受了通用的DOM标准，开始使用了addEventListener()方法。</p>
-	</section>
-
-	<!-- 事件对象 -->
-	<section>
-		<h3>事件对象</h3>
-		<p>“<em>事件对象</em>”值的是当一个事件产生后，会在事件函数内部生成一个“<em>Event</em>”的对象实例，并且将这个示例作为事件函数的参数（通常命名为“e”或“event”，IE下需要做兼容处理），我们尝试在一个事件中输出这个Event对象：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-389.jpg">
-		</code>
-		<p>点击该该按钮后在控制台中查看输出的Event对象：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-390.jpg">
-		</code>
-		<p>通过这个输出的事件对象Event，非常详细地反应了在这一次点击过程中的事件和被事件触发的对象之间的关系。包括了一系列重要的信息，如：点击时鼠标的X/Y坐标位置，事件是否冒泡，点击时是否按下了Ctrl/Alt/Shift键，被点击目标的相关信息等内容。但在实际开发过程中，我们只需要部分信息，这个时候就可以通过刚才我们实例化的那个“e”来进行选择性的输出：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-391.jpg">
-		</code>
-		<p>点击按钮后在控制台中查看到的结果：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-392.jpg">
-		</code>
-		<p>利用事件对象，我们可以在一次事件中做出更精细的判断，从而帮我们解决一些复杂的逻辑流程，实现更丰富的程序功能。</p>
-	</section>
-
-	<!-- 事件的传播 -->
-	<section>
-		<h3>事件的传播</h3>
-		<p>当一个事件发生以后，它会在不同的DOM节点之间传播,这种传播会使得一个事件在多个节点上触发。事件传播分成三个阶段：</p>
-		<ul class="indent">
-			<li>第一阶段：从window对象传导到目标节点，称为“<em>捕获阶段</em>”</li>
-			<li>第二阶段：在目标节点上触发，称为“<em>目标阶段</em>”</li>
-			<li>第三阶段：从目标节点传导回window对象，称为“<em>冒泡阶段</em>”</li>
-		</ul>
-		<p>由于事件传播的机制，会使得同一个事件也会在同一个元素上多次触发。我们来看一个这样的例子：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-393.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-016.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-016.html"></iframe>
-		<p>上面的代码被触发了4次，p节点的捕获阶段和冒泡阶段各1次，div节点的捕获阶段和冒泡阶段各1次。具体过程如下：</p>
-		<ul class="indent">
-			<li>捕获阶段：事件从&lt;div&gt;向&lt;p&gt;传播时，触发&lt;div&gt;的click事件；</li>
-			<li>目标阶段：事件从&lt;div&gt;到达&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
-			<li>目标阶段：事件离开&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
-			<li>冒泡阶段：事件从&lt;p&gt;传回&lt;div&gt;时，再次触发&lt;div&gt;的click事件。</li>
-		</ul>
-		<p>事件传播的最上层对象是window，接着依次是document，html（document.documentElement）和body（document.dody）。也就是说，如果&lt;body&gt;元素中有一个&lt;div&gt;元素，点击该元素。事件的传播顺序，在捕获阶段依次为:window -&gt; document -&gt; html -&gt; body -&gt; div，在冒泡阶段依次为div -&gt; body -&gt; html -&gt; document -&gt; window。</p>
-		<p>使用事件对象的<em>event.stopPropagation()</em>方法可以让事件传播到当前的节点为止，不再继续传播。语法结构如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-397.jpg">
-		</code>
-		<p>但是，stopPropagation()方法只会阻止当前监听函数的传播，不会阻止&lt;p&gt;节点上的其他click事件的监听函数。如果想要不再触发那些监听函数，可以使用stopImmediatePropagation()方法。语法与stopPropagation()方法一致。</p>
-	</section>
-
-	<!-- 事件的代理 -->
-	<section>
-		<h3>事件代理</h3>
-		<p>“<em>事件代理</em>”又叫做“事件委托”，这种用法由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。我们先来看一个简单的事件代理的实例：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-394.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-017.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-017.html"></iframe>
-		<p>从这个示例我可以总结出两个结论：第一个结论就是由于事件传播的捕获特性，父级元素可以为其子级元素绑定事件；第二个结论就是事件中的this仍然是指向最初绑定事件的那个元素，这点需要留心。</p>
-		<p>利用事件代理我们可以处理程序中很多的“麻烦事”，比如说这样一个应用场景：当前有一个数据列表，只有3条数据，并且这3条数据都绑定了同一个事件。后面我们又新增了一条数据，但是由于这条数据是后面才生成的，没有办法在之前就给它绑定事件。如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-395.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-018.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-018.html"></iframe>
-		<p>在点击“新增”按钮之前，原列表的列表项的点击功能能够执行，但点击新增按钮之后，新增的一项内容点击之后并没有效果。而且再去点击之前的项会发现，之前的项的功能也没有了。这是因为列表区域由于DOM操作执行了浏览器的“重排”和“重绘”操作，这就导致现在看到的列表的内容已经不再是原来document里面的内容了（虽然视觉上原来的文本还是一样）。</p>
-		<p>遇到这样的问题我们就可以使用事件代理去处理，我们把上例的代码修改为由父级代理执行的形式再试：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-396.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-019.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-019.html"></iframe>
-		<p>可以发现，之前的“bug”已经修复，并且新增的信息项也能正常地执行功能了，不再需要使用循环去绑定事件。</p>
-	</section>
-
-	<!-- 鼠标事件 -->
-	<section>
-		<h3>鼠标事件</h3>
-		<p>电脑鼠标所触发的事件。</p>
+		<h3>DOM节点的方法</h3>
+		<p>上一节讲解了DOM内节点对象的属性，而作为对象，通常也会具有一些方法，如下所列：</p>
 		<dl class="attrExplain">
-			<dt>click事件和dblclick事件</dt>
-			<dd>当用户在Element节点、document节点、window对象上单击鼠标（或者按下回车键）时，click事件触发。用户在同一个位置完成一次mousedown动作和mouseup动作。它们的触发顺序是：mousedown首先触发，mouseup接着触发，click最后触发。</dd>
-			<dd>dblclick事件当用户在element、document、window对象上，双击鼠标时触发。该事件会在mousedown、mouseup、click之后触发</dd>
+			<dt>Node.appendChild()</dt>
+			<dd>该方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。该方法通常的用法是先通过document.createElement()方法创建一个新的元素节点，然后再通过appendChild()将这个创建的新元素节点添加到指定元素的子元素列表末尾。</dd>
+			<dd>它还有一个鲜为人知的用法就是可以将现有节点的某个字节点提取出来添加到另外一个元素的子节点中去，这个过程也会在视图中（HTML文档）中反应出来。</dd>
+			<dd>值得注意的是该方法由于是在现有的“document树”上进行节点的操作，所以它不会触发“重排”操作。为了证明这一点，我们来看这样一个例子。</dd>
+			<dd>HTML内容如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-431.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript内容如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-432.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-030.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-030.html"></iframe>
+			<dd>从上例中可以发现，整个操作过程都没有涉及到节点的“移除操作”（节点的移除方法是Node.remove()），但每次点击按钮，第二个列表中的元素项都会被移除，然后加入到第一个列表中，并且所有列表项原先绑定的点击事件仍然还是生效的，这里起到关键作用的就是appendChild()方法。</dd>
 
-			<dt>mouseup事件、mousedown事件</dt>
-			<dd>mouseup事件在释放按下的鼠标键时触发。</dd>
-			<dd>mousedown事件在按下鼠标键时触发</dd>
-			<dd>mousemove事件当鼠标在一个节点内部移动时触发。当鼠标持续移动时，该事件会连续触发。为了避免性能问题，建议对该事件的监听函数做一些限定，比如限定一段时间内只能运行一次代码。</dd>
+			<dt>Node.hasChildNodes()</dt>
+			<dd>该方法返回一个布尔值，表示当前节点是否有子节点。使用这个方法需要注意的就是空格和换行符都属于一个“ChildNode”，在进行HTML的DOM操作时该方法很容易“误判”，所以如果是判断子元素的个数还是推荐使用元素节点的childElementCount属性，通过获取它的值是否为0来判断是否存在子元素更为稳妥。</dd>
 
-			<dt>mouseover事件和mouseenter事件</dt>
-			<dd>mouseover事件和mouseenter事件，都是鼠标进入一个节点时触发。</dd>
-			<dd>两者的区别是，mouseenter事件只触发一次，而只要鼠标在节点内部移动，mouseover事件会在子节点上触发多次。</dd>
+			<dt>Node.cloneNode()</dt>
+			<dd>该方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点，默认是false，即不克隆子节点。</dd>
+			<dd>克隆一个节点之后，DOM树有可能出现两个有相同ID属性的HTML元素，这时应该修改其中一个HTML元素的ID属性。</dd>
+			<dd>来看看这个方法的运用实例，HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-433.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-434.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-031.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-031.html"></iframe>
+			
+			<dt>Node.insertBefore()</dt>
+			<dd>该方法用于将某个节点插入当前节点的指定位置。它接受两个参数，第一个参数是将要插入的节点，第二个参数是当前节点的一个子节点，新的节点将插在这个节点的前面。该方法返回被插入的新节点。</dd>
+			<dd>我们还是通过一个实例来理解这个方法的用法吧。HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-435.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-436.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-032.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-032.html"></iframe>
+			
+			<dd>如果insertBefore()方法的第二个参数为null，则新节点将插在当前节点的最后位置，即变成最后一个子节点。如果所要插入的节点是当前DOM现有的节点，则该节点将从原有的位置移除，插入新的位置。</dd>
+			<dd>由于不存在insertAfter()方法，如果要插在当前节点的某个子节点后面，可以用insertBefore方法结合nextSibling属性模拟。</dd>
+			<dd>我们利用Node对象的原型链来创建一个JS并没有提供的insertAfter()方法，HTML代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-437.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-438.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-033.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-033.html"></iframe>
 
-			<dt>mouseout事件和mouseleave事件</dt>
-			<dd>mouseout事件和mouseleave事件，都是鼠标离开一个节点时触发。</dd>
-			<dd>两者的区别是，mouseout事件会冒泡，mouseleave事件不会。子节点的mouseout事件会冒泡到父节点，进而触发父节点的mouseout事件。mouseleave事件就没有这种效果，所以离开子节点时，不会触发父节点的监听函数。</dd>
+			<dt>Node.removeChild()</dt>
+			<dd>该方法接受一个子节点作为参数，用于从当前节点移除该子节点。它返回被移除的子节点。</dd>
 
-			<dt>contextmenu事件</dt>
-			<dd>contextmenu事件在一个节点上点击鼠标右键时触发。</dd>
-		</dl>
-		<p>通常鼠标具有三个键，即左键（主键）、右键和中间滚轮键，当他们被点击后事件的“button”属性会获得一个值，从而可以判断出用户点击的是哪一个键。当这个属性返回“0”时表示按下左键，返回“1”时表示中间滚轮，返回“2”时表示右键，返回“-1”时表示什么都没有按。</p>
-		<p>另外，还有4个属性用户判断但鼠标点击时是否按住了指定的控制键，它们会返回一个布尔值。</p>
-		<ul class="indent">
-			<li>altKey属性：alt键</li>
-			<li>ctrlKey属性：key键</li>
-			<li>metaKey属性：Meta键（Win键）</li>
-			<li>shiftKey属性：Shift键</li>
-		</ul>
-		<p>鼠标还提供与指针位置相关的一些属性</p>
-		<dl class="attrExplain">
-			<dt>clientX，clientY</dt>
-			<dd>clientX属性返回鼠标位置相对于浏览器窗口左上角的水平坐标，单位为像素。</dd>
-			<dd>clientY属性返回鼠标位置相对于浏览器窗口左上角的垂直坐标，单位为像素。</dd>
+			<dt>Node.replaceChild()</dt>
+			<dd>该方法用于将一个新的节点，替换当前节点的某一个子节点。它接受两个参数，第一个参数是用来替换的新节点，第二个参数将要被替换走的子节点。它返回被替换走的那个节点。它的语法结构和insertBefore()方法非常相似。我们还是通过一个实例来了解她的用法。</dd>
+			<dd>HTML的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-439.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-440.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-034.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-034.html"></iframe>
 
-			<dt>movementX，movementY</dt>
-			<dd>movementX属性返回一个水平位移，单位为像素，表示当前位置与上一个mousemove事件之间的水平距离。在数值上，等于currentEvent.movementX = currentEvent.screenX - previousEvent.screenX。</dd>
-			<dd>movementY属性返回一个垂直位移，单位为像素，表示当前位置与上一个mousemove事件之间的垂直距离。在数值上，等于currentEvent.movementY = currentEvent.screenY - previousEvent.screenY。</dd>
+			<dt>Node.contains()</dt>
+			<dd>该方法接受一个节点作为参数，返回一个布尔值，表示参数节点是否为当前节点的后代节点。需要注意的是，如果将当前节点传入contains方法，也会返回true，也就是收该方法会包含自身。语法结构请看下例。</dd>
+			<dd>HTML的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-441.jpg">
+				</code>
+			</dd>
+			<dd>JavaScript的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-442.jpg">
+				</code>
+			</dd>
 
-			<dt>screenX，screenY</dt>
-			<dd>screenX属性返回鼠标位置相对于屏幕左上角的水平坐标，单位为像素。</dd>
-			<dd>screenY属性返回鼠标位置相对于屏幕左上角的垂直坐标，单位为像素。</dd>
+			<dt>Node.isEqualNode()</dt>
+			<dd>该方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。它的语法结构和contains()方法完全一致。用它来处理<em title="一种利用事件传播机制给子元素绑定事件的模式">事件代理</em>会是一个不错的选择（事件一章中会有讲解）。</dd>
+			<dd>虽然暂时没有深入的接触过事件代理，我们仍然可以通过一个实例来理解它的用法。这里只需要提示的是“e.target”表示这次点击事件的目标是哪个节点，也就是说，是哪个节点触发了这次事件。这个节点必须是绑定了这个事件的节点对象（这里是“ul”节点）的子节点或自身。</dd>
+			<dd>完整的代码如下：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-443.jpg">
+				</code>
+			</dd>
+			<h4><a href="html-pages/javascript/codeEffect/code-036.html" target="_blank">运行效果</a>：</h4>
+			<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-036.html"></iframe>
+
+			<dt>Node.normalize()</dt>
+			<dd>该方法用于清理当前节点内部的所有Text节点。它会去除空的文本节点，并且将毗邻的文本节点合并成一个。</dd>
+			<dd>该方法需要结合后续会讲解的document.createTextNode()方法一起去理解。这里只需要知道，每次向document树内添加文本节点，节点的总长度都会加1，而使用了normalize()方法后，当前节点内无论存在多少个文本子节点都会合并为1个文本节点。</dd>
 		</dl>
 	</section>
-	<!-- 键盘事件 -->
+	<!-- DOM节点的生成 -->
 	<section>
-		<h3>键盘事件</h3>
-		<p>键盘事件用来描述键盘行为，主要有keydown、keypress、keyup三个事件。</p>
+		<h3>DOM节点的生成</h3>
+		<p>DOM可以创建元素节点、文本节点和属性节点，然后将创建好的节点通过配合Node.appendChild()、Node.insertBefore()等方法添加到指定节点，并最后添加到视图中已经存在的HTML标签元素中。它和我们平时常使用的Element.innerHTML属性相比就是它并不会对document进行“重排”操作，导致原本存在于该document树上的内存地址发生改变，导致事件失效的问题。</p>
+		<p>从频繁操作一个Element元素及其子元素的性能角度来讲，DOM节点的生成操作全部是在JS引擎内部完成的，只会最终将结果渲染到视图（HTML文档）上，而innerHTML属性需要频繁的和视图层发生联系转换。所以，在这个层面上DOM原生提供的节点生成操作会更加优秀。但它的缺点就是代码操作过于繁琐，对流程的严谨性要求更高。</p>
+		<p>而且我们应该了解，innerHTML并非任何组织制定的一个标准，它实际上是属于BOM的东西，最早是由IE提出支持并使用的。由于早期IE的“江湖地位”比较高，其它浏览器也纷纷支持了该属性，这也使得该属性成为了非明文的标准。</p>
+		<p>以下方法可以用于生成DOM的节点：</p>
 		<dl class="attrExplain">
-			<dt>keydown事件</dt>
-			<dd>按下键盘时触发该事件。</dd>
+			<dt>document.createElement()</dt>
+			<dd>该方法用来生成HTML元素节点。createElement()方法的参数为元素的标签名，即元素节点的tagName属性。</dd>
 
-			<dt>keypress事件</dt>
-			<dd>只要按下的键并非Ctrl、Alt、Shift和Meta，就接着触发keypress事件。</dd>
+			<dt>document.createTextNode()</dt>
+			<dd>该方法用来生成文本节点，参数为所要生成的文本节点的内容。</dd>
 
-			<dt>keyup事件</dt>
-			<dd>松开键盘时触发该事件。</dd>
+			<dt>document.createAttribute()</dt>
+			<dd>该方法生成一个新的属性对象节点，并返回它。该方法的参数是属性的名称。属性生成后可以用value属性为其赋值。</dd>
+
+			<dt>Element.setAttributeNode()</dt>
+			<dd>使用该方法可以将createAttribute()创建的属性设置到已经通过createElement()创建好的Element节点对象（或其它方式获取到的Element节点对象）上去。</dd>
 		</dl>
-		<p>如果用户一直不松开键盘，键盘事件就会按照这样的顺序连续触发：keydown -&gt; keypress -&gt; keydown-&gt; keypress -&gt; ... （松开键盘后）-&gt; keyup。</p>
-		<p>当用户在按下键盘的过程中（keydown事件和keyup事件）可以通过<em>keyCode</em>属性获取当前键盘的值，返回的值是一个数字。可以根据获取的数字做出判断来完成特定的事件函数。</p>
+		<p>最后，需要为innerHTML属性辩解的是，虽然它对同级元素具有“破坏性”的操作，但对于涉及到同级元素内还嵌套有子元素的情况来讲还是比较“安全”的。例如，通过innerHTML叠加表格行的操作，实际上是不会影响到&lt;tr&gt;元素内&lt;td&gt;及其子元素的事件绑定的。所以，从开发效率上考虑，很多时候innerHTML属性仍是节点生成操作的首选。</p>
 	</section>
-	<!-- 表单事件 -->
-	<section>
-		<h3>表单事件</h3>
-		<p>表单事件表示的是当HTML的&lt;form&gt;标签内的元素被操作后发生的事件，在HTML中常见的表单标签有&lt;input&gt;（不同的“type”属性支持的事件可能会有区别）、&lt;select&gt;、&lt;textarea&gt;、&lt;button&gt;等，这些元素在内容在被操作或值发生改变时都会触发事件。</p>
-		<p>表单元素主要有以下事件：</p>
-		<dl class="attrExplain">
-			<dt>input事件</dt>
-			<dd>input事件当&lt;input&gt;、&lt;textarea&gt;的值发生变化时触发。此外，将contenteditable属性设置为“true”的非表单元素，只要值发生变化，也会触发input事件。input事件的一个特点，就是会连续触发，比如用户每次按下一次按键，就会触发一次input事件。</dd>
 
-			<dt>select事件</dt>
-			<dd>select事件当在&lt;input&gt;、&lt;textarea&gt;中选中文本时触发。</dd>
-
-			<dt>Change事件</dt>
-			<dd>Change事件当&lt;input&gt;（单选框和复选框）、&lt;select&gt;、&lt;textarea&gt;（需要失去焦点时触发）的值发生变化时触发。它与input事件的最大不同，就是不会连续触发，只有当全部修改完成时才会触发，而且input事件必然会引发change事件。</dd>
-
-			<dt>reset事件</dt>
-			<dd>reset事件只能发生在表单元素&lt;form&gt;上，当表单重置（所有表单成员变回默认值）时触发。</dd>
-
-			<dt>submit事件</dt>
-			<dd>submit事件只能发生在表单元素&lt;form&gt;上，当表单数据向服务器提交时触发。注意，submit事件的发生对象是&lt;form&gt;，而不是&lt;button&gt;，因为提交的是表单，而不是按钮。</dd>
-		</dl>
-	</section>
-	<!-- 文档事件 -->
-	<section>
-		<h3>文档事件</h3>
-		<p>文档事件就是DOM元素在特定的操作下一种事件，有的时候并非需要人为的操作，如页面加载时就会触发加载事件，页面将关掉时会触发卸载事件。又如，元素在获得焦点时会触发获得焦点事件，失去焦点又会触发失去焦点事件等。</p>
-		<dl class="attrExplain">
-			<dt>load事件和error事件</dt>
-			<dd>load事件在页面加载成功时触发，error事件在页面加载失败时触发。页面从浏览器缓存加载，并不会触发load事件。</dd>
-			<dd>这两个事件实际上属于进度事件，不仅发生在document对象，还发生在各种外部资源上面。浏览网页就是一个加载各种资源的过程，图像、样式表、脚本、视频、音频、Ajax请求等等。这些资源和document对象、window对象、XMLHttpRequestUpload对象，都会触发load事件和error事件。</dd>
-
-			<dt>unload事件</dt>
-			<dd>unload事件在窗口关闭或者document对象将要卸载时触发，发生在window、body、frameset等对象上面。它的触发顺序排在beforeunload、pagehide事件后面。unload事件只在页面没有被浏览器缓存时才会触发，换言之，如果通过按下“前进/后退”导致页面卸载，并不会触发unload事件。</dd>
-
-			<dt>DOMContentLoaded事件</dt>
-			<dd>当HTML文档下载并解析完成以后，就会在document对象上触发DOMContentLoaded事件。这时，仅仅完成了HTML文档的解析（整张页面的DOM生成），所有外部资源（样式表、脚本、iframe等等）可能还没有下载结束。也就是说，这个事件比load事件，发生时间早得多。</dd>
-			<dd>需要注意的是，网页的JavaScript脚本是同步执行的，所以定义DOMContentLoaded事件的监听函数，应该放在所有脚本的最前面。否则脚本一旦发生堵塞，将推迟触发DOMContentLoaded事件。</dd>
-
-			<dt>readystatechange事件</dt>
-			<dd>readystatechange事件发生在Document对象和XMLHttpRequest对象加载完成后，当它们的readyState属性发生变化时触发。</dd>
-			<dd>IE8不支持DOMContentLoaded事件，但是支持这个事件。因此，可以使用readystatechange事件，在低版本的IE中代替DOMContentLoaded事件。</dd>
-
-			<dt>scroll事件</dt>
-			<dd>scroll事件在文档或文档元素滚动时触发，可以是鼠标滚轮触发的滚动，也可以是用户用鼠标拖动滚动条。</dd>
-
-			<dt>resize事件</dt>
-			<dd>resize事件在改变浏览器窗口大小时触发，可以发生在window、body对象上面。</dd>
-
-			<dt>focus事件和focusin事件</dt>
-			<dd>当元素（主要是&lt;a&lt;和表单元素）在获得焦点的时候触发，区别在于focus事件不会冒泡，而focusin事件（老版火狐浏览器不支持）会冒泡。focusin事件发生在focus事件之前。</dd>
-			<dd>这两个事件对象都含有一个<em>target</em>属性，返回当前执行事件元素的元素节点。</dd>
-
-			<dt>blur事件和focusout事件</dt>
-			<dd>当元素在去焦点的时候触发，区别在于blur事件不会冒泡，而focusout事件（老版火狐浏览器不支持）会冒泡。focusout事件发生在blur事件之前。</dd>
-			<dd>这两个事件对象也含有一个target属性，返回内容同上。</dd>
-		</dl>
-	</section>
+	<!-- document对象 -->
+	<!--<section>
+		<h3>document对象</h3>
+		<p>内容尚待完善...</p>
+	</section>-->
+	
+	<!-- Element标签节点类型 -->
+	<!--<section>
+		<h3>Element标签节点类型</h3>
+		<p>HTMLDivElement/HTMLParagraphElement等</p>
+		<p>通过“Object.prototype.toString.call(Element)”来获取标签节点类型</p>
+	</section>-->
+	
 </root>
 
 

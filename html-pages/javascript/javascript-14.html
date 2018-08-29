@@ -1,271 +1,284 @@
-<root data-root="JavaScript AJAX">
+<root data-root="JavaScript事件">
     <!-- 概述 -->
     <section class="mt0">
-    	<h3>JavaScript AJAX</h3>
-    	<p>AJAX（Asynchronous JavaScript and XML，异步的JavaScript和XML）不是新的编程语言，而是一种使用现有标准的新方法。它最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
-    	<p>AJAX最早的理念出现是在1998年左右（JavaScript诞生后的第三年），是由微软的Exchange Server团队开发的，并很快成为了Internet Explorer 4.0（IE4）的一部分。部分观察家认为，Outlook Web Access是第一个应用了Ajax技术的成功的商业应用程序。</p>
-    	<p>但从AJAX这个技术在JavaScript中的实现开始，长达六七年的时间都不被开发者们关注。在2005年，AJAX的“伯乐”出现了，那就是今天IT界内领头羊之一的Google公司。Google公司在自己的搜索引擎、搜索建议、Gmail上开始大量的使用AJAX这种技术方案，特别是在Google Map（谷歌地图）上的使用可以说是真正地将AJAX带上了那个开发者时代的风头浪尖。所以说，现在很多关于AJAX的技术教程里面，谈到这个技术都会有一句类似这样的话：“...这样一来就可以像谷歌地图那样实现异步的局部刷新了”。</p>
-    	<p>谈到AJAX最大的特点，就是它的<em>异步</em>特性（Asynchronous）。何为“异步”？简单的说，就是程序在实现某一个功能的时候，同时也能去做另外一件事件，而在做另外一件事情的时候不会对当前的程序造成<em>阻塞</em>。就好比，一个人要需要做两件事——唱歌和跳舞。他可以先跳完舞，然后再唱歌。但用异步的方式去解决的话，它就可以在跳舞的时候同时唱歌。</p>
-    	<p>AJAX是一个无论前端还是后台开发者都需要掌握的技术点。在现在前后端分离的开发模式下，它相当于是前端开发者与后台开发者之间的<em>一座信息沟通的桥梁</em>，前端不仅能通过它获取到后台生成的数据，后台也能接收到前端事件处理之后发送的数据。</p>
-    	<p>刚才说到了“阻塞”，什么又叫做阻塞呢？可以来看看下面两个例子。</p>
-    	<p>一个造成代码运行阻塞的例子：</p>
-    	<code class="indent">
-			<img src="img/code/jscode/code-js-398.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-020.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-020.html"></iframe>
-		<p>通过示例可以发现，当点击“执行”按钮的时候，如果不按下弹出框的确定键，那后续的代码是无法执行的，这就是用于alert()函数对代码运行所产生的阻塞效果。（示例中代码运行的顺序和通过断点调试顺序上在不同浏览器有差异，在Chrome浏览器中，由于任务队列的优化机制，DOM渲染会在代码运行完后一并执行，所以在点击按钮后本来应该显示的第一段和第二段内容并没有马上显示，但是用断点调试工具逐步运行，可以看到正确的运行流程。在除了Chrome以外的浏览器中，该功能流程都能正常显示。）</p>
-		<p>接下来再看一个不会产生阻塞的代码例子：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-399.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-021.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-021.html"></iframe>
-		<p>在这个例子里面使用了一个延时函数，在延时函数的内部有一个回调函数，回调函数从结构上讲，就是包含在一个函数内部的函数。JavaScript运行程序的第一遍会忽略所有“内层函数”，当第一层的所有代码和被调用的函数都运行完成后，才会去按顺序（从上到下的次序）运行“第二层”函数，当第二层函数按照顺序运行完成后才会去依次运行第三层（如果有的话）函数，以此类推。所以，利用回调函数是不会对代码的运行造成阻塞的。</p>
-		<p>但需要说明的是，是回调函数和异步执行并不是一样的东西，因为回调函数只是对当前流程不会阻塞，但一旦进入到回调函数内部后，也有一个任务队列，也可能会造成代码阻塞（如长时间的循环语句）。而异步不一样，异步的执行和主流程的运行是否阻塞无关，主线程是否阻塞和产生错误，对异步执行的程序不会造成直接的影响，可以把它理解为另外一个线程上的东西（但JavaScript本身始终是一个单线程脚本语言）。</p>
-		<p>在异步线程上可以读取和使用全局或函数内已经定义好的变量和函数，反之则不行，这和变量的全局/函数作用域是同一个原理。</p>
-		<p>总之，AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件。不过这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有<em>HTTP协议</em>的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的，这里需要注意。</p>
-		<p>一次完整的AJAX请求大致需要经历以下步骤：</p>
-		<ul class="indent">
-			<li>创建AJAX对象</li>
-			<li>创建AJAX请求</li>
-			<li>发送AJAX请求</li>
-			<li>接收所请求的数据并进行处理</li>
-		</ul>
-		<p>由于第四步配置在异步操作中是一个回调函数，所以很多时候会调整到第二步去写，而把“创建AJAX请求”和“发送AJAX请求”写在后面。所以在以后在遇到这样的写法的时候也不要觉得诧异，功能的完整性和流程都不会受到影响。</p>
+    	<h3>JavaScript事件概述</h3>
+    	<p>事件是可以被 JavaScript 侦测到的行为。网页中的每个DOM元素都可以产生某些可以触发JavaScript函数的事件。简单的说，就是当用户对页面的元素进行操作的时候，页面发生的一些可见或不可见的变化。</p>
+    	<p>传统的页面交互是通过CSS实现的，不过CSS只能实现一些临时的、视觉上的简单交互。但随着互联网技术的发展，只停留在页面上的这些简单交互早已不能满足时代发展的要求了。这个时候JavaScript事件的出现很大程度地提升了界面的可交互性，这种交互不仅是停留在视觉上的，还可以是数据上的交互，可以临时的，通过和服务器端的配合也可以实现永久的页面样式和数据改变，从而更大程度地提升了用户体验。</p>
+    	<p>JavaScript的事件主要包括鼠标事件、键盘事件、表单事件、文档事件及这些事件提供的一系列处理机制，在HTML5规范确立的过程中又出现了触摸事件、拖拽事件、进度事件等一系列，本章的主要内容就是对这些事件进行介绍。</p>
 	</section>
-	<!-- XMLHttpRequest -->
+	<!-- 事件的添加 -->
 	<section>
-		<h3>XMLHttpRequest对象</h3>
-		<p>XMLHttpRequest对象是实现AJAX的最基本对象，后续的所有AJAX属性和方法都是从这个对象上开始。（在IE5、IE6上使用的是“ActiveXObject("Microsoft.XMLHTTP")”，但考虑到现在互联网上已经鲜有这样老版本浏览器的踪影，所以这个只作为了解即可，也无需再做相关兼容性的处理。）</p>
-		<p>XMLHttpRequest对象实质上也是一个JavaScript内置的构造函数，这点我们可以在控制台进行输出进行观察。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-400.jpg">
-		</code>
-		<p>要进行AJAX的相关操作通常我们都是将XMLHttpRequest这个构造函数实例化为一个对象，然后再对我们实例化出的对象进行操作，就像这样：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-401.jpg">
-		</code>
-		<p>从我们之前学习过的JavaScript的经验来看，里面凡是带“on*”开头的键名都应该是XHR对象（XMLHttpRequest的简称）的方法，而不带“on*”的都是XHR的属性。也就是说，我们的所有AJAX操作都是对这些方法和属性（部分方法存在于该对象的原型内，示例中没有展开）进行访问和设置，已达到我们程序的功能需求。后文我们会对这些方法和属性进行功能说明。</p>
-	</section>
-	<!-- open() -->
-	<section>
-		<h3>创建请求open()</h3>
-		<p>按照我们一次AJAX请求的正常步骤，当一个XHR对象被实例化后，就应该要创建一个请求了，创建请求使用的方法为<em>open()</em>（这里要注意区分window对象和Document对象里面的open()方法），该方法共有5个参数，如下：</p>
+		<h3>事件的添加</h3>
+		<p>事件一定要添加在某个页面元素后才会生效，包括window对象和document对象。事件的添加主要有四种方式：</p>
 		<dl class="attrExplain">
-			<dt>method</dt>
-			<dd>必选，字符串。表示请求的方式，常用的有："<em>GET</em>"和"<em>POST</em>"，另外还有不常用的"PUT"和"DELETE"。</dd>
-			<dd>使用"GET"和"POST"的语法结构和功能基本相似，只是在某些具体设置上和应用场合会有所区别。</dd>
-			<dd>"GET"相对于"POST"来说，传输性能更好，也就是说会执行得更快，会将参数明文地显示在URL内的“?”之后。在传输上也有2048个字节的限制。</dd>
-			<dd>而"POST"请求的所带的参数是放置于<em>send()</em>方法内，通过一般方法无法获取，所以说这种请求方式更加安全，它对传输的字节也没有限制。但相对于"GET"方式来说，这种方式的性能会差很多。</dd>
-			<dd>总得来说，一般我们的AJAX请求都是使用"GET"方式，除非要传输大段的文本或者图像二进制文件等数据的时候，我们才去考虑使用"POST"。</dd>
+			<dt>通过页面标签元素添加</dt>
+			<dd>在页面标签元素的“on*”属性上添加，如例：</dd>
+			<dd>
+				<code>
+					<img src="img/code/jscode/code-js-382.jpg">
+				</code>
+			</dd>
+			<dd>这种做法简化了代码量，但违背结构层和行为层分离的原则，除非是用于测试，在实际开发环境中并不被推荐。</dd>
 
-			<dt>url</dt>
-			<dd>必须，字符串。表示请求的相对路径或绝对路径的URL。当第一个参数为"GET"的时候，可以选择性地在现有路径只后的“?”后添加参数或不添加，第一个参数为"POST"的时候不能添加参数。</dd>
+			<dt>通过DOM元素添加</dt>
+			<dd>直接通过document对象下的Element自对象进行事件绑定，如例：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-383.jpg">
+				</code>
+			</dd>
+			<dd>这种做法代码可读性不高，而且不利于DOM元素的重复读取和事件绑定的设置，也不被推荐。</dd>
 
-			<dt>async</dt>
-			<dd>可选，布尔值。true（默认）表示“异步请求”，false表示“同步请求”。当为同步请求的时候，创建请求和发送请求的方法必须放置于接收和处理请求信息之前。需要注意的是，现在使用同步请求在现代浏览器的控制台内会输出一条警告信息，大致意思是：同步请求影响用户体验，请替换为异步的方式，同步的方式已经被废弃，不再建议使用。</dd>
+			<dt>通过实例化过后的Element对象添加</dt>
+			<dd>将通过将document对象下的Element实例化为一个对象，在该对象的变量名上添加事件，如例：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-384.jpg">
+				</code>
+			</dd>
+			<dd>这种做法看似比前两种方式多了一些代码，但由于将Element实例化为了一个对象存储于内存内，每次的访问和事件的绑定设置都是从内存去读取，无需再对DOM进行查询，很大程度上提高了代码的运行效率。而且在需要单元素多事件绑定的情况下，这种写法反而可以让代码更加的精简，节省了很多次对DOM查询消耗的代码字节。所以，这种方式在实际项目中是被大量使用的，也是比较推荐的一种方式。</dd>
 
-			<dt>user</dt>
-			<dd>可选，字符串。默认为空字符串，表示用于认证的用户名。</dd>
-
-			<dt>password</dt>
-			<dd>可选，字符串。默认为空字符串，表示用于认证的密码。</dd>
+			<dt>对实例化过后的Element对象进行监听</dt>
+			<dd>这种方式和上面一种方式的形式一样，同样是对实例化的Element对象进行事件绑定，但这种绑定的方式一般叫做添加“<em>监听函数</em>”，需要使用Element的addEventListener()方法，而且事件名称不需要前缀“on”。表示方法如下：</dd>
+			<dd>
+				<code >
+					<img src="img/code/jscode/code-js-385.jpg">
+				</code>
+			</dd>
+			<dd>和普通事件的区别在于，监听函数可以为同一个实例化的Element对象添加同一个事件，而普通事件再次绑定同一个事件，后面的同名事件会覆盖之前的事件，使得之后最后一个事件才有效，之前的所有同名事件都会失效。具体我们会在后续小节里讲解。</dd>
 		</dl>
-		<p>以下为open()方法在实际运用过程中的几种格式：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-402.jpg">
-		</code>
 	</section>
-	<!-- send -->
+
+	<!-- 事件的监听 -->
 	<section>
-		<h3>发送请求send()</h3>
-		<p>该方法就是将之前创建的请求发送给服务器，如果使用的是"GET"方式不需要参数，也可以给一个null作为参数以用于说明请求的方式，增加代码的可读性（这样在检查代码的时候更容易检查出这里到底是忘记写参数了还是使用的就是"GET"方式）。如果使用的是"POST"的方式，则通常需要在这个方法内写出参数，这个参数可以是字符串（或被转换为字符串的字符），也可以是一个变量。</p>
+		<h3>事件监听</h3>
+		<p>事件监听依赖的主要内容是“监听函数”，而监听函数是事件发生时，程序所要执行的函数。它是事件驱动编程模式的主要编程方式。</p>
+		<p>在本章“事件的添加”一节中我们已经知道了监听函数的表示方法，并且明白了监听函数和普通函数在功能上的最大区别就是监听函数不会覆盖同名事件名称的函数，但是，若多个监听函数调用的是同一个函数，那代码也只会执行一次，这点需要注意区分。我们通过两个例子来说明这一点。</p>
+		<p>当对同一个按钮元素执行同一个事件的不同监听函数：</p>
 		<code class="indent">
-			<img src="img/code/jscode/code-js-403.jpg">
+			<img src="img/code/jscode/code-js-386.jpg">
 		</code>
-		<p>通过AJAX传输的数据类型目前有六种，其中文本字符串是最常见的，AJAX传输的数据类型不同于JavaScript的数据类型，我们在后续的章节里面会进行讲解。</p>
-		<!-- ""（空字符串）/"text"/"json"/"arraybuffer"/"blob"/"document" -->
-	</section>
-	<!-- 请求状态 -->
-	<section>
-		<h3>请求状态onreadystatechange</h3>
-		<p>AJAX的请求是需要时间的（就算在本地服务器环境），而这个时间很多时候是取决于当前的网络状况，也就是说，一个请求正在进行，我们是没有办法立即就对假设已经获取到的数据进行操作的，如下面的例子。</p>
-		<p>HTML部分代码如下：</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-014.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-014.html"></iframe>
+		<p>当对同一个按钮元素执行同一个事件的同一个监听函数：</p>
 		<code class="indent">
-			<img src="img/code/jscode/code-js-404.jpg">
+			<img src="img/code/jscode/code-js-387.jpg">
 		</code>
-		<p>JavaScript部分代码如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-405.jpg">
-		</code>
-		<p>JSON文件代码如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-408.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-022.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-022.html"></iframe>
-		<p>在该页面点击示例中的按钮发现没有反应，点击示例上面的超链接“运行效果”，进入单独的示例页面后，打开控制台，再去点击按钮会发现一个“Uncaught SyntaxError（不能捕获的语法错误）”报错信息。这是因为现在数据还没有请求完成，就去对一个空字符串（这个时候“xhr.responseText”没有请求到数据，还是一个空的字符串）进行了“JSON.parse()”方法的操作，所以报错。</p>
-		<p>要解决这个问题，主要有两种方案可选，第一种，将穿件的请求改为同步的方式。其它代码不变，只为open()方法添加第三个参数“false”，如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-406.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-023.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-023.html"></iframe>
-		<p>这次点击按钮，数据被正常的请求了过来，并被我们用DOM操作将数据用模版字符串的方式添加进了页面内。但是这样做却存在一个问题，还是通过刚才打开单独页面的方式去看看控制台内的输出。</p>
-		<code>
-			<img src="img/code/jscode/code-js-407.jpg">
-		</code>
-		<p>可以看到浏览器提出了一个“[Deprecation]（不赞成）”的意见，翻译过来的意思就和我们上面提到的那样“在主线程上同步XMLHttpRequest弃用,因为其不利影响最终用户的体验，更多帮助...”。也就是说这种做法是不被推荐的，而且这样做，显然也失去了AJAX所具有的“异步”特点和这一点带来的优势。</p>
-		<p>要解决现在面临的问题，就可以使用AJAX对象内提供的<em>onreadystatechange()</em>事件（document对象上也有这个方法，但他们的状态值有些不一样），可以为这个事件添加监听函数来检测请求的各个状态。首先，我们就这个事件改写一下上面的例子。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-409.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-024.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-024.html"></iframe>
-		<p>可以发现，点击按钮后功能和上一个例子的效果一样，但在控制台内不再会出现刚才的那些警告建议了。</p>
-		<p>在这次的代码改动中首先是为原来获取到的数据和对数据操作的部分扩上了一层onreadystatechange的事件，在这个事件内部还多了两个属性：“<em>readyState</em>”和“<em>status</em>”，这两个属性正是这个事情成功执行获取请求数据和对数据进行操作的关键。</p>
-		<p>其实onreadystatechange这个事件在这段代码中是会执行3次的，我们可以就刚才这段代码，加上一个计数器来进行观察控制台内的输出结果。</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-410.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-025.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-025.html"></iframe>
-		<p>在新打开页面中，当我们点击“请求数据”按钮后，在控制中会出现以下结果：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-411.jpg">
-		</code>
-		<p>出现这样的结果其实是因为“readyState”属性的状态值在变化，该属性共有5个值，其中值为“2、3、4”的时候会触发onreadystatechange事件（可自行在该事件内用console.log(xhr.readyState)进行输出观察），这5个值表示的状态分别如下：</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-015.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-015.html"></iframe>
+
+		<p>监听函数的3个参数具体作用如下：</p>
 		<ul class="indent">
-			<li>0，对应常量"UNSENT"，表示XMLHttpRequest实例已经生成，但是open()方法还没有被调用</li>
-			<li>1，对应常量"OPENED"，表示send()方法还没有被调用，仍然可以使用setRequestHeader()，设定HTTP请求的头信息</li>
-			<li>2，对应常量"HEADERS_RECEIVED"，表示send()方法已经执行，并且头信息和状态码已经收到</li>
-			<li>3，对应常量"LOADING"，表示正在接收服务器传来的body部分的数据，如果responseType属性是text或者空字符串，responseText就会包含已经收到的部分信息</li>
-			<li>4，对应常量"DONE"，表示服务器数据已经完全接收，或者本次接收已经失败了</li>
+			<li>事件名称，用字符串表示，不需要“on”前缀</li>
+			<li>执行函数，可以是一个函数名（不能是字符串，且不需要函数后面的“()”），也可以是一个匿名函数</li>
+			<li>表示监听函数是在<em>捕获阶段</em>触发还在<em>冒泡阶段</em>触发，用一个布尔值表示。true表示在冒泡阶段触发，false（默认）表示在捕获阶段触发。老式浏览器规定该参数必写，较新版本的浏览器允许该参数可选。为了保持兼容，建议总是写上该参数。</li>
 		</ul>
-		<p>在刚才的例子中，我们的都是用数字来表示的状态，其实用大写的字符串常量也可以达到一样的效果，如：“readyState == 4”也可以写成“readyState == "DONE"”，但考虑到单词容易拼写错误和效率上的问题，国内开发者通常用数字来表示AJAX请求时的状态值。</p>
-		<p>在刚才的例子中，除了“readyState”还有一个“status”，这个属性反应的是请求的结果的状态值，它有以下可能的值：</p>
+		<p>和普通函数还有一点区别就是，监听函数是可以移除的。要移除监听函数需要使用<em>removeEventListener()</em>方法，移除监听函数的参数必须和添加静听函数完全一致，否则无效。基本表示如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-388.jpg">
+		</code>
+		<p>另外需要指出的是，在IE10及之前的版本并不支持addEventListener()方法，要达到同样的效果需要使用attachEvent()方法，事情名称需要加上“on”前缀，而且没有第三个布尔值的参数。而且还有一点需要注意的是这个方法内部的“this”不是指向实例化的元素，而是指向“window”。但IE11终于不再支持这个方法，接受了通用的DOM标准，开始使用了addEventListener()方法。</p>
+	</section>
+
+	<!-- 事件对象 -->
+	<section>
+		<h3>事件对象</h3>
+		<p>“<em>事件对象</em>”值的是当一个事件产生后，会在事件函数内部生成一个“<em>Event</em>”的对象实例，并且将这个示例作为事件函数的参数（通常命名为“e”或“event”，IE下需要做兼容处理），我们尝试在一个事件中输出这个Event对象：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-389.jpg">
+		</code>
+		<p>点击该该按钮后在控制台中查看输出的Event对象：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-390.jpg">
+		</code>
+		<p>通过这个输出的事件对象Event，非常详细地反应了在这一次点击过程中的事件和被事件触发的对象之间的关系。包括了一系列重要的信息，如：点击时鼠标的X/Y坐标位置，事件是否冒泡，点击时是否按下了Ctrl/Alt/Shift键，被点击目标的相关信息等内容。但在实际开发过程中，我们只需要部分信息，这个时候就可以通过刚才我们实例化的那个“e”来进行选择性的输出：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-391.jpg">
+		</code>
+		<p>点击按钮后在控制台中查看到的结果：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-392.jpg">
+		</code>
+		<p>利用事件对象，我们可以在一次事件中做出更精细的判断，从而帮我们解决一些复杂的逻辑流程，实现更丰富的程序功能。</p>
+	</section>
+
+	<!-- 事件的传播 -->
+	<section>
+		<h3>事件的传播</h3>
+		<p>当一个事件发生以后，它会在不同的DOM节点之间传播,这种传播会使得一个事件在多个节点上触发。事件传播分成三个阶段：</p>
 		<ul class="indent">
-			<li>200, 对应常量"OK"，访问正常</li>
-			<li>301, 对应常量"Moved Permanently"，永久移动</li>
-			<li>302, 对应常量"Move temporarily"，暂时移动</li>
-			<li>304, 对应常量"Not Modified"，未修改</li>
-			<li>307, 对应常量"Temporary Redirect"，暂时重定向</li>
-			<li>401, 对应常量"Unauthorized"，未授权</li>
-			<li>403, 对应常量"Forbidden"，禁止访问</li>
-			<li>404, 对应常量"Not Found"，未发现指定网址</li>
-			<li>500, 对应常量"Internal Server Error"，服务器发生错误</li>
+			<li>第一阶段：从window对象传导到目标节点，称为“<em>捕获阶段</em>”</li>
+			<li>第二阶段：在目标节点上触发，称为“<em>目标阶段</em>”</li>
+			<li>第三阶段：从目标节点传导回window对象，称为“<em>冒泡阶段</em>”</li>
 		</ul>
-		<p>虽然这个属性的状态值很多，但真正表示请求成功，并且达到此次请求的目的的也就只有“200”这个状态值了，所以，在判断语句中，我们只需要判断该属性的值是否为“200”即可，非“200”的状态值我们都无需做任何操作。和之前的“readyState”一样，“status”的状态值也可以用后面的英文字母常量表示，如：“status == 200”也可写作“status == "ok"”。</p>
-		<p>需要补充的一点是，“readyState”的值为“4”（服务器数据已经完全接收）的时候，并不代表此次的数据请求就一定成功了，数据就是我们所需要的，它只是表示数据请求完成而且，所以，一般情况下我们会用嵌套的方式来做更“健壮”的判断，如下：</p>
+		<p>由于事件传播的机制，会使得同一个事件也会在同一个元素上多次触发。我们来看一个这样的例子：</p>
 		<code class="indent">
-			<img src="img/code/jscode/code-js-412.jpg">
+			<img src="img/code/jscode/code-js-393.jpg">
 		</code>
-	</section>
-	<!-- 章节练习 -->
-	<section class="unitPractice">
-		<h3>&lt;章节练习一&gt;</h3>
-		<p>用AJAX相关知识完成以下功能：</p>
-		<p>1、创建一个HTML页面，页面内有一个nav导航栏（包含在&lt;header&gt;标签内），导航栏内有三个超链接按钮；</p>
-		<p>2、页面内的三个超链接按钮都要触发浏览器地址栏的“哈希值”改变（名称自定）；</p>
-		<p>3、创建3个不同的JSON文件，每个JSON文件内包含一个3个键值对的对象（键名和值名自定）；</p>
-		<p>4、当点击HTML页面上的3个导航按钮后，分别对应地在页面下方的&lt;main&gt;标签内显示出JSON文件内对象的所有属性值（通过for-in语句进行输出），分三行显示。</p>
-	</section>
-	<!-- get和post对比 -->
-	<section>
-		<h3>GET和POST对比</h3>
-		<p>在之前的“创建请求open()”一章中我们已经提到了GET和POST这两种常用的请求的一些差异，但我们非常有必要更详细的区分它们的差异，这样我们才能在实际运用中选出当前功能需求中会表现得更好的方式。</p>
-		<p>从实际运用角度上来讲，它们主要有以下区别：</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-016.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-016.html"></iframe>
+		<p>上面的代码被触发了4次，p节点的捕获阶段和冒泡阶段各1次，div节点的捕获阶段和冒泡阶段各1次。具体过程如下：</p>
 		<ul class="indent">
-			<li>性能：GET的性能比POST更好</li>
-			<li>缓存：GET能够缓存文件，而POST每次都必须从服务器更新数据。</li>
-			<li>数据量：GET发送的数据参数有大小限制（2048个字节），而POST没有这个限制，可以利用它来发送大量数据参数。</li>
-			<li>安全性：GET发送的参数是明文的，而POST发送的参数放在send方法内被加密，更加安全。</li>
+			<li>捕获阶段：事件从&lt;div&gt;向&lt;p&gt;传播时，触发&lt;div&gt;的click事件；</li>
+			<li>目标阶段：事件从&lt;div&gt;到达&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
+			<li>目标阶段：事件离开&lt;p&gt;时，触发&lt;p&gt;的click事件；</li>
+			<li>冒泡阶段：事件从&lt;p&gt;传回&lt;div&gt;时，再次触发&lt;div&gt;的click事件。</li>
 		</ul>
-		<p>但通常来讲，若不是为了传输敏感数据，或参数会比较长的数据，我们都尽可能的会用GET方法，只因为它的性能比POST更优。现在有的前端开发者，或者后台开发者来处理前端的时候，由于不能区分GET和POST，但使用的时候发现GET在有些情况下不能用，于是以后就“一如既往”的只用POST，这样的做法肯定是不太对的。</p>
+		<p>事件传播的最上层对象是window，接着依次是document，html（document.documentElement）和body（document.dody）。也就是说，如果&lt;body&gt;元素中有一个&lt;div&gt;元素，点击该元素。事件的传播顺序，在捕获阶段依次为:window -&gt; document -&gt; html -&gt; body -&gt; div，在冒泡阶段依次为div -&gt; body -&gt; html -&gt; document -&gt; window。</p>
+		<p>使用事件对象的<em>event.stopPropagation()</em>方法可以让事件传播到当前的节点为止，不再继续传播。语法结构如下：</p>
+		<code class="indent">
+			<img src="img/code/jscode/code-js-397.jpg">
+		</code>
+		<p>但是，stopPropagation()方法只会阻止当前监听函数的传播，不会阻止&lt;p&gt;节点上的其他click事件的监听函数。如果想要不再触发那些监听函数，可以使用stopImmediatePropagation()方法。语法与stopPropagation()方法一致。</p>
 	</section>
-	
-	<!-- 可复用的AJAX请求 -->
+
+	<!-- 事件的代理 -->
 	<section>
-		<h3>可复用的AJAX请求</h3>
-		<p>通过之前我们对AJAX的认识可以发现，一次请求的过程需要经历4个步骤，而其中的“状态改变监听函数”（即“onreadystatechange”，区别于“eventListener”这种事件触发的监听函数）一步会随着这个实例出的AJAX对象（前例中的“xhr”）的“readyState”属性的改变而多次执行。这里我们首先要有一个认识，就是AJAX对象的“readyState”属性只要在AJAX被实例化为对象之后的那一刻起就能够访问到了（它是一个只读属性），它并非在“onreadystatechange”事件内才能访问，对于实例化对象后的其它属性和方法亦是如此，这里需要清楚认识。</p>
-		<p>虽然说多次书写是有助于我们快速的熟悉AJAX创建请求的复杂流程，但是若在实际项目还多次这样去写，肯定是过不了项目经理那一关的，代码的体积也会越来越臃肿。也千万不要有这种“反正以后我用框架就是了”的想法，因为现在很多对性能要求极高的客户还是希望你能用原生的代码去实现，而不是盲目地去使用第三方的插件、库或者框架。如以下一位已经进入前端工程师世界半年了的同志，他发表了这样一句感言：</p>
+		<h3>事件代理</h3>
+		<p>“<em>事件代理</em>”又叫做“事件委托”，这种用法由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。我们先来看一个简单的事件代理的实例：</p>
 		<code class="indent">
-			<img src="img/content/javascript/not-frameword.jpg">
+			<img src="img/code/jscode/code-js-394.jpg">
 		</code>
-		<p>既然我们始终没有没有办法离开原生的JavaScript，那像AJAX这样繁复的代码多次的在项目中书写也显然是违背了程序设计思想里“可复用”的原则的，所以我们应该将AJAX封装起来。像jQuery里的各种AJAX的方法（$.ajax()、$.get()、$.getJSON()、$.getScript()、$.post()等），还有现在火热度很高的<em title="截止本章更改更改的时间2017年9月10日，该项目在GitHub上已经有26.7K的星数了，比作为JS三大主流框架的Angular的27.6K星数还高了1000多，而且这个差距还将继续被拉大">Axios</em>等的AJAX功能实现都是对于原生JavaScript中的AJAX进行系统化的封装来实现的。这些库或者插件里的AJAX功能都十分的完善，但在实际的项目中我们并不会用到AJAX那么多的特性，所以只需要简单封装即可，我们来看一个用于获取“文本类型”（json、html、txt等文件都属于文本文件）的GET封装的简单实现。</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-017.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-017.html"></iframe>
+		<p>从这个示例我可以总结出两个结论：第一个结论就是由于事件传播的捕获特性，父级元素可以为其子级元素绑定事件；第二个结论就是事件中的this仍然是指向最初绑定事件的那个元素，这点需要留心。</p>
+		<p>利用事件代理我们可以处理程序中很多的“麻烦事”，比如说这样一个应用场景：当前有一个数据列表，只有3条数据，并且这3条数据都绑定了同一个事件。后面我们又新增了一条数据，但是由于这条数据是后面才生成的，没有办法在之前就给它绑定事件。如下：</p>
 		<code class="indent">
-			<img src="img/code/jscode/code-js-448.jpg">
+			<img src="img/code/jscode/code-js-395.jpg">
 		</code>
-		<p>函数已经封装好了，接下来我们通过一个实例来调用该封装。先准备一个这样的<em title="仍然是一个HTML文件，但是不包含文档声明和body及以上层级的标签结构，包括CSS、JS等文件也可以由它的“载体”（也是一个HTML文件，但这个HTML文件是一个完整的HTML文件，即包含必要的文档声明等内容）来进行引用和执行">文档片段</em>：</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-018.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-018.html"></iframe>
+		<p>在点击“新增”按钮之前，原列表的列表项的点击功能能够执行，但点击新增按钮之后，新增的一项内容点击之后并没有效果。而且再去点击之前的项会发现，之前的项的功能也没有了。这是因为列表区域由于DOM操作执行了浏览器的“重排”和“重绘”操作，这就导致现在看到的列表的内容已经不再是原来document里面的内容了（虽然视觉上原来的文本还是一样）。</p>
+		<p>遇到这样的问题我们就可以使用事件代理去处理，我们把上例的代码修改为由父级代理执行的形式再试：</p>
 		<code class="indent">
-			<img src="img/code/jscode/code-js-449.jpg">
+			<img src="img/code/jscode/code-js-396.jpg">
 		</code>
-		<p>这个文档片段内不包含任何外部文件的引用，也没有进行任何样式的设置。现在我们又新建这样一个HTML文件：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-450.jpg">
-		</code>
-		<p>现在我们要做的事是通过刚才我们封装的getText函数去请求上方的那个文档片段，然后将它显示到我们后面新建的这个完整的HTML文件里显示出来，并设置一定的样式。</p>
-		<p>显示样式这个比较好办，我们只需要在这个完整的HTML文件里预先把还为请求到的文档片段内元素的样式写好即可（实际流程应该是先请求，再设置样式，不然就无法根据显示效果进行调整了）：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-451.jpg">
-		</code>
-		<p>而JavaScript的部分，除了刚才我们封装好的AJAX请求函数外，就只需要这样一段就可以了：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-452.jpg">
-		</code>
-		<h4><a href="html-pages/javascript/codeEffect/code-040.html" target="_blank">运行效果</a>：</h4>
-		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-040.html"></iframe>
-		<p>当然，上例中调用的函数可以放置在一个事件内部去执行，比如说用它来实现多页面的“跳转”功能。这非常推荐去尝试一下，因为这种做法会让你看到一些以前的开发模式中从来没有看到过的东（bào）西(cùo)，这里得要卖一个关子，自己的体会更能留下深刻的印象。</p>
-		<p>现在流行的<em title="单页应用">SPA</em>开发模式就是以这样的形式为雏形的，单页应用需要用到“<em title="又称“router”">路由</em>”去管理页面的历史记录、CSS样式、JS功能、状态等内容，以此来达到超越传统通过超链接进行页面跳转的用户体验。SPA不需要进行页面跳转，使得视觉流畅度得到了很大的提升。另外SPA是依赖AJAX的<em title="异步的无阻塞特性和回调函数的灵活特性">异步回调</em>特性实现的，这也使得载入性能得到提升。如上例中的文档片段，没有文档声明（doctype）、head标签、body标签、一系列的mete配置、link引用、title标签、script标签等内容，一定程度也加快了页面的载入速度。</p>
+		<h4><a href="html-pages/javascript/codeEffect/code-019.html" target="_blank">运行效果</a>：</h4>
+		<iframe data-iframe-coderun class="codeEffect" src="html-pages/javascript/codeEffect/code-019.html"></iframe>
+		<p>可以发现，之前的“bug”已经修复，并且新增的信息项也能正常地执行功能了，不再需要使用循环去绑定事件。</p>
 	</section>
-	
-	<!-- 章节练习 -->
-	<section class="unitPractice">
-		<h3>&lt;章节练习二&gt;</h3>
-		<p>仿照上一节的AJAX请求函数封装示例，封装一个名为getJSON的AJAX请求函数，并调用这个函数来显示要求的功能。具体要求如下：</p>
-		<ol>
-			<li>封装的AJAX函数只需预置两个参数，一个为URL，一个为回调函数</li>
-			<li>根据请求到的JSON文件的格式生成一个有一定美观度的列表（见下方的设计参考图）</li>
-			<li>当列表中的列表项被点击之后alter出当前列表的索引值及文本内容</li>
-			<li>使用提供的URL地址“https://www.aulence.com/data/hardware-info.json”</li>
-		</ol>
-		<p>列表设计参考图：</p>
-		<p>
-			<img src="img/content/javascript/list-design.jpg" title="代码效果示例图" style="border:1px solid #eee;">
-		</p>
-	</section>
-	
-	<!-- 参数的序列化 -->
+
+	<!-- 鼠标事件 -->
 	<section>
-		<h3>参数的序列化</h3>
-		<p>AJAX不仅能用于向服务端发送请求来取得数据，还能向服务端发送数据，但是服务端有自己接收前端发送过来的数据的一套规则。举个例子，前端通过AJAX发送“name”和“tel”（用户名和电话号码）字段到服务端，而服务端用于接收这两个字段在后台页面（这里以PHP为例）中的完整代码如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-453.jpg">
-		</code>
-		<p>那么我们的问题来了，我们发送这两个字段的规则是什么呢，实际上在我们本章的“创建请求open()”和“发送请求send()”这两节的代码示例中就已经出现了这个规则，我们可以回过头去看一下。对于使用“GET”请求的，参数需要加在URL结束位置的“?”之后，“键”和“值”之间用“=”分割，而“键值对”之间用“&amp;”进行分割。而使用的是“POST”请求的时候，参数应该作为实例化后的AJAX对象的send方法的参数，且不需要开头的那个问号“?”了。</p>
-		<p>而通常情况下，我们得到的值不可能是这样的格式，也就是说我们需要通过一定的手段将现有的值转换为AJAX发送的参数，这一个过程就称作“<em title="或称：值的序列化">参数的序列化</em>”。在jQuery中提供了将对象序列化的“$.param()”方法和将表单内所有含有name属性的表单元素序列化的“$("form").serialize()”方法，另外还有一个和“serialize()”方法用法相同，但是是将值转换为JSON对象的方法。但是在原生的JavaScript中却没有这样的方法，所以需要我们自己去编写这样的方法。就拿“$.param()”方法为例，它的实现过程是这样的（该页面已经引用了jQuery库）：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-454.jpg">
-		</code>
-		<p>如该页面的控制台代码所示，这个方法能将一个对象进行参数的序列化，得到的这个结果就可以用AJAX对象的指定方法来向后台发送数据了。看到这里大家可能会有一个疑问，就这样一个简单的转换为什么需要用到一个方法？因为在一个项目中，会向后台发送数据的通常不止一处地方，而且我们要发送的这些数据的键名和值都是未知的，而且每处需要发送的键值对个数也是未知的。如果每处需要发送的数据都由我们手动去获取的话，势必会消耗掉一些宝贵的开发时间，而且由于序列化后的参数的可读性问题也很容易造成拼接过程中的一些细节错误。</p>
-		<p>关于参数序列化还有一个知识点需要进行说明，后台接受的参数里面是不能有ASC II码以外的字符的（中文属于Unicode码），所以如果参数里有非ASC II码的值，需要用“<em title="该函数可把字符串作为URI组件进行编码">encodeURIComponent()</em>”函数进行编码，但是它不会转换常规的ASC II字符，如果要对编译成URI组件的字符进行解码可以用“<em title="对URI组件进行解码">decodeURIComponent()</em>”函数。jQuery的“$.param()”也内置了该转换函数，具体如下：</p>
-		<code class="indent">
-			<img src="img/code/jscode/code-js-455.jpg">
-		</code>
-		<p>这两个函数虽然拼写有点复杂，但是应用场景却是非常多的。如表单内“昵称”、“地址”、“个人简介”等内容在国内基本都是以中文（非ASC II码）形式存在的，所以还是应该对它们进行归纳记识，便于在以后的实际项目中进行使用。</p>
+		<h3>鼠标事件</h3>
+		<p>电脑鼠标所触发的事件。</p>
+		<dl class="attrExplain">
+			<dt>click事件和dblclick事件</dt>
+			<dd>当用户在Element节点、document节点、window对象上单击鼠标（或者按下回车键）时，click事件触发。用户在同一个位置完成一次mousedown动作和mouseup动作。它们的触发顺序是：mousedown首先触发，mouseup接着触发，click最后触发。</dd>
+			<dd>dblclick事件当用户在element、document、window对象上，双击鼠标时触发。该事件会在mousedown、mouseup、click之后触发</dd>
+
+			<dt>mouseup事件、mousedown事件</dt>
+			<dd>mouseup事件在释放按下的鼠标键时触发。</dd>
+			<dd>mousedown事件在按下鼠标键时触发</dd>
+			<dd>mousemove事件当鼠标在一个节点内部移动时触发。当鼠标持续移动时，该事件会连续触发。为了避免性能问题，建议对该事件的监听函数做一些限定，比如限定一段时间内只能运行一次代码。</dd>
+
+			<dt>mouseover事件和mouseenter事件</dt>
+			<dd>mouseover事件和mouseenter事件，都是鼠标进入一个节点时触发。</dd>
+			<dd>两者的区别是，mouseenter事件只触发一次，而只要鼠标在节点内部移动，mouseover事件会在子节点上触发多次。</dd>
+
+			<dt>mouseout事件和mouseleave事件</dt>
+			<dd>mouseout事件和mouseleave事件，都是鼠标离开一个节点时触发。</dd>
+			<dd>两者的区别是，mouseout事件会冒泡，mouseleave事件不会。子节点的mouseout事件会冒泡到父节点，进而触发父节点的mouseout事件。mouseleave事件就没有这种效果，所以离开子节点时，不会触发父节点的监听函数。</dd>
+
+			<dt>contextmenu事件</dt>
+			<dd>contextmenu事件在一个节点上点击鼠标右键时触发。</dd>
+		</dl>
+		<p>通常鼠标具有三个键，即左键（主键）、右键和中间滚轮键，当他们被点击后事件的“button”属性会获得一个值，从而可以判断出用户点击的是哪一个键。当这个属性返回“0”时表示按下左键，返回“1”时表示中间滚轮，返回“2”时表示右键，返回“-1”时表示什么都没有按。</p>
+		<p>另外，还有4个属性用户判断但鼠标点击时是否按住了指定的控制键，它们会返回一个布尔值。</p>
+		<ul class="indent">
+			<li>altKey属性：alt键</li>
+			<li>ctrlKey属性：key键</li>
+			<li>metaKey属性：Meta键（Win键）</li>
+			<li>shiftKey属性：Shift键</li>
+		</ul>
+		<p>鼠标还提供与指针位置相关的一些属性</p>
+		<dl class="attrExplain">
+			<dt>clientX，clientY</dt>
+			<dd>clientX属性返回鼠标位置相对于浏览器窗口左上角的水平坐标，单位为像素。</dd>
+			<dd>clientY属性返回鼠标位置相对于浏览器窗口左上角的垂直坐标，单位为像素。</dd>
+
+			<dt>movementX，movementY</dt>
+			<dd>movementX属性返回一个水平位移，单位为像素，表示当前位置与上一个mousemove事件之间的水平距离。在数值上，等于currentEvent.movementX = currentEvent.screenX - previousEvent.screenX。</dd>
+			<dd>movementY属性返回一个垂直位移，单位为像素，表示当前位置与上一个mousemove事件之间的垂直距离。在数值上，等于currentEvent.movementY = currentEvent.screenY - previousEvent.screenY。</dd>
+
+			<dt>screenX，screenY</dt>
+			<dd>screenX属性返回鼠标位置相对于屏幕左上角的水平坐标，单位为像素。</dd>
+			<dd>screenY属性返回鼠标位置相对于屏幕左上角的垂直坐标，单位为像素。</dd>
+		</dl>
 	</section>
-	
-	<!-- 章节练习 -->
-	<section class="unitPractice">
-		<h3>&lt;章节练习三&gt;</h3>
-		<p>以“objToParam”为名创建一个将对象序列化的函数，具体要求如下：</p>
-		<ol>
-			<li>该函数接受一个原生对象（非数组、Math、Date等对象）作为参数，当参数不为一个原生对象的时候在控制台用“console.error()”方法输出“该函数的参数只能是一个原生对象”的错误信息</li>
-			<li>将参数对象内的所有属性值都进行“URI组件”的编码，让后台能够正确的接收到任意主流编码类型（ASC II或Unicode）的值</li>
-			<li>函数正确运行后，会返回对象被序列化之后的字符串</li>
-		</ol>
-		<p>&lt;提示&gt;：可以对“Object.prototype.toString.call(param)”这个原型链方法返回的结果做一定的字符串方法的操作来获得数据的“精确类型”。</p>
+	<!-- 键盘事件 -->
+	<section>
+		<h3>键盘事件</h3>
+		<p>键盘事件用来描述键盘行为，主要有keydown、keypress、keyup三个事件。</p>
+		<dl class="attrExplain">
+			<dt>keydown事件</dt>
+			<dd>按下键盘时触发该事件。</dd>
+
+			<dt>keypress事件</dt>
+			<dd>只要按下的键并非Ctrl、Alt、Shift和Meta，就接着触发keypress事件。</dd>
+
+			<dt>keyup事件</dt>
+			<dd>松开键盘时触发该事件。</dd>
+		</dl>
+		<p>如果用户一直不松开键盘，键盘事件就会按照这样的顺序连续触发：keydown -&gt; keypress -&gt; keydown-&gt; keypress -&gt; ... （松开键盘后）-&gt; keyup。</p>
+		<p>当用户在按下键盘的过程中（keydown事件和keyup事件）可以通过<em>keyCode</em>属性获取当前键盘的值，返回的值是一个数字。可以根据获取的数字做出判断来完成特定的事件函数。</p>
+	</section>
+	<!-- 表单事件 -->
+	<section>
+		<h3>表单事件</h3>
+		<p>表单事件表示的是当HTML的&lt;form&gt;标签内的元素被操作后发生的事件，在HTML中常见的表单标签有&lt;input&gt;（不同的“type”属性支持的事件可能会有区别）、&lt;select&gt;、&lt;textarea&gt;、&lt;button&gt;等，这些元素在内容在被操作或值发生改变时都会触发事件。</p>
+		<p>表单元素主要有以下事件：</p>
+		<dl class="attrExplain">
+			<dt>input事件</dt>
+			<dd>input事件当&lt;input&gt;、&lt;textarea&gt;的值发生变化时触发。此外，将contenteditable属性设置为“true”的非表单元素，只要值发生变化，也会触发input事件。input事件的一个特点，就是会连续触发，比如用户每次按下一次按键，就会触发一次input事件。</dd>
+
+			<dt>select事件</dt>
+			<dd>select事件当在&lt;input&gt;、&lt;textarea&gt;中选中文本时触发。</dd>
+
+			<dt>Change事件</dt>
+			<dd>Change事件当&lt;input&gt;（单选框和复选框）、&lt;select&gt;、&lt;textarea&gt;（需要失去焦点时触发）的值发生变化时触发。它与input事件的最大不同，就是不会连续触发，只有当全部修改完成时才会触发，而且input事件必然会引发change事件。</dd>
+
+			<dt>reset事件</dt>
+			<dd>reset事件只能发生在表单元素&lt;form&gt;上，当表单重置（所有表单成员变回默认值）时触发。</dd>
+
+			<dt>submit事件</dt>
+			<dd>submit事件只能发生在表单元素&lt;form&gt;上，当表单数据向服务器提交时触发。注意，submit事件的发生对象是&lt;form&gt;，而不是&lt;button&gt;，因为提交的是表单，而不是按钮。</dd>
+		</dl>
+	</section>
+	<!-- 文档事件 -->
+	<section>
+		<h3>文档事件</h3>
+		<p>文档事件就是DOM元素在特定的操作下一种事件，有的时候并非需要人为的操作，如页面加载时就会触发加载事件，页面将关掉时会触发卸载事件。又如，元素在获得焦点时会触发获得焦点事件，失去焦点又会触发失去焦点事件等。</p>
+		<dl class="attrExplain">
+			<dt>load事件和error事件</dt>
+			<dd>load事件在页面加载成功时触发，error事件在页面加载失败时触发。页面从浏览器缓存加载，并不会触发load事件。</dd>
+			<dd>这两个事件实际上属于进度事件，不仅发生在document对象，还发生在各种外部资源上面。浏览网页就是一个加载各种资源的过程，图像、样式表、脚本、视频、音频、Ajax请求等等。这些资源和document对象、window对象、XMLHttpRequestUpload对象，都会触发load事件和error事件。</dd>
+
+			<dt>unload事件</dt>
+			<dd>unload事件在窗口关闭或者document对象将要卸载时触发，发生在window、body、frameset等对象上面。它的触发顺序排在beforeunload、pagehide事件后面。unload事件只在页面没有被浏览器缓存时才会触发，换言之，如果通过按下“前进/后退”导致页面卸载，并不会触发unload事件。</dd>
+
+			<dt>DOMContentLoaded事件</dt>
+			<dd>当HTML文档下载并解析完成以后，就会在document对象上触发DOMContentLoaded事件。这时，仅仅完成了HTML文档的解析（整张页面的DOM生成），所有外部资源（样式表、脚本、iframe等等）可能还没有下载结束。也就是说，这个事件比load事件，发生时间早得多。</dd>
+			<dd>需要注意的是，网页的JavaScript脚本是同步执行的，所以定义DOMContentLoaded事件的监听函数，应该放在所有脚本的最前面。否则脚本一旦发生堵塞，将推迟触发DOMContentLoaded事件。</dd>
+
+			<dt>readystatechange事件</dt>
+			<dd>readystatechange事件发生在Document对象和XMLHttpRequest对象加载完成后，当它们的readyState属性发生变化时触发。</dd>
+			<dd>IE8不支持DOMContentLoaded事件，但是支持这个事件。因此，可以使用readystatechange事件，在低版本的IE中代替DOMContentLoaded事件。</dd>
+
+			<dt>scroll事件</dt>
+			<dd>scroll事件在文档或文档元素滚动时触发，可以是鼠标滚轮触发的滚动，也可以是用户用鼠标拖动滚动条。</dd>
+
+			<dt>resize事件</dt>
+			<dd>resize事件在改变浏览器窗口大小时触发，可以发生在window、body对象上面。</dd>
+
+			<dt>focus事件和focusin事件</dt>
+			<dd>当元素（主要是&lt;a&lt;和表单元素）在获得焦点的时候触发，区别在于focus事件不会冒泡，而focusin事件（老版火狐浏览器不支持）会冒泡。focusin事件发生在focus事件之前。</dd>
+			<dd>这两个事件对象都含有一个<em>target</em>属性，返回当前执行事件元素的元素节点。</dd>
+
+			<dt>blur事件和focusout事件</dt>
+			<dd>当元素在去焦点的时候触发，区别在于blur事件不会冒泡，而focusout事件（老版火狐浏览器不支持）会冒泡。focusout事件发生在blur事件之前。</dd>
+			<dd>这两个事件对象也含有一个target属性，返回内容同上。</dd>
+		</dl>
 	</section>
 </root>
 
